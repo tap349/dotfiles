@@ -1,0 +1,40 @@
+[user]
+	name = Alexey Terekhov
+	email = temp_@mail.ru
+
+[merge]
+  summary = true
+  verbosity = 1
+  tool = mvimdiff
+
+[mergetool]
+  prompt = false
+
+[mergetool "mvimdiff"]
+  ;cmd = /usr/local/bin/mvimdiff -f "$LOCAL" "$MERGED" "$REMOTE"
+  cmd = "/usr/local/bin/mvim -f --nomru -c 'Gdiff' $MERGED" # use fugitive.vim for 3-way merge
+  keepBackup = false
+
+[diff]
+  tool = default-difftool
+
+[difftool]
+  prompt = false
+
+[difftool "default-difftool"]
+  cmd = mvim -d -f --nomru $LOCAL $REMOTE
+
+[alias]
+  d = difftool
+
+[git-up "bundler"]
+  check = true
+
+[core]
+  autocrlf = input
+  editor = mvim -f --nomru
+
+[push]
+	default = current
+[color]
+	ui = true
