@@ -74,11 +74,27 @@ set softtabstop=2
 set tabstop=2
 
 "-------------------------------------------------------------------------------
+" navigation
+"-------------------------------------------------------------------------------
+
+set scrolloff=10
+
+"-------------------------------------------------------------------------------
 " search
 "-------------------------------------------------------------------------------
 
 set hlsearch
 set incsearch
+
+set ignorecase
+set smartcase
+
+"-------------------------------------------------------------------------------
+" splitting
+"-------------------------------------------------------------------------------
+
+set splitbelow
+set splitright
 
 
 "==============================================================================="
@@ -139,6 +155,12 @@ set number
 " hide mode indicator
 set noshowmode
 
+"-------------------------------------------------------------------------------
+" startup
+"-------------------------------------------------------------------------------
+
+set shortmess+=I
+
 
 "================================================================================
 "                                                                               =
@@ -162,7 +184,7 @@ autocmd! BufWritePost .vimrc source %
 "================================================================================
 
 let mapleader=","
-let maplocalleader="."
+let maplocalleader="\\"
 
 
 "================================================================================
@@ -183,7 +205,7 @@ nmap <silent> <S-CR> O<Esc>
 nmap <silent> <Space> i<Space><Esc>l
 
 "-------------------------------------------------------------------------------
-" editing popular files in a new tab
+" editing popular files
 "-------------------------------------------------------------------------------
 
 nmap <LocalLeader>ec :edit ~/.vim/colors/summerfruit_tap.vim<CR>
@@ -215,8 +237,23 @@ nmap <silent> <C-Tab> :b#<CR>
 
 "------- tab --------------------------------------------------------------------
 
-nmap <C-h> gT
-nmap <C-l> gt
+"nmap <C-h> gT
+"nmap <C-l> gt
+
+nmap <C-h> :tabprevious<CR>
+nmap <C-l> :tabnext<CR>
+nmap <C-j> :tabfirst<CR>
+nmap <C-k> :tablast<CR>
+
+nmap <A-Left> :tabprevious<CR>
+nmap <A-Right> :tabnext<CR>
+nmap <A-Down> :tabfirst<CR>
+nmap <A-Up> :tablast<CR>
+
+nmap <silent> <A-S-Left> :tabmove -1<CR>
+nmap <silent> <A-S-Right> :tabmove +1<CR>
+nmap <silent> <A-S-Down> :tabmove 0<CR>
+nmap <silent> <A-S-Up> :tabmove<CR>
 
 " the same for MacVim only (doesn't work though):
 "macmenu Window.Select\ Previous\ Tab key=<C-h>
@@ -249,7 +286,18 @@ nmap <LocalLeader>cu :edit ++encoding=utf-8<CR>
 "-------------------------------------------------------------------------------
 
 nmap <Leader>.v :source $MYVIMRC<CR>
-nmap <Leader>.z :source ~/.zshrc<CR>
+
+"-------------------------------------------------------------------------------
+" suppress unwanted keys
+"-------------------------------------------------------------------------------
+
+nnoremap Q <nop>
+
+"-------------------------------------------------------------------------------
+" yanking
+"-------------------------------------------------------------------------------
+
+nnoremap Y y$
 
 
 "================================================================================
@@ -281,6 +329,13 @@ imap <C-h> <Left>
 imap <C-l> <Right>
 imap <C-j> <Down>
 imap <C-k> <Up>
+
+"------- tab --------------------------------------------------------------------
+
+imap <silent> <A-S-Left> <C-o>:tabmove -1<CR>
+imap <silent> <A-S-Right> <C-o>:tabmove +1<CR>
+imap <silent> <A-S-Down> <C-o>:tabmove 0<CR>
+imap <silent> <A-S-Up> <C-o>:tabmove<CR>
 
 
 "================================================================================
@@ -362,7 +417,8 @@ map <Leader><Space> <Plug>NERDCommenterToggle
 "-------------------------------------------------------------------------------
 
 nmap <F2> :NERDTreeToggle<CR>
-nmap <Leader><F2> :NERDTree<CR>
+nmap <Leader><F2>r :NERDTree<CR>
+nmap <Leader><F2>f :NERDTreeFind<CR>
 
 
 "-------------------------------------------------------------------------------
@@ -390,14 +446,16 @@ let g:SuperTabDefaultCompletionType = "<C-n>"
 
 "-------------------------------------------------------------------------------
 " vim-airline
+" http://joshldavis.com/2014/04/05/vim-tab-madness-buffers-vs-tabs
 "-------------------------------------------------------------------------------
 
 " always show airline
 set laststatus=2
 
-let g:airline#extensions#tabline#enabled=0
-"let g:airline#extensions#tabline#left_sep=' '
-"let g:airline#extensions#tabline#left_alt_sep='|'
+"let g:airline#extensions#tabline#enabled=1
+"let g:airline#extensions#tabline#fnamemod=':t'
+"let g:airline#extensions#tabline#left_sep='⮀'
+"let g:airline#extensions#tabline#left_alt_sep='⮁'
 
 "let g:airline_theme = 'molokai'
 "let g:airline_theme = 'powerlineish'
@@ -414,6 +472,7 @@ let g:airline_symbols.branch = '⭠'
 let g:airline_symbols.readonly = '⭤'
 let g:airline_symbols.linenr = '⭡'
 
+
 "-------------------------------------------------------------------------------
 " vim-buffergator
 "-------------------------------------------------------------------------------
@@ -426,8 +485,8 @@ let g:buffergator_vsplit_size=60
 
 nmap <F3>b :BuffergatorOpen<CR>
 nmap <F3>t :BuffergatorTabsOpen<CR>
-nmap <silent> <C-o> :BuffergatorMruCyclePrev<CR>
-nmap <silent> <C-i> :BuffergatorMruCycleNext<CR>
+nmap <silent> <C-S-o> :BuffergatorMruCyclePrev<CR>
+nmap <silent> <C-S-i> :BuffergatorMruCycleNext<CR>
 
 
 "-------------------------------------------------------------------------------
@@ -435,3 +494,15 @@ nmap <silent> <C-i> :BuffergatorMruCycleNext<CR>
 "-------------------------------------------------------------------------------
 
 nmap <F6> :Gdiff<CR>
+
+
+"-------------------------------------------------------------------------------
+" vim-session
+"-------------------------------------------------------------------------------
+
+let g:session_autoload = 'no'
+let g:session_autosave = 'no'
+
+nmap <F7>d :DeleteSession<Space>
+nmap <F7>o :OpenSession<Space>
+nmap <F7>s :SaveSession<Space>
