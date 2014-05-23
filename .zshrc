@@ -76,20 +76,22 @@ UPTIMUS=~/dev/uptimus
 # common
 
 alias cdd='cd ~/Downloads'
-alias cdr='cd ~/dev/reactor'
-alias cdu='cd ~/dev/uptimus'
+alias cdr='cd $REACTOR'
+alias cdu='cd $UPTIMUS'
 alias df='df -h'
 alias ll='ls -alp'
 alias m='open -a MacVim'
 
 # rails
 
-alias log='tail -f ~/dev/uptimus/log/development.log'
-alias p='psql'
+alias log='tail -f $UPTIMUS/log/development.log'
+alias migrate='cd $UPTIMUS && rake db:migrate && rake db:test:clone'
+alias p='psql uptimus_development'
 alias r='rails'
-alias rc='cd ~/dev/uptimus && rails console'
-alias rs='cd ~/dev/uptimus && rails server'
+alias rc='cd $UPTIMUS && rails console'
+alias rs='cd $UPTIMUS && rails server'
 alias sass='sass-convert --from css --to sass -R'
+alias sidekiq='cd $UPTIMUS && bundle exec sidekiq --config ./config/sidekiq.yml'
 
 # ssh
 
@@ -105,6 +107,5 @@ alias deploy='sdeploy'
 
 alias g='git'
 alias ga='git add -A .'
-alias gc='git commit -m'
 alias gl="git log --graph --pretty=format:'%Cred%h%Creset %C(yellow)%d%Creset %s - %C(bold blue)%an%Creset, %Cgreen%cr' --abbrev-commit"
 alias gs='git status'

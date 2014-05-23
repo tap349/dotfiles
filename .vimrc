@@ -183,8 +183,8 @@ autocmd! BufWritePost .vimrc source %
 "                                                                               =
 "================================================================================
 
-let mapleader=","
-let maplocalleader="\\"
+let mapleader = ","
+let maplocalleader = "\\"
 
 
 "================================================================================
@@ -242,8 +242,6 @@ nmap <silent> <C-Tab> :b#<CR>
 
 nmap <C-h> :tabprevious<CR>
 nmap <C-l> :tabnext<CR>
-nmap <C-j> :tabfirst<CR>
-nmap <C-k> :tablast<CR>
 
 nmap <A-Left> :tabprevious<CR>
 nmap <A-Right> :tabnext<CR>
@@ -385,8 +383,8 @@ map <silent> b <Plug>CamelCaseMotion_b
 " command-t
 "-------------------------------------------------------------------------------
 
-let g:CommandTMaxHeight=17
-let g:CommandTMaxFiles=25000
+let g:CommandTMaxHeight = 17
+let g:CommandTMaxFiles = 25000
 
 nmap <F1> :CommandT<CR>
 nmap <Leader><F1>r :CommandTFlush<CR>:CommandT<CR>
@@ -398,8 +396,8 @@ nmap <Leader><F1>r :CommandTFlush<CR>:CommandT<CR>
 " warning: this plugin disables syntax highlighting in slim files.
 "-------------------------------------------------------------------------------
 
-"let g:indentLine_char='┆'
-"let g:indentLine_color_gui='#4C5B6B'
+"let g:indentLine_char = '┆'
+"let g:indentLine_color_gui = '#4C5B6B'
 
 
 "-------------------------------------------------------------------------------
@@ -432,7 +430,7 @@ au BufNewFile,BufRead *_spec.rb set filetype=rspec
 " Specky
 "-------------------------------------------------------------------------------
 
-let g:speckySpecSwitcherKey="<F4>"
+let g:speckySpecSwitcherKey = "<F4>"
 
 nmap <Leader><F4> <C-w><C-v><C-w>l<F4>
 
@@ -452,10 +450,10 @@ let g:SuperTabDefaultCompletionType = "<C-n>"
 " always show airline
 set laststatus=2
 
-"let g:airline#extensions#tabline#enabled=1
-"let g:airline#extensions#tabline#fnamemod=':t'
-"let g:airline#extensions#tabline#left_sep='⮀'
-"let g:airline#extensions#tabline#left_alt_sep='⮁'
+"let g:airline#extensions#tabline#enabled = 1
+"let g:airline#extensions#tabline#fnamemod = ':t'
+"let g:airline#extensions#tabline#left_sep = '⮀'
+"let g:airline#extensions#tabline#left_alt_sep = '⮁'
 
 "let g:airline_theme = 'molokai'
 "let g:airline_theme = 'powerlineish'
@@ -468,6 +466,12 @@ let g:airline_left_sep = '⮀'
 let g:airline_left_alt_sep = '⮁'
 let g:airline_right_sep = '⮂'
 let g:airline_right_alt_sep = '⮃'
+
+" https://github.com/bling/vim-airline/issues/193
+if !exists('g:airline_symbols')
+  let g:airline_symbols = {}
+end
+
 let g:airline_symbols.branch = '⭠'
 let g:airline_symbols.readonly = '⭤'
 let g:airline_symbols.linenr = '⭡'
@@ -477,16 +481,16 @@ let g:airline_symbols.linenr = '⭡'
 " vim-buffergator
 "-------------------------------------------------------------------------------
 
-let g:buffergator_sort_regime="basename"
-let g:buffergator_split_size=20
-let g:buffergator_suppress_keymaps=1
-let g:buffergator_viewport_split_policy="R"
-let g:buffergator_vsplit_size=60
+let g:buffergator_sort_regime = "basename"
+let g:buffergator_split_size = 20
+let g:buffergator_suppress_keymaps = 1
+let g:buffergator_viewport_split_policy = "R"
+let g:buffergator_vsplit_size = 60
 
 nmap <F3>b :BuffergatorOpen<CR>
 nmap <F3>t :BuffergatorTabsOpen<CR>
-nmap <silent> <C-S-o> :BuffergatorMruCyclePrev<CR>
-nmap <silent> <C-S-i> :BuffergatorMruCycleNext<CR>
+nmap <silent> <C-p> :BuffergatorMruCyclePrev<CR>
+nmap <silent> <C-n> :BuffergatorMruCycleNext<CR>
 
 
 "-------------------------------------------------------------------------------
