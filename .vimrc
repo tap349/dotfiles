@@ -112,7 +112,7 @@ set t_Co=256
 set background=dark
 
 "let g:solarized_bold = 1
-"let g:solarized_contrast = "normal"
+"let g:solarized_contrast = 'normal'
 "let g:solarized_italic = 1
 
 "colorscheme solarized
@@ -160,6 +160,7 @@ set noshowmode
 "-------------------------------------------------------------------------------
 
 set shortmess+=I
+cd ~/dev/uptimus
 
 
 "================================================================================
@@ -183,8 +184,8 @@ autocmd! BufWritePost .vimrc source %
 "                                                                               =
 "================================================================================
 
-let mapleader = ","
-let maplocalleader = "\\"
+let mapleader = ','
+let maplocalleader = '\'
 
 
 "================================================================================
@@ -276,8 +277,8 @@ nmap <LocalLeader>cu :edit ++encoding=utf-8<CR>
 "-------------------------------------------------------------------------------
 
 " turn off highlighting and clear messages
-:nmap <silent> <Backspace> :nohlsearch<Bar>:echo<CR>
-:nnoremap <silent> <C-c> <C-c>:nohlsearch<Bar>:echo<CR>
+nmap <silent> <Backspace> :nohlsearch<Bar>:echo<CR>
+nnoremap <silent> <C-c> <C-c>:nohlsearch<Bar>:echo<CR>
 
 "-------------------------------------------------------------------------------
 " sourcing configuration files
@@ -430,7 +431,7 @@ au BufNewFile,BufRead *_spec.rb set filetype=rspec
 " Specky
 "-------------------------------------------------------------------------------
 
-let g:speckySpecSwitcherKey = "<F4>"
+let g:speckySpecSwitcherKey = '<F4>'
 
 nmap <Leader><F4> <C-w><C-v><C-w>l<F4>
 
@@ -439,7 +440,7 @@ nmap <Leader><F4> <C-w><C-v><C-w>l<F4>
 " supertab
 "-------------------------------------------------------------------------------
 
-let g:SuperTabDefaultCompletionType = "<C-n>"
+let g:SuperTabDefaultCompletionType = '<C-n>'
 
 
 "-------------------------------------------------------------------------------
@@ -481,10 +482,10 @@ let g:airline_symbols.linenr = '⭡'
 " vim-buffergator
 "-------------------------------------------------------------------------------
 
-let g:buffergator_sort_regime = "basename"
+let g:buffergator_sort_regime = 'basename'
 let g:buffergator_split_size = 20
 let g:buffergator_suppress_keymaps = 1
-let g:buffergator_viewport_split_policy = "R"
+let g:buffergator_viewport_split_policy = 'R'
 let g:buffergator_vsplit_size = 60
 
 nmap <F3>b :BuffergatorOpen<CR>
