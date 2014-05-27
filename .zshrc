@@ -55,7 +55,9 @@ source $ZSH/oh-my-zsh.sh
 #=========================================================================================
 
 #-----------------------------------------------------------------------------------------
+#
 # Environment variables
+#
 #-----------------------------------------------------------------------------------------
 
 TERM="xterm-256color"
@@ -70,32 +72,14 @@ REACTOR=~/dev/reactor
 UPTIMUS=~/dev/uptimus
 
 #-----------------------------------------------------------------------------------------
+#
 # Aliases
+#
 #-----------------------------------------------------------------------------------------
 
-# common
-
-alias cdd='cd ~/Downloads'
-alias cdr='cd $REACTOR'
-alias cdu='cd $UPTIMUS'
-alias df='df -h'
-alias ll='ls -alp'
-alias m='open -a MacVim'
-
-# rails
-
-alias log='tail -f $UPTIMUS/log/development.log'
-alias migrate='cd $UPTIMUS && rake db:migrate && rake db:test:clone'
-alias p='psql uptimus_development'
-alias r='rails'
-alias rc='cd $UPTIMUS && rails console'
-alias rs='cd $UPTIMUS && rails server'
-alias sass='sass-convert --from css --to sass -R'
-alias sidekiq='cd $UPTIMUS && bundle exec sidekiq --config ./config/sidekiq.yml'
-
-# ssh
-
-alias staging="ssh devops@94.77.64.80"
+#-----------------------------------------------------------------------------------------
+# dev
+#-----------------------------------------------------------------------------------------
 
 # cap
 
@@ -109,3 +93,44 @@ alias g='git'
 alias ga='git add -A .'
 alias gl="git log --graph --pretty=format:'%Cred%h%Creset %C(yellow)%d%Creset %s - %C(bold blue)%an%Creset, %Cgreen%cr' --abbrev-commit"
 alias gs='git status'
+
+# misc
+
+alias guard='cd $UPTIMUS && guard'
+alias log='tail -f $UPTIMUS/log/development.log'
+alias migrate='cd $UPTIMUS && zeus rake db:migrate && zeus rake db:test:clone'
+alias p='psql uptimus_development'
+alias sass='sass-convert --from css --to sass -R'
+alias sidekiq='cd $UPTIMUS && bundle exec sidekiq --config ./config/sidekiq.yml'
+
+# rails
+
+alias r='rails'
+alias rc='cd $UPTIMUS && rails console'
+alias rd='cd $UPTIMUS && rails dbconsole'
+alias rg='cd $UPTIMUS && rails generate'
+alias rs='cd $UPTIMUS && rails server'
+
+# ssh
+
+alias staging="ssh devops@94.77.64.80"
+
+# zeus
+
+alias z='zeus'
+alias zc='cd $UPTIMUS && zeus console'
+alias zd='cd $UPTIMUS && zeus dbconsole'
+alias zg='cd $UPTIMUS && zeus generate'
+alias zr='cd $UPTIMUS && zeus rake'
+alias zs='cd $UPTIMUS && zeus server'
+
+#-----------------------------------------------------------------------------------------
+# common
+#-----------------------------------------------------------------------------------------
+
+alias cdd='cd ~/Downloads'
+alias cdr='cd $REACTOR'
+alias cdu='cd $UPTIMUS'
+alias df='df -h'
+alias ll='ls -alp'
+alias m='open -a MacVim'
