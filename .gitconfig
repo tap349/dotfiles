@@ -26,6 +26,7 @@
 
 [alias]
   d = difftool
+  amend = commit --amend --no-edit
 
 [git-up "bundler"]
   check = true

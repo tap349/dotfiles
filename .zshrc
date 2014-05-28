@@ -98,7 +98,7 @@ alias gs='git status'
 
 alias guard='cd $UPTIMUS && guard'
 alias log='tail -f $UPTIMUS/log/development.log'
-alias migrate='cd $UPTIMUS && zeus rake db:migrate && zeus rake db:test:clone'
+alias migrate='cd $UPTIMUS && rake db:migrate && rake db:test:clone'
 alias p='psql uptimus_development'
 alias sass='sass-convert --from css --to sass -R'
 alias sidekiq='cd $UPTIMUS && bundle exec sidekiq --config ./config/sidekiq.yml'
@@ -117,12 +117,12 @@ alias staging="ssh devops@94.77.64.80"
 
 # zeus
 
-alias z='zeus'
-alias zc='cd $UPTIMUS && zeus console'
-alias zd='cd $UPTIMUS && zeus dbconsole'
-alias zg='cd $UPTIMUS && zeus generate'
-alias zr='cd $UPTIMUS && zeus rake'
-alias zs='cd $UPTIMUS && zeus server'
+#alias z='zeus'
+#alias zc='cd $UPTIMUS && zeus console'
+#alias zd='cd $UPTIMUS && zeus dbconsole'
+#alias zg='cd $UPTIMUS && zeus generate'
+#alias zr='cd $UPTIMUS && zeus rake'
+#alias zs='cd $UPTIMUS && zeus server'
 
 #-----------------------------------------------------------------------------------------
 # common
