@@ -39,3 +39,5 @@
 	default = current
 [color]
 	ui = true
+[credential]
+	helper = osxkeychain
