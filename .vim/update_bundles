@@ -1,0 +1,62 @@
+#!/usr/bin/env ruby
+
+git_bundles = [
+  'git://github.com/tpope/vim-fugitive.git',
+  'git://github.com/scrooloose/nerdtree.git',
+  'git://github.com/tpope/vim-unimpaired.git', 
+  'git://github.com/vim-ruby/vim-ruby.git',
+  'git://github.com/tpope/vim-rails.git',
+  'git://github.com/scrooloose/nerdcommenter.git',
+  'git://github.com/tpope/vim-surround.git',
+  'git://github.com/cakebaker/scss-syntax.vim.git',
+  #'git://github.com/majutsushi/tagbar.git',
+  'git://github.com/jeetsukumaran/vim-buffergator.git',
+  'git://github.com/tpope/vim-haml.git',
+  'git://github.com/slim-template/vim-slim.git',
+  'git://github.com/ap/vim-css-color.git',
+  'git://github.com/kchmck/vim-coffee-script.git',
+  'git://github.com/briancollins/vim-jst.git',
+  'git://github.com/sstephenson/eco',
+  'git://git.wincent.com/command-t.git',
+  'git://github.com/vim-scripts/grep.vim.git',
+  'git://github.com/vim-scripts/vimgrep.vim.git',
+  'git://github.com/tpope/vim-endwise.git',
+  'git://github.com/Keithbsmiley/rspec.vim.git',
+  'git://github.com/saks/Specky.git',
+  'git://github.com/scrooloose/syntastic.git',
+  #'git://github.com/msanders/snipmate.vim.git',
+  'git://github.com/flazz/vim-colorschemes.git',
+  'git://github.com/bkad/CamelCaseMotion',
+  'git://github.com/bling/vim-airline',
+  'git://github.com/chriskempson/base16-vim',
+  #'git://github.com/Yggdroot/indentLine'
+  'git://github.com/ervandew/supertab',
+  #'git://github.com/dtjm/plantuml-syntax.vim',
+  'git://github.com/aklt/plantuml-syntax',
+  'git://github.com/kien/ctrlp',
+  'git://github.com/xolox/vim-misc',
+  'git://github.com/xolox/vim-session'
+]
+
+require 'fileutils'
+require 'open-uri'
+
+bundles_dir = File.join(File.dirname(__FILE__), "bundle")
+compile_commandt_bundle_script = "$HOME/scripts/vim/compile_commandt_bundle"
+
+FileUtils.mkdir bundles_dir unless File.exists?(bundles_dir)
+FileUtils.cd(bundles_dir)
+
+puts "Trashing everything..."
+Dir["*"].each do |d|
+  FileUtils.rm_rf d
+end
+
+git_bundles.each do |url|
+  dir = url.split('/').last.sub(/\.git$/, '')
+  puts "  Unpacking #{url} into #{dir}"
+  `git clone #{url} #{dir}`
+  `#{compile_commandt_bundle_script}` if /command-t/i =~ url
+  FileUtils.rm_rf(File.join(dir, ".git"))
+end
+
