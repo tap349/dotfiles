@@ -231,28 +231,31 @@ nmap <PageDown> <C-d>
 nmap <C-j> 10j
 nmap <C-k> 10k
 
+" switch to last active tab
+let g:lasttab = 1
+nmap <silent> <C-Tab> :exe 'tabnext '.g:lasttab<CR>
+au TabLeave * let g:lasttab = tabpagenr()
+
 "------- buffer ----------------------------------------------------------------
 
 " same as <C-6>
-nmap <silent> <C-Tab> :b#<CR>
+"nmap <silent> <C-Tab> :b#<CR>
 
 "------- tab --------------------------------------------------------------------
 
-"nmap <C-h> gT
-"nmap <C-l> gt
-
+" the same as using gT and gt
 nmap <C-h> :tabprevious<CR>
 nmap <C-l> :tabnext<CR>
 
-nmap <A-Left> :tabprevious<CR>
-nmap <A-Right> :tabnext<CR>
-nmap <A-Down> :tabfirst<CR>
-nmap <A-Up> :tablast<CR>
+nmap <Left> :tabprevious<CR>
+nmap <Right> :tabnext<CR>
+nmap <Down> :tabfirst<CR>
+nmap <Up> :tablast<CR>
 
-nmap <silent> <A-S-Left> :tabmove -1<CR>
-nmap <silent> <A-S-Right> :tabmove +1<CR>
-nmap <silent> <A-S-Down> :tabmove 0<CR>
-nmap <silent> <A-S-Up> :tabmove<CR>
+nmap <silent> <S-Left> :tabmove -1<CR>
+nmap <silent> <S-Right> :tabmove +1<CR>
+nmap <silent> <S-Down> :tabmove 0<CR>
+nmap <silent> <S-Up> :tabmove<CR>
 
 " the same for MacVim only (doesn't work though):
 "macmenu Window.Select\ Previous\ Tab key=<C-h>
@@ -276,7 +279,7 @@ nmap <LocalLeader>cu :edit ++encoding=utf-8<CR>
 " save
 "-------------------------------------------------------------------------------
 
-nmap <Esc><Esc> :w<CR>
+nnoremap <Tab> :w<CR>
 
 "-------------------------------------------------------------------------------
 " search
@@ -463,6 +466,9 @@ set laststatus=2
 "let g:airline#extensions#tabline#left_alt_sep = '⮁'
 
 "let g:airline_theme = 'molokai'
+"let g:airline_theme = 'hybrid'
+"let g:airline_theme = 'lucius'
+"let g:airline_theme = 'tomorrow'
 "let g:airline_theme = 'powerlineish'
 "let g:airline_theme = 'dark'
 let g:airline_theme = 'light'

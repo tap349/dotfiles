@@ -4,7 +4,7 @@ ZSH=$HOME/.oh-my-zsh
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
 # Theme previews can be found at https://github.com/robbyrussell/oh-my-zsh/wiki/themes
-ZSH_THEME="bureau"
+ZSH_THEME="blinks"
 
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"

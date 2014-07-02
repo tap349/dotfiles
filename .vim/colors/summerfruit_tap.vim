@@ -27,9 +27,9 @@ hi NonText      guifg=#438ec3   guibg=#a7ccd8
 " Search
 "--------------------------------------------------------------
 
-hi Search       guifg=#000000   guibg=#b9dff3
-"hi Search       guifg=#404040   guibg=#a5dbef
-"hi Search       guifg=#800000   guibg=#9fefb0
+"hi Search       guifg=#000000   guibg=#b9dff3
+"hi Search       guifg=#404040   guibg=#D7D9F7
+hi Search       guifg=#404040   guibg=#AAEB7F
 "hi Search       guifg=#800000   guibg=#9fefb0
 "hi Search       guifg=#800000   guibg=#ffae00
 hi IncSearch    guifg=#800000   guibg=#ffae00
