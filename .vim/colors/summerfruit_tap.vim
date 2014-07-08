@@ -28,8 +28,10 @@ hi NonText      guifg=#438ec3   guibg=#a7ccd8
 "--------------------------------------------------------------
 
 "hi Search       guifg=#000000   guibg=#b9dff3
+"hi Search        guifg=#eeeeee    guibg=#135e83
 "hi Search       guifg=#404040   guibg=#D7D9F7
-hi Search       guifg=#404040   guibg=#AAEB7F
+hi Search       guifg=#404040   guibg=#ffffD2
+"hi Search       guifg=#404040   guibg=#AAEB7F
 "hi Search       guifg=#800000   guibg=#9fefb0
 "hi Search       guifg=#800000   guibg=#ffae00
 hi IncSearch    guifg=#800000   guibg=#ffae00
@@ -55,11 +57,12 @@ hi SignColumn   guibg=#1b5c8a
 hi Cursor       guifg=black     guibg=#edD932
 "hi Cursor       guifg=black     guibg=#5FeF00
 hi CursorLine   guibg=#e7f7f9
-hi LineNr       guifg=#337e93   guibg=#d3eaf5   gui=bold
+hi LineNr       guifg=#337e93   guibg=#d3eaf5
 hi CursorLineNr guifg=#034e53   guibg=#b3cad5   gui=bold
 "hi CursorLineNr guifg=#eeeeee   guibg=#135e83   gui=bold
 "hi MatchParen   guifg=#4A3AAD   guibg=#AABADD
-hi MatchParen   guibg=#FFFF00   guifg=#7A6ADD
+"hi MatchParen   guibg=#FFFF00   guifg=#7A6ADD
+hi MatchParen   guibg=#7FFF40   guifg=#135e83
 "hi MatchParen   guibg=#cddaf5
 
 "--------------------------------------------------------------
@@ -70,7 +73,8 @@ hi Todo         guifg=#e50808   guibg=#dbf3cd   gui=bold
 hi Title        guifg=#000000                   gui=bold
 hi Special      guifg=#e50808
 "hi Special      guifg=#fd8900
-hi Visual       guibg=#FFFFBB
+"hi Visual       guibg=#EFFFDB
+hi Visual       guibg=#D8F3FF
 
 "--------------------------------------------------------------
 " Syntax Elements
@@ -132,3 +136,9 @@ hi htmlTagN             guifg=#4aa04a
 "hi DiffChange   guibg=Yellow  guifg=black
 "hi DiffRemove   guibg=Red     guifg=black
 hi DiffText     guibg=#ffae00 guifg=black
+
+"--------------------------------------------------------------
+" NERDTree
+"--------------------------------------------------------------
+
+hi Directory    guifg=#234e83
