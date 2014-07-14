@@ -154,6 +154,8 @@ set guioptions-=r
 set number
 " hide mode indicator
 set noshowmode
+" show number of lines or characters selected in left bottom corner
+set showcmd
 
 "-------------------------------------------------------------------------------
 " startup
