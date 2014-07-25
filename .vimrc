@@ -243,6 +243,11 @@ au TabLeave * let g:lasttab = tabpagenr()
 " same as <C-6>
 "nmap <silent> <C-Tab> :b#<CR>
 
+"------- mark history ----------------------------------------------------------
+
+" this mapping must come before remapping <Tab>
+nnoremap <C-g> <C-i>
+
 "------- tab --------------------------------------------------------------------
 
 " the same as using gT and gt
@@ -262,13 +267,6 @@ nmap <silent> <S-Up> :tabmove<CR>
 " the same for MacVim only (doesn't work though):
 "macmenu Window.Select\ Previous\ Tab key=<C-h>
 "macmenu Window.Select\ Next\ Tab key=<C-l>
-
-"------- window -----------------------------------------------------------------
-
-"nmap <silent> <M-h> :wincmd h<CR>
-"nmap <silent> <M-j> :wincmd j<CR>
-"nmap <silent> <M-k> :wincmd k<CR>
-"nmap <silent> <M-l> :wincmd l<CR>
 
 "-------------------------------------------------------------------------------
 " reload file using different encoding
