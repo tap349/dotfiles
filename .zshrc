@@ -115,6 +115,7 @@ alias rs='cd $UPTIMUS && rails server'
 # ssh
 
 alias staging="ssh devops@94.77.64.80"
+alias production="ssh devops@176.58.123.252"
 
 # zeus
 
