@@ -183,6 +183,8 @@ cd ~/dev/uptimus
 "================================================================================
 
 autocmd! BufWritePost .vimrc source %
+autocmd! BufRead * call s:set_bufhidden()
+
 
 "================================================================================
 "                                                                               =
@@ -270,10 +272,6 @@ nmap <silent> <S-Right> :tabmove +1<CR>
 nmap <silent> <S-Down> :tabmove 0<CR>
 nmap <silent> <S-Up> :tabmove<CR>
 
-" the same for MacVim only (doesn't work though):
-"macmenu Window.Select\ Previous\ Tab key=<C-h>
-"macmenu Window.Select\ Next\ Tab key=<C-l>
-
 "-------------------------------------------------------------------------------
 " reload file using different encoding
 "-------------------------------------------------------------------------------
@@ -313,7 +311,6 @@ nnoremap Q <nop>
 
 nnoremap Y y$
 
-
 "================================================================================
 " insert mode                                                                   =
 "================================================================================
@@ -350,7 +347,6 @@ imap <silent> <A-S-Left> <C-o>:tabmove -1<CR>
 imap <silent> <A-S-Right> <C-o>:tabmove +1<CR>
 imap <silent> <A-S-Down> <C-o>:tabmove 0<CR>
 imap <silent> <A-S-Up> <C-o>:tabmove<CR>
-
 
 "================================================================================
 " visual mode                                                                   =
@@ -400,7 +396,6 @@ map <silent> w <Plug>CamelCaseMotion_w
 map <silent> e <Plug>CamelCaseMotion_e
 map <silent> b <Plug>CamelCaseMotion_b
 
-
 "-------------------------------------------------------------------------------
 " command-t
 "-------------------------------------------------------------------------------
@@ -411,27 +406,6 @@ let g:CommandTMaxFiles = 25000
 nmap <F1> :CommandT<CR>
 nmap <Leader><F1>r :CommandTFlush<CR>:CommandT<CR>
 
-" a:000: http://learnvimscriptthehardway.stevelosh.com/chapters/24.html
-function! GotoOrOpen(...)
-  for file in a:000
-    if bufnr(file) != -1
-      exec "sbuffer " . file
-    else
-      exec "edit " . file
-    endif
-  endfor
-endfunction
-
-function! GotoOrOpenTab(...)
-  for file in a:000
-    if bufnr(file) != -1
-      exec "sbuffer " . file
-    else
-      exec "tabedit " . file
-    endif
-  endfor
-endfunction
-
 " http://www.adp-gmbh.ch/vim/user_commands.html
 " http://vimdoc.sourceforge.net/htmldoc/usr_40.html
 command! -nargs=+ GotoOrOpen call GotoOrOpen("<args>")
@@ -439,7 +413,6 @@ command! -nargs=+ GotoOrOpenTab call GotoOrOpenTab("<args>")
 
 let g:CommandTAcceptSelectionCommand = 'GotoOrOpen'
 let g:CommandTAcceptSelectionTabCommand = 'GotoOrOpenTab'
-
 
 "-------------------------------------------------------------------------------
 " indentLine
@@ -450,7 +423,6 @@ let g:CommandTAcceptSelectionTabCommand = 'GotoOrOpenTab'
 "let g:indentLine_char = '┆'
 "let g:indentLine_color_gui = '#4C5B6B'
 
-
 "-------------------------------------------------------------------------------
 " nerdcommenter
 "
@@ -460,7 +432,6 @@ let g:CommandTAcceptSelectionTabCommand = 'GotoOrOpenTab'
 
 map <Leader><Space> <Plug>NERDCommenterToggle
 
-
 "-------------------------------------------------------------------------------
 " nerdtree
 "-------------------------------------------------------------------------------
@@ -469,13 +440,11 @@ nmap <F2> :NERDTreeToggle<CR>
 nmap <Leader><F2>r :NERDTree<CR>
 nmap <Leader><F2>f :NERDTreeFind<CR>
 
-
 "-------------------------------------------------------------------------------
 " rspec.vim
 "-------------------------------------------------------------------------------
 
 au BufNewFile,BufRead *_spec.rb set filetype=rspec
-
 
 "-------------------------------------------------------------------------------
 " Specky
@@ -485,13 +454,11 @@ let g:speckySpecSwitcherKey = '<F4>'
 
 nmap <Leader><F4> <C-w><C-v><C-w>l<F4>
 
-
 "-------------------------------------------------------------------------------
 " supertab
 "-------------------------------------------------------------------------------
 
 let g:SuperTabDefaultCompletionType = '<C-n>'
-
 
 "-------------------------------------------------------------------------------
 " vim-airline
@@ -530,7 +497,6 @@ let g:airline_symbols.branch = '⭠'
 let g:airline_symbols.readonly = '⭤'
 let g:airline_symbols.linenr = '⭡'
 
-
 "-------------------------------------------------------------------------------
 " vim-buffergator
 "-------------------------------------------------------------------------------
@@ -546,13 +512,11 @@ let g:buffergator_vsplit_size = 60
 nmap <silent> <C-p> :BuffergatorMruCyclePrev<CR>
 nmap <silent> <C-n> :BuffergatorMruCycleNext<CR>
 
-
 "-------------------------------------------------------------------------------
 " vim-fugitive
 "-------------------------------------------------------------------------------
 
-nmap <F6> :Gdiff<CR>
-
+nmap <F6> :Gvdiff<CR>
 
 "-------------------------------------------------------------------------------
 " vim-session
@@ -564,3 +528,48 @@ let g:session_autosave = 'no'
 nmap <F7>d :DeleteSession<Space>
 nmap <F7>o :OpenSession<Space>
 nmap <F7>s :SaveSession<Space>
+
+
+"================================================================================
+"                                                                               =
+" functions                                                                     =
+"                                                                               =
+"================================================================================
+
+" s: scoping prefix means that function is scoped to current script file
+function! s:set_bufhidden()
+  " most explorer plugins have buftype=nofile
+  " while normal buffers have buftype=<empty>;
+  " using & means that I refer to option -
+  " not variable that might have the same name
+  if empty(&buftype)
+    " wipe buffer when it's no longer displayed in any window 
+    " (overrides behaviour set with global hidden option) -
+    " setting this option to delete still makes command-t
+    " to open deleted buffers in the same tab
+    " (because information about them is still available
+    " even though buffers are not listed in buffer list)
+    setlocal bufhidden=wipe
+  endif
+endfunction
+
+" a:000: http://learnvimscriptthehardway.stevelosh.com/chapters/24.html
+function! GotoOrOpen(...)
+  for file in a:000
+    if bufnr(file) != -1
+      exec 'sbuffer ' . file
+    else
+      exec 'edit ' . file
+    endif
+  endfor
+endfunction
+
+function! GotoOrOpenTab(...)
+  for file in a:000
+    if bufnr(file) != -1
+      exec 'sbuffer ' . file
+    else
+      exec 'tabedit ' . file
+    endif
+  endfor
+endfunction
