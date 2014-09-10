@@ -197,7 +197,6 @@ autocmd! BufRead * call s:set_bufhidden()
 let mapleader = ','
 let maplocalleader = '\'
 
-
 "================================================================================
 " normal mode                                                                   =
 "================================================================================
@@ -546,7 +545,7 @@ function! s:set_bufhidden()
     " wipe buffer when it's no longer displayed in any window 
     " (overrides behaviour set with global hidden option) -
     " setting this option to delete still makes command-t
-    " to open deleted buffers in the same tab
+    " open deleted buffers in the same tab
     " (because information about them is still available
     " even though buffers are not listed in buffer list)
     setlocal bufhidden=wipe
