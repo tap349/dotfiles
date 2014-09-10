@@ -18,10 +18,11 @@ let colors_name = "summerfruit"
 " Global
 "--------------------------------------------------------------
 
-hi Normal       guifg=#222222   guibg=#ffffff
+hi Normal       guifg=#222222   guibg=#f8f8f8
 "hi Normal       guifg=#000000   guibg=#FDFDFD
 "hi Normal       guifg=#000000   guibg=#E6F1F5
-hi NonText      guifg=#438ec3   guibg=#a7ccd8
+"hi NonText      guifg=#438ec3   guibg=#a7ccd8
+hi NonText      guifg=#438ec3   guibg=#b7dce8
 
 "--------------------------------------------------------------
 " Search
@@ -56,7 +57,8 @@ hi PmenuThumb   guibg=#c6c8d1
 hi SignColumn   guibg=#1b5c8a
 hi Cursor       guifg=black     guibg=#edD932
 "hi Cursor       guifg=black     guibg=#5FeF00
-hi CursorLine   guibg=#e7f7f9
+"hi CursorLine   guibg=#e7f7f9
+hi CursorLine   guibg=#e0edf5
 hi LineNr       guifg=#337e93   guibg=#d3eaf5
 hi CursorLineNr guifg=#034e53   guibg=#b3cad5   gui=bold
 "hi CursorLineNr guifg=#eeeeee   guibg=#135e83   gui=bold
