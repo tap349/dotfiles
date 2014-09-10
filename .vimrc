@@ -56,6 +56,13 @@ set nocompatible
 set nowrap
 
 "-------------------------------------------------------------------------------
+" buffers
+"-------------------------------------------------------------------------------
+
+" http://vim.wikia.com/wiki/Using_tab_pages
+set switchbuf=usetab,newtab
+
+"-------------------------------------------------------------------------------
 " completion menu
 "-------------------------------------------------------------------------------
 
@@ -176,7 +183,6 @@ cd ~/dev/uptimus
 "================================================================================
 
 autocmd! BufWritePost .vimrc source %
-
 
 "================================================================================
 "                                                                               =
@@ -364,6 +370,12 @@ vmap <C-k> 10k
 vnoremap < <gv
 vnoremap > >gv
 
+"-------------------------------------------------------------------------------
+" searching
+"-------------------------------------------------------------------------------
+
+vnorem // y/<C-r>"<CR>
+
 
 "================================================================================
 "                                                                               =
@@ -398,6 +410,35 @@ let g:CommandTMaxFiles = 25000
 
 nmap <F1> :CommandT<CR>
 nmap <Leader><F1>r :CommandTFlush<CR>:CommandT<CR>
+
+" a:000: http://learnvimscriptthehardway.stevelosh.com/chapters/24.html
+function! GotoOrOpen(...)
+  for file in a:000
+    if bufnr(file) != -1
+      exec "sbuffer " . file
+    else
+      exec "edit " . file
+    endif
+  endfor
+endfunction
+
+function! GotoOrOpenTab(...)
+  for file in a:000
+    if bufnr(file) != -1
+      exec "sbuffer " . file
+    else
+      exec "tabedit " . file
+    endif
+  endfor
+endfunction
+
+" http://www.adp-gmbh.ch/vim/user_commands.html
+" http://vimdoc.sourceforge.net/htmldoc/usr_40.html
+command! -nargs=+ GotoOrOpen call GotoOrOpen("<args>")
+command! -nargs=+ GotoOrOpenTab call GotoOrOpenTab("<args>")
+
+let g:CommandTAcceptSelectionCommand = 'GotoOrOpen'
+let g:CommandTAcceptSelectionTabCommand = 'GotoOrOpenTab'
 
 
 "-------------------------------------------------------------------------------
@@ -500,8 +541,8 @@ let g:buffergator_suppress_keymaps = 1
 let g:buffergator_viewport_split_policy = 'R'
 let g:buffergator_vsplit_size = 60
 
-nmap <F3>b :BuffergatorOpen<CR>
-nmap <F3>t :BuffergatorTabsOpen<CR>
+"nmap <F3>b :BuffergatorOpen<CR>
+"nmap <F3>t :BuffergatorTabsOpen<CR>
 nmap <silent> <C-p> :BuffergatorMruCyclePrev<CR>
 nmap <silent> <C-n> :BuffergatorMruCycleNext<CR>
 
