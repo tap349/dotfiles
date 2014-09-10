@@ -68,6 +68,7 @@ setopt HIST_IGNORE_DUPS
 
 CDPATH=~
 
+CHEF=~/dev/chef
 REACTOR=~/dev/reactor
 UPTIMUS=~/dev/uptimus
 
@@ -98,9 +99,10 @@ alias gs='git status'
 
 alias guard='cd $UPTIMUS && guard'
 alias log='tail -f $UPTIMUS/log/development.log'
-alias migrate='cd $UPTIMUS && rake db:migrate && rake db:test:clone'
+alias migrate='cd $UPTIMUS && rake db:migrate && RAILS_ENV=test rake db:migrate'
 alias orig='cd $UPTIMUS && find . -name "*.orig" -exec rm {} \;'
 alias p='psql uptimus_development'
+alias rollback='cd $UPTIMUS && rake db:rollback STEP=1 && RAILS_ENV=test rake db:rollback STEP=1'
 alias sass='sass-convert --from css --to sass -R'
 alias sidekiq='cd $UPTIMUS && bundle exec sidekiq --config ./config/sidekiq.yml'
 
@@ -133,6 +135,7 @@ alias production="ssh devops@176.58.123.252"
 alias cdd='cd ~/Downloads'
 alias cdr='cd $REACTOR'
 alias cdu='cd $UPTIMUS'
+alias cdc='cd $CHEF'
 alias df='df -h'
 alias ll='ls -alp'
 alias m='open -a MacVim'
