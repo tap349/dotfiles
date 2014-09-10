@@ -12,7 +12,7 @@
 
 [mergetool "mvimdiff"]
   ;cmd = /usr/local/bin/mvimdiff -f "$LOCAL" "$MERGED" "$REMOTE"
-  cmd = "/usr/local/bin/mvim -f --nomru -c 'Gdiff' $MERGED" # use fugitive.vim for 3-way merge
+  cmd = "/usr/local/bin/mvim -f --nomru -c 'Gvdiff' $MERGED" # use fugitive.vim for 3-way merge
   keepBackup = false
 
 [diff]
