@@ -141,11 +141,11 @@ colorscheme summerfruit_tap
 " font
 "-------------------------------------------------------------------------------
 
-"set guifont=Menlo:h14
-"set guifont=Andale\ Mono:h15
+"set guifont=Menlo\ for\ Powerline:h14
+"set guifont=Andale\ Mono:h14
 set guifont=MonacoB2:h13
 "set guifont=MonacoB\ for\ Powerline:h13
-"set guifont=Anonymice\ Powerline:h16
+"set guifont=Anonymice\ Powerline:h15
 
 "-------------------------------------------------------------------------------
 " indicators
@@ -183,7 +183,7 @@ cd ~/dev/uptimus
 "================================================================================
 
 autocmd! BufWritePost .vimrc source %
-autocmd! BufRead * call s:set_bufhidden()
+"autocmd! BufRead * call s:set_bufhidden()
 
 
 "================================================================================
@@ -542,7 +542,7 @@ function! s:set_bufhidden()
   " using & means that I refer to option -
   " not variable that might have the same name
   if empty(&buftype)
-    " wipe buffer when it's no longer displayed in any window 
+    " wipe buffer when it's no longer displayed in any window
     " (overrides behaviour set with global hidden option) -
     " setting this option to delete still makes command-t
     " open deleted buffers in the same tab
@@ -552,9 +552,16 @@ function! s:set_bufhidden()
   endif
 endfunction
 
-" a:000: http://learnvimscriptthehardway.stevelosh.com/chapters/24.html
+" a:000: http://learnvimscriptthehardway.stevelosh.com/chapters/24.html;
+" we use sbuffer because buffer function doesn't respect switchbuf option;
+" we need to wipe out unloaded buffer because otherwise sbuffer will open
+" it in split window instead of new tab
 function! GotoOrOpen(...)
   for file in a:000
+    if bufexists(bufnr(file)) && !bufloaded(bufnr(file))
+      exec 'bwipeout ' . file
+    endif
+
     if bufnr(file) != -1
       exec 'sbuffer ' . file
     else
@@ -565,6 +572,10 @@ endfunction
 
 function! GotoOrOpenTab(...)
   for file in a:000
+    if bufexists(bufnr(file)) && !bufloaded(bufnr(file))
+      exec 'bwipeout ' . file
+    endif
+
     if bufnr(file) != -1
       exec 'sbuffer ' . file
     else
