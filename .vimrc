@@ -536,6 +536,7 @@ nmap <F7>s :SaveSession<Space>
 "================================================================================
 
 " s: scoping prefix means that function is scoped to current script file
+" don't user for every buffer since it will prevent from using buffer history
 function! s:set_bufhidden()
   " most explorer plugins have buftype=nofile
   " while normal buffers have buftype=<empty>;
@@ -555,7 +556,7 @@ endfunction
 " a:000: http://learnvimscriptthehardway.stevelosh.com/chapters/24.html;
 " we use sbuffer because buffer function doesn't respect switchbuf option;
 " we need to wipe out unloaded buffer because otherwise sbuffer will open
-" it in split window instead of new tab
+" it in a split window instead of a new tab
 function! GotoOrOpen(...)
   for file in a:000
     if bufexists(bufnr(file)) && !bufloaded(bufnr(file))
