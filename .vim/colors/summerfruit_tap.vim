@@ -76,13 +76,16 @@ hi Title        guifg=#000000                   gui=bold
 hi Special      guifg=#e50808
 "hi Special      guifg=#fd8900
 "hi Visual       guibg=#EFFFDB
-hi Visual       guibg=#D8F3FF
+"hi Visual       guibg=#D8F3FF
+"hi Visual       guibg=#D4E9FA
+hi Visual       guibg=#DFFFD0
 
 "--------------------------------------------------------------
 " Syntax Elements
 "--------------------------------------------------------------
 
-hi String       guifg=#0086d2
+"hi String       guifg=#0086d2
+hi String       guifg=#0086b2
 hi Constant     guifg=#2F3C9C
 hi Number       guifg=#0086f7
 "hi Number       guifg=#0086f7                   gui=bold
@@ -92,7 +95,7 @@ hi Statement    guifg=#1F1C6C                   gui=bold
 "hi Statement    guifg=#2b6cba                   gui=bold
 hi Function     guifg=#ff0086                   gui=bold
 hi PreProc      guifg=#ff0007                   gui=bold
-hi Comment      guifg=#ababab
+hi Comment      guifg=#abab9b                   gui=italic
 "hi Comment      guifg=#ababab                   gui=italic
 "hi Comment      guifg=#32b22f   guibg=#fffde9   gui=italic
 hi Type         guifg=#2F6C9C                   gui=bold
