@@ -537,7 +537,7 @@ nmap <F7>s :SaveSession<Space>
 "================================================================================
 
 " s: scoping prefix means that function is scoped to current script file
-" don't user for every buffer since it will prevent from using buffer history
+" don't use for every buffer since it will prevent from using buffer history
 function! s:set_bufhidden()
   " most explorer plugins have buftype=nofile
   " while normal buffers have buftype=<empty>;
