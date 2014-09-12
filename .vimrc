@@ -403,6 +403,7 @@ let g:CommandTMaxHeight = 17
 let g:CommandTMaxFiles = 25000
 
 nmap <F1> :CommandT<CR>
+nmap <S-F1> :CommandTBuffer<CR>
 nmap <Leader><F1>r :CommandTFlush<CR>:CommandT<CR>
 
 " http://www.adp-gmbh.ch/vim/user_commands.html
