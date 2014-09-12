@@ -242,8 +242,8 @@ nmap <C-k> 10k
 
 " switch to last active tab
 let g:lasttab = 1
-nmap <silent> <C-Tab> :exe 'tabnext '.g:lasttab<CR>
-au TabLeave * let g:lasttab = tabpagenr()
+nmap <silent> <C-Tab> :exec 'tabnext ' . g:lasttab<CR>
+autocmd! TabLeave * let g:lasttab = tabpagenr()
 
 "------- buffer ----------------------------------------------------------------
 
@@ -444,7 +444,7 @@ nmap <Leader><F2>f :NERDTreeFind<CR>
 " rspec.vim
 "-------------------------------------------------------------------------------
 
-au BufNewFile,BufRead *_spec.rb set filetype=rspec
+autocmd! BufNewFile,BufRead *_spec.rb set filetype=rspec
 
 "-------------------------------------------------------------------------------
 " Specky
@@ -501,11 +501,11 @@ let g:airline_symbols.linenr = '⭡'
 " vim-buffergator
 "-------------------------------------------------------------------------------
 
-let g:buffergator_sort_regime = 'basename'
-let g:buffergator_split_size = 20
-let g:buffergator_suppress_keymaps = 1
-let g:buffergator_viewport_split_policy = 'R'
-let g:buffergator_vsplit_size = 60
+"let g:buffergator_sort_regime = 'basename'
+"let g:buffergator_split_size = 20
+"let g:buffergator_suppress_keymaps = 1
+"let g:buffergator_viewport_split_policy = 'R'
+"let g:buffergator_vsplit_size = 60
 
 "nmap <F3>b :BuffergatorOpen<CR>
 "nmap <F3>t :BuffergatorTabsOpen<CR>
