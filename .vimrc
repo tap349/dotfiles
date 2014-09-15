@@ -1,6 +1,6 @@
 "********************************************************************************
 "                                                                               *
-" Note: These keys generate the same characters:                                *
+" Note: these keys generate the same characters:                                *
 "       - <Tab> and <C-i>                                                       *
 "       - <CR> and <C-m>                                                        *
 "       - <Esc> and <C-[>                                                       *
@@ -194,6 +194,10 @@ autocmd! BufWritePost .vimrc source %
 "                                                                               =
 "================================================================================
 
+
+" Leader: global and plugin mappings
+" LocalLeader: mappings local to current buffer
+
 let mapleader = ','
 let maplocalleader = '\'
 
@@ -202,11 +206,20 @@ let maplocalleader = '\'
 "================================================================================
 
 "-------------------------------------------------------------------------------
+" copy current file name to clipboard
+" (relative to PWD or absolute path if file is not in current dir)
+"-------------------------------------------------------------------------------
+
+" http://www.ibm.com/developerworks/library/l-vim-script-1
+" :help expand
+nmap <silent> <LocalLeader>yf :let @*=expand('%')<CR>
+
+"-------------------------------------------------------------------------------
 " editing without leaving normal mode
 "-------------------------------------------------------------------------------
 
 " delete trailing whitespaces
-nmap <silent> <Leader>dt :%s/\s\+$//<CR>:w<CR>:nohlsearch<CR>
+nmap <silent> <LocalLeader>dt :%s/\s\+$//<CR>:w<CR>:nohlsearch<CR>
 " insert newline after current line
 nmap <silent> <CR> o<Esc>
 " insert newline before current line
