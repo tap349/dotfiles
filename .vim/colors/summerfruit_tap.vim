@@ -38,6 +38,13 @@ hi Search       guifg=#404040   guibg=#ffffD2
 hi IncSearch    guifg=#800000   guibg=#ffae00
 
 "--------------------------------------------------------------
+" Question
+"--------------------------------------------------------------
+
+" help hl-Question
+hi Question     guifg=#e50808   guibg=#ffffff   gui=bold
+
+"--------------------------------------------------------------
 " Interface Elements
 "--------------------------------------------------------------
 
@@ -115,23 +122,6 @@ hi htmlEndTag           guifg=#00bdec           gui=bold
 hi htmlSpecialTagName   guifg=#4aa04a
 hi htmlTagName          guifg=#4aa04a
 hi htmlTagN             guifg=#4aa04a
-
-"--------------------------------------------------------------
-" Jinja Highlighting
-"--------------------------------------------------------------
-
-"hi jinjaTagBlock    guifg=#ff0007   guibg=#fbf4c7   gui=bold
-"hi jinjaVarBlock    guifg=#ff0007   guibg=#fbf4c7
-"hi jinjaString      guifg=#0086d2   guibg=#fbf4c7
-"hi jinjaNumber      guifg=#bf0945   guibg=#fbf4c7   gui=bold
-"hi jinjaStatement   guifg=#fb660a   guibg=#fbf4c7   gui=bold
-"hi jinjaComment     guifg=#008800   guibg=#002300   gui=italic
-"hi jinjaFilter      guifg=#ff0086   guibg=#fbf4c7
-"hi jinjaRaw         guifg=#aaaaaa   guibg=#fbf4c7
-"hi jinjaOperator    guifg=#ffffff   guibg=#fbf4c7
-"hi jinjaVariable    guifg=#92cd35   guibg=#fbf4c7
-"hi jinjaAttribute   guifg=#dd7700   guibg=#fbf4c7
-"hi jinjaSpecial     guifg=#008ffd   guibg=#fbf4c7
 
 "--------------------------------------------------------------
 " Vimdiff (used by git mergetool in particular)

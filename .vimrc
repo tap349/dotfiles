@@ -76,6 +76,7 @@ set wildmode=longest:full,full
 "-------------------------------------------------------------------------------
 
 set expandtab
+set shiftround
 set shiftwidth=2
 set softtabstop=2
 set tabstop=2
@@ -192,6 +193,7 @@ autocmd! BufWritePost .vimrc source %
 "                                                                               =
 " http://vim.wikia.com/wiki/Mapping_keys_in_Vim_-_Tutorial_(Part_1)             =
 "                                                                               =
+" NOTE: don't use noremap for plugin mappings                                   =
 "================================================================================
 
 
@@ -212,28 +214,28 @@ let maplocalleader = '\'
 
 " http://www.ibm.com/developerworks/library/l-vim-script-1
 " :help expand
-nmap <silent> <LocalLeader>yf :let @*=expand('%')<CR>
+nnoremap <silent> <LocalLeader>yf :let @*=expand('%')<CR>
 
 "-------------------------------------------------------------------------------
 " editing without leaving normal mode
 "-------------------------------------------------------------------------------
 
 " delete trailing whitespaces
-nmap <silent> <LocalLeader>dt :%s/\s\+$//<CR>:w<CR>:nohlsearch<CR>
+nnoremap <silent> <LocalLeader>dt :%s/\s\+$//<CR>:w<CR>:nohlsearch<CR>
 " insert newline after current line
-nmap <silent> <CR> o<Esc>
+nnoremap <silent> <CR> o<Esc>
 " insert newline before current line
-nmap <silent> <S-CR> O<Esc>
+nnoremap <silent> <S-CR> O<Esc>
 " insert space
-nmap <silent> <Space> i<Space><Esc>l
+nnoremap <silent> <Space> i<Space><Esc>l
 
 "-------------------------------------------------------------------------------
 " editing popular files
 "-------------------------------------------------------------------------------
 
-nmap <LocalLeader>ec :edit ~/.vim/colors/summerfruit_tap.vim<CR>
-nmap <LocalLeader>ev :edit $MYVIMRC<CR>
-nmap <LocalLeader>ez :edit ~/.zshrc<CR>
+nnoremap <LocalLeader>ec :edit ~/.vim/colors/summerfruit_tap.vim<CR>
+nnoremap <LocalLeader>ev :edit $MYVIMRC<CR>
+nnoremap <LocalLeader>ez :edit ~/.zshrc<CR>
 
 "-------------------------------------------------------------------------------
 " fullscreen
@@ -247,21 +249,21 @@ nmap <LocalLeader>ez :edit ~/.zshrc<CR>
 " navigation
 "-------------------------------------------------------------------------------
 
-nmap <PageUp> <C-u>
-nmap <PageDown> <C-d>
+nnoremap <PageUp> <C-u>
+nnoremap <PageDown> <C-d>
 
-nmap <C-j> 10j
-nmap <C-k> 10k
+nnoremap <C-j> 10j
+nnoremap <C-k> 10k
 
 " switch to last active tab
 let g:lasttab = 1
-nmap <silent> <C-Tab> :exec 'tabnext ' . g:lasttab<CR>
+nnoremap <silent> <C-Tab> :exec 'tabnext ' . g:lasttab<CR>
 autocmd! TabLeave * let g:lasttab = tabpagenr()
 
 "------- buffer ----------------------------------------------------------------
 
 " same as <C-6>
-"nmap <silent> <C-Tab> :b#<CR>
+"nnoremap <silent> <C-Tab> :b#<CR>
 
 "------- mark history ----------------------------------------------------------
 
@@ -271,25 +273,25 @@ nnoremap <C-g> <C-i>
 "------- tab --------------------------------------------------------------------
 
 " the same as using gT and gt
-nmap <C-h> :tabprevious<CR>
-nmap <C-l> :tabnext<CR>
+nnoremap <C-h> :tabprevious<CR>
+nnoremap <C-l> :tabnext<CR>
 
-nmap <Left> :tabprevious<CR>
-nmap <Right> :tabnext<CR>
-nmap <Down> :tabfirst<CR>
-nmap <Up> :tablast<CR>
+nnoremap <Left> :tabprevious<CR>
+nnoremap <Right> :tabnext<CR>
+nnoremap <Down> :tabfirst<CR>
+nnoremap <Up> :tablast<CR>
 
-nmap <silent> <S-Left> :tabmove -1<CR>
-nmap <silent> <S-Right> :tabmove +1<CR>
-nmap <silent> <S-Down> :tabmove 0<CR>
-nmap <silent> <S-Up> :tabmove<CR>
+nnoremap <silent> <S-Left> :tabmove -1<CR>
+nnoremap <silent> <S-Right> :tabmove +1<CR>
+nnoremap <silent> <S-Down> :tabmove 0<CR>
+nnoremap <silent> <S-Up> :tabmove<CR>
 
 "-------------------------------------------------------------------------------
 " reload file using different encoding
 "-------------------------------------------------------------------------------
 
-nmap <LocalLeader>cw :edit ++encoding=cp1251<CR>
-nmap <LocalLeader>cu :edit ++encoding=utf-8<CR>
+nnoremap <LocalLeader>cw :edit ++encoding=cp1251<CR>
+nnoremap <LocalLeader>cu :edit ++encoding=utf-8<CR>
 
 "-------------------------------------------------------------------------------
 " save
@@ -302,14 +304,14 @@ nnoremap <Tab> :w<CR>
 "-------------------------------------------------------------------------------
 
 " turn off highlighting and clear messages
-nmap <silent> <Backspace> :nohlsearch<Bar>:echo<CR>
+nnoremap <silent> <Backspace> :nohlsearch<Bar>:echo<CR>
 nnoremap <silent> <C-c> <C-c>:nohlsearch<Bar>:echo<CR>
 
 "-------------------------------------------------------------------------------
 " sourcing configuration files
 "-------------------------------------------------------------------------------
 
-nmap <Leader>.v :source $MYVIMRC<CR>
+nnoremap <Leader>.v :source $MYVIMRC<CR>
 
 "-------------------------------------------------------------------------------
 " suppress unwanted keys
@@ -331,34 +333,34 @@ nnoremap Y y$
 " editing
 "-------------------------------------------------------------------------------
 
-imap <C-d> <Delete>
+inoremap <C-d> <Delete>
 
 "-------------------------------------------------------------------------------
 " generation of complementary brackets
 "-------------------------------------------------------------------------------
 
-imap {{ {<Space><Space>}<Esc>hi
-"imap (( ()<Esc>i
-"imap [[ []<Esc>i
+inoremap {{ {<Space><Space>}<Esc>hi
+"inoremap (( ()<Esc>i
+"inoremap [[ []<Esc>i
 
 "-------------------------------------------------------------------------------
 " navigation
 "-------------------------------------------------------------------------------
 
-imap <PageUp> <Esc><C-u>i
-imap <PageDown> <Esc><C-d>i
+inoremap <PageUp> <Esc><C-u>i
+inoremap <PageDown> <Esc><C-d>i
 
-imap <C-h> <Left>
-imap <C-l> <Right>
-imap <C-j> <Down>
-imap <C-k> <Up>
+inoremap <C-h> <Left>
+inoremap <C-l> <Right>
+inoremap <C-j> <Down>
+inoremap <C-k> <Up>
 
 "------- tab --------------------------------------------------------------------
 
-imap <silent> <A-S-Left> <C-o>:tabmove -1<CR>
-imap <silent> <A-S-Right> <C-o>:tabmove +1<CR>
-imap <silent> <A-S-Down> <C-o>:tabmove 0<CR>
-imap <silent> <A-S-Up> <C-o>:tabmove<CR>
+inoremap <silent> <A-S-Left> <C-o>:tabmove -1<CR>
+inoremap <silent> <A-S-Right> <C-o>:tabmove +1<CR>
+inoremap <silent> <A-S-Down> <C-o>:tabmove 0<CR>
+inoremap <silent> <A-S-Up> <C-o>:tabmove<CR>
 
 "================================================================================
 " visual mode                                                                   =
@@ -368,8 +370,8 @@ imap <silent> <A-S-Up> <C-o>:tabmove<CR>
 " navigation
 "-------------------------------------------------------------------------------
 
-vmap <C-j> 10j
-vmap <C-k> 10k
+vnoremap <C-j> 10j
+vnoremap <C-k> 10k
 
 "-------------------------------------------------------------------------------
 " shifting
@@ -404,9 +406,9 @@ runtime macros/matchit.vim
 " CamelCaseMotion
 "-------------------------------------------------------------------------------
 
-map <silent> w <Plug>CamelCaseMotion_w
-map <silent> e <Plug>CamelCaseMotion_e
-map <silent> b <Plug>CamelCaseMotion_b
+nmap <silent> w <Plug>CamelCaseMotion_w
+nmap <silent> e <Plug>CamelCaseMotion_e
+nmap <silent> b <Plug>CamelCaseMotion_b
 
 "-------------------------------------------------------------------------------
 " command-t
@@ -443,7 +445,7 @@ let g:CommandTAcceptSelectionTabCommand = 'GotoOrOpenTab'
 " http://vim.1045645.n5.nabble.com/mapping-control-0-1-or-backtick-td1189910.html
 "-------------------------------------------------------------------------------
 
-map <Leader><Space> <Plug>NERDCommenterToggle
+nmap <Leader><Space> <Plug>NERDCommenterToggle
 
 "-------------------------------------------------------------------------------
 " nerdtree
@@ -520,8 +522,8 @@ let g:airline_symbols.linenr = '⭡'
 "let g:buffergator_viewport_split_policy = 'R'
 "let g:buffergator_vsplit_size = 60
 
-"nmap <F3>b :BuffergatorOpen<CR>
-"nmap <F3>t :BuffergatorTabsOpen<CR>
+"nnoremap <F3>b :BuffergatorOpen<CR>
+"nnoremap <F3>t :BuffergatorTabsOpen<CR>
 nmap <silent> <C-p> :BuffergatorMruCyclePrev<CR>
 nmap <silent> <C-n> :BuffergatorMruCycleNext<CR>
 
