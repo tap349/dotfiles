@@ -172,6 +172,14 @@ set showcmd
 set shortmess+=I
 cd ~/dev/uptimus
 
+"================================================================================
+"                                                                               =
+" abbreviations                                                                 =
+"                                                                               =
+"================================================================================
+
+" TODO
+
 
 "================================================================================
 "                                                                               =
@@ -234,7 +242,7 @@ nnoremap <silent> <Space> i<Space><Esc>l
 "-------------------------------------------------------------------------------
 
 nnoremap <LocalLeader>ec :edit ~/.vim/colors/summerfruit_tap.vim<CR>
-nnoremap <LocalLeader>ev :edit $MYVIMRC<CR>
+nnoremap <LocalLeader>ev :tabnew<CR>:edit $MYVIMRC<CR>
 nnoremap <LocalLeader>ez :edit ~/.zshrc<CR>
 
 "-------------------------------------------------------------------------------
@@ -406,9 +414,9 @@ runtime macros/matchit.vim
 " CamelCaseMotion
 "-------------------------------------------------------------------------------
 
-nmap <silent> w <Plug>CamelCaseMotion_w
-nmap <silent> e <Plug>CamelCaseMotion_e
-nmap <silent> b <Plug>CamelCaseMotion_b
+map <silent> w <Plug>CamelCaseMotion_w
+map <silent> e <Plug>CamelCaseMotion_e
+map <silent> b <Plug>CamelCaseMotion_b
 
 "-------------------------------------------------------------------------------
 " command-t
@@ -445,7 +453,7 @@ let g:CommandTAcceptSelectionTabCommand = 'GotoOrOpenTab'
 " http://vim.1045645.n5.nabble.com/mapping-control-0-1-or-backtick-td1189910.html
 "-------------------------------------------------------------------------------
 
-nmap <Leader><Space> <Plug>NERDCommenterToggle
+map <Leader><Space> <Plug>NERDCommenterToggle
 
 "-------------------------------------------------------------------------------
 " nerdtree
@@ -522,8 +530,8 @@ let g:airline_symbols.linenr = '⭡'
 "let g:buffergator_viewport_split_policy = 'R'
 "let g:buffergator_vsplit_size = 60
 
-"nnoremap <F3>b :BuffergatorOpen<CR>
-"nnoremap <F3>t :BuffergatorTabsOpen<CR>
+"nmap <F3>b :BuffergatorOpen<CR>
+"nmap <F3>t :BuffergatorTabsOpen<CR>
 nmap <silent> <C-p> :BuffergatorMruCyclePrev<CR>
 nmap <silent> <C-n> :BuffergatorMruCycleNext<CR>
 
