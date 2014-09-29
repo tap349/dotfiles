@@ -1,6 +1,6 @@
 "********************************************************************************
 "                                                                               *
-" Note: these keys generate the same characters:                                *
+" NOTE: these keys generate the same characters:                                *
 "       - <Tab> and <C-i>                                                       *
 "       - <CR> and <C-m>                                                        *
 "       - <Esc> and <C-[>                                                       *
