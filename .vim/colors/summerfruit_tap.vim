@@ -18,7 +18,7 @@ let colors_name = "summerfruit"
 " Global
 "--------------------------------------------------------------
 
-hi Normal       guifg=#222222   guibg=#f8f8f8
+hi Normal       guifg=#222222   guibg=#fafafa
 "hi Normal       guifg=#000000   guibg=#FDFDFD
 "hi Normal       guifg=#000000   guibg=#E6F1F5
 "hi NonText      guifg=#438ec3   guibg=#a7ccd8
@@ -102,7 +102,8 @@ hi Statement    guifg=#1F1C6C                   gui=bold
 "hi Statement    guifg=#2b6cba                   gui=bold
 hi Function     guifg=#ff0086                   gui=bold
 hi PreProc      guifg=#ff0007                   gui=bold
-hi Comment      guifg=#abab9b                   gui=italic
+hi Comment      guifg=#abab9b
+"hi Comment      guifg=#abab9b                   gui=italic
 "hi Comment      guifg=#ababab                   gui=italic
 "hi Comment      guifg=#32b22f   guibg=#fffde9   gui=italic
 hi Type         guifg=#2F6C9C                   gui=bold

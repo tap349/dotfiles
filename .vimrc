@@ -142,11 +142,15 @@ colorscheme summerfruit_tap
 " font
 "-------------------------------------------------------------------------------
 
+" fix for Inconsolata LGC font
+set linespace=-3
+
 "set guifont=Menlo\ for\ Powerline:h14
 "set guifont=Andale\ Mono:h14
-set guifont=MonacoB2:h13
+set guifont=Inconsolata\ LGC:h14
+"set guifont=MonacoB2:h13
 "set guifont=MonacoB\ for\ Powerline:h13
-"set guifont=Anonymice\ Powerline:h15
+"set guifont=Anonymice\ Powerline:h16
 
 "-------------------------------------------------------------------------------
 " indicators
@@ -241,9 +245,9 @@ nnoremap <silent> <Space> i<Space><Esc>l
 " editing popular files
 "-------------------------------------------------------------------------------
 
-nnoremap <LocalLeader>ec :edit ~/.vim/colors/summerfruit_tap.vim<CR>
+nnoremap <LocalLeader>ec :tabnew<CR>:edit ~/.vim/colors/summerfruit_tap.vim<CR>
 nnoremap <LocalLeader>ev :tabnew<CR>:edit $MYVIMRC<CR>
-nnoremap <LocalLeader>ez :edit ~/.zshrc<CR>
+nnoremap <LocalLeader>ez :tabnew<CR>:edit ~/.zshrc<CR>
 
 "-------------------------------------------------------------------------------
 " fullscreen
