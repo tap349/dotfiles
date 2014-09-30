@@ -18,7 +18,7 @@ let colors_name = "summerfruit"
 " Global
 "--------------------------------------------------------------
 
-hi Normal       guifg=#222222   guibg=#fafafa
+hi Normal       guifg=#222222   guibg=#fbfbfb
 "hi Normal       guifg=#000000   guibg=#FDFDFD
 "hi Normal       guifg=#000000   guibg=#E6F1F5
 "hi NonText      guifg=#438ec3   guibg=#a7ccd8
@@ -31,7 +31,7 @@ hi NonText      guifg=#438ec3   guibg=#b7dce8
 "hi Search       guifg=#000000   guibg=#b9dff3
 "hi Search        guifg=#eeeeee    guibg=#135e83
 "hi Search       guifg=#404040   guibg=#D7D9F7
-hi Search       guifg=#404040   guibg=#ffffD2
+hi Search       guifg=#404040   guibg=#ffffC2
 "hi Search       guifg=#404040   guibg=#AAEB7F
 "hi Search       guifg=#800000   guibg=#9fefb0
 "hi Search       guifg=#800000   guibg=#ffae00
