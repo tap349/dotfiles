@@ -5,6 +5,10 @@
 "       - <CR> and <C-m>                                                        *
 "       - <Esc> and <C-[>                                                       *
 "                                                                               *
+" USEFUL RESOURCES:                                                             *
+"                                                                               *
+" http://www.ibm.com/developerworks/library/l-vim-script-1/                     *
+"                                                                               *
 "********************************************************************************
 
 "================================================================================
@@ -17,7 +21,6 @@
 "================================================================================
 
 source ~/.dotfiles/.vimrc.morr.basic
-
 
 "================================================================================
 "                                                                               =
@@ -33,7 +36,6 @@ execute pathogen#infect()
 syntax on
 filetype plugin indent on
 
-
 "================================================================================
 "                                                                               =
 " performance tweaks                                                            =
@@ -44,7 +46,6 @@ filetype plugin indent on
 
 "set synmaxcol=200
 set regexpengine=2
-
 
 "================================================================================
 "                                                                               =
@@ -113,7 +114,6 @@ set smartcase
 
 set splitbelow
 set splitright
-
 
 "==============================================================================="
 "                                                                               "
@@ -192,7 +192,6 @@ cd ~/dev/uptimus
 
 set transparency=1
 
-
 "================================================================================
 "                                                                               =
 " abbreviations                                                                 =
@@ -200,7 +199,6 @@ set transparency=1
 "================================================================================
 
 " TODO
-
 
 "================================================================================
 "                                                                               =
@@ -212,9 +210,18 @@ set transparency=1
 "                                                                               =
 "================================================================================
 
-autocmd! BufWritePost .vimrc source %
-"autocmd! BufRead * call s:set_bufhidden()
+"autocmd! BufRead * call s:SetBufhidden()
 
+augroup reload
+  autocmd!
+  autocmd BufWritePost .vimrc source %
+augroup END
+
+let s:prevtabcount = tabpagenr('$')
+augroup tabs
+  autocmd!
+  autocmd TabEnter * call s:GoToPrevTab()
+augroup END
 
 "================================================================================
 "                                                                               =
@@ -224,7 +231,6 @@ autocmd! BufWritePost .vimrc source %
 "                                                                               =
 " NOTE: don't use noremap for plugin mappings                                   =
 "================================================================================
-
 
 " Leader: global and plugin mappings
 " LocalLeader: mappings local to current buffer
@@ -241,7 +247,6 @@ let maplocalleader = '\'
 " (relative to PWD or absolute path if file is not in current dir)
 "-------------------------------------------------------------------------------
 
-" http://www.ibm.com/developerworks/library/l-vim-script-1
 " :help expand
 nnoremap <silent> <LocalLeader>yf :let @*=expand('%')<CR>
 
@@ -415,7 +420,6 @@ vnoremap > >gv
 
 vnorem // y/<C-r>"<CR>
 
-
 "================================================================================
 "                                                                               =
 " load macros                                                                   =
@@ -423,7 +427,6 @@ vnorem // y/<C-r>"<CR>
 "================================================================================
 
 runtime macros/matchit.vim
-
 
 "================================================================================
 "                                                                               =
@@ -573,16 +576,15 @@ nmap <F7>d :DeleteSession<Space>
 nmap <F7>o :OpenSession<Space>
 nmap <F7>s :SaveSession<Space>
 
-
 "================================================================================
 "                                                                               =
 " functions                                                                     =
 "                                                                               =
 "================================================================================
 
-" s: scoping prefix means that function is scoped to current script file
+" s: scoping prefix means that function is scoped to current script file;
 " don't use for every buffer since it will prevent from using buffer history
-function! s:set_bufhidden()
+function! s:SetBufhidden()
   " most explorer plugins have buftype=nofile
   " while normal buffers have buftype=<empty>;
   " using & means that I refer to option -
@@ -596,6 +598,15 @@ function! s:set_bufhidden()
     " even though buffers are not listed in buffer list)
     setlocal bufhidden=wipe
   endif
+endfunction
+
+" http://stackoverflow.com/questions/14079149
+function! s:GoToPrevTab()
+  if tabpagenr('$') < s:prevtabcount && tabpagenr() > 1
+    tabprevious
+  endif
+
+  let s:prevtabcount = tabpagenr('$')
 endfunction
 
 " a:000: http://learnvimscriptthehardway.stevelosh.com/chapters/24.html;
