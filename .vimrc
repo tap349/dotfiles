@@ -290,9 +290,9 @@ nnoremap <C-j> 10j
 nnoremap <C-k> 10k
 
 " switch to last active tab
-let g:lasttab = 1
-nnoremap <silent> <C-Tab> :exec 'tabnext ' . g:lasttab<CR>
-autocmd! TabLeave * let g:lasttab = tabpagenr()
+let g:lasttabnr = 1
+nnoremap <silent> <C-Tab> :exec 'tabnext ' . g:lasttabnr<CR>
+autocmd! TabLeave * let g:lasttabnr = tabpagenr()
 
 "------- buffer ----------------------------------------------------------------
 
@@ -613,6 +613,11 @@ endfunction
 " we use sbuffer because buffer function doesn't respect switchbuf option;
 " we need to wipe out unloaded buffer because otherwise sbuffer will open
 " it in a split window instead of a new tab
+
+" TODO CommandT documentation:
+"   Note that if you have |'nohidden'| set and there are unsaved
+"   changes in the current window when you press <CR> then opening in the current
+"   window would fail; in this case Command-T will open the file in a new split.
 function! GotoOrOpen(...)
   for file in a:000
     if bufexists(bufnr(file)) && !bufloaded(bufnr(file))
