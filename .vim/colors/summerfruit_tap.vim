@@ -85,7 +85,7 @@ hi Special      guifg=#e50808
 "hi Visual       guibg=#EFFFDB
 "hi Visual       guibg=#D8F3FF
 "hi Visual       guibg=#D4E9FA
-hi Visual       guibg=#DFFFD0
+hi Visual       guibg=#DFFFD8
 
 "--------------------------------------------------------------
 " Syntax Elements

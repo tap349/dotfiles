@@ -133,20 +133,14 @@ set background=dark
 "let g:solarized_contrast = 'normal'
 "let g:solarized_italic = 1
 
-"colorscheme solarized
 "colorscheme gravity
-colorscheme summerfruit_tap
-"colorscheme summerfruit256
-"colorscheme tap
 "colorscheme iceberg
-"colorscheme ironman
-"colorscheme buttercream
-"colorscheme sebocean
 "colorscheme ir_black
 "colorscheme jellyx
-"colorscheme sift
-"colorscheme zenesque
-"colorscheme whitedust
+"colorscheme sebocean
+"colorscheme solarized
+"colorscheme summerfruit256
+colorscheme summerfruit_tap
 
 "-------------------------------------------------------------------------------
 " font
@@ -155,12 +149,12 @@ colorscheme summerfruit_tap
 " fix for Inconsolata LGC font
 set linespace=-3
 
-"set guifont=Menlo\ for\ Powerline:h14
 "set guifont=Andale\ Mono:h14
-set guifont=Inconsolata\ LGC:h14
+"set guifont=Anonymice\ Powerline:h16
+"set guifont=Menlo\ for\ Powerline:h14
 "set guifont=MonacoB2:h13
 "set guifont=MonacoB\ for\ Powerline:h13
-"set guifont=Anonymice\ Powerline:h16
+set guifont=Inconsolata\ LGC:h14
 
 "-------------------------------------------------------------------------------
 " indicators
@@ -176,7 +170,7 @@ set guioptions-=r
 set number
 " hide mode indicator
 set noshowmode
-" show number of lines or characters selected in left bottom corner
+" show number of lines or characters selected in right bottom corner
 set showcmd
 
 "-------------------------------------------------------------------------------
@@ -614,10 +608,11 @@ endfunction
 " we need to wipe out unloaded buffer because otherwise sbuffer will open
 " it in a split window instead of a new tab
 
-" TODO CommandT documentation:
+" CommandT documentation:
 "   Note that if you have |'nohidden'| set and there are unsaved
 "   changes in the current window when you press <CR> then opening in the current
 "   window would fail; in this case Command-T will open the file in a new split.
+" => this function is not even called if there're unsaved changes in current window
 function! GotoOrOpen(...)
   for file in a:000
     if bufexists(bufnr(file)) && !bufloaded(bufnr(file))
