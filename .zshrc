@@ -44,7 +44,7 @@ CASE_SENSITIVE="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-#plugins=(git)
+plugins=(bundler)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -132,10 +132,9 @@ alias production="ssh devops@176.58.123.252"
 # common
 #-----------------------------------------------------------------------------------------
 
-alias cdd='cd ~/Downloads'
-alias cdr='cd $REACTOR'
-alias cdu='cd $UPTIMUS'
-alias cdc='cd $CHEF'
+alias downloads='cd ~/Downloads'
+alias uptimus='cd $UPTIMUS'
+alias chef='cd $CHEF'
 alias df='df -h'
 alias ll='ls -alp'
 alias m='open -a MacVim'
