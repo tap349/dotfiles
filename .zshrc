@@ -132,6 +132,7 @@ alias production="ssh devops@176.58.123.252"
 # common
 #-----------------------------------------------------------------------------------------
 
+alias dotfiles='cd ~/.dotfiles'
 alias downloads='cd ~/Downloads'
 alias uptimus='cd $UPTIMUS'
 alias chef='cd $CHEF'

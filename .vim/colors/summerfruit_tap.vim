@@ -18,7 +18,7 @@ let colors_name = "summerfruit"
 " Global
 "--------------------------------------------------------------
 
-hi Normal       guifg=#222222   guibg=#fcfcfc
+hi Normal       guifg=#222222   guibg=#fdfdfd
 "hi Normal       guifg=#000000   guibg=#FDFDFD
 "hi Normal       guifg=#000000   guibg=#E6F1F5
 "hi NonText      guifg=#438ec3   guibg=#a7ccd8
