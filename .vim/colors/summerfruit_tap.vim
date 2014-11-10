@@ -31,7 +31,7 @@ hi NonText      guifg=#438ec3   guibg=#b7dce8
 "hi Search       guifg=#000000   guibg=#b9dff3
 "hi Search        guifg=#eeeeee    guibg=#135e83
 "hi Search       guifg=#404040   guibg=#D7D9F7
-hi Search       guifg=#404040   guibg=#ffffC2
+hi Search       guifg=#404040   guibg=#ffffc6
 "hi Search       guifg=#404040   guibg=#AAEB7F
 "hi Search       guifg=#800000   guibg=#9fefb0
 "hi Search       guifg=#800000   guibg=#ffae00
@@ -84,8 +84,9 @@ hi Special      guifg=#e50808
 "hi Special      guifg=#fd8900
 "hi Visual       guibg=#EFFFDB
 "hi Visual       guibg=#D8F3FF
+hi Visual       guibg=#E5EFE9
 "hi Visual       guibg=#D4E9FA
-hi Visual       guibg=#DFFFD8
+"hi Visual       guibg=#DFFFD8
 
 "--------------------------------------------------------------
 " Syntax Elements
