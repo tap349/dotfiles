@@ -116,17 +116,8 @@ alias rs='cd $UPTIMUS && rails server'
 
 # ssh
 
-alias staging="ssh devops@94.77.64.80"
-alias production="ssh devops@176.58.123.252"
-
-# zeus
-
-#alias z='zeus'
-#alias zc='cd $UPTIMUS && zeus console'
-#alias zd='cd $UPTIMUS && zeus dbconsole'
-#alias zg='cd $UPTIMUS && zeus generate'
-#alias zr='cd $UPTIMUS && zeus rake'
-#alias zs='cd $UPTIMUS && zeus server'
+alias caravan="ssh devops@caravan"
+alias linode="ssh devops@linode"
 
 #-----------------------------------------------------------------------------------------
 # common
