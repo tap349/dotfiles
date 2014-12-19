@@ -217,6 +217,12 @@ augroup tabs
   autocmd TabEnter * call s:GoToPrevTab()
 augroup END
 
+" TODO
+"augroup large_files
+  "autocmd!
+  "autocmd FileType yaml call s:PrepareLargeFile(expand('<afile>'))
+"augroup END
+
 "================================================================================
 "                                                                               =
 " common maps                                                                   =
@@ -640,3 +646,12 @@ function! GotoOrOpenTab(...)
     endif
   endfor
 endfunction
+
+" TODO
+" http://vim.wikia.com/wiki/Faster_loading_of_large_files
+"function! s:PrepareLargeFile(fname)
+  "echom fname
+  "if getfsize(fname) > 1024 * 10
+    "echom 'aoeu'
+  "endif
+"endfunction
