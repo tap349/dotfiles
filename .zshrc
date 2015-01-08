@@ -7,7 +7,7 @@ ZSH=$HOME/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Theme previews can be found at https://github.com/robbyrussell/oh-my-zsh/wiki/themes
 
-ZSH_THEME="blinks"
+ZSH_THEME="af-magic"
 
 #-----------------------------------------------------------------------------------------
 # Set to this to use case-sensitive completion
