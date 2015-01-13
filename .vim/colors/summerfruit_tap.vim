@@ -84,8 +84,8 @@ hi Title        guifg=#000000                   gui=bold
 hi Special      guifg=#e50808
 "hi Special      guifg=#fd8900
 "hi Visual       guibg=#EFFFDB
-"hi Visual       guibg=#D8F3FF
-hi Visual       guibg=#E5EFE9
+hi Visual       guibg=#D8F3FF
+"hi Visual       guibg=#E5EFE9
 "hi Visual       guibg=#D4E9FA
 "hi Visual       guibg=#DFFFD8
 
@@ -102,11 +102,10 @@ hi Statement    guifg=#1F1C6C                   gui=bold
 "hi Statement    guifg=#1F2C7C                   gui=bold
 "hi Statement    guifg=#e50808                   gui=bold
 "hi Statement    guifg=#2b6cba                   gui=bold
-hi Function     guifg=#ff0086                   gui=bold
+hi Function     guifg=#ee0086                   gui=bold
 hi PreProc      guifg=#ff0007                   gui=bold
-hi Comment      guifg=#abab9b
-"hi Comment      guifg=#abab9b                   gui=italic
-"hi Comment      guifg=#ababab                   gui=italic
+"hi Comment      guifg=#abab9b
+hi Comment      guifg=#ababab
 "hi Comment      guifg=#32b22f   guibg=#fffde9   gui=italic
 hi Type         guifg=#2F6C9C                   gui=bold
 "hi Type         guifg=#70897b                   gui=bold

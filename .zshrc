@@ -58,7 +58,7 @@ setopt HIST_IGNORE_DUPS
 CDPATH=~
 
 CHEF=~/dev/chef
-REACTOR=~/dev/reactor
+HOUSTON=~/dev/houston
 UPTIMUS=~/dev/uptimus
 
 #-----------------------------------------------------------------------------------------
@@ -86,22 +86,19 @@ alias gs='git status'
 
 # misc
 
-alias guard='cd $UPTIMUS && guard'
-alias log='tail -f $UPTIMUS/log/development.log'
-alias migrate='cd $UPTIMUS && rake db:migrate && RAILS_ENV=test rake db:migrate'
-alias orig='cd $UPTIMUS && find . -name "*.orig" -exec rm {} \;'
-alias p='psql uptimus_development'
-alias rollback='cd $UPTIMUS && rake db:rollback STEP=1 && RAILS_ENV=test rake db:rollback STEP=1'
+alias log='tail -f log/development.log'
+alias migrate='rake db:migrate && RAILS_ENV=test rake db:migrate'
+alias rollback='rake db:rollback STEP=1 && RAILS_ENV=test rake db:rollback STEP=1'
 alias sass='sass-convert --from css --to sass -R'
-alias sidekiq='cd $UPTIMUS && bundle exec sidekiq --config ./config/sidekiq.yml'
+alias sidekiq='bundle exec sidekiq --config ./config/sidekiq.yml'
 
 # rails
 
 alias r='rails'
-alias rc='cd $UPTIMUS && rails console'
-alias rd='cd $UPTIMUS && rails dbconsole'
-alias rg='cd $UPTIMUS && rails generate'
-alias rs='cd $UPTIMUS && rails server'
+alias rc='rails console'
+alias rd='rails dbconsole'
+alias rg='rails generate'
+alias rs='rails server'
 
 # ssh
 
@@ -112,11 +109,12 @@ alias linode="ssh devops@linode"
 # common
 #-----------------------------------------------------------------------------------------
 
+alias chef='cd $CHEF'
 alias dotfiles='cd ~/.dotfiles'
 alias downloads='cd ~/Downloads'
+alias houston='cd $HOUSTON'
 alias uptimus='cd $UPTIMUS'
-alias chef='cd $CHEF'
+
 alias df='df -h'
 alias ll='ls -alp'
-alias m='open -a MacVim'
 alias mail='less +G /var/mail/tap'
