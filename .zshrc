@@ -33,7 +33,7 @@ HIST_STAMPS="yyyy-mm-dd"
 
 # https://github.com/rails/spring/tree/v0.0.9#usage
 UNBUNDLED_COMMANDS=(spring)
-plugins=(bundler)
+plugins=(bundler ssh-agent)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -110,12 +110,16 @@ alias linode="ssh devops@linode"
 # common
 #-----------------------------------------------------------------------------------------
 
-alias chef='cd $CHEF'
 alias dotfiles='cd ~/.dotfiles'
 alias downloads='cd ~/Downloads'
+
+alias chef='cd $CHEF'
 alias houston='cd $HOUSTON'
 alias judge='cd $JUDGE'
 alias uptimus='cd $UPTIMUS'
+alias h='cd $HOUSTON'
+alias j='cd $JUDGE'
+alias u='cd $UPTIMUS'
 
 alias df='df -h'
 alias ll='ls -alp'
