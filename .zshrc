@@ -7,7 +7,7 @@ ZSH=$HOME/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Theme previews can be found at https://github.com/robbyrussell/oh-my-zsh/wiki/themes
 
-ZSH_THEME="af-magic"
+ZSH_THEME="tap-af-magic"
 
 #-----------------------------------------------------------------------------------------
 # Set to this to use case-sensitive completion
@@ -59,6 +59,7 @@ CDPATH=~
 
 CHEF=~/dev/chef
 HOUSTON=~/dev/houston
+JUDGE=~/dev/judge
 UPTIMUS=~/dev/uptimus
 
 #-----------------------------------------------------------------------------------------
@@ -113,6 +114,7 @@ alias chef='cd $CHEF'
 alias dotfiles='cd ~/.dotfiles'
 alias downloads='cd ~/Downloads'
 alias houston='cd $HOUSTON'
+alias judge='cd $JUDGE'
 alias uptimus='cd $UPTIMUS'
 
 alias df='df -h'
