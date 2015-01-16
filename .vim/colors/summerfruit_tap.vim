@@ -84,9 +84,9 @@ hi Title        guifg=#000000                   gui=bold
 hi Special      guifg=#e50808
 "hi Special      guifg=#fd8900
 "hi Visual       guibg=#EFFFDB
-hi Visual       guibg=#D8F3FF
+"hi Visual       guibg=#D8F3FF
+hi Visual       guibg=#C8F9FF
 "hi Visual       guibg=#E5EFE9
-"hi Visual       guibg=#D4E9FA
 "hi Visual       guibg=#DFFFD8
 
 "--------------------------------------------------------------
