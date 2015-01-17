@@ -309,10 +309,10 @@ nnoremap <C-g> <C-i>
 nnoremap <C-h> :tabprevious<CR>
 nnoremap <C-l> :tabnext<CR>
 
-nnoremap <Left> :tabprevious<CR>
-nnoremap <Right> :tabnext<CR>
-nnoremap <Down> :tabfirst<CR>
-nnoremap <Up> :tablast<CR>
+"nnoremap <Left> :tabprevious<CR>
+"nnoremap <Right> :tabnext<CR>
+"nnoremap <Down> :tabfirst<CR>
+"nnoremap <Up> :tablast<CR>
 
 nnoremap <silent> <S-Left> :tabmove -1<CR>
 nnoremap <silent> <S-Right> :tabmove +1<CR>
