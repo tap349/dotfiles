@@ -60,7 +60,7 @@ set nowrap
 " backup and swap files
 "-------------------------------------------------------------------------------
 
-set nobackup
+set backupdir=~/.vim/tmp//
 set directory=~/.vim/tmp//
 
 " http://vim.wikia.com/wiki/Editing_crontab
