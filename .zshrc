@@ -125,14 +125,11 @@ alias df='df -h'
 alias ll='ls -alp'
 alias mail='less +G /var/mail/tap'
 
-alias f=my_find
-alias fvim=my_find_vim
-
 #-----------------------------------------------------------------------------------------
 # functions
 #-----------------------------------------------------------------------------------------
 
-my_find() {
+f() {
   find . -type f \
     \( -name "*.rb" -or -name "*.erb" -or -name "*.rss" -or -name "*.xml" -or -name "*.slim" -or -name "*.haml" -or \
        -name "*.html" -or -name "*.js" -or -name "*.coffee" -or -name "*.ejs" -or -name "*.jst" -or -name "*.eco" -or \
@@ -141,6 +138,10 @@ my_find() {
     -exec grep -l "$*" {} \;
 }
 
-my_find_vim() {
+fvim() {
   mvim `f "$*"`
+}
+
+gr() {
+  fgrep --color --exclude-dir={log,public,tmp} -Iir "$@" .
 }
