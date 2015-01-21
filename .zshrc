@@ -60,6 +60,7 @@ CDPATH=~
 CHEF=~/dev/chef
 HOUSTON=~/dev/houston
 JUDGE=~/dev/judge
+SHIKIMORI=~/dev/shikimori
 UPTIMUS=~/dev/uptimus
 
 #-----------------------------------------------------------------------------------------
@@ -116,9 +117,11 @@ alias downloads='cd ~/Downloads'
 alias chef='cd $CHEF'
 alias houston='cd $HOUSTON'
 alias judge='cd $JUDGE'
+alias shikimori='cd $SHIKIMORI'
 alias uptimus='cd $UPTIMUS'
 alias h='cd $HOUSTON'
 alias j='cd $JUDGE'
+alias s='cd $SHIKIMORI'
 alias u='cd $UPTIMUS'
 
 alias df='df -h'
