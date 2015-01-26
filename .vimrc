@@ -34,7 +34,8 @@ source ~/.dotfiles/.vimrc.morr.basic
 
 execute pathogen#infect()
 syntax on
-filetype plugin indent on
+" disable plugin specific smart indentation 
+"filetype plugin indent on
 
 "================================================================================
 "                                                                               =
@@ -82,9 +83,9 @@ set wildmode=longest:full,full
 
 "-------------------------------------------------------------------------------
 " indentation
-"
-" setting smartindent might lead to incorrect comment indentation on new line
 "-------------------------------------------------------------------------------
+
+set autoindent
 
 set expandtab
 set shiftround
