@@ -35,7 +35,7 @@ git_bundles = [
   'git://github.com/aklt/plantuml-syntax',
   'git://github.com/kien/ctrlp',
   'git://github.com/xolox/vim-misc',
-  'git://github.com/xolox/vim-session'
+  'git://github.com/xolox/vim-session',
 ]
 
 require 'fileutils'

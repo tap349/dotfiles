@@ -21,9 +21,13 @@ let colors_name = "summerfruit"
 hi Normal       guifg=#222222   guibg=#fefefe
 "hi Normal       guifg=#000000   guibg=#FDFDFD
 "hi Normal       guifg=#000000   guibg=#E6F1F5
+
+" not editable area and some list chars (precedes, extends)
 "hi NonText      guifg=#438ec3   guibg=#a7ccd8
 "hi NonText      guifg=#438ec3   guibg=#d7e7f8
 hi NonText      guifg=#438ec3   guibg=#f4f4f4
+" some list chars (tab, nbsp)
+hi SpecialKey   guifg=#336e93   guibg=#f4f4f4
 
 "--------------------------------------------------------------
 " Search
