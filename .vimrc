@@ -133,7 +133,6 @@ set background=dark
 "let g:solarized_contrast = 'normal'
 "let g:solarized_italic = 1
 
-"colorscheme gravity
 "colorscheme iceberg
 "colorscheme ir_black
 "colorscheme jellyx
