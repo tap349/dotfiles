@@ -139,6 +139,7 @@ set background=dark
 
 "colorscheme iceberg
 "colorscheme ir_black
+"colorscheme tir_black
 "colorscheme jellyx
 "colorscheme sebocean
 "colorscheme solarized
