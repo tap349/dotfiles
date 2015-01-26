@@ -34,7 +34,7 @@ source ~/.dotfiles/.vimrc.morr.basic
 
 execute pathogen#infect()
 syntax on
-" disable plugin specific smart indentation 
+" disable plugin specific smart indentation
 "filetype plugin indent on
 
 "================================================================================
@@ -61,7 +61,9 @@ set nowrap
 " backup and swap files
 "-------------------------------------------------------------------------------
 
-set backupdir=~/.vim/tmp//
+set backup
+
+set backupdir=~/.vim/backup//
 set directory=~/.vim/tmp//
 
 " http://vim.wikia.com/wiki/Editing_crontab
@@ -85,6 +87,7 @@ set wildmode=longest:full,full
 " indentation
 "-------------------------------------------------------------------------------
 
+" dumb auto indentation - copy indentation from previous line
 set autoindent
 
 set expandtab
