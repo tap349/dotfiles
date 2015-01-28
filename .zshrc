@@ -148,3 +148,7 @@ fvim() {
 gr() {
   fgrep --color --exclude-dir={log,public,tmp} -Iir "$@" .
 }
+
+orig() {
+  find . -iname '*.orig' -exec {} \;
+}
