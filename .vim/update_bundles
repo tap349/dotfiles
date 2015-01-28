@@ -35,6 +35,7 @@ git_bundles = %w[
   kien/ctrlp
   xolox/vim-misc
   xolox/vim-session
+  vim-scripts/LustyExplorer
 ]
 
 # majutsushi/tagbar
