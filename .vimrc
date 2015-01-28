@@ -34,8 +34,7 @@ source ~/.dotfiles/.vimrc.morr.basic
 
 execute pathogen#infect()
 syntax on
-" disable plugin specific smart indentation
-"filetype plugin indent on
+filetype plugin indent on
 
 "================================================================================
 "                                                                               =
@@ -75,6 +74,7 @@ set backupskip+=/private/tmp/*
 
 " http://vim.wikia.com/wiki/Using_tab_pages
 set switchbuf=usetab,newtab
+set hidden
 
 "-------------------------------------------------------------------------------
 " completion menu
@@ -88,7 +88,8 @@ set wildmode=longest:full,full
 "-------------------------------------------------------------------------------
 
 " dumb auto indentation - copy indentation from previous line
-set autoindent
+" it's automatically enabled with plugin-specific indentation on
+"set autoindent
 
 set expandtab
 set shiftround
@@ -490,6 +491,18 @@ let g:CommandTAcceptSelectionTabCommand = 'GotoOrOpenTab'
 map <Leader><Space> <Plug>NERDCommenterToggle
 
 "-------------------------------------------------------------------------------
+" LustyExplorer
+"-------------------------------------------------------------------------------
+
+nmap <F3> :LustyBufferGrep<CR>
+nmap <Leader>l :LustyBufferGrep<CR>
+
+silent! unmap <Leader>lf
+silent! unmap <Leader>lr
+silent! unmap <Leader>lb
+silent! unmap <Leader>lg
+
+"-------------------------------------------------------------------------------
 " nerdtree
 "-------------------------------------------------------------------------------
 
@@ -516,6 +529,7 @@ nmap <Leader><F4> <C-w><C-v><C-w>l<F4>
 "-------------------------------------------------------------------------------
 
 let g:SuperTabDefaultCompletionType = '<C-n>'
+let g:SuperTabCrMapping = 1
 
 "-------------------------------------------------------------------------------
 " vim-airline
