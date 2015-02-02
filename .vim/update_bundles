@@ -35,13 +35,14 @@ git_bundles = %w[
   kien/ctrlp
   xolox/vim-misc
   xolox/vim-session
-  vim-scripts/LustyExplorer
+  rking/ag.vim
 ]
 
 # majutsushi/tagbar
 # msanders/snipmate.vim
 # Yggdroot/indentLine
 # dtjm/plantuml-syntax
+# yegappan/grep
 
 git_keep = []
 

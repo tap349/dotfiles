@@ -146,7 +146,7 @@ fvim() {
 }
 
 gr() {
-  fgrep --color --exclude-dir={log,public,tmp} -Iir "$@" .
+  fgrep --color --exclude-dir={log,public,tmp,.git} -Iir "$@" .
 }
 
 orig() {

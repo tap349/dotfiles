@@ -73,7 +73,7 @@ set backupskip+=/private/tmp/*
 "-------------------------------------------------------------------------------
 
 " http://vim.wikia.com/wiki/Using_tab_pages
-set switchbuf=usetab,newtab
+"set switchbuf=usetab,newtab
 set hidden
 
 "-------------------------------------------------------------------------------
@@ -222,6 +222,7 @@ augroup reload
   autocmd BufWritePost .vimrc source %
 augroup END
 
+let s:prevtabnr = tabpagenr()
 let s:prevtabcount = tabpagenr('$')
 augroup tabs
   autocmd!
@@ -446,6 +447,13 @@ runtime macros/matchit.vim
 "================================================================================
 
 "-------------------------------------------------------------------------------
+" ag.vim
+"-------------------------------------------------------------------------------
+
+let g:agprg="ag --vimgrep --nocolor --ignore-dir={log,public,tmp,spec/vcr_cassettes}"
+map <Leader>/ :Ag<Space>
+
+"-------------------------------------------------------------------------------
 " CamelCaseMotion
 "-------------------------------------------------------------------------------
 
@@ -466,20 +474,11 @@ nmap <Leader><F1>r :CommandTFlush<CR>:CommandT<CR>
 
 " http://www.adp-gmbh.ch/vim/user_commands.html
 " http://vimdoc.sourceforge.net/htmldoc/usr_40.html
-command! -nargs=+ GotoOrOpen call GotoOrOpen("<args>")
-command! -nargs=+ GotoOrOpenTab call GotoOrOpenTab("<args>")
+"command! -nargs=+ GotoOrOpen call GotoOrOpen("<args>")
+"command! -nargs=+ GotoOrOpenTab call GotoOrOpenTab("<args>")
 
-let g:CommandTAcceptSelectionCommand = 'GotoOrOpen'
-let g:CommandTAcceptSelectionTabCommand = 'GotoOrOpenTab'
-
-"-------------------------------------------------------------------------------
-" indentLine
-"
-" warning: this plugin disables syntax highlighting in slim files.
-"-------------------------------------------------------------------------------
-
-"let g:indentLine_char = '┆'
-"let g:indentLine_color_gui = '#4C5B6B'
+"let g:CommandTAcceptSelectionCommand = 'GotoOrOpen'
+"let g:CommandTAcceptSelectionTabCommand = 'GotoOrOpenTab'
 
 "-------------------------------------------------------------------------------
 " nerdcommenter
@@ -626,10 +625,11 @@ endfunction
 
 " http://stackoverflow.com/questions/14079149
 function! s:GoToPrevTab()
-  if tabpagenr('$') < s:prevtabcount && tabpagenr() > 1
+  if tabpagenr('$') < s:prevtabcount && tabpagenr() > 1 && tabpagenr() == s:prevtabnr
     tabprevious
   endif
 
+  let s:prevtabnr = tabpagenr()
   let s:prevtabcount = tabpagenr('$')
 endfunction
 
