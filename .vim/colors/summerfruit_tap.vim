@@ -36,7 +36,7 @@ hi SpecialKey   guifg=#336e93   guibg=#f4f4f4
 "hi Search       guifg=#000000   guibg=#b9dff3
 "hi Search        guifg=#eeeeee    guibg=#135e83
 "hi Search       guifg=#404040   guibg=#D7D9F7
-hi Search       guifg=#404040   guibg=#ffffa6
+hi Search       guifg=#404040   guibg=#ffffb6
 "hi Search       guifg=#404040   guibg=#AAEB7F
 "hi Search       guifg=#800000   guibg=#9fefb0
 "hi Search       guifg=#800000   guibg=#ffae00
@@ -98,7 +98,8 @@ hi Visual       guibg=#C8F9FF
 "--------------------------------------------------------------
 
 "hi String       guifg=#0086d2
-hi String       guifg=#0086b2
+"hi String       guifg=#0086b2
+hi String       guifg=#0076a2   guibg=#fffde9
 hi Constant     guifg=#2F3C9C
 hi Number       guifg=#0086f7
 "hi Number       guifg=#0086f7                   gui=bold
