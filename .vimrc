@@ -260,14 +260,14 @@ let maplocalleader = '\'
 "-------------------------------------------------------------------------------
 
 " :help expand
-nnoremap <silent> <LocalLeader>yf :let @*=expand('%')<CR>
+nnoremap <silent> <Leader>yf :let @*=expand('%')<CR>
 
 "-------------------------------------------------------------------------------
 " editing without leaving normal mode
 "-------------------------------------------------------------------------------
 
 " delete trailing whitespaces
-nnoremap <silent> <LocalLeader>dt :%s/\s\+$//<CR>:w<CR>:nohlsearch<CR>
+nnoremap <silent> <Leader>dt :%s/\s\+$//<CR>:w<CR>:nohlsearch<CR>
 " insert newline after current line
 nnoremap <silent> <CR> o<Esc>
 " insert newline before current line
@@ -279,9 +279,9 @@ nnoremap <silent> <Space> i<Space><Esc>l
 " editing popular files
 "-------------------------------------------------------------------------------
 
-nnoremap <LocalLeader>ec :tabnew<CR>:edit ~/.vim/colors/summerfruit_tap.vim<CR>
-nnoremap <LocalLeader>ev :tabnew<CR>:edit $MYVIMRC<CR>
-nnoremap <LocalLeader>ez :tabnew<CR>:edit ~/.zshrc<CR>
+nnoremap <Leader>ec :tabnew<CR>:edit ~/.vim/colors/summerfruit_tap.vim<CR>
+nnoremap <Leader>ev :tabnew<CR>:edit $MYVIMRC<CR>
+nnoremap <Leader>ez :tabnew<CR>:edit ~/.zshrc<CR>
 
 "-------------------------------------------------------------------------------
 " fullscreen
@@ -300,6 +300,9 @@ nnoremap <PageDown> <C-d>
 
 nnoremap <C-j> 10j
 nnoremap <C-k> 10k
+
+nnoremap H ^
+nnoremap L $
 
 " switch to last active tab
 let g:lasttabnr = 1
@@ -336,8 +339,8 @@ nnoremap <silent> <S-Up> :tabmove<CR>
 " reload file using different encoding
 "-------------------------------------------------------------------------------
 
-nnoremap <LocalLeader>cw :edit ++encoding=cp1251<CR>
-nnoremap <LocalLeader>cu :edit ++encoding=utf-8<CR>
+nnoremap <Leader>cw :edit ++encoding=cp1251<CR>
+nnoremap <Leader>cu :edit ++encoding=utf-8<CR>
 
 "-------------------------------------------------------------------------------
 " save
@@ -375,6 +378,8 @@ nnoremap Y y$
 " insert mode                                                                   =
 "================================================================================
 
+inoremap <Esc> <nop>
+
 "-------------------------------------------------------------------------------
 " editing
 "-------------------------------------------------------------------------------
@@ -386,7 +391,7 @@ inoremap <C-d> <Delete>
 "-------------------------------------------------------------------------------
 
 inoremap {{ {<Space><Space>}<Esc>hi
-"inoremap (( ()<Esc>i
+inoremap (( ()<Esc>i
 "inoremap [[ []<Esc>i
 
 "-------------------------------------------------------------------------------
