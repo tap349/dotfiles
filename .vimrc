@@ -269,7 +269,7 @@ nnoremap <silent> <Leader>yf :let @*=expand('%')<CR>
 " delete trailing whitespaces
 nnoremap <silent> <Leader>dt :%s/\s\+$//<CR>:w<CR>:nohlsearch<CR>
 " insert newline after current line
-nnoremap <silent> <CR> o<Esc>
+nmap <silent> <CR> o<Esc>
 " insert newline before current line
 nnoremap <silent> <S-CR> O<Esc>
 " insert space
@@ -378,7 +378,7 @@ nnoremap Y y$
 " insert mode                                                                   =
 "================================================================================
 
-inoremap <Esc> <nop>
+"inoremap <Esc> <nop>
 
 "-------------------------------------------------------------------------------
 " editing
