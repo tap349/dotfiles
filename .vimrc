@@ -302,7 +302,7 @@ nnoremap <C-j> 10j
 nnoremap <C-k> 10k
 
 nnoremap H ^
-nnoremap L $
+nnoremap L g_
 
 " switch to last active tab
 let g:lasttabnr = 1
