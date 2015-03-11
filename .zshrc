@@ -150,5 +150,5 @@ gr() {
 }
 
 orig() {
-  find . -iname '*.orig' -exec {} \;
+  find . -iname '*.orig' -exec rm {} \;
 }
