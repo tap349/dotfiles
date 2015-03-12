@@ -57,6 +57,8 @@ setopt HIST_IGNORE_DUPS
 
 CDPATH=~
 
+BLOG=~/blog
+
 CHEF=~/dev/chef
 HOUSTON=~/dev/houston
 JUDGE=~/dev/judge
@@ -68,6 +70,9 @@ UPTIMUS=~/dev/uptimus
 # Aliases
 #
 #-----------------------------------------------------------------------------------------
+
+# for octopress
+alias rake="noglob rake"
 
 #-----------------------------------------------------------------------------------------
 # dev
@@ -113,6 +118,8 @@ alias linode="ssh devops@linode"
 
 alias dotfiles='cd ~/.dotfiles'
 alias downloads='cd ~/Downloads'
+
+alias blog='cd $BLOG'
 
 alias chef='cd $CHEF'
 alias houston='cd $HOUSTON'
