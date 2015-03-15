@@ -158,15 +158,17 @@ colorscheme summerfruit_tap
 " font
 "-------------------------------------------------------------------------------
 
-" fix for Inconsolata LGC font
-set linespace=-3
+" for Inconsolata LGC font
+set linespace=-2
+" for Andale Mono
+"set linespace=2
 
 "set guifont=Andale\ Mono:h14
 "set guifont=Anonymice\ Powerline:h16
 "set guifont=Menlo\ for\ Powerline:h14
 "set guifont=MonacoB2:h13
 "set guifont=MonacoB\ for\ Powerline:h13
-set guifont=Inconsolata\ LGC:h14
+set guifont=Inconsolata\ LGC:h13
 
 "-------------------------------------------------------------------------------
 " indicators
