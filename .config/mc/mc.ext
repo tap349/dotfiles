@@ -466,7 +466,7 @@ regex/\.([tT][sS])$
 regex/\.([rR][aA]?[mM])$
 	Include=video
 
-regex/\.([mM][4][vV])$
+regex/\.([mM][24][vV])$
 	Include=video
 
 regex/\.([rR][mM])$
@@ -483,11 +483,8 @@ type/^PostScript
 	View=%view{ascii} ps2ascii %f
 
 # PDF
-type/^PDF
-	Open=(evince2 %f >/dev/null 2>&1 &)
-	#Open=(acroread %f &)
-	#Open=(ghostview %f &)
-	View=%view{ascii} pdftotext %f -
+regex/\.([pP][dD][fF])$
+	Open=(open %f >/dev/null 2>&1 &)
 
 # The following code very ugly and should not be taken as example.
 # It should be cleaned up when the new format of mc.ext is developed.
