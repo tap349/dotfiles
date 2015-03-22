@@ -158,17 +158,30 @@ colorscheme summerfruit_tap
 " font
 "-------------------------------------------------------------------------------
 
-" for Inconsolata LGC font
-set linespace=-2
-" for Andale Mono
-"set linespace=2
-
 "set guifont=Andale\ Mono:h14
-"set guifont=Anonymice\ Powerline:h16
+"set guifont=PT\ Mono:h14
+"set guifont=Anonymice\ Powerline:h15
 "set guifont=Menlo\ for\ Powerline:h14
+"set guifont=Fira\ Mono\ For\ Powerline:h14
 "set guifont=MonacoB2:h13
 "set guifont=MonacoB\ for\ Powerline:h13
-set guifont=Inconsolata\ LGC:h13
+"set guifont=Inconsolata\ LGC:h14
+"set guifont=Input\ Mono\ Narrow:h14
+"set guifont=Source\ Code\ Pro\ For\ Powerline:h15
+
+if hostname() == 'Alexeys-MacBook-Pro.local'
+  set linespace=5
+  set guifont=Andale\ Mono\ Mt\ Std:h14
+
+  "set linespace=6
+  "set guifont=Anonymice\ Powerline:h15
+
+  "set linespace=-2
+  "set guifont=Inconsolata\ LGC:h13
+else
+  set linespace=-3
+  set guifont=Inconsolata\ LGC:h14
+endif
 
 "-------------------------------------------------------------------------------
 " indicators
