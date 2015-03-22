@@ -78,6 +78,10 @@ alias rake="noglob rake"
 # dev
 #-----------------------------------------------------------------------------------------
 
+# blog
+
+alias upload='rake generate && rake deploy'
+
 # cap
 
 alias pdeploy='git push && cap production deploy'
