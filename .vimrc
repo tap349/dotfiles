@@ -170,14 +170,14 @@ colorscheme summerfruit_tap
 "set guifont=Source\ Code\ Pro\ For\ Powerline:h15
 
 if hostname() == 'Alexeys-MacBook-Pro.local'
-  set linespace=4
-  set guifont=Andale\ Mono\ Mt\ Std:h14
+  "set linespace=4
+  "set guifont=Andale\ Mono\ Mt\ Std:h14
 
   "set linespace=3
   "set guifont=Anonymice\ Powerline:h15
 
-  "set linespace=-2
-  "set guifont=Inconsolata\ LGC:h13
+  set linespace=-4
+  set guifont=Inconsolata\ LGC:h13
 else
   set linespace=-3
   set guifont=Inconsolata\ LGC:h14
@@ -576,10 +576,17 @@ let g:airline_theme = 'tomorrow'
 
 let g:airline_powerline_fonts = 0
 
-let g:airline_left_sep = '⮀'
-let g:airline_left_alt_sep = '⮁'
-let g:airline_right_sep = '⮂'
-let g:airline_right_alt_sep = '⮃'
+if hostname() == 'Alexeys-MacBook-Pro.local'
+  let g:airline_left_sep = '⮀'
+  let g:airline_left_alt_sep = '⮁'
+  let g:airline_right_sep = '⮂'
+  let g:airline_right_alt_sep = '⮃'
+else
+  let g:airline_left_sep = '⮀'
+  let g:airline_left_alt_sep = '⮁'
+  let g:airline_right_sep = '⮂'
+  let g:airline_right_alt_sep = '⮃'
+endif
 
 " https://github.com/bling/vim-airline/issues/193
 if !exists('g:airline_symbols')
