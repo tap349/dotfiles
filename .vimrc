@@ -569,24 +569,17 @@ set laststatus=2
 "let g:airline_theme = 'molokai'
 "let g:airline_theme = 'hybrid'
 "let g:airline_theme = 'lucius'
-let g:airline_theme = 'tomorrow'
+"let g:airline_theme = 'tomorrow'
 "let g:airline_theme = 'powerlineish'
 "let g:airline_theme = 'dark'
-"let g:airline_theme = 'light'
+let g:airline_theme = 'light'
 
 let g:airline_powerline_fonts = 0
 
-if hostname() == 'Alexeys-MacBook-Pro.local'
-  let g:airline_left_sep = '⮀'
-  let g:airline_left_alt_sep = '⮁'
-  let g:airline_right_sep = '⮂'
-  let g:airline_right_alt_sep = '⮃'
-else
-  let g:airline_left_sep = '⮀'
-  let g:airline_left_alt_sep = '⮁'
-  let g:airline_right_sep = '⮂'
-  let g:airline_right_alt_sep = '⮃'
-endif
+let g:airline_left_sep = '⮀'
+let g:airline_left_alt_sep = '⮁'
+let g:airline_right_sep = '⮂'
+let g:airline_right_alt_sep = '⮃'
 
 " https://github.com/bling/vim-airline/issues/193
 if !exists('g:airline_symbols')
