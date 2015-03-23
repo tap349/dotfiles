@@ -170,10 +170,10 @@ colorscheme summerfruit_tap
 "set guifont=Source\ Code\ Pro\ For\ Powerline:h15
 
 if hostname() == 'Alexeys-MacBook-Pro.local'
-  set linespace=5
+  set linespace=4
   set guifont=Andale\ Mono\ Mt\ Std:h14
 
-  "set linespace=6
+  "set linespace=3
   "set guifont=Anonymice\ Powerline:h15
 
   "set linespace=-2
