@@ -515,18 +515,6 @@ nmap <Leader><F1>r :CommandTFlush<CR>:CommandT<CR>
 map <Leader><Space> <Plug>NERDCommenterToggle
 
 "-------------------------------------------------------------------------------
-" LustyExplorer
-"-------------------------------------------------------------------------------
-
-nmap <F3> :LustyBufferGrep<CR>
-nmap <Leader>l :LustyBufferGrep<CR>
-
-silent! unmap <Leader>lf
-silent! unmap <Leader>lr
-silent! unmap <Leader>lb
-silent! unmap <Leader>lg
-
-"-------------------------------------------------------------------------------
 " nerdtree
 "-------------------------------------------------------------------------------
 
