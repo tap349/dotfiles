@@ -146,13 +146,15 @@ set background=dark
 "let g:solarized_italic = 1
 
 "colorscheme iceberg
-"colorscheme ir_black
 "colorscheme tir_black
 "colorscheme jellyx
 "colorscheme sebocean
 "colorscheme solarized
 "colorscheme summerfruit256
-colorscheme summerfruit_tap
+"colorscheme summerfruit_tap
+"colorscheme summerfruit_tap
+"colorscheme ir_black
+colorscheme github
 
 "-------------------------------------------------------------------------------
 " font
@@ -170,14 +172,14 @@ colorscheme summerfruit_tap
 "set guifont=Source\ Code\ Pro\ For\ Powerline:h15
 
 if hostname() == 'Alexeys-MacBook-Pro.local'
-  "set linespace=4
+  "set linespace=2
   "set guifont=Andale\ Mono\ Mt\ Std:h14
 
   "set linespace=3
   "set guifont=Anonymice\ Powerline:h15
 
   set linespace=-4
-  set guifont=Inconsolata\ LGC:h13
+  set guifont=Inconsolata\ LGC:h14
 else
   set linespace=-3
   set guifont=Inconsolata\ LGC:h14
@@ -572,7 +574,8 @@ set laststatus=2
 "let g:airline_theme = 'tomorrow'
 "let g:airline_theme = 'powerlineish'
 "let g:airline_theme = 'dark'
-let g:airline_theme = 'light'
+"let g:airline_theme = 'light'
+let g:airline_theme = 'base16'
 
 let g:airline_powerline_fonts = 0
 
