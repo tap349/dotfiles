@@ -94,6 +94,7 @@ alias g='git'
 alias ga='git add -A .'
 alias gl="git log --graph --pretty=format:'%Cred%h%Creset %C(yellow)%d%Creset %s - %C(bold blue)%an%Creset, %Cgreen%cr' --abbrev-commit"
 alias gs='git status'
+alias gbd='git_delete_branches'
 
 # misc
 
@@ -162,4 +163,8 @@ gr() {
 
 orig() {
   find . -iname '*.orig' -exec rm {} \;
+}
+
+git_delete_branches() {
+  git branch | grep -v -E '(master|develop)' | xargs git branch -d
 }
