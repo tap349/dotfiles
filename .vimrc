@@ -148,13 +148,11 @@ set background=dark
 "colorscheme iceberg
 "colorscheme tir_black
 "colorscheme jellyx
-"colorscheme sebocean
+"colorscheme sebocean_tap
 "colorscheme solarized
-"colorscheme summerfruit256
 "colorscheme summerfruit_tap
-"colorscheme summerfruit_tap
-"colorscheme ir_black
-colorscheme github
+colorscheme ir_black_tap
+"colorscheme github
 
 "-------------------------------------------------------------------------------
 " font
@@ -296,7 +294,7 @@ nnoremap <silent> <Space> i<Space><Esc>l
 " editing popular files
 "-------------------------------------------------------------------------------
 
-nnoremap <Leader>ec :tabnew<CR>:edit ~/.vim/colors/summerfruit_tap.vim<CR>
+nnoremap <Leader>ec :tabnew<CR>:edit ~/.vim/colors/ir_black_tap.vim<CR>
 nnoremap <Leader>ev :tabnew<CR>:edit $MYVIMRC<CR>
 nnoremap <Leader>ez :tabnew<CR>:edit ~/.zshrc<CR>
 
@@ -561,9 +559,9 @@ set laststatus=2
 "let g:airline_theme = 'lucius'
 "let g:airline_theme = 'tomorrow'
 "let g:airline_theme = 'powerlineish'
-"let g:airline_theme = 'dark'
+let g:airline_theme = 'dark'
 "let g:airline_theme = 'light'
-let g:airline_theme = 'base16'
+"let g:airline_theme = 'base16'
 
 let g:airline_powerline_fonts = 0
 
