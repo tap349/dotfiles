@@ -565,8 +565,8 @@ set laststatus=2
 "let g:airline_theme = 'dark'
 "let g:airline_theme = 'light'
 "let g:airline_theme = 'base16'
-"let g:airline_theme = 'zenburn'
-let g:airline_theme = 'serene'
+let g:airline_theme = 'zenburn'
+"let g:airline_theme = 'serene'
 "let g:airline_theme = 'ubaryd'
 
 let g:airline_powerline_fonts = 0

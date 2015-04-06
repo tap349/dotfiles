@@ -67,8 +67,8 @@ let colors_name = "ir_black"
 
 " General colors
 "hi Normal           guifg=#F6F3E8     guibg=#28282F     gui=NONE      ctermfg=NONE        ctermbg=NONE        cterm=NONE
-hi Normal           guifg=#E6E3E0     guibg=#2F2F38     gui=NONE      ctermfg=NONE        ctermbg=NONE        cterm=NONE
-hi NonText          guifg=#575767     guibg=#18181F       gui=NONE      ctermfg=black       ctermbg=NONE        cterm=NONE
+hi Normal           guifg=#F6F3F0     guibg=#2F2F3B     gui=NONE      ctermfg=NONE        ctermbg=NONE        cterm=NONE
+hi NonText          guifg=#575767     guibg=#1F1F2A       gui=NONE      ctermfg=black       ctermbg=NONE        cterm=NONE
 
 "hi Cursor           guifg=black       guibg=white       gui=NONE      ctermfg=black       ctermbg=white       cterm=reverse
 hi Cursor           guifg=black       guibg=#FFBC0D       gui=NONE      ctermfg=black       ctermbg=white       cterm=reverse
@@ -82,8 +82,9 @@ hi StatusLineNC     guifg=black       guibg=#202020     gui=NONE      ctermfg=bl
 hi Folded           guifg=#a0a8b0     guibg=#384048     gui=NONE      ctermfg=NONE        ctermbg=NONE        cterm=NONE
 hi Title            guifg=#f6f3e8     guibg=NONE        gui=bold      ctermfg=NONE        ctermbg=NONE        cterm=NONE
 "hi Visual           guifg=NONE        guibg=#262D51     gui=NONE      ctermfg=NONE        ctermbg=darkgray    cterm=NONE
-"hi Visual           guifg=NONE        guibg=#2F365A     gui=NONE      ctermfg=NONE        ctermbg=darkgray    cterm=NONE
-hi Visual           guifg=#135678     guibg=#9FCFE3     gui=NONE      ctermfg=NONE        ctermbg=darkgray    cterm=NONE
+hi Visual           guifg=NONE        guibg=#464D71     gui=NONE      ctermfg=NONE        ctermbg=darkgray    cterm=NONE
+"hi Visual           guifg=NONE        guibg=#3F3978     gui=NONE      ctermfg=NONE        ctermbg=darkgray    cterm=NONE
+"hi Visual           guifg=#135678     guibg=#9FCFE3     gui=NONE      ctermfg=NONE        ctermbg=darkgray    cterm=NONE
 
 hi SpecialKey       guifg=#808080     guibg=#343434     gui=NONE      ctermfg=NONE        ctermbg=NONE        cterm=NONE
 
@@ -105,8 +106,9 @@ if version >= 700 " Vim 7.x specific colors
   hi Pmenu          guifg=#f6f3e8     guibg=#444444     gui=NONE      ctermfg=NONE        ctermbg=NONE        cterm=NONE
   hi PmenuSel       guifg=#000000     guibg=#cae682     gui=NONE      ctermfg=NONE        ctermbg=NONE        cterm=NONE
   "hi Search         guifg=NONE        guibg=#464D94     gui=NONE      ctermfg=NONE        ctermbg=NONE        cterm=underline
-  "hi Search         guifg=#363D54     guibg=#7FAFD3     gui=NONE      ctermfg=NONE        ctermbg=NONE        cterm=underline
-  hi Search         guifg=#222222     guibg=#AAEE22     gui=NONE      ctermfg=NONE        ctermbg=NONE        cterm=underline
+  "hi Search         guifg=#161D34     guibg=#7FAFD3     gui=NONE      ctermfg=NONE        ctermbg=NONE        cterm=underline
+  hi Search           guifg=#135678     guibg=#9FCFE3     gui=NONE      ctermfg=NONE        ctermbg=darkgray    cterm=NONE
+  "hi Search         guifg=#222222     guibg=#AAEE22     gui=NONE      ctermfg=NONE        ctermbg=NONE        cterm=underline
 endif
 
 " Syntax highlighting
