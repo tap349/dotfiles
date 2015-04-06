@@ -176,6 +176,9 @@ if hostname() == 'Alexeys-MacBook-Pro.local'
   "set linespace=3
   "set guifont=Anonymice\ Powerline:h15
 
+  "set linespace=0
+  "set guifont=MonacoB\ for\ Powerline:h13
+
   set linespace=-3
   set guifont=Inconsolata\ LGC:h13
 else
@@ -559,9 +562,12 @@ set laststatus=2
 "let g:airline_theme = 'lucius'
 "let g:airline_theme = 'tomorrow'
 "let g:airline_theme = 'powerlineish'
-let g:airline_theme = 'dark'
+"let g:airline_theme = 'dark'
 "let g:airline_theme = 'light'
 "let g:airline_theme = 'base16'
+"let g:airline_theme = 'zenburn'
+let g:airline_theme = 'serene'
+"let g:airline_theme = 'ubaryd'
 
 let g:airline_powerline_fonts = 0
 

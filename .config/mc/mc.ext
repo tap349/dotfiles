@@ -416,13 +416,13 @@ regex/\.([mM][4][aA])$
 	Include=audio
 
 include/audio
-	Open=mps %f
+	Open=mpv %f
 
 
 ### Play lists ###
 
 regex/\.([mM]3[uU]|[pP][lL][sS])$
-	Open=mps -vo null -playlist %f
+	Open=mpv -vo null -playlist %f
 
 
 ### Video ###
