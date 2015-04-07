@@ -66,9 +66,9 @@ let colors_name = "ir_black"
 "hi Example         guifg=NONE        guibg=NONE        gui=NONE      ctermfg=NONE        ctermbg=NONE        cterm=NONE
 
 " General colors
-hi Normal           guifg=#C3D0D9     guibg=#1B1E25     gui=NONE      ctermfg=NONE        ctermbg=NONE        cterm=NONE
+hi Normal           guifg=#D3E0E9     guibg=#262633     gui=NONE      ctermfg=NONE        ctermbg=NONE        cterm=NONE
 "hi Normal           guifg=#f6f3e8     guibg=#131b32     gui=NONE      ctermfg=NONE        ctermbg=NONE        cterm=NONE
-hi NonText          guifg=#070707     guibg=#080A13     gui=NONE      ctermfg=black       ctermbg=NONE        cterm=NONE
+hi NonText          guifg=#070707     guibg=#0F121F     gui=NONE      ctermfg=black       ctermbg=NONE        cterm=NONE
 
 "hi Cursor           guifg=black       guibg=white       gui=NONE      ctermfg=black       ctermbg=white       cterm=reverse
 hi Cursor           guifg=black       guibg=#ffbc0d     gui=NONE      ctermfg=black       ctermbg=white       cterm=reverse
@@ -82,7 +82,7 @@ hi StatusLineNC     guifg=#CCCCCC     guibg=#181818     gui=italic    ctermfg=wh
 hi Folded           guifg=#a0a8b0     guibg=#384048     gui=NONE      ctermfg=NONE        ctermbg=NONE        cterm=NONE
 hi Title            guifg=#f6f3e8     guibg=NONE        gui=bold      ctermfg=NONE        ctermbg=NONE        cterm=NONE
 "hi Visual           guifg=#207395     guibg=#a1d8ef     gui=NONE      ctermfg=NONE        ctermbg=darkgray    cterm=NONE
-hi Visual           guifg=NONE        guibg=#262D51     gui=NONE      ctermfg=NONE        ctermbg=darkgray    cterm=NONE
+hi Visual           guifg=NONE        guibg=#292F5F     gui=NONE      ctermfg=NONE        ctermbg=darkgray    cterm=NONE
 
 hi SpecialKey       guifg=#808080     guibg=#343434     gui=NONE      ctermfg=NONE        ctermbg=NONE        cterm=NONE
 

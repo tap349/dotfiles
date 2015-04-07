@@ -151,7 +151,8 @@ set background=dark
 "colorscheme sebocean_tap
 "colorscheme solarized
 "colorscheme summerfruit_tap
-colorscheme ir_black_tap
+"colorscheme ir_black_tap
+colorscheme sebocean_tap
 "colorscheme github
 
 "-------------------------------------------------------------------------------
@@ -297,7 +298,7 @@ nnoremap <silent> <Space> i<Space><Esc>l
 " editing popular files
 "-------------------------------------------------------------------------------
 
-nnoremap <Leader>ec :tabnew<CR>:edit ~/.vim/colors/ir_black_tap.vim<CR>
+nnoremap <Leader>ec :tabnew<CR>:edit ~/.vim/colors/sebocean_tap.vim<CR>
 nnoremap <Leader>ev :tabnew<CR>:edit $MYVIMRC<CR>
 nnoremap <Leader>ez :tabnew<CR>:edit ~/.zshrc<CR>
 
@@ -562,10 +563,10 @@ set laststatus=2
 "let g:airline_theme = 'lucius'
 "let g:airline_theme = 'tomorrow'
 "let g:airline_theme = 'powerlineish'
-"let g:airline_theme = 'dark'
+let g:airline_theme = 'dark'
 "let g:airline_theme = 'light'
 "let g:airline_theme = 'base16'
-let g:airline_theme = 'zenburn'
+"let g:airline_theme = 'zenburn'
 "let g:airline_theme = 'serene'
 "let g:airline_theme = 'ubaryd'
 
