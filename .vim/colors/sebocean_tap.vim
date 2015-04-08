@@ -98,7 +98,7 @@ hi WarningMsg       guifg=white       guibg=#FF6C60     gui=BOLD      ctermfg=wh
 hi ModeMsg          guifg=black       guibg=#C6C5FE     gui=BOLD      ctermfg=black       ctermbg=cyan        cterm=BOLD
 
 if version >= 700 " Vim 7.x specific colors
-  hi CursorLine     guifg=NONE        guibg=#080A13      gui=NONE      ctermfg=NONE        ctermbg=NONE        cterm=BOLD
+  hi CursorLine     guifg=NONE        guibg=#383A53      gui=NONE      ctermfg=NONE        ctermbg=NONE        cterm=BOLD
   hi CursorColumn   guifg=NONE        guibg=#121212     gui=NONE      ctermfg=NONE        ctermbg=NONE        cterm=BOLD
   hi MatchParen     guifg=#D0FF4E     guibg=grey25      gui=BOLD      ctermfg=white       ctermbg=darkgray    cterm=NONE
   hi Pmenu          guifg=#f6f3e8     guibg=#444444     gui=NONE      ctermfg=NONE        ctermbg=NONE        cterm=NONE
@@ -109,7 +109,7 @@ if version >= 700 " Vim 7.x specific colors
 endif
 
 " Syntax highlighting
-hi Comment          guifg=#4C5B6B     guibg=NONE        gui=italic    ctermfg=darkgray    ctermbg=NONE        cterm=NONE
+hi Comment          guifg=#6C7B8B     guibg=NONE        gui=italic    ctermfg=darkgray    ctermbg=NONE        cterm=NONE
 "hi String           guifg=#5A6E9C     guibg=NONE        gui=italic    ctermfg=green       ctermbg=NONE        cterm=NONE
 hi String           guifg=#FFA5A5     guibg=NONE        gui=NONE      ctermfg=green       ctermbg=NONE        cterm=NONE
 "hi String           guifg=#6D578B     guibg=NONE        gui=NONE      ctermfg=green       ctermbg=NONE        cterm=NONE
