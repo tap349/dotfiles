@@ -67,7 +67,7 @@ let colors_name = "ir_black"
 
 " General colors
 "hi Normal           guifg=#F6F3E8     guibg=#28282F     gui=NONE      ctermfg=NONE        ctermbg=NONE        cterm=NONE
-hi Normal           guifg=#F6F3F0     guibg=#2F2F3B     gui=NONE      ctermfg=NONE        ctermbg=NONE        cterm=NONE
+hi Normal           guifg=#F6F3F0     guibg=#2F2F3E     gui=NONE      ctermfg=NONE        ctermbg=NONE        cterm=NONE
 hi NonText          guifg=#575767     guibg=#1F1F2A       gui=NONE      ctermfg=black       ctermbg=NONE        cterm=NONE
 
 "hi Cursor           guifg=black       guibg=white       gui=NONE      ctermfg=black       ctermbg=white       cterm=reverse
@@ -100,14 +100,14 @@ hi WarningMsg       guifg=white       guibg=#FF6C60     gui=BOLD      ctermfg=wh
 hi ModeMsg          guifg=black       guibg=#C6C5FE     gui=BOLD      ctermfg=black       ctermbg=cyan        cterm=BOLD
 
 if version >= 700 " Vim 7.x specific colors
-  hi CursorLine     guifg=NONE        guibg=#48485A     gui=NONE      ctermfg=NONE        ctermbg=NONE        cterm=BOLD
+  hi CursorLine     guifg=NONE        guibg=#49495F     gui=NONE      ctermfg=NONE        ctermbg=NONE        cterm=BOLD
   hi CursorColumn   guifg=NONE        guibg=#121212     gui=NONE      ctermfg=NONE        ctermbg=NONE        cterm=BOLD
   hi MatchParen     guifg=#f6f3e8     guibg=#857b6f     gui=BOLD      ctermfg=white       ctermbg=darkgray    cterm=NONE
   hi Pmenu          guifg=#f6f3e8     guibg=#444444     gui=NONE      ctermfg=NONE        ctermbg=NONE        cterm=NONE
   hi PmenuSel       guifg=#000000     guibg=#cae682     gui=NONE      ctermfg=NONE        ctermbg=NONE        cterm=NONE
   "hi Search         guifg=NONE        guibg=#464D94     gui=NONE      ctermfg=NONE        ctermbg=NONE        cterm=underline
   "hi Search         guifg=#161D34     guibg=#7FAFD3     gui=NONE      ctermfg=NONE        ctermbg=NONE        cterm=underline
-  hi Search           guifg=#135678     guibg=#9FCFE3     gui=NONE      ctermfg=NONE        ctermbg=darkgray    cterm=NONE
+  hi Search           guifg=#133658     guibg=#9FCFE3     gui=NONE      ctermfg=NONE        ctermbg=darkgray    cterm=NONE
   "hi Search         guifg=#222222     guibg=#AAEE22     gui=NONE      ctermfg=NONE        ctermbg=NONE        cterm=underline
 endif
 
@@ -115,6 +115,7 @@ endif
 hi Comment          guifg=#7C7C7C     guibg=NONE        gui=NONE      ctermfg=darkgray    ctermbg=NONE        cterm=NONE
 "hi String           guifg=#98EF50     guibg=NONE        gui=NONE      ctermfg=green       ctermbg=NONE        cterm=NONE
 hi String           guifg=#88DF40     guibg=NONE        gui=NONE      ctermfg=green       ctermbg=NONE        cterm=NONE
+"hi String           guifg=#FFA0A0     guibg=NONE        gui=NONE      ctermfg=green       ctermbg=NONE        cterm=NONE
 hi Number           guifg=#FF73FD     guibg=NONE        gui=NONE      ctermfg=magenta     ctermbg=NONE        cterm=NONE
 
 hi Keyword          guifg=#96CBFE     guibg=NONE        gui=NONE      ctermfg=blue        ctermbg=NONE        cterm=NONE
@@ -122,7 +123,8 @@ hi PreProc          guifg=#96CBFE     guibg=NONE        gui=NONE      ctermfg=bl
 hi Conditional      guifg=#6699CC     guibg=NONE        gui=NONE      ctermfg=blue        ctermbg=NONE        cterm=NONE  " if else end
 
 hi Todo             guifg=#8f8f8f     guibg=NONE        gui=NONE      ctermfg=red         ctermbg=NONE        cterm=NONE
-hi Constant         guifg=#99CC99     guibg=NONE        gui=NONE      ctermfg=cyan        ctermbg=NONE        cterm=NONE
+"hi Constant         guifg=#99CC99     guibg=NONE        gui=NONE      ctermfg=cyan        ctermbg=NONE        cterm=NONE
+hi Constant         guifg=#99CCD9     guibg=NONE        gui=NONE      ctermfg=cyan        ctermbg=NONE        cterm=NONE
 
 hi Identifier       guifg=#C6C5FE     guibg=NONE        gui=NONE      ctermfg=cyan        ctermbg=NONE        cterm=NONE
 hi Function         guifg=#FFD2A7     guibg=NONE        gui=NONE      ctermfg=brown       ctermbg=NONE        cterm=NONE

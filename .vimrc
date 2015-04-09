@@ -151,8 +151,8 @@ set background=dark
 "colorscheme sebocean_tap
 "colorscheme solarized
 "colorscheme summerfruit_tap
-"colorscheme ir_black_tap
-colorscheme sebocean_tap
+colorscheme ir_black_tap
+"colorscheme sebocean_tap
 "colorscheme github
 
 "-------------------------------------------------------------------------------
@@ -298,7 +298,7 @@ nnoremap <silent> <Space> i<Space><Esc>l
 " editing popular files
 "-------------------------------------------------------------------------------
 
-nnoremap <Leader>ec :tabnew<CR>:edit ~/.vim/colors/sebocean_tap.vim<CR>
+nnoremap <Leader>ec :tabnew<CR>:edit ~/.vim/colors/ir_black_tap.vim<CR>
 nnoremap <Leader>ev :tabnew<CR>:edit $MYVIMRC<CR>
 nnoremap <Leader>ez :tabnew<CR>:edit ~/.zshrc<CR>
 
