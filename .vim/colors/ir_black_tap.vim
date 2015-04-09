@@ -60,7 +60,7 @@ if exists("syntax_on")
   syntax reset
 endif
 
-let colors_name = "ir_black"
+let colors_name = "ir_black_tap"
 
 
 "hi Example         guifg=NONE        guibg=NONE        gui=NONE      ctermfg=NONE        ctermbg=NONE        cterm=NONE
@@ -114,7 +114,8 @@ endif
 " Syntax highlighting
 hi Comment          guifg=#7C7C7C     guibg=NONE        gui=NONE      ctermfg=darkgray    ctermbg=NONE        cterm=NONE
 "hi String           guifg=#98EF50     guibg=NONE        gui=NONE      ctermfg=green       ctermbg=NONE        cterm=NONE
-hi String           guifg=#88DF40     guibg=NONE        gui=NONE      ctermfg=green       ctermbg=NONE        cterm=NONE
+"hi String           guifg=#88DF40     guibg=NONE        gui=NONE      ctermfg=green       ctermbg=NONE        cterm=NONE
+hi String           guifg=#78DF30     guibg=NONE        gui=NONE      ctermfg=green       ctermbg=NONE        cterm=NONE
 "hi String           guifg=#FFA0A0     guibg=NONE        gui=NONE      ctermfg=green       ctermbg=NONE        cterm=NONE
 hi Number           guifg=#FF73FD     guibg=NONE        gui=NONE      ctermfg=magenta     ctermbg=NONE        cterm=NONE
 
@@ -161,7 +162,7 @@ hi rubyEscape                  guifg=white        guibg=NONE      gui=NONE      
 hi rubyInterpolationDelimiter  guifg=#00A0A0      guibg=NONE      gui=NONE      ctermfg=blue           ctermbg=NONE      cterm=NONE
 hi rubyControl                 guifg=#6699CC      guibg=NONE      gui=NONE      ctermfg=blue           ctermbg=NONE      cterm=NONE  "and break, etc
 "hi rubyGlobalVariable          guifg=#FFCCFF      guibg=NONE      gui=NONE      ctermfg=lightblue      ctermbg=NONE      cterm=NONE  "yield
-hi rubyStringDelimiter         guifg=#447744      guibg=NONE      gui=NONE      ctermfg=lightgreen     ctermbg=NONE      cterm=NONE
+hi rubyStringDelimiter         guifg=#77AA66      guibg=NONE      gui=NONE      ctermfg=lightgreen     ctermbg=NONE      cterm=NONE
 "rubyInclude
 "rubySharpBang
 "rubyAccess
