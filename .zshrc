@@ -96,6 +96,10 @@ alias gl="git log --graph --pretty=format:'%Cred%h%Creset %C(yellow)%d%Creset %s
 alias gs='git status'
 alias gbd='git_delete_branches'
 
+# hitch
+
+alias unhitch='hitch -u'
+
 # misc
 
 alias log='tail -f log/development.log'
@@ -167,4 +171,9 @@ orig() {
 
 git_delete_branches() {
   git branch | grep -v -E '(master|develop)' | xargs git branch -d
+}
+
+hitch() {
+  command hitch "$@"
+  if [[ -s "$HOME/.hitch_export_authors" ]] ; then source "$HOME/.hitch_export_authors" ; fi
 }
