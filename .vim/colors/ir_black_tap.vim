@@ -116,7 +116,7 @@ hi Comment          guifg=#7C7C7C     guibg=NONE        gui=NONE      ctermfg=da
 "hi String           guifg=#98EF50     guibg=NONE        gui=NONE      ctermfg=green       ctermbg=NONE        cterm=NONE
 "hi String           guifg=#88DF40     guibg=NONE        gui=NONE      ctermfg=green       ctermbg=NONE        cterm=NONE
 hi String           guifg=#78DF30     guibg=NONE        gui=NONE      ctermfg=green       ctermbg=NONE        cterm=NONE
-"hi String           guifg=#FFA0A0     guibg=NONE        gui=NONE      ctermfg=green       ctermbg=NONE        cterm=NONE
+"hi String           guifg=#FFA5A5     guibg=NONE        gui=NONE      ctermfg=green       ctermbg=NONE        cterm=NONE
 hi Number           guifg=#FF73FD     guibg=NONE        gui=NONE      ctermfg=magenta     ctermbg=NONE        cterm=NONE
 
 hi Keyword          guifg=#96CBFE     guibg=NONE        gui=NONE      ctermfg=blue        ctermbg=NONE        cterm=NONE
