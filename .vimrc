@@ -140,6 +140,7 @@ set splitright
 set t_Co=256
 
 set background=dark
+"set transparency=20
 
 "let g:solarized_bold = 1
 "let g:solarized_contrast = 'normal'
@@ -148,12 +149,12 @@ set background=dark
 "colorscheme iceberg
 "colorscheme tir_black
 "colorscheme jellyx
-"colorscheme sebocean_tap
 "colorscheme solarized
 "colorscheme summerfruit_tap
 colorscheme ir_black_tap
 "colorscheme sebocean_tap
 "colorscheme github
+"colorscheme gruvbox
 
 "-------------------------------------------------------------------------------
 " font
@@ -563,17 +564,11 @@ set laststatus=2
 "let g:airline_theme = 'lucius'
 "let g:airline_theme = 'tomorrow'
 "let g:airline_theme = 'powerlineish'
-let g:airline_theme = 'dark'
+"let g:airline_theme = 'dark'
 "let g:airline_theme = 'light'
-<<<<<<< HEAD
 "let g:airline_theme = 'base16'
-"let g:airline_theme = 'zenburn'
+let g:airline_theme = 'zenburn'
 "let g:airline_theme = 'serene'
-=======
-let g:airline_theme = 'base16'
-"let g:airline_theme = 'zenburn'
-let g:airline_theme = 'serene'
->>>>>>> sebocean theme fix
 "let g:airline_theme = 'ubaryd'
 
 let g:airline_powerline_fonts = 0

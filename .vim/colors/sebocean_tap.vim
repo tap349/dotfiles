@@ -66,14 +66,15 @@ let colors_name = "ir_black"
 "hi Example         guifg=NONE        guibg=NONE        gui=NONE      ctermfg=NONE        ctermbg=NONE        cterm=NONE
 
 " General colors
-hi Normal           guifg=#D3E0E9     guibg=#262633     gui=NONE      ctermfg=NONE        ctermbg=NONE        cterm=NONE
+hi Normal           guifg=#D3E0E9     guibg=#2F2F3E     gui=NONE      ctermfg=NONE        ctermbg=NONE        cterm=NONE
 "hi Normal           guifg=#f6f3e8     guibg=#131b32     gui=NONE      ctermfg=NONE        ctermbg=NONE        cterm=NONE
 hi NonText          guifg=#070707     guibg=#0F121F     gui=NONE      ctermfg=black       ctermbg=NONE        cterm=NONE
 
 "hi Cursor           guifg=black       guibg=white       gui=NONE      ctermfg=black       ctermbg=white       cterm=reverse
 hi Cursor           guifg=black       guibg=#ffbc0d     gui=NONE      ctermfg=black       ctermbg=white       cterm=reverse
 hi LineNr           guifg=#808080     guibg=grey7       gui=NONE      ctermfg=darkgray    ctermbg=NONE        cterm=NONE
-hi CursorLineNr     guifg=#C0C0C0     guibg=grey7       gui=NONE      ctermfg=darkgray    ctermbg=NONE        cterm=NONE
+"hi CursorLineNr     guifg=#C0C0C0     guibg=grey7       gui=NONE      ctermfg=darkgray    ctermbg=NONE        cterm=NONE
+hi CursorLineNr     guifg=#EEEE22     guibg=NONE     gui=NONE      ctermfg=NONE        ctermbg=NONE        cterm=BOLD
 
 hi VertSplit        guifg=#202020     guibg=black       gui=NONE      ctermfg=darkgray    ctermbg=darkgray    cterm=NONE
 hi StatusLine       guifg=#CCCCCC     guibg=#303030     gui=italic    ctermfg=white       ctermbg=darkgray    cterm=NONE
@@ -104,14 +105,14 @@ if version >= 700 " Vim 7.x specific colors
   hi Pmenu          guifg=#f6f3e8     guibg=#444444     gui=NONE      ctermfg=NONE        ctermbg=NONE        cterm=NONE
   hi PmenuSel       guifg=#000000     guibg=#cae682     gui=NONE      ctermfg=NONE        ctermbg=NONE        cterm=NONE
   "hi Search         guifg=black       guibg=#94CE94     gui=NONE      ctermfg=NONE        ctermbg=NONE        cterm=underline
-  hi Search         guifg=NONE        guibg=#363D84     gui=NONE      ctermfg=NONE        ctermbg=NONE        cterm=underline
+  hi Search         guifg=NONE        guibg=#363D94     gui=NONE      ctermfg=NONE        ctermbg=NONE        cterm=underline
   "hi IncSearch      guifg=black       guibg=#A3DE2A     gui=NONE
 endif
 
 " Syntax highlighting
 hi Comment          guifg=#6C7B8B     guibg=NONE        gui=italic    ctermfg=darkgray    ctermbg=NONE        cterm=NONE
 "hi String           guifg=#5A6E9C     guibg=NONE        gui=italic    ctermfg=green       ctermbg=NONE        cterm=NONE
-hi String           guifg=#FFA5A5     guibg=NONE        gui=NONE      ctermfg=green       ctermbg=NONE        cterm=NONE
+hi String           guifg=#FF9090     guibg=NONE        gui=NONE      ctermfg=green       ctermbg=NONE        cterm=NONE
 "hi String           guifg=#6D578B     guibg=NONE        gui=NONE      ctermfg=green       ctermbg=NONE        cterm=NONE
 "hi String           guifg=#2FBF94     guibg=NONE        gui=NONE      ctermfg=green       ctermbg=NONE        cterm=NONE
 hi Number           guifg=#FF73FD     guibg=NONE        gui=NONE      ctermfg=magenta     ctermbg=NONE        cterm=NONE

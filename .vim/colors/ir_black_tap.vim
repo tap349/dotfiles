@@ -66,8 +66,8 @@ let colors_name = "ir_black_tap"
 "hi Example         guifg=NONE        guibg=NONE        gui=NONE      ctermfg=NONE        ctermbg=NONE        cterm=NONE
 
 " General colors
-"hi Normal           guifg=#F6F3E8     guibg=#28282F     gui=NONE      ctermfg=NONE        ctermbg=NONE        cterm=NONE
-hi Normal           guifg=#F6F3F0     guibg=#2F2F3E     gui=NONE      ctermfg=NONE        ctermbg=NONE        cterm=NONE
+hi Normal           guifg=#F6F3E8     guibg=#282834     gui=NONE      ctermfg=NONE        ctermbg=NONE        cterm=NONE
+"hi Normal           guifg=#F6F3F0     guibg=#313141     gui=NONE      ctermfg=NONE        ctermbg=NONE        cterm=NONE
 hi NonText          guifg=#575767     guibg=#1F1F2A       gui=NONE      ctermfg=black       ctermbg=NONE        cterm=NONE
 
 "hi Cursor           guifg=black       guibg=white       gui=NONE      ctermfg=black       ctermbg=white       cterm=reverse
@@ -115,8 +115,8 @@ endif
 hi Comment          guifg=#7C7C7C     guibg=NONE        gui=NONE      ctermfg=darkgray    ctermbg=NONE        cterm=NONE
 "hi String           guifg=#98EF50     guibg=NONE        gui=NONE      ctermfg=green       ctermbg=NONE        cterm=NONE
 "hi String           guifg=#88DF40     guibg=NONE        gui=NONE      ctermfg=green       ctermbg=NONE        cterm=NONE
-hi String           guifg=#78DF30     guibg=NONE        gui=NONE      ctermfg=green       ctermbg=NONE        cterm=NONE
-"hi String           guifg=#FFA5A5     guibg=NONE        gui=NONE      ctermfg=green       ctermbg=NONE        cterm=NONE
+hi String           guifg=#A8FF70     guibg=NONE        gui=NONE      ctermfg=green       ctermbg=NONE        cterm=NONE
+"hi String           guifg=#FF95A5     guibg=NONE        gui=NONE      ctermfg=green       ctermbg=NONE        cterm=NONE
 hi Number           guifg=#FF73FD     guibg=NONE        gui=NONE      ctermfg=magenta     ctermbg=NONE        cterm=NONE
 
 hi Keyword          guifg=#96CBFE     guibg=NONE        gui=NONE      ctermfg=blue        ctermbg=NONE        cterm=NONE
@@ -129,7 +129,9 @@ hi Constant         guifg=#99CCD9     guibg=NONE        gui=NONE      ctermfg=cy
 
 hi Identifier       guifg=#C6C5FE     guibg=NONE        gui=NONE      ctermfg=cyan        ctermbg=NONE        cterm=NONE
 hi Function         guifg=#FFD2A7     guibg=NONE        gui=NONE      ctermfg=brown       ctermbg=NONE        cterm=NONE
-hi Type             guifg=#FFFFB6     guibg=NONE        gui=NONE      ctermfg=yellow      ctermbg=NONE        cterm=NONE
+"hi Function         guifg=#78DF60     guibg=NONE        gui=NONE      ctermfg=brown       ctermbg=NONE        cterm=NONE
+"hi Type             guifg=#FFFFB6     guibg=NONE        gui=NONE      ctermfg=yellow      ctermbg=NONE        cterm=NONE
+hi Type             guifg=#FFFF96     guibg=NONE        gui=NONE      ctermfg=yellow      ctermbg=NONE        cterm=NONE
 hi Statement        guifg=#6699CC     guibg=NONE        gui=NONE      ctermfg=lightblue   ctermbg=NONE        cterm=NONE
 
 hi Special          guifg=#E18964     guibg=NONE        gui=NONE      ctermfg=white       ctermbg=NONE        cterm=NONE
