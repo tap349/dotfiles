@@ -142,16 +142,17 @@ set t_Co=256
 set background=dark
 "set transparency=20
 
-"let g:solarized_bold = 1
-"let g:solarized_contrast = 'normal'
-"let g:solarized_italic = 1
+let g:solarized_bold = 1
+let g:solarized_underline = 1
+let g:solarized_contrast = 'normal'
+let g:solarized_italic = 1
 
 "colorscheme iceberg
 "colorscheme tir_black
 "colorscheme jellyx
-"colorscheme solarized
+colorscheme solarized
 "colorscheme summerfruit_tap
-colorscheme ir_black_tap
+"colorscheme ir_black_tap
 "colorscheme sebocean_tap
 "colorscheme github
 "colorscheme gruvbox
@@ -567,7 +568,7 @@ set laststatus=2
 "let g:airline_theme = 'dark'
 "let g:airline_theme = 'light'
 "let g:airline_theme = 'base16'
-let g:airline_theme = 'zenburn'
+"let g:airline_theme = 'zenburn'
 "let g:airline_theme = 'serene'
 "let g:airline_theme = 'ubaryd'
 

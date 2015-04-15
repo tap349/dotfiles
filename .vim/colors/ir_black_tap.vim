@@ -66,7 +66,7 @@ let colors_name = "ir_black_tap"
 "hi Example         guifg=NONE        guibg=NONE        gui=NONE      ctermfg=NONE        ctermbg=NONE        cterm=NONE
 
 " General colors
-hi Normal           guifg=#F6F3E8     guibg=#282834     gui=NONE      ctermfg=NONE        ctermbg=NONE        cterm=NONE
+hi Normal           guifg=#F6F3E8     guibg=#2E2E3E     gui=NONE      ctermfg=NONE        ctermbg=NONE        cterm=NONE
 "hi Normal           guifg=#F6F3F0     guibg=#313141     gui=NONE      ctermfg=NONE        ctermbg=NONE        cterm=NONE
 hi NonText          guifg=#575767     guibg=#1F1F2A       gui=NONE      ctermfg=black       ctermbg=NONE        cterm=NONE
 
