@@ -61,9 +61,10 @@ set nowrap
 "-------------------------------------------------------------------------------
 
 set backup
+set noswapfile
 
 set backupdir=~/.vim/backup//
-set directory=~/.vim/tmp//
+"set directory=~/.vim/tmp//
 
 " http://vim.wikia.com/wiki/Editing_crontab
 set backupskip+=/private/tmp/*
