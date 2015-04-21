@@ -66,7 +66,7 @@ let colors_name = "ir_black_tap"
 "hi Example         guifg=NONE        guibg=NONE        gui=NONE      ctermfg=NONE        ctermbg=NONE        cterm=NONE
 
 " General colors
-hi Normal           guifg=#F6F3E8     guibg=#2E2E3E     gui=NONE      ctermfg=NONE        ctermbg=NONE        cterm=NONE
+hi Normal           guifg=#F6F3E8     guibg=#2A2A3A     gui=NONE      ctermfg=NONE        ctermbg=NONE        cterm=NONE
 "hi Normal           guifg=#F6F3F0     guibg=#313141     gui=NONE      ctermfg=NONE        ctermbg=NONE        cterm=NONE
 hi NonText          guifg=#575767     guibg=#1F1F2A       gui=NONE      ctermfg=black       ctermbg=NONE        cterm=NONE
 
@@ -107,16 +107,17 @@ if version >= 700 " Vim 7.x specific colors
   hi PmenuSel       guifg=#000000     guibg=#cae682     gui=NONE      ctermfg=NONE        ctermbg=NONE        cterm=NONE
   "hi Search         guifg=NONE        guibg=#464D94     gui=NONE      ctermfg=NONE        ctermbg=NONE        cterm=underline
   "hi Search         guifg=#161D34     guibg=#7FAFD3     gui=NONE      ctermfg=NONE        ctermbg=NONE        cterm=underline
-  hi Search           guifg=#133658     guibg=#9FCFE3     gui=NONE      ctermfg=NONE        ctermbg=darkgray    cterm=NONE
+  "hi Search           guifg=#133658     guibg=#9FCFE3     gui=NONE      ctermfg=NONE        ctermbg=darkgray    cterm=NONE
   "hi Search         guifg=#222222     guibg=#AAEE22     gui=NONE      ctermfg=NONE        ctermbg=NONE        cterm=underline
+  hi Search        gui=none           guibg=#B4EEB4
 endif
 
 " Syntax highlighting
 hi Comment          guifg=#7C7C7C     guibg=NONE        gui=NONE      ctermfg=darkgray    ctermbg=NONE        cterm=NONE
 "hi String           guifg=#98EF50     guibg=NONE        gui=NONE      ctermfg=green       ctermbg=NONE        cterm=NONE
 "hi String           guifg=#88DF40     guibg=NONE        gui=NONE      ctermfg=green       ctermbg=NONE        cterm=NONE
-hi String           guifg=#A8FF70     guibg=NONE        gui=NONE      ctermfg=green       ctermbg=NONE        cterm=NONE
-"hi String           guifg=#FF95A5     guibg=NONE        gui=NONE      ctermfg=green       ctermbg=NONE        cterm=NONE
+"hi String           guifg=#A8FF70     guibg=NONE        gui=NONE      ctermfg=green       ctermbg=NONE        cterm=NONE
+hi String           guifg=#FF95A5     guibg=NONE        gui=NONE      ctermfg=green       ctermbg=NONE        cterm=NONE
 hi Number           guifg=#FF73FD     guibg=NONE        gui=NONE      ctermfg=magenta     ctermbg=NONE        cterm=NONE
 
 hi Keyword          guifg=#96CBFE     guibg=NONE        gui=NONE      ctermfg=blue        ctermbg=NONE        cterm=NONE
