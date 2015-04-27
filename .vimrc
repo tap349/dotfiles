@@ -140,7 +140,7 @@ set splitright
 
 set t_Co=256
 
-set background=dark
+set background=light
 "set transparency=20
 
 let g:solarized_bold = 1
@@ -154,9 +154,9 @@ let g:solarized_italic = 1
 colorscheme solarized
 "colorscheme summerfruit_tap
 "colorscheme ir_black_tap
+"colorscheme ir_black_morr
 "colorscheme sebocean_tap
 "colorscheme github
-"colorscheme gruvbox
 
 "-------------------------------------------------------------------------------
 " font
@@ -357,6 +357,12 @@ nnoremap <silent> <S-Right> :tabmove +1<CR>
 nnoremap <silent> <S-Down> :tabmove 0<CR>
 nnoremap <silent> <S-Up> :tabmove<CR>
 
+"------- window ----------------------------------------------------------------
+
+" http://vim.wikia.com/wiki/Open_file_under_cursor
+"nnoremap <C-w>f :horizontal wincmd f<CR>
+nnoremap <C-w>F :vertical wincmd f<CR>
+
 "-------------------------------------------------------------------------------
 " reload file using different encoding
 "-------------------------------------------------------------------------------
@@ -497,6 +503,7 @@ map <silent> b <Plug>CamelCaseMotion_b
 
 let g:CommandTMaxHeight = 17
 let g:CommandTMaxFiles = 25000
+let g:CommandTWildIgnore = &wildignore."public/images/**,tmp/**,public/assets/**"
 
 nmap <F1> :CommandT<CR>
 nmap <S-F1> :CommandTBuffer<CR>
