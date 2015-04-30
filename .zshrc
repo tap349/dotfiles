@@ -62,6 +62,7 @@ BLOG=~/blog
 CHEF=~/dev/chef
 HOUSTON=~/dev/houston
 JUDGE=~/dev/judge
+PUMBA=~/dev/pumba
 SHIKIMORI=~/dev/shikimori
 UPTIMUS=~/dev/uptimus
 
@@ -133,10 +134,12 @@ alias blog='cd $BLOG'
 alias chef='cd $CHEF'
 alias houston='cd $HOUSTON'
 alias judge='cd $JUDGE'
+alias pumba='cd $PUMBA'
 alias shikimori='cd $SHIKIMORI'
 alias uptimus='cd $UPTIMUS'
 alias h='cd $HOUSTON'
 alias j='cd $JUDGE'
+alias p='cd $PUMBA'
 alias s='cd $SHIKIMORI'
 alias u='cd $UPTIMUS'
 
