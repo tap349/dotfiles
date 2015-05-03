@@ -121,6 +121,7 @@ alias rs='rails server'
 
 alias caravan="ssh devops@caravan"
 alias linode="ssh devops@linode"
+alias tap349="ssh root@46.101.139.241"
 
 #-----------------------------------------------------------------------------------------
 # common
