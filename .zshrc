@@ -146,8 +146,8 @@ alias rs='rails server'
 #
 # it's to possible to SSH in 2 ways:
 #
-# - ssh <host from .ssh/config>
-# - ssh <username>@<host from /etc/hosts>
+# 1) ssh <host from .ssh/config>
+# 2) ssh <username>@<host from /etc/hosts>
 #
 # in the 1st case user is supplied from .ssh/config
 #
@@ -155,8 +155,8 @@ alias rs='rails server'
 # if it has been added to .ssh/authorized_keys on server for specified user
 
 alias caravan="ssh caravan"
-alias linode-uptimus="ssh linode-uptimus"
-alias linode-pumba="ssh linode-pumba"
+#alias linode-uptimus="ssh uptimus"
+#alias linode-pumba="ssh pumba"
 alias tap349="ssh tap349"
 
 #-----------------------------------------------------------------------------------------
