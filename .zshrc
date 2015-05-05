@@ -60,8 +60,6 @@ CDPATH=~
 BLOG=~/blog
 
 CHEF=~/dev/chef
-HOUSTON=~/dev/houston
-JUDGE=~/dev/judge
 PUMBA=~/dev/pumba
 SHIKIMORI=~/dev/shikimori
 UPTIMUS=~/dev/uptimus
@@ -71,6 +69,33 @@ UPTIMUS=~/dev/uptimus
 # Aliases
 #
 #-----------------------------------------------------------------------------------------
+
+#-----------------------------------------------------------------------------------------
+# cd
+#-----------------------------------------------------------------------------------------
+
+alias dotfiles='cd ~/.dotfiles'
+alias downloads='cd ~/Downloads'
+
+alias blog='cd $BLOG'
+
+alias chef='cd $CHEF'
+alias pumba='cd $PUMBA'
+alias shikimori='cd $SHIKIMORI'
+alias uptimus='cd $UPTIMUS'
+
+alias c='cd $CHEF'
+alias p='cd $PUMBA'
+alias s='cd $SHIKIMORI'
+alias u='cd $UPTIMUS'
+
+#-----------------------------------------------------------------------------------------
+# common
+#-----------------------------------------------------------------------------------------
+
+alias df='df -h'
+alias ll='ls -alp'
+alias mail='less +G /var/mail/tap'
 
 # for octopress
 alias rake="noglob rake"
@@ -117,39 +142,26 @@ alias rd='rails dbconsole'
 alias rg='rails generate'
 alias rs='rails server'
 
-# ssh
+# SSH
+#
+# it's to possible to SSH in 2 ways:
+#
+# - ssh <host from .ssh/config>
+# - ssh <username>@<host from /etc/hosts>
+#
+# in the 1st case user is supplied from .ssh/config
+#
+# in both cases public key .ssh/id_rsa.pub is used to authenticate
+# if it has been added to .ssh/authorized_keys on server for specified user
 
-alias caravan="ssh devops@caravan"
-alias linode="ssh devops@linode"
-alias tap349="ssh root@46.101.139.241"
-
-#-----------------------------------------------------------------------------------------
-# common
-#-----------------------------------------------------------------------------------------
-
-alias dotfiles='cd ~/.dotfiles'
-alias downloads='cd ~/Downloads'
-
-alias blog='cd $BLOG'
-
-alias chef='cd $CHEF'
-alias houston='cd $HOUSTON'
-alias judge='cd $JUDGE'
-alias pumba='cd $PUMBA'
-alias shikimori='cd $SHIKIMORI'
-alias uptimus='cd $UPTIMUS'
-alias h='cd $HOUSTON'
-alias j='cd $JUDGE'
-alias p='cd $PUMBA'
-alias s='cd $SHIKIMORI'
-alias u='cd $UPTIMUS'
-
-alias df='df -h'
-alias ll='ls -alp'
-alias mail='less +G /var/mail/tap'
+alias caravan="ssh caravan"
+alias linode-uptimus="ssh linode-uptimus"
+alias linode-pumba="ssh linode-pumba"
 
 #-----------------------------------------------------------------------------------------
-# functions
+#
+# Functions
+#
 #-----------------------------------------------------------------------------------------
 
 f() {
@@ -165,19 +177,19 @@ fvim() {
   mvim `f "$*"`
 }
 
-gr() {
-  fgrep --color --exclude-dir={log,public,tmp,.git} -Iir "$@" .
-}
-
-orig() {
-  find . -iname '*.orig' -exec rm {} \;
-}
-
 git_delete_branches() {
   git branch | grep -v -E '(master|develop)' | xargs git branch -d
+}
+
+gr() {
+  fgrep --color --exclude-dir={log,public,tmp,.git} -Iir "$@" .
 }
 
 hitch() {
   command hitch "$@"
   if [[ -s "$HOME/.hitch_export_authors" ]] ; then source "$HOME/.hitch_export_authors" ; fi
+}
+
+orig() {
+  find . -iname '*.orig' -exec rm {} \;
 }
