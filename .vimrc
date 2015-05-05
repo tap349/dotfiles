@@ -140,7 +140,7 @@ set splitright
 
 set t_Co=256
 
-set background=light
+set background=dark
 "set transparency=20
 
 let g:solarized_bold = 1
@@ -151,10 +151,10 @@ let g:solarized_italic = 1
 "colorscheme iceberg
 "colorscheme tir_black
 "colorscheme jellyx
-colorscheme solarized
+"colorscheme solarized
 "colorscheme summerfruit_tap
 "colorscheme ir_black_tap
-"colorscheme ir_black_morr
+colorscheme ir_black_morr
 "colorscheme sebocean_tap
 "colorscheme github
 
@@ -606,6 +606,7 @@ let g:airline_symbols.linenr = '⭡'
 "let g:buffergator_viewport_split_policy = 'R'
 "let g:buffergator_vsplit_size = 60
 
+nmap <F3> :BuffergatorOpen<CR>
 "nmap <F3>b :BuffergatorOpen<CR>
 "nmap <F3>t :BuffergatorTabsOpen<CR>
 nmap <silent> <C-p> :BuffergatorMruCyclePrev<CR>
