@@ -157,6 +157,7 @@ alias rs='rails server'
 alias caravan="ssh caravan"
 alias linode-uptimus="ssh linode-uptimus"
 alias linode-pumba="ssh linode-pumba"
+alias tap349="ssh tap349"
 
 #-----------------------------------------------------------------------------------------
 #
