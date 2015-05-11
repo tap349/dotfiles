@@ -32,9 +32,11 @@ source ~/.dotfiles/.vimrc.morr.basic
 "                                                                               =
 "================================================================================
 
+filetype off
 execute pathogen#infect()
-syntax on
 filetype plugin indent on
+
+syntax on
 
 "================================================================================
 "                                                                               =
@@ -45,7 +47,7 @@ filetype plugin indent on
 "================================================================================
 
 "set synmaxcol=200
-set regexpengine=2
+set regexpengine=0
 
 "================================================================================
 "                                                                               =
@@ -151,10 +153,10 @@ let g:solarized_italic = 1
 "colorscheme iceberg
 "colorscheme tir_black
 "colorscheme jellyx
-"colorscheme solarized
+colorscheme solarized
 "colorscheme summerfruit_tap
 "colorscheme ir_black_tap
-colorscheme ir_black_morr
+"colorscheme ir_black_morr
 "colorscheme sebocean_tap
 "colorscheme github
 
