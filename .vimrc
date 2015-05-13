@@ -111,7 +111,7 @@ set listchars=nbsp:·,tab:▸·,trail:·,precedes:«,extends:»
 " navigation
 "-------------------------------------------------------------------------------
 
-set scrolloff=10
+set scrolloff=8
 
 "-------------------------------------------------------------------------------
 " search
@@ -172,12 +172,12 @@ colorscheme solarized
 "set guifont=MonacoB2:h13
 "set guifont=MonacoB\ for\ Powerline:h13
 "set guifont=Inconsolata\ LGC:h14
-"set guifont=Input\ Mono\ Narrow:h14
+"set guifont=Input\ Mono\ Narrow:h13
 "set guifont=Source\ Code\ Pro\ For\ Powerline:h15
 
 if hostname() == 'Alexeys-MacBook-Pro.local'
-  "set linespace=2
-  "set guifont=Andale\ Mono\ Mt\ Std:h14
+  set linespace=1
+  set guifont=Andale\ Mono\ Mt\ Std:h13
 
   "set linespace=3
   "set guifont=Anonymice\ Powerline:h15
@@ -185,8 +185,11 @@ if hostname() == 'Alexeys-MacBook-Pro.local'
   "set linespace=0
   "set guifont=MonacoB\ for\ Powerline:h13
 
-  set linespace=-3
-  set guifont=Inconsolata\ LGC:h13
+  "set linespace=-3
+  "set guifont=Inconsolata\ LGC:h13
+
+  "set linespace=2
+  "set guifont=Input\ Mono\ Narrow:h13
 else
   set linespace=-3
   set guifont=Inconsolata\ LGC:h14
