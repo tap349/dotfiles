@@ -176,23 +176,20 @@ colorscheme solarized
 "set guifont=Source\ Code\ Pro\ For\ Powerline:h15
 
 if hostname() == 'Alexeys-MacBook-Pro.local'
-  set linespace=1
-  set guifont=Andale\ Mono\ Mt\ Std:h13
-
-  "set linespace=3
-  "set guifont=Anonymice\ Powerline:h15
-
-  "set linespace=0
-  "set guifont=MonacoB\ for\ Powerline:h13
-
   "set linespace=-3
   "set guifont=Inconsolata\ LGC:h13
 
   "set linespace=2
   "set guifont=Input\ Mono\ Narrow:h13
+
+  set linespace=1
+  set guifont=Andale\ Mono\ MT\ Std:h13
 else
-  set linespace=-3
-  set guifont=Inconsolata\ LGC:h14
+  "set linespace=-3
+  "set guifont=Inconsolata\ LGC:h14
+
+  set linespace=1
+  set guifont=Andale\ Mono\ MT\ Std:h14
 endif
 
 "-------------------------------------------------------------------------------
@@ -512,6 +509,7 @@ let g:CommandTMaxFiles = 25000
 let g:CommandTWildIgnore = &wildignore."public/images/**,tmp/**,public/assets/**"
 
 nmap <F1> :CommandT<CR>
+imap <F1> <Esc>:CommandT<CR>
 nmap <S-F1> :CommandTBuffer<CR>
 nmap <Leader><F1>r :CommandTFlush<CR>:CommandT<CR>
 
