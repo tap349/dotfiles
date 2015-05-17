@@ -151,13 +151,14 @@ alias rs='rails server'
 #
 # in the 1st case user is supplied from .ssh/config
 #
-# in both cases public key .ssh/id_rsa.pub is used to authenticate
+# in both cases public key for matching host is used to authenticate
 # if it has been added to .ssh/authorized_keys on server for specified user
+#
+# in case matching host can't be found in .ssh/config ssh fallbacks
+# to password-based authentication (e.g. when using IP or alternative domain)
 
-alias caravan="ssh caravan"
 #alias linode-uptimus="ssh uptimus"
 #alias linode-pumba="ssh pumba"
-alias tap349="ssh tap349"
 
 #-----------------------------------------------------------------------------------------
 #
