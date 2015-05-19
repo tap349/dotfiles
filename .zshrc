@@ -49,13 +49,13 @@ source $ZSH/oh-my-zsh.sh
 #
 #-----------------------------------------------------------------------------------------
 
+CDPATH=~:~/dev
+EDITOR=mvim
 TERM="xterm-256color"
 
 HISTSIZE=100000
 HISTFILESIZE=200000
 setopt HIST_IGNORE_DUPS
-
-CDPATH=~:~/dev
 
 BLOG=~/blog
 
@@ -118,6 +118,7 @@ alias deploy='sdeploy'
 
 alias g='git'
 alias ga='git add -A .'
+alias gd='git diff'
 alias gl="git log --graph --pretty=format:'%Cred%h%Creset %C(yellow)%d%Creset %s - %C(bold blue)%an%Creset, %Cgreen%cr' --abbrev-commit"
 alias gs='git status'
 alias gbd='git_delete_branches'
