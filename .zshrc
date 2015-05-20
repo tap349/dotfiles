@@ -47,10 +47,13 @@ source $ZSH/oh-my-zsh.sh
 #
 # Environment variables
 #
+# export variable if you want programs run from zsh to see it
+#
 #-----------------------------------------------------------------------------------------
 
+export EDITOR=mvim
+
 CDPATH=~:~/dev
-EDITOR=mvim
 TERM="xterm-256color"
 
 HISTSIZE=100000
