@@ -134,7 +134,7 @@ alias unhitch='hitch -u'
 
 alias log='tail -f log/development.log'
 alias migrate='rake db:migrate && RAILS_ENV=test rake db:migrate'
-alias rollback='rake db:rollback STEP=1 && RAILS_ENV=test rake db:rollback STEP=1'
+alias rollback='rake db:rollback && RAILS_ENV=test rake db:rollback'
 alias sass='sass-convert --from css --to sass -R'
 alias sidekiq='bundle exec sidekiq --config ./config/sidekiq.yml'
 
