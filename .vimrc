@@ -542,7 +542,7 @@ nmap <Leader><F2>f :NERDTreeFind<CR>
 " rspec.vim
 "-------------------------------------------------------------------------------
 
-autocmd! BufNewFile,BufRead *_spec.rb set filetype=rspec
+"autocmd! BufNewFile,BufRead *_spec.rb set filetype=rspec
 
 "-------------------------------------------------------------------------------
 " Specky
