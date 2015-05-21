@@ -4,38 +4,34 @@ require 'fileutils'
 require 'open-uri'
 
 git_bundles = %w[
-  tpope/vim-fugitive
-  scrooloose/nerdtree
-  tpope/vim-unimpaired
-  vim-ruby/vim-ruby
-  tpope/vim-rails
-  scrooloose/nerdcommenter
-  tpope/vim-surround
-  cakebaker/scss-syntax.vim
-  jeetsukumaran/vim-buffergator
-  tpope/vim-haml
-  slim-template/vim-slim
   ap/vim-css-color
-  kchmck/vim-coffee-script
-  briancollins/vim-jst
-  sstephenson/eco
-  wincent/command-t
-  vim-scripts/grep.vim
-  vim-scripts/vimgrep.vim
-  tpope/vim-endwise
-  Keithbsmiley/rspec.vim
-  saks/Specky
-  scrooloose/syntastic
-  flazz/vim-colorschemes
   bkad/CamelCaseMotion
   bling/vim-airline
+  briancollins/vim-jst
+  cakebaker/scss-syntax.vim
   chriskempson/base16-vim
   ervandew/supertab
-  aklt/plantuml-syntax
-  kien/ctrlp
+  flazz/vim-colorschemes
+  jeetsukumaran/vim-buffergator
+  kchmck/vim-coffee-script
+  keith/rspec.vim
+  kien/ctrlp.vim
+  rking/ag.vim
+  scrooloose/nerdcommenter
+  scrooloose/nerdtree
+  scrooloose/syntastic
+  slim-template/vim-slim
+  sstephenson/eco
+  tpope/vim-endwise
+  tpope/vim-fugitive
+  tpope/vim-haml
+  tpope/vim-rails
+  tpope/vim-surround
+  tpope/vim-unimpaired
+  vim-ruby/vim-ruby
+  wincent/command-t
   xolox/vim-misc
   xolox/vim-session
-  rking/ag.vim
 ]
 
 # majutsushi/tagbar
@@ -43,6 +39,10 @@ git_bundles = %w[
 # Yggdroot/indentLine
 # dtjm/plantuml-syntax
 # yegappan/grep
+# saks/Specky
+# aklt/plantuml-syntax
+# vim-scripts/grep.vim
+# vim-scripts/vimgrep.vim
 
 git_keep = []
 
