@@ -142,7 +142,7 @@ set splitright
 
 set t_Co=256
 
-set background=light
+set background=dark
 "set transparency=20
 
 let g:solarized_bold = 1
@@ -153,8 +153,8 @@ let g:solarized_underline = 1
 "colorscheme iceberg
 "colorscheme tir_black
 "colorscheme jellyx
-"colorscheme solarized
-colorscheme summerfruit_tap
+colorscheme solarized
+"colorscheme summerfruit_tap
 "colorscheme ir_black_tap
 "colorscheme ir_black_morr
 "colorscheme sebocean_tap
