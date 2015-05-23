@@ -7,21 +7,17 @@ git_bundles = %w[
   ap/vim-css-color
   bkad/CamelCaseMotion
   bling/vim-airline
-  briancollins/vim-jst
   cakebaker/scss-syntax.vim
-  chriskempson/base16-vim
   ervandew/supertab
   flazz/vim-colorschemes
   jeetsukumaran/vim-buffergator
   kchmck/vim-coffee-script
   keith/rspec.vim
-  kien/ctrlp.vim
   rking/ag.vim
   scrooloose/nerdcommenter
   scrooloose/nerdtree
   scrooloose/syntastic
   slim-template/vim-slim
-  sstephenson/eco
   tpope/vim-endwise
   tpope/vim-fugitive
   tpope/vim-haml
@@ -43,6 +39,10 @@ git_bundles = %w[
 # aklt/plantuml-syntax
 # vim-scripts/grep.vim
 # vim-scripts/vimgrep.vim
+# briancollins/vim-jst
+# chriskempson/base16-vim
+# sstephenson/eco
+# kien/ctrlp.vim
 
 git_keep = []
 
