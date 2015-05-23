@@ -635,6 +635,15 @@ nmap <F6> :Gvdiff<CR>
 nmap <F4> :A<CR>
 nmap <Leader><F4> :AV<CR>
 
+let g:rails_projections = {
+\   'app/admin/*.rb': {
+\     'alternate': 'spec/controllers/admin/{}_controller_spec.rb'
+\   },
+\   'spec/controllers/admin/*_controller_spec.rb': {
+\     'alternate': 'app/admin/{}.rb'
+\   },
+\ }
+
 "-------------------------------------------------------------------------------
 " vim-session
 "-------------------------------------------------------------------------------
