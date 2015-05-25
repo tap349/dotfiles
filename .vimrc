@@ -142,10 +142,10 @@ set splitright
 
 set t_Co=256
 
-set background=light
+set background=dark
 "set transparency=20
 
-let g:solarized_bold = 1
+let g:solarized_bold = 0
 let g:solarized_contrast = 'normal'
 let g:solarized_italic = 1
 let g:solarized_underline = 1
