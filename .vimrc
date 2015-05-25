@@ -142,7 +142,7 @@ set splitright
 
 set t_Co=256
 
-set background=dark
+set background=light
 "set transparency=20
 
 let g:solarized_bold = 1
@@ -190,6 +190,7 @@ else
 
   set linespace=1
   set guifont=Andale\ Mono\ MT\ Std:h14
+  "set guifont=Andale\ Mono:h14
 endif
 
 "-------------------------------------------------------------------------------
@@ -563,7 +564,7 @@ let g:SuperTabCrMapping = 1
 " syntastic
 "-------------------------------------------------------------------------------
 
-let g:syntastic_ruby_mri_exec = 'ruby2.2.2'
+let g:syntastic_ruby_mri_exec = '~/.rvm/rubies/ruby-2.2.2/bin/ruby'
 
 "-------------------------------------------------------------------------------
 " vim-airline

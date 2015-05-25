@@ -99,7 +99,8 @@ hi Visual       guibg=#C8F9FF
 
 "hi String       guifg=#0086d2
 "hi String       guifg=#0086b2
-hi String       guifg=#0076a2   guibg=#fffde9
+"hi String       guifg=#0076a2   guibg=#fffde9
+hi String       guifg=#0076a2   gui=none
 hi Constant     guifg=#2F3C9C
 hi Number       guifg=#0086f7
 "hi Number       guifg=#0086f7                   gui=bold
