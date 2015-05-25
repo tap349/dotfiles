@@ -126,6 +126,9 @@ alias gl="git log --graph --pretty=format:'%Cred%h%Creset %C(yellow)%d%Creset %s
 alias gs='git status'
 alias gbd='git_delete_branches'
 
+# TODO
+alias git-sub-up="git submodule foreach 'git fetch origin --tags; git checkout master; git pull' && git pull && git submodule update --init --recursive"
+
 # hitch
 
 alias unhitch='hitch -u'
