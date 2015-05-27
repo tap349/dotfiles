@@ -142,7 +142,7 @@ set splitright
 
 set t_Co=256
 
-set background=dark
+set background=light
 "set transparency=20
 
 let g:solarized_bold = 1
