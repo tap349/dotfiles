@@ -142,7 +142,7 @@ set splitright
 
 set t_Co=256
 
-set background=light
+set background=dark
 "set transparency=20
 
 let g:solarized_bold = 1
@@ -176,14 +176,14 @@ colorscheme solarized
 "set guifont=Source\ Code\ Pro\ For\ Powerline:h15
 
 if hostname() == 'Alexeys-MacBook-Pro.local'
-  "set linespace=-3
-  "set guifont=Inconsolata\ LGC:h13
+  set linespace=-3
+  set guifont=Inconsolata\ LGC:h13
 
   "set linespace=2
   "set guifont=Input\ Mono\ Narrow:h13
 
-  set linespace=1
-  set guifont=Andale\ Mono\ MT\ Std:h13
+  "set linespace=1
+  "set guifont=Andale\ Mono\ MT\ Std:h13
 else
   "set linespace=-3
   "set guifont=Inconsolata\ LGC:h14
