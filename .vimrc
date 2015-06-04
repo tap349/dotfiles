@@ -368,7 +368,7 @@ nnoremap <silent> <S-Up> :tabmove<CR>
 "------- window ----------------------------------------------------------------
 
 " http://vim.wikia.com/wiki/Open_file_under_cursor
-"nnoremap <C-w>f :horizontal wincmd f<CR>
+set isfname-=.
 nnoremap <C-w>F :vertical wincmd f<CR>
 
 "-------------------------------------------------------------------------------
