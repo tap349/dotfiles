@@ -10,6 +10,7 @@ git_bundles = %w[
   cakebaker/scss-syntax.vim
   ervandew/supertab
   flazz/vim-colorschemes
+  itchyny/lightline.vim
   jamessan/vim-gnupg
   jeetsukumaran/vim-buffergator
   kchmck/vim-coffee-script
@@ -26,6 +27,7 @@ git_bundles = %w[
   tpope/vim-surround
   tpope/vim-unimpaired
   vim-ruby/vim-ruby
+  whatyouhide/vim-gotham
   wincent/command-t
   xolox/vim-misc
   xolox/vim-session
