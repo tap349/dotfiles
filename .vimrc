@@ -234,8 +234,8 @@ set transparency=0
 "                                                                               =
 " common autocommands                                                           =
 "                                                                               =
-" exclamation mark means to remove all autocommands associated with event and   =
-" pattern and a new command - the point here is that by default autocommands    =
+" exclamation mark means to remove all autocommands associated with event,      =
+" pattern and command - the point here is that by default autocommands are      =
 " are accumulated every time .vimrc is sourced.                                 =
 "                                                                               =
 "================================================================================
@@ -252,6 +252,11 @@ let s:prevtabcount = tabpagenr('$')
 augroup tabs
   autocmd!
   autocmd TabEnter * call s:GoToPrevTab()
+augroup END
+
+augroup syntax
+  autocmd!
+  autocmd BufRead,BufNewFile *.arb set filetype=ruby
 augroup END
 
 " TODO
@@ -527,8 +532,8 @@ nmap <Leader><F1>r :CommandTFlush<CR>:CommandT<CR>
 " lightline.vim
 "-------------------------------------------------------------------------------
 
-set laststatus=2
-let g:lightline = {'colorscheme': 'solarized'}
+"set laststatus=2
+"let g:lightline = {'colorscheme': 'solarized'}
 
 "-------------------------------------------------------------------------------
 " nerdcommenter
