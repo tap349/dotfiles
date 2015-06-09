@@ -155,7 +155,7 @@ colorscheme solarized
 "colorscheme summerfruit_tap
 "colorscheme ir_black_tap
 "colorscheme ir_black_morr
-"colorscheme sebocean
+"colorscheme sebocean_dasha
 "colorscheme github
 "colorscheme apprentice
 "colorscheme gotham
