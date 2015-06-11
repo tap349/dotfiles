@@ -309,7 +309,6 @@ nnoremap <silent> <Space> i<Space><Esc>l
 " editing popular files
 "-------------------------------------------------------------------------------
 
-nnoremap <Leader>ec :tabnew<CR>:edit ~/.vim/colors/ir_black_tap.vim<CR>
 nnoremap <Leader>ev :tabnew<CR>:edit $MYVIMRC<CR>
 nnoremap <Leader>ez :tabnew<CR>:edit ~/.zshrc<CR>
 
@@ -369,7 +368,8 @@ nnoremap <silent> <S-Up> :tabmove<CR>
 
 " http://vim.wikia.com/wiki/Open_file_under_cursor
 set isfname-=.
-nnoremap <C-w>F :vertical wincmd f<CR>
+"nnoremap <C-w>F :vertical wincmd f<CR>
+nmap <C-w>F <C-w>f<C-w>L
 
 "-------------------------------------------------------------------------------
 " reload file using different encoding
