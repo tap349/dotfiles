@@ -66,7 +66,7 @@ let colors_name = "ir_black_tap"
 "hi Example         guifg=NONE        guibg=NONE        gui=NONE      ctermfg=NONE        ctermbg=NONE        cterm=NONE
 
 " General colors
-hi Normal           guifg=#F6F3E8     guibg=#2A2A3A     gui=NONE      ctermfg=NONE        ctermbg=NONE        cterm=NONE
+hi Normal           guifg=#F6F3E8     guibg=#292939     gui=NONE      ctermfg=NONE        ctermbg=NONE        cterm=NONE
 "hi Normal           guifg=#F6F3F0     guibg=#313141     gui=NONE      ctermfg=NONE        ctermbg=NONE        cterm=NONE
 hi NonText          guifg=#575767     guibg=#1F1F2A       gui=NONE      ctermfg=black       ctermbg=NONE        cterm=NONE
 
@@ -100,7 +100,7 @@ hi WarningMsg       guifg=white       guibg=#FF6C60     gui=BOLD      ctermfg=wh
 hi ModeMsg          guifg=black       guibg=#C6C5FE     gui=BOLD      ctermfg=black       ctermbg=cyan        cterm=BOLD
 
 if version >= 700 " Vim 7.x specific colors
-  hi CursorLine     guifg=NONE        guibg=#49495F     gui=NONE      ctermfg=NONE        ctermbg=NONE        cterm=BOLD
+  hi CursorLine     guifg=NONE        guibg=#3C3C53     gui=NONE      ctermfg=NONE        ctermbg=NONE        cterm=BOLD
   hi CursorColumn   guifg=NONE        guibg=#121212     gui=NONE      ctermfg=NONE        ctermbg=NONE        cterm=BOLD
   hi MatchParen     guifg=#f6f3e8     guibg=#857b6f     gui=BOLD      ctermfg=white       ctermbg=darkgray    cterm=NONE
   hi Pmenu          guifg=#f6f3e8     guibg=#444444     gui=NONE      ctermfg=NONE        ctermbg=NONE        cterm=NONE
@@ -113,7 +113,7 @@ if version >= 700 " Vim 7.x specific colors
 endif
 
 " Syntax highlighting
-hi Comment          guifg=#7C7C7C     guibg=NONE        gui=NONE      ctermfg=darkgray    ctermbg=NONE        cterm=NONE
+hi Comment          guifg=#6C6C6C     guibg=NONE        gui=NONE      ctermfg=darkgray    ctermbg=NONE        cterm=NONE
 "hi String           guifg=#98EF50     guibg=NONE        gui=NONE      ctermfg=green       ctermbg=NONE        cterm=NONE
 "hi String           guifg=#88DF40     guibg=NONE        gui=NONE      ctermfg=green       ctermbg=NONE        cterm=NONE
 "hi String           guifg=#A8FF70     guibg=NONE        gui=NONE      ctermfg=green       ctermbg=NONE        cterm=NONE
