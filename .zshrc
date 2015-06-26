@@ -146,7 +146,6 @@ alias sidekiq='bundle exec sidekiq --config ./config/sidekiq.yml'
 alias r='rails'
 alias rc='rails console'
 alias rd='rails dbconsole'
-alias rg='rails generate'
 alias rs='rails server'
 
 # SSH
