@@ -140,6 +140,8 @@ alias migrate='rake db:migrate && RAILS_ENV=test rake db:migrate'
 alias rollback='rake db:rollback && RAILS_ENV=test rake db:rollback'
 alias sass='sass-convert --from css --to sass -R'
 alias sidekiq='bundle exec sidekiq --config ./config/sidekiq.yml'
+# TODO
+alias shikisync=sync_shikimori_images
 
 # rails
 
@@ -165,6 +167,9 @@ alias rs='rails server'
 
 #alias linode-uptimus="ssh uptimus"
 #alias linode-pumba="ssh pumba"
+
+# TODO
+alias hetzner='ssh devops@78.46.50.20'
 
 #-----------------------------------------------------------------------------------------
 #
@@ -200,4 +205,21 @@ hitch() {
 
 orig() {
   find . -iname '*.orig' -exec rm {} \;
+}
+
+# TODO
+sync_shikimori_images() {
+  local local_path=~/shikimori.org/images/
+  local shiki_path=/home/apps/shikimori/production/shared/public/images/
+
+  for dir in $(ssh devops@78.46.50.20 ls $shiki_path)
+  do
+    if [[ "$dir" == "image" || "$dir" == "user_image" || "$dir" == "screenshot" || "$dir" == "cosplay_image" ]]; then
+      echo "skipping $dir"
+      continue
+    else
+      echo "processing $dir ..."
+      rsync -urv -e ssh devops@78.46.50.20:$shiki_path$dir $local_path
+    fi
+  done
 }
