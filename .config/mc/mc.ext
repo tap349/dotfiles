@@ -337,7 +337,6 @@ type/^GIF
 	Include=image
 
 type/^JPEG
-	View=%view{ascii} identify %f; test -x /usr/bin/exif && echo && exif %f 2>/dev/null
 	Include=image
 
 type/^PC\ bitmap
@@ -375,9 +374,7 @@ shell/.ico
 	Include=image
 
 include/image
-	Open=if [ "$DISPLAY" = "" ]; then zgv %f; else (feh %f &); fi
-	View=%view{ascii} identify %f
-	#View=%view{ascii} asciiview %f
+	Open=open %f
 
 
 ### Sound files ###
