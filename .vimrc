@@ -489,7 +489,7 @@ runtime macros/matchit.vim
 " ag.vim
 "-------------------------------------------------------------------------------
 
-let g:agprg="ag --vimgrep --nocolor --ignore-dir={log,public,tmp,spec/vcr_cassettes}"
+let g:agprg="ag --nocolor --ignore-dir={log,public,tmp,spec/vcr_cassettes}"
 map <Leader>/ :Ag<Space>
 
 "-------------------------------------------------------------------------------
