@@ -188,9 +188,9 @@ else
   "set linespace=-3
   "set guifont=Inconsolata\ LGC:h14
 
-  set linespace=1
-  set guifont=Andale\ Mono\ MT\ Std:h14
-  "set guifont=Andale\ Mono:h14
+  set linespace=2
+  "set guifont=Andale\ Mono\ MT\ Std:h14
+  set guifont=Andale\ Mono:h14
 endif
 
 "-------------------------------------------------------------------------------
@@ -453,7 +453,7 @@ inoremap <silent> <A-S-Up> <C-o>:tabmove<CR>
 " http://stackoverflow.com/a/10723838/3632318
 "-------------------------------------------------------------------------------
 
-vnoremap p "_dP
+"vnoremap p "_dP
 
 "-------------------------------------------------------------------------------
 " navigation
