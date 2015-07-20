@@ -10,12 +10,12 @@ git_bundles = %w[
   cakebaker/scss-syntax.vim
   ervandew/supertab
   flazz/vim-colorschemes
-  itchyny/lightline.vim
   jamessan/vim-gnupg
   jeetsukumaran/vim-buffergator
   kchmck/vim-coffee-script
   keith/rspec.vim
   rking/ag.vim
+  scheakur/vim-scheaku
   scrooloose/nerdcommenter
   scrooloose/nerdtree
   scrooloose/syntastic

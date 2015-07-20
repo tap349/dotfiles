@@ -305,6 +305,7 @@ nnoremap <silent> <Space> i<Space><Esc>l
 
 nnoremap <Leader>ev :tabnew<CR>:edit $MYVIMRC<CR>
 nnoremap <Leader>ez :tabnew<CR>:edit ~/.zshrc<CR>
+nnoremap <Leader>eu :tabnew<CR>:edit ~/.vim/update_bundles<CR>
 
 "-------------------------------------------------------------------------------
 " fullscreen
