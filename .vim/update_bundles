@@ -15,7 +15,7 @@ git_bundles = %w[
   kchmck/vim-coffee-script
   keith/rspec.vim
   rking/ag.vim
-  scheakur/vim-scheaku
+  scheakur/vim-scheakur
   scrooloose/nerdcommenter
   scrooloose/nerdtree
   scrooloose/syntastic
@@ -27,7 +27,6 @@ git_bundles = %w[
   tpope/vim-surround
   tpope/vim-unimpaired
   vim-ruby/vim-ruby
-  whatyouhide/vim-gotham
   wincent/command-t
   xolox/vim-misc
   xolox/vim-session

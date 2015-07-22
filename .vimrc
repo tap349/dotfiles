@@ -319,9 +319,6 @@ nnoremap <Leader>eu :tabnew<CR>:edit ~/.vim/update_bundles<CR>
 " navigation
 "-------------------------------------------------------------------------------
 
-nnoremap <PageUp> <C-u>
-nnoremap <PageDown> <C-d>
-
 nnoremap <C-j> 10j
 nnoremap <C-k> 10k
 
@@ -365,6 +362,11 @@ nnoremap <silent> <S-Up> :tabmove<CR>
 set isfname-=.
 "nnoremap <C-w>F :vertical wincmd f<CR>
 nmap <C-w>F <C-w>f<C-w>L
+
+nnoremap <silent> <M-Up> :resize +5<CR>
+nnoremap <silent> <M-Down> :resize -5<CR>
+nnoremap <silent> <M-Left> :vertical resize -5<CR>
+nnoremap <silent> <M-Right> :vertical resize +5<CR>
 
 "-------------------------------------------------------------------------------
 " reload file using different encoding
@@ -464,7 +466,7 @@ vnoremap <C-j> 10j
 vnoremap <C-k> 10k
 
 vnoremap H ^
-vnoremap L $
+vnoremap L g_
 
 "-------------------------------------------------------------------------------
 " shifting
@@ -599,7 +601,7 @@ set laststatus=2
 "let g:airline_theme = 'lucius'
 "let g:airline_theme = 'tomorrow'
 "let g:airline_theme = 'powerlineish'
-"let g:airline_theme = 'dark'
+let g:airline_theme = 'dark'
 "let g:airline_theme = 'light'
 "let g:airline_theme = 'base16'
 "let g:airline_theme = 'zenburn'
