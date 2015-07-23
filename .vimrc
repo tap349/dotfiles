@@ -322,8 +322,8 @@ nnoremap <Leader>eu :tabnew<CR>:edit ~/.vim/update_bundles<CR>
 nnoremap <C-j> 10j
 nnoremap <C-k> 10k
 
-nnoremap H ^
-nnoremap L g_
+nnoremap ˙ ^
+nnoremap ¬ g_
 
 " switch to last active tab
 let g:lasttabnr = 1
@@ -343,18 +343,11 @@ nnoremap <C-g> <C-i>
 "------- tab --------------------------------------------------------------------
 
 " the same as using gT and gt
-nnoremap <C-h> :tabprevious<CR>
-nnoremap <C-l> :tabnext<CR>
+nmap <C-h> :tabprevious<CR>
+nmap <C-l> :tabnext<CR>
 
-"nnoremap <Left> :tabprevious<CR>
-"nnoremap <Right> :tabnext<CR>
-"nnoremap <Down> :tabfirst<CR>
-"nnoremap <Up> :tablast<CR>
-
-nnoremap <silent> <S-Left> :tabmove -1<CR>
-nnoremap <silent> <S-Right> :tabmove +1<CR>
-nnoremap <silent> <S-Down> :tabmove 0<CR>
-nnoremap <silent> <S-Up> :tabmove<CR>
+nmap <S-h> :tabmove -1<CR>
+nmap <S-l> :tabmove +1<CR>
 
 "------- window ----------------------------------------------------------------
 
@@ -363,10 +356,10 @@ set isfname-=.
 "nnoremap <C-w>F :vertical wincmd f<CR>
 nmap <C-w>F <C-w>f<C-w>L
 
-nnoremap <silent> <M-Up> :resize +5<CR>
-nnoremap <silent> <M-Down> :resize -5<CR>
-nnoremap <silent> <M-Left> :vertical resize -5<CR>
-nnoremap <silent> <M-Right> :vertical resize +5<CR>
+nmap <silent> <S-Up> :resize +5<CR>
+nmap <silent> <S-Down> :resize -5<CR>
+nmap <silent> <S-Left> :vertical resize -5<CR>
+nmap <silent> <S-Right> :vertical resize +5<CR>
 
 "-------------------------------------------------------------------------------
 " reload file using different encoding
@@ -465,8 +458,8 @@ inoremap <silent> <A-S-Up> <C-o>:tabmove<CR>
 vnoremap <C-j> 10j
 vnoremap <C-k> 10k
 
-vnoremap H ^
-vnoremap L g_
+vnoremap ˙ ^
+vnoremap ¬ g_
 
 "-------------------------------------------------------------------------------
 " shifting
