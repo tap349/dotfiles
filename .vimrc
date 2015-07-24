@@ -185,8 +185,8 @@ if hostname() == 'Alexeys-MacBook-Pro.local'
   set linespace=1
   set guifont=Andale\ Mono\ MT\ Std:h13
 else
-  "set linespace=-3
-  "set guifont=Inconsolata\ LGC:h14
+  "set linespace=-2
+  "set guifont=Inconsolata-dz\ For\ Powerline:h14
 
   set linespace=2
   "set guifont=Andale\ Mono\ MT\ Std:h14
