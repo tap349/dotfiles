@@ -1,51 +1,81 @@
 #-----------------------------------------------------------------------------------------
-# Path to your oh-my-zsh configuration.
+# set to this to use case-sensitive completion
+#-----------------------------------------------------------------------------------------
 
-ZSH=$HOME/.oh-my-zsh
+CASE_SENSITIVE='true'
 
 #-----------------------------------------------------------------------------------------
-# Look in ~/.oh-my-zsh/themes/
-# Theme previews can be found at https://github.com/robbyrussell/oh-my-zsh/wiki/themes
+# uncomment following line if you want red dots to be displayed while waiting for completion
+#-----------------------------------------------------------------------------------------
 
-ZSH_THEME="tap-af-magic"
+# NOTE don't use along with zsh-autosuggestions!
+COMPLETION_WAITING_DOTS='false'
 
 #-----------------------------------------------------------------------------------------
-# Set to this to use case-sensitive completion
-
-CASE_SENSITIVE="true"
-
-#-----------------------------------------------------------------------------------------
-# Uncomment following line if you want red dots to be displayed while waiting for completion
-
-COMPLETION_WAITING_DOTS="true"
-
-#-----------------------------------------------------------------------------------------
-# Uncomment following line if you want to show in the command execution time stamp
+# uncomment following line if you want to show in the command execution time stamp
 # in the history command output. The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|
 # yyyy-mm-dd
+#-----------------------------------------------------------------------------------------
 
-HIST_STAMPS="yyyy-mm-dd"
+HIST_STAMPS='yyyy-mm-dd'
+
+#=========================================================================================
+#
+# oh-my-zsh
+#
+#=========================================================================================
 
 #-----------------------------------------------------------------------------------------
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
+# themes: ~/.oh-my-zsh/themes/
+# theme previews can be found at https://github.com/robbyrussell/oh-my-zsh/wiki/themes
+#-----------------------------------------------------------------------------------------
+
+ZSH_THEME='tap-af-magic'
+
+#-----------------------------------------------------------------------------------------
+# plugins: ~/.oh-my-zsh/plugins/*
+# custom plugins: ~/.oh-my-zsh/custom/plugins/
+#-----------------------------------------------------------------------------------------
 
 # https://github.com/rails/spring/tree/v0.0.9#usage
 UNBUNDLED_COMMANDS=(spring)
 plugins=(bundler ssh-agent)
 
+#-----------------------------------------------------------------------------------------
+# source oh-my-zsh.sh after all configuration is done
+#-----------------------------------------------------------------------------------------
+
+ZSH=$HOME/.oh-my-zsh
 source $ZSH/oh-my-zsh.sh
 
 #=========================================================================================
 #
-# User configuration
+# standalone plugins
+#
+#=========================================================================================
+
+#-----------------------------------------------------------------------------------------
+# zsh-autosuggestions
+#-----------------------------------------------------------------------------------------
+
+source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source ~/.zsh/zsh-autosuggestions/autosuggestions.zsh
+
+zle-line-init() {
+    zle autosuggest-start
+}
+
+zle -N zle-line-init
+
+#=========================================================================================
+#
+# user configuration
 #
 #=========================================================================================
 
 #-----------------------------------------------------------------------------------------
 #
-# Environment variables
+# environment variables
 #
 # export variable if you want programs run from zsh to see it
 #
@@ -69,7 +99,7 @@ UPTIMUS=~/dev/uptimus
 
 #-----------------------------------------------------------------------------------------
 #
-# Aliases
+# aliases
 #
 #-----------------------------------------------------------------------------------------
 
@@ -173,7 +203,7 @@ alias hetzner='ssh devops@78.46.50.20'
 
 #-----------------------------------------------------------------------------------------
 #
-# Functions
+# functions
 #
 #-----------------------------------------------------------------------------------------
 
