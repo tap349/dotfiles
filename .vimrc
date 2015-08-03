@@ -576,6 +576,15 @@ let g:SuperTabCrMapping = 1
 
 let g:syntastic_ruby_mri_exec = '~/.rvm/rubies/ruby-2.2.2/bin/ruby'
 
+" http://vim.wikia.com/wiki/Simplifying_regular_expressions_using_magic_and_no-magic
+"
+" '\m^shadowing outer local variable'
+let g:syntastic_ruby_mri_quiet_messages = {
+\ 'regex': [
+\   '\m`&'' interpreted as argument prefix',
+\   '\m`*'' interpreted as argument prefix'
+\ ] }
+
 "-------------------------------------------------------------------------------
 " vim-airline
 " http://joshldavis.com/2014/04/05/vim-tab-madness-buffers-vs-tabs
