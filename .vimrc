@@ -580,10 +580,11 @@ let g:syntastic_ruby_mri_exec = '~/.rvm/rubies/ruby-2.2.2/bin/ruby'
 "
 " '\m^shadowing outer local variable'
 let g:syntastic_ruby_mri_quiet_messages = {
-\ 'regex': [
-\   '\m`&'' interpreted as argument prefix',
-\   '\m`*'' interpreted as argument prefix'
-\ ] }
+\   'regex': [
+\     '\m`&'' interpreted as argument prefix',
+\     '\m`*'' interpreted as argument prefix'
+\   ]
+\ }
 
 "-------------------------------------------------------------------------------
 " vim-airline
