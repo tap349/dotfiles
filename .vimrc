@@ -143,7 +143,7 @@ set splitright
 set t_Co=256
 
 set background=dark
-set transparency=2
+set transparency=1
 
 let g:solarized_bold = 1
 let g:solarized_contrast = 'normal'
@@ -322,8 +322,8 @@ nnoremap <Leader>eu :tabnew<CR>:edit ~/.vim/update_bundles<CR>
 nnoremap <C-j> 10j
 nnoremap <C-k> 10k
 
-nnoremap ˙ ^
-nnoremap ¬ g_
+nnoremap <S-h> ^
+nnoremap <S-l> g_
 
 " switch to last active tab
 let g:lasttabnr = 1
@@ -346,8 +346,8 @@ nnoremap <C-g> <C-i>
 nmap <C-h> :tabprevious<CR>
 nmap <C-l> :tabnext<CR>
 
-nmap <S-h> :tabmove -1<CR>
-nmap <S-l> :tabmove +1<CR>
+nmap ˙ :tabmove -1<CR>
+nmap ¬ :tabmove +1<CR>
 
 "------- window ----------------------------------------------------------------
 
@@ -458,8 +458,8 @@ inoremap <silent> <A-S-Up> <C-o>:tabmove<CR>
 vnoremap <C-j> 10j
 vnoremap <C-k> 10k
 
-vnoremap ˙ ^
-vnoremap ¬ g_
+vnoremap <S-h> ^
+vnoremap <S-l> g_
 
 "-------------------------------------------------------------------------------
 " shifting
