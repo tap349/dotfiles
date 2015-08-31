@@ -93,6 +93,7 @@ setopt HIST_IGNORE_DUPS
 BLOG=~/blog
 
 CHEF=~/dev/chef
+NALA=~/dev/nala
 PUMBA=~/dev/pumba
 SHIKIMORI=~/dev/shikimori
 UPTIMUS=~/dev/uptimus
@@ -113,11 +114,13 @@ alias downloads='cd ~/Downloads'
 alias blog='cd $BLOG'
 
 alias chef='cd $CHEF'
+alias nala='cd $NALA'
 alias pumba='cd $PUMBA'
 alias shikimori='cd $SHIKIMORI'
 alias uptimus='cd $UPTIMUS'
 
 alias c='cd $CHEF'
+alias n='cd $NALA'
 alias p='cd $PUMBA'
 alias s='cd $SHIKIMORI'
 alias u='cd $UPTIMUS'
