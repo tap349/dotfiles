@@ -159,6 +159,7 @@ colorscheme solarized
 "colorscheme github
 "colorscheme apprentice
 "colorscheme gotham
+"colorscheme vylight
 
 "-------------------------------------------------------------------------------
 " font
@@ -191,6 +192,8 @@ else
   set linespace=2
   "set guifont=Andale\ Mono\ MT\ Std:h14
   set guifont=Andale\ Mono:h14
+  "set linespace=4
+  "set guifont=Cousine:h14
 endif
 
 "-------------------------------------------------------------------------------

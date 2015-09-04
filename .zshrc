@@ -39,7 +39,7 @@ ZSH_THEME='tap-af-magic'
 
 # https://github.com/rails/spring/tree/v0.0.9#usage
 UNBUNDLED_COMMANDS=(spring)
-plugins=(bundler ssh-agent)
+plugins=(ssh-agent)
 
 #-----------------------------------------------------------------------------------------
 # source oh-my-zsh.sh after all configuration is done
