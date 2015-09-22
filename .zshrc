@@ -233,14 +233,19 @@ gr() {
 
 hitch() {
   command hitch "$@"
-  if [[ -s "$HOME/.hitch_export_authors" ]] ; then source "$HOME/.hitch_export_authors" ; fi
+  if [[ -s "$HOME/.hitch_export_authors" ]]; then source "$HOME/.hitch_export_authors" ; fi
 }
 
-orig() {
-  find . -iname '*.orig' -exec rm {} \;
+
+# git
+
+gc() {
+  [[ -z $1 ]] && echo error: specify git commit message && exit
+  git commit -m "$*"
 }
 
-# TODO
+# shikimori
+
 sync_shikimori_images() {
   local local_path=~/shikimori.org/images/
   local shiki_path=/home/apps/shikimori/production/shared/public/images/
