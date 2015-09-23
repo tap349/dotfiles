@@ -92,7 +92,7 @@ setopt HIST_IGNORE_DUPS
 
 BLOG=~/blog
 
-CHEF=~/dev/chef
+CHEFUPTIMUS=~/dev/chefuptimus
 NALA=~/dev/nala
 PUMBA=~/dev/pumba
 SHIKIMORI=~/dev/shikimori
@@ -113,13 +113,13 @@ alias downloads='cd ~/Downloads'
 
 alias blog='cd $BLOG'
 
-alias chef='cd $CHEF'
+alias chef='cd $CHEFUPTIMUS'
 alias nala='cd $NALA'
 alias pumba='cd $PUMBA'
 alias shikimori='cd $SHIKIMORI'
 alias uptimus='cd $UPTIMUS'
 
-alias c='cd $CHEF'
+alias c='cd $CHEFUPTIMUS'
 alias n='cd $NALA'
 alias p='cd $PUMBA'
 alias s='cd $SHIKIMORI'
@@ -252,7 +252,7 @@ sync_shikimori_images() {
 
   for dir in $(ssh devops@78.46.50.20 ls $shiki_path)
   do
-    if [[ "$dir" == "image" || "$dir" == "user_image" || "$dir" == "screenshot" || "$dir" == "cosplay_image" ]]; then
+    if [[ "$dir" == "image" || "$dir" == "user_image" || "$dir" == "screenshot" || "$dir" == "cosplay_image" || "$dir" == "webm_video" ]]; then
       echo "skipping $dir"
       continue
     else
