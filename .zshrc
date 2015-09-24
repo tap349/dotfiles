@@ -96,6 +96,7 @@ CHEFUPTIMUS=~/dev/chefuptimus
 NALA=~/dev/nala
 PUMBA=~/dev/pumba
 SHIKIMORI=~/dev/shikimori
+UMKA=~/dev/umka
 UPTIMUS=~/dev/uptimus
 
 #-----------------------------------------------------------------------------------------
@@ -117,13 +118,15 @@ alias chef='cd $CHEFUPTIMUS'
 alias nala='cd $NALA'
 alias pumba='cd $PUMBA'
 alias shikimori='cd $SHIKIMORI'
+alias umka='cd $UMKA'
 alias uptimus='cd $UPTIMUS'
 
 alias c='cd $CHEFUPTIMUS'
 alias n='cd $NALA'
 alias p='cd $PUMBA'
 alias s='cd $SHIKIMORI'
-alias u='cd $UPTIMUS'
+alias um='cd $UMKA'
+alias up='cd $UPTIMUS'
 
 #-----------------------------------------------------------------------------------------
 # common
