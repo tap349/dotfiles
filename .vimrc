@@ -588,7 +588,8 @@ let g:syntastic_ruby_mri_exec = '~/.rvm/rubies/ruby-2.2.2/bin/ruby'
 let g:syntastic_ruby_mri_quiet_messages = {
 \   'regex': [
 \     '\m`&'' interpreted as argument prefix',
-\     '\m`*'' interpreted as argument prefix'
+\     '\m`*'' interpreted as argument prefix',
+\     '\mambiguous first argument; put parentheses or a space even after `/'' operator'
 \   ]
 \ }
 
