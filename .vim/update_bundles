@@ -8,6 +8,7 @@ git_bundles = %w[
   bkad/CamelCaseMotion
   bling/vim-airline
   cakebaker/scss-syntax.vim
+  elixir-lang/vim-elixir
   ervandew/supertab
   flazz/vim-colorschemes
   jamessan/vim-gnupg
