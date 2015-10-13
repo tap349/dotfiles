@@ -153,7 +153,7 @@ let g:solarized_underline = 1
 " try using summerfruit_tap or vylight for elixir
 
 "colorscheme iceberg
-colorscheme solarized
+"colorscheme solarized
 "colorscheme summerfruit_tap
 "colorscheme ir_black_tap
 "colorscheme ir_black_morr
@@ -161,7 +161,7 @@ colorscheme solarized
 "colorscheme github
 "colorscheme apprentice
 "colorscheme gotham
-"colorscheme vylight
+colorscheme vylight
 
 "-------------------------------------------------------------------------------
 " font
@@ -626,7 +626,7 @@ set laststatus=2
 "let g:airline_theme = 'dark'
 "let g:airline_theme = 'light'
 "let g:airline_theme = 'base16'
-"let g:airline_theme = 'zenburn'
+let g:airline_theme = 'zenburn'
 "let g:airline_theme = 'serene'
 "let g:airline_theme = 'ubaryd'
 "let g:airline_theme = 'gotham'
