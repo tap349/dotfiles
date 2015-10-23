@@ -193,7 +193,9 @@ else
 
   set linespace=2
   "set guifont=Andale\ Mono\ MT\ Std:h14
-  set guifont=Andale\ Mono:h14
+  "set guifont=Andale\ Mono:h14
+  set guifont=Monaco\ for\ Powerline:h13
+
   "set linespace=4
   "set guifont=Cousine:h14
 endif
@@ -406,6 +408,14 @@ nnoremap Q <nop>
 "-------------------------------------------------------------------------------
 
 nnoremap Y y$
+
+"-------------------------------------------------------------------------------
+" useful maps
+"-------------------------------------------------------------------------------
+
+" TODO use function to toggle focus
+nmap <Leader>f H/do<CR><Backspace>hi,:focus<Esc>
+nmap <Leader>F Hf,dE<Esc>
 
 "================================================================================
 " insert mode                                                                   =
