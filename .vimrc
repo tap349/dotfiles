@@ -154,14 +154,14 @@ let g:solarized_underline = 1
 
 "colorscheme iceberg
 "colorscheme solarized
-"colorscheme summerfruit_tap
+colorscheme summerfruit_tap
 "colorscheme ir_black_tap
 "colorscheme ir_black_morr
 "colorscheme sebocean_dasha
 "colorscheme github
 "colorscheme apprentice
 "colorscheme gotham
-colorscheme vylight
+"colorscheme vylight
 
 "-------------------------------------------------------------------------------
 " font
@@ -178,20 +178,23 @@ colorscheme vylight
 "set guifont=Input\ Mono\ Narrow:h13
 "set guifont=Source\ Code\ Pro\ For\ Powerline:h15
 
-if hostname() == 'Alexeys-MacBook-Pro.local'
+if hostname() == 'MacBook-Pro.local'
   "set linespace=-3
   "set guifont=Inconsolata\ LGC:h13
 
   "set linespace=2
   "set guifont=Input\ Mono\ Narrow:h13
 
-  set linespace=1
-  set guifont=Andale\ Mono\ MT\ Std:h13
+  set linespace=2
+  set guifont=Andale\ Mono\ MT\ Std:h14
+
+  "set linespace=2
+  "set guifont=Monaco\ for\ Powerline:h13
 else
   "set linespace=-2
   "set guifont=Inconsolata-dz\ For\ Powerline:h14
 
-  set linespace=2
+  "set linespace=2
   "set guifont=Andale\ Mono\ MT\ Std:h14
   "set guifont=Andale\ Mono:h14
   set guifont=Monaco\ for\ Powerline:h13
@@ -211,7 +214,7 @@ set guioptions-=L
 " remove right-hand scroll bar
 set guioptions-=r
 " show line numbering
-set number
+set nonumber
 " hide mode indicator
 set noshowmode
 " show number of lines or characters selected in right bottom corner
@@ -620,13 +623,13 @@ set laststatus=2
 
 "let g:airline_theme = 'molokai'
 "let g:airline_theme = 'hybrid'
-"let g:airline_theme = 'lucius'
+let g:airline_theme = 'lucius'
 "let g:airline_theme = 'tomorrow'
 "let g:airline_theme = 'powerlineish'
 "let g:airline_theme = 'dark'
 "let g:airline_theme = 'light'
 "let g:airline_theme = 'base16'
-let g:airline_theme = 'zenburn'
+"let g:airline_theme = 'zenburn'
 "let g:airline_theme = 'serene'
 "let g:airline_theme = 'ubaryd'
 "let g:airline_theme = 'gotham'
