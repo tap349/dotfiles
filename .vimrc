@@ -153,8 +153,8 @@ let g:solarized_underline = 1
 " try using summerfruit_tap or vylight for elixir
 
 "colorscheme iceberg
-"colorscheme solarized
-colorscheme summerfruit_tap
+colorscheme solarized
+"colorscheme summerfruit_tap
 "colorscheme ir_black_tap
 "colorscheme ir_black_morr
 "colorscheme sebocean_dasha
@@ -194,13 +194,16 @@ else
   "set linespace=-2
   "set guifont=Inconsolata-dz\ For\ Powerline:h14
 
-  "set linespace=2
+  set linespace=3
   "set guifont=Andale\ Mono\ MT\ Std:h14
   "set guifont=Andale\ Mono:h14
   set guifont=Monaco\ for\ Powerline:h13
 
   "set linespace=4
   "set guifont=Cousine:h14
+
+  "set linespace=2
+  "set guifont=Andale\ Mono\ MT\ Std:h14
 endif
 
 "-------------------------------------------------------------------------------
@@ -214,7 +217,11 @@ set guioptions-=L
 " remove right-hand scroll bar
 set guioptions-=r
 " show line numbering
-set nonumber
+if hostname() == 'MacBook-Pro.local'
+  set nonumber
+else
+  set number
+endif
 " hide mode indicator
 set noshowmode
 " show number of lines or characters selected in right bottom corner
@@ -623,7 +630,7 @@ set laststatus=2
 
 "let g:airline_theme = 'molokai'
 "let g:airline_theme = 'hybrid'
-let g:airline_theme = 'lucius'
+"let g:airline_theme = 'lucius'
 "let g:airline_theme = 'tomorrow'
 "let g:airline_theme = 'powerlineish'
 "let g:airline_theme = 'dark'
@@ -634,21 +641,21 @@ let g:airline_theme = 'lucius'
 "let g:airline_theme = 'ubaryd'
 "let g:airline_theme = 'gotham'
 
-let g:airline_powerline_fonts = 0
+let g:airline_powerline_fonts = 1
 
-let g:airline_left_sep = '⮀'
-let g:airline_left_alt_sep = '⮁'
-let g:airline_right_sep = '⮂'
-let g:airline_right_alt_sep = '⮃'
+"let g:airline_left_sep = '⮀'
+"let g:airline_left_alt_sep = '⮁'
+"let g:airline_right_sep = '⮂'
+"let g:airline_right_alt_sep = '⮃'
 
 " https://github.com/bling/vim-airline/issues/193
-if !exists('g:airline_symbols')
-  let g:airline_symbols = {}
-end
+"if !exists('g:airline_symbols')
+  "let g:airline_symbols = {}
+"end
 
-let g:airline_symbols.branch = '⭠'
-let g:airline_symbols.readonly = '⭤'
-let g:airline_symbols.linenr = '⭡'
+"let g:airline_symbols.branch = '⭠'
+"let g:airline_symbols.readonly = '⭤'
+"let g:airline_symbols.linenr = '⭡'
 
 "-------------------------------------------------------------------------------
 " vim-buffergator

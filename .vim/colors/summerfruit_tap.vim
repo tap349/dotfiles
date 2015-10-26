@@ -72,7 +72,7 @@ hi Cursor       guifg=black     guibg=#edD932
 "hi CursorLine   guibg=#e7f7f9
 hi CursorLine   guibg=#e0edf5
 hi LineNr       guifg=#337e93   guibg=#d3eaf5
-hi CursorLineNr guifg=#034e53   guibg=#b3cad5   gui=bold
+hi CursorLineNr guifg=#034e53   guibg=#b3cad5   gui=none
 "hi CursorLineNr guifg=#eeeeee   guibg=#135e83   gui=bold
 "hi MatchParen   guifg=#4A3AAD   guibg=#AABADD
 "hi MatchParen   guibg=#FFFF00   guifg=#7A6ADD
@@ -84,7 +84,7 @@ hi MatchParen   guibg=#7FFF40   guifg=#135e83
 "--------------------------------------------------------------
 
 hi Todo         guifg=#e50808   guibg=#dbf3cd   gui=bold
-hi Title        guifg=#000000                   gui=bold
+hi Title        guifg=#000000                   gui=none
 hi Special      guifg=#e50808
 "hi Special      guifg=#fd8900
 "hi Visual       guibg=#EFFFDB
@@ -104,16 +104,16 @@ hi String       guifg=#0076a2   gui=none
 hi Constant     guifg=#2F3C9C
 hi Number       guifg=#0086f7
 "hi Number       guifg=#0086f7                   gui=bold
-hi Statement    guifg=#1F1C6C                   gui=bold
+hi Statement    guifg=#1F1C6C                   gui=none
 "hi Statement    guifg=#1F2C7C                   gui=bold
 "hi Statement    guifg=#e50808                   gui=bold
 "hi Statement    guifg=#2b6cba                   gui=bold
-hi Function     guifg=#ee0086                   gui=bold
-hi PreProc      guifg=#ff0007                   gui=bold
+hi Function     guifg=#ee0086                   gui=none
+hi PreProc      guifg=#ff0007                   gui=none
 "hi Comment      guifg=#abab9b
 hi Comment      guifg=#ababab
 "hi Comment      guifg=#32b22f   guibg=#fffde9   gui=italic
-hi Type         guifg=#2F6C9C                   gui=bold
+hi Type         guifg=#2F6C9C                   gui=none
 "hi Type         guifg=#70897b                   gui=bold
 "hi Type         guifg=#5059EB                   gui=bold
 hi Error        guifg=#ffffff   guibg=#d40000
