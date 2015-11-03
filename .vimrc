@@ -203,7 +203,7 @@ else
   set linespace=3
   "set guifont=Andale\ Mono\ MT\ Std:h14
   "set guifont=Andale\ Mono:h14
-  set guifont=Monaco\ for\ Powerline:h13
+  set guifont=MonacoB\ for\ Powerline:h13
 
   "set linespace=4
   "set guifont=Cousine:h14
@@ -647,21 +647,21 @@ set laststatus=2
 "let g:airline_theme = 'ubaryd'
 "let g:airline_theme = 'gotham'
 
-let g:airline_powerline_fonts = 1
+let g:airline_powerline_fonts = 0
 
-"let g:airline_left_sep = '⮀'
-"let g:airline_left_alt_sep = '⮁'
-"let g:airline_right_sep = '⮂'
-"let g:airline_right_alt_sep = '⮃'
+let g:airline_left_sep = '⮀'
+let g:airline_left_alt_sep = '⮁'
+let g:airline_right_sep = '⮂'
+let g:airline_right_alt_sep = '⮃'
 
 " https://github.com/bling/vim-airline/issues/193
-"if !exists('g:airline_symbols')
-  "let g:airline_symbols = {}
-"end
+if !exists('g:airline_symbols')
+  let g:airline_symbols = {}
+end
 
-"let g:airline_symbols.branch = '⭠'
-"let g:airline_symbols.readonly = '⭤'
-"let g:airline_symbols.linenr = '⭡'
+let g:airline_symbols.branch = '⭠'
+let g:airline_symbols.readonly = '⭤'
+let g:airline_symbols.linenr = '⭡'
 
 "-------------------------------------------------------------------------------
 " vim-buffergator

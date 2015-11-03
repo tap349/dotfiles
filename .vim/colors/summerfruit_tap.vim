@@ -100,11 +100,11 @@ hi Visual       guibg=#C8F9FF
 "hi String       guifg=#0086d2
 "hi String       guifg=#0086b2
 "hi String       guifg=#0076a2   guibg=#fffde9
-hi String       guifg=#0076a2   gui=none
+hi String       guifg=#0076a2                   gui=none
 hi Constant     guifg=#2F3C9C
 hi Number       guifg=#0086f7
 "hi Number       guifg=#0086f7                   gui=bold
-hi Statement    guifg=#1F1C6C                   gui=none
+hi Statement    guifg=#1F1C6C                   gui=bold
 "hi Statement    guifg=#1F2C7C                   gui=bold
 "hi Statement    guifg=#e50808                   gui=bold
 "hi Statement    guifg=#2b6cba                   gui=bold
