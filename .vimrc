@@ -148,7 +148,7 @@ set splitright
 
 set t_Co=256
 
-set background=light
+set background=dark
 set transparency=0
 
 let g:solarized_bold = 1
@@ -173,43 +173,30 @@ colorscheme solarized
 " font
 "-------------------------------------------------------------------------------
 
-"set guifont=Andale\ Mono:h14
-"set guifont=PT\ Mono:h14
-"set guifont=Anonymice\ Powerline:h15
-"set guifont=Menlo\ for\ Powerline:h14
-"set guifont=Fira\ Mono\ For\ Powerline:h14
-"set guifont=MonacoB2:h13
-"set guifont=MonacoB\ for\ Powerline:h13
+"set linespace=-1
+"set guifont=Inconsolata-dz\ For\ Powerline:h14
+
+"set linespace=-2
 "set guifont=Inconsolata\ LGC:h14
+
+"set linespace=2
 "set guifont=Input\ Mono\ Narrow:h13
-"set guifont=Source\ Code\ Pro\ For\ Powerline:h15
+
+"set linespace=3
+"set guifont=Andale\ Mono:h14
+
+"set linespace=2
+"set guifont=Andale\ Mono\ MT\ Std:h14
+
+"set linespace=4
+"set guifont=Cousine:h14
 
 if hostname() == 'MacBook-Pro.local'
-  "set linespace=-3
-  "set guifont=Inconsolata\ LGC:h13
-
-  "set linespace=2
-  "set guifont=Input\ Mono\ Narrow:h13
-
-  set linespace=2
-  set guifont=Andale\ Mono\ MT\ Std:h14
-
-  "set linespace=2
-  "set guifont=Monaco\ for\ Powerline:h13
-else
-  "set linespace=-2
-  "set guifont=Inconsolata-dz\ For\ Powerline:h14
-
   set linespace=3
-  "set guifont=Andale\ Mono\ MT\ Std:h14
-  "set guifont=Andale\ Mono:h14
   set guifont=MonacoB\ for\ Powerline:h13
-
-  "set linespace=4
-  "set guifont=Cousine:h14
-
-  "set linespace=2
-  "set guifont=Andale\ Mono\ MT\ Std:h14
+else
+  set linespace=3
+  set guifont=MonacoB\ for\ Powerline:h13
 endif
 
 "-------------------------------------------------------------------------------
@@ -222,16 +209,17 @@ set cursorline
 set guioptions-=L
 " remove right-hand scroll bar
 set guioptions-=r
+" hide mode indicator
+set noshowmode
+" show number of lines or characters selected in right bottom corner
+set showcmd
+
 " show line numbering
 if hostname() == 'MacBook-Pro.local'
   set nonumber
 else
   set number
 endif
-" hide mode indicator
-set noshowmode
-" show number of lines or characters selected in right bottom corner
-set showcmd
 
 "-------------------------------------------------------------------------------
 " startup
