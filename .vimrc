@@ -239,6 +239,10 @@ set showcmd
 
 set shortmess+=I
 
+" https://rvm.io/integration/vim
+" https://github.com/scrooloose/syntastic/issues/1407
+set shell=/bin/sh
+
 "================================================================================
 "                                                                               =
 " abbreviations                                                                 =
