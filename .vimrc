@@ -159,8 +159,8 @@ let g:solarized_underline = 1
 " try using summerfruit_tap or vylight for elixir
 
 "colorscheme iceberg
-colorscheme solarized
-"colorscheme summerfruit_tap
+"colorscheme solarized
+colorscheme summerfruit_tap
 "colorscheme ir_black_tap
 "colorscheme ir_black_morr
 "colorscheme sebocean_dasha
@@ -253,7 +253,7 @@ iabbrev teh the
 
 "autocmd! BufRead * call s:SetBufhidden()
 
-augroup reload
+augroup vimrc
   autocmd!
   autocmd BufWritePost .vimrc source %
 augroup END
@@ -265,7 +265,7 @@ augroup tabs
   autocmd TabEnter * call s:GoToPrevTab()
 augroup END
 
-augroup syntax
+augroup filetypes
   autocmd!
   autocmd BufRead,BufNewFile *.arb set filetype=ruby
 augroup END
@@ -632,7 +632,7 @@ set laststatus=2
 "let g:airline_theme = 'tomorrow'
 "let g:airline_theme = 'powerlineish'
 "let g:airline_theme = 'dark'
-"let g:airline_theme = 'light'
+let g:airline_theme = 'light'
 "let g:airline_theme = 'base16'
 "let g:airline_theme = 'zenburn'
 "let g:airline_theme = 'serene'
