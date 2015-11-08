@@ -626,18 +626,23 @@ set laststatus=2
 "let g:airline#extensions#tabline#left_sep = '⮀'
 "let g:airline#extensions#tabline#left_alt_sep = '⮁'
 
+" dark
 "let g:airline_theme = 'molokai'
-"let g:airline_theme = 'hybrid'
-"let g:airline_theme = 'lucius'
-"let g:airline_theme = 'tomorrow'
 "let g:airline_theme = 'powerlineish'
 "let g:airline_theme = 'dark'
-let g:airline_theme = 'light'
-"let g:airline_theme = 'base16'
-"let g:airline_theme = 'zenburn'
 "let g:airline_theme = 'serene'
 "let g:airline_theme = 'ubaryd'
 "let g:airline_theme = 'gotham'
+
+" light
+"let g:airline_theme = 'hybrid'
+let g:airline_theme = 'lucius'
+"let g:airline_theme = 'tomorrow'
+"let g:airline_theme = 'light'
+"let g:airline_theme = 'base16'
+"let g:airline_theme = 'zenburn'
+"let g:airline_theme = 'solarized'
+"let g:airline_theme = 'solarized'
 
 let g:airline_powerline_fonts = 0
 
