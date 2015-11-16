@@ -63,8 +63,8 @@ set nowrap
 "-------------------------------------------------------------------------------
 
 set cpoptions+=$
-"set colorcolumn=81
-execute 'set colorcolumn=' . join(range(81,250), ',')
+set colorcolumn=81
+"execute 'set colorcolumn=' . join(range(81,250), ',')
 
 "-------------------------------------------------------------------------------
 " backup and swap files
