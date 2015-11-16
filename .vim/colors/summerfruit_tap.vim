@@ -78,6 +78,7 @@ hi CursorLineNr guifg=#034e53   guibg=#b3cad5   gui=none
 "hi MatchParen   guibg=#FFFF00   guifg=#7A6ADD
 hi MatchParen   guibg=#7FFF40   guifg=#135e83
 "hi MatchParen   guibg=#cddaf5
+hi ColorColumn  guibg=#e0edf5
 
 "--------------------------------------------------------------
 " Specials
