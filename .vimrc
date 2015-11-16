@@ -158,8 +158,6 @@ let g:solarized_contrast = 'normal'
 let g:solarized_italic = 1
 let g:solarized_underline = 1
 
-" try using summerfruit_tap or vylight for elixir
-
 "colorscheme iceberg
 "colorscheme solarized
 colorscheme summerfruit_tap
