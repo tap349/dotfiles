@@ -71,7 +71,7 @@ hi Cursor       guifg=black     guibg=#edD932
 "hi Cursor       guifg=black     guibg=#5FeF00
 "hi CursorLine   guibg=#e7f7f9
 hi CursorLine   guibg=#e0edf5
-hi LineNr       guifg=#337e93   guibg=#d3eaf5
+hi LineNr       guifg=#549fc0   guibg=#e5fcff
 hi CursorLineNr guifg=#034e53   guibg=#b3cad5   gui=none
 "hi CursorLineNr guifg=#eeeeee   guibg=#135e83   gui=bold
 "hi MatchParen   guifg=#4A3AAD   guibg=#AABADD

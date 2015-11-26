@@ -601,7 +601,7 @@ let g:SuperTabCrMapping = 1
 " syntastic
 "-------------------------------------------------------------------------------
 
-let g:syntastic_ruby_mri_exec = '~/.rvm/rubies/ruby-2.2.2/bin/ruby'
+let g:syntastic_ruby_mri_exec = '~/.rvm/rubies/ruby-2.2.3/bin/ruby'
 
 " http://vim.wikia.com/wiki/Simplifying_regular_expressions_using_magic_and_no-magic
 "
