@@ -150,7 +150,7 @@ set splitright
 
 set t_Co=256
 
-set background=dark
+set background=light
 set transparency=0
 
 let g:solarized_bold = 1
@@ -168,6 +168,7 @@ let g:solarized_underline = 1
 "colorscheme apprentice
 "colorscheme gotham
 "colorscheme vylight
+"colorscheme scheakur
 colorscheme PaperColor
 
 "-------------------------------------------------------------------------------
