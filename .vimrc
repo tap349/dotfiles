@@ -536,7 +536,7 @@ map <silent> b <Plug>CamelCaseMotion_b
 
 let g:CommandTMaxHeight = 17
 let g:CommandTMaxFiles = 25000
-let g:CommandTWildIgnore = &wildignore."public/images/**,tmp/**,public/assets/**"
+let g:CommandTWildIgnore = &wildignore."public/images/**,tmp/**,public/assets/**,**/*.log"
 
 nmap <F1> :CommandT<CR>
 imap <F1> <Esc>:CommandT<CR>
