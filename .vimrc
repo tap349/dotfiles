@@ -673,7 +673,7 @@ let g:airline_symbols.linenr = '⭡'
 "let g:buffergator_viewport_split_policy = 'R'
 "let g:buffergator_vsplit_size = 60
 
-nmap <F3> :BuffergatorOpen<CR>
+"nmap <F3> :BuffergatorOpen<CR>
 "nmap <F3>b :BuffergatorOpen<CR>
 "nmap <F3>t :BuffergatorTabsOpen<CR>
 nmap <silent> <C-p> :BuffergatorMruCyclePrev<CR>
