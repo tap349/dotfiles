@@ -454,13 +454,12 @@ inoremap )) ()<Esc>i
 " navigation
 "-------------------------------------------------------------------------------
 
-inoremap <PageUp> <Esc><C-u>i
-inoremap <PageDown> <Esc><C-d>i
-
-inoremap <C-h> <Left>
-inoremap <C-l> <Right>
-inoremap <C-j> <Down>
-inoremap <C-k> <Up>
+inoremap <C-b> <Left>
+inoremap <C-f> <Right>
+inoremap <C-n> <Down>
+inoremap <C-p> <Up>
+inoremap <C-a> <C-o>I
+inoremap <C-e> <C-o>A
 
 "------- tab --------------------------------------------------------------------
 
