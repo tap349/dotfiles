@@ -342,8 +342,8 @@ nnoremap <Leader>eu :tabnew<CR>:edit ~/.vim/update_bundles<CR>
 nnoremap <C-j> 10j
 nnoremap <C-k> 10k
 
-nnoremap <S-h> ^
-nnoremap <S-l> g_
+nnoremap H ^
+nnoremap L g_
 
 " switch to last active tab
 let g:lasttabnr = 1
@@ -486,8 +486,8 @@ inoremap <silent> <A-S-Up> <C-o>:tabmove<CR>
 vnoremap <C-j> 10j
 vnoremap <C-k> 10k
 
-vnoremap <S-h> ^
-vnoremap <S-l> g_
+vnoremap H ^
+vnoremap L g_
 
 "-------------------------------------------------------------------------------
 " shifting
