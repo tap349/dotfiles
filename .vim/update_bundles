@@ -6,6 +6,7 @@ require 'open-uri'
 git_bundles = %w[
   ap/vim-css-color
   bkad/CamelCaseMotion
+  blindFS/vim-taskwarrior
   bling/vim-airline
   cakebaker/scss-syntax.vim
   elixir-lang/vim-elixir
