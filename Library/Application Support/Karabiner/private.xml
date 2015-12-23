@@ -1,20 +1,5 @@
 <?xml version="1.0"?>
 <root>
-
-  <!-- key remapping -->
-
-  <item>
-    <name>Remap Left Windows to Left Option</name>
-    <identifier>private.change.left_windows_to_left_option</identifier>
-    <autogen>
-      __KeyToKey__
-      KeyCode::COMMAND_L,
-      KeyCode::OPTION_L
-    </autogen>
-  </item>
-
-  <!-- input source -->
-
   <item>
     <name>Select next Input Source</name>
     <identifier>private.inputsource.select_next</identifier>
@@ -22,28 +7,6 @@
       __KeyToKey__
       KeyCode::OPTION_R,
       KeyCode::SPACE, ModifierFlag::OPTION_L | ModifierFlag::COMMAND_L
-    </autogen>
-  </item>
-
-  <!-- shortcuts -->
-
-  <item>
-    <name>Add Control+Insert, Shift+Delete and Control+Insert shortcuts for clipboard operations</name>
-    <identifier>private.shourtcuts.pc_clipboard</identifier>
-    <autogen>
-      __KeyToKey__
-      KeyCode::HELP, ModifierFlag::CONTROL_L,
-      KeyCode::I, ModifierFlag::COMMAND_L
-    </autogen>
-    <autogen>
-      __KeyToKey__
-      KeyCode::HELP, ModifierFlag::SHIFT_L,
-      KeyCode::DOT, ModifierFlag::COMMAND_L
-    </autogen>
-    <autogen>
-      __KeyToKey__
-      KeyCode::FORWARD_DELETE, ModifierFlag::SHIFT_L,
-      KeyCode::B, ModifierFlag::COMMAND_L
     </autogen>
   </item>
 </root>
