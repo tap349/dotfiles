@@ -155,6 +155,7 @@ set transparency=0
 
 let g:solarized_bold = 1
 let g:solarized_contrast = 'normal'
+"let g:solarized_diffmode='high'
 let g:solarized_italic = 1
 let g:solarized_underline = 1
 
@@ -169,7 +170,13 @@ let g:solarized_underline = 1
 "colorscheme gotham
 "colorscheme vylight
 "colorscheme scheakur
-colorscheme PaperColor
+
+if &diff
+  colorscheme solarized
+  set background=dark
+else
+  colorscheme PaperColor
+endif
 
 "-------------------------------------------------------------------------------
 " font
