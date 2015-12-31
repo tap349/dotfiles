@@ -171,12 +171,8 @@ let g:solarized_underline = 1
 "colorscheme vylight
 "colorscheme scheakur
 
-if &diff
-  colorscheme solarized
-  set background=dark
-else
-  colorscheme PaperColor
-endif
+"colorscheme PaperColor
+colorscheme solarized
 
 "-------------------------------------------------------------------------------
 " font
