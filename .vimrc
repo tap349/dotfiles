@@ -689,6 +689,12 @@ nmap <silent> <C-n> :BuffergatorMruCycleNext<CR>
 nmap <F6> :Gvdiff<CR>
 
 "-------------------------------------------------------------------------------
+" vim-markdown
+"-------------------------------------------------------------------------------
+
+let g:vim_markdown_folding_disabled = 1
+
+"-------------------------------------------------------------------------------
 " vim-rails
 "
 " example projections: https://gist.github.com/henrik/5676109

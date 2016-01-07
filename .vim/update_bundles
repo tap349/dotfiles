@@ -16,6 +16,7 @@ git_bundles = %w[
   jeetsukumaran/vim-buffergator
   kchmck/vim-coffee-script
   keith/rspec.vim
+  plasticboy/vim-markdown
   rking/ag.vim
   scheakur/vim-scheakur
   scrooloose/nerdcommenter
