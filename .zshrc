@@ -145,10 +145,6 @@ alias rake="noglob rake"
 # dev
 #-----------------------------------------------------------------------------------------
 
-# blog
-
-alias upload='rake generate && rake deploy'
-
 # cap
 
 alias pdeploy='git push && cap production deploy'
@@ -159,6 +155,7 @@ alias deploy='sdeploy'
 
 alias g='git'
 alias ga='git add -A .'
+alias gc='git_commit'
 alias gd='git diff'
 alias gdc='git diff --cached'
 alias gl="git log --graph --pretty=format:'%Cred%h%Creset %C(yellow)%d%Creset %s - %C(bold blue)%an%Creset, %Cgreen%cr' --abbrev-commit"
@@ -229,10 +226,6 @@ fvim() {
   mvim `f "$*"`
 }
 
-git_delete_branches() {
-  git branch | grep -v -E '(master|develop)' | xargs git branch -d
-}
-
 gr() {
   fgrep --color --exclude-dir={log,public,tmp,.git} -Iir "$@" .
 }
@@ -242,12 +235,23 @@ hitch() {
   if [[ -s "$HOME/.hitch_export_authors" ]]; then source "$HOME/.hitch_export_authors" ; fi
 }
 
+# blog
+
+publish() {
+  git add -A .
+  git commit -m "update `date +%Y-%m-%d_%H:%M:%S`"
+  git push
+}
 
 # git
 
-gc() {
-  [[ -z $1 ]] && echo error: specify git commit message && exit
+git_commit() {
+  [[ -z $1 ]] && echo error: specify git commit message && return 1
   git commit -m "$*"
+}
+
+git_delete_branches() {
+  git branch | grep -v -E '(master|develop)' | xargs git branch -d
 }
 
 # shikimori
