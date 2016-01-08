@@ -277,6 +277,11 @@ augroup filetypes
   autocmd BufRead,BufNewFile *.arb set filetype=ruby
 augroup END
 
+augroup quickfix
+  autocmd!
+  autocmd BufReadPost quickfix nnoremap <buffer> <CR> <CR>
+augroup END
+
 " TODO
 "augroup large_files
   "autocmd!
@@ -693,6 +698,7 @@ nmap <F6> :Gvdiff<CR>
 "-------------------------------------------------------------------------------
 
 let g:vim_markdown_folding_disabled = 1
+let g:vim_markdown_frontmatter = 1
 
 "-------------------------------------------------------------------------------
 " vim-rails
