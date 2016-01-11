@@ -1,6 +1,5 @@
 .vim/backup/
 .vim/bundle/
-.vim/sessions/
 .vim/tmp/
 
 *.bak
