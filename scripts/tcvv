@@ -1,0 +1,33 @@
+#!/bin/bash
+#
+# truecrypt virtual volume
+#
+# 1 - mount/umount
+# 2 - device
+# 3 - mountpoint
+
+if [ "$1" = "mount" ]
+then
+	shift
+
+	if [ -z "$1" -o -z "$2" ]
+	then
+		echo error: specify both virtual volume file and mountpoint
+		exit
+	fi
+
+	/Applications/TrueCrypt.app/Contents/MacOS/TrueCrypt --mount "$1" "$2"
+elif [ "$1" = "umount" ]
+then
+	shift
+
+	if [ -z "$1" ]
+	then
+		echo error: specify virtual volume file
+		exit
+	fi
+
+	truecrypt -d "$1"
+else
+	echo error: specify operation: mount or umount
+fi

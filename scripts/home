@@ -1,0 +1,1 @@
+mount_smbfs //tap@192.168.0.104/tap /Volumes/opr7/
