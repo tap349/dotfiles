@@ -171,8 +171,8 @@ let g:solarized_underline = 1
 "colorscheme vylight
 "colorscheme scheakur
 
-colorscheme PaperColor
-"colorscheme solarized
+"colorscheme PaperColor
+colorscheme solarized
 
 "-------------------------------------------------------------------------------
 " font
@@ -199,8 +199,10 @@ colorscheme PaperColor
 if hostname() == 'MacBook-Pro.local'
   "set linespace=4
   "set guifont=Andale\ Mono\ MT\ Std:h14
-  set linespace=3
-  set guifont=MonacoB\ for\ Powerline:h13
+  "set linespace=3
+  "set guifont=MonacoB\ for\ Powerline:h13
+  set linespace=-2
+  set guifont=Inconsolata\ LGC\ for\ Powerline:h14
 else
   set linespace=3
   set guifont=MonacoB\ for\ Powerline:h13
@@ -639,11 +641,12 @@ set laststatus=2
 "let g:airline#extensions#tabline#left_alt_sep = '⮁'
 
 " dark
-"let g:airline_theme = 'molokai'
+let g:airline_theme = 'molokai'
 "let g:airline_theme = 'powerlineish'
 "let g:airline_theme = 'dark'
 "let g:airline_theme = 'serene'
 "let g:airline_theme = 'ubaryd'
+"let g:airline_theme = 'laederon'
 
 " light
 "let g:airline_theme = 'hybrid'
@@ -653,7 +656,7 @@ set laststatus=2
 "let g:airline_theme = 'base16'
 "let g:airline_theme = 'zenburn'
 "let g:airline_theme = 'solarized'
-let g:airline_theme = 'papercolor'
+"let g:airline_theme = 'papercolor'
 
 let g:airline_powerline_fonts = 0
 
