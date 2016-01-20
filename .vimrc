@@ -160,7 +160,6 @@ let g:solarized_italic = 1
 let g:solarized_underline = 1
 
 "colorscheme iceberg
-"colorscheme solarized
 "colorscheme summerfruit_tap
 "colorscheme ir_black_tap
 "colorscheme ir_black_morr
@@ -171,8 +170,8 @@ let g:solarized_underline = 1
 "colorscheme vylight
 "colorscheme scheakur
 
-"colorscheme PaperColor
-colorscheme solarized
+"colorscheme solarized
+colorscheme PaperColor
 
 "-------------------------------------------------------------------------------
 " font
