@@ -436,8 +436,8 @@ nnoremap Y y$
 "-------------------------------------------------------------------------------
 
 " TODO use function to toggle focus
-nmap <Leader>f H/do<CR><Backspace>hi,:focus<Esc>
-nmap <Leader>F Hf,dE<Esc>
+"nmap <Leader>f H/do<CR><Backspace>hi,:focus<Esc>
+"nmap <Leader>F Hf,dE<Esc>
 
 "===============================================================================
 " insert mode                                                                  =
