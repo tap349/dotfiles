@@ -640,7 +640,7 @@ set laststatus=2
 "let g:airline#extensions#tabline#left_alt_sep = '⮁'
 
 " dark
-let g:airline_theme = 'molokai'
+"let g:airline_theme = 'molokai'
 "let g:airline_theme = 'powerlineish'
 "let g:airline_theme = 'dark'
 "let g:airline_theme = 'serene'
@@ -655,7 +655,7 @@ let g:airline_theme = 'molokai'
 "let g:airline_theme = 'base16'
 "let g:airline_theme = 'zenburn'
 "let g:airline_theme = 'solarized'
-"let g:airline_theme = 'papercolor'
+let g:airline_theme = 'papercolor'
 
 let g:airline_powerline_fonts = 0
 
