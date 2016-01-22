@@ -546,6 +546,9 @@ map <silent> b <Plug>CamelCaseMotion_b
 " command-t
 "-------------------------------------------------------------------------------
 
+"let g:CommandTCancelMap = '<F1>'
+let g:CommandTMatchWindowAtTop = 0
+let g:CommandTMatchWindowReverse = 0
 let g:CommandTMaxHeight = 17
 let g:CommandTMaxFiles = 25000
 let g:CommandTWildIgnore = &wildignore."public/images/**,tmp/**,public/assets/**,**/*.log"
