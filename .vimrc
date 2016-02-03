@@ -160,7 +160,7 @@ let g:solarized_italic = 1
 let g:solarized_underline = 1
 
 "colorscheme iceberg
-"colorscheme summerfruit_tap
+colorscheme summerfruit_tap
 "colorscheme ir_black_tap
 "colorscheme ir_black_morr
 "colorscheme sebocean_dasha
@@ -170,7 +170,7 @@ let g:solarized_underline = 1
 "colorscheme vylight
 "colorscheme scheakur
 
-colorscheme solarized
+"colorscheme solarized
 "colorscheme PaperColor
 
 "-------------------------------------------------------------------------------
@@ -654,12 +654,12 @@ set laststatus=2
 
 " light
 "let g:airline_theme = 'hybrid'
-"let g:airline_theme = 'lucius'
+let g:airline_theme = 'lucius'
 "let g:airline_theme = 'tomorrow'
 "let g:airline_theme = 'light'
 "let g:airline_theme = 'base16'
 "let g:airline_theme = 'zenburn'
-let g:airline_theme = 'solarized'
+"let g:airline_theme = 'solarized'
 "let g:airline_theme = 'papercolor'
 
 let g:airline_powerline_fonts = 0

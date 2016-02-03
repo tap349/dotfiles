@@ -7,7 +7,6 @@ git_bundles = %w[
   ap/vim-css-color
   bkad/CamelCaseMotion
   blindFS/vim-taskwarrior
-  bling/vim-airline
   cakebaker/scss-syntax.vim
   elixir-lang/vim-elixir
   ervandew/supertab
@@ -29,6 +28,8 @@ git_bundles = %w[
   tpope/vim-rails
   tpope/vim-surround
   tpope/vim-unimpaired
+  vim-airline/vim-airline
+  vim-airline/vim-airline-themes
   vim-ruby/vim-ruby
   wincent/command-t
   xolox/vim-misc
