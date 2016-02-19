@@ -159,7 +159,6 @@ let g:solarized_contrast = 'normal'
 let g:solarized_italic = 1
 let g:solarized_underline = 1
 
-"colorscheme iceberg
 "colorscheme summerfruit_tap
 "colorscheme ir_black_tap
 "colorscheme ir_black_morr
@@ -207,6 +206,8 @@ else
   "set guifont=MonacoB\ for\ Powerline:h13
   set linespace=4
   set guifont=Andale\ Mono\ MT\ Std:h14
+  "set linespace=4
+  "set guifont=Andale\ Mono:h14
 endif
 
 "-------------------------------------------------------------------------------
@@ -438,8 +439,6 @@ nnoremap Y y$
 "-------------------------------------------------------------------------------
 
 " TODO use function to toggle focus
-"nmap <Leader>f H/do<CR><Backspace>hi,:focus<Esc>
-"nmap <Leader>F Hf,dE<Esc>
 
 "===============================================================================
 " insert mode                                                                  =
