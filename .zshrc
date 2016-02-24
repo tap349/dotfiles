@@ -92,6 +92,8 @@ setopt HIST_IGNORE_DUPS
 
 BLOG=~/blog
 
+CDN_REENTER=~/dev/cdn_reenter
+CHEF=~/dev/chef
 CHEFUPTIMUS=~/dev/chefuptimus
 NALA=~/dev/nala
 PUMBA=~/dev/pumba
@@ -115,6 +117,7 @@ alias downloads='cd ~/Downloads'
 
 alias blog='cd $BLOG'
 
+alias cdn='cd $CDN_REENTER'
 alias chefuptimus='cd $CHEFUPTIMUS'
 alias nala='cd $NALA'
 alias pumba='cd $PUMBA'
