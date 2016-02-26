@@ -126,7 +126,7 @@ alias sibas='cd $SIBAS'
 alias umka='cd $UMKA'
 alias uptimus='cd $UPTIMUS'
 
-alias c='cd $CHEFUPTIMUS'
+alias c='cd $CHEF'
 alias n='cd $NALA'
 alias p='cd $PUMBA'
 alias s='cd $SHIKIMORI'
