@@ -117,19 +117,13 @@ alias downloads='cd ~/Downloads'
 
 alias blog='cd $BLOG'
 
-alias cdn='cd $CDN_REENTER'
-alias chefuptimus='cd $CHEFUPTIMUS'
-alias nala='cd $NALA'
-alias pumba='cd $PUMBA'
-alias shikimori='cd $SHIKIMORI'
-alias sibas='cd $SIBAS'
-alias umka='cd $UMKA'
-alias uptimus='cd $UPTIMUS'
-
 alias c='cd $CHEF'
+alias cdn='cd $CDN_REENTER'
+alias cu='cd $CHEFUPTIMUS'
 alias n='cd $NALA'
 alias p='cd $PUMBA'
 alias s='cd $SHIKIMORI'
+alias si='cd $SIBAS'
 alias um='cd $UMKA'
 alias up='cd $UPTIMUS'
 
