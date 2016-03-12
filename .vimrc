@@ -153,10 +153,10 @@ set t_Co=256
 set background=light
 set transparency=0
 
-let g:solarized_bold = 1
+let g:solarized_bold = 0
 let g:solarized_contrast = 'normal'
 "let g:solarized_diffmode='high'
-let g:solarized_italic = 1
+let g:solarized_italic = 0
 let g:solarized_underline = 1
 
 "colorscheme summerfruit_tap
@@ -169,8 +169,8 @@ let g:solarized_underline = 1
 "colorscheme vylight
 "colorscheme scheakur
 
-"colorscheme solarized
-colorscheme PaperColor
+colorscheme solarized
+"colorscheme PaperColor
 
 "-------------------------------------------------------------------------------
 " font
