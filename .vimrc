@@ -224,6 +224,11 @@ set guioptions-=r
 set noshowmode
 " show number of lines or characters selected in right bottom corner
 set showcmd
+" disable some gui popups
+set guioptions+=c
+" this is the main cause of sluggish scrolling!
+" set after colorscheme - or else it can redefined inside it
+set nocursorline
 
 " show line numbering
 if hostname() == 'MacBook-Pro.local'
