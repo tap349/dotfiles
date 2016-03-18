@@ -195,12 +195,12 @@ colorscheme PaperColor
 "set guifont=Cousine:h14
 
 if hostname() == 'MacBook-Pro.local'
-  "set linespace=4
-  "set guifont=Andale\ Mono\ MT\ Std:h14
+  set linespace=4
+  set guifont=Andale\ Mono\ MT\ Std:h14
   "set linespace=4
   "set guifont=MonacoB\ for\ Powerline:h13
-  set linespace=1
-  set guifont=Inconsolata\ LGC\ for\ Powerline:h14
+  "set linespace=1
+  "set guifont=Inconsolata\ LGC\ for\ Powerline:h14
 else
   "set linespace=3
   "set guifont=MonacoB\ for\ Powerline:h13
@@ -666,7 +666,7 @@ let g:airline_theme = 'lucius'
 "let g:airline_theme = 'solarized'
 "let g:airline_theme = 'papercolor'
 
-let g:airline_powerline_fonts = 1
+let g:airline_powerline_fonts = 0
 
 " https://github.com/vim-airline/vim-airline/blob/master/doc/airline.txt
 if !exists('g:airline_symbols')
