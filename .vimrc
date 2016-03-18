@@ -197,10 +197,10 @@ colorscheme PaperColor
 if hostname() == 'MacBook-Pro.local'
   "set linespace=4
   "set guifont=Andale\ Mono\ MT\ Std:h14
-  set linespace=4
-  set guifont=MonacoB\ for\ Powerline:h13
-  "set linespace=-2
-  "set guifont=Inconsolata\ LGC\ for\ Powerline:h14
+  "set linespace=4
+  "set guifont=MonacoB\ for\ Powerline:h13
+  set linespace=1
+  set guifont=Inconsolata\ LGC\ for\ Powerline:h14
 else
   "set linespace=3
   "set guifont=MonacoB\ for\ Powerline:h13
@@ -666,18 +666,17 @@ let g:airline_theme = 'lucius'
 "let g:airline_theme = 'solarized'
 "let g:airline_theme = 'papercolor'
 
-let g:airline_powerline_fonts = 0
+let g:airline_powerline_fonts = 1
+
+" https://github.com/vim-airline/vim-airline/blob/master/doc/airline.txt
+if !exists('g:airline_symbols')
+  let g:airline_symbols = {}
+endif
 
 let g:airline_left_sep = '⮀'
 let g:airline_left_alt_sep = '⮁'
 let g:airline_right_sep = '⮂'
 let g:airline_right_alt_sep = '⮃'
-
-" https://github.com/bling/vim-airline/issues/193
-if !exists('g:airline_symbols')
-  let g:airline_symbols = {}
-end
-
 let g:airline_symbols.branch = '⭠'
 let g:airline_symbols.readonly = '⭤'
 let g:airline_symbols.linenr = '⭡'
