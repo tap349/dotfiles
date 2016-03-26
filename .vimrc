@@ -291,12 +291,6 @@ augroup quickfix
   autocmd BufReadPost quickfix nnoremap <buffer> <CR> <CR>
 augroup END
 
-" TODO
-"augroup large_files
-  "autocmd!
-  "autocmd FileType yaml call s:PrepareLargeFile(expand('<afile>'))
-"augroup END
-
 "===============================================================================
 "                                                                              =
 " common maps                                                                  =
@@ -572,7 +566,6 @@ nmap <Leader><F1>r :CommandTFlush<CR>:CommandT<CR>
 "let g:CommandTAcceptSelectionCommand = 'GotoOrOpen'
 "let g:CommandTAcceptSelectionTabCommand = 'GotoOrOpenTab'
 
-
 "-------------------------------------------------------------------------------
 " lightline.vim
 "-------------------------------------------------------------------------------
@@ -698,6 +691,13 @@ nmap <silent> <C-p> :BuffergatorMruCyclePrev<CR>
 nmap <silent> <C-n> :BuffergatorMruCycleNext<CR>
 
 "-------------------------------------------------------------------------------
+" vim-easymotion
+"-------------------------------------------------------------------------------
+
+map  <Leader>f <Plug>(easymotion-bd-f)
+map  <Leader>w <Plug>(easymotion-bd-w)
+
+"-------------------------------------------------------------------------------
 " vim-fugitive
 "-------------------------------------------------------------------------------
 
@@ -816,12 +816,3 @@ function! GotoOrOpenTab(...)
     endif
   endfor
 endfunction
-
-" TODO
-" http://vim.wikia.com/wiki/Faster_loading_of_large_files
-"function! s:PrepareLargeFile(fname)
-  "echom fname
-  "if getfsize(fname) > 1024 * 10
-    "echom 'aoeu'
-  "endif
-"endfunction
