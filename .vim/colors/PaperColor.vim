@@ -31,6 +31,20 @@ syntax reset
 
 let g:colors_name = "PaperColor"
 
+"------------------------------------------------------------------------------
+" vim-gitgutter
+"------------------------------------------------------------------------------
+
+hi GitGutterAdd               guibg=#befece
+hi GitGutterChange            guibg=#deeefe
+hi GitGutterDelete            guibg=#fee2e2
+hi GitGutterChangeDelete      guibg=#fedefe
+
+hi GitGutterAddLine           guibg=#befece
+hi GitGutterChangeLine        guibg=#deeefe
+hi GitGutterDeleteLine        guibg=#fee2e2
+hi GitGutterChangeDeleteLine  guibg=#fedefe
+
 if has("gui_running") || &t_Co == 88 || &t_Co == 256
 	" Returns an approximate grey index for the given grey level
 	fun <SID>grey_number(x)
