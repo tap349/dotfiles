@@ -4,6 +4,7 @@ require 'fileutils'
 require 'open-uri'
 
 git_bundles = %w[
+  airblade/vim-gitgutter
   ap/vim-css-color
   bkad/CamelCaseMotion
   blindFS/vim-taskwarrior

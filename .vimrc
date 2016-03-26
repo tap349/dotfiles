@@ -587,7 +587,6 @@ map <Leader><Space> <Plug>NERDCommenterToggle
 "-------------------------------------------------------------------------------
 
 nmap <F2> :NERDTreeToggle<CR>
-nmap <Leader><F2>r :NERDTree<CR>
 nmap <Leader><F2>f :NERDTreeFind<CR>
 
 "-------------------------------------------------------------------------------
@@ -702,6 +701,25 @@ map  <Leader>w <Plug>(easymotion-bd-w)
 "-------------------------------------------------------------------------------
 
 nmap <F6> :Gvdiff<CR>
+
+"-------------------------------------------------------------------------------
+" vim-gitgutter
+"-------------------------------------------------------------------------------
+
+set updatetime=250
+
+let g:gitgutter_enabled = 0
+"let g:gitgutter_map_keys = 0
+let g:gitgutter_highlight_lines = 1
+
+nmap <silent> <Leader>ht :GitGutterToggle<CR>
+
+"nmap ]c <Plug>GitGutterNextHunk
+"nmap [c <Plug>GitGutterPrevHunk
+
+"nmap <Leader>hp <Plug>GitGutterPreviewHunk
+"nmap <Leader>hr <Plug>GitGutterRevertHunk
+"nmap <Leader>hs <Plug>GitGutterStageHunk
 
 "-------------------------------------------------------------------------------
 " vim-hugefile
