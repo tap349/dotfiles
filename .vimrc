@@ -195,7 +195,7 @@ colorscheme PaperColor
 "set guifont=Cousine:h14
 
 if hostname() == 'MacBook-Pro.local'
-  set linespace=4
+  set linespace=5
   set guifont=Andale\ Mono\ MT\ Std:h14
   "set linespace=4
   "set guifont=MonacoB\ for\ Powerline:h13
@@ -246,6 +246,10 @@ set shortmess+=I
 " https://rvm.io/integration/vim
 " https://github.com/scrooloose/syntastic/issues/1407
 set shell=/bin/sh
+
+" maximize on startup
+set lines=999
+set columns=999
 
 "===============================================================================
 "                                                                              =
@@ -693,7 +697,8 @@ nmap <silent> <C-n> :BuffergatorMruCycleNext<CR>
 " vim-easymotion
 "-------------------------------------------------------------------------------
 
-map  <Leader>f <Plug>(easymotion-bd-f)
+map  <Leader>f <Plug>(easymotion-f)
+map  <Leader>F <Plug>(easymotion-F)
 map  <Leader>w <Plug>(easymotion-bd-w)
 
 "-------------------------------------------------------------------------------
@@ -706,7 +711,7 @@ nmap <F6> :Gvdiff<CR>
 " vim-gitgutter
 "-------------------------------------------------------------------------------
 
-set updatetime=250
+set updatetime=500
 
 let g:gitgutter_enabled = 0
 "let g:gitgutter_map_keys = 0
