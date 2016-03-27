@@ -19,7 +19,7 @@ git_bundles = %w[
   keith/rspec.vim
   mhinz/vim-hugefile
   plasticboy/vim-markdown
-  rking/ag.vim
+  tap349/ag.vim
   scheakur/vim-scheakur
   scrooloose/nerdcommenter
   scrooloose/nerdtree
