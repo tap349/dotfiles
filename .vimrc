@@ -699,7 +699,7 @@ nmap <silent> <C-n> :BuffergatorMruCycleNext<CR>
 
 let g:EasyMotion_enter_jump_first = 1
 
-nmap ; <Plug>(easymotion-s2)
+nmap <Leader>s <Plug>(easymotion-s2)
 nmap <Leader>f <Plug>(easymotion-f)
 nmap <Leader>F <Plug>(easymotion-F)
 nmap <Leader>w <Plug>(easymotion-bd-w)
