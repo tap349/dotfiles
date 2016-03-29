@@ -112,8 +112,8 @@ UPTIMUS=~/dev/uptimus
 # cd
 #-----------------------------------------------------------------------------------------
 
-alias dotfiles='cd ~/.dotfiles'
-alias downloads='cd ~/Downloads'
+alias dot='cd ~/.dotfiles'
+alias dl='cd ~/Downloads'
 
 alias blog='cd $BLOG'
 
