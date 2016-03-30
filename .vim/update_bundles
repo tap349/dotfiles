@@ -80,7 +80,7 @@ puts "compiling command-t..."
 # https://langui.sh/2014/03/10/wunused-command-line-argument-hard-error-in-future-is-a-harsh-mistress
 environment = 'ARCHFLAGS="-Wno-error=unused-command-line-argument-hard-error-in-future"'
 command_t_path = File.join 'command-t', 'ruby', 'command-t'
-rvm_init_script = 'source $HOME/.rvm/scripts/rvm'
-command_t_build_script = 'rvm use system && ruby extconf.rb && make'
+rbenv_init_script = 'eval "$(rbenv init -)"'
+command_t_build_script = 'rbenv shell system && ruby extconf.rb && make'
 
-puts %x{zsh -c 'cd #{command_t_path} && #{rvm_init_script} && #{environment} #{command_t_build_script}'}
+puts `zsh -c 'cd #{command_t_path} && #{rbenv_init_script} && #{environment} #{command_t_build_script}'`
