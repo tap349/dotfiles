@@ -121,16 +121,16 @@ UPTIMUS=~/dev/uptimus
 #-----------------------------------------------------------------------------------------
 
 alias guard='bundle exec guard'
+alias rake='bundle exec rake'
 alias rspec='bundle exec rspec'
 
 #-----------------------------------------------------------------------------------------
 # cd
 #-----------------------------------------------------------------------------------------
 
-alias dot='cd ~/.dotfiles'
-alias dl='cd ~/Downloads'
-
 alias blog='cd $BLOG'
+alias dl='cd ~/Downloads'
+alias dot='cd ~/.dotfiles'
 
 alias c='cd $CHEF'
 alias cdn='cd $CDN_REENTER'
@@ -149,19 +149,12 @@ alias up='cd $UPTIMUS'
 alias df='df -h'
 alias ll='ls -alp'
 alias mail='less +G /var/mail/tap'
-
-# for octopress
-alias rake="noglob rake"
+# for jekyll
+alias rake='noglob rake'
 
 #-----------------------------------------------------------------------------------------
 # dev
 #-----------------------------------------------------------------------------------------
-
-# cap
-
-alias pdeploy='git push && cap production deploy'
-alias sdeploy='git push && cap staging deploy'
-alias deploy='sdeploy'
 
 # git
 
@@ -174,8 +167,12 @@ alias gl="git log --graph --pretty=format:'%Cred%h%Creset %C(yellow)%d%Creset %s
 alias gs='git status'
 alias gbd='git_delete_branches'
 
-# TODO
-alias git-sub-up="git submodule foreach 'git fetch origin --tags; git checkout master; git pull' && git pull && git submodule update --init --recursive"
+# rails
+
+alias r='rails'
+alias rc='rails console'
+alias rd='rails dbconsole'
+alias rs='rails server'
 
 # hitch
 
@@ -184,19 +181,16 @@ alias unhitch='hitch -u'
 # misc
 
 alias log='tail -f log/development.log'
-alias migrate='rake db:migrate && RAILS_ENV=test rake db:migrate'
-alias rollback='rake db:rollback && RAILS_ENV=test rake db:rollback'
-alias sass='sass-convert --from css --to sass -R'
+alias migrate='bundle exec rake db:migrate && RAILS_ENV=test bundle exec rake db:migrate'
+alias rollback='bundle exec rake db:rollback && RAILS_ENV=test bundle exec rake db:rollback'
+alias css_to_sass='sass-convert --from css --to sass -R'
 alias sidekiq='bundle exec sidekiq --config ./config/sidekiq.yml'
-# TODO
+
+# shikimori
+
+alias git-sub-up="git submodule foreach 'git fetch origin --tags; git checkout master; git pull' && git pull && git submodule update --init --recursive"
 alias shikisync=sync_shikimori_images
-
-# rails
-
-alias r='rails'
-alias rc='rails console'
-alias rd='rails dbconsole'
-alias rs='rails server'
+alias hetzner='ssh devops@78.46.50.20'
 
 # SSH
 #
@@ -212,12 +206,6 @@ alias rs='rails server'
 #
 # in case matching host can't be found in .ssh/config ssh fallbacks
 # to password-based authentication (e.g. when using IP or alternative domain)
-
-#alias linode-uptimus="ssh uptimus"
-#alias linode-pumba="ssh pumba"
-
-# TODO
-alias hetzner='ssh devops@78.46.50.20'
 
 #-----------------------------------------------------------------------------------------
 #
