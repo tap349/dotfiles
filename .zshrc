@@ -130,7 +130,6 @@ alias cu='cd $CHEFUPTIMUS'
 alias n='cd $NALA'
 alias p='cd $PUMBA'
 alias s='cd $SHIKIMORI'
-alias si='cd $SIBAS'
 alias um='cd $UMKA'
 alias up='cd $UPTIMUS'
 
@@ -146,11 +145,23 @@ alias mail='less +G /var/mail/tap'
 # dev
 #-----------------------------------------------------------------------------------------
 
-# spring binstubs
+# rails, rake, rspec
 
 alias rails='bin/rails'
 alias rake='bin/rake'
 alias rspec='bin/rspec'
+
+alias r='bin/rails'
+alias rc='bin/rails console'
+alias rd='bin/rails dbconsole'
+alias rs='bin/rails server'
+
+alias migrate='bin/rake db:migrate && RAILS_ENV=test bin/rake db:migrate'
+alias rollback='bin/rake db:rollback && RAILS_ENV=test bin/rake db:rollback'
+
+# other gems
+
+alias sidekiq='bundle exec sidekiq --config ./config/sidekiq.yml'
 
 # git
 
@@ -163,18 +174,7 @@ alias gl="git log --graph --pretty=format:'%Cred%h%Creset %C(yellow)%d%Creset %s
 alias gs='git status'
 alias gbd='git_delete_branches'
 
-# rails
-
-alias rc='bin/rails console'
-alias rd='bin/rails dbconsole'
-alias rs='bin/rails server'
-
 # misc
-
-alias migrate='bin/rake db:migrate && RAILS_ENV=test bin/rake db:migrate'
-alias rollback='bin/rake db:rollback && RAILS_ENV=test bin/rake db:rollback'
-
-alias sidekiq='bundle exec sidekiq --config ./config/sidekiq.yml'
 
 alias css_to_sass='sass-convert --from css --to sass -R'
 alias log='tail -f log/development.log'
