@@ -117,14 +117,6 @@ UPTIMUS=~/dev/uptimus
 #-----------------------------------------------------------------------------------------
 
 #-----------------------------------------------------------------------------------------
-# bundle exec
-#-----------------------------------------------------------------------------------------
-
-alias guard='bundle exec guard'
-alias rake='bundle exec rake'
-alias rspec='bundle exec rspec'
-
-#-----------------------------------------------------------------------------------------
 # cd
 #-----------------------------------------------------------------------------------------
 
@@ -143,7 +135,7 @@ alias um='cd $UMKA'
 alias up='cd $UPTIMUS'
 
 #-----------------------------------------------------------------------------------------
-# common
+# system
 #-----------------------------------------------------------------------------------------
 
 alias df='df -h'
@@ -153,6 +145,12 @@ alias mail='less +G /var/mail/tap'
 #-----------------------------------------------------------------------------------------
 # dev
 #-----------------------------------------------------------------------------------------
+
+# spring binstubs
+
+alias rails='bin/rails'
+alias rake='bin/rake'
+alias rspec='bin/rspec'
 
 # git
 
@@ -167,22 +165,19 @@ alias gbd='git_delete_branches'
 
 # rails
 
-alias r='rails'
-alias rc='rails console'
-alias rd='rails dbconsole'
-alias rs='rails server'
-
-# hitch
-
-alias unhitch='hitch -u'
+alias rc='bin/rails console'
+alias rd='bin/rails dbconsole'
+alias rs='bin/rails server'
 
 # misc
 
-alias log='tail -f log/development.log'
-alias migrate='bundle exec rake db:migrate && RAILS_ENV=test bundle exec rake db:migrate'
-alias rollback='bundle exec rake db:rollback && RAILS_ENV=test bundle exec rake db:rollback'
-alias css_to_sass='sass-convert --from css --to sass -R'
+alias migrate='bin/rake db:migrate && RAILS_ENV=test bin/rake db:migrate'
+alias rollback='bin/rake db:rollback && RAILS_ENV=test bin/rake db:rollback'
+
 alias sidekiq='bundle exec sidekiq --config ./config/sidekiq.yml'
+
+alias css_to_sass='sass-convert --from css --to sass -R'
+alias log='tail -f log/development.log'
 
 # shikimori
 
