@@ -187,8 +187,8 @@ alias sidekiq='bundle exec sidekiq --config ./config/sidekiq.yml'
 # shikimori
 
 alias git-sub-up="git submodule foreach 'git fetch origin --tags; git checkout master; git pull' && git pull && git submodule update --init --recursive"
-alias shikisync=sync_shikimori_images
 alias hetzner='ssh devops@78.46.50.20'
+alias shikisync=sync_shikimori_images
 
 # SSH
 #
