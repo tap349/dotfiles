@@ -235,6 +235,10 @@ hitch() {
 
 # blog
 
+post() {
+  noglob rake "post:create[$*]"
+}
+
 publish() {
   git add -A .
   git commit -m "update `date +%Y-%m-%d_%H:%M:%S`"
