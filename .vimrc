@@ -197,6 +197,8 @@ colorscheme PaperColor
 if hostname() == 'MacBook-Pro.local'
   set linespace=5
   set guifont=Andale\ Mono\ MT\ Std:h14
+  "set linespace=5
+  "set guifont=Andale\ Mono:h14
   "set linespace=4
   "set guifont=MonacoB\ for\ Powerline:h13
   "set linespace=1
