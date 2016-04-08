@@ -162,6 +162,7 @@ alias rollback='bin/rake db:rollback && RAILS_ENV=test bin/rake db:rollback'
 
 # other gems
 
+alias cap='bundle exec cap'
 alias guard='bundle exec guard'
 alias sidekiq='bundle exec sidekiq --config ./config/sidekiq.yml'
 
