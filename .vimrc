@@ -164,8 +164,6 @@ let g:solarized_underline = 1
 "colorscheme ir_black_morr
 "colorscheme sebocean_dasha
 "colorscheme github
-"colorscheme apprentice
-"colorscheme gotham
 "colorscheme vylight
 "colorscheme scheakur
 
