@@ -5,15 +5,12 @@
 [merge]
   summary = true
   verbosity = 1
-  tool = mvimdiff
+  tool = fugitive
 
-[mergetool]
-  prompt = false
-
-[mergetool "mvimdiff"]
-  ;cmd = /usr/local/bin/mvimdiff -f "$LOCAL" "$MERGED" "$REMOTE"
-  cmd = "/usr/local/bin/mvim -f --nomru -c 'Gvdiff' $MERGED" # use fugitive.vim for 3-way merge
+[mergetool "fugitive"]
+  cmd = "mvim -f --nomru -c 'Gvdiff' $MERGED"
   keepBackup = false
+  prompt = false
 
 [diff]
   tool = default-difftool
@@ -36,8 +33,10 @@
   editor = mvim -f --nomru
 
 [push]
-	default = current
+  default = current
+
 [color]
-	ui = true
+  ui = true
+
 [credential]
-	helper = osxkeychain
+  helper = osxkeychain
