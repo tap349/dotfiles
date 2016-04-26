@@ -150,7 +150,7 @@ set splitright
 
 set t_Co=256
 
-set background=light
+set background=dark
 set transparency=0
 
 let g:solarized_bold = 0
@@ -167,8 +167,8 @@ let g:solarized_underline = 1
 "colorscheme vylight
 "colorscheme scheakur
 
-"colorscheme solarized
-colorscheme PaperColor
+colorscheme solarized
+"colorscheme PaperColor
 
 "-------------------------------------------------------------------------------
 " font
