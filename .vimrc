@@ -84,7 +84,8 @@ set backupskip+=/private/tmp/*
 "-------------------------------------------------------------------------------
 
 " http://vim.wikia.com/wiki/Using_tab_pages
-"set switchbuf=usetab,newtab
+set switchbuf=usetab,newtab
+" http://usevim.com/2012/10/19/vim101-set-hidden
 set hidden
 
 "-------------------------------------------------------------------------------
@@ -270,8 +271,6 @@ iabbrev teh the
 " are accumulated every time .vimrc is sourced.                                =
 "                                                                              =
 "===============================================================================
-
-"autocmd! BufRead * call s:SetBufhidden()
 
 augroup vimrc
   autocmd!
@@ -562,13 +561,12 @@ imap <F1> <Esc>:CommandT<CR>
 nmap <S-F1> :CommandTBuffer<CR>
 nmap <Leader><F1>r :CommandTFlush<CR>:CommandT<CR>
 
-" http://www.adp-gmbh.ch/vim/user_commands.html
 " http://vimdoc.sourceforge.net/htmldoc/usr_40.html
 "command! -nargs=+ GotoOrOpen call GotoOrOpen("<args>")
-"command! -nargs=+ GotoOrOpenTab call GotoOrOpenTab("<args>")
+command! -nargs=+ GotoOrOpenTab call GotoOrOpenTab("<args>")
 
 "let g:CommandTAcceptSelectionCommand = 'GotoOrOpen'
-"let g:CommandTAcceptSelectionTabCommand = 'GotoOrOpenTab'
+let g:CommandTAcceptSelectionTabCommand = 'GotoOrOpenTab'
 
 "-------------------------------------------------------------------------------
 " lightline.vim
@@ -775,24 +773,6 @@ nmap <F7>s :SaveSession<Space>
 "                                                                              =
 "===============================================================================
 
-" s: scoping prefix means that function is scoped to current script file;
-" don't use for every buffer since it will prevent from using buffer history
-function! s:SetBufhidden()
-  " most explorer plugins have buftype=nofile
-  " while normal buffers have buftype=<empty>;
-  " using & means that I refer to option -
-  " not variable that might have the same name
-  if empty(&buftype)
-    " wipe buffer when it's no longer displayed in any window
-    " (overrides behaviour set with global hidden option) -
-    " setting this option to delete still makes command-t
-    " open deleted buffers in the same tab
-    " (because information about them is still available
-    " even though buffers are not listed in buffer list)
-    setlocal bufhidden=wipe
-  endif
-endfunction
-
 " http://stackoverflow.com/questions/14079149
 function! s:GoToPrevTab()
   if tabpagenr('$') < s:prevtabcount && tabpagenr() > 1 && tabpagenr() == s:prevtabnr
@@ -803,37 +783,22 @@ function! s:GoToPrevTab()
   let s:prevtabcount = tabpagenr('$')
 endfunction
 
-" a:000: http://learnvimscriptthehardway.stevelosh.com/chapters/24.html;
-" we use sbuffer because buffer function doesn't respect switchbuf option;
-" we need to wipe out unloaded buffer because otherwise sbuffer will open
-" it in a split window instead of a new tab
+" returns 1 (true) if buffer hidden or 0 (false) otherwise
+" http://stackoverflow.com/a/8459043
+function! BufHidden(buf)
+  let active_buffers = []
+  let tabs = range(1, tabpagenr('$'))
 
-" CommandT documentation:
-"   Note that if you have |'nohidden'| set and there are unsaved
-"   changes in the current window when you press <CR> then opening in the current
-"   window would fail; in this case Command-T will open the file in a new split.
-" => this function is not even called if there're unsaved changes in current window
-function! GotoOrOpen(...)
-  for file in a:000
-    if bufexists(bufnr(file)) && !bufloaded(bufnr(file))
-      exec 'bwipeout ' . file
-    endif
-
-    if bufnr(file) != -1
-      exec 'sbuffer ' . file
-    else
-      exec 'edit ' . file
-    endif
-  endfor
+  call map(tabs, 'extend(active_buffers, tabpagebuflist(v:val))')
+  return (bufexists(a:buf) && index(active_buffers, a:buf) == -1)
 endfunction
 
+" a:000: http://learnvimscriptthehardway.stevelosh.com/chapters/24.html
+" sbuffer: `buffer` function doesn't respect `switchbuf` option
 function! GotoOrOpenTab(...)
   for file in a:000
-    if bufexists(bufnr(file)) && !bufloaded(bufnr(file))
-      exec 'bwipeout ' . file
-    endif
-
-    if bufnr(file) != -1
+    " if buffer exists and not hidden
+    if bufexists(file) && !BufHidden(bufnr(file))
       exec 'sbuffer ' . file
     else
       exec 'tabedit ' . file
