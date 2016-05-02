@@ -151,12 +151,12 @@ set splitright
 
 set t_Co=256
 
-set background=dark
+set background=light
 set transparency=0
 
 let g:solarized_bold = 0
 let g:solarized_contrast = 'normal'
-"let g:solarized_diffmode='high'
+let g:solarized_diffmode='normal'
 let g:solarized_italic = 0
 let g:solarized_underline = 1
 
@@ -249,8 +249,9 @@ set shortmess+=I
 set shell=/bin/sh
 
 " maximize on startup
-set lines=999
-set columns=999
+" NOTE: it maximizes the 1st column when using vimdiff!
+"set lines=999
+"set columns=999
 
 "===============================================================================
 "                                                                              =
@@ -294,6 +295,11 @@ augroup quickfix
   autocmd BufReadPost quickfix nnoremap <buffer> <CR> <CR>
 augroup END
 
+augroup diffmode
+  autocmd!
+  autocmd FilterWritePre * call DiffMode()
+augroup END
+
 "===============================================================================
 "                                                                              =
 " common maps                                                                  =
@@ -301,6 +307,7 @@ augroup END
 " http://vim.wikia.com/wiki/Mapping_keys_in_Vim_-_Tutorial_(Part_1)            =
 "                                                                              =
 " NOTE: don't use noremap for plugin mappings                                  =
+"                                                                              =
 "===============================================================================
 
 " Leader: global and plugin mappings
@@ -573,7 +580,7 @@ let g:CommandTAcceptSelectionTabCommand = 'GotoOrOpenTab'
 "-------------------------------------------------------------------------------
 
 "set laststatus=2
-"let g:lightline = {'colorscheme': 'solarized'}
+"let g:lightline = { 'colorscheme': 'solarized' }
 
 "-------------------------------------------------------------------------------
 " nerdcommenter
@@ -804,4 +811,17 @@ function! GotoOrOpenTab(...)
       exec 'tabedit ' . file
     endif
   endfor
+endfunction
+
+" settings for difftool and mergetool
+function! DiffMode()
+  if &diff
+    set background=dark
+    colorscheme solarized
+
+    " always show tabbar
+    set showtabline=2
+    " don't show airline
+    set laststatus=0
+  endif
 endfunction
