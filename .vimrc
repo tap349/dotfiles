@@ -299,7 +299,7 @@ augroup diffmode
   autocmd FilterWritePre * call SetDiffMode()
 augroup END
 
-augroup backups
+augroup backup
   autocmd!
   autocmd BufWritePre * call SetBackupDir()
 augroup END
