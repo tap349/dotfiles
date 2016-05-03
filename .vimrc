@@ -73,11 +73,10 @@ set colorcolumn=81
 set backup
 set noswapfile
 
-set backupdir=~/.vim/backup//
-"set directory=~/.vim/tmp//
-
+" swap files (currently disabled)
 " http://vim.wikia.com/wiki/Editing_crontab
-set backupskip+=/private/tmp/*
+"set directory=~/.vim/tmp//
+"set backupskip+=/private/tmp/*
 
 "-------------------------------------------------------------------------------
 " buffers
@@ -156,7 +155,7 @@ set transparency=0
 
 let g:solarized_bold = 0
 let g:solarized_contrast = 'normal'
-let g:solarized_diffmode='normal'
+let g:solarized_diffmode = 'normal'
 let g:solarized_italic = 0
 let g:solarized_underline = 1
 
@@ -297,7 +296,12 @@ augroup END
 
 augroup diffmode
   autocmd!
-  autocmd FilterWritePre * call DiffMode()
+  autocmd FilterWritePre * call SetDiffMode()
+augroup END
+
+augroup backups
+  autocmd!
+  autocmd BufWritePre * call SetBackupDir()
 augroup END
 
 "===============================================================================
@@ -541,7 +545,7 @@ runtime macros/matchit.vim
 " ag.vim
 "-------------------------------------------------------------------------------
 
-let g:ag_prg="ag --vimgrep --column -Q --ignore-dir={log,public,tmp,spec/vcr_cassettes}"
+let g:ag_prg = 'ag --vimgrep --column -Q --ignore-dir={log,public,tmp,spec/vcr_cassettes}'
 map <Leader>/ :Ag<Space>
 
 "-------------------------------------------------------------------------------
@@ -561,7 +565,7 @@ let g:CommandTMatchWindowAtTop = 0
 let g:CommandTMatchWindowReverse = 0
 let g:CommandTMaxHeight = 17
 let g:CommandTMaxFiles = 25000
-let g:CommandTWildIgnore = &wildignore."public/images/**,tmp/**,public/assets/**,**/*.log"
+let g:CommandTWildIgnore = &wildignore . 'public/images/**,tmp/**,public/assets/**,**/*.log'
 
 nmap <F1> :CommandT<CR>
 imap <F1> <Esc>:CommandT<CR>
@@ -569,8 +573,8 @@ nmap <S-F1> :CommandTBuffer<CR>
 nmap <Leader><F1>r :CommandTFlush<CR>:CommandT<CR>
 
 " http://vimdoc.sourceforge.net/htmldoc/usr_40.html
-"command! -nargs=+ GotoOrOpen call GotoOrOpen("<args>")
-command! -nargs=+ GotoOrOpenTab call GotoOrOpenTab("<args>")
+"command! -nargs=+ GotoOrOpen call GotoOrOpen('<args>')
+command! -nargs=+ GotoOrOpenTab call GotoOrOpenTab('<args>')
 
 "let g:CommandTAcceptSelectionCommand = 'GotoOrOpen'
 let g:CommandTAcceptSelectionTabCommand = 'GotoOrOpenTab'
@@ -814,7 +818,7 @@ function! GotoOrOpenTab(...)
 endfunction
 
 " settings for difftool and mergetool
-function! DiffMode()
+function! SetDiffMode()
   if &diff
     set background=dark
     colorscheme solarized
@@ -824,4 +828,14 @@ function! DiffMode()
     " don't show airline
     set laststatus=0
   endif
+endfunction
+
+function! SetBackupDir()
+  let l:backupdir = $HOME . '/.vim/backup' . expand('%:p:h')
+  if !isdirectory(l:backupdir)
+    call mkdir(l:backupdir, 'p', 0700)
+  endif
+
+  let &backupdir = l:backupdir
+  let &backupext = strftime('~(%Y-%m-%d %H:%M:%S)')
 endfunction
