@@ -248,7 +248,7 @@ set shortmess+=I
 set shell=/bin/sh
 
 " maximize on startup
-" NOTE: it maximizes the 1st column when using vimdiff!
+" NOTE: setting columns to 999 maximizes the 1st column when using vimdiff!
 "set lines=999
 "set columns=999
 
