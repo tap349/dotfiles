@@ -30,7 +30,8 @@ brew 'unrar'
 brew 'wget'
 brew 'zsh'
 
-brew 'homebrew/versions/postgresql94', restart_service: true
+# using `restart_service: true` doesn't restart postgresql properly
+brew 'homebrew/versions/postgresql94'
 
 cask 'chefdk'
 cask 'flux'
