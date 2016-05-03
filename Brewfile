@@ -27,9 +27,10 @@ brew 'ssh-copy-id'
 brew 'the_silver_searcher'
 brew 'tree'
 brew 'unrar'
-brew 'vit'
 brew 'wget'
 brew 'zsh'
+
+brew 'homebrew/versions/postgresql94', restart_service: true
 
 cask 'chefdk'
 cask 'flux'
