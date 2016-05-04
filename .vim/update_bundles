@@ -7,7 +7,6 @@ git_bundles = %w[
   airblade/vim-gitgutter
   ap/vim-css-color
   bkad/CamelCaseMotion
-  blindFS/vim-taskwarrior
   cakebaker/scss-syntax.vim
   easymotion/vim-easymotion
   elixir-lang/vim-elixir
