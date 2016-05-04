@@ -33,13 +33,13 @@ HIST_STAMPS='yyyy-mm-dd'
 ZSH_THEME='tap-af-magic'
 
 #-----------------------------------------------------------------------------------------
-# plugins: ~/.oh-my-zsh/plugins/*
-# custom plugins: ~/.oh-my-zsh/custom/plugins/
+# plugins: ~/.oh-my-zsh/plugins/
+# custom plugins (ZSH_CUSTOM): ~/.oh-my-zsh/custom/plugins/
 #-----------------------------------------------------------------------------------------
 
 # https://github.com/rails/spring/tree/v0.0.9#usage
 UNBUNDLED_COMMANDS=(spring)
-plugins=(ssh-agent)
+plugins=(ssh-agent zsh-autosuggestions zsh-syntax-highlighting)
 
 #-----------------------------------------------------------------------------------------
 # source oh-my-zsh.sh after all configuration is done
@@ -47,25 +47,6 @@ plugins=(ssh-agent)
 
 ZSH=$HOME/.oh-my-zsh
 source $ZSH/oh-my-zsh.sh
-
-#=========================================================================================
-#
-# standalone plugins
-#
-#=========================================================================================
-
-#-----------------------------------------------------------------------------------------
-# zsh-autosuggestions
-#-----------------------------------------------------------------------------------------
-
-source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source ~/.zsh/zsh-autosuggestions/autosuggestions.zsh
-
-zle-line-init() {
-    zle autosuggest-start
-}
-
-zle -N zle-line-init
 
 #=========================================================================================
 #
