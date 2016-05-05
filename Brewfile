@@ -21,6 +21,8 @@ brew 'mc'
 brew 'memcached'
 brew 'mpv'
 brew 'phantomjs'
+# install pow `curl get.pow.cx | sh`
+#brew 'pow'
 brew 'qt'
 brew 'rbenv'
 brew 'rbenv-ctags'
