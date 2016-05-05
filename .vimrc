@@ -215,7 +215,9 @@ endif
 "-------------------------------------------------------------------------------
 
 " highlight current line (might slow down navigation)
-set cursorline
+" this is the main cause of sluggish scrolling!
+" set after colorscheme - or else it can redefined inside it
+set nocursorline
 " remove left-hand scroll bar
 set guioptions-=L
 " remove right-hand scroll bar
@@ -226,9 +228,6 @@ set noshowmode
 set showcmd
 " disable some gui popups
 set guioptions+=c
-" this is the main cause of sluggish scrolling!
-" set after colorscheme - or else it can redefined inside it
-set nocursorline
 
 " show line numbering
 if hostname() == 'MacBook-Pro.local'
