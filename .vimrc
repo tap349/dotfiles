@@ -252,6 +252,9 @@ set shell=/bin/sh
 "set lines=999
 "set columns=999
 
+" disable beeping
+set vb t_vb=
+
 "===============================================================================
 "                                                                              =
 " abbreviations                                                                =
