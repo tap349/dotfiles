@@ -83,6 +83,7 @@ set noswapfile
 "-------------------------------------------------------------------------------
 
 " http://vim.wikia.com/wiki/Using_tab_pages
+" `newtab` causes all ag search results to opened in new tab
 set switchbuf=usetab
 " http://usevim.com/2012/10/19/vim101-set-hidden
 set hidden
