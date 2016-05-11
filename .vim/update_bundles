@@ -7,12 +7,10 @@ git_bundles = %w[
   airblade/vim-gitgutter
   ap/vim-css-color
   bkad/CamelCaseMotion
-  cakebaker/scss-syntax.vim
   easymotion/vim-easymotion
   elixir-lang/vim-elixir
   ervandew/supertab
   flazz/vim-colorschemes
-  jamessan/vim-gnupg
   jeetsukumaran/vim-buffergator
   kchmck/vim-coffee-script
   keith/rspec.vim
@@ -26,7 +24,6 @@ git_bundles = %w[
   tap349/ag.vim
   tpope/vim-endwise
   tpope/vim-fugitive
-  tpope/vim-haml
   tpope/vim-rails
   tpope/vim-surround
   tpope/vim-unimpaired
@@ -35,23 +32,17 @@ git_bundles = %w[
   vim-ruby/vim-ruby
   wincent/command-t
   xolox/vim-misc
-  xolox/vim-session
   yssl/QFEnter
 ]
 
-# majutsushi/tagbar
-# msanders/snipmate.vim
 # Yggdroot/indentLine
-# dtjm/plantuml-syntax
-# yegappan/grep
-# saks/Specky
-# aklt/plantuml-syntax
-# vim-scripts/grep.vim
-# vim-scripts/vimgrep.vim
 # briancollins/vim-jst
-# chriskempson/base16-vim
-# sstephenson/eco
+# cakebaker/scss-syntax.vim
+# jamessan/vim-gnupg
 # kien/ctrlp.vim
+# majutsushi/tagbar
+# tpope/vim-haml
+# xolox/vim-session
 
 git_keep = []
 

@@ -167,10 +167,10 @@ let g:solarized_underline = 1
 "colorscheme sebocean_dasha
 "colorscheme github
 "colorscheme vylight
-"colorscheme scheakur
+colorscheme scheakur
 
 "colorscheme solarized
-colorscheme PaperColor
+"colorscheme PaperColor
 
 "-------------------------------------------------------------------------------
 " font
@@ -793,12 +793,12 @@ let g:rails_projections = {
 " vim-session
 "-------------------------------------------------------------------------------
 
-let g:session_autoload = 'no'
-let g:session_autosave = 'no'
+"let g:session_autoload = 'no'
+"let g:session_autosave = 'no'
 
-nmap <F7>d :DeleteSession<Space>
-nmap <F7>o :OpenSession<Space>
-nmap <F7>s :SaveSession<Space>
+"nmap <F7>d :DeleteSession<Space>
+"nmap <F7>o :OpenSession<Space>
+"nmap <F7>s :SaveSession<Space>
 
 "===============================================================================
 "                                                                              =
