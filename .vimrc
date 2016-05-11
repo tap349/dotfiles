@@ -84,10 +84,7 @@ set noswapfile
 
 " http://vim.wikia.com/wiki/Using_tab_pages
 "
-" `newtab` causes all quickfix files (Ag, etc.) to be opened in new tab:
-"
-" - either remove `newtab`
-" - or use QFEnter plugin
+" `newtab` causes all quickfix files (Ag, etc.) to be opened in new tab
 set switchbuf=usetab
 " http://usevim.com/2012/10/19/vim101-set-hidden
 set hidden
@@ -617,6 +614,9 @@ nmap <Leader><F2>f :NERDTreeFind<CR>
 
 "-------------------------------------------------------------------------------
 " QFEnter
+"
+" NOTE: QFEnter respects `switchbuf` option! if selected file is opened
+"       in another tab all mappings below just switch to that tab
 "-------------------------------------------------------------------------------
 
 let g:qfenter_open_map = ['<CR>']
