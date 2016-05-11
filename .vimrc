@@ -847,7 +847,7 @@ function! SetDiffMode()
 
     " always show tabbar
     set showtabline=2
-    " don't show airline
+    " don't show airline (it's not properly initialized at this moment)
     set laststatus=0
   endif
 endfunction
