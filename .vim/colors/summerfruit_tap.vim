@@ -19,8 +19,8 @@ let colors_name = "summerfruit"
 "--------------------------------------------------------------
 
 hi Normal       guifg=#000000   guibg=#fefefe
-"hi Normal       guifg=#000000   guibg=#FDFDFD
-"hi Normal       guifg=#000000   guibg=#E6F1F5
+"hi Normal       guifg=#000000   guibg=#fdfdfd
+"hi Normal       guifg=#000000   guibg=#e6f1f5
 
 " not editable area and some list chars (precedes, extends)
 "hi NonText      guifg=#438ec3   guibg=#a7ccd8

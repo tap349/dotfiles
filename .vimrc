@@ -166,11 +166,11 @@ let g:solarized_underline = 1
 "colorscheme ir_black_morr
 "colorscheme sebocean_dasha
 "colorscheme github
-"colorscheme vylight
-colorscheme scheakur
 
+"colorscheme vylight
+"colorscheme scheakur
 "colorscheme solarized
-"colorscheme PaperColor
+colorscheme PaperColor
 
 "-------------------------------------------------------------------------------
 " font
