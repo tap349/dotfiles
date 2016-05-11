@@ -18,7 +18,7 @@ brew 'htop'
 brew 'imagemagick'
 brew 'macvim'
 brew 'mc'
-brew 'memcached'
+brew 'memcached', restart_service: :changed
 brew 'mpv'
 brew 'phantomjs'
 # install pow `curl get.pow.cx | sh`
@@ -34,8 +34,8 @@ brew 'unrar'
 brew 'wget'
 brew 'zsh'
 
-# using `restart_service: true` doesn't restart postgresql properly
-brew 'homebrew/versions/postgresql94'
+# NOTE: restart_service with homebrew might not work
+brew 'homebrew/versions/postgresql94', restart_service: :changed
 
 cask 'chefdk'
 cask 'flux'
