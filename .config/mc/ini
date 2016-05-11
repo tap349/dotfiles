@@ -116,8 +116,6 @@ base_color=
 xterm-256color=
 color_terminals=
 
-linux=
-
 [Panels]
 simple_swap=false
 show_mini_info=true
