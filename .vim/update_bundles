@@ -36,6 +36,7 @@ git_bundles = %w[
   wincent/command-t
   xolox/vim-misc
   xolox/vim-session
+  yssl/QFEnter
 ]
 
 # majutsushi/tagbar

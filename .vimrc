@@ -83,7 +83,11 @@ set noswapfile
 "-------------------------------------------------------------------------------
 
 " http://vim.wikia.com/wiki/Using_tab_pages
-" `newtab` causes all ag search results to opened in new tab
+"
+" `newtab` causes all quickfix files (Ag, etc.) to be opened in new tab:
+"
+" - either remove `newtab`
+" - or use QFEnter plugin
 set switchbuf=usetab
 " http://usevim.com/2012/10/19/vim101-set-hidden
 set hidden
@@ -546,10 +550,16 @@ runtime macros/matchit.vim
 
 "-------------------------------------------------------------------------------
 " ag.vim
+"
+" I use my fork: https://github.com/tap349/ag.vim
+" (removed all default keybindings and use QFEnter keybindings instead)
 "-------------------------------------------------------------------------------
 
 let g:ag_prg = 'ag --vimgrep --column -Q --ignore-dir={log,public,tmp,spec/vcr_cassettes}'
-map <Leader>/ :Ag<Space>
+let g:ag_working_path_mode = 'r'
+
+" don't jump to first found file
+map <Leader>/ :Ag!<Space>
 
 "-------------------------------------------------------------------------------
 " CamelCaseMotion
@@ -604,6 +614,15 @@ map <Leader><Space> <Plug>NERDCommenterToggle
 
 nmap <F2> :NERDTreeToggle<CR>
 nmap <Leader><F2>f :NERDTreeFind<CR>
+
+"-------------------------------------------------------------------------------
+" QFEnter
+"-------------------------------------------------------------------------------
+
+let g:qfenter_open_map = ['<CR>']
+let g:qfenter_topen_map = ['<C-t>']
+let g:qfenter_hopen_map = ['<C-s>']
+let g:qfenter_vopen_map = ['<C-v>']
 
 "-------------------------------------------------------------------------------
 " rspec.vim
