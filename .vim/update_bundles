@@ -16,7 +16,6 @@ git_bundles = %w[
   keith/rspec.vim
   mhinz/vim-hugefile
   plasticboy/vim-markdown
-  scheakur/vim-scheakur
   scrooloose/nerdcommenter
   scrooloose/nerdtree
   scrooloose/syntastic
@@ -41,6 +40,7 @@ git_bundles = %w[
 # jamessan/vim-gnupg
 # kien/ctrlp.vim
 # majutsushi/tagbar
+# scheakur/vim-scheakur
 # tpope/vim-haml
 # xolox/vim-session
 
