@@ -63,7 +63,7 @@ if &background == 'light'
 	hi Todo guifg=#4d4214 guibg=#fdfec9 ctermfg=52 ctermbg=229
 	hi Type guifg=#00695c gui=none ctermfg=23
 	hi Underlined guifg=#0c6cc0 ctermfg=25
-	hi VertSplit guifg=#7a7652 guibg=#f6f6eb gui=none ctermfg=237 ctermbg=237
+	hi VertSplit guifg=#7a7652 guibg=#f2f2e9 gui=none ctermfg=237 ctermbg=237
 	hi Visual guibg=#cce0ef ctermbg=153
 	hi WarningMsg guifg=#ea6042 ctermfg=166
 	hi WildMenu guifg=#2e2e2e guibg=#f0f0e5 gui=none ctermfg=234 ctermbg=255 cterm=none
