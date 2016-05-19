@@ -662,6 +662,9 @@ let g:syntastic_ruby_mri_quiet_messages = {
 \   ]
 \ }
 
+nmap <silent> <Leader>r :SyntasticCheck ruby rubocop<CR>
+nmap <silent> <F10> :Errors<CR><C-w>w
+
 "-------------------------------------------------------------------------------
 " vim-airline
 " http://joshldavis.com/2014/04/05/vim-tab-madness-buffers-vs-tabs

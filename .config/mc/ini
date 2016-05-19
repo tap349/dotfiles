@@ -137,6 +137,8 @@ torben_fj_mode=false
 quick_search_mode=2
 select_flags=6
 
+panel_scroll_center=false
+
 [HotlistConfig]
 expanded_view_of_groups=0
 
