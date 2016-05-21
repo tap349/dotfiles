@@ -649,6 +649,10 @@ let g:SuperTabCrMapping = 1
 "-------------------------------------------------------------------------------
 " syntastic
 " https://github.com/scrooloose/syntastic/blob/master/doc/syntastic.txt
+"
+" NOTE: adding more checkers introduces bigger delay when saving buffers -
+"       it's possible to disable automatic checking (passive mode) or
+"       run only selected checkers automatically (keep default active mode)
 "-------------------------------------------------------------------------------
 
 " gem install rubocop
