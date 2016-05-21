@@ -337,7 +337,7 @@ let maplocalleader = '\'
 nnoremap <silent> <Leader>yf :let @*=expand('%')<CR>
 
 "-------------------------------------------------------------------------------
-" editing without leaving normal mode
+" edit without leaving normal mode
 "-------------------------------------------------------------------------------
 
 " delete trailing whitespaces
@@ -350,13 +350,13 @@ nnoremap <silent> <S-CR> O<Esc>
 nnoremap <silent> <Space> i<Space><Esc>l
 
 "-------------------------------------------------------------------------------
-" editing popular files
+" open popular files
 "-------------------------------------------------------------------------------
 
-nnoremap <Leader>ev :tabnew<CR>:edit $MYVIMRC<CR>
-nnoremap <Leader>ec :tabnew<CR>:edit ~/.vim/colors/summerfruit_tap.vim<CR>
-nnoremap <Leader>ez :tabnew<CR>:edit ~/.zshrc<CR>
-nnoremap <Leader>eu :tabnew<CR>:edit ~/.vim/update_bundles<CR>
+nnoremap <Leader>ov :tabnew<CR>:edit $MYVIMRC<CR>
+nnoremap <Leader>oc :tabnew<CR>:edit ~/.vim/colors/summerfruit_tap.vim<CR>
+nnoremap <Leader>oz :tabnew<CR>:edit ~/.zshrc<CR>
+nnoremap <Leader>ou :tabnew<CR>:edit ~/.vim/update_bundles<CR>
 
 "-------------------------------------------------------------------------------
 " fullscreen
@@ -416,8 +416,9 @@ nmap <silent> <S-Right> :vertical resize +5<CR>
 " reload file using different encoding
 "-------------------------------------------------------------------------------
 
-nnoremap <Leader>cw :edit ++encoding=cp1251<CR>
-nnoremap <Leader>cu :edit ++encoding=utf-8<CR>
+" TODO: remove mappings and add functions instead?
+nnoremap <Leader>rw :edit ++encoding=cp1251<CR>
+nnoremap <Leader>ru :edit ++encoding=utf-8<CR>
 
 "-------------------------------------------------------------------------------
 " save
@@ -647,9 +648,18 @@ let g:SuperTabCrMapping = 1
 
 "-------------------------------------------------------------------------------
 " syntastic
+" https://github.com/scrooloose/syntastic/blob/master/doc/syntastic.txt
 "-------------------------------------------------------------------------------
 
-let g:syntastic_ruby_mri_exec = '~/.rvm/rubies/ruby-2.3.0/bin/ruby'
+" gem install rubocop
+let g:syntastic_ruby_mri_exec = '~/.rbenv/shims/ruby'
+let g:syntastic_ruby_rubocop_exec = '~/.rbenv/shims/rubocop'
+let g:syntastic_ruby_checkers = ['mri', 'rubocop']
+
+" run rubocop manually
+" TODO: use <Leader>r and remove encoding mappings?
+"nmap <silent> <Leader>c :SyntasticCheck ruby rubocop<CR>
+nmap <silent> <Leader>e :Errors<CR>
 
 " http://vim.wikia.com/wiki/Simplifying_regular_expressions_using_magic_and_no-magic
 "
@@ -661,9 +671,6 @@ let g:syntastic_ruby_mri_quiet_messages = {
 \     '\mambiguous first argument; put parentheses or a space even after `/'' operator'
 \   ]
 \ }
-
-nmap <silent> <Leader>r :SyntasticCheck ruby rubocop<CR>
-nmap <silent> <F10> :Errors<CR><C-w>w
 
 "-------------------------------------------------------------------------------
 " vim-airline
