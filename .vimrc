@@ -195,13 +195,15 @@ colorscheme PaperColor
 "set guifont=Cousine:h14
 
 if hostname() == 'MacBook-Pro.local'
-  set linespace=5
-  set guifont=Andale\ Mono\ MT\ Std:h14
+  "set linespace=5
+  "set guifont=Andale\ Mono\ MT\ Std:h14
+  set linespace=6
+  set guifont=Droid\ Sans\ Mono\ for\ Powerline:h14
   "set linespace=5
   "set guifont=Andale\ Mono:h14
   "set linespace=5
   "set guifont=MonacoB\ for\ Powerline:h13
-  "set linespace=1
+  "set linespace=0
   "set guifont=Inconsolata\ LGC\ for\ Powerline:h14
 else
   "set linespace=3
@@ -414,11 +416,13 @@ nmap <silent> <S-Right> :vertical resize +5<CR>
 
 "-------------------------------------------------------------------------------
 " reload file using different encoding
+"
+" :help user-commands
+" call function: command! MyFunction call MyFunction()
 "-------------------------------------------------------------------------------
 
-" TODO: remove mappings and add functions instead?
-nnoremap <Leader>rw :edit ++encoding=cp1251<CR>
-nnoremap <Leader>ru :edit ++encoding=utf-8<CR>
+command! EncodeInWindows1251 :edit ++encoding=cp1251<CR>
+command! EncodeInUTF8 :edit ++encoding=utf-8<CR>
 
 "-------------------------------------------------------------------------------
 " save
@@ -649,21 +653,18 @@ let g:SuperTabCrMapping = 1
 "-------------------------------------------------------------------------------
 " syntastic
 " https://github.com/scrooloose/syntastic/blob/master/doc/syntastic.txt
-"
-" NOTE: adding more checkers introduces bigger delay when saving buffers -
-"       it's possible to disable automatic checking (passive mode) or
-"       run only selected checkers automatically (keep default active mode)
 "-------------------------------------------------------------------------------
 
-" gem install rubocop
+" show syntastic errors in separate window
+nmap <silent> <Leader>e :Errors<CR>
+
 let g:syntastic_ruby_mri_exec = '~/.rbenv/shims/ruby'
 let g:syntastic_ruby_rubocop_exec = '~/.rbenv/shims/rubocop'
-let g:syntastic_ruby_checkers = ['mri', 'rubocop']
 
-" run rubocop manually
-" TODO: use <Leader>r and remove encoding mappings?
-"nmap <silent> <Leader>c :SyntasticCheck ruby rubocop<CR>
-nmap <silent> <Leader>e :Errors<CR>
+" ruby rubocop checker (gem install rubocop)
+" NOTE: using rubocop checker on every buffer save might be very slow
+"let g:syntastic_ruby_checkers = ['mri', 'rubocop']
+nmap <silent> <Leader>r :SyntasticCheck ruby rubocop<CR>
 
 " http://vim.wikia.com/wiki/Simplifying_regular_expressions_using_magic_and_no-magic
 "

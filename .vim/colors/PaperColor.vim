@@ -316,7 +316,7 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
 
 	" call <SID>X("Delimiter",s:blue, "", "")
 	"call <SID>X("Ignore", "666666", "", "")
-  
+
 	" VimL Highlighting
 	call <SID>X("vimCommand", s:pink, "", "none")
   call <SID>X("vimVar", s:darkblue, "", "")
@@ -338,7 +338,7 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
   call <SID>X("vimNotation", s:aqua, "", "")
   call <SID>X("vimOper", s:foreground, "", "")
   call <SID>X("vimOperParen", s:foreground, "", "")
-  
+
   " Makefile Highlighting
 	call <SID>X("makeIdent", s:blue, "", "")
 	call <SID>X("makeSpecTarget", s:green, "", "")
@@ -417,7 +417,7 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
 	call <SID>X("lexMorePat", s:green, "", "bold")
 	call <SID>X("lexOptions", s:green, "", "bold")
 	call <SID>X("lexPatString", s:green, "", "")
- 
+
   " Yacc highlighting
   call <SID>X("yaccNonterminal", s:darkblue, "", "")
   call <SID>X("yaccDelim", s:orange, "", "")
@@ -453,7 +453,7 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
   call <SID>X("mipsRegister", s:darkblue, "", "")
   call <SID>X("mipsLabel", s:aqua, "", "bold")
   call <SID>X("mipsDirective", s:purple, "", "bold")
- 
+
   " Shell/Bash highlighting
 	call <SID>X("bashStatement", s:foreground, "", "bold")
   call <SID>X("shDerefVar", s:aqua, "", "bold")
@@ -554,7 +554,7 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
   call <SID>X("stapDeclaration", s:pink, "", "")
   call <SID>X("stapCMacro", s:blue, "", "")
 
-  " DTrace Highlighting 
+  " DTrace Highlighting
   call <SID>X("dtraceProbe", s:blue, "", "")
   call <SID>X("dtracePredicate", s:purple, "", "bold")
   call <SID>X("dtraceComment", s:comment, "", "")
@@ -566,11 +566,11 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
   call <SID>X("dtraceConstant", s:orange, "", "")
   call <SID>X("dtraceType", s:pink, "", "bold")
 
-  " PlantUML Highlighting 
+  " PlantUML Highlighting
   call <SID>X("plantumlPreProc", s:orange, "", "bold")
   call <SID>X("plantumlDirectedOrVerticalArrowRL", s:pink, "", "")
   call <SID>X("plantumlDirectedOrVerticalArrowLR", s:pink, "", "")
-  call <SID>X("plantumlString", s:green, "", "") 
+  call <SID>X("plantumlString", s:green, "", "")
   call <SID>X("plantumlActivityThing", s:purple, "", "")
   call <SID>X("plantumlText", s:darkblue, "", "")
   call <SID>X("plantumlClassPublic", s:green, "", "bold")
@@ -701,7 +701,7 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
   "=====================================================================
   " SYNTAX HIGHLIGHTING CODE BELOW THIS LINE ISN'T TESTED FOR THIS THEME
   "=====================================================================
-  
+
 
 	" " PHP Highlighting
 	" call <SID>X("phpVarSelector", s:pink, "", "")
