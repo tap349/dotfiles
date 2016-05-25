@@ -169,8 +169,8 @@ let g:solarized_underline = 1
 
 "colorscheme vylight
 "colorscheme scheakur
-"colorscheme solarized
-colorscheme PaperColor
+colorscheme solarized
+"colorscheme PaperColor
 
 "-------------------------------------------------------------------------------
 " font
