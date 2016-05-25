@@ -201,10 +201,10 @@ if hostname() == 'MacBook-Pro.local'
   "set guifont=Andale\ Mono\ MT\ Std:h14
   "set linespace=5
   "set guifont=MonacoB\ for\ Powerline:h13
-  "set linespace=0
-  "set guifont=Inconsolata\ LGC\ for\ Powerline:h14
-  set linespace=6
-  set guifont=Droid\ Sans\ Mono\ for\ Powerline:h14
+  set linespace=1
+  set guifont=Inconsolata\ LGC\ for\ Powerline:h14
+  "set linespace=6
+  "set guifont=Droid\ Sans\ Mono\ for\ Powerline:h14
 else
   "set linespace=4
   "set guifont=Andale\ Mono:h14
@@ -779,7 +779,7 @@ nmap <silent> <Leader>ht :GitGutterToggle<CR>
 " vim-hugefile
 "-------------------------------------------------------------------------------
 
-let g:hugefile_trigger_size = 0.1
+let g:hugefile_trigger_size = 1
 
 "-------------------------------------------------------------------------------
 " vim-markdown
