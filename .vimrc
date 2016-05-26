@@ -248,6 +248,8 @@ set noshowmode
 set showcmd
 " disable some gui popups
 set guioptions+=c
+" always show tabbar
+set showtabline=2
 
 " show line numbering
 if hostname() == 'MacBook-Pro.local'
@@ -873,8 +875,6 @@ function! SetDiffMode()
     set background=dark
     colorscheme solarized
 
-    " always show tabbar
-    set showtabline=2
     " don't show airline (it's not properly initialized at this moment)
     set laststatus=0
   endif
