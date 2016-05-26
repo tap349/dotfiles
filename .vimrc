@@ -153,7 +153,6 @@ set vb t_vb=
 " colors
 "-------------------------------------------------------------------------------
 
-set background=light
 set transparency=0
 
 let g:solarized_bold = 0
@@ -171,7 +170,19 @@ let g:solarized_underline = 1
 "colorscheme vylight
 "colorscheme scheakur
 "colorscheme solarized
-colorscheme PaperColor
+"colorscheme PaperColor
+
+if hostname() == 'MacBook-Pro.local'
+  set background=light
+
+  "colorscheme solarized
+  colorscheme PaperColor
+else
+  set background=light
+
+  colorscheme solarized
+  "colorscheme PaperColor
+endif
 
 "-------------------------------------------------------------------------------
 " font
