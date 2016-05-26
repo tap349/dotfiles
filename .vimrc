@@ -146,11 +146,12 @@ set splitright
 "                                                                              "
 "=============================================================================="
 
+" disable beeping
+set vb t_vb=
+
 "-------------------------------------------------------------------------------
 " colors
 "-------------------------------------------------------------------------------
-
-set t_Co=256
 
 set background=light
 set transparency=0
@@ -169,8 +170,8 @@ let g:solarized_underline = 1
 
 "colorscheme vylight
 "colorscheme scheakur
-colorscheme solarized
-"colorscheme PaperColor
+"colorscheme solarized
+colorscheme PaperColor
 
 "-------------------------------------------------------------------------------
 " font
@@ -208,10 +209,12 @@ if hostname() == 'MacBook-Pro.local'
 else
   "set linespace=4
   "set guifont=Andale\ Mono:h14
-  set linespace=4
-  set guifont=Andale\ Mono\ MT\ Std:h14
-  "set linespace=3
-  "set guifont=MonacoB\ for\ Powerline:h13
+  "set linespace=4
+  "set guifont=Andale\ Mono\ MT\ Std:h14
+  set linespace=5
+  set guifont=Monaco:h13
+  "set linespace=0
+  "set guifont=Inconsolata\ LGC\ for\ Powerline:h14
   "set linespace=6
   "set guifont=Droid\ Sans\ Mono\ for\ Powerline:h14
 endif
@@ -256,9 +259,6 @@ set shell=/bin/sh
 " NOTE: setting columns to 999 maximizes the 1st column when using vimdiff!
 "set lines=999
 "set columns=999
-
-" disable beeping
-set vb t_vb=
 
 "===============================================================================
 "                                                                              =

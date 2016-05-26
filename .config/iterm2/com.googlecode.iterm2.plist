@@ -31495,13 +31495,15 @@
 		<integer>1</integer>
 	</dict>
 	<key>NSWindow Frame NSFontPanel</key>
-	<string>-716 568 445 77 -1280 280 1280 777 </string>
+	<string>-716 434 445 77 -1280 280 1280 777 </string>
 	<key>NSWindow Frame Preferences</key>
 	<string>753 589 606 456 0 0 1920 1057 </string>
+	<key>NSWindow Frame SUUpdateAlert</key>
+	<string>-950 568 620 392 -1280 280 1280 777 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>0 484 650 573 0 0 1920 1057 </string>
+	<string>-1280 295 1274 762 -1280 280 1280 777 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
-	<string>0 366 650 573 0 0 1920 1057 </string>
+	<string>-1280 434 650 573 -1280 280 1280 777 </string>
 	<key>NeverWarnAboutShortLivedSessions_9D3A6D63-A851-4F12-AFB4-40D98DE1829C</key>
 	<true/>
 	<key>NeverWarnAboutShortLivedSessions_9D3A6D63-A851-4F12-AFB4-40D98DE1829C_selection</key>
@@ -32059,7 +32061,7 @@
 			<key>Non-ASCII Anti Aliased</key>
 			<true/>
 			<key>Normal Font</key>
-			<string>InconsolataLGC 14</string>
+			<string>InconsolataLGCForPowerline 14</string>
 			<key>Option Key Sends</key>
 			<integer>2</integer>
 			<key>Prompt Before Closing 2</key>
@@ -32224,6 +32226,8 @@
 			<false/>
 			<key>Use Italic Font</key>
 			<true/>
+			<key>Use Non-ASCII Font</key>
+			<false/>
 			<key>Vertical Spacing</key>
 			<real>1</real>
 			<key>Visual Bell</key>
@@ -32240,6 +32244,8 @@
 	<true/>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile_selection</key>
 	<integer>0</integer>
+	<key>NoSyncPermissionToShowTip</key>
+	<false/>
 	<key>NoSyncTimeOfFirstLaunchOfVersionWithTip</key>
 	<real>484041840.79554701</real>
 	<key>NoSyncTimeOfLastPromo</key>
@@ -32305,16 +32311,18 @@
 	<integer>8</integer>
 	<key>RightOption</key>
 	<integer>3</integer>
+	<key>SUAutomaticallyUpdate</key>
+	<true/>
 	<key>SUEnableAutomaticChecks</key>
 	<true/>
 	<key>SUFeedAlternateAppNameKey</key>
 	<string>iTerm</string>
 	<key>SUFeedURL</key>
-	<string>https://iterm2.com/appcasts/testing3.xml</string>
+	<string>https://iterm2.com/appcasts/testing3.xml?shard=22</string>
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2016-05-05T08:05:05Z</date>
+	<date>2016-05-24T10:52:46Z</date>
 	<key>SavePasteHistory</key>
 	<false/>
 	<key>ShowBookmarkName</key>
@@ -32360,7 +32368,7 @@
 	<key>findRegex_iTerm</key>
 	<false/>
 	<key>iTerm Version</key>
-	<string>2.9.20160313</string>
+	<string>2.9.20160510</string>
 	<key>kCPKSelectionViewPreferredModeKey</key>
 	<integer>0</integer>
 	<key>kCPKSelectionViewShowHSBTextFieldsKey</key>
