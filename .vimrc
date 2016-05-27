@@ -220,11 +220,11 @@ if hostname() == 'MacBook-Pro.local'
 else
   "set linespace=4
   "set guifont=Andale\ Mono:h14
-  "set linespace=4
-  "set guifont=Andale\ Mono\ MT\ Std:h14
-  set linespace=5
-  set guifont=Monaco:h13
-  "set linespace=0
+  set linespace=4
+  set guifont=Andale\ Mono\ MT\ Std:h14
+  "set linespace=5
+  "set guifont=Monaco:h13
+  "set linespace=1
   "set guifont=Inconsolata\ LGC\ for\ Powerline:h14
   "set linespace=6
   "set guifont=Droid\ Sans\ Mono\ for\ Powerline:h14
