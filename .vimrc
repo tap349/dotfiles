@@ -180,8 +180,8 @@ if hostname() == 'MacBook-Pro.local'
 else
   set background=light
 
-  colorscheme solarized
-  "colorscheme PaperColor
+  "colorscheme solarized
+  colorscheme PaperColor
 endif
 
 "-------------------------------------------------------------------------------
