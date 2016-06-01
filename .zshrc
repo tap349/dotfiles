@@ -82,8 +82,7 @@ setopt HIST_IGNORE_DUPS
 BLOG=~/blog
 
 CDN_REENTER=~/dev/cdn_reenter
-CHEF=~/dev/chef
-CHEFUPTIMUS=~/dev/chefuptimus
+CHEF=~/dev/chef/zero
 NALA=~/dev/nala
 PUMBA=~/dev/pumba
 SHIKIMORI=~/dev/shikimori
@@ -107,7 +106,6 @@ alias dot='cd ~/.dotfiles'
 
 alias c='cd $CHEF'
 alias cdn='cd $CDN_REENTER'
-alias cu='cd $CHEFUPTIMUS'
 alias n='cd $NALA'
 alias p='cd $PUMBA'
 alias s='cd $SHIKIMORI'
