@@ -461,10 +461,11 @@ nnoremap <silent> <C-c> <C-c>:nohlsearch<Bar>:echo<CR>
 nnoremap <Leader>.v :source $MYVIMRC<CR>
 
 "-------------------------------------------------------------------------------
-" suppress unwanted keys
+" suppress unwanted keys (set to noop)
 "-------------------------------------------------------------------------------
 
 nnoremap Q <nop>
+nnoremap K <nop>
 
 "-------------------------------------------------------------------------------
 " yanking
