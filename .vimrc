@@ -221,7 +221,7 @@ if hostname() == 'MacBook-Pro.local'
 else
   "set linespace=4
   "set guifont=Andale\ Mono:h14
-  set linespace=4
+  set linespace=5
   set guifont=Andale\ Mono\ MT\ Std:h14
   "set linespace=5
   "set guifont=Monaco:h13
@@ -256,7 +256,7 @@ set showtabline=2
 if hostname() == 'MacBook-Pro.local'
   set nonumber
 else
-  set number
+  set nonumber
 endif
 
 "-------------------------------------------------------------------------------
