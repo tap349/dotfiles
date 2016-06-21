@@ -747,7 +747,7 @@ let g:airline_symbols.linenr = '⭡'
 
 "let g:buffergator_sort_regime = 'basename'
 "let g:buffergator_split_size = 20
-"let g:buffergator_suppress_keymaps = 1
+let g:buffergator_suppress_keymaps = 1
 "let g:buffergator_viewport_split_policy = 'R'
 "let g:buffergator_vsplit_size = 60
 
@@ -810,8 +810,8 @@ let g:vim_markdown_frontmatter = 1
 " example projections: https://gist.github.com/henrik/5676109
 "-------------------------------------------------------------------------------
 
-nmap <F4> :A<CR>
-nmap <Leader><F4> :AV<CR>
+nmap <Leader>, :A<CR>
+nmap <Leader>v :AV<CR>
 
 let g:rails_projections = {
 \   'app/admin/*.rb': {
