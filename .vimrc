@@ -220,7 +220,7 @@ if hostname() == 'MacBook-Pro.local'
   "set linespace=7
   "set guifont=Droid\ Sans\ Mono\ for\ Powerline:h14
 else
-  "set linespace=4
+  "set linespace=6
   "set guifont=Andale\ Mono:h14
   set linespace=5
   set guifont=Andale\ Mono\ MT\ Std:h14
@@ -820,6 +820,12 @@ let g:rails_projections = {
 \   'spec/controllers/admin/*_controller_spec.rb': {
 \     'alternate': 'app/admin/{}.rb'
 \   },
+\   'config/locales/*.ru.yml': {
+\     'alternate': 'config/locales/{}.en.yml'
+\   },
+\   'config/locales/*.en.yml': {
+\     'alternate': 'config/locales/{}.ru.yml'
+\   }
 \ }
 
 "-------------------------------------------------------------------------------
