@@ -7,8 +7,22 @@ endif
 
 let g:colors_name = 'scheakur'
 
+"------------------------------------------------------------------------------
+" vim-gitgutter
+"------------------------------------------------------------------------------
+
+hi GitGutterAdd               guibg=#befece guifg=#0e8e0e
+hi GitGutterChange            guibg=#deeefe guifg=#6e6efe
+hi GitGutterDelete            guibg=#fee2e2 guifg=#fe4e4e
+hi GitGutterChangeDelete      guibg=#fedefe guifg=#ee0eee
+
+hi GitGutterAddLine           guibg=#befece
+hi GitGutterChangeLine        guibg=#deeefe
+hi GitGutterDeleteLine        guibg=#fee2e2
+hi GitGutterChangeDeleteLine  guibg=#fedefe
+
 if &background == 'light'
-	hi Normal guifg=#2e2e2e guibg=#f0f0e5 gui=none ctermfg=234 ctermbg=255 cterm=none
+	hi Normal guifg=#2e2e2e guibg=#f1f1ea gui=none ctermfg=234 ctermbg=255 cterm=none
 	hi ColorColumn guibg=#f9f7ec ctermbg=145
 	hi Comment guifg=#878965 ctermfg=101
 	hi Conceal guifg=#0c6cc0 guibg=#f0f0e5 gui=none ctermfg=25 ctermbg=188
@@ -30,7 +44,8 @@ if &background == 'light'
 	hi Function guifg=#cb1265 ctermfg=125
 	hi Identifier guifg=#546e7a ctermfg=59
 	hi Ignore guifg=#666666 ctermfg=240
-	hi IncSearch guifg=#2e2e2e guibg=#f4b3c2 gui=none ctermfg=234 ctermbg=218
+	"hi IncSearch guifg=#2e2e2e guibg=#f4b3c2 gui=none ctermfg=234 ctermbg=218
+	hi IncSearch guifg=#2e2e2e guibg=#ffff44 gui=none ctermfg=234 ctermbg=218
 	hi LineNr guifg=#567686 guibg=#e2e2d0 ctermfg=236 ctermbg=145
 	hi MatchParen guifg=#0e8ed3 guibg=#dbf2ff ctermfg=31 ctermbg=152
 	hi ModeMsg guifg=#337ca3 ctermfg=24
