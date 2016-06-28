@@ -220,10 +220,10 @@ if hostname() == 'MacBook-Pro.local'
   "set linespace=7
   "set guifont=Droid\ Sans\ Mono\ for\ Powerline:h14
 else
-  "set linespace=6
-  "set guifont=Andale\ Mono:h14
-  set linespace=5
-  set guifont=Andale\ Mono\ MT\ Std:h14
+  set linespace=6
+  set guifont=Andale\ Mono:h14
+  "set linespace=5
+  "set guifont=Andale\ Mono\ MT\ Std:h14
   "set linespace=5
   "set guifont=Monaco:h13
   "set linespace=1
@@ -309,7 +309,7 @@ augroup END
 
 augroup filetypes
   autocmd!
-  autocmd BufRead,BufNewFile *.arb set filetype=ruby
+  autocmd BufRead,BufNewFile *.arb setlocal filetype=ruby
 augroup END
 
 augroup quickfix
