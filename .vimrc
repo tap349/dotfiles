@@ -178,8 +178,8 @@ if hostname() == 'MacBook-Pro.local'
 
   "colorscheme solarized
   "colorscheme github
-  colorscheme PaperColor
-  "colorscheme hybrid-light
+  "colorscheme PaperColor
+  colorscheme hybrid-light
   "colorscheme scheakur
 else
   set background=light
