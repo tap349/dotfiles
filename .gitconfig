@@ -5,9 +5,14 @@
 [merge]
   summary = true
   verbosity = 1
-  tool = fugitive
+  tool = gvimdiff
 
 [mergetool "fugitive"]
+  cmd = "mvim -f --nomru -c 'Gvdiff' $MERGED"
+  keepBackup = false
+  prompt = false
+
+[mergetool "gvimdiff"]
   cmd = "mvim -f --nomru -c 'Gvdiff' $MERGED"
   keepBackup = false
   prompt = false
