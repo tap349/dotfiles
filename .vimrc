@@ -178,8 +178,8 @@ if hostname() == 'MacBook-Pro.local'
 
   "colorscheme solarized
   "colorscheme github
-  "colorscheme PaperColor
-  colorscheme hybrid-light
+  colorscheme PaperColor
+  "colorscheme hybrid-light
   "colorscheme scheakur
 else
   set background=light
@@ -211,10 +211,10 @@ endif
 "set guifont=Cousine:h14
 
 if hostname() == 'MacBook-Pro.local'
-  set linespace=6
-  set guifont=Andale\ Mono:h14
-  "set linespace=5
-  "set guifont=Andale\ Mono\ MT\ Std:h14
+  "set linespace=6
+  "set guifont=Andale\ Mono:h14
+  set linespace=5
+  set guifont=Andale\ Mono\ MT\ Std:h14
   "set linespace=5
   "set guifont=MonacoB\ for\ Powerline:h13
   "set linespace=2
