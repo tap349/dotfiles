@@ -259,7 +259,7 @@ set showtabline=2
 if hostname() == 'MacBook-Pro.local'
   set nonumber
 else
-  set number
+  set nonumber
 endif
 
 "-------------------------------------------------------------------------------
@@ -595,7 +595,7 @@ map <silent> b <Plug>CamelCaseMotion_b
 " command-t
 "-------------------------------------------------------------------------------
 
-"let g:CommandTCancelMap = '<F1>'
+let g:CommandTCancelMap = '<F1>'
 let g:CommandTMatchWindowAtTop = 0
 let g:CommandTMatchWindowReverse = 0
 let g:CommandTMaxHeight = 17
