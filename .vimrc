@@ -595,7 +595,7 @@ map <silent> b <Plug>CamelCaseMotion_b
 " command-t
 "-------------------------------------------------------------------------------
 
-let g:CommandTCancelMap = '<F1>'
+let g:CommandTCancelMap = '<C-c>'
 let g:CommandTMatchWindowAtTop = 0
 let g:CommandTMatchWindowReverse = 0
 let g:CommandTMaxHeight = 17
