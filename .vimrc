@@ -230,6 +230,8 @@ else
   set linespace=5
   set guifont=Andale\ Mono\ MT\ Std:h14
   "set linespace=5
+  "set guifont=Fira\ Mono:h14
+  "set linespace=5
   "set guifont=Monaco:h13
   "set linespace=1
   "set guifont=Inconsolata\ LGC\ for\ Powerline:h14
