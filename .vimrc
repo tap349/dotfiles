@@ -264,7 +264,7 @@ set showtabline=2
 if hostname() == 'MacBook-Pro.local'
   set nonumber
 else
-  set nonumber
+  set number
 endif
 
 "-------------------------------------------------------------------------------
