@@ -830,11 +830,11 @@ let g:rails_projections = {
 \   'spec/controllers/admin/*_controller_spec.rb': {
 \     'alternate': 'app/admin/{}.rb'
 \   },
-\   'lib/persistence/repositories/*.rb': {
-\     'alternate': 'spec/persistence/repositories/{}_spec.rb'
+\   'lib/*.rb': {
+\     'alternate': 'spec/{}_spec.rb'
 \   },
-\   'spec/persistence/repositories/*_spec.rb': {
-\     'alternate': 'lib/persistence/repositories/{}.rb'
+\   'spec/*_spec.rb': {
+\     'alternate': 'lib/{}.rb'
 \   },
 \   'config/locales/*.ru.yml': {
 \     'alternate': 'config/locales/{}.en.yml'
