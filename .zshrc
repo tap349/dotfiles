@@ -73,7 +73,7 @@ eval "$(rbenv init -)"
 export EDITOR=mvim
 
 CDPATH=~:~/dev
-TERM="xterm-256color"
+TERM='xterm-256color'
 
 HISTSIZE=100000
 HISTFILESIZE=200000
