@@ -83,6 +83,7 @@ BLOG=~/blog
 
 CDN_REENTER=~/dev/cdn_reenter
 CHEF=~/dev/chef/zero
+CHEF_REENTER=~/dev/chef-reenter
 NALA=~/dev/nala
 PUMBA=~/dev/pumba
 REENTER_BUILDER=~/dev/reenter_builder
@@ -107,6 +108,7 @@ alias dot='cd ~/.dotfiles'
 
 alias b='cd $REENTER_BUILDER'
 alias c='cd $CHEF'
+alias cr='cd $CHEF_REENTER'
 alias cdn='cd $CDN_REENTER'
 alias n='cd $NALA'
 alias p='cd $PUMBA'
