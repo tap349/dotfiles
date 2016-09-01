@@ -88,7 +88,6 @@ NALA=~/dev/nala
 PUMBA=~/dev/pumba
 REENTER_BUILDER=~/dev/reenter_builder
 SHIKIMORI=~/dev/shikimori
-SIBAS=~/dev/sibas
 UMKA=~/dev/umka
 UPTIMUS=~/dev/uptimus
 
