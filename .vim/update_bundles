@@ -72,6 +72,6 @@ puts "compiling command-t..."
 environment = 'ARCHFLAGS="-Wno-error=unused-command-line-argument-hard-error-in-future"'
 command_t_path = File.join 'command-t', 'ruby', 'command-t'
 rbenv_init_script = 'eval "$(rbenv init -)"'
-command_t_build_script = 'rbenv shell system && ruby extconf.rb && make'
+command_t_build_script = 'rbenv shell system && make clean && ruby extconf.rb && make'
 
 puts `zsh -c 'cd #{command_t_path} && #{rbenv_init_script} && #{environment} #{command_t_build_script}'`
