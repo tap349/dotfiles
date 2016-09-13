@@ -633,7 +633,7 @@ let g:CommandTAcceptSelectionTabCommand = 'GotoOrOpenTab'
 " http://vim.1045645.n5.nabble.com/mapping-control-0-1-or-backtick-td1189910.html
 "-------------------------------------------------------------------------------
 
-let g:NERDSpaceDelims = 0
+let g:NERDSpaceDelims = 1
 map <Leader><Space> <Plug>NERDCommenterToggle
 
 "-------------------------------------------------------------------------------
