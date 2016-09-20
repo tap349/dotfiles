@@ -417,7 +417,7 @@ autocmd! TabLeave * let g:lasttabnr = tabpagenr()
 " this mapping must come before remapping <Tab>
 nnoremap <C-g> <C-i>
 
-"------- tab --------------------------------------------------------------------
+"------- tab -------------------------------------------------------------------
 
 " the same as using gT and gt
 nmap <C-h> :tabprevious<CR>
