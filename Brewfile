@@ -7,8 +7,8 @@ tap 'caskroom/versions'
 tap 'homebrew/versions'
 tap 'mpv-player/mpv'
 
-brew 'chromedriver'
-brew 'djview4'
+#brew 'chromedriver'
+#brew 'djview4'
 brew 'elixir'
 brew 'fontforge'
 brew 'git'
@@ -17,9 +17,9 @@ brew 'htop'
 brew 'imagemagick'
 brew 'macvim'
 brew 'mc'
-brew 'memcached', restart_service: :changed
+#brew 'memcached', restart_service: :changed
 brew 'mpv'
-brew 'phantomjs'
+#brew 'phantomjs'
 # install pow `curl get.pow.cx | sh`
 #brew 'pow'
 #brew 'qt'
@@ -37,11 +37,11 @@ brew 'homebrew/versions/postgresql', restart_service: :changed
 
 cask 'chefdk'
 cask 'flux'
-cask 'gimp'
+#cask 'gimp'
 cask 'google-chrome'
 # uncomment when iterm2 version 3 is released
 # cask 'iterm2'
-cask 'karabiner'
+#cask 'karabiner'
 cask 'skype'
 cask 'smcfancontrol'
 #cask 'torbrowser'
