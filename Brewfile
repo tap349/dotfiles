@@ -1,6 +1,8 @@
 # https://github.com/Homebrew/homebrew-bundle
-# NOTE: some cask packages and App Store applications ask for password
-# NOTE: see comments before package or application for postinstallation setup
+
+# - some cask packages and App Store applications ask for password
+# - see comments before package or application for postinstallation setup
+# - see `brew services` on how to manage services for supported forumalae
 
 cask_args appdir: '/Applications'
 
@@ -26,7 +28,11 @@ brew 'memcached', restart_service: :changed
 brew 'mc'
 brew 'mpv'
 brew 'postgresql', restart_service: :changed
-brew 'pow'
+# it's easier to install pow manually:
+# - curl get.pow.cx | sh
+# - ln -s ~/dev/reenter_builder ~/.pow
+#brew 'pow'
+# http://tap349.github.io/rbenv/ruby/chef/capistrano/2016/03/30/rbenv/
 brew 'rbenv'
 brew 'rbenv-ctags'
 brew 'redis', restart_service: :changed
@@ -47,6 +53,10 @@ cask 'flux'
 cask 'google-chrome'
 cask 'iterm2'
 cask 'skype'
+# * system preferences:
+#   - Users & Groups -> Login Items (don't hide)
+# * app preferences:
+#   - Menubar: Temperature only
 cask 'smcfancontrol'
 # open /usr/local/Caskroom/utorrent/latest/uTorrent.app
 cask 'utorrent'
@@ -55,17 +65,17 @@ mas '2Do', id: 477670270
 mas 'Cloud Mail.Ru', id: 893068358
 mas 'Dashlane - Password Manager, Secure Digital Wallet', id: 552383089
 mas 'Evernote', id: 406056744
-# system preferences:
-# - Security & Privacy -> Privacy -> Accessibility
-#
-# app preferences:
-# - Window Mover:
-#   - Move: <S-M> + 1 finger
-#   - Resize: <S-M> + 2 finger
-# - Layouts:
-#   - Maximize: <S-M-CR>
-# - Preferences:
-#   - don't show icon in Dock
+# * system preferences:
+#   - Security & Privacy -> Privacy -> Accessibility
+#   - Users & Groups -> Login Items (hide)
+# * app preferences:
+#   - Window Mover:
+#     - Move: <S-M> + 1 finger
+#     - Resize: <S-M> + 2 finger
+#   - Layouts:
+#     - Maximize: <S-M-CR>
+#   - Preferences:
+#     - don't show icon in Dock
 mas 'Flexiglass', id: 426410278
 mas 'Marked 2', id: 890031187
 mas 'Monosnap', id: 540348655
