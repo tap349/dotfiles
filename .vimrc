@@ -640,6 +640,10 @@ map <Leader><Space> <Plug>NERDCommenterToggle
 " nerdtree
 "-------------------------------------------------------------------------------
 
+" fix ugly arrows from Andale Mono MT
+let g:NERDTreeDirArrowExpandable = '▸'
+let g:NERDTreeDirArrowCollapsible = '▾'
+
 nmap <F2> :NERDTreeToggle<CR>
 nmap <Leader><F2>f :NERDTreeFind<CR>
 
