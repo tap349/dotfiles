@@ -14,10 +14,10 @@ tap 'homebrew/versions'
 
 #brew 'chromedriver'
 #brew 'djview4'
-#brew 'fontforge'
 #brew 'phantomjs'
 
 brew 'elixir'
+brew 'fontforge'
 brew 'git'
 brew 'gpg'
 brew 'htop'

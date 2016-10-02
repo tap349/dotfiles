@@ -211,7 +211,7 @@ endif
 "set linespace=4
 "set guifont=Cousine:h14
 
-if hostname() == 'MacBook-Pro.local'
+if hostname() == 'MacBook-Pro-Personal.local'
   "set linespace=6
   "set guifont=Andale\ Mono:h14
   set linespace=5
