@@ -71,6 +71,7 @@ eval "$(rbenv init -)"
 #-----------------------------------------------------------------------------------------
 
 export EDITOR=mvim
+export HOMEBREW_GITHUB_API_TOKEN=03adebc410e1f8de5a2765a5f5890ff8beb76d5f
 
 CDPATH=~:~/dev
 TERM='xterm-256color'
