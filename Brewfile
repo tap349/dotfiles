@@ -113,6 +113,8 @@ mas 'Flexiglass', id: 426410278
 mas 'Marked 2', id: 890031187
 mas 'Monosnap', id: 540348655
 mas 'Pomodoro Timer', id: 872515009
+# * system preferences:
+#   - Users & Groups -> Login Items (don't hide): add
 mas 'VPNAutoConnect', id: 532510878
 mas 'Xcode', id: 497799835
 mas 'Sip', id: 507257563
