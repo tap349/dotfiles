@@ -53,8 +53,7 @@ cask 'flux'
 # * system preferences:
 #   - Users & Groups -> Login Items (don't hide): remove
 # * app preferences:
-#   - Settings:
-#     - On startup: Continue where you left off
+#   - Settings -> On startup: Continue where you left off
 #   - Extensions:
 #     - AdBlock
 #     - Blank New Tab (Hide in Chrome Menu)
@@ -71,9 +70,9 @@ cask 'flux'
 #     - RSS Subscription Extension (by Google) - optional
 #     - uBlock Origin
 #     - Viewport Dimensions (Hide in Chrome Menu)
-#   - Theme: Black Carbon + silver meta
+#   - Theme (search on page) -> Black Carbon + silver meta
 cask 'google-chrome'
-# app preferences:
+# * app preferences:
 #   - General -> Preferences -> Load preferences from a custom folder or URL:
 #     /Users/tap/.dotfiles/.config/iterm2
 #     (this directory should contain com.googlecode.iterm2.plist settings file
@@ -94,7 +93,13 @@ cask 'smcfancontrol'
 # open /usr/local/Caskroom/utorrent/latest/uTorrent.app
 cask 'utorrent'
 
+# link to dropbox account and sync (replace local data)
 mas '2Do', id: 477670270
+# configure on first run:
+# - select ~/Documents folder
+#   (Cloud Mail.Ru subfolder will be created automatically)
+# - select to start application on system startup
+# - select folders to synchronize (books/, videos/, education/)
 mas 'Cloud Mail.Ru', id: 893068358
 mas 'Dashlane - Password Manager, Secure Digital Wallet', id: 552383089
 mas 'Evernote', id: 406056744
@@ -108,13 +113,23 @@ mas 'Evernote', id: 406056744
 #   - Layouts:
 #     - Maximize: <S-M-CR>
 #   - Preferences:
-#     - don't show icon in Dock
+#     - [ ] Show icon in Dock
 mas 'Flexiglass', id: 426410278
 mas 'Marked 2', id: 890031187
+# * app preferences:
+#   - General:
+#     - [x] Launch at login
+#   - Hotkeys:
+#     - Capture area: <M-1>
 mas 'Monosnap', id: 540348655
 mas 'Pomodoro Timer', id: 872515009
 # * system preferences:
 #   - Users & Groups -> Login Items (don't hide): add
 mas 'VPNAutoConnect', id: 532510878
 mas 'Xcode', id: 497799835
+# * system preferences:
+#   - Users & Groups -> Login Items (don't hide): add
+# * app preferences:
+#   - Shortcuts:
+#     - General -> Show Magnifier: <M-2>
 mas 'Sip', id: 507257563
