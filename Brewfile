@@ -17,18 +17,22 @@ tap 'homebrew/versions'
 #brew 'phantomjs'
 
 brew 'elixir'
+# required by ~/scripts/fontpatcher
 brew 'fontforge'
 brew 'git'
 brew 'gpg'
 brew 'htop'
 brew 'imagemagick'
+# - configure rbenv
+# - copy fonts from dotfiles
+# - ~/.vim/update_bundles
 brew 'macvim'
 brew 'mas'
 brew 'memcached', restart_service: :changed
 brew 'mc'
 brew 'mpv'
 brew 'postgresql', restart_service: :changed
-# it's easier to install pow manually:
+# it's much easier to install pow manually:
 # - curl get.pow.cx | sh
 # - ln -s ~/dev/reenter_builder ~/.pow
 #brew 'pow'
@@ -72,6 +76,8 @@ cask 'flux'
 #     - Viewport Dimensions (Hide in Chrome Menu)
 #   - Theme (search on page) -> Black Carbon + silver meta
 cask 'google-chrome'
+# - copy fonts from dotfiles
+#
 # * app preferences:
 #   - General -> Preferences -> Load preferences from a custom folder or URL:
 #     /Users/tap/.dotfiles/.config/iterm2

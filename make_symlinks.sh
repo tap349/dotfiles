@@ -34,7 +34,7 @@ for file in "${files[@]}"; do
       if [ $? -eq 0 ]; then
         echo -e "[$LIGHT_GREEN_FG OK $RESET_ALL] $file removed"
       else
-        echo -e "[$RED_FG FAIL $RESET_ALL] $file not removed"
+        echo -e "[$RED_FG FAIL $RESET_ALL] failed to remove $file"
       fi
     fi
   fi
@@ -45,7 +45,7 @@ for file in "${files[@]}"; do
   if [ $? -eq 0 ]; then
     echo -e "[$LIGHT_GREEN_FG OK $RESET_ALL] $file symlinked"
   else
-    echo -e "[$RED_FG FAIL $RESET_ALL] $file not symlinked"
+    echo -e "[$RED_FG FAIL $RESET_ALL] failed to symlink $file"
   fi
 
   echo
