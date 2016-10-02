@@ -50,11 +50,44 @@ brew 'zsh'
 
 cask 'chefdk'
 cask 'flux'
+# * system preferences:
+#   - Users & Groups -> Login Items (don't hide): remove
+# * app preferences:
+#   - Settings:
+#     - On startup: Continue where you left off
+#   - Extensions:
+#     - AdBlock
+#     - Blank New Tab (Hide in Chrome Menu)
+#     - Browsec VPN
+#     - Dashlane
+#     - Data Saver
+#     - Ghostery:
+#         - General: don't show purple box
+#         - Blocking Options: block all except comments
+#     - Google Docs (installed by default)
+#     - Google Docs Offline (installed by default)
+#     - Google Sheets (installed by default)
+#     - Noisli
+#     - RSS Subscription Extension (by Google) - optional
+#     - uBlock Origin
+#     - Viewport Dimensions (Hide in Chrome Menu)
+#   - Theme: Black Carbon + silver meta
 cask 'google-chrome'
+# app preferences:
+#   - General -> Preferences -> Load preferences from a custom folder or URL:
+#     /Users/tap/.dotfiles/.config/iterm2
+#     (this directory should contain com.googlecode.iterm2.plist settings file
+#     exported using 'Save Current Settings to Folder' button below)
+#
+# or else copy ~/Library/Preferences/com.googlecode.iterm2.plist -
+# in both cases iTerm will be fully configured (restart is required)
+#
+# see also http://tap349.github.io/iterm/rails/2016/05/03/iTerm/
+# (all these settings are already included in exported settings file)
 cask 'iterm2'
 cask 'skype'
 # * system preferences:
-#   - Users & Groups -> Login Items (don't hide)
+#   - Users & Groups -> Login Items (don't hide): add
 # * app preferences:
 #   - Menubar: Temperature only
 cask 'smcfancontrol'
@@ -67,7 +100,7 @@ mas 'Dashlane - Password Manager, Secure Digital Wallet', id: 552383089
 mas 'Evernote', id: 406056744
 # * system preferences:
 #   - Security & Privacy -> Privacy -> Accessibility
-#   - Users & Groups -> Login Items (hide)
+#   - Users & Groups -> Login Items (hide): add
 # * app preferences:
 #   - Window Mover:
 #     - Move: <S-M> + 1 finger
