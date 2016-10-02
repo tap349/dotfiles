@@ -75,6 +75,8 @@ cask 'flux'
 #     - uBlock Origin
 #     - Viewport Dimensions (Hide in Chrome Menu)
 #   - Theme (search on page) -> Black Carbon + silver meta
+#   - chrome://plugins:
+#     - disable Adobe Flash Player
 cask 'google-chrome'
 # - copy fonts from dotfiles
 #
