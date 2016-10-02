@@ -31498,12 +31498,16 @@
 	<string>-716 434 445 77 -1280 280 1280 777 </string>
 	<key>NSWindow Frame Preferences</key>
 	<string>753 589 606 456 0 0 1920 1057 </string>
+	<key>NSWindow Frame SUAutomaticUpdateAlert</key>
+	<string>330 452 616 174 0 0 1280 777 </string>
 	<key>NSWindow Frame SUUpdateAlert</key>
 	<string>-950 568 620 392 -1280 280 1280 777 </string>
+	<key>NSWindow Frame SharedPreferences</key>
+	<string>625 197 796 473 0 0 1920 1057 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>-1280 295 1274 762 -1280 280 1280 777 </string>
+	<string>3 7 1274 762 0 0 1280 777 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
-	<string>-1280 434 650 573 -1280 280 1280 777 </string>
+	<string>542 292 650 573 0 0 1920 1057 </string>
 	<key>NeverWarnAboutShortLivedSessions_9D3A6D63-A851-4F12-AFB4-40D98DE1829C</key>
 	<true/>
 	<key>NeverWarnAboutShortLivedSessions_9D3A6D63-A851-4F12-AFB4-40D98DE1829C_selection</key>
@@ -32238,6 +32242,8 @@
 			<string>/Users/tap</string>
 		</dict>
 	</array>
+	<key>NoSyncHaveWarnedAboutIncompatibleSoftware</key>
+	<true/>
 	<key>NoSyncInstallationId</key>
 	<string>F677A7D1-3903-42BD-B422-2D7174E3825E</string>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile</key>
@@ -32318,11 +32324,11 @@
 	<key>SUFeedAlternateAppNameKey</key>
 	<string>iTerm</string>
 	<key>SUFeedURL</key>
-	<string>https://iterm2.com/appcasts/testing3.xml?shard=22</string>
+	<string>https://iterm2.com/appcasts/testing.xml?shard=22</string>
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2016-05-24T10:52:46Z</date>
+	<date>2016-09-30T08:54:33Z</date>
 	<key>SavePasteHistory</key>
 	<false/>
 	<key>ShowBookmarkName</key>
@@ -32368,7 +32374,7 @@
 	<key>findRegex_iTerm</key>
 	<false/>
 	<key>iTerm Version</key>
-	<string>2.9.20160510</string>
+	<string>3.0.10</string>
 	<key>kCPKSelectionViewPreferredModeKey</key>
 	<integer>0</integer>
 	<key>kCPKSelectionViewShowHSBTextFieldsKey</key>
