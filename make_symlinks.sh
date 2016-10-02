@@ -7,13 +7,11 @@ files=(
   .oh-my-zsh/custom/themes
   .ssh/config
   .vim
-  Library/Application\ Support/Karabiner/private.xml
   scripts
   .gitconfig
   .gitignore
   .powconfig
   .pryrc
-  .taskrc
   .vimrc
   .zlogin
   .zshenv
@@ -27,6 +25,19 @@ RESET_ALL="\033[0m"
 
 for file in "${files[@]}"; do
   echo "symlinking $PWD/$file to $HOME/$file"
+
+  if [ -e "$HOME/$file" ]; then
+    read -p "$HOME/$file exists - remove it? [yn] " yn
+
+    if [ $yn = 'y' ]; then
+      rm -rf "$HOME/$file"
+      if [ $? -eq 0 ]; then
+        echo -e "[$LIGHT_GREEN_FG OK $RESET_ALL] $file removed"
+      else
+        echo -e "[$RED_FG FAIL $RESET_ALL] $file not removed"
+      fi
+    fi
+  fi
 
   target_dir=`dirname "$file"`
   ln -s "$PWD/$file" "$HOME/$target_dir"
