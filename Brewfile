@@ -53,6 +53,8 @@ brew 'wget'
 brew 'zsh'
 
 cask 'chefdk'
+# * app preferences:
+#   - [x] Start f.lux at login (set by default)
 cask 'flux'
 # * system preferences:
 #   - Users & Groups -> Login Items (don't hide): remove
