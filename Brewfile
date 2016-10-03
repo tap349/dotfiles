@@ -23,9 +23,9 @@ brew 'git'
 brew 'gpg'
 brew 'htop'
 brew 'imagemagick'
-# - configure rbenv
 # - copy fonts from dotfiles
 # - ~/.vim/update_bundles
+#   (or ~/.dotfiles/.vim/update_bundles if symlinks are not yet created)
 brew 'macvim'
 brew 'mas'
 brew 'memcached', restart_service: :changed
