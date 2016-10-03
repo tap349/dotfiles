@@ -66,7 +66,7 @@ cask 'flux'
 #   - Users & Groups -> Login Items (don't hide): remove
 # * app preferences:
 #   - Settings -> On startup: Continue where you left off
-#   - Extensions:
+#   - Extensions (allow all of them in incognito):
 #     - AdBlock
 #     - Blank New Tab (Hide in Chrome Menu)
 #     - Browsec VPN
