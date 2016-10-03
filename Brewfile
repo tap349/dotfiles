@@ -64,7 +64,7 @@ cask 'flux'
 #     - AdBlock
 #     - Blank New Tab (Hide in Chrome Menu)
 #     - Browsec VPN
-#     - Dashlane
+#     - Dashlane (not available in webstore - added when opening Dashlane)
 #     - Data Saver
 #     - Ghostery:
 #         - General: don't show purple box
@@ -95,10 +95,10 @@ cask 'google-chrome'
 # (all these settings are already included in exported settings file)
 cask 'iterm2'
 cask 'skype'
-# * system preferences:
-#   - Users & Groups -> Login Items (don't hide): add
 # * app preferences:
 #   - Menubar: Temperature only
+#   - [x] Check for updates on startup
+#   - [x] Autostart smcFanControl after login
 cask 'smcfancontrol'
 # open /usr/local/Caskroom/utorrent/latest/uTorrent.app
 cask 'utorrent'
@@ -113,13 +113,14 @@ mas '2Do', id: 477670270
 mas 'Cloud Mail.Ru', id: 893068358
 mas 'Dashlane - Password Manager, Secure Digital Wallet', id: 552383089
 mas 'Evernote', id: 406056744
+# on first run agree to start Flexiglass every time systems starts
+#
 # * system preferences:
 #   - Security & Privacy -> Privacy -> Accessibility
-#   - Users & Groups -> Login Items (hide): add
 # * app preferences:
 #   - Window Mover:
-#     - Move: <S-M> + 1 finger
-#     - Resize: <S-M> + 2 finger
+#     - Move: <S-M> + one finger
+#     - Resize: <S-M> + two fingers
 #   - Layouts:
 #     - Maximize: <S-M-CR>
 #   - Preferences:
