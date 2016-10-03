@@ -25,7 +25,13 @@ brew 'htop'
 brew 'imagemagick'
 # - copy fonts from dotfiles
 # - ~/.vim/update_bundles
-#   (or ~/.dotfiles/.vim/update_bundles if symlinks are not yet created)
+#   (or ~/.dotfiles/.vim/update_bundles if symlinks are not created yet)
+#
+# * app preferences:
+#   - General:
+#     - After last window closes: Quit MacVim
+#   - Advanced:
+#     - [ ] Draw marked text inline
 brew 'macvim'
 brew 'mas'
 brew 'memcached', restart_service: :changed
