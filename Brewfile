@@ -107,6 +107,9 @@ cask 'skype'
 #   - [x] Autostart smcFanControl after login
 cask 'smcfancontrol'
 # open /usr/local/Caskroom/utorrent/latest/uTorrent.app
+#
+# * system preferences:
+#   - Users & Groups -> Login Items (don't hide): remove
 cask 'utorrent'
 
 # link to dropbox account and sync (replace local data)
