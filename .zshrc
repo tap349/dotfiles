@@ -140,10 +140,11 @@ alias rc='bin/rails console'
 alias rd='bin/rails dbconsole'
 alias rs='bin/rails server'
 
-alias drop='bin/rake db:drop && RAILS_ENV=test bin/rake db:drop'
+alias create_user='bin/rake db:create_user && RAILS_ENV=test bin/rake db:create_user'
 alias create='bin/rake db:create && RAILS_ENV=test bin/rake db:create'
 alias migrate='bin/rake db:migrate && RAILS_ENV=test bin/rake db:migrate'
 alias rollback='bin/rake db:rollback && RAILS_ENV=test bin/rake db:rollback'
+alias drop='bin/rake db:drop && RAILS_ENV=test bin/rake db:drop'
 
 # other gems
 
