@@ -128,8 +128,8 @@ mas 'Evernote', id: 406056744
 #   - Security & Privacy -> Privacy -> Accessibility
 # * app preferences:
 #   - Window Mover:
-#     - Move: <S-M> + one finger
-#     - Resize: <S-M> + two fingers
+#     - Move: <S-M> + one finger (+ Left Mouse Button for mouse)
+#     - Resize: <S-M> + two fingers (+ Right Mouse Button for mouse)
 #   - Layouts:
 #     - Maximize: <S-M-CR>
 #   - Preferences:
