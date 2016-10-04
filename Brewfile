@@ -67,6 +67,7 @@ cask 'flux'
 # * app preferences:
 #   - Settings -> On startup: Continue where you left off
 #   - Extensions (allow all of them in incognito):
+#     - Proxy SwitchyOmega (configure proxy per site)
 #     - AdBlock
 #     - Blank New Tab (Hide in Chrome Menu)
 #     - Browsec VPN
@@ -113,6 +114,10 @@ cask 'smcfancontrol'
 cask 'utorrent'
 
 # link to dropbox account and sync (replace local data)
+#
+# * app preferences:
+#   - General:
+#     - Quick Entry: <C-S-a>
 mas '2Do', id: 477670270
 # configure on first run:
 # - select ~/Documents folder
