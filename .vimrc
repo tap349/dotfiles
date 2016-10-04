@@ -634,6 +634,8 @@ let g:CommandTAcceptSelectionTabCommand = 'GotoOrOpenTab'
 "-------------------------------------------------------------------------------
 
 let g:NERDSpaceDelims = 0
+let g:NERDDefaultAlign = 'left'
+
 map <Leader><Space> <Plug>NERDCommenterToggle
 
 "-------------------------------------------------------------------------------
