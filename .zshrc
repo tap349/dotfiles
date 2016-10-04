@@ -142,6 +142,7 @@ alias rs='bin/rails server'
 
 alias create_user='bin/rake db:create_user && RAILS_ENV=test bin/rake db:create_user'
 alias create='bin/rake db:create && RAILS_ENV=test bin/rake db:create'
+alias schema_load='bin/rake db:schema:load && RAILS_ENV=test bin/rake db:schema:load'
 alias migrate='bin/rake db:migrate && RAILS_ENV=test bin/rake db:migrate'
 alias rollback='bin/rake db:rollback && RAILS_ENV=test bin/rake db:rollback'
 alias drop='bin/rake db:drop && RAILS_ENV=test bin/rake db:drop'

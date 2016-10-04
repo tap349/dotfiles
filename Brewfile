@@ -14,7 +14,6 @@ tap 'homebrew/versions'
 
 #brew 'chromedriver'
 #brew 'djview4'
-#brew 'phantomjs'
 
 brew 'elixir'
 # required by ~/scripts/fontpatcher
@@ -37,6 +36,7 @@ brew 'mas'
 brew 'memcached', restart_service: :changed
 brew 'mc'
 brew 'mpv'
+brew 'phantomjs'
 brew 'postgresql', restart_service: :changed
 # it's much easier to install pow manually:
 # - curl get.pow.cx | sh
