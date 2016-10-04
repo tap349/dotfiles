@@ -25,8 +25,7 @@ brew 'imagemagick'
 # - copy fonts from dotfiles
 # - ~/.vim/update_bundles
 #   (or ~/.dotfiles/.vim/update_bundles if symlinks are not created yet)
-#
-# * app preferences:
+# - app preferences:
 #   - General:
 #     - After last window closes: Quit MacVim
 #   - Advanced:
@@ -59,12 +58,12 @@ brew 'wget'
 brew 'zsh'
 
 cask 'chefdk'
-# * app preferences:
+# - app preferences:
 #   - [x] Start f.lux at login (set by default)
 cask 'flux'
-# * system preferences:
+# - system preferences:
 #   - Users & Groups -> Login Items (don't hide): remove
-# * app preferences:
+# - app preferences:
 #   - Settings -> On startup: Continue where you left off
 #   - Extensions (allow all of them in incognito):
 #     - Proxy SwitchyOmega (configure proxy per site)
@@ -86,40 +85,38 @@ cask 'flux'
 #   - Theme (search on page) -> Black Carbon + silver meta
 #   - chrome://plugins:
 #     - disable Adobe Flash Player
+# - bookmarks bar:
+#   - pin! (https://pinboard.in/howto/)
 cask 'google-chrome'
 # - copy fonts from dotfiles
-#
-# * app preferences:
+# - app preferences:
 #   - General -> Preferences -> Load preferences from a custom folder or URL:
 #     /Users/tap/.dotfiles/.config/iterm2
 #     (this directory should contain com.googlecode.iterm2.plist settings file
-#     exported using 'Save Current Settings to Folder' button below)
-#
-# or else copy ~/Library/Preferences/com.googlecode.iterm2.plist -
-# in both cases iTerm will be fully configured (restart is required)
+#     exported using 'Save Current Settings to Folder' button below).
+#     or else copy ~/Library/Preferences/com.googlecode.iterm2.plist -
+#     in both cases iTerm will be fully configured (restart is required)
 #
 # see also http://tap349.github.io/iterm/rails/2016/05/03/iTerm/
 # (all these settings are already included in exported settings file)
 cask 'iterm2'
 cask 'skype'
-# * app preferences:
+# - app preferences:
 #   - Menubar: Temperature only
 #   - [x] Check for updates on startup
 #   - [x] Autostart smcFanControl after login
 cask 'smcfancontrol'
-# open /usr/local/Caskroom/utorrent/latest/uTorrent.app
-#
-# * system preferences:
+# - open /usr/local/Caskroom/utorrent/latest/uTorrent.app
+# - system preferences:
 #   - Users & Groups -> Login Items (don't hide): remove
 cask 'utorrent'
 
-# link to dropbox account and sync (replace local data)
-#
-# * app preferences:
+# - link to dropbox account and sync (replace local data)
+# - app preferences:
 #   - General:
 #     - Quick Entry: <C-S-a>
 mas '2Do', id: 477670270
-# configure on first run:
+# on first run:
 # - select ~/Documents folder
 #   (Cloud Mail.Ru subfolder will be created automatically)
 # - select to start application on system startup
@@ -127,11 +124,10 @@ mas '2Do', id: 477670270
 mas 'Cloud Mail.Ru', id: 893068358
 mas 'Dashlane - Password Manager, Secure Digital Wallet', id: 552383089
 mas 'Evernote', id: 406056744
-# on first run agree to start Flexiglass every time systems starts
-#
-# * system preferences:
+# - on first run agree to start Flexiglass every time systems starts
+# - system preferences:
 #   - Security & Privacy -> Privacy -> Accessibility
-# * app preferences:
+# - app preferences:
 #   - Window Mover:
 #     - Move: <S-M> + one finger (+ Left Mouse Button for mouse)
 #     - Resize: <S-M> + two fingers (+ Right Mouse Button for mouse)
@@ -141,20 +137,20 @@ mas 'Evernote', id: 406056744
 #     - [ ] Show icon in Dock
 mas 'Flexiglass', id: 426410278
 mas 'Marked 2', id: 890031187
-# * app preferences:
+# - app preferences:
 #   - General:
 #     - [x] Launch at login
 #   - Hotkeys:
 #     - Capture area: <M-1>
 mas 'Monosnap', id: 540348655
 mas 'Pomodoro Timer', id: 872515009
-# * system preferences:
+# - system preferences:
 #   - Users & Groups -> Login Items (don't hide): add
 mas 'VPNAutoConnect', id: 532510878
 mas 'Xcode', id: 497799835
-# * system preferences:
+# - system preferences:
 #   - Users & Groups -> Login Items (don't hide): add
-# * app preferences:
+# - app preferences:
 #   - Shortcuts:
 #     - General -> Show Magnifier: <M-2>
 mas 'Sip', id: 507257563
