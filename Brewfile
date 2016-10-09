@@ -6,6 +6,7 @@
 
 cask_args appdir: '/Applications'
 
+tap 'beeftornado/rmtree'
 tap 'caskroom/cask'
 tap 'caskroom/versions'
 tap 'homebrew/bundle'
@@ -15,6 +16,9 @@ tap 'homebrew/versions'
 #brew 'chromedriver'
 #brew 'djview4'
 
+# remove formula with its unused dependencies:
+# brew rmtree mpv
+brew 'beeftornado/rmtree/brew-rmtree'
 brew 'elixir'
 # required by ~/scripts/fontpatcher
 brew 'fontforge'
