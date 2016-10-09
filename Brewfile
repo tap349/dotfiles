@@ -35,6 +35,7 @@ brew 'mas'
 brew 'memcached', restart_service: :changed
 brew 'mc'
 brew 'mpv'
+brew 'p7zip'
 brew 'phantomjs'
 brew 'postgresql', restart_service: :changed
 # it's much easier to install pow manually:
