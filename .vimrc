@@ -173,7 +173,7 @@ let g:solarized_underline = 1
 "colorscheme solarized
 "colorscheme PaperColor
 
-if hostname() == 'MacBook-Pro.local'
+if hostname() == 'MacBook-Pro-Personal.local'
   set background=light
 
   "colorscheme summerfruit_tap
@@ -261,7 +261,7 @@ set guioptions+=c
 set showtabline=2
 
 " show line numbering
-if hostname() == 'MacBook-Pro.local'
+if hostname() == 'MacBook-Pro-Personal.local'
   set nonumber
 else
   set number
