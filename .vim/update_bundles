@@ -73,11 +73,9 @@ environment = 'ARCHFLAGS="-Wno-error=unused-command-line-argument-hard-error-in-
 command_t_path = File.join 'command-t', 'ruby', 'command-t'
 rbenv_init_script = 'eval "$(rbenv init -)"'
 # NOTE: `ruby extconf.rb` generates Makefile that contains target clean -
-#       you'll get no clean target error when running `make clean` for
-#       the first time.
-#       still it's necessary to place `make clean` before `ruby extconf.rb`
-#       to avoid errors about unexpected ruby version in macvim.
-#       -> place `make clean` after `ruby extconf.rb` on the first run only.
-command_t_build_script = 'rbenv shell system && make clean && ruby extconf.rb && make'
+#       `make clean` will issue no clean target error if run prior to it.
+#       -> place `make clean` before `ruby extconf.rb` temporarily when
+#       you get errors about unexpected ruby version in macvim.
+command_t_build_script = 'rbenv shell system && ruby extconf.rb && make clean && make'
 
 puts `zsh -c 'cd #{command_t_path} && #{rbenv_init_script} && #{environment} #{command_t_build_script}'`
