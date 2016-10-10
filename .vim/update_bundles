@@ -41,7 +41,7 @@ git_bundles = %w[
 # kien/ctrlp.vim
 # majutsushi/tagbar
 # scheakur/vim-scheakur
-# tpope/vim-haml
+# tpope/vim-projectionist
 # xolox/vim-session
 
 git_keep = []
@@ -53,18 +53,18 @@ FileUtils.cd bundles_dir
 
 puts "trashing everything..."
 
-#Dir['*'].each {|d| FileUtils.rm_rf d unless git_keep.include?(d) }
+Dir['*'].each { |d| FileUtils.rm_rf d unless git_keep.include?(d) }
 
 puts "fetching plugins..."
 
-#git_bundles.each do |plugin|
-#  url = "git://github.com/#{plugin}"
-#  dir = url.split('/').last
+git_bundles.each do |plugin|
+  url = "git://github.com/#{plugin}"
+  dir = url.split('/').last
 
-#  puts "  Unpacking #{url} into #{dir}"
-#  %x{git clone #{url} #{dir}}
-#  FileUtils.rm_rf File.join(dir, ".git")
-#end
+  puts "  Unpacking #{url} into #{dir}"
+  %x{git clone #{url} #{dir}}
+  FileUtils.rm_rf File.join(dir, ".git")
+end
 
 puts "compiling command-t..."
 
@@ -75,7 +75,7 @@ rbenv_init_script = 'eval "$(rbenv init -)"'
 # NOTE: `ruby extconf.rb` generates Makefile that contains target clean -
 #       `make clean` will issue no clean target error if run prior to it.
 #       -> in case of errors about unexpected ruby version in macvim
-#       try to make clean before generating Makefile.
+#       try to run this command in shell (for some reason it helps)
 command_t_build_script = 'rbenv shell system && ruby extconf.rb && make clean && make'
 
 puts `zsh -c 'cd #{command_t_path} && #{rbenv_init_script} && #{environment} #{command_t_build_script}'`
