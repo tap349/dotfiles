@@ -53,18 +53,18 @@ FileUtils.cd bundles_dir
 
 puts "trashing everything..."
 
-Dir['*'].each {|d| FileUtils.rm_rf d unless git_keep.include?(d) }
+#Dir['*'].each {|d| FileUtils.rm_rf d unless git_keep.include?(d) }
 
 puts "fetching plugins..."
 
-git_bundles.each do |plugin|
-  url = "git://github.com/#{plugin}"
-  dir = url.split('/').last
+#git_bundles.each do |plugin|
+#  url = "git://github.com/#{plugin}"
+#  dir = url.split('/').last
 
-  puts "  Unpacking #{url} into #{dir}"
-  %x{git clone #{url} #{dir}}
-  FileUtils.rm_rf File.join(dir, ".git")
-end
+#  puts "  Unpacking #{url} into #{dir}"
+#  %x{git clone #{url} #{dir}}
+#  FileUtils.rm_rf File.join(dir, ".git")
+#end
 
 puts "compiling command-t..."
 
@@ -74,8 +74,8 @@ command_t_path = File.join 'command-t', 'ruby', 'command-t'
 rbenv_init_script = 'eval "$(rbenv init -)"'
 # NOTE: `ruby extconf.rb` generates Makefile that contains target clean -
 #       `make clean` will issue no clean target error if run prior to it.
-#       -> place `make clean` before `ruby extconf.rb` temporarily when
-#       you get errors about unexpected ruby version in macvim.
+#       -> in case of errors about unexpected ruby version in macvim
+#       try to make clean before generating Makefile.
 command_t_build_script = 'rbenv shell system && ruby extconf.rb && make clean && make'
 
 puts `zsh -c 'cd #{command_t_path} && #{rbenv_init_script} && #{environment} #{command_t_build_script}'`
