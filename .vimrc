@@ -827,6 +827,9 @@ let g:vim_markdown_frontmatter = 1
 " example projections: https://gist.github.com/henrik/5676109
 "-------------------------------------------------------------------------------
 
+" https://github.com/tpope/vim-rails/issues/443
+set confirm
+
 nmap <Leader>, :A<CR>
 nmap <Leader>v :AV<CR>
 
