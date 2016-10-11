@@ -68,14 +68,15 @@ end
 
 puts "compiling command-t..."
 
-# https://langui.sh/2014/03/10/wunused-command-line-argument-hard-error-in-future-is-a-harsh-mistress
-environment = 'ARCHFLAGS="-Wno-error=unused-command-line-argument-hard-error-in-future"'
 command_t_path = File.join 'command-t', 'ruby', 'command-t'
 rbenv_init_script = 'eval "$(rbenv init -)"'
-# NOTE: `ruby extconf.rb` generates Makefile that contains target clean -
-#       `make clean` will issue no clean target error if run prior to it.
-#       -> in case of errors about unexpected ruby version in macvim
-#       try to run this command in shell (for some reason it helps)
-command_t_build_script = 'rbenv shell system && ruby extconf.rb && make clean && make'
+# https://langui.sh/2014/03/10/wunused-command-line-argument-hard-error-in-future-is-a-harsh-mistress
+#environment = 'ARCHFLAGS="-Wno-error=unused-command-line-argument-hard-error-in-future"'
+# NOTE: run `ruby extconf.rb` prior to `make clean`: the former generates
+#       Makefile that contains target clean for the latter.
+#       there is some problem with setting system ruby by `rbenv shell system`
+#       (https://github.com/rbenv/rbenv/issues/121) - use absolute path to
+#       system ruby instead.
+command_t_build_script = '/usr/bin/ruby extconf.rb && make clean && make'
 
-puts `zsh -c 'cd #{command_t_path} && #{rbenv_init_script} && #{environment} #{command_t_build_script}'`
+puts `zsh -c 'cd #{command_t_path} && #{rbenv_init_script} && #{command_t_build_script}'`
