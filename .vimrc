@@ -833,7 +833,11 @@ set confirm
 nmap <Leader>, :A<CR>
 nmap <Leader>v :AV<CR>
 
+" the first projection is for `set confirm` to work in app/ directory
 let g:rails_projections = {
+\   'app/*.rb': {
+\     'alternate': 'spec/{}_spec.rb'
+\   },
 \   'app/admin/*.rb': {
 \     'alternate': 'spec/controllers/admin/{}_controller_spec.rb'
 \   },
