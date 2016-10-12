@@ -83,6 +83,8 @@ cask 'flux'
 #     - Google Docs (installed by default)
 #     - Google Docs Offline (installed by default)
 #     - Google Sheets (installed by default)
+#     - JSON Formatter (Hide in Chrome Menu)
+#     - Quick Javascript Switcher
 #     - Noisli
 #     - RSS Subscription Extension (by Google) - optional
 #     - uBlock Origin
