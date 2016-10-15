@@ -261,6 +261,8 @@ set showcmd
 set guioptions+=c
 " always show tabbar
 set showtabline=2
+" disable cursor blinking
+set guicursor+=a:blinkon0
 
 " show line numbering
 if hostname() == 'MacBook-Pro-Personal.local'
