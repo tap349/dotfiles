@@ -12,6 +12,7 @@ git_bundles = %w[
   elixir-lang/vim-elixir
   ervandew/supertab
   flazz/vim-colorschemes
+  jasoncodes/ctrlp-modified.vim
   jeetsukumaran/vim-buffergator
   kchmck/vim-coffee-script
   keith/rspec.vim
@@ -34,16 +35,14 @@ git_bundles = %w[
   yssl/QFEnter
 ]
 
-# Yggdroot/indentLine
-# briancollins/vim-jst
-# cakebaker/scss-syntax.vim
-# jamessan/vim-gnupg
-# kien/ctrlp.vim
-# majutsushi/tagbar
-# scheakur/vim-scheakur
-# tpope/vim-projectionist
-# xolox/vim-session
-# wincent/command-t
+#Yggdroot/indentLine
+#briancollins/vim-jst
+#itchyny/lightline.vim
+#jamessan/vim-gnupg
+#majutsushi/tagbar
+#scheakur/vim-scheakur
+#wincent/command-t
+#xolox/vim-session
 
 git_keep = []
 

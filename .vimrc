@@ -96,8 +96,8 @@ set hidden
 
 set wildmenu
 set wildmode=longest:full,full
-" also affects command-t and ctrlp
-set wildignore+=public/images/**,tmp/**,public/assets/**,**/*.log
+" affects command-t and ctrlp
+set wildignore+=*/public/*,*/tmp/*,*.log
 
 "-------------------------------------------------------------------------------
 " indentation
@@ -610,7 +610,7 @@ map <silent> b <Plug>CamelCaseMotion_b
 "let g:CommandTMatchWindowReverse = 0
 "let g:CommandTMaxHeight = 17
 "let g:CommandTMaxFiles = 25000
-"let g:CommandTWildIgnore = &wildignore . 'public/images/**,tmp/**,public/assets/**,**/*.log'
+"let g:CommandTWildIgnore = &wildignore . 'public/**,tmp/**,**/*.log'
 
 "nmap <F1> :CommandT<CR>
 "imap <F1> <Esc>:CommandT<CR>
@@ -618,40 +618,37 @@ map <silent> b <Plug>CamelCaseMotion_b
 "nmap <Leader><F1>r :CommandTFlush<CR>:CommandT<CR>
 
 "" http://vimdoc.sourceforge.net/htmldoc/usr_40.html
-""command! -nargs=+ GotoOrOpen call GotoOrOpen('<args>')
 "command! -nargs=+ GotoOrOpenTab call GotoOrOpenTab('<args>')
-
-""let g:CommandTAcceptSelectionCommand = 'GotoOrOpen'
 "let g:CommandTAcceptSelectionTabCommand = 'GotoOrOpenTab'
 
 "-------------------------------------------------------------------------------
 " ctrlp.vim
 "-------------------------------------------------------------------------------
 
-let g:ctrlp_map = '<F1>'
+let g:ctrlp_map = '<Leader>s'
 let g:ctrlp_match_window = 'order:ttb,max:17'
 let g:ctrlp_mruf_relative = 1
 let g:ctrlp_switch_buffer = 'et'
 
 let g:ctrlp_prompt_mappings = {
-  \ 'PrtDeleteWord()':      ['<C-w>'],
-  \ 'PrtClear()':           ['<C-u>'],
-  \ 'PrtSelectMove("j")':   ['<C-n>', 'Down'],
-  \ 'PrtSelectMove("k")':   ['<C-p>', 'Up'],
-  \ 'PrtHistory(-1)':       ['<C-j>'],
-  \ 'PrtHistory(1)':        ['<C-k>'],
-  \ 'ToggleType(1)':        ['<C-l>'],
-  \ 'ToggleType(-1)':       ['<C-h>'],
-  \ 'PrtExpandDir()':       ['<Tab>'],
-  \ 'PrtInsert()':          ['<C-\>'],
-  \ 'PrtCurStart()':        ['<C-a>'],
-  \ 'PrtCurEnd()':          ['<C-e>'],
-  \ 'PrtCurLeft()':         ['<C-b>', '<Left>'],
-  \ 'PrtCurRight()':        ['<C-f>', '<Right>'],
-  \ 'PrtClearCache()':      ['<F5>'],
-  \ 'CreateNewFile()':      ['<C-y>'],
-  \ 'OpenMulti()':          ['<C-o>'],
-  \ 'PrtExit()':            ['<Esc>', '<C-c>', '<C-g>', '<F1>']
+  \ 'PrtDeleteWord()':    ['<C-w>'],
+  \ 'PrtClear()':         ['<C-u>'],
+  \ 'PrtSelectMove("j")': ['<C-n>', 'Down'],
+  \ 'PrtSelectMove("k")': ['<C-p>', 'Up'],
+  \ 'PrtHistory(-1)':     ['<C-j>'],
+  \ 'PrtHistory(1)':      ['<C-k>'],
+  \ 'ToggleType(1)':      ['<C-l>'],
+  \ 'ToggleType(-1)':     ['<C-h>'],
+  \ 'PrtExpandDir()':     ['<Tab>'],
+  \ 'PrtInsert()':        ['<C-\>'],
+  \ 'PrtCurStart()':      ['<C-a>'],
+  \ 'PrtCurEnd()':        ['<C-e>'],
+  \ 'PrtCurLeft()':       ['<C-b>', '<Left>'],
+  \ 'PrtCurRight()':      ['<C-f>', '<Right>'],
+  \ 'PrtClearCache()':    ['<F5>'],
+  \ 'CreateNewFile()':    ['<C-y>'],
+  \ 'OpenMulti()':        ['<C-o>'],
+  \ 'PrtExit()':          ['<Esc>', '<C-c>', '<C-g>']
   \ }
 
 "-------------------------------------------------------------------------------
@@ -659,7 +656,54 @@ let g:ctrlp_prompt_mappings = {
 "-------------------------------------------------------------------------------
 
 "set laststatus=2
-"let g:lightline = { 'colorscheme': 'solarized' }
+
+"let g:lightline = {
+"  \ 'colorscheme': 'solarized',
+"  \ 'active': {
+"  \   'left': [['mode'], ['fugitive', 'filename']]
+"  \ },
+"  \ 'component_function': {
+"  \   'fugitive': 'LightLineFugitive',
+"  \   'filename': 'LightLineFilename',
+"  \   'ctrlpmark': 'CtrlPMark',
+"  \   'readonly': 'LightLineReadonly',
+"  \   'modified': 'LightLineModified'
+"  \ },
+"  \ 'separator': { 'left': '⮀', 'right': '⮂' },
+"  \ 'subseparator': { 'left': '⮁', 'right': '⮃' }
+"  \ }
+
+"function! LightLineFugitive()
+"  return exists('*fugitive#head') ? fugitive#head() : ''
+"endfunction
+
+"function! LightLineFilename()
+"  return ('' != LightLineReadonly() ? LightLineReadonly() . ' ' : '') .
+"       \ ('' != expand('%:t') ? expand('%:t') : '[No Name]') .
+"       \ ('' != LightLineModified() ? ' ' . LightLineModified() : '')
+"endfunction
+
+"function! LightLineReadonly()
+"  if &filetype == 'help'
+"    return ''
+"  elseif &readonly
+"    return '⭤'
+"  else
+"    return ''
+"  endif
+"endfunction
+
+"function! LightLineModified()
+"  if &filetype == 'help'
+"    return ''
+"  elseif &modified
+"    return '+'
+"  elseif &modifiable
+"    return ''
+"  else
+"    return ''
+"  endif
+"endfunction
 
 "-------------------------------------------------------------------------------
 " nerdcommenter
@@ -703,14 +747,6 @@ let g:qfenter_vopen_map = ['<C-v>']
 "autocmd! BufNewFile,BufRead *_spec.rb set filetype=rspec
 
 "-------------------------------------------------------------------------------
-" Specky
-"-------------------------------------------------------------------------------
-
-"let g:speckySpecSwitcherKey = '<F4>'
-
-"nmap <Leader><F4> <C-w><C-v><C-w>l<F4>
-
-"-------------------------------------------------------------------------------
 " supertab
 "-------------------------------------------------------------------------------
 
@@ -752,29 +788,7 @@ let g:syntastic_ruby_mri_quiet_messages = {
 " always show airline
 set laststatus=2
 
-"let g:airline#extensions#tabline#enabled = 1
-"let g:airline#extensions#tabline#fnamemod = ':t'
-"let g:airline#extensions#tabline#left_sep = '⮀'
-"let g:airline#extensions#tabline#left_alt_sep = '⮁'
-
-" dark
-"let g:airline_theme = 'molokai'
-"let g:airline_theme = 'powerlineish'
-"let g:airline_theme = 'dark'
-"let g:airline_theme = 'serene'
-"let g:airline_theme = 'ubaryd'
-"let g:airline_theme = 'laederon'
-
-" light
-"let g:airline_theme = 'hybrid'
 let g:airline_theme = 'lucius'
-"let g:airline_theme = 'tomorrow'
-"let g:airline_theme = 'light'
-"let g:airline_theme = 'base16'
-"let g:airline_theme = 'zenburn'
-"let g:airline_theme = 'solarized'
-"let g:airline_theme = 'papercolor'
-
 let g:airline_powerline_fonts = 0
 
 " https://github.com/vim-airline/vim-airline/blob/master/doc/airline.txt
@@ -906,7 +920,7 @@ let g:rails_projections = {
 
 "===============================================================================
 "                                                                              =
-" functions                                                                    =
+" common functions                                                             =
 "                                                                              =
 "===============================================================================
 
@@ -922,26 +936,26 @@ endfunction
 
 " returns 1 (true) if buffer hidden or 0 (false) otherwise
 " http://stackoverflow.com/a/8459043
-function! BufHidden(buf)
-  let active_buffers = []
-  let tabs = range(1, tabpagenr('$'))
+"function! BufHidden(buf)
+"  let active_buffers = []
+"  let tabs = range(1, tabpagenr('$'))
 
-  call map(tabs, 'extend(active_buffers, tabpagebuflist(v:val))')
-  return (bufexists(a:buf) && index(active_buffers, a:buf) == -1)
-endfunction
+"  call map(tabs, 'extend(active_buffers, tabpagebuflist(v:val))')
+"  return (bufexists(a:buf) && index(active_buffers, a:buf) == -1)
+"endfunction
 
 " a:000: http://learnvimscriptthehardway.stevelosh.com/chapters/24.html
 " sbuffer: `buffer` function doesn't respect `switchbuf` option
-function! GotoOrOpenTab(...)
-  for file in a:000
-    " if buffer exists and not hidden
-    if bufexists(file) && !BufHidden(bufnr(file))
-      exec 'sbuffer ' . file
-    else
-      exec 'tabedit ' . file
-    endif
-  endfor
-endfunction
+"function! GotoOrOpenTab(...)
+"  for file in a:000
+"    " if buffer exists and not hidden
+"    if bufexists(file) && !BufHidden(bufnr(file))
+"      exec 'sbuffer ' . file
+"    else
+"      exec 'tabedit ' . file
+"    endif
+"  endfor
+"endfunction
 
 " settings for difftool and mergetool
 function! SetDiffMode()
