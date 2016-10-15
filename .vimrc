@@ -97,7 +97,7 @@ set hidden
 set wildmenu
 set wildmode=longest:full,full
 " affects command-t and ctrlp
-set wildignore+=*/public/*,*/tmp/*,*.log
+set wildignore+=*/public/*,*/tmp/*,*/spec/vcr_cassettes/*,*.log
 
 "-------------------------------------------------------------------------------
 " indentation
