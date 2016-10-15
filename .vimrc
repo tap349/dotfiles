@@ -96,6 +96,8 @@ set hidden
 
 set wildmenu
 set wildmode=longest:full,full
+" also affects command-t and ctrlp
+set wildignore+=public/images/**,tmp/**,public/assets/**,**/*.log
 
 "-------------------------------------------------------------------------------
 " indentation
@@ -410,7 +412,10 @@ autocmd! TabLeave * let g:lasttabnr = tabpagenr()
 "------- buffer ----------------------------------------------------------------
 
 " same as <C-6>
-"nnoremap <silent> <C-Tab> :b#<CR>
+nnoremap <silent> <C-s> :b#<CR>
+
+nnoremap <silent> <C-p> :bprevious<CR>
+nnoremap <silent> <C-n> :bnext<CR>
 
 "------- mark history ----------------------------------------------------------
 
@@ -600,24 +605,52 @@ map <silent> b <Plug>CamelCaseMotion_b
 " command-t
 "-------------------------------------------------------------------------------
 
-let g:CommandTCancelMap = '<C-c>'
-let g:CommandTMatchWindowAtTop = 0
-let g:CommandTMatchWindowReverse = 0
-let g:CommandTMaxHeight = 17
-let g:CommandTMaxFiles = 25000
-let g:CommandTWildIgnore = &wildignore . 'public/images/**,tmp/**,public/assets/**,**/*.log'
+"let g:CommandTCancelMap = '<C-c>'
+"let g:CommandTMatchWindowAtTop = 0
+"let g:CommandTMatchWindowReverse = 0
+"let g:CommandTMaxHeight = 17
+"let g:CommandTMaxFiles = 25000
+"let g:CommandTWildIgnore = &wildignore . 'public/images/**,tmp/**,public/assets/**,**/*.log'
 
-nmap <F1> :CommandT<CR>
-imap <F1> <Esc>:CommandT<CR>
-nmap <S-F1> :CommandTBuffer<CR>
-nmap <Leader><F1>r :CommandTFlush<CR>:CommandT<CR>
+"nmap <F1> :CommandT<CR>
+"imap <F1> <Esc>:CommandT<CR>
+"nmap <S-F1> :CommandTBuffer<CR>
+"nmap <Leader><F1>r :CommandTFlush<CR>:CommandT<CR>
 
-" http://vimdoc.sourceforge.net/htmldoc/usr_40.html
-"command! -nargs=+ GotoOrOpen call GotoOrOpen('<args>')
-command! -nargs=+ GotoOrOpenTab call GotoOrOpenTab('<args>')
+"" http://vimdoc.sourceforge.net/htmldoc/usr_40.html
+""command! -nargs=+ GotoOrOpen call GotoOrOpen('<args>')
+"command! -nargs=+ GotoOrOpenTab call GotoOrOpenTab('<args>')
 
-"let g:CommandTAcceptSelectionCommand = 'GotoOrOpen'
-let g:CommandTAcceptSelectionTabCommand = 'GotoOrOpenTab'
+""let g:CommandTAcceptSelectionCommand = 'GotoOrOpen'
+"let g:CommandTAcceptSelectionTabCommand = 'GotoOrOpenTab'
+
+"-------------------------------------------------------------------------------
+" ctrlp.vim
+"-------------------------------------------------------------------------------
+
+let g:ctrlp_map = '<F1>'
+let g:ctrlp_match_window = 'order:ttb,max:17'
+let g:ctrlp_switch_buffer = 'et'
+let g:ctrlp_prompt_mappings = {
+  \ 'PrtDeleteWord()':      ['<C-w>'],
+  \ 'PrtClear()':           ['<C-u>'],
+  \ 'PrtSelectMove("j")':   ['<C-n>', 'Down'],
+  \ 'PrtSelectMove("k")':   ['<C-p>', 'Up'],
+  \ 'PrtHistory(-1)':       ['<C-j>'],
+  \ 'PrtHistory(1)':        ['<C-k>'],
+  \ 'ToggleType(1)':        ['<C-h>'],
+  \ 'ToggleType(-1)':       ['<C-l>'],
+  \ 'PrtExpandDir()':       ['<Tab>'],
+  \ 'PrtInsert()':          ['<C-\>'],
+  \ 'PrtCurStart()':        ['<C-a>'],
+  \ 'PrtCurEnd()':          ['<C-e>'],
+  \ 'PrtCurLeft()':         ['<C-b>', '<Left>'],
+  \ 'PrtCurRight()':        ['<C-f>', '<Right>'],
+  \ 'PrtClearCache()':      ['<F5>'],
+  \ 'CreateNewFile()':      ['<C-y>'],
+  \ 'OpenMulti()':          ['<C-o>'],
+  \ 'PrtExit()':            ['<Esc>', '<C-c>', '<C-g>']
+  \ }
 
 "-------------------------------------------------------------------------------
 " lightline.vim
@@ -766,8 +799,8 @@ let g:buffergator_suppress_keymaps = 1
 "let g:buffergator_vsplit_size = 60
 
 nmap <F3> :BuffergatorToggle<CR>
-nmap <silent> <C-p> :BuffergatorMruCyclePrev<CR>
-nmap <silent> <C-n> :BuffergatorMruCycleNext<CR>
+"nmap <silent> <C-p> :BuffergatorMruCyclePrev<CR>
+"nmap <silent> <C-n> :BuffergatorMruCycleNext<CR>
 
 "-------------------------------------------------------------------------------
 " vim-easymotion
@@ -835,28 +868,28 @@ nmap <Leader>v :AV<CR>
 
 " the first projection is for `set confirm` to work in app/ directory
 let g:rails_projections = {
-\   'app/*.rb': {
-\     'alternate': 'spec/{}_spec.rb'
-\   },
-\   'app/admin/*.rb': {
-\     'alternate': 'spec/controllers/admin/{}_controller_spec.rb'
-\   },
-\   'spec/controllers/admin/*_controller_spec.rb': {
-\     'alternate': 'app/admin/{}.rb'
-\   },
-\   'lib/*.rb': {
-\     'alternate': 'spec/{}_spec.rb'
-\   },
-\   'spec/*_spec.rb': {
-\     'alternate': 'lib/{}.rb'
-\   },
-\   'config/locales/*.ru.yml': {
-\     'alternate': 'config/locales/{}.en.yml'
-\   },
-\   'config/locales/*.en.yml': {
-\     'alternate': 'config/locales/{}.ru.yml'
-\   }
-\ }
+  \   'app/*.rb': {
+  \     'alternate': 'spec/{}_spec.rb'
+  \   },
+  \   'app/admin/*.rb': {
+  \     'alternate': 'spec/controllers/admin/{}_controller_spec.rb'
+  \   },
+  \   'spec/controllers/admin/*_controller_spec.rb': {
+  \     'alternate': 'app/admin/{}.rb'
+  \   },
+  \   'lib/*.rb': {
+  \     'alternate': 'spec/{}_spec.rb'
+  \   },
+  \   'spec/*_spec.rb': {
+  \     'alternate': 'lib/{}.rb'
+  \   },
+  \   'config/locales/*.ru.yml': {
+  \     'alternate': 'config/locales/{}.en.yml'
+  \   },
+  \   'config/locales/*.en.yml': {
+  \     'alternate': 'config/locales/{}.ru.yml'
+  \   }
+  \ }
 
 "-------------------------------------------------------------------------------
 " vim-session

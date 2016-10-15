@@ -7,6 +7,7 @@ git_bundles = %w[
   airblade/vim-gitgutter
   ap/vim-css-color
   bkad/CamelCaseMotion
+  ctrlpvim/ctrlp.vim
   easymotion/vim-easymotion
   elixir-lang/vim-elixir
   ervandew/supertab
@@ -29,7 +30,6 @@ git_bundles = %w[
   vim-airline/vim-airline
   vim-airline/vim-airline-themes
   vim-ruby/vim-ruby
-  wincent/command-t
   xolox/vim-misc
   yssl/QFEnter
 ]
@@ -43,6 +43,7 @@ git_bundles = %w[
 # scheakur/vim-scheakur
 # tpope/vim-projectionist
 # xolox/vim-session
+# wincent/command-t
 
 git_keep = []
 
@@ -66,17 +67,17 @@ git_bundles.each do |plugin|
   FileUtils.rm_rf File.join(dir, ".git")
 end
 
-puts "compiling command-t..."
+#puts "compiling command-t..."
 
-command_t_path = File.join 'command-t', 'ruby', 'command-t'
-rbenv_init_script = 'eval "$(rbenv init -)"'
-# https://langui.sh/2014/03/10/wunused-command-line-argument-hard-error-in-future-is-a-harsh-mistress
-#environment = 'ARCHFLAGS="-Wno-error=unused-command-line-argument-hard-error-in-future"'
-# NOTE: run `ruby extconf.rb` prior to `make clean`: the former generates
-#       Makefile that contains target clean for the latter.
-#       there is some problem with setting system ruby by `rbenv shell system`
-#       (https://github.com/rbenv/rbenv/issues/121) - use absolute path to
-#       system ruby instead.
-command_t_build_script = '/usr/bin/ruby extconf.rb && make clean && make'
+#command_t_path = File.join 'command-t', 'ruby', 'command-t'
+#rbenv_init_script = 'eval "$(rbenv init -)"'
+## https://langui.sh/2014/03/10/wunused-command-line-argument-hard-error-in-future-is-a-harsh-mistress
+##environment = 'ARCHFLAGS="-Wno-error=unused-command-line-argument-hard-error-in-future"'
+## NOTE: run `ruby extconf.rb` prior to `make clean`: the former generates
+##       Makefile that contains target clean for the latter.
+##       there is some problem with setting system ruby by `rbenv shell system`
+##       (https://github.com/rbenv/rbenv/issues/121) - use absolute path to
+##       system ruby instead.
+#command_t_build_script = '/usr/bin/ruby extconf.rb && make clean && make'
 
-puts `zsh -c 'cd #{command_t_path} && #{rbenv_init_script} && #{command_t_build_script}'`
+#puts `zsh -c 'cd #{command_t_path} && #{rbenv_init_script} && #{command_t_build_script}'`
