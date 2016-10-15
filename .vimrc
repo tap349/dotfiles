@@ -626,7 +626,7 @@ map <silent> b <Plug>CamelCaseMotion_b
 "-------------------------------------------------------------------------------
 
 let g:ctrlp_map = '<Leader>s'
-let g:ctrlp_match_window = 'order:ttb,max:17'
+let g:ctrlp_match_window = 'order:ttb,max:15'
 let g:ctrlp_mruf_relative = 1
 let g:ctrlp_switch_buffer = 'et'
 
@@ -650,6 +650,13 @@ let g:ctrlp_prompt_mappings = {
   \ 'OpenMulti()':        ['<C-o>'],
   \ 'PrtExit()':          ['<Esc>', '<C-c>', '<C-g>']
   \ }
+
+"-------------------------------------------------------------------------------
+" ctrlp-modified.vim
+"-------------------------------------------------------------------------------
+
+map <Leader>m :CtrlPModified<CR>
+map <Leader>M :CtrlPBranch<CR>
 
 "-------------------------------------------------------------------------------
 " lightline.vim
@@ -797,10 +804,12 @@ let g:airline#extensions#tabline#show_buffers = 0
 let g:airline#extensions#tabline#show_splits = 0
 let g:airline#extensions#tabline#show_close_button = 0
 let g:airline#extensions#tabline#fnamemod = ':t'
-let g:airline#extensions#tabline#left_sep = ' '
-let g:airline#extensions#tabline#left_alt_sep = ' '
+let g:airline#extensions#tabline#left_sep = '  '
+let g:airline#extensions#tabline#left_alt_sep = '  '
 
-let g:airline_theme = 'sol'
+"let g:airline_theme = 'cool'
+"let g:airline_theme = 'sol'
+let g:airline_theme = 'lucius'
 let g:airline_powerline_fonts = 0
 
 if !exists('g:airline_symbols')
