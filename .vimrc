@@ -789,12 +789,18 @@ let g:syntastic_ruby_mri_quiet_messages = {
 " always show airline
 set laststatus=2
 
-"let g:airline#extensions#tabline#enabled = 1
-"let g:airline#extensions#tabline#fnamemod = ':t'
-"let g:airline#extensions#tabline#left_sep = '⮀'
-"let g:airline#extensions#tabline#left_alt_sep = '⮁'
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#show_tabs = 1
+let g:airline#extensions#tabline#show_tab_nr = 0
+let g:airline#extensions#tabline#show_tab_type = 0
+let g:airline#extensions#tabline#show_buffers = 0
+let g:airline#extensions#tabline#show_splits = 0
+let g:airline#extensions#tabline#show_close_button = 0
+let g:airline#extensions#tabline#fnamemod = ':t'
+let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#left_alt_sep = ' '
 
-let g:airline_theme = 'lucius'
+let g:airline_theme = 'sol'
 let g:airline_powerline_fonts = 0
 
 if !exists('g:airline_symbols')
