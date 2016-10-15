@@ -630,7 +630,9 @@ map <silent> b <Plug>CamelCaseMotion_b
 
 let g:ctrlp_map = '<F1>'
 let g:ctrlp_match_window = 'order:ttb,max:17'
+let g:ctrlp_mruf_relative = 1
 let g:ctrlp_switch_buffer = 'et'
+
 let g:ctrlp_prompt_mappings = {
   \ 'PrtDeleteWord()':      ['<C-w>'],
   \ 'PrtClear()':           ['<C-u>'],
@@ -638,8 +640,8 @@ let g:ctrlp_prompt_mappings = {
   \ 'PrtSelectMove("k")':   ['<C-p>', 'Up'],
   \ 'PrtHistory(-1)':       ['<C-j>'],
   \ 'PrtHistory(1)':        ['<C-k>'],
-  \ 'ToggleType(1)':        ['<C-h>'],
-  \ 'ToggleType(-1)':       ['<C-l>'],
+  \ 'ToggleType(1)':        ['<C-l>'],
+  \ 'ToggleType(-1)':       ['<C-h>'],
   \ 'PrtExpandDir()':       ['<Tab>'],
   \ 'PrtInsert()':          ['<C-\>'],
   \ 'PrtCurStart()':        ['<C-a>'],
@@ -649,7 +651,7 @@ let g:ctrlp_prompt_mappings = {
   \ 'PrtClearCache()':      ['<F5>'],
   \ 'CreateNewFile()':      ['<C-y>'],
   \ 'OpenMulti()':          ['<C-o>'],
-  \ 'PrtExit()':            ['<Esc>', '<C-c>', '<C-g>']
+  \ 'PrtExit()':            ['<Esc>', '<C-c>', '<C-g>', '<F1>']
   \ }
 
 "-------------------------------------------------------------------------------
