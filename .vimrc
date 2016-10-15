@@ -725,8 +725,8 @@ map <Leader><Space> <Plug>NERDCommenterToggle
 let g:NERDTreeDirArrowExpandable = '▸'
 let g:NERDTreeDirArrowCollapsible = '▾'
 
+nmap <F1> :NERDTreeFind<CR>
 nmap <F2> :NERDTreeToggle<CR>
-nmap <Leader><F2>f :NERDTreeFind<CR>
 
 "-------------------------------------------------------------------------------
 " QFEnter
