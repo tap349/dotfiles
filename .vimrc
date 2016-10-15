@@ -783,15 +783,20 @@ let g:syntastic_ruby_mri_quiet_messages = {
 "-------------------------------------------------------------------------------
 " vim-airline
 " http://joshldavis.com/2014/04/05/vim-tab-madness-buffers-vs-tabs
+" https://github.com/vim-airline/vim-airline/blob/master/doc/airline.txt
 "-------------------------------------------------------------------------------
 
 " always show airline
 set laststatus=2
 
+"let g:airline#extensions#tabline#enabled = 1
+"let g:airline#extensions#tabline#fnamemod = ':t'
+"let g:airline#extensions#tabline#left_sep = '⮀'
+"let g:airline#extensions#tabline#left_alt_sep = '⮁'
+
 let g:airline_theme = 'lucius'
 let g:airline_powerline_fonts = 0
 
-" https://github.com/vim-airline/vim-airline/blob/master/doc/airline.txt
 if !exists('g:airline_symbols')
   let g:airline_symbols = {}
 endif
@@ -800,9 +805,15 @@ let g:airline_left_sep = '⮀'
 let g:airline_left_alt_sep = '⮁'
 let g:airline_right_sep = '⮂'
 let g:airline_right_alt_sep = '⮃'
-let g:airline_symbols.branch = '⭠'
+let g:airline_symbols.branch = '⎇'
+let g:airline_symbols.crypt = '🔒'
+let g:airline_symbols.linenr = '␤'
+let g:airline_symbols.maxlinenr = '☰'
+let g:airline_symbols.notexists = '∄'
+let g:airline_symbols.paste = 'ρ'
 let g:airline_symbols.readonly = '⭤'
-let g:airline_symbols.linenr = '⭡'
+let g:airline_symbols.spell = 'Ꞩ'
+let g:airline_symbols.whitespace = 'Ξ'
 
 "-------------------------------------------------------------------------------
 " vim-buffergator
