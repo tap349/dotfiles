@@ -631,6 +631,9 @@ let g:ctrlp_map = '<Leader>s'
 let g:ctrlp_match_window = 'order:ttb,max:15'
 let g:ctrlp_mruf_relative = 1
 let g:ctrlp_switch_buffer = 'et'
+" instant update causes cursor to appear and flicker
+" at the end of last line in match window
+let g:ctrlp_lazy_update = 50
 
 let g:ctrlp_prompt_mappings = {
   \ 'PrtDeleteWord()':    ['<C-w>'],
