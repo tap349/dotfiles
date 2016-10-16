@@ -430,8 +430,8 @@ nnoremap <C-g> <C-i>
 nnoremap <C-h> :tabprevious<CR>
 nnoremap <C-l> :tabnext<CR>
 
-nmap ˙ :tabmove -1<CR>
-nmap ¬ :tabmove +1<CR>
+nmap <silent> ˙ :tabmove -1<CR>
+nmap <silent> ¬ :tabmove +1<CR>
 
 "------- window ----------------------------------------------------------------
 
