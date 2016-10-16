@@ -427,8 +427,8 @@ nnoremap <C-g> <C-i>
 "------- tab -------------------------------------------------------------------
 
 " the same as using gT and gt
-nmap <C-h> :tabprevious<CR>
-nmap <C-l> :tabnext<CR>
+nnoremap <C-h> :tabprevious<CR>
+nnoremap <C-l> :tabnext<CR>
 
 nmap ˙ :tabmove -1<CR>
 nmap ¬ :tabmove +1<CR>

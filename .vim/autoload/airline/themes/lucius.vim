@@ -54,8 +54,8 @@ function! airline#themes#lucius#refresh()
     let s:TS = airline#themes#get_highlight('TabLineSel')
     let g:airline#themes#lucius#palette.tabline = {}
     let g:airline#themes#lucius#palette.tabline.airline_tab = s:TS
-    let g:airline#themes#lucius#palette.tabline.airline_tabsel = s:I2
-    "let g:airline#themes#lucius#palette.tabline.airline_tabfill = s:IA
+    let g:airline#themes#lucius#palette.tabline.airline_tabsel = s:R1
+    let g:airline#themes#lucius#palette.tabline.airline_tabfill = s:IA
 
 endfunction
 
