@@ -662,7 +662,7 @@ let g:ctrlp_buffer_func = {
   \ }
 
 function! BrightHighlightOn()
-  hi CursorLine guibg=#b0c4de
+  hi CursorLine guibg=#cfdbeb
 endfunction
 
 function! BrightHighlightOff()
