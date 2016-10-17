@@ -146,6 +146,7 @@ alias schema_load='bin/rake db:schema:load && RAILS_ENV=test bin/rake db:schema:
 alias migrate='bin/rake db:migrate && RAILS_ENV=test bin/rake db:migrate'
 alias rollback='bin/rake db:rollback && RAILS_ENV=test bin/rake db:rollback'
 alias drop='bin/rake db:drop && RAILS_ENV=test bin/rake db:drop'
+alias recreate='bin/rake db:recreate && RAILS_ENV=test bin/rake db:recreate'
 
 # other gems
 
