@@ -656,6 +656,19 @@ let g:ctrlp_prompt_mappings = {
   \ 'PrtExit()':          ['<Esc>', '<C-c>', '<C-g>']
   \ }
 
+let g:ctrlp_buffer_func = {
+  \ 'enter': 'BrightHighlightOn',
+  \ 'exit':  'BrightHighlightOff'
+  \ }
+
+function! BrightHighlightOn()
+  hi CursorLine guibg=#b0c4de
+endfunction
+
+function! BrightHighlightOff()
+  hi CursorLine guibg=#e4e4e4
+endfunction
+
 "-------------------------------------------------------------------------------
 " ctrlp-modified.vim
 "-------------------------------------------------------------------------------
