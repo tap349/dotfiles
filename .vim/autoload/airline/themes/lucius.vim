@@ -55,7 +55,7 @@ function! airline#themes#lucius#refresh()
     " s:TS - light grey
     " s:R1 - light yellow
     " s:R2 - light blue
-    let light_steel_blue = ['#000000', '#b0c4de']
+    let light_steel_blue = ['#222222', '#b0c4de']
 
     let s:TS = airline#themes#get_highlight('TabLineSel')
     let g:airline#themes#lucius#palette.tabline = {}
