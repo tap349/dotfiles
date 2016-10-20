@@ -416,8 +416,8 @@ autocmd! TabLeave * let g:lasttabnr = tabpagenr()
 " same as <C-6>
 nnoremap <silent> <C-s> :b#<CR>
 
-nnoremap <silent> <C-p> :bprevious<CR>
-nnoremap <silent> <C-n> :bnext<CR>
+"nnoremap <silent> <C-p> :bprevious<CR>
+"nnoremap <silent> <C-n> :bnext<CR>
 
 "------- mark history ----------------------------------------------------------
 
@@ -859,8 +859,8 @@ let g:buffergator_suppress_keymaps = 1
 "let g:buffergator_vsplit_size = 60
 
 nmap <F3> :BuffergatorToggle<CR>
-"nmap <silent> <C-p> :BuffergatorMruCyclePrev<CR>
-"nmap <silent> <C-n> :BuffergatorMruCycleNext<CR>
+nmap <silent> <C-p> :BuffergatorMruCyclePrev<CR>
+nmap <silent> <C-n> :BuffergatorMruCycleNext<CR>
 
 "-------------------------------------------------------------------------------
 " vim-easymotion
