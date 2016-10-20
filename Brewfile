@@ -26,6 +26,8 @@ brew 'git'
 brew 'gpg'
 brew 'htop'
 brew 'imagemagick'
+# used as viewer for html files in mc
+brew 'lynx'
 # - copy fonts from dotfiles
 # - ~/.vim/update_bundles
 #   (or ~/.dotfiles/.vim/update_bundles if symlinks are not created yet)
