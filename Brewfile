@@ -164,3 +164,4 @@ mas 'Xcode', id: 497799835
 #   - Shortcuts:
 #     - General -> Show Magnifier: <M-2>
 mas 'Sip', id: 507257563
+mas 'Telegram Desktop', id: 946399090
