@@ -91,6 +91,7 @@ cask 'flux'
 #     - Quick Javascript Switcher
 #     - Noisli
 #     - RSS Subscription Extension (by Google) - optional
+#     - The Great Suspender
 #     - uBlock Origin
 #     - Viewport Dimensions (Hide in Chrome Menu)
 #   - Theme (search on page) -> Black Carbon + silver meta
