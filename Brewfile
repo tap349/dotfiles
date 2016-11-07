@@ -41,6 +41,8 @@ brew 'mas'
 brew 'memcached', restart_service: :changed
 brew 'mc'
 brew 'mpv'
+# for reenter_feed
+brew 'nodejs'
 brew 'p7zip'
 brew 'phantomjs'
 brew 'postgresql', restart_service: :changed
