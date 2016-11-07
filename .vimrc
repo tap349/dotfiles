@@ -97,7 +97,7 @@ set hidden
 set wildmenu
 set wildmode=longest:full,full
 " affects command-t and ctrlp
-set wildignore+=*/public/*,*/tmp/*,*/spec/vcr_cassettes/*,*.log
+set wildignore+=*/public/*,*/tmp/*,*/spec/vcr_cassettes/*,*.log,*/deps/*
 
 "-------------------------------------------------------------------------------
 " indentation
@@ -630,6 +630,7 @@ map <silent> b <Plug>CamelCaseMotion_b
 let g:ctrlp_map = '<Leader>s'
 let g:ctrlp_match_window = 'order:ttb,max:15'
 let g:ctrlp_mruf_relative = 1
+"let g:ctrlp_root_markers = ['mix.exs']
 let g:ctrlp_switch_buffer = 'et'
 " instant update causes cursor to appear and flicker
 " at the end of last line in match window
@@ -814,6 +815,7 @@ let g:syntastic_ruby_mri_quiet_messages = {
 " always show airline
 set laststatus=2
 
+" NOTE: clicking on left sep selects a tab to the left
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#show_tabs = 1
 let g:airline#extensions#tabline#show_tab_nr = 0
@@ -822,8 +824,8 @@ let g:airline#extensions#tabline#show_buffers = 0
 let g:airline#extensions#tabline#show_splits = 0
 let g:airline#extensions#tabline#show_close_button = 0
 let g:airline#extensions#tabline#fnamemod = ':t'
-let g:airline#extensions#tabline#left_sep = '  '
-let g:airline#extensions#tabline#left_alt_sep = '  '
+let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#left_alt_sep = ' '
 
 "let g:airline_theme = 'cool'
 "let g:airline_theme = 'sol'
