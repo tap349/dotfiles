@@ -124,6 +124,7 @@ alias up='cd $UPTIMUS'
 
 alias df='df -h'
 alias ll='ls -alp'
+alias m='mvim'
 alias mail='less +G /var/mail/tap'
 alias mcu='mc -u'
 
