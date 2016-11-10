@@ -815,7 +815,7 @@ let g:syntastic_ruby_mri_quiet_messages = {
 " always show airline
 set laststatus=2
 
-" NOTE: clicking on left sep selects a tab to the left
+" NOTE: clicking on left_sep selects a tab to the left
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#show_tabs = 1
 let g:airline#extensions#tabline#show_tab_nr = 0
