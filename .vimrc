@@ -508,12 +508,13 @@ inoremap <C-c> <Esc>
 inoremap <C-d> <Delete>
 
 "-------------------------------------------------------------------------------
-" generation of complementary brackets
+" generation of complementary characters
 "-------------------------------------------------------------------------------
 
 inoremap {{ {<Space><Space>}<Esc>hi
 inoremap }} {}<Esc>i
 inoremap )) ()<Esc>i
+"inoremap >> \|><Space>
 "inoremap [[ []<Esc>i
 
 "-------------------------------------------------------------------------------
