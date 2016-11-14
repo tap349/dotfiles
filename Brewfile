@@ -113,6 +113,7 @@ cask 'google-chrome'
 # (all these settings are already included in exported settings file)
 cask 'iterm2'
 cask 'openemu'
+cask 'pgadmin4'
 cask 'skype'
 # - app preferences:
 #   - Menubar: Temperature only
