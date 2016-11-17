@@ -3,10 +3,12 @@
 require 'fileutils'
 require 'open-uri'
 
+# tpope/vim-projectionist is dependecy of phoenix.vim
 git_bundles = %w[
   airblade/vim-gitgutter
   ap/vim-css-color
   bkad/CamelCaseMotion
+  c-brenn/phoenix.vim
   ctrlpvim/ctrlp.vim
   easymotion/vim-easymotion
   elixir-lang/vim-elixir
@@ -25,6 +27,7 @@ git_bundles = %w[
   tap349/ag.vim
   tpope/vim-endwise
   tpope/vim-fugitive
+  tpope/vim-projectionist
   tpope/vim-rails
   tpope/vim-surround
   tpope/vim-unimpaired

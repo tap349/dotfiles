@@ -635,7 +635,7 @@ let g:ctrlp_mruf_relative = 1
 let g:ctrlp_switch_buffer = 'et'
 " instant update causes cursor to appear and flicker
 " at the end of last line in match window
-let g:ctrlp_lazy_update = 10
+let g:ctrlp_lazy_update = 5
 
 let g:ctrlp_prompt_mappings = {
   \ 'PrtDeleteWord()':    ['<C-w>'],
