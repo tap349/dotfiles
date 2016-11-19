@@ -45,7 +45,10 @@ brew 'mpv'
 brew 'nodejs'
 brew 'p7zip'
 brew 'phantomjs'
-brew 'postgresql', restart_service: :changed
+# postgresql always points to the latest version (9.6 as of now) -
+# make sure 'caskroom/versions' formula repository is tapped in
+# order to be able to install specific formula version
+brew 'postgresql95', restart_service: :changed
 # it's much easier to install pow manually:
 # - curl get.pow.cx | sh
 # - ln -s ~/dev/reenter_builder ~/.pow
