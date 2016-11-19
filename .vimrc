@@ -34,12 +34,13 @@ call plug#begin('~/.vim/plugged')
 
 " file types support
 
-Plug 'elixir-lang/vim-elixir'
-Plug 'kchmck/vim-coffee-script'
-Plug 'keith/rspec.vim'
-Plug 'plasticboy/vim-markdown'
-Plug 'slim-template/vim-slim'
-Plug 'vim-ruby/vim-ruby'
+Plug 'sheerun/vim-polyglot'
+"Plug 'elixir-lang/vim-elixir'
+"Plug 'kchmck/vim-coffee-script'
+"Plug 'keith/rspec.vim'
+"Plug 'plasticboy/vim-markdown'
+"Plug 'slim-template/vim-slim'
+"Plug 'vim-ruby/vim-ruby'
 
 " ctrlp
 
