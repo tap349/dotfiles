@@ -24,19 +24,68 @@ source ~/.dotfiles/.vimrc.morr.basic
 
 "===============================================================================
 "                                                                              =
-" pathogen                                                                     =
+" vim-plug                                                                     =
 "                                                                              =
-" https://github.com/tpope/vim-pathogen                                        =
-" http://logicalfriday.com/2011/07/18/using-vim-with-pathogen/                 =
-" http://www.vim.org/scripts/script.php?script_id=2332                         =
+" https://github.com/junegunn/vim-plug                                         =
 "                                                                              =
 "===============================================================================
 
-filetype off
-execute pathogen#infect()
-filetype plugin indent on
+call plug#begin('~/.vim/plugged')
 
-syntax on
+" elixir/phoenix
+
+Plug 'elixir-lang/vim-elixir'
+Plug 'tpope/vim-projectionist' | Plug 'c-brenn/phoenix.vim'
+
+" file types support
+
+Plug 'ap/vim-css-color'
+Plug 'kchmck/vim-coffee-script'
+Plug 'keith/rspec.vim'
+Plug 'plasticboy/vim-markdown'
+Plug 'slim-template/vim-slim'
+Plug 'vim-ruby/vim-ruby'
+
+" ctrlp
+
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'jasoncodes/ctrlp-modified.vim'
+
+" airline
+
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+
+" other
+
+Plug 'airblade/vim-gitgutter'
+Plug 'bkad/CamelCaseMotion'
+Plug 'easymotion/vim-easymotion'
+Plug 'ervandew/supertab'
+Plug 'flazz/vim-colorschemes'
+Plug 'jeetsukumaran/vim-buffergator'
+Plug 'mhinz/vim-hugefile'
+Plug 'scrooloose/nerdcommenter'
+Plug 'scrooloose/nerdtree'
+Plug 'scrooloose/syntastic'
+Plug 'tap349/ag.vim'
+Plug 'tpope/vim-endwise'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-rails'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-unimpaired'
+Plug 'xolox/vim-misc'
+Plug 'yssl/QFEnter'
+
+" unused
+
+"Plug 'Yggdroot/indentLine'
+"Plug 'itchyny/lightline.vim'
+"Plug 'jamessan/vim-gnupg'
+"Plug 'scheakur/vim-scheakur'
+"Plug 'xolox/vim-session'
+
+call plug#end()
 
 "===============================================================================
 "                                                                              =
@@ -54,6 +103,8 @@ set regexpengine=2
 " general settings                                                             =
 "                                                                              =
 "===============================================================================
+
+syntax on
 
 set nocompatible
 set nospell
