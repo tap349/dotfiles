@@ -32,14 +32,9 @@ source ~/.dotfiles/.vimrc.morr.basic
 
 call plug#begin('~/.vim/plugged')
 
-" elixir/phoenix
-
-Plug 'elixir-lang/vim-elixir'
-Plug 'tpope/vim-projectionist' | Plug 'c-brenn/phoenix.vim'
-
 " file types support
 
-Plug 'ap/vim-css-color'
+Plug 'elixir-lang/vim-elixir'
 Plug 'kchmck/vim-coffee-script'
 Plug 'keith/rspec.vim'
 Plug 'plasticboy/vim-markdown'
@@ -59,6 +54,7 @@ Plug 'vim-airline/vim-airline-themes'
 " other
 
 Plug 'airblade/vim-gitgutter'
+Plug 'ap/vim-css-color'
 Plug 'bkad/CamelCaseMotion'
 Plug 'easymotion/vim-easymotion'
 Plug 'ervandew/supertab'
@@ -71,6 +67,8 @@ Plug 'scrooloose/syntastic'
 Plug 'tap349/ag.vim'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-fugitive'
+" https://github.com/c-brenn/phoenix.vim#installation
+Plug 'c-brenn/phoenix.vim' | Plug 'tpope/vim-projectionist'
 Plug 'tpope/vim-rails'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
