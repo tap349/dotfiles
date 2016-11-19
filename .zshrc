@@ -41,6 +41,9 @@ ZSH_THEME='tap-af-magic'
 UNBUNDLED_COMMANDS=(spring)
 plugins=(ssh-agent zsh-autosuggestions zsh-syntax-highlighting)
 
+# https://github.com/robbyrussell/oh-my-zsh/tree/master/plugins/ssh-agent
+zstyle :omz:plugins:ssh-agent agent-forwarding on
+
 #-----------------------------------------------------------------------------------------
 # source oh-my-zsh.sh after all configuration is done
 #-----------------------------------------------------------------------------------------
