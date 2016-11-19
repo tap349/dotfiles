@@ -608,11 +608,18 @@ vnoremap H ^
 vnoremap L g_
 
 "-------------------------------------------------------------------------------
-" shifting
+" indenting
+" http://stackoverflow.com/a/444461
+" http://stackoverflow.com/a/1413854
+"
+" use instead:
+" . - repeat indenting
+" u - undo indenting
+" gv - restore last visual block
 "-------------------------------------------------------------------------------
 
-vnoremap < <gv
-vnoremap > >gv
+"vnoremap < <gv
+"vnoremap > >gv
 
 "-------------------------------------------------------------------------------
 " searching
