@@ -144,7 +144,7 @@ set hidden
 " completion menu
 "-------------------------------------------------------------------------------
 
-" menu,preview - default
+" menu,preview - default value
 "set completeopt=menu,preview
 
 set wildmenu
@@ -838,7 +838,7 @@ let g:qfenter_vopen_map = ['<C-v>']
 "-------------------------------------------------------------------------------
 
 let g:SuperTabDefaultCompletionType = '<C-n>'
-" used when completeopt has 'longest' option
+" used only when completeopt has 'longest' option
 "let g:SuperTabLongestEnhanced = 1
 "let g:SuperTabLongestHighlight = 1
 let g:SuperTabCrMapping = 1
