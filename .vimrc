@@ -1009,11 +1009,11 @@ let g:rails_projections = {
   \   'spec/*_spec.rb': {
   \     'alternate': 'lib/{}.rb'
   \   },
-  \   'config/locales/*.ru.yml': {
-  \     'alternate': 'config/locales/{}.en.yml'
+  \   'config/locales/*ru.yml': {
+  \     'alternate': 'config/locales/{}en.yml'
   \   },
-  \   'config/locales/*.en.yml': {
-  \     'alternate': 'config/locales/{}.ru.yml'
+  \   'config/locales/*en.yml': {
+  \     'alternate': 'config/locales/{}ru.yml'
   \   }
   \ }
 
