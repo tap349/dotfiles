@@ -57,6 +57,8 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'airblade/vim-gitgutter'
 Plug 'ap/vim-css-color'
 Plug 'bkad/CamelCaseMotion'
+" https://github.com/c-brenn/phoenix.vim#installation
+Plug 'c-brenn/phoenix.vim' | Plug 'tpope/vim-projectionist'
 Plug 'easymotion/vim-easymotion'
 Plug 'ervandew/supertab'
 Plug 'flazz/vim-colorschemes'
@@ -68,8 +70,6 @@ Plug 'scrooloose/syntastic'
 Plug 'tap349/ag.vim'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-fugitive'
-" https://github.com/c-brenn/phoenix.vim#installation
-Plug 'c-brenn/phoenix.vim' | Plug 'tpope/vim-projectionist'
 Plug 'tpope/vim-rails'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
@@ -143,6 +143,9 @@ set hidden
 "-------------------------------------------------------------------------------
 " completion menu
 "-------------------------------------------------------------------------------
+
+" menu,preview - default
+"set completeopt=menu,preview
 
 set wildmenu
 set wildmode=longest:full,full
@@ -835,6 +838,9 @@ let g:qfenter_vopen_map = ['<C-v>']
 "-------------------------------------------------------------------------------
 
 let g:SuperTabDefaultCompletionType = '<C-n>'
+" used when completeopt has 'longest' option
+"let g:SuperTabLongestEnhanced = 1
+"let g:SuperTabLongestHighlight = 1
 let g:SuperTabCrMapping = 1
 
 "-------------------------------------------------------------------------------
