@@ -145,7 +145,7 @@ set hidden
 "-------------------------------------------------------------------------------
 
 " menu,preview - default value
-"set completeopt=menu,preview
+set completeopt=menu,longest
 
 set wildmenu
 set wildmode=longest:full,full
@@ -854,9 +854,15 @@ nmap <silent> <Leader>e :Errors<CR>
 let g:syntastic_ruby_mri_exec = '~/.rbenv/shims/ruby'
 let g:syntastic_ruby_rubocop_exec = '~/.rbenv/shims/rubocop'
 
-" ruby rubocop checker (gem install rubocop)
-" NOTE: using rubocop checker on every buffer save might be very slow
+" NOTE: using rubocop checker on every buffer save might be very slow:
 "let g:syntastic_ruby_checkers = ['mri', 'rubocop']
+
+let g:syntastic_coffee_checkers = []
+let g:syntastic_ruby_checkers = []
+let g:syntastic_sass_checkers = []
+let g:syntastic_slim_checkers = []
+
+" ruby rubocop checker (gem install rubocop)
 nmap <silent> <Leader>r :SyntasticCheck ruby rubocop<CR>
 
 " http://vim.wikia.com/wiki/Simplifying_regular_expressions_using_magic_and_no-magic
@@ -979,6 +985,15 @@ let g:hugefile_trigger_size = 1
 
 let g:vim_markdown_folding_disabled = 1
 let g:vim_markdown_frontmatter = 1
+
+"-------------------------------------------------------------------------------
+" vim-polyglot
+"-------------------------------------------------------------------------------
+
+" using this plugin causes noticeable delay
+" when opening new buffer with coffee file -
+" highlighting still works without it
+let g:polyglot_disabled = ['coffee']
 
 "-------------------------------------------------------------------------------
 " vim-rails
