@@ -374,6 +374,7 @@ augroup END
 augroup filetypes
   autocmd!
   autocmd BufRead,BufNewFile *.arb setlocal filetype=ruby
+  autocmd BufRead,BufNewFile *.jb setlocal filetype=ruby
 augroup END
 
 augroup quickfix
