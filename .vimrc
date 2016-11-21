@@ -34,13 +34,15 @@ call plug#begin('~/.vim/plugged')
 
 " file types support
 
-Plug 'sheerun/vim-polyglot'
-"Plug 'elixir-lang/vim-elixir'
-"Plug 'kchmck/vim-coffee-script'
-"Plug 'keith/rspec.vim'
-"Plug 'plasticboy/vim-markdown'
-"Plug 'slim-template/vim-slim'
-"Plug 'vim-ruby/vim-ruby'
+" it seemed to me that using vim-polyglot introduces some lagging
+" in general - when switching tabs, switching to visual mode, etc.
+"Plug 'sheerun/vim-polyglot'
+Plug 'elixir-lang/vim-elixir'
+Plug 'kchmck/vim-coffee-script'
+Plug 'keith/rspec.vim'
+Plug 'plasticboy/vim-markdown'
+Plug 'slim-template/vim-slim'
+Plug 'vim-ruby/vim-ruby'
 
 " ctrlp
 
@@ -615,7 +617,7 @@ vnoremap L g_
 " http://stackoverflow.com/a/444461
 " http://stackoverflow.com/a/1413854
 "
-" use instead:
+" alternatively use:
 " . - repeat indenting
 " u - undo indenting
 " gv - restore last visual block
