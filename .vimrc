@@ -34,7 +34,7 @@ call plug#begin('~/.vim/plugged')
 
 " file types support
 
-" it seemed to me that using vim-polyglot introduces some lagging
+" it seemed to me that using vim-polyglot introduces some lag
 " in general - when switching tabs, switching to visual mode, etc.
 "Plug 'sheerun/vim-polyglot'
 Plug 'elixir-lang/vim-elixir'
