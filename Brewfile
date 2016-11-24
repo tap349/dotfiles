@@ -154,6 +154,7 @@ mas 'Evernote', id: 406056744
 #     - [ ] Show icon in Dock
 mas 'Flexiglass', id: 426410278
 mas 'Marked 2', id: 890031187
+mas 'Microsoft Remote Desktop', id: 715768417
 # - app preferences:
 #   - General:
 #     - [x] Launch at login

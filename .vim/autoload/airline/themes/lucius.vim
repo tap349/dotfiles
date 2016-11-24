@@ -66,4 +66,3 @@ function! airline#themes#lucius#refresh()
 endfunction
 
 call airline#themes#lucius#refresh()
-
