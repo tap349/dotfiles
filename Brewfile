@@ -82,6 +82,7 @@ cask 'flux'
 #     - AdBlock
 #     - Blank New Tab (Hide in Chrome Menu)
 #     - Browsec VPN
+#     - Clouder
 #     - Dashlane (not available in webstore - added when opening Dashlane)
 #     - Data Saver
 #     - Ghostery:
