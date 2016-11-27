@@ -65,6 +65,7 @@ Plug 'easymotion/vim-easymotion'
 Plug 'ervandew/supertab'
 Plug 'flazz/vim-colorschemes'
 Plug 'jeetsukumaran/vim-buffergator'
+Plug 'ludovicchabant/vim-gutentags'
 Plug 'mhinz/vim-hugefile'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
@@ -440,9 +441,7 @@ nnoremap <silent> <Space> i<Space><Esc>l
 "-------------------------------------------------------------------------------
 
 nnoremap <Leader>ov :tabnew<CR>:edit $MYVIMRC<CR>
-nnoremap <Leader>oc :tabnew<CR>:edit ~/.vim/colors/summerfruit_tap.vim<CR>
 nnoremap <Leader>oz :tabnew<CR>:edit ~/.zshrc<CR>
-nnoremap <Leader>ou :tabnew<CR>:edit ~/.vim/update_bundles<CR>
 
 "-------------------------------------------------------------------------------
 " fullscreen
@@ -694,7 +693,7 @@ map <silent> b <Plug>CamelCaseMotion_b
 let g:ctrlp_map = '<Leader>s'
 let g:ctrlp_match_window = 'order:ttb,max:15'
 let g:ctrlp_mruf_relative = 1
-"let g:ctrlp_root_markers = ['mix.exs']
+let g:ctrlp_root_markers = ['mix.exs']
 let g:ctrlp_switch_buffer = 'et'
 " instant update causes cursor to appear and flicker
 " at the end of last line in match window
@@ -981,6 +980,29 @@ nmap <silent> <Leader>ht :GitGutterToggle<CR>
 "nmap <Leader>hs <Plug>GitGutterStageHunk
 
 "-------------------------------------------------------------------------------
+" vim-gutentags
+" https://andrew.stwrt.ca/posts/vim-ctags/
+" https://github.com/mmorearty/elixir-ctags
+"
+" by default `ctags` command generates _tags_ file in project root
+" (gutentags does the same since it's using `ctags`).
+" when gutentags_cache_dir is set it will be used to store tagfiles
+" for all projects like this: _Users-tap-edev-rumbl-tags_
+"
+" don't use comments in ~/.ctags configuration file -
+" or else configuration from this file won't be used by ctags
+"-------------------------------------------------------------------------------
+
+set statusline+=%{gutentags#statusline()}
+
+let g:gutentags_cache_dir = '~/.vim/tags'
+let g:gutentags_enabled = 1
+" default project root markers are appended to this list.
+" don't use .gitignore as project root marker because of ~/.gitignore
+" (tags for all files within home directory will be created)
+let g:gutentags_project_root = ['mix.exs']
+
+"-------------------------------------------------------------------------------
 " vim-hugefile
 "-------------------------------------------------------------------------------
 
@@ -1000,7 +1022,7 @@ let g:vim_markdown_frontmatter = 1
 " using this plugin causes noticeable delay
 " when opening new buffer with coffee file -
 " highlighting still works without it
-let g:polyglot_disabled = ['coffee']
+"let g:polyglot_disabled = ['coffee']
 
 "-------------------------------------------------------------------------------
 " vim-rails

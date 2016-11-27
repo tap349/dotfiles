@@ -1,5 +1,4 @@
 .vim/backup/
 .vim/plugged/
+.vim/tags/
 .vim/tmp/
-
-*.bak

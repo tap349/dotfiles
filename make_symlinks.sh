@@ -8,6 +8,7 @@ files=(
   .ssh/config
   .vim
   scripts
+  .ctags
   .gitconfig
   .gitignore
   .powconfig
