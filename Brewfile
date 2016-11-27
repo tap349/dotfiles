@@ -73,6 +73,9 @@ cask 'chefdk'
 # - app preferences:
 #   - [x] Start f.lux at login (set by default)
 cask 'flux'
+# app preferences (bookmarks bar, extensions, etc.) are synchronized
+# if you sign in to Chrome (my email is a***.t***.i***@gmail.com)
+#
 # - system preferences:
 #   - Users & Groups -> Login Items (don't hide): remove
 # - app preferences:
