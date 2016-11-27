@@ -1000,7 +1000,8 @@ set statusline+=%{gutentags#statusline()}
 
 let g:gutentags_cache_dir = '~/.vim/tags'
 let g:gutentags_enabled = 1
-" default project root markers are appended to this list.
+" default project root markers are appended to this list
+" (probably gutentags can also use g:ctrlp_root_markers).
 " don't use .gitignore as project root marker because of ~/.gitignore
 " (tags for all files within home directory will be created)
 let g:gutentags_project_root = ['mix.exs']
