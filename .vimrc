@@ -989,6 +989,9 @@ nmap <silent> <Leader>ht :GitGutterToggle<CR>
 " when gutentags_cache_dir is set it will be used to store tagfiles
 " for all projects like this: _Users-tap-edev-rumbl-tags_
 "
+" <C-]> - jump to tag
+" <C-t> - go back in tag stack (previous tag or original place)
+"
 " don't use comments in ~/.ctags configuration file -
 " or else configuration from this file won't be used by ctags
 "-------------------------------------------------------------------------------
