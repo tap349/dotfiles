@@ -133,7 +133,7 @@ cask 'google-chrome'
 #       exported using 'Save Current Settings to Folder' button below).
 #       or else copy ~/Library/Preferences/com.googlecode.iterm2.plist -
 #       in both cases iTerm will be fully configured (restart is required)
-#     - [ ] Save changes to folder when iTerm2 quits
+#     - [x] Save changes to folder when iTerm2 quits
 #
 # see also http://tap349.github.io/iterm/rails/2016/05/03/iTerm/
 # (all these settings are already included in exported settings file)
