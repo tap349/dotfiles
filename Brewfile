@@ -17,7 +17,7 @@ tap 'homebrew/versions'
 #brew 'djview4'
 
 # remove formula with its unused dependencies:
-# brew rmtree mpv
+# `brew rmtree mpv`
 brew 'beeftornado/rmtree/brew-rmtree'
 brew 'elixir'
 # required by ~/scripts/fontpatcher
@@ -28,7 +28,11 @@ brew 'htop'
 brew 'imagemagick'
 # used as viewer for html files in mc
 brew 'lynx'
-# - copy fonts from dotfiles
+# - install vim-plug:
+#   `curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim`
+# - install plugins:
+#   :PlugInstall
+#
 # - app preferences:
 #   - General:
 #     - After last window closes: Quit MacVim
@@ -47,11 +51,12 @@ brew 'phantomjs'
 # make sure 'caskroom/versions' formula repository is tapped in
 # order to be able to install specific formula version
 brew 'postgresql95', restart_service: :changed
-# it's much easier to install pow manually:
-# - curl get.pow.cx | sh
-# - ln -s ~/dev/reenter_builder ~/.pow
+# - it's much easier to install pow manually:
+#   `curl get.pow.cx | sh`
+# - create symlinks for all required projects:
+#   `ln -s ~/dev/reenter_builder ~/.pow`
 #brew 'pow'
-# http://tap349.github.io/rbenv/ruby/chef/capistrano/2016/03/30/rbenv/
+# http://tap349.github.io/rbenv/ruby/chef/capistrano/2016/03/30/rbenv
 brew 'rbenv'
 brew 'rbenv-ctags'
 brew 'redis', restart_service: :changed
@@ -60,59 +65,75 @@ brew 'the_silver_searcher'
 brew 'tree'
 brew 'unrar'
 brew 'wget'
-# - make it a login shell: chsh -s /bin/zsh
-#   (all available shells are listed in /etc/shells)
-# - install oh-my-zsh with plugins:
+# - make it a login shell: `chsh -s /bin/zsh`
+#   (all available shells are listed in /etc/shells,
+#   current shell can be printed with `echo $0` command)
+# - install oh-my-zsh:
+#   - https://github.com/robbyrussell/oh-my-zsh#via-curl
+# - install oh-my-zsh plugins:
 #   - https://github.com/zsh-users/zsh-autosuggestions#oh-my-zsh
 #   - https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/INSTALL.md#oh-my-zsh
 brew 'zsh'
 
 cask 'chefdk'
+# - system preferences:
+#   - Users & Groups -> Login Items (hide): add
 # - app preferences:
+#   - 'Working late' preset
 #   - [x] Start f.lux at login (set by default)
 cask 'flux'
 # app preferences (bookmarks bar, extensions, etc.) are synchronized
 # if you sign in to Chrome (my email is a***.t***.i***@gmail.com)
+#
+# on first run:
+#  - [x] Set Google Chrome as your default browser
+#  - [ ] Help make Google Chrome better by automatically sending usage
+#        statistics and crash reports to Google
+#  - Sign in to Chrome (page is opened automatically)
 #
 # - system preferences:
 #   - Users & Groups -> Login Items (don't hide): remove
 # - app preferences:
 #   - Settings -> On startup: Continue where you left off
 #   - Extensions (allow all of them in incognito):
+#     + AdBlock
+#     + Blank New Tab (Hide in Chrome Menu)
+#     + Browsec VPN
+#     + Clouder (Hide in Chrome Menu)
+#     + Dashlane (not available in webstore - added when opening Dashlane)
+#     - Data Saver (turn off - turned on after installation)
+#     + Ghostery:
+#       - General:
+#         - [ ] Show the purple box in the corner of my browser
+#       - Blocking Options:
+#         - Block All (except Comments)
+#     + Google Docs (installed by default)
+#     + Google Docs Offline (installed by default)
+#     + Google Sheets (installed by default)
+#     - Google Slides (installed by default)
+#     + JSON Formatter (Hide in Chrome Menu)
+#     + Noisli
 #     - Proxy SwitchyOmega (configure proxy per site)
-#     - AdBlock
-#     - Blank New Tab (Hide in Chrome Menu)
-#     - Browsec VPN
-#     - Clouder
-#     - Dashlane (not available in webstore - added when opening Dashlane)
-#     - Data Saver
-#     - Ghostery:
-#         - General: don't show purple box
-#         - Blocking Options: block all except comments
-#     - Google Docs (installed by default)
-#     - Google Docs Offline (installed by default)
-#     - Google Sheets (installed by default)
-#     - JSON Formatter (Hide in Chrome Menu)
-#     - Quick Javascript Switcher
-#     - Noisli
+#     + Quick Javascript Switcher
 #     - RSS Subscription Extension (by Google) - optional
-#     - The Great Suspender
-#     - uBlock Origin
-#     - Viewport Dimensions (Hide in Chrome Menu)
+#     + The Great Suspender
+#     + Viewport Dimensions (Hide in Chrome Menu)
+#     + uBlock Origin
 #   - Theme (search on page) -> Black Carbon + silver meta
 #   - chrome://plugins:
 #     - disable Adobe Flash Player
 # - bookmarks bar:
 #   - pin! (https://pinboard.in/howto/)
 cask 'google-chrome'
-# - copy fonts from dotfiles
 # - app preferences:
-#   - General -> Preferences -> Load preferences from a custom folder or URL:
-#     /Users/tap/.dotfiles/.config/iterm2
-#     (this directory should contain com.googlecode.iterm2.plist settings file
-#     exported using 'Save Current Settings to Folder' button below).
-#     or else copy ~/Library/Preferences/com.googlecode.iterm2.plist -
-#     in both cases iTerm will be fully configured (restart is required)
+#   - General -> Preferences:
+#     - [x] Load preferences from a custom folder or URL:
+#       /Users/tap/.dotfiles/.config/iterm2/
+#       (this directory should contain com.googlecode.iterm2.plist settings file
+#       exported using 'Save Current Settings to Folder' button below).
+#       or else copy ~/Library/Preferences/com.googlecode.iterm2.plist -
+#       in both cases iTerm will be fully configured (restart is required)
+#     - [ ] Save changes to folder when iTerm2 quits
 #
 # see also http://tap349.github.io/iterm/rails/2016/05/03/iTerm/
 # (all these settings are already included in exported settings file)
@@ -125,15 +146,18 @@ cask 'skype'
 #   - [x] Check for updates on startup
 #   - [x] Autostart smcFanControl after login
 cask 'smcfancontrol'
-# - open /usr/local/Caskroom/utorrent/latest/uTorrent.app
+# - `open /usr/local/Caskroom/utorrent/latest/uTorrent.app`
 # - system preferences:
 #   - Users & Groups -> Login Items (don't hide): remove
 cask 'utorrent'
 
-# - link to dropbox account and sync (replace local data)
+# - link to dropbox account and sync (Replace Local Data)
 # - app preferences:
 #   - General:
 #     - Quick Entry: <C-S-a>
+#   - Sync:
+#     - Setup:
+#       - Link Dropbox Account
 mas '2Do', id: 477670270
 # on first run:
 # - select ~/Documents folder
@@ -144,6 +168,7 @@ mas 'Cloud Mail.Ru', id: 893068358
 mas 'Dashlane - Password Manager, Secure Digital Wallet', id: 552383089
 mas 'Evernote', id: 406056744
 # - on first run agree to start Flexiglass every time systems starts
+#
 # - system preferences:
 #   - Security & Privacy -> Privacy -> Accessibility
 # - app preferences:
