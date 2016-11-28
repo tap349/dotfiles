@@ -29,8 +29,6 @@ brew 'imagemagick'
 # used as viewer for html files in mc
 brew 'lynx'
 # - copy fonts from dotfiles
-# - ~/.vim/update_bundles
-#   (or ~/.dotfiles/.vim/update_bundles if symlinks are not created yet)
 # - app preferences:
 #   - General:
 #     - After last window closes: Quit MacVim
