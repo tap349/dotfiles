@@ -100,7 +100,7 @@ cask 'flux'
 #     + Blank New Tab (Hide in Chrome Menu)
 #     + Browsec VPN
 #     + Clouder (Hide in Chrome Menu)
-#     + Dashlane (not available in webstore - added when opening Dashlane)
+#     + Dashlane (not available in webstore - can be added on first Dashlane run)
 #     - Data Saver (turn off - turned on after installation)
 #     + Ghostery:
 #       - General:
@@ -165,6 +165,8 @@ mas '2Do', id: 477670270
 # - select to start application on system startup
 # - select folders to synchronize (books/, videos/, education/)
 mas 'Cloud Mail.Ru', id: 893068358
+# to add Safari extension first open Dashlane, then Safari -
+# you'll be prompted to install Dashlane extension
 mas 'Dashlane - Password Manager, Secure Digital Wallet', id: 552383089
 mas 'Evernote', id: 406056744
 # - on first run agree to start Flexiglass every time systems starts
