@@ -905,6 +905,7 @@ let g:airline#extensions#tabline#left_alt_sep = ' '
 
 "let g:airline_theme = 'cool'
 "let g:airline_theme = 'sol'
+"let g:airline_theme = 'silver'
 let g:airline_theme = 'lucius'
 let g:airline_powerline_fonts = 0
 
