@@ -701,7 +701,8 @@ let g:ctrlp_match_window = 'order:ttb,max:15'
 let g:ctrlp_mruf_relative = 1
 let g:ctrlp_root_markers = ['mix.exs']
 let g:ctrlp_switch_buffer = 'et'
-let g:ctrlp_use_caching = 0
+" you might consider turning off caching at all when using ag
+let g:ctrlp_use_caching = 1
 " it's not possible to use g:ag_prg variable here - options differ.
 " add `-g ""` to print filenames (otherwise nothing is found)
 let g:ctrlp_user_command = 'ag %s --files-with-matches -g ""'
