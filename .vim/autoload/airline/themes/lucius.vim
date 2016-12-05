@@ -1,7 +1,6 @@
 let g:airline#themes#lucius#palette = {}
 
 function! airline#themes#lucius#refresh()
-
     let s:N1 = airline#themes#get_highlight('StatusLine')
     let s:N2 = airline#themes#get_highlight('Folded')
     let s:N3 = airline#themes#get_highlight('CursorLine')
@@ -63,6 +62,16 @@ function! airline#themes#lucius#refresh()
     let g:airline#themes#lucius#palette.tabline.airline_tabsel = light_steel_blue
     let g:airline#themes#lucius#palette.tabline.airline_tabfill = s:TS
 
+    " CtrlP (from aurora theme)
+    if !get(g:, 'loaded_ctrlp', 0)
+      finish
+    endif
+
+    let s:CP1 = airline#themes#get_highlight('CursorLine')
+    let s:CP2 = airline#themes#get_highlight('StatusLineNC')
+    let s:CP3 = airline#themes#get_highlight('DiffChange')
+
+    let g:airline#themes#lucius#palette.ctrlp = airline#extensions#ctrlp#generate_color_map(s:CP1, s:CP2, s:CP3)
 endfunction
 
 call airline#themes#lucius#refresh()
