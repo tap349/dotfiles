@@ -652,8 +652,10 @@ runtime macros/matchit.vim
 " (removed all default keybindings and use QFEnter keybindings instead)
 "-------------------------------------------------------------------------------
 
-" ignore the same directories as in wildignore
-let g:ag_prg = 'ag --vimgrep --path-to-ignore ~/.agignore'
+" ignore the same directories as in wildignore:
+" ~/.agignore ignore file is used by default or else
+" it can be specified with `--path-to-ignore` ag option
+let g:ag_prg = 'ag --vimgrep --literal'
 let g:ag_working_path_mode = 'r'
 
 " don't jump to first found file
@@ -699,8 +701,10 @@ let g:ctrlp_match_window = 'order:ttb,max:15'
 let g:ctrlp_mruf_relative = 1
 let g:ctrlp_root_markers = ['mix.exs']
 let g:ctrlp_switch_buffer = 'et'
-" it's not possible to use g:ag_prg here - options differ
-let g:ctrlp_user_command = 'ag %s --path-to-ignore ~/.agignore'
+let g:ctrlp_use_caching = 0
+" it's not possible to use g:ag_prg variable here - options differ.
+" add `-g ""` to print filenames (otherwise nothing is found)
+let g:ctrlp_user_command = 'ag %s --files-with-matches -g ""'
 
 let g:ctrlp_prompt_mappings = {
   \ 'PrtDeleteWord()':    ['<C-w>'],
