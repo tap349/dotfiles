@@ -152,8 +152,8 @@ set completeopt=menu,longest
 
 set wildmenu
 set wildmode=longest:full,full
-" affects command-t and ctrlp
-set wildignore+=*/public/*,*/tmp/*,*/spec/vcr_cassettes/*,*.log,*/deps/*,*/node_modules/*
+" used by command-t and ctrlp
+set wildignore+=*.log,*/public/*,*/spec/vcr_cassettes/*,*/tmp/*,*/deps/*,*/node_modules/*
 
 "-------------------------------------------------------------------------------
 " indentation
@@ -652,7 +652,8 @@ runtime macros/matchit.vim
 " (removed all default keybindings and use QFEnter keybindings instead)
 "-------------------------------------------------------------------------------
 
-let g:ag_prg = 'ag --vimgrep --column -Q --ignore-dir={log,public,tmp,spec/vcr_cassettes}'
+" ignore the same directories as in wildignore
+let g:ag_prg = 'ag %s -Q --ignore-dir={log,public,spec/vcr_cassettes,tmp,deps,node_modules}'
 let g:ag_working_path_mode = 'r'
 
 " don't jump to first found file
@@ -690,14 +691,15 @@ map <silent> b <Plug>CamelCaseMotion_b
 " ctrlp.vim
 "-------------------------------------------------------------------------------
 
+" instant update causes cursor to appear and flicker
+" at the end of last line in match window
+let g:ctrlp_lazy_update = 5
 let g:ctrlp_map = '<Leader>s'
 let g:ctrlp_match_window = 'order:ttb,max:15'
 let g:ctrlp_mruf_relative = 1
 let g:ctrlp_root_markers = ['mix.exs']
 let g:ctrlp_switch_buffer = 'et'
-" instant update causes cursor to appear and flicker
-" at the end of last line in match window
-let g:ctrlp_lazy_update = 5
+let g:ctrlp_user_command = g:ag_prg
 
 let g:ctrlp_prompt_mappings = {
   \ 'PrtDeleteWord()':    ['<C-w>'],
