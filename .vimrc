@@ -722,7 +722,7 @@ let g:ctrlp_prompt_mappings = {
   \ 'PrtCurEnd()':        ['<C-e>'],
   \ 'PrtCurLeft()':       ['<C-b>', '<Left>'],
   \ 'PrtCurRight()':      ['<C-f>', '<Right>'],
-  \ 'PrtClearCache()':    ['<F5>'],
+  \ 'PrtClearCache()':    ['<C-r>'],
   \ 'CreateNewFile()':    ['<C-y>'],
   \ 'OpenMulti()':        ['<C-o>'],
   \ 'PrtExit()':          ['<Esc>', '<C-c>', '<C-g>']
