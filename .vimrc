@@ -653,7 +653,7 @@ runtime macros/matchit.vim
 "-------------------------------------------------------------------------------
 
 " ignore the same directories as in wildignore
-let g:ag_prg = 'ag %s -Q --ignore-dir={log,public,spec/vcr_cassettes,tmp,deps,node_modules}'
+let g:ag_prg = 'ag --vimgrep --path-to-ignore ~/.agignore'
 let g:ag_working_path_mode = 'r'
 
 " don't jump to first found file
@@ -699,7 +699,8 @@ let g:ctrlp_match_window = 'order:ttb,max:15'
 let g:ctrlp_mruf_relative = 1
 let g:ctrlp_root_markers = ['mix.exs']
 let g:ctrlp_switch_buffer = 'et'
-let g:ctrlp_user_command = g:ag_prg
+" it's not possible to use g:ag_prg here - options differ
+let g:ctrlp_user_command = 'ag %s --path-to-ignore ~/.agignore'
 
 let g:ctrlp_prompt_mappings = {
   \ 'PrtDeleteWord()':    ['<C-w>'],
@@ -728,7 +729,7 @@ let g:ctrlp_buffer_func = {
   \ }
 
 function! BrightHighlightOn()
-  hi CursorLine guibg=#c7deef
+  hi CursorLine guibg=#d7e2ea
 endfunction
 
 function! BrightHighlightOff()

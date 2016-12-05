@@ -12,6 +12,7 @@ files=(
   .ssh/config
   .vim
   scripts
+  .agignore
   .ctags
   .gitconfig
   .gitignore
