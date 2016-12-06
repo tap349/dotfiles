@@ -572,9 +572,14 @@ nnoremap Y y$
 
 " TODO: function to toggle focusing in rspec
 
-" highlight last inserted text (works till save)
 " http://superuser.com/a/382582
-nnoremap gV `[v`]
+" http://vim.wikia.com/wiki/Selecting_your_pasted_text
+"
+" highlight last inserted or pasted text (works till save):
+" the last character of previously inserted text is the one right
+" after inserted text -> this command selects one character more
+" than actually inserted (though it's all okay for pasted text)
+nnoremap gp `[v`]
 
 "===============================================================================
 " insert mode                                                                  =
