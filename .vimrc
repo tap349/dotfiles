@@ -544,8 +544,9 @@ nnoremap <silent> <Tab> :w<CR>
 "-------------------------------------------------------------------------------
 
 " turn off highlighting and clear messages
+" <C-c> in normal mode aborts any pending command
+nnoremap <silent> <C-c> <C-c>:nohlsearch<Bar>:echo<CR>
 nnoremap <silent> <C-Backspace> :nohlsearch<Bar>:echo<CR>
-nnoremap <silent> <C-c> :nohlsearch<Bar>:echo<CR>
 
 "-------------------------------------------------------------------------------
 " sourcing configuration files
@@ -625,7 +626,7 @@ inoremap <silent> <A-S-Up> <C-o>:tabmove<CR>
 " visual mode                                                                  =
 "===============================================================================
 
-vnoremap <silent> <C-Backspace> <Esc>
+vnoremap <C-Backspace> <Esc>
 
 "-------------------------------------------------------------------------------
 " editing
