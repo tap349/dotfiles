@@ -97,8 +97,9 @@ call plug#end()
 "                                                                              =
 "===============================================================================
 
-set synmaxcol=200
+set lazyredraw
 set regexpengine=2
+set synmaxcol=200
 
 "===============================================================================
 "                                                                              =
@@ -111,14 +112,6 @@ syntax on
 set nocompatible
 set nospell
 set nowrap
-
-"-------------------------------------------------------------------------------
-" editing
-"-------------------------------------------------------------------------------
-
-set cpoptions+=$
-set colorcolumn=81
-"execute 'set colorcolumn=' . join(range(81,250), ',')
 
 "-------------------------------------------------------------------------------
 " backup and swap files
@@ -156,6 +149,25 @@ set wildmode=longest:full,full
 set wildignore+=*.log,*/public/*,*/spec/vcr_cassettes/*,*/tmp/*,*/deps/*,*/node_modules/*
 
 "-------------------------------------------------------------------------------
+" editing
+"-------------------------------------------------------------------------------
+
+set cpoptions+=$
+set colorcolumn=81
+"execute 'set colorcolumn=' . join(range(81,250), ',')
+
+"-------------------------------------------------------------------------------
+" folding
+" http://vimcasts.org/episodes/how-to-fold/
+"-------------------------------------------------------------------------------
+
+set foldenable
+set foldlevelstart=10
+" syntax folding might not work in some files (e.g. spec files)
+set foldmethod=indent
+set foldnestmax=10
+
+"-------------------------------------------------------------------------------
 " indentation
 "-------------------------------------------------------------------------------
 
@@ -168,13 +180,6 @@ set shiftround
 set shiftwidth=2
 set softtabstop=2
 set tabstop=2
-
-"-------------------------------------------------------------------------------
-" visualize invisible characters
-"-------------------------------------------------------------------------------
-
-set list
-set listchars=nbsp:·,tab:▸·,trail:·,precedes:«,extends:»
 
 "-------------------------------------------------------------------------------
 " navigation
@@ -198,6 +203,13 @@ set smartcase
 
 set splitbelow
 set splitright
+
+"-------------------------------------------------------------------------------
+" visualize invisible characters
+"-------------------------------------------------------------------------------
+
+set list
+set listchars=nbsp:·,tab:▸·,trail:·,precedes:«,extends:»
 
 "=============================================================================="
 "                                                                              "
@@ -301,17 +313,17 @@ endif
 " indicators
 "-------------------------------------------------------------------------------
 
-" highlight current line (might slow down navigation)
-" this is the main cause of sluggish scrolling!
-" set after colorscheme - or else it can redefined inside it
-set nocursorline
 " remove left-hand scroll bar
 set guioptions-=L
 " remove right-hand scroll bar
 set guioptions-=r
+" highlight current line (might slow down navigation)
+" this is the main cause of sluggish scrolling!
+" set after colorscheme - or else it can be redefined inside it
+set nocursorline
 " hide mode indicator
 set noshowmode
-" show number of lines or characters selected in right bottom corner
+" show number of lines or characters selected in bottom right corner
 set showcmd
 " disable some gui popups
 set guioptions+=c
@@ -437,6 +449,12 @@ nnoremap <silent> <S-CR> O<Esc>
 nnoremap <silent> <Space> i<Space><Esc>l
 
 "-------------------------------------------------------------------------------
+" fold
+"-------------------------------------------------------------------------------
+
+nnoremap <Backspace> za
+
+"-------------------------------------------------------------------------------
 " open popular files
 "-------------------------------------------------------------------------------
 
@@ -455,9 +473,14 @@ nnoremap <Leader>oz :tabnew<CR>:edit ~/.zshrc<CR>
 " navigation
 "-------------------------------------------------------------------------------
 
+" move vertically by visual line (not real one)
+nnoremap j gj
+nnoremap k gk
+
 nnoremap <C-j> 10j
 nnoremap <C-k> 10k
 
+" g_ (unlike $) doesn't select newline character in visual mode
 nnoremap H ^
 nnoremap L g_
 
@@ -521,8 +544,8 @@ nnoremap <silent> <Tab> :w<CR>
 "-------------------------------------------------------------------------------
 
 " turn off highlighting and clear messages
-nnoremap <silent> <Backspace> :nohlsearch<Bar>:echo<CR>
-nnoremap <silent> <C-c> <C-c>:nohlsearch<Bar>:echo<CR>
+nnoremap <silent> <C-Backspace> :nohlsearch<Bar>:echo<CR>
+nnoremap <silent> <C-c> :nohlsearch<Bar>:echo<CR>
 
 "-------------------------------------------------------------------------------
 " sourcing configuration files
@@ -547,14 +570,17 @@ nnoremap Y y$
 " useful maps
 "-------------------------------------------------------------------------------
 
-" TODO use function to toggle focus
+" TODO: function to toggle focusing in rspec
+
+" highlight last inserted text (works till save)
+" http://superuser.com/a/382582
+nnoremap gV `[v`]
 
 "===============================================================================
 " insert mode                                                                  =
 "===============================================================================
 
-"inoremap <Esc> <nop>
-inoremap <C-c> <Esc>
+inoremap <C-Backspace> <Esc>
 
 "-------------------------------------------------------------------------------
 " editing
@@ -593,6 +619,8 @@ inoremap <silent> <A-S-Up> <C-o>:tabmove<CR>
 "===============================================================================
 " visual mode                                                                  =
 "===============================================================================
+
+vnoremap <silent> <C-Backspace> <Esc>
 
 "-------------------------------------------------------------------------------
 " editing
