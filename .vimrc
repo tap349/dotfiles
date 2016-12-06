@@ -152,7 +152,7 @@ set completeopt=menu,longest
 
 set wildmenu
 set wildmode=longest:full,full
-" used by command-t and ctrlp
+" used by command-t and ctrlp - it should be kept in sync with ~/.agignore
 set wildignore+=*.log,*/public/*,*/spec/vcr_cassettes/*,*/tmp/*,*/deps/*,*/node_modules/*
 
 "-------------------------------------------------------------------------------
