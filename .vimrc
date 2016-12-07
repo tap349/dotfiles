@@ -57,6 +57,7 @@ Plug 'vim-airline/vim-airline-themes'
 " git
 
 Plug 'airblade/vim-gitgutter'
+Plug 'tpope/vim-fugitive'
 "Plug 'gregsexton/gitv' | Plug 'tpope/vim-fugitive'
 
 " other
