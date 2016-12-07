@@ -372,6 +372,7 @@ set shell=/bin/sh
 "===============================================================================
 
 iabbrev ii i18n_i
+iabbrev lasnt last
 iabbrev tt i18n_t
 iabbrev teh the
 
@@ -484,7 +485,8 @@ nnoremap <Leader>oz :tabnew<CR>:edit ~/.zshrc<CR>
 " navigation
 "-------------------------------------------------------------------------------
 
-" move vertically by visual line (not real one)
+" move vertically by visual line - not real one
+" (comment out so far - I don't use line wrapping)
 "nnoremap j gj
 "nnoremap k gk
 
