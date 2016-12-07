@@ -124,6 +124,8 @@ cask 'flux'
 #     - disable Adobe Flash Player
 # - bookmarks bar:
 #   - pin! (https://pinboard.in/howto/)
+# - developer tools:
+#   - Dock to bottom
 cask 'google-chrome'
 # - app preferences:
 #   - General -> Preferences:
