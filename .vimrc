@@ -54,9 +54,13 @@ Plug 'jasoncodes/ctrlp-modified.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
-" other
+" git
 
 Plug 'airblade/vim-gitgutter'
+Plug 'gregsexton/gitv' | Plug 'tpope/vim-fugitive'
+
+" other
+
 Plug 'ap/vim-css-color'
 Plug 'bkad/CamelCaseMotion'
 " https://github.com/c-brenn/phoenix.vim#installation
@@ -72,7 +76,6 @@ Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/syntastic'
 Plug 'tap349/ag.vim'
 Plug 'tpope/vim-endwise'
-Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rails'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
@@ -147,6 +150,13 @@ set wildmenu
 set wildmode=longest:full,full
 " used by command-t and ctrlp - it should be kept in sync with ~/.agignore
 set wildignore+=*.log,*/public/*,*/spec/vcr_cassettes/*,*/tmp/*,*/deps/*,*/node_modules/*
+
+"-------------------------------------------------------------------------------
+" diff
+"-------------------------------------------------------------------------------
+
+" show filler lines, use vertical split by default
+set diffopt=filler,vertical
 
 "-------------------------------------------------------------------------------
 " editing
@@ -397,10 +407,10 @@ augroup quickfix
   autocmd BufReadPost quickfix nnoremap <buffer> <CR> <CR>
 augroup END
 
-augroup diffmode
-  autocmd!
-  autocmd FilterWritePre * call SetDiffMode()
-augroup END
+"augroup diffmode
+"  autocmd!
+"  autocmd FilterWritePre * call SetDiffMode()
+"augroup END
 
 augroup backup
   autocmd!
@@ -779,8 +789,16 @@ endfunction
 " ctrlp-modified.vim
 "-------------------------------------------------------------------------------
 
-map <Leader>m :CtrlPModified<CR>
-map <Leader>M :CtrlPBranch<CR>
+" do not use so far - see issue in 2do
+"map <Leader>m :CtrlPModified<CR>
+"map <Leader>M :CtrlPBranch<CR>
+
+"-------------------------------------------------------------------------------
+" gitv
+"-------------------------------------------------------------------------------
+
+let g:Gitv_DoNotMapCtrlKey = 1
+let g:Gitv_WipeAllOnClose = 1
 
 "-------------------------------------------------------------------------------
 " lightline.vim
@@ -1159,15 +1177,15 @@ endfunction
 "endfunction
 
 " settings for difftool and mergetool
-function! SetDiffMode()
-  if &diff
-    set background=light
-    colorscheme summerfruit_tap
+"function! SetDiffMode()
+"  if &diff
+"    set background=light
+"    colorscheme summerfruit_tap
 
-    " don't show airline (it's not properly initialized at this moment)
-    set laststatus=0
-  endif
-endfunction
+"    " don't show airline (it's not properly initialized at this moment)
+"    set laststatus=0
+"  endif
+"endfunction
 
 function! SetBackupDir()
   let l:backupdir = $HOME . '/.vim/backup' . expand('%:p:h')
