@@ -57,7 +57,7 @@ Plug 'vim-airline/vim-airline-themes'
 " git
 
 Plug 'airblade/vim-gitgutter'
-Plug 'gregsexton/gitv' | Plug 'tpope/vim-fugitive'
+"Plug 'gregsexton/gitv' | Plug 'tpope/vim-fugitive'
 
 " other
 
@@ -797,12 +797,12 @@ endfunction
 " gitv
 "-------------------------------------------------------------------------------
 
-" disable mappings with control key - otherwise I can't use <C-l>
-let g:Gitv_DoNotMapCtrlKey = 1
-" don't set to 0 - opening preview window for commit results in
-" error unless preview window has been opened from the very beginning
-let g:Gitv_OpenPreviewOnLaunch = 1
-let g:Gitv_WipeAllOnClose = 1
+"" disable mappings with control key - otherwise I can't use <C-l>
+"let g:Gitv_DoNotMapCtrlKey = 1
+"" don't set to 0 - opening preview window for commit results in
+"" error unless preview window has been opened from the very beginning
+"let g:Gitv_OpenPreviewOnLaunch = 1
+"let g:Gitv_WipeAllOnClose = 1
 
 "-------------------------------------------------------------------------------
 " lightline.vim
