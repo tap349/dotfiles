@@ -69,7 +69,7 @@ function! airline#themes#lucius#refresh()
 
     let s:CP1 = airline#themes#get_highlight('CursorLine')
     let s:CP2 = airline#themes#get_highlight('StatusLineNC')
-    let s:CP3 = airline#themes#get_highlight('DiffChange')
+    let s:CP3 = airline#themes#get_highlight('GitGutterChange')
 
     let g:airline#themes#lucius#palette.ctrlp = airline#extensions#ctrlp#generate_color_map(s:CP1, s:CP2, s:CP3)
 endfunction
