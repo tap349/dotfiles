@@ -485,8 +485,8 @@ nnoremap <Leader>oz :tabnew<CR>:edit ~/.zshrc<CR>
 "-------------------------------------------------------------------------------
 
 " move vertically by visual line (not real one)
-nnoremap j gj
-nnoremap k gk
+"nnoremap j gj
+"nnoremap k gk
 
 nnoremap <C-j> 10j
 nnoremap <C-k> 10k
