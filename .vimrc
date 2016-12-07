@@ -1064,7 +1064,8 @@ nmap <silent> <Leader>ht :GitGutterToggle<CR>
 " or else configuration from this file won't be used by ctags
 "-------------------------------------------------------------------------------
 
-set statusline+=%{gutentags#statusline()}
+" show TAGS when indexing is in progress
+"set statusline+=%{gutentags#statusline()}
 
 let g:gutentags_cache_dir = '~/.vim/tags'
 let g:gutentags_enabled = 1
