@@ -613,7 +613,7 @@ inoremap <C-d> <Delete>
 
 inoremap {{ {<Space><Space>}<Esc>hi
 inoremap }} {}<Esc>i
-inoremap )) ()<Esc>i
+"inoremap )) ()<Esc>i
 "inoremap >> \|><Space>
 "inoremap [[ []<Esc>i
 
