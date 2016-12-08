@@ -600,6 +600,8 @@ nnoremap gp `[v`]
 "===============================================================================
 
 inoremap <C-Backspace> <Esc>
+" map to Esc for vertical editing to work
+inoremap <C-c> <Esc>
 
 "-------------------------------------------------------------------------------
 " editing
