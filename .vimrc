@@ -57,8 +57,7 @@ Plug 'vim-airline/vim-airline-themes'
 " git
 
 Plug 'airblade/vim-gitgutter'
-Plug 'tpope/vim-fugitive'
-"Plug 'gregsexton/gitv' | Plug 'tpope/vim-fugitive'
+Plug 'tap349/vim-extradite' | Plug 'tpope/vim-fugitive'
 
 " other
 
@@ -373,8 +372,8 @@ set shell=/bin/sh
 
 iabbrev ii i18n_i
 iabbrev lasnt last
-iabbrev tt i18n_t
 iabbrev teh the
+iabbrev tt i18n_t
 
 "===============================================================================
 "                                                                              =
@@ -404,10 +403,12 @@ augroup filetypes
   autocmd BufRead,BufNewFile *.jb setlocal filetype=ruby
 augroup END
 
-augroup quickfix
-  autocmd!
-  autocmd BufReadPost quickfix nnoremap <buffer> <CR> <CR>
-augroup END
+" used to disable <CR> in quickfix window - now it's
+" not necessary because QFEnter mapping does it for me
+"augroup quickfix
+"  autocmd!
+"  autocmd BufReadPost quickfix nnoremap <buffer> <CR> <CR>
+"augroup END
 
 "augroup diffmode
 "  autocmd!
@@ -1023,6 +1024,14 @@ map <Leader> <Plug>(easymotion-prefix)
 nmap <Leader>f <Plug>(easymotion-f)
 nmap <Leader>F <Plug>(easymotion-F)
 nmap <Leader>w <Plug>(easymotion-bd-w)
+
+"-------------------------------------------------------------------------------
+" vim-extradite
+"-------------------------------------------------------------------------------
+
+let g:extradite_showhash = 1
+
+map <silent> <Leader>g :Extradite<CR>
 
 "-------------------------------------------------------------------------------
 " vim-fugitive
