@@ -191,6 +191,8 @@ mas 'Microsoft Remote Desktop', id: 715768417
 #     - [x] Launch at login
 #   - Hotkeys:
 #     - Capture area: <M-1>
+#   - Account (to be able to upload screenshots):
+#     - Login -> Login with Facebook (a***.t***.i***@gmail.com)
 mas 'Monosnap', id: 540348655
 mas 'Pomodoro Timer', id: 872515009
 # - system preferences:
