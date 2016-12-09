@@ -405,6 +405,7 @@ else " LIGHT VARIANT
   " Folded:
   let s:folded_fg = s:navy
   let s:folded_bg = ['#afdfff', '153']
+  "let s:folded_bg = ['#c8dfef', '153']
 
   " WildMenu:
   let s:wildmenu_fg  = s:foreground
