@@ -190,7 +190,7 @@ set foldnestmax=10
 " l - don't break long lines in insert mode
 " j - remove comment leader when joining lines
 set formatoptions-=tc
-set formatoptions+=j
+set formatoptions+=rj
 
 "-------------------------------------------------------------------------------
 " indentation
@@ -311,11 +311,13 @@ endif
 " gui options
 "-------------------------------------------------------------------------------
 
+" NOTE: flags 'rL' must be added in exactly this order (IDK why)!
+"
 " c - use console dialogs instead of gui ones
-" l - left scrollbar is always present
 " r - right scrollbar is always present
+" L - left scrollbar is present when there's a vertically split window
 set guioptions+=c
-set guioptions-=lr
+set guioptions-=rL
 
 " disable cursor blinking
 set guicursor+=a:blinkon0
