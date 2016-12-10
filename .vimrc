@@ -34,9 +34,6 @@ call plug#begin('~/.vim/plugged')
 
 " file types support
 
-" it seemed to me that using vim-polyglot introduces some lag
-" in general - when switching tabs, switching to visual mode, etc.
-"Plug 'sheerun/vim-polyglot'
 Plug 'elixir-lang/vim-elixir'
 Plug 'kchmck/vim-coffee-script'
 Plug 'keith/rspec.vim'
@@ -57,13 +54,13 @@ Plug 'vim-airline/vim-airline-themes'
 " git
 
 Plug 'airblade/vim-gitgutter'
+" https://github.com/c-brenn/phoenix.vim#installation
 Plug 'tap349/vim-extradite' | Plug 'tpope/vim-fugitive'
 
 " other
 
 Plug 'ap/vim-css-color'
 Plug 'bkad/CamelCaseMotion'
-" https://github.com/c-brenn/phoenix.vim#installation
 Plug 'c-brenn/phoenix.vim' | Plug 'tpope/vim-projectionist'
 Plug 'easymotion/vim-easymotion'
 Plug 'ervandew/supertab'
@@ -82,12 +79,15 @@ Plug 'tpope/vim-unimpaired'
 Plug 'xolox/vim-misc'
 Plug 'yssl/QFEnter'
 
-" unused
+" unused (but still can be used again somewhen)
 
 "Plug 'Yggdroot/indentLine'
 "Plug 'itchyny/lightline.vim'
 "Plug 'jamessan/vim-gnupg'
 "Plug 'scheakur/vim-scheakur'
+" it seemed to me that using vim-polyglot introduces some lag
+" in general - when switching tabs, switching to visual mode, etc.
+"Plug 'sheerun/vim-polyglot'
 "Plug 'xolox/vim-session'
 
 call plug#end()
