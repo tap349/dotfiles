@@ -106,7 +106,7 @@ set synmaxcol=200
 
 "===============================================================================
 "                                                                              =
-" general settings                                                             =
+" general options                                                              =
 "                                                                              =
 "===============================================================================
 
@@ -132,12 +132,11 @@ set noswapfile
 " buffers
 "-------------------------------------------------------------------------------
 
-" http://vim.wikia.com/wiki/Using_tab_pages
-"
-" `newtab` causes all quickfix files (Ag, etc.) to be opened in new tab
-set switchbuf=usetab
 " http://usevim.com/2012/10/19/vim101-set-hidden
 set hidden
+" http://vim.wikia.com/wiki/Using_tab_pages
+" `newtab` causes all quickfix files (Ag, etc.) to be opened in new tab
+set switchbuf=usetab
 
 "-------------------------------------------------------------------------------
 " completion menu
@@ -162,9 +161,9 @@ set diffopt=filler,vertical
 " editing
 "-------------------------------------------------------------------------------
 
-set cpoptions+=$
 set colorcolumn=81
 "execute 'set colorcolumn=' . join(range(81,250), ',')
+set cpoptions+=$
 
 "-------------------------------------------------------------------------------
 " folding
@@ -176,6 +175,22 @@ set foldlevelstart=10
 " syntax folding might not work in some cases (e.g. in spec files)
 set foldmethod=indent
 set foldnestmax=10
+
+"-------------------------------------------------------------------------------
+" formatting
+"-------------------------------------------------------------------------------
+
+" NOTE: these options might be overriden by filetype plugins!
+"
+" t - auto-wrap text using textwidth
+" c - auto-wrap comments using textwidth
+" r - insert comment leader after <CR> in insert mode
+" o - insert comment leader after 'o' or 'O' in normal mode
+" q - allow formatting of comments with 'gq'
+" l - don't break long lines in insert mode
+" j - remove comment leader when joining lines
+set formatoptions-=tc
+set formatoptions+=j
 
 "-------------------------------------------------------------------------------
 " indentation
@@ -293,13 +308,22 @@ else
 endif
 
 "-------------------------------------------------------------------------------
+" gui options
+"-------------------------------------------------------------------------------
+
+" c - use console dialogs instead of gui ones
+" l - left scrollbar is always present
+" r - right scrollbar is always present
+set guioptions+=c
+set guioptions-=lr
+
+" disable cursor blinking
+set guicursor+=a:blinkon0
+
+"-------------------------------------------------------------------------------
 " indicators
 "-------------------------------------------------------------------------------
 
-" remove left-hand scroll bar
-set guioptions-=L
-" remove right-hand scroll bar
-set guioptions-=r
 " highlight current line (might slow down navigation)
 " this is the main cause of sluggish scrolling!
 " set after colorscheme - or else it can be redefined inside it
@@ -308,12 +332,8 @@ set nocursorline
 set noshowmode
 " show number of lines or characters selected in bottom right corner
 set showcmd
-" disable some gui popups
-set guioptions+=c
 " always show tabbar
 set showtabline=2
-" disable cursor blinking
-set guicursor+=a:blinkon0
 
 " show line numbering
 if hostname() == 'MacBook-Pro-Personal.local'
@@ -419,6 +439,9 @@ augroup END
 
 let mapleader = ','
 let maplocalleader = '\'
+
+" NOTE: now it's possible to use option (alt) in mappings!
+set macmeta
 
 "===============================================================================
 " normal mode                                                                  =
