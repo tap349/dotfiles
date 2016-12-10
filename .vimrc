@@ -139,11 +139,11 @@ set hidden
 set switchbuf=usetab
 
 "-------------------------------------------------------------------------------
-" completion menu
+" completion
 "-------------------------------------------------------------------------------
 
 " menu,preview - default
-set completeopt=menu,longest
+set completeopt=menu,longest,preview
 
 set wildmenu
 set wildmode=longest:full,full
@@ -913,11 +913,12 @@ let g:qfenter_vopen_map = ['<C-v>']
 " supertab
 "-------------------------------------------------------------------------------
 
-let g:SuperTabDefaultCompletionType = '<C-n>'
-" used only when completeopt has 'longest' option
-"let g:SuperTabLongestEnhanced = 1
-"let g:SuperTabLongestHighlight = 1
 let g:SuperTabCrMapping = 1
+let g:SuperTabDefaultCompletionType = '<C-n>'
+
+" used only when completeopt has 'longest' option
+let g:SuperTabLongestEnhanced = 1
+let g:SuperTabLongestHighlight = 1
 
 "-------------------------------------------------------------------------------
 " syntastic
