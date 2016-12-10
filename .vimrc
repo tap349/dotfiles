@@ -34,7 +34,7 @@ call plug#begin('~/.vim/plugged')
 
 " file types support
 
-" it seemed to me that using vim-polyglot introduces some lag
+" it seemed to me that using vim-polyglot introduced some lag
 " in general - when switching tabs, switching to visual mode, etc.
 "Plug 'sheerun/vim-polyglot'
 Plug 'elixir-lang/vim-elixir'
@@ -143,7 +143,7 @@ set hidden
 " completion menu
 "-------------------------------------------------------------------------------
 
-" menu,preview - default value
+" menu,preview - default
 set completeopt=menu,longest
 
 set wildmenu
@@ -173,7 +173,7 @@ set colorcolumn=81
 
 set foldenable
 set foldlevelstart=10
-" syntax folding might not work in some files (e.g. spec files)
+" syntax folding might not work in some cases (e.g. in spec files)
 set foldmethod=indent
 set foldnestmax=10
 
@@ -236,36 +236,28 @@ set vb t_vb=
 
 set transparency=0
 
-let g:solarized_bold = 1
-let g:solarized_contrast = 'normal'
-let g:solarized_diffmode = 'normal'
-let g:solarized_italic = 0
-let g:solarized_underline = 1
+"let g:solarized_bold = 1
+"let g:solarized_contrast = 'normal'
+"let g:solarized_diffmode = 'normal'
+"let g:solarized_italic = 0
+"let g:solarized_underline = 1
 
-"colorscheme summerfruit_tap
-"colorscheme ir_black_tap
-"colorscheme ir_black_morr
-"colorscheme sebocean_dasha
-"colorscheme github
-
-"colorscheme vylight
-"colorscheme scheakur
-"colorscheme solarized
 "colorscheme PaperColor
+"colorscheme github
+"colorscheme hybrid-light
+"colorscheme ir_black_morr
+"colorscheme ir_black_tap
+"colorscheme scheakur
+"colorscheme sebocean_dasha
+"colorscheme solarized
+"colorscheme summerfruit_tap
+"colorscheme vylight
 
 if hostname() == 'MacBook-Pro-Personal.local'
   set background=light
-
-  "colorscheme summerfruit_tap
-  "colorscheme solarized
-  "colorscheme github
   colorscheme PaperColor
-  "colorscheme hybrid-light
-  "colorscheme scheakur
 else
   set background=light
-
-  "colorscheme solarized
   colorscheme PaperColor
 endif
 
@@ -273,50 +265,31 @@ endif
 " font
 "-------------------------------------------------------------------------------
 
-"set linespace=-1
-"set guifont=Inconsolata-dz\ For\ Powerline:h14
-
-"set linespace=-2
-"set guifont=Inconsolata\ LGC:h14
-
-"set linespace=2
-"set guifont=Input\ Mono\ Narrow:h13
-
-"set linespace=3
+"set linespace=6
 "set guifont=Andale\ Mono:h14
-
 "set linespace=2
 "set guifont=Andale\ Mono\ MT\ Std:h14
-
 "set linespace=4
 "set guifont=Cousine:h14
+"set linespace=7
+"set guifont=Droid\ Sans\ Mono\ for\ Powerline:h14
+"set linespace=5
+"set guifont=Fira\ Mono:h14
+"set linespace=0
+"set guifont=Inconsolata-dz\ For\ Powerline:h14
+"set linespace=0
+"set guifont=Inconsolata\ LGC\ For\ Powerline:h14
+"set linespace=2
+"set guifont=Input\ Mono\ Narrow:h13
+"set linespace=6
+"set guifont=MonacoB\ for\ Powerline:h13
 
 if hostname() == 'MacBook-Pro-Personal.local'
-  "set linespace=6
-  "set guifont=Andale\ Mono:h14
   set linespace=5
   set guifont=Andale\ Mono\ MT\ Std:h14
-  "set linespace=5
-  "set guifont=Fira\ Mono:h14
-  "set linespace=5
-  "set guifont=MonacoB\ for\ Powerline:h13
-  "set linespace=2
-  "set guifont=Inconsolata\ LGC\ for\ Powerline:h14
-  "set linespace=7
-  "set guifont=Droid\ Sans\ Mono\ for\ Powerline:h14
 else
-  "set linespace=6
-  "set guifont=Andale\ Mono:h14
   set linespace=5
   set guifont=Andale\ Mono\ MT\ Std:h14
-  "set linespace=5
-  "set guifont=Fira\ Mono:h14
-  "set linespace=5
-  "set guifont=Monaco:h13
-  "set linespace=1
-  "set guifont=Inconsolata\ LGC\ for\ Powerline:h14
-  "set linespace=6
-  "set guifont=Droid\ Sans\ Mono\ for\ Powerline:h14
 endif
 
 "-------------------------------------------------------------------------------
@@ -385,9 +358,14 @@ iabbrev tt i18n_t
 "                                                                              =
 "===============================================================================
 
+" https://github.com/vim-airline/vim-airline/issues/539
+"
+" refresh airline 2 times after sourcing vimrc:
+" to redraw statusline itself (1st call) and tabline (2nd call).
+" don't forget to refresh airline after sourcing vimrc manually
 augroup vimrc
   autocmd!
-  autocmd BufWritePost .vimrc source %
+  autocmd BufWritePost $MYVIMRC source $MYVIMRC | AirlineRefresh | AirlineRefresh
 augroup END
 
 let s:prevtabnr = tabpagenr()
@@ -401,15 +379,21 @@ augroup filetypes
   autocmd!
   autocmd BufRead,BufNewFile *.arb setlocal filetype=ruby
   autocmd BufRead,BufNewFile *.jb setlocal filetype=ruby
+  " using rspec filetype for specs doesn't change highlighting
+  " at all but prevents rubocop checker from running on them
+  "autocmd BufRead,BufNewFile *_spec.rb set filetype=rspec
 augroup END
 
 " used to disable <CR> in quickfix window - now it's
-" not necessary because QFEnter mapping does it for me
+" not necessary because QFEnter mapping already does it
 "augroup quickfix
 "  autocmd!
 "  autocmd BufReadPost quickfix nnoremap <buffer> <CR> <CR>
 "augroup END
 
+" I don't remember why I added this in the first place -
+" probably airline didn't work correctly in diff mode.
+" however now everything seems to be okay -> comment it out
 "augroup diffmode
 "  autocmd!
 "  autocmd FilterWritePre * call SetDiffMode()
@@ -431,7 +415,7 @@ augroup END
 "===============================================================================
 
 " Leader: global and plugin mappings
-" LocalLeader: mappings local to current buffer
+" LocalLeader: mappings local to current buffer (<buffer> mappings)
 
 let mapleader = ','
 let maplocalleader = '\'
@@ -457,9 +441,9 @@ nnoremap <silent> <Leader>dt :%s/\s\+$//<CR>:w<CR>:nohlsearch<CR>
 " insert newline after current line
 nmap <silent> <CR> o<Esc>
 " insert newline before current line
-nnoremap <silent> <S-CR> O<Esc>
+nmap <silent> <S-CR> O<Esc>
 " insert space
-nnoremap <silent> <Space> i<Space><Esc>l
+nmap <silent> <Space> i<Space><Esc>l
 
 "-------------------------------------------------------------------------------
 " fold
@@ -518,7 +502,7 @@ nnoremap <C-g> <C-i>
 
 "------- tab -------------------------------------------------------------------
 
-" the same as using gT and gt
+" same as using gT and gt
 nnoremap <C-h> :tabprevious<CR>
 nnoremap <C-l> :tabnext<CR>
 
@@ -566,7 +550,8 @@ nnoremap <silent> <C-Backspace> :nohlsearch<Bar>:echo<CR>
 " sourcing configuration files
 "-------------------------------------------------------------------------------
 
-nnoremap <Leader>.v :source $MYVIMRC<CR>
+" see comments above about AirlineRefresh
+nnoremap <Leader>.v :source $MYVIMRC<CR>:AirlineRefresh<CR>
 
 "-------------------------------------------------------------------------------
 " suppress unwanted keys (set to noop)
@@ -618,7 +603,7 @@ inoremap {{ {<Space><Space>}<Esc>hi
 inoremap }} {}<Esc>i
 "inoremap )) ()<Esc>i
 "inoremap >> \|><Space>
-"inoremap [[ []<Esc>i
+"inoremap ]] []<Esc>i
 
 "-------------------------------------------------------------------------------
 " navigation
@@ -679,7 +664,7 @@ vnoremap L g_
 " searching
 "-------------------------------------------------------------------------------
 
-vnorem * y/<C-r>"<CR>
+vnoremap * y/<C-r>"<CR>
 
 "===============================================================================
 "                                                                              =
@@ -900,12 +885,6 @@ let g:qfenter_hopen_map = ['<C-s>']
 let g:qfenter_vopen_map = ['<C-v>']
 
 "-------------------------------------------------------------------------------
-" rspec.vim
-"-------------------------------------------------------------------------------
-
-"autocmd! BufNewFile,BufRead *_spec.rb set filetype=rspec
-
-"-------------------------------------------------------------------------------
 " supertab
 "-------------------------------------------------------------------------------
 
@@ -973,11 +952,12 @@ let g:airline#extensions#tabline#left_alt_sep = ' '
 "let g:airline#extensions#tabline#right_sep = '⮂'
 "let g:airline#extensions#tabline#right_alt_sep = '⮃'
 
+let g:airline_powerline_fonts = 0
+
 "let g:airline_theme = 'cool'
 "let g:airline_theme = 'sol'
 "let g:airline_theme = 'silver'
 let g:airline_theme = 'lucius'
-let g:airline_powerline_fonts = 0
 
 if !exists('g:airline_symbols')
   let g:airline_symbols = {}
