@@ -377,7 +377,7 @@ iabbrev tt i18n_t
 
 "===============================================================================
 "                                                                              =
-" common autocommands                                                          =
+" autocommands                                                                 =
 "                                                                              =
 " exclamation mark means to remove all autocommands associated with event,     =
 " pattern and command - the point here is that by default autocommands are     =
@@ -433,7 +433,7 @@ augroup END
 
 "===============================================================================
 "                                                                              =
-" common maps                                                                  =
+" mappings                                                                     =
 "                                                                              =
 " http://vim.wikia.com/wiki/Mapping_keys_in_Vim_-_Tutorial_(Part_1)            =
 "                                                                              =
