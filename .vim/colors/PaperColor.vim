@@ -405,7 +405,6 @@ else " LIGHT VARIANT
   " Folded:
   let s:folded_fg = s:navy
   let s:folded_bg = ['#afdfff', '153']
-  "let s:folded_bg = ['#c8dfef', '153']
 
   " WildMenu:
   let s:wildmenu_fg  = s:foreground
@@ -726,14 +725,14 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
   call s:HL("cssPositioningAttr", s:navy, "", "")
   call s:HL("cssValueLength", s:orange, "", "")
 
-call s:HL("cssFunctionName", s:blue, "", "")
-call s:HL("cssUnitDecorators", s:aqua, "", "")
-call s:HL("cssColor", s:blue, "", "bold")
-call s:HL("cssBraces", s:pink, "", "")
-call s:HL("cssBackgroundProp", s:foreground, "", "")
-call s:HL("cssTextProp", s:foreground, "", "")
-call s:HL("cssDimensionProp", s:foreground, "", "")
-call s:HL("cssClassName", s:pink, "", "")
+  call s:HL("cssFunctionName", s:blue, "", "")
+  call s:HL("cssUnitDecorators", s:aqua, "", "")
+  call s:HL("cssColor", s:blue, "", "bold")
+  call s:HL("cssBraces", s:pink, "", "")
+  call s:HL("cssBackgroundProp", s:foreground, "", "")
+  call s:HL("cssTextProp", s:foreground, "", "")
+  call s:HL("cssDimensionProp", s:foreground, "", "")
+  call s:HL("cssClassName", s:pink, "", "")
 
   " Markdown Highlighting
   call s:HL("markdownHeadingRule", s:pink, "", "bold")
@@ -1300,21 +1299,23 @@ call s:HL("cssClassName", s:pink, "", "")
 endif
 " }}}
 
-" Delete Helper Functions: {{{
-delf s:Load_Settings_Override
-delf s:HL
-delf s:rgb
-delf s:colour
-delf s:rgb_colour
-delf s:rgb_level
-delf s:rgb_number
-delf s:grey_colour
-delf s:grey_level
-delf s:grey_number
-" }}}
+"------------------------------------------------------------------------------
+" customization
+"------------------------------------------------------------------------------
 
-" vim: fdm=marker
-"
+" TODO, HACK, NOTE and rubocop warnings
+hi Todo guibg=#eeeeee
+
+if !s:is_dark
+  " Folded:
+  let s:folded_fg = ['#003f67', '24']
+  let s:folded_bg = ['#c8e4f4', '153']
+endif
+
+if has("gui_running")
+  call s:HL("Folded", s:folded_fg, s:folded_bg, "")
+endif
+
 "------------------------------------------------------------------------------
 " vim-gitgutter
 "------------------------------------------------------------------------------
@@ -1329,5 +1330,21 @@ hi GitGutterChangeLine        guibg=#deeefe
 hi GitGutterDeleteLine        guibg=#fee2e2
 hi GitGutterChangeDeleteLine  guibg=#fedefe
 
-" TODO, HACK, NOTE and rubocop warnings
-hi Todo guibg=#eeeeee
+"------------------------------------------------------------------------------
+" the section must be at the very end
+"------------------------------------------------------------------------------
+
+" Delete Helper Functions: {{{
+delf s:Load_Settings_Override
+delf s:HL
+delf s:rgb
+delf s:colour
+delf s:rgb_colour
+delf s:rgb_level
+delf s:rgb_number
+delf s:grey_colour
+delf s:grey_level
+delf s:grey_number
+" }}}
+
+" vim: fdm=marker

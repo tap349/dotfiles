@@ -49,20 +49,27 @@ function! airline#themes#lucius#refresh()
                 \ 'red': airline#themes#get_highlight('Constant'),
                 \ }
 
+    "---------------------------------------------------------------------------
+    " tabline
+    "---------------------------------------------------------------------------
+
     " Extra tabline colors
     " s:IA - dark grey
     " s:TS - light grey
     " s:R1 - light yellow
     " s:R2 - light blue
-    let light_steel_blue = ['#222222', '#b7c9e1']
+    let tabsel_color = ['#222222', '#c5cdd8']
 
     let s:TS = airline#themes#get_highlight('TabLineSel')
     let g:airline#themes#lucius#palette.tabline = {}
     let g:airline#themes#lucius#palette.tabline.airline_tab = s:TS
-    let g:airline#themes#lucius#palette.tabline.airline_tabsel = light_steel_blue
+    let g:airline#themes#lucius#palette.tabline.airline_tabsel = tabsel_color
     let g:airline#themes#lucius#palette.tabline.airline_tabfill = s:TS
 
+    "---------------------------------------------------------------------------
     " CtrlP (from aurora theme)
+    "---------------------------------------------------------------------------
+
     if !get(g:, 'loaded_ctrlp', 0)
       finish
     endif
