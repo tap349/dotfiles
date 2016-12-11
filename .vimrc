@@ -143,7 +143,7 @@ set switchbuf=usetab
 "-------------------------------------------------------------------------------
 
 " menu,preview - default
-set completeopt=menu,preview,longest
+set completeopt+=longest
 
 set wildmenu
 set wildmode=longest:full,full
