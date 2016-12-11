@@ -148,7 +148,12 @@ set completeopt=menu,longest,preview
 set wildmenu
 set wildmode=longest:full,full
 " used by command-t and ctrlp - it should be kept in sync with ~/.agignore
-set wildignore+=*.log,*/public/*,*/spec/vcr_cassettes/*,*/tmp/*,*/deps/*,*/node_modules/*
+"
+" don't prefix directories relative to project root with asterisk -
+" that is prefer public/* to */public/*.
+" this is known to have caused problems with spec/vcr_cassettes/ directory:
+" when refreshing it in nerdtree directory kept on collapsing all the time
+set wildignore+=*.log,public/*,spec/vcr_cassettes/*,tmp/*,deps/*,node_modules/*
 
 "-------------------------------------------------------------------------------
 " diff
@@ -893,6 +898,9 @@ map <Leader><Space> <Plug>NERDCommenterToggle
 " fix ugly arrows from Andale Mono MT
 let g:NERDTreeDirArrowExpandable = '▸'
 let g:NERDTreeDirArrowCollapsible = '▾'
+
+" don't collaps dirs that have only one child
+let NERDTreeCascadeSingleChildDir = 0
 
 nmap <F1> :NERDTreeFind<CR>
 nmap <F2> :NERDTreeToggle<CR>
