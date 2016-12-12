@@ -447,8 +447,9 @@ augroup END
 let mapleader = ','
 let maplocalleader = '\'
 
-" NOTE: now it's possible to use option (alt) in mappings!
-set macmeta
+" it must allow to use option (alt) in most mappings
+" but it breaks mappings for moving tabs (:tabmove)
+"set macmeta
 
 "===============================================================================
 " normal mode                                                                  =
