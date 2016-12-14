@@ -85,12 +85,12 @@ setopt HIST_IGNORE_DUPS
 
 BLOG=~/blog
 
-CDN_REENTER=~/dev/cdn_reenter
 CHEF=~/dev/chef/zero
 CHEF_REENTER=~/dev/chef-reenter
 NALA=~/dev/nala
 PUMBA=~/dev/pumba
 REENTER_BUILDER=~/dev/reenter_builder
+REENTER_CDN=~/dev/reenter_cdn
 REENTER_FEED=~/dev/reenter_feed
 SHIKIMORI=~/dev/shikimori
 UMKA=~/dev/umka
@@ -112,7 +112,7 @@ alias dot='cd ~/.dotfiles'
 
 alias c='cd $CHEF'
 alias cr='cd $CHEF_REENTER'
-alias cdn='cd $CDN_REENTER'
+alias cdn='cd $REENTER_CDN'
 alias rb='cd $REENTER_BUILDER'
 alias rf='cd $REENTER_FEED'
 alias n='cd $NALA'

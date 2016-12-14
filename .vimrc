@@ -1044,6 +1044,9 @@ nmap <Leader>w <Plug>(easymotion-bd-w)
 " vim-extradite
 "-------------------------------------------------------------------------------
 
+" disable resizing windows
+" (for some reason maximizes width of nerdtree window when it's open)
+let g:extradite_resize = 0
 let g:extradite_showhash = 1
 
 map <silent> <Leader>g :Extradite<CR>
