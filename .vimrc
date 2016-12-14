@@ -1088,6 +1088,9 @@ nmap <silent> <Leader>ht :GitGutterToggle<CR>
 "
 " don't use comments in ~/.ctags configuration file -
 " or else configuration from this file won't be used by ctags
+"
+" sometimes tags are not found unexpectedly (even though they used
+" to be found before) - closing and opening vim helps in this case
 "-------------------------------------------------------------------------------
 
 " show TAGS when indexing is in progress
