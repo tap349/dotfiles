@@ -1,5 +1,4 @@
 ENTRY "home smb local" URL "/Volumes/opr7"
 ENTRY "home ftp local" URL "ftp://tap@192.168.0.104:1021/"
 ENTRY "home ftp internet" URL "ftp://tap@109.195.179.27:1021/"
-ENTRY "/Users/tap/Documents/Mail.Ru Cloud/books/programming" URL "/Users/tap/Documents/Mail.Ru Cloud/books/programming"
-ENTRY "/Users/tap/ingate/3_chef/umka" URL "/Users/tap/ingate/3_chef/umka"
+ENTRY "/Users/tap/Documents/Cloud Mail.Ru/books/programming" URL "/Users/tap/Documents/Cloud Mail.Ru/books/programming"
