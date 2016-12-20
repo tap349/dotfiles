@@ -116,6 +116,7 @@ cask 'flux'
 #     - Proxy SwitchyOmega (configure proxy per site)
 #     + Quick Javascript Switcher
 #     - RSS Subscription Extension (by Google) - optional
+#     + Tag Assistant (by Google) (enabled per tab)
 #     + The Great Suspender
 #     + Viewport Dimensions (Hide in Chrome Menu)
 #     + uBlock Origin
@@ -188,6 +189,8 @@ mas 'Marked 2', id: 890031187
 mas 'Microsoft Remote Desktop', id: 715768417
 # - app preferences:
 #   - General:
+#     - After upload:
+#       - [ ] Open in browser
 #     - [x] Launch at login
 #   - Hotkeys:
 #     - Capture area: <M-1>
