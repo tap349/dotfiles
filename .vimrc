@@ -4,6 +4,7 @@
 "       - <Tab> and <C-i>                                                      *
 "       - <CR> and <C-m>                                                       *
 "       - <Esc> and <C-[>                                                      *
+"       - <C-S-h> and <C-h> (any character)                                    *
 "                                                                              *
 " USEFUL RESOURCES:                                                            *
 "                                                                              *
