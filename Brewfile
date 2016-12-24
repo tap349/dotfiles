@@ -149,6 +149,7 @@ cask 'skype'
 #   - [x] Check for updates on startup
 #   - [x] Autostart smcFanControl after login
 cask 'smcfancontrol'
+cask 'unetbootin'
 # - `open /usr/local/Caskroom/utorrent/latest/uTorrent.app`
 # - system preferences:
 #   - Users & Groups -> Login Items (don't hide): remove
