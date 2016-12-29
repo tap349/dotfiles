@@ -16,6 +16,7 @@ files=(
   .ctags
   .gitconfig
   .gitignore
+  .iex.exs
   .powconfig
   .pryrc
   .vimrc
@@ -25,8 +26,10 @@ files=(
 )
 
 # http://misc.flogisoft.com/bash/tip_colors_and_formatting
+# only `echo -e` supports these escape sequences
 RED_FG="\033[31m"
 LIGHT_GREEN_FG="\033[92m"
+LIGHT_BLUE_FG="\033[94m"
 RESET_ALL="\033[0m"
 
 for file in "${files[@]}"; do
@@ -35,7 +38,11 @@ for file in "${files[@]}"; do
   if [ -e "$HOME/$file" ]; then
     read -p "$HOME/$file exists - remove it? [yn] " yn
 
-    if [ $yn = 'y' ]; then
+    if [ -z "$yn" -o ! "$yn" = 'y' ]; then
+      echo -e "[$LIGHT_BLUE_FG SKIP $RESET_ALL] symlinking $file skipped"
+      echo
+      continue
+    elif [ "$yn" = 'y' ]; then
       rm -rf "$HOME/$file"
       if [ $? -eq 0 ]; then
         echo -e "[$LIGHT_GREEN_FG OK $RESET_ALL] $file removed"
