@@ -1118,7 +1118,8 @@ let g:hugefile_trigger_size = 1
 " vim-markdown
 "-------------------------------------------------------------------------------
 
-let g:vim_markdown_folding_disabled = 1
+"let g:vim_markdown_folding_disabled = 0
+"let g:vim_markdown_folding_level = 1
 let g:vim_markdown_frontmatter = 1
 
 "-------------------------------------------------------------------------------
