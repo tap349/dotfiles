@@ -41,7 +41,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'elixir-lang/vim-elixir'
 Plug 'kchmck/vim-coffee-script'
 Plug 'keith/rspec.vim'
-Plug 'plasticboy/vim-markdown'
+Plug 'tap349/vim-markdown'
 Plug 'slim-template/vim-slim'
 Plug 'vim-ruby/vim-ruby'
 
@@ -358,7 +358,10 @@ set shortmess+=I
 
 " https://rvm.io/integration/vim
 " https://github.com/scrooloose/syntastic/issues/1407
-set shell=/bin/sh
+set shell=/bin/zsh
+" http://stackoverflow.com/a/4642855/3632318
+" (see last comment - using interactive shell can create problems)
+"set shellcmdflag=-ic
 
 " maximize on startup
 " NOTE: setting columns to 999 maximizes the 1st column when using vimdiff!
@@ -488,7 +491,7 @@ nnoremap <Backspace> za
 "-------------------------------------------------------------------------------
 
 nnoremap <Leader>ov :tabnew<CR>:edit $MYVIMRC<CR>
-nnoremap <Leader>oz :tabnew<CR>:edit ~/.zshrc<CR>
+nnoremap <Leader>oz :tabnew<CR>:edit ~/.zshenv<CR>
 
 "-------------------------------------------------------------------------------
 " fullscreen
@@ -1119,7 +1122,7 @@ let g:hugefile_trigger_size = 1
 "-------------------------------------------------------------------------------
 
 "let g:vim_markdown_folding_disabled = 0
-"let g:vim_markdown_folding_level = 4
+"let g:vim_markdown_folding_level = 1
 let g:vim_markdown_folding_style_pythonic = 1
 let g:vim_markdown_frontmatter = 1
 
