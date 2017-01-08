@@ -325,7 +325,9 @@ endif
 set guioptions+=c
 set guioptions-=rL
 
-" disable cursor blinking
+" configure cursor blinking
+" http://stackoverflow.com/a/39816241/3632318
+"set guicursor+=a:blinkon600-blinkoff400
 set guicursor+=a:blinkon0
 
 "-------------------------------------------------------------------------------
@@ -389,21 +391,9 @@ iabbrev tt i18n_t
 "                                                                              =
 "===============================================================================
 
-" https://github.com/vim-airline/vim-airline/issues/539
-"
-" refresh airline 2 times after sourcing vimrc:
-" to redraw statusline itself (1st call) and tabline (2nd call).
-" don't forget to refresh airline after sourcing vimrc manually
-augroup vimrc
+augroup backup
   autocmd!
-  autocmd BufWritePost $MYVIMRC source $MYVIMRC | AirlineRefresh | AirlineRefresh
-augroup END
-
-let s:prevtabnr = tabpagenr()
-let s:prevtabcount = tabpagenr('$')
-augroup tabs
-  autocmd!
-  autocmd TabEnter * call s:GoToPrevTab()
+  autocmd BufWritePre * call SetBackupDir()
 augroup END
 
 augroup filetypes
@@ -413,6 +403,29 @@ augroup filetypes
   " using rspec filetype for specs doesn't change highlighting
   " at all but prevents rubocop checker from running on them
   "autocmd BufRead,BufNewFile *_spec.rb set filetype=rspec
+augroup END
+
+" filetype-specific mappings
+augroup maps
+  autocmd!
+  autocmd FileType markdown nmap <buffer> <LocalLeader>p :!publish<CR>
+augroup END
+
+let s:prevtabnr = tabpagenr()
+let s:prevtabcount = tabpagenr('$')
+augroup tabs
+  autocmd!
+  autocmd TabEnter * call s:GoToPrevTab()
+augroup END
+
+" https://github.com/vim-airline/vim-airline/issues/539
+"
+" refresh airline 2 times after sourcing vimrc:
+" to redraw statusline itself (1st call) and tabline (2nd call).
+" don't forget to refresh airline after sourcing vimrc manually
+augroup vimrc
+  autocmd!
+  autocmd BufWritePost $MYVIMRC source $MYVIMRC | AirlineRefresh | AirlineRefresh
 augroup END
 
 " used to disable <CR> in quickfix window - now it's
@@ -429,11 +442,6 @@ augroup END
 "  autocmd!
 "  autocmd FilterWritePre * call SetDiffMode()
 "augroup END
-
-augroup backup
-  autocmd!
-  autocmd BufWritePre * call SetBackupDir()
-augroup END
 
 "===============================================================================
 "                                                                              =
