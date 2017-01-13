@@ -75,6 +75,7 @@ brew 'wget'
 #   - https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/INSTALL.md#oh-my-zsh
 brew 'zsh'
 
+cask 'calibre'
 cask 'chefdk'
 # - system preferences:
 #   - Users & Groups -> Login Items (hide): add
