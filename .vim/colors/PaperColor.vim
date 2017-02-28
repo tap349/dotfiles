@@ -1309,7 +1309,7 @@ hi Todo guibg=#eeeeee
 if !s:is_dark
   " Folded:
   let s:folded_fg = ['#003f67', '24']
-  let s:folded_bg = ['#c8e4f4', '153']
+  let s:folded_bg = ['#d9ecf6', '153']
 endif
 
 if has("gui_running")
