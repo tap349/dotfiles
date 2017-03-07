@@ -113,6 +113,7 @@ set synmaxcol=200
 
 syntax on
 
+set noautochdir
 set nocompatible
 set nospell
 set nowrap
