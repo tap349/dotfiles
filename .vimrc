@@ -735,7 +735,8 @@ runtime macros/matchit.vim
 " ~/.agignore ignore file is used by default or else
 " it can be specified with `--path-to-ignore` ag option
 let g:ag_prg = 'ag --vimgrep --literal'
-let g:ag_working_path_mode = 'r'
+" always run from current working directory (default)
+"let g:ag_working_path_mode = 'r'
 
 " don't jump to first found file
 map <Leader>/ :Ag!<Space>
@@ -785,6 +786,8 @@ let g:ctrlp_use_caching = 1
 " it's not possible to use g:ag_prg variable here - options differ.
 " add `-g ""` to print filenames (otherwise nothing is found)
 let g:ctrlp_user_command = 'ag %s --files-with-matches -g ""'
+" don't set working directory with ctrlp
+let g:ctrlp_working_path_mode = 0
 
 let g:ctrlp_prompt_mappings = {
   \ 'PrtDeleteWord()':    ['<C-w>'],
