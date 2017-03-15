@@ -738,8 +738,10 @@ let g:ag_prg = 'ag --vimgrep --literal'
 " always run from current working directory (default)
 "let g:ag_working_path_mode = 'r'
 
-" don't jump to first found file
-map <Leader>/ :Ag!<Space>
+" - (L) use location list instead of quickfix window
+"   (allows to have different searches in different tabs)
+" - (!) don't jump to first found file
+map <Leader>/ :LAg!<Space>
 
 "-------------------------------------------------------------------------------
 " CamelCaseMotion
@@ -928,6 +930,10 @@ nmap <F2> :NERDTreeToggle<CR>
 " NOTE: QFEnter respects `switchbuf` option! if selected file is opened
 "       in another tab all mappings below just switch to that tab
 "-------------------------------------------------------------------------------
+
+" disable automatic opening of quickfix window (or location list)
+" when opening file from current quickfix window in a new tab
+let g:qfenter_enable_autoquickfix = 0
 
 let g:qfenter_open_map = ['<CR>']
 let g:qfenter_topen_map = ['<C-t>']
