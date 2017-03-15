@@ -145,7 +145,6 @@ cask 'keybase'
 cask 'openemu'
 cask 'pgadmin4'
 cask 'skype'
-cask 'slack'
 # - app preferences:
 #   - Menubar: Temperature only
 #   - [x] Check for updates on startup
