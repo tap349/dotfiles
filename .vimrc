@@ -741,6 +741,8 @@ let g:ag_prg = 'ag --vimgrep --literal'
 " - (L) use location list instead of quickfix window
 "   (allows to have different searches in different tabs)
 " - (!) don't jump to first found file
+"
+" QFEnter works with both quickfix windows and location lists
 map <Leader>/ :LAg!<Space>
 
 "-------------------------------------------------------------------------------
@@ -935,10 +937,12 @@ nmap <F2> :NERDTreeToggle<CR>
 " when opening file from current quickfix window in a new tab
 let g:qfenter_enable_autoquickfix = 0
 
-let g:qfenter_open_map = ['<CR>']
-let g:qfenter_topen_map = ['<C-t>']
-let g:qfenter_hopen_map = ['<C-s>']
-let g:qfenter_vopen_map = ['<C-v>']
+let g:qfenter_keymap = {}
+let g:qfenter_keymap.open = ['<CR>']
+let g:qfenter_keymap.open_keep = ['<S-CR>']
+let g:qfenter_keymap.hopen = ['<C-s>']
+let g:qfenter_keymap.vopen = ['<C-v>']
+let g:qfenter_keymap.topen = ['<C-t>']
 
 "-------------------------------------------------------------------------------
 " supertab
