@@ -782,9 +782,12 @@ map <silent> b <Plug>CamelCaseMotion_b
 let g:ctrlp_lazy_update = 5
 let g:ctrlp_map = '<Leader>s'
 " https://github.com/vim-airline/vim-airline/issues/1448
+"
 " setting 'bottom,order:ttb' prevents from showing vim-airline statusline right
 " after closing ctrlp window (all other combinations of position and order work)
-let g:ctrlp_match_window = 'top,order:btt,max:18'
+"
+" set min and max to the same value to prevent jumping
+let g:ctrlp_match_window = 'top,order:btt,min:12,max:12'
 let g:ctrlp_mruf_relative = 1
 let g:ctrlp_root_markers = ['mix.exs']
 let g:ctrlp_switch_buffer = 'et'
