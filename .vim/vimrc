@@ -1,5 +1,7 @@
 "*******************************************************************************
 "                                                                              *
+" version 7.4 and higher support ~/.vim/vimrc location                         *
+"                                                                              *
 " these keys generate the same characters:                                     *
 "                                                                              *
 " - <Tab> and <C-i>                                                            *

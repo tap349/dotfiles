@@ -19,7 +19,6 @@ files=(
   .iex.exs
   .powconfig
   .pryrc
-  .vimrc
   .zlogin
   .zshenv
   .zshrc
