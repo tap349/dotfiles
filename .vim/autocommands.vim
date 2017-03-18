@@ -117,7 +117,7 @@ endfunction
 "    set background=light
 "    colorscheme summerfruit_tap
 
-"    " don't show airline (it's not properly initialized at this moment)
+"    " don't show vim-airline (it's not properly initialized at this moment)
 "    set laststatus=0
 "  endif
 "endfunction
