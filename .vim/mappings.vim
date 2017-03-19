@@ -78,7 +78,8 @@ nnoremap L g_
 
 " http://vim.1045645.n5.nabble.com/
 "   lt-SID-gt-or-s-General-questions-about-functions-td4297515.html#a4298658
-" use <SID> prefix to refer to functions defined with 's:' prefix
+"
+" use <SID> prefix to call functions defined with 's:' in mapping definition
 nnoremap <C-Tab> :call <SID>GoToLastActiveTab()<CR>
 
 "------- buffer ----------------------------------------------------------------
@@ -220,12 +221,18 @@ inoremap <silent> <A-S-Up> <C-o>:tabmove<CR>
 
 "===============================================================================
 " visual mode                                                                  =
+"                                                                              =
+" http://stackoverflow.com/a/3787802/3632318                                   =
+"                                                                              =
+" vmap and vnoremap work in visual and select modes,                           =
+" use xmap and xnoremap to have mapping in visual mode only                    =
 "===============================================================================
 
 vnoremap <C-Backspace> <Esc>
 
 "-------------------------------------------------------------------------------
 " editing
+"
 " http://stackoverflow.com/a/10723838/3632318
 "-------------------------------------------------------------------------------
 
@@ -243,6 +250,7 @@ vnoremap L g_
 
 "-------------------------------------------------------------------------------
 " indenting
+"
 " http://stackoverflow.com/a/444461
 " http://stackoverflow.com/a/1413854
 "

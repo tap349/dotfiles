@@ -1,5 +1,7 @@
 "*******************************************************************************
 "                                                                              *
+" idiomatic vimrc: https://gist.github.com/romainl/9ecd7b09a693816997ba        *
+"                                                                              *
 " version 7.4 and higher support ~/.vim/vimrc location                         *
 "                                                                              *
 " these keys generate the same characters:                                     *
@@ -31,8 +33,8 @@ set nowrap
 set backup
 set noswapfile
 
-" swap files (currently disabled)
 " http://vim.wikia.com/wiki/Editing_crontab
+" swap files (currently disabled)
 "set directory=~/.vim/tmp//
 "set backupskip+=/private/tmp/*
 
@@ -80,6 +82,7 @@ set cpoptions+=$
 
 "-------------------------------------------------------------------------------
 " folding
+"
 " http://vimcasts.org/episodes/how-to-fold/
 "-------------------------------------------------------------------------------
 
@@ -244,7 +247,6 @@ endif
 set guioptions+=c
 set guioptions-=rL
 
-" configure cursor blinking
 " http://stackoverflow.com/a/39816241/3632318
 "set guicursor+=a:blinkon600-blinkoff400
 set guicursor+=a:blinkon0
