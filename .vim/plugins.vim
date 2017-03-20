@@ -27,7 +27,7 @@ Plug 'jasoncodes/ctrlp-modified.vim'
 
 " airline
 
-Plug 'tap349/vim-airline'
+Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
 " git
@@ -131,7 +131,7 @@ let g:ctrlp_map = '<Leader>s'
 " after closing ctrlp window (all other combinations of position and order work)
 "
 " set min and max to the same value to prevent jumping
-let g:ctrlp_match_window = 'bottom,order:ttb,min:14,max:14'
+let g:ctrlp_match_window = 'top,order:btt,min:14,max:14'
 let g:ctrlp_mruf_relative = 1
 let g:ctrlp_root_markers = ['mix.exs']
 let g:ctrlp_switch_buffer = 'et'
