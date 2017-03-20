@@ -27,7 +27,7 @@ Plug 'jasoncodes/ctrlp-modified.vim'
 
 " airline
 
-Plug 'vim-airline/vim-airline'
+Plug 'tap349/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
 " git
