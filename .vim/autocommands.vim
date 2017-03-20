@@ -52,6 +52,9 @@ augroup END
 "augroup quickfix
 "  autocmd!
 "  autocmd BufReadPost quickfix nnoremap <buffer> <CR> <CR>
+"  " http://stackoverflow.com/a/13813231
+"  autocmd QuickFixCmdPre * let g:winview = winsaveview()
+"  autocmd QuickFixCmdPost * call winrestview(g:winview)
 "augroup END
 
 " I don't remember why I added this in the first place -
