@@ -141,6 +141,8 @@ cask 'google-chrome'
 # see also http://tap349.github.io/iterm/rails/2016/05/03/iTerm/
 # (all these settings are already included in exported settings file)
 cask 'iterm2'
+# - system preferences:
+#   - Users & Groups -> Login Items: remove
 cask 'keybase'
 cask 'openemu'
 cask 'pgadmin4'
