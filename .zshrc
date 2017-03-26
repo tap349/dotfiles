@@ -59,18 +59,12 @@ source $ZSH/oh-my-zsh.sh
 
 #-----------------------------------------------------------------------------------------
 #
-# startup
-#
-#-----------------------------------------------------------------------------------------
-
-eval "$(rbenv init -)"
-
-#-----------------------------------------------------------------------------------------
-#
 # http://unix.stackexchange.com/a/71258
 #
 # environment variables, aliases and functions are moved to ~/.zshenv
 # because it's loaded for all shells (not only interactive ones) -
 # for example, it allows execute zsh functions with the shell in vim
+#
+# also rbenv initialization is moved to ~/.zshenv as well
 #
 #-----------------------------------------------------------------------------------------
