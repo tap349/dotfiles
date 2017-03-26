@@ -21,8 +21,7 @@ augroup filetypes
   "autocmd BufRead,BufNewFile *_spec.rb set filetype=rspec
 augroup END
 
-" filetype-specific mappings
-augroup mappings
+augroup filetype_mappings
   autocmd!
   autocmd FileType markdown nmap <buffer> <LocalLeader>p :!publish<CR>
 augroup END
@@ -37,14 +36,18 @@ augroup tabs
   autocmd TabLeave * let g:lasttabnr = tabpagenr()
 augroup END
 
-" https://github.com/vim-airline/vim-airline/issues/539
-"
-" refresh airline 2 times after sourcing vimrc:
-" to redraw statusline itself (1st call) and tabline (2nd call).
-" don't forget to refresh airline after sourcing vimrc manually
 augroup vimrc
   autocmd!
-  autocmd BufWritePost $MYVIMRC source $MYVIMRC | AirlineRefresh | AirlineRefresh
+  autocmd BufWritePost $MYVIMRC source $MYVIMRC | call lightline#enable()
+augroup END
+
+" `my_` prefix is used when there already exists autocommand group
+" with the same name in some vim plugin
+
+augroup my_lightline
+  autocmd!
+  " to remove syntastic message after save if there are no more errors
+  autocmd BufWritePost *.rb,*.arb,*.jb call lightline#update()
 augroup END
 
 " used to disable <CR> in quickfix window - now it's
@@ -55,14 +58,6 @@ augroup END
 "  " http://stackoverflow.com/a/13813231
 "  autocmd QuickFixCmdPre * let g:winview = winsaveview()
 "  autocmd QuickFixCmdPost * call winrestview(g:winview)
-"augroup END
-
-" I don't remember why I added this in the first place -
-" probably airline didn't work correctly in diff mode.
-" however now everything seems to be okay -> comment it out
-"augroup diffmode
-"  autocmd!
-"  autocmd FilterWritePre * call SetDiffMode()
 "augroup END
 
 "===============================================================================
@@ -112,15 +107,4 @@ endfunction
 "      exec 'tabedit ' . file
 "    endif
 "  endfor
-"endfunction
-
-" settings for difftool and mergetool
-"function! SetDiffMode()
-"  if &diff
-"    set background=light
-"    colorscheme summerfruit_tap
-
-"    " don't show vim-airline (it's not properly initialized at this moment)
-"    set laststatus=0
-"  endif
 "endfunction

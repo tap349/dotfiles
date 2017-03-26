@@ -25,11 +25,6 @@ Plug 'vim-ruby/vim-ruby'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'jasoncodes/ctrlp-modified.vim'
 
-" airline
-
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-
 " git
 
 Plug 'airblade/vim-gitgutter'
@@ -44,6 +39,7 @@ Plug 'c-brenn/phoenix.vim' | Plug 'tpope/vim-projectionist'
 Plug 'easymotion/vim-easymotion'
 Plug 'ervandew/supertab'
 Plug 'flazz/vim-colorschemes'
+Plug 'itchyny/lightline.vim' | Plug 'tpope/vim-fugitive'
 Plug 'jeetsukumaran/vim-buffergator'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'mhinz/vim-hugefile'
@@ -61,10 +57,14 @@ Plug 'yssl/QFEnter'
 " unused (but still can be used again somewhen)
 
 "Plug 'Yggdroot/indentLine'
-"Plug 'itchyny/lightline.vim'
 "Plug 'jamessan/vim-gnupg'
 "Plug 'scheakur/vim-scheakur'
 "Plug 'xolox/vim-session'
+
+" plugins to try in the future
+
+"Plug 'Shougo/vimfiler.vim'
+"Plug 'Shougo/vimshell.vim'
 
 call plug#end()
 
@@ -125,13 +125,7 @@ map <silent> b <Plug>CamelCaseMotion_b
 " at the end of last line in match window
 let g:ctrlp_lazy_update = 5
 let g:ctrlp_map = '<Leader>s'
-" https://github.com/vim-airline/vim-airline/issues/1448
-"
-" setting 'bottom,order:ttb' prevents from showing vim-airline statusline right
-" after closing ctrlp window (all other combinations of position and order work)
-"
-" set min and max to the same value to prevent jumping
-let g:ctrlp_match_window = 'bottom,order:ttb,max:14'
+let g:ctrlp_match_window = 'bottom,order:ttb,max:15'
 let g:ctrlp_mruf_relative = 1
 let g:ctrlp_root_markers = ['mix.exs']
 let g:ctrlp_switch_buffer = 'et'
@@ -144,37 +138,55 @@ let g:ctrlp_user_command = 'ag %s --files-with-matches -g ""'
 let g:ctrlp_working_path_mode = 0
 
 let g:ctrlp_prompt_mappings = {
-  \ 'PrtDeleteWord()':    ['<C-w>'],
-  \ 'PrtClear()':         ['<C-u>'],
-  \ 'PrtSelectMove("j")': ['<C-n>', 'Down'],
-  \ 'PrtSelectMove("k")': ['<C-p>', 'Up'],
-  \ 'PrtHistory(-1)':     ['<C-j>'],
-  \ 'PrtHistory(1)':      ['<C-k>'],
-  \ 'ToggleType(1)':      ['<C-l>'],
-  \ 'ToggleType(-1)':     ['<C-h>'],
-  \ 'PrtExpandDir()':     ['<Tab>'],
-  \ 'PrtInsert()':        ['<C-\>'],
-  \ 'PrtCurStart()':      ['<C-a>'],
-  \ 'PrtCurEnd()':        ['<C-e>'],
-  \ 'PrtCurLeft()':       ['<C-b>', '<Left>'],
-  \ 'PrtCurRight()':      ['<C-f>', '<Right>'],
-  \ 'PrtClearCache()':    ['<C-r>'],
-  \ 'CreateNewFile()':    ['<C-y>'],
-  \ 'OpenMulti()':        ['<C-o>'],
-  \ 'PrtExit()':          ['<Esc>', '<C-c>', '<C-g>']
-  \ }
+      \   'PrtDeleteWord()':    ['<C-w>'],
+      \   'PrtClear()':         ['<C-u>'],
+      \   'PrtSelectMove("j")': ['<C-n>', 'Down'],
+      \   'PrtSelectMove("k")': ['<C-p>', 'Up'],
+      \   'PrtHistory(-1)':     ['<C-j>'],
+      \   'PrtHistory(1)':      ['<C-k>'],
+      \   'ToggleType(1)':      ['<C-l>'],
+      \   'ToggleType(-1)':     ['<C-h>'],
+      \   'PrtExpandDir()':     ['<Tab>'],
+      \   'PrtInsert()':        ['<C-\>'],
+      \   'PrtCurStart()':      ['<C-a>'],
+      \   'PrtCurEnd()':        ['<C-e>'],
+      \   'PrtCurLeft()':       ['<C-b>', '<Left>'],
+      \   'PrtCurRight()':      ['<C-f>', '<Right>'],
+      \   'PrtClearCache()':    ['<C-r>'],
+      \   'CreateNewFile()':    ['<C-y>'],
+      \   'OpenMulti()':        ['<C-o>'],
+      \   'PrtExit()':          ['<Esc>', '<C-c>', '<C-g>']
+      \ }
 
 let g:ctrlp_buffer_func = {
-  \ 'enter': 'BrightHighlightOn',
-  \ 'exit':  'BrightHighlightOff'
-  \ }
+      \   'enter': 'CtrlPBufferFunc_1',
+      \   'exit':  'CtrlPBufferFunc_2'
+      \ }
 
-function! BrightHighlightOn()
+function! CtrlPBufferFunc_1()
   hi CursorLine guibg=#d7e2ea
+  call lightline#update_once()
 endfunction
 
-function! BrightHighlightOff()
+function! CtrlPBufferFunc_2()
   hi CursorLine guibg=#e4e4e4
+endfunction
+
+let g:ctrlp_status_func = {
+      \ 'main': 'CtrlPStatusFunc_1',
+      \ 'prog': 'CtrlPStatusFunc_2'
+      \ }
+
+function! CtrlPStatusFunc_1(focus, byfname, regex, prev, item, next, marked)
+  let g:lightline.ctrlp_regex = a:regex
+  let g:lightline.ctrlp_prev = a:prev
+  let g:lightline.ctrlp_item = a:item
+  let g:lightline.ctrlp_next = a:next
+  return lightline#statusline(0)
+endfunction
+
+function! CtrlPStatusFunc_2(str)
+  return lightline#statusline(0)
 endfunction
 
 "-------------------------------------------------------------------------------
@@ -200,55 +212,157 @@ endfunction
 " lightline.vim
 "-------------------------------------------------------------------------------
 
-"set laststatus=2
+set laststatus=2
+" disable GUI tab pages line
+set guioptions-=e
 
-"let g:lightline = {
-"  \ 'colorscheme': 'solarized',
-"  \ 'active': {
-"  \   'left': [['mode'], ['fugitive', 'filename']]
-"  \ },
-"  \ 'component_function': {
-"  \   'fugitive': 'LightLineFugitive',
-"  \   'filename': 'LightLineFilename',
-"  \   'ctrlpmark': 'CtrlPMark',
-"  \   'readonly': 'LightLineReadonly',
-"  \   'modified': 'LightLineModified'
-"  \ },
-"  \ 'separator': { 'left': '⮀', 'right': '⮂' },
-"  \ 'subseparator': { 'left': '⮁', 'right': '⮃' }
-"  \ }
+let g:lightline = {}
+let g:lightline.enable = { 'statusline': 1, 'tabline': 1 }
+let g:lightline.colorscheme = 'lucius'
+" https://github.com/itchyny/lightline.vim/issues/220
+let g:lightline.winwidth = 200
 
-"function! LightLineFugitive()
-"  return exists('*fugitive#head') ? fugitive#head() : ''
-"endfunction
+" statusline
 
-"function! LightLineFilename()
-"  return ('' != LightLineReadonly() ? LightLineReadonly() . ' ' : '') .
-"       \ ('' != expand('%:t') ? expand('%:t') : '[No Name]') .
-"       \ ('' != LightLineModified() ? ' ' . LightLineModified() : '')
-"endfunction
+let g:lightline.separator = { 'left': '⮀', 'right': '⮂' }
+let g:lightline.subseparator = { 'left': '⮁', 'right': '⮃' }
 
-"function! LightLineReadonly()
-"  if &filetype == 'help'
-"    return ''
-"  elseif &readonly
-"    return '⭤'
-"  else
-"    return ''
-"  endif
-"endfunction
+let g:lightline.active = {
+\   'left': [['mode'], ['fugitive', 'ctrlpitem'], ['filename']],
+\   'right': [['syntastic', 'lineinfo'], ['filetype']]
+\ }
+let g:lightline.inactive = {
+\   'left': [['filename']],
+\   'right': [['syntastic', 'lineinfo'], ['filetype']]
+\ }
 
-"function! LightLineModified()
-"  if &filetype == 'help'
-"    return ''
-"  elseif &modified
-"    return '+'
-"  elseif &modifiable
-"    return ''
-"  else
-"    return ''
-"  endif
-"endfunction
+" tabline
+
+let g:lightline.tabline = { 'left': [['tabs']], 'right': [['close']] }
+let g:lightline.tabline_separator = { 'left': '', 'right': '' }
+let g:lightline.tabline_subseparator = { 'left': '', 'right': '' }
+let g:lightline.tab = {
+\   'active': ['filename', 'modified'],
+\   'inactive': ['filename', 'modified']
+\ }
+
+" components
+
+let g:lightline.component = {
+      \   'fileencodingformat': '%{&fenc !=# "" ? &fenc : &enc}[%{&ff}]'
+      \ }
+let g:lightline.component_function = {
+      \   'mode': 'LightlineMode',
+      \   'fugitive': 'LightlineFugitive',
+      \   'ctrlpitem': 'LightlineCtrlPItem',
+      \   'filename': 'LightlineFilename',
+      \   'ctrlpmark': 'LightlineCtrlPMark',
+      \   'filetype': 'LightlineFiletype',
+      \   'lineinfo': 'LightlineLineinfo'
+      \ }
+let g:lightline.component_expand = {
+      \   'syntastic': 'SyntasticStatuslineFlag'
+      \ }
+let g:lightline.component_type = {
+      \   'syntastic': 'warning'
+      \ }
+
+" functions for components
+"
+" &enc = &encoding
+" &fenc = &fileencoding
+" &ft = &filetype
+" &ma = &modifiable
+" &mod = &modified
+" &ro = &readonly
+
+function! LightlineMode()
+  if s:IsNotebookWindow() | return '' | end
+
+  return s:IsNerdTree() ? 'NERD' :
+        \ s:IsCtrlP() ? 'CtrlP' :
+        \ s:IsNarrowWindow() ? '' : lightline#mode()
+endfunction
+
+function! LightlineFugitive()
+  if s:IsNarrowWindow() | return '' | end
+  if !exists('*fugitive#head') | return '' | end
+
+  let branch = fugitive#head()
+  return branch !=# '' ? '⎇ ' . branch : ''
+endfunction
+
+function! LightlineCtrlPItem()
+  if !s:IsCtrlP() | return '' | end
+
+  " :help g:ctrlp_status_func
+  " g:lightline.ctrlp_regex: 0 - not regex mode, 1 - regex mode
+  call lightline#link('nR'[g:lightline.ctrlp_regex])
+  return g:lightline.ctrlp_item
+endfunction
+
+function! LightlineFilename()
+  if s:IsNerdTree() | return '' | end
+  if s:IsCtrlP() | return '' | end
+
+  let fname = expand('%:t')
+  return ('' != LightlineReadonly() ? LightlineReadonly() . ' ' : '') .
+        \ ('' != fname ? fname : '[No Name]') .
+        \ ('' != LightlineModified() ? ' ' . LightlineModified() : '')
+endfunction
+
+function! LightlineReadonly()
+  return &ft !~? 'help' && &ro ? '⭤' : ''
+endfunction
+
+function! LightlineModified()
+  return &ma && &mod ? '+' : ''
+endfunction
+
+function! LightlineCtrlPMark()
+  if !s:IsCtrlP() | return '' | end
+
+  let search_modes = [
+        \   g:lightline.ctrlp_prev,
+        \   g:lightline.ctrlp_item,
+        \   g:lightline.ctrlp_next
+        \ ]
+  return lightline#concatenate(search_modes, 0)
+endfunction
+
+function! LightlineFiletype()
+  if s:IsNotebookWindow() | return '' | end
+  if s:IsCtrlP() | return '' | end
+
+  return &ft != '' ? &ft : 'no ft'
+endfunction
+
+function! LightlineLineinfo()
+  if s:IsNarrowWindow() | return '' | end
+  if s:IsCtrlP() | return '' | end
+
+  return printf('%3d/%d☰ : %-2d', line('.'), line('$'), col('.'))
+endfunction
+
+function! s:IsNerdTree()
+  " g:lightline.ctrlp_item must be set in ctrlp configuration:
+  " has_key(g:lightline, 'ctrlp_item') must return 1
+  return expand('%:t') =~ 'NERD_tree'
+endfunction
+
+function! s:IsCtrlP()
+  " g:lightline.ctrlp_item must be set in ctrlp configuration:
+  " has_key(g:lightline, 'ctrlp_item') must return 1
+  return expand('%:t') == 'ControlP'
+endfunction
+
+function! s:IsNarrowWindow()
+  return winwidth(0) <= 60
+endfunction
+
+function! s:IsNotebookWindow()
+  return winwidth(0) <= 80
+endfunction
 
 "-------------------------------------------------------------------------------
 " nerdcommenter
@@ -273,8 +387,8 @@ let g:NERDTreeDirArrowCollapsible = '▾'
 " don't collaps dirs that have only one child
 let NERDTreeCascadeSingleChildDir = 0
 
-nmap <F1> :NERDTreeFind<CR>
-nmap <F2> :NERDTreeToggle<CR>
+nmap <silent> <F1> :NERDTreeFind<CR>
+nmap <silent> <F2> :NERDTreeToggle<CR>
 
 "-------------------------------------------------------------------------------
 " QFEnter
@@ -310,24 +424,27 @@ let g:SuperTabLongestHighlight = 1
 "-------------------------------------------------------------------------------
 
 " show syntastic errors in separate window
-nmap <silent> <Leader>e :Errors<CR>
+"nmap <silent> <Leader>e :Errors<CR>
 
 let g:syntastic_ruby_mri_exec = '~/.rbenv/shims/ruby'
 let g:syntastic_ruby_rubocop_exec = '~/.rbenv/shims/rubocop'
 
-" using rubocop checker on every buffer save might be very slow
-"let g:syntastic_ruby_checkers = ['mri', 'rubocop']
-
+" automatically run checkers for different filetypes
+" (they are run on every buffer save which might be very slow)
 let g:syntastic_coffee_checkers = []
+"let g:syntastic_ruby_checkers = ['mri', 'rubocop']
 let g:syntastic_ruby_checkers = []
 let g:syntastic_sass_checkers = []
 let g:syntastic_slim_checkers = []
 
-" ruby rubocop checker (gem install rubocop)
-nmap <silent> <Leader>r :SyntasticCheck ruby rubocop<CR>
+nmap <silent> <Leader>r :call <SID>MySyntasticCheck()<CR>
+
+function! s:MySyntasticCheck()
+  SyntasticCheck mri rubocop
+  call lightline#update()
+endfunction
 
 " http://vim.wikia.com/wiki/Simplifying_regular_expressions_using_magic_and_no-magic
-"
 " '\m^shadowing outer local variable'
 let g:syntastic_ruby_mri_quiet_messages = {
 \   'regex': [
@@ -336,55 +453,6 @@ let g:syntastic_ruby_mri_quiet_messages = {
 \     '\mambiguous first argument; put parentheses or a space even after `/'' operator'
 \   ]
 \ }
-
-"-------------------------------------------------------------------------------
-" vim-airline
-" http://joshldavis.com/2014/04/05/vim-tab-madness-buffers-vs-tabs
-"-------------------------------------------------------------------------------
-
-" always show airline
-set laststatus=2
-
-" NOTE: clicking on left_sep selects a tab to the left
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#show_tabs = 1
-let g:airline#extensions#tabline#show_tab_nr = 0
-let g:airline#extensions#tabline#show_tab_type = 0
-let g:airline#extensions#tabline#show_buffers = 0
-let g:airline#extensions#tabline#show_splits = 0
-let g:airline#extensions#tabline#show_close_button = 0
-let g:airline#extensions#tabline#fnamemod = ':t'
-let g:airline#extensions#tabline#left_sep = ' '
-let g:airline#extensions#tabline#left_alt_sep = ' '
-"let g:airline#extensions#tabline#left_sep = '⮀'
-"let g:airline#extensions#tabline#left_alt_sep = '⮁'
-"let g:airline#extensions#tabline#right_sep = '⮂'
-"let g:airline#extensions#tabline#right_alt_sep = '⮃'
-
-let g:airline_powerline_fonts = 0
-
-"let g:airline_theme = 'cool'
-"let g:airline_theme = 'sol'
-"let g:airline_theme = 'silver'
-let g:airline_theme = 'lucius'
-
-if !exists('g:airline_symbols')
-  let g:airline_symbols = {}
-endif
-
-let g:airline_left_sep = '⮀'
-let g:airline_left_alt_sep = '⮁'
-let g:airline_right_sep = '⮂'
-let g:airline_right_alt_sep = '⮃'
-let g:airline_symbols.branch = '⎇'
-let g:airline_symbols.crypt = '🔒'
-let g:airline_symbols.linenr = '␤'
-let g:airline_symbols.maxlinenr = '☰'
-let g:airline_symbols.notexists = '∄'
-let g:airline_symbols.paste = 'ρ'
-let g:airline_symbols.readonly = '⭤'
-let g:airline_symbols.spell = 'Ꞩ'
-let g:airline_symbols.whitespace = 'Ξ'
 
 "-------------------------------------------------------------------------------
 " vim-buffergator
@@ -519,28 +587,28 @@ nmap <Leader>v :AV<CR>
 
 " the first projection is for `set confirm` to work in app/ directory
 let g:rails_projections = {
-  \   'app/*.rb': {
-  \     'alternate': 'spec/{}_spec.rb'
-  \   },
-  \   'app/admin/*.rb': {
-  \     'alternate': 'spec/controllers/admin/{}_controller_spec.rb'
-  \   },
-  \   'spec/controllers/admin/*_controller_spec.rb': {
-  \     'alternate': 'app/admin/{}.rb'
-  \   },
-  \   'lib/*.rb': {
-  \     'alternate': 'spec/{}_spec.rb'
-  \   },
-  \   'spec/*_spec.rb': {
-  \     'alternate': 'lib/{}.rb'
-  \   },
-  \   'config/locales/*ru.yml': {
-  \     'alternate': 'config/locales/{}en.yml'
-  \   },
-  \   'config/locales/*en.yml': {
-  \     'alternate': 'config/locales/{}ru.yml'
-  \   }
-  \ }
+\   'app/*.rb': {
+\     'alternate': 'spec/{}_spec.rb'
+\   },
+\   'app/admin/*.rb': {
+\     'alternate': 'spec/controllers/admin/{}_controller_spec.rb'
+\   },
+\   'spec/controllers/admin/*_controller_spec.rb': {
+\     'alternate': 'app/admin/{}.rb'
+\   },
+\   'lib/*.rb': {
+\     'alternate': 'spec/{}_spec.rb'
+\   },
+\   'spec/*_spec.rb': {
+\     'alternate': 'lib/{}.rb'
+\   },
+\   'config/locales/*ru.yml': {
+\     'alternate': 'config/locales/{}en.yml'
+\   },
+\   'config/locales/*en.yml': {
+\     'alternate': 'config/locales/{}ru.yml'
+\   }
+\ }
 
 "-------------------------------------------------------------------------------
 " vim-session

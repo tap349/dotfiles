@@ -145,8 +145,7 @@ nnoremap <silent> <C-Backspace> :nohlsearch<Bar>:echo<CR>
 " sourcing configuration files
 "-------------------------------------------------------------------------------
 
-" see comments above about AirlineRefresh
-nnoremap <Leader>.v :source $MYVIMRC<CR>:AirlineRefresh<CR>
+nnoremap <Leader>.v :source $MYVIMRC<CR>
 
 "-------------------------------------------------------------------------------
 " suppress unwanted keys (set to noop)

@@ -267,7 +267,7 @@ set showcmd
 set showtabline=2
 
 " show line numbering
-if hostname() == 'MacBook-Pro-Personal.local'
+if winwidth(0) < 160
   set nonumber
 else
   set number
@@ -279,9 +279,11 @@ endif
 
 set shortmess+=I
 
-" https://rvm.io/integration/vim
-" https://github.com/scrooloose/syntastic/issues/1407
-set shell=/bin/zsh
+" /usr/local/bin/zsh - homebrew zsh (use it)
+" /bin/zsh - pre-installed zsh
+"
+" both zshs work with syntastic
+set shell=/usr/local/bin/zsh
 " http://stackoverflow.com/a/4642855/3632318
 " (see last comment - using interactive shell can create problems)
 "set shellcmdflag=-ic
