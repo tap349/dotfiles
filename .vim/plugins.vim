@@ -227,6 +227,15 @@ let g:lightline.winwidth = 200
 let g:lightline.separator = { 'left': '⮀', 'right': '⮂' }
 let g:lightline.subseparator = { 'left': '⮁', 'right': '⮃' }
 
+let g:lightline.mode_map = {
+      \ 'n' : 'N',
+      \ 'i' : 'I',
+      \ 'R' : 'R',
+      \ 'v' : 'V',
+      \ 'V' : 'VL',
+      \ "\<C-v>": 'VB'
+      \ }
+
 let g:lightline.active = {
 \   'left': [['mode'], ['fugitive', 'ctrlpitem'], ['filename']],
 \   'right': [['syntastic', 'lineinfo'], ['filetype']]
@@ -277,14 +286,13 @@ let g:lightline.component_type = {
 " &ro = &readonly
 
 function! LightlineMode()
-  if s:IsNotebookWindow() | return '' | end
-
   return s:IsNerdTree() ? 'NERD' :
         \ s:IsCtrlP() ? 'CtrlP' :
         \ s:IsNarrowWindow() ? '' : lightline#mode()
 endfunction
 
 function! LightlineFugitive()
+  if s:IsNotebookWindow() | return '' | end
   if s:IsNarrowWindow() | return '' | end
   if !exists('*fugitive#head') | return '' | end
 
@@ -361,7 +369,7 @@ function! s:IsNarrowWindow()
 endfunction
 
 function! s:IsNotebookWindow()
-  return winwidth(0) <= 80
+  return winwidth(0) <= 90
 endfunction
 
 "-------------------------------------------------------------------------------
