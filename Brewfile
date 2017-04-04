@@ -111,6 +111,7 @@ cask 'flux'
 #     + Google Docs Offline (installed by default)
 #     + Google Sheets (installed by default)
 #     - Google Slides (installed by default)
+#     + GoUniverse
 #     + JSON Formatter (Hide in Chrome Menu)
 #     + Noisli
 #     - Proxy SwitchyOmega (configure proxy per site)
