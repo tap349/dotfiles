@@ -229,14 +229,15 @@ let g:lightline.winwidth = 200
 let g:lightline.separator = { 'left': '', 'right': '⮂' }
 let g:lightline.subseparator = { 'left': '', 'right': '⮃' }
 
-" or else use letters: N, I, R, V, VL, VB
+" or else use letters: N, I, R, V, VL, VB, C
 let g:lightline.mode_map = {
-      \ 'n' : ' ',
-      \ 'i' : ' ',
-      \ 'R' : ' ',
-      \ 'v' : ' ',
-      \ 'V' : ' ',
-      \ "\<C-v>": ' '
+      \ 'n' : 'NORMAL',
+      \ 'i' : 'INSERT',
+      \ 'R' : 'REPLACE',
+      \ 'v' : 'VISUAL',
+      \ 'V' : 'V-LINE',
+      \ "\<C-v>": 'V-BLOCK',
+      \ 'c' : 'COMMAND'
       \ }
 
 let g:lightline.active = {

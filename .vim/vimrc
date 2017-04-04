@@ -266,7 +266,7 @@ set showcmd
 " always show tabbar
 set showtabline=2
 
-" show line numbering
+" don't show line numbers on macbook
 if winwidth(0) < 160
   set nonumber
 else
