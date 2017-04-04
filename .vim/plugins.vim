@@ -224,8 +224,10 @@ let g:lightline.winwidth = 200
 
 " statusline
 
-let g:lightline.separator = { 'left': '⮀', 'right': '⮂' }
-let g:lightline.subseparator = { 'left': '⮁', 'right': '⮃' }
+"let g:lightline.separator = { 'left': '⮀', 'right': '⮂' }
+"let g:lightline.subseparator = { 'left': '⮁', 'right': '⮃' }
+let g:lightline.separator = { 'left': '', 'right': '' }
+let g:lightline.subseparator = { 'left': '', 'right': '' }
 
 let g:lightline.mode_map = {
       \ 'n' : 'N',
