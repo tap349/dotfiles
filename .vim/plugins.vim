@@ -226,16 +226,17 @@ let g:lightline.winwidth = 200
 
 "let g:lightline.separator = { 'left': '⮀', 'right': '⮂' }
 "let g:lightline.subseparator = { 'left': '⮁', 'right': '⮃' }
-let g:lightline.separator = { 'left': '', 'right': '' }
-let g:lightline.subseparator = { 'left': '', 'right': '' }
+let g:lightline.separator = { 'left': '', 'right': '⮂' }
+let g:lightline.subseparator = { 'left': '', 'right': '⮃' }
 
+" or else use letters: N, I, R, V, VL, VB
 let g:lightline.mode_map = {
-      \ 'n' : 'N',
-      \ 'i' : 'I',
-      \ 'R' : 'R',
-      \ 'v' : 'V',
-      \ 'V' : 'VL',
-      \ "\<C-v>": 'VB'
+      \ 'n' : ' ',
+      \ 'i' : ' ',
+      \ 'R' : ' ',
+      \ 'v' : ' ',
+      \ 'V' : ' ',
+      \ "\<C-v>": ' '
       \ }
 
 let g:lightline.active = {
