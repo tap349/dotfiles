@@ -10,10 +10,8 @@ cask_args appdir: '/Applications'
 # `brew rmtree mpv`
 tap 'beeftornado/rmtree'
 tap 'caskroom/cask'
-tap 'caskroom/versions'
 tap 'homebrew/bundle'
 tap 'homebrew/services'
-tap 'homebrew/versions'
 
 #brew 'chromedriver'
 #brew 'djview4'
@@ -46,10 +44,8 @@ brew 'mpv'
 brew 'nodejs'
 brew 'p7zip'
 brew 'phantomjs'
-# postgresql always points to the latest version (9.6 as of now) -
-# make sure 'caskroom/versions' formula repository is tapped in
-# order to be able to install specific formula version
-brew 'postgresql95', restart_service: :changed
+# https://github.com/Homebrew/brew/blob/master/docs/Versions.md
+brew 'postgresql@9.5', restart_service: :changed
 # - it's much easier to install pow manually:
 #   `curl get.pow.cx | sh`
 # - create symlinks for all required projects:
