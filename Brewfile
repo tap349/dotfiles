@@ -16,6 +16,8 @@ tap 'homebrew/services'
 #brew 'chromedriver'
 #brew 'djview4'
 
+# run `aws configure` after installation
+brew 'awscli'
 brew 'elixir'
 # required by ~/scripts/fontpatcher
 brew 'fontforge'
