@@ -16,7 +16,6 @@ tap 'homebrew/services'
 #brew 'chromedriver'
 #brew 'djview4'
 
-brew 'docker'
 brew 'elixir'
 # required by ~/scripts/fontpatcher
 brew 'fontforge'
@@ -73,6 +72,9 @@ brew 'zsh'
 
 cask 'calibre'
 cask 'chefdk'
+# run docker app after installation
+# (otherwise docker command might be not available)
+cask 'docker'
 # - system preferences:
 #   - Users & Groups -> Login Items (hide): add
 # - app preferences:
