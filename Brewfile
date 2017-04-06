@@ -16,6 +16,7 @@ tap 'homebrew/services'
 #brew 'chromedriver'
 #brew 'djview4'
 
+brew 'docker'
 brew 'elixir'
 # required by ~/scripts/fontpatcher
 brew 'fontforge'
