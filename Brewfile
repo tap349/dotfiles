@@ -75,7 +75,7 @@ brew 'zsh'
 cask 'calibre'
 cask 'chefdk'
 # run docker app after installation
-# (otherwise docker command might be not available in terminal)
+# (otherwise `docker` command might be not available in terminal)
 cask 'docker'
 # - system preferences:
 #   - Users & Groups -> Login Items (hide): add
