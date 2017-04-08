@@ -317,7 +317,7 @@ function! LightlineFilename()
   if s:IsNerdTree() | return '' | end
   if s:IsCtrlP() | return '' | end
 
-  let fname = expand('%:t')
+  let fname = s:IsNotebookWindow() ? expand('%:t') : expand('%')
   return ('' != LightlineReadonly() ? LightlineReadonly() . ' ' : '') .
         \ ('' != fname ? fname : '[No Name]') .
         \ ('' != LightlineModified() ? ' ' . LightlineModified() : '')
