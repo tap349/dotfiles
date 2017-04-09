@@ -13,19 +13,6 @@ augroup backup
   autocmd BufWritePre * call s:SetBackupDir()
 augroup END
 
-augroup filetypes
-  autocmd!
-  autocmd BufRead,BufNewFile *.arb,*.jb setlocal filetype=ruby
-  " using rspec filetype for specs doesn't change highlighting
-  " at all but prevents rubocop checker from running on them
-  "autocmd BufRead,BufNewFile *_spec.rb set filetype=rspec
-augroup END
-
-augroup filetype_mappings
-  autocmd!
-  autocmd FileType markdown nmap <buffer> <LocalLeader>p :!publish<CR>
-augroup END
-
 let s:prevtabnr = tabpagenr()
 let s:prevtabcount = tabpagenr('$')
 augroup tabs
