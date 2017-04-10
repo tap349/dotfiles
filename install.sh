@@ -17,6 +17,7 @@ files=(
   .gitconfig
   .gitignore
   .iex.exs
+  .irbrc
   .powconfig
   .pryrc
   .zlogin
