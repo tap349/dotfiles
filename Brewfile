@@ -72,6 +72,7 @@ brew 'wget'
 #   - https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/INSTALL.md#oh-my-zsh
 brew 'zsh'
 
+cask 'applepi-baker'
 cask 'calibre'
 cask 'chefdk'
 # run docker app after installation
