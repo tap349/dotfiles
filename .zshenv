@@ -30,6 +30,10 @@ HISTFILESIZE=200000
 setopt HIST_IGNORE_DUPS
 
 BLOG=~/blog
+DOTFILES=~/.dotfiles
+DOWNLOADS=~/Dowloads
+
+# projects
 
 CHEF=~/dev/chef/zero
 CHEF_REENTER=~/dev/chef-reenter
@@ -43,6 +47,11 @@ SHIKIMORI=~/dev/shikimori
 UMKA=~/dev/umka
 UPTIMUS=~/dev/uptimus
 
+# mount points
+
+HOME=/Volumes/home
+PI=/Volumes/pi
+
 #-------------------------------------------------------------------------------
 #
 # aliases
@@ -54,8 +63,8 @@ UPTIMUS=~/dev/uptimus
 #-------------------------------------------------------------------------------
 
 alias blog='cd $BLOG'
-alias dl='cd ~/Downloads'
-alias dot='cd ~/.dotfiles'
+alias dot='cd $DOTFILES'
+alias dl='cd $DOWNLOADS'
 
 alias c='cd $CHEF'
 alias cr='cd $CHEF_REENTER'
@@ -67,6 +76,9 @@ alias p='cd $PUMBA'
 alias s='cd $SHIKIMORI'
 alias um='cd $UMKA'
 alias up='cd $UPTIMUS'
+
+alias home='cd $HOME'
+alias pi='cd $PI'
 
 #-------------------------------------------------------------------------------
 # system
