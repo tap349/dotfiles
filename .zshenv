@@ -31,7 +31,7 @@ setopt HIST_IGNORE_DUPS
 
 BLOG=~/blog
 DOTFILES=~/.dotfiles
-DOWNLOADS=~/Dowloads
+DOWNLOADS=~/Downloads
 
 # projects
 
@@ -49,7 +49,7 @@ UPTIMUS=~/dev/uptimus
 
 # mount points
 
-HOME=/Volumes/home
+opr7=/Volumes/opr7
 PI=/Volumes/pi
 
 #-------------------------------------------------------------------------------
@@ -77,7 +77,7 @@ alias s='cd $SHIKIMORI'
 alias um='cd $UMKA'
 alias up='cd $UPTIMUS'
 
-alias home='cd $HOME'
+alias opr7='cd $OPR7'
 alias pi='cd $PI'
 
 #-------------------------------------------------------------------------------
