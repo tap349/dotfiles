@@ -2,3 +2,5 @@
 .vim/plugged/
 .vim/tags/
 .vim/tmp/
+
+.vim/autoload/plug.vim.old

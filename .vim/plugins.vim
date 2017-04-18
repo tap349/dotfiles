@@ -435,11 +435,18 @@ let g:SuperTabLongestHighlight = 1
 " syntastic
 "-------------------------------------------------------------------------------
 
+" turn on debugging (logs to vim messages)
+"let let g:syntastic_debug = 1
+
 " show syntastic errors in separate window
 "nmap <silent> <Leader>e :Errors<CR>
 
 let g:syntastic_ruby_mri_exec = '~/.rbenv/shims/ruby'
 let g:syntastic_ruby_rubocop_exec = '~/.rbenv/shims/rubocop'
+
+" profile is defined in cucumber.yml
+" uncomment in case you need special options for syntastic
+"let g:syntastic_cucumber_cucumber_args='--profile syntastic'
 
 " automatically run checkers for different filetypes
 " (they are run on every buffer save which might be very slow)
