@@ -267,9 +267,10 @@ set showcmd
 " always show tabbar
 set showtabline=2
 
-" winwidth(0) is the width of last closed mvim window
+" winwidth(0) here is the width of last closed mvim window
 " (when there were no other running mvim instances) -
-" it's somehow persisted when mvim app is closed
+" it's somehow persisted when mvim app is closed.
+" real winwidth(0) is set only after vimrc is sourced.
 "
 " don't show line numbers on macbook
 if winwidth(0) < 160

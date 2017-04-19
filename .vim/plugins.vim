@@ -42,6 +42,7 @@ Plug 'flazz/vim-colorschemes'
 Plug 'itchyny/lightline.vim' | Plug 'tpope/vim-fugitive'
 Plug 'jeetsukumaran/vim-buffergator'
 Plug 'ludovicchabant/vim-gutentags'
+Plug 'majutsushi/tagbar'
 Plug 'mhinz/vim-hugefile'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
@@ -72,9 +73,12 @@ call plug#end()
 " ag.vim
 "
 " I use my fork: https://github.com/tap349/ag.vim
-" (removed all default keybindings and use QFEnter keybindings instead)
+" (removed all default keybindings and used QFEnter keybindings instead)
 "-------------------------------------------------------------------------------
 
+"let g:ag_highlight = 1
+" don't show help on ag.vim keys (it's not up-to-date now)
+let g:ag_mapping_message = 0
 " ignore the same directories as in wildignore:
 " ~/.agignore ignore file is used by default or else
 " it can be specified with `--path-to-ignore` ag option
@@ -224,30 +228,32 @@ let g:lightline.winwidth = 200
 
 " statusline
 
+
+" https://github.com/itchyny/lightline.vim/issues/223
+" it's not possible to hide right arrow separators for NerdTree
+" when component returns empty string
 let g:lightline.separator = { 'left': '⮀', 'right': '⮂' }
 let g:lightline.subseparator = { 'left': '⮁', 'right': '⮃' }
-"let g:lightline.separator = { 'left': '', 'right': '⮂' }
-"let g:lightline.subseparator = { 'left': '', 'right': '⮃' }
 
 " or else use letters: N, I, R, V, VL, VB, C
 let g:lightline.mode_map = {
-      \ 'n' : 'NORMAL',
-      \ 'i' : 'INSERT',
-      \ 'R' : 'REPLACE',
-      \ 'v' : 'VISUAL',
-      \ 'V' : 'V-LINE',
-      \ "\<C-v>": 'V-BLOCK',
-      \ 'c' : 'COMMAND'
+      \   'n' : 'NORMAL',
+      \   'i' : 'INSERT',
+      \   'R' : 'REPLACE',
+      \   'v' : 'VISUAL',
+      \   'V' : 'V-LINE',
+      \   "\<C-v>": 'V-BLOCK',
+      \   'c' : 'COMMAND'
       \ }
 
 let g:lightline.active = {
-\   'left': [['mode'], ['fugitive', 'ctrlpitem'], ['filename']],
-\   'right': [['syntastic', 'lineinfo'], ['filetype']]
-\ }
+      \   'left': [['mode'], ['fugitive', 'ctrlpitem'], ['filename']],
+      \   'right': [['syntastic', 'lineinfo'], ['filetype']]
+      \ }
 let g:lightline.inactive = {
-\   'left': [['filename']],
-\   'right': [['syntastic', 'lineinfo'], ['filetype']]
-\ }
+      \   'left': [['filename']],
+      \   'right': [['lineinfo'], ['filetype']]
+      \ }
 
 " tabline
 
@@ -255,9 +261,9 @@ let g:lightline.tabline = { 'left': [['tabs']], 'right': [] }
 let g:lightline.tabline_separator = { 'left': '', 'right': '' }
 let g:lightline.tabline_subseparator = { 'left': '', 'right': '' }
 let g:lightline.tab = {
-\   'active': ['filename', 'modified'],
-\   'inactive': ['filename', 'modified']
-\ }
+      \   'active': ['filename', 'modified'],
+      \   'inactive': ['filename', 'modified']
+      \ }
 
 " components
 
@@ -292,12 +298,15 @@ let g:lightline.component_type = {
 function! LightlineMode()
   return s:IsNerdTree() ? 'NERD' :
         \ s:IsCtrlP() ? 'CtrlP' :
+        \ s:IsTagbar() ? 'Tagbar' :
         \ s:IsNarrowWindow() ? '' : lightline#mode()
 endfunction
 
 function! LightlineFugitive()
   if s:IsNotebookWindow() | return '' | end
   if s:IsNarrowWindow() | return '' | end
+  if s:IsPluginWindow() | return '' | end
+
   if !exists('*fugitive#head') | return '' | end
 
   let branch = fugitive#head()
@@ -313,9 +322,10 @@ function! LightlineCtrlPItem()
   return g:lightline.ctrlp_item
 endfunction
 
+" https://github.com/vim-airline/vim-airline/blob/master/autoload/airline/extensions/quickfix.vim
 function! LightlineFilename()
-  if s:IsNerdTree() | return '' | end
-  if s:IsCtrlP() | return '' | end
+  if s:IsPluginWindow() | return '' | end
+  if s:IsQuickfix() | return w:quickfix_title | end
 
   let fname = s:IsNotebookWindow() ? expand('%:t') : expand('%')
   return ('' != LightlineReadonly() ? LightlineReadonly() . ' ' : '') .
@@ -324,7 +334,10 @@ function! LightlineFilename()
 endfunction
 
 function! LightlineReadonly()
-  return &ft !~? 'help' && &ro ? '⭤' : ''
+  if s:IsHelp() | return '' | end
+  if &ro | return '⭤' | end
+
+  return ''
 endfunction
 
 function! LightlineModified()
@@ -344,21 +357,35 @@ endfunction
 
 function! LightlineFiletype()
   if s:IsNotebookWindow() | return '' | end
-  if s:IsCtrlP() | return '' | end
+  if s:IsPluginWindow() | return '' | end
 
   return &ft != '' ? &ft : 'no ft'
 endfunction
 
 function! LightlineLineinfo()
   if s:IsNarrowWindow() | return '' | end
-  if s:IsCtrlP() | return '' | end
+  if s:IsPluginWindow() | return '' | end
 
   return printf('%3d/%d☰ : %-2d', line('.'), line('$'), col('.'))
 endfunction
 
+function! s:IsNarrowWindow()
+  return winwidth(0) <= 60
+endfunction
+
+function! s:IsNotebookWindow()
+  return winwidth(0) <= 90
+endfunction
+
+function! s:IsPluginWindow()
+  if s:IsNerdTree() | return 1 | end
+  if s:IsCtrlP() | return 1 | end
+  if s:IsTagbar() | return 1 | end
+
+  return 0
+endfunction
+
 function! s:IsNerdTree()
-  " g:lightline.ctrlp_item must be set in ctrlp configuration:
-  " has_key(g:lightline, 'ctrlp_item') must return 1
   return expand('%:t') =~ 'NERD_tree'
 endfunction
 
@@ -368,12 +395,16 @@ function! s:IsCtrlP()
   return expand('%:t') == 'ControlP'
 endfunction
 
-function! s:IsNarrowWindow()
-  return winwidth(0) <= 60
+function! s:IsTagbar()
+  return expand('%:t') =~ 'Tagbar'
 endfunction
 
-function! s:IsNotebookWindow()
-  return winwidth(0) <= 90
+function! s:IsHelp()
+  return &ft =~? 'help'
+endfunction
+
+function! s:IsQuickfix()
+  return &ft == 'qf'
 endfunction
 
 "-------------------------------------------------------------------------------
@@ -399,7 +430,7 @@ let g:NERDTreeDirArrowCollapsible = '▾'
 " don't collaps dirs that have only one child
 let NERDTreeCascadeSingleChildDir = 0
 
-nmap <silent> <F1> :NERDTreeFind<CR>
+nmap <silent> <Leader>n :NERDTreeFind<CR>
 nmap <silent> <F2> :NERDTreeToggle<CR>
 
 "-------------------------------------------------------------------------------
@@ -438,9 +469,6 @@ let g:SuperTabLongestHighlight = 1
 " turn on debugging (logs to vim messages)
 "let let g:syntastic_debug = 1
 
-" show syntastic errors in separate window
-"nmap <silent> <Leader>e :Errors<CR>
-
 let g:syntastic_ruby_mri_exec = '~/.rbenv/shims/ruby'
 let g:syntastic_ruby_rubocop_exec = '~/.rbenv/shims/rubocop'
 
@@ -456,6 +484,19 @@ let g:syntastic_ruby_checkers = []
 let g:syntastic_sass_checkers = []
 let g:syntastic_slim_checkers = []
 
+" http://vim.wikia.com/wiki/Simplifying_regular_expressions_using_magic_and_no-magic
+" '\m^shadowing outer local variable'
+let g:syntastic_ruby_mri_quiet_messages = {
+      \   'regex': [
+      \     '\m`&'' interpreted as argument prefix',
+      \     '\m`*'' interpreted as argument prefix',
+      \     '\mambiguous first argument; put parentheses or a space even after `/'' operator'
+      \   ]
+      \ }
+
+" show syntastic errors in separate window
+"nmap <silent> <Leader>e :Errors<CR>
+
 nmap <silent> <Leader>r :call <SID>MySyntasticCheck()<CR>
 
 function! s:MySyntasticCheck()
@@ -463,15 +504,24 @@ function! s:MySyntasticCheck()
   call lightline#update()
 endfunction
 
-" http://vim.wikia.com/wiki/Simplifying_regular_expressions_using_magic_and_no-magic
-" '\m^shadowing outer local variable'
-let g:syntastic_ruby_mri_quiet_messages = {
-\   'regex': [
-\     '\m`&'' interpreted as argument prefix',
-\     '\m`*'' interpreted as argument prefix',
-\     '\mambiguous first argument; put parentheses or a space even after `/'' operator'
-\   ]
-\ }
+"-------------------------------------------------------------------------------
+" tagbar
+"-------------------------------------------------------------------------------
+
+let g:tagbar_autofocus = 1
+let g:tagbar_compact = 0
+let g:tagbar_iconchars = ['▸', '▾']
+let g:tagbar_silent = 1
+let g:tagbar_sort = 0
+let g:tagbar_width = 50
+
+let g:tagbar_status_func = 'TagbarStatusFunc'
+
+function! TagbarStatusFunc(current, sort, fname, ...) abort
+  return lightline#statusline(!a:current)
+endfunction
+
+nmap <silent> <Leader>t :TagbarToggle<CR>
 
 "-------------------------------------------------------------------------------
 " vim-buffergator
@@ -496,9 +546,11 @@ let g:EasyMotion_enter_jump_first = 1
 " https://github.com/easymotion/vim-easymotion#default-bindings
 map <Leader> <Plug>(easymotion-prefix)
 
-"nmap <Leader>s <Plug>(easymotion-s2)
-nmap <Leader>f <Plug>(easymotion-f)
-nmap <Leader>F <Plug>(easymotion-F)
+" these are defaults:
+"nmap <Leader>f <Plug>(easymotion-f)
+"nmap <Leader>t <Plug>(easymotion-f)
+"nmap <Leader>F <Plug>(easymotion-F)
+
 nmap <Leader>w <Plug>(easymotion-bd-w)
 
 "-------------------------------------------------------------------------------
@@ -601,9 +653,6 @@ let g:vim_markdown_frontmatter = 1
 " https://github.com/tpope/vim-rails/issues/443
 set confirm
 
-nmap <Leader>, :A<CR>
-nmap <Leader>v :AV<CR>
-
 " the first projection is for `set confirm` to work in app/ directory
 let g:rails_projections = {
 \   'app/*.rb': {
@@ -628,6 +677,9 @@ let g:rails_projections = {
 \     'alternate': 'config/locales/{}ru.yml'
 \   }
 \ }
+
+nmap <Leader>, :A<CR>
+nmap <Leader>v :AV<CR>
 
 "-------------------------------------------------------------------------------
 " vim-session

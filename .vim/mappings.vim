@@ -153,6 +153,7 @@ nnoremap <Leader>.v :source $MYVIMRC<CR>
 
 nnoremap Q <nop>
 nnoremap K <nop>
+nnoremap <F1> <nop>
 
 "-------------------------------------------------------------------------------
 " yanking
