@@ -24,6 +24,7 @@ Plug 'vim-ruby/vim-ruby'
 
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'jasoncodes/ctrlp-modified.vim'
+Plug 'nixprime/cpsm'
 
 " git
 
@@ -122,6 +123,12 @@ map <silent> b <Plug>CamelCaseMotion_b
 "let g:CommandTAcceptSelectionTabCommand = 'GotoOrOpenTab'
 
 "-------------------------------------------------------------------------------
+" cpsm
+"-------------------------------------------------------------------------------
+
+let g:cpsm_match_empty_query = 0
+
+"-------------------------------------------------------------------------------
 " ctrlp.vim
 "-------------------------------------------------------------------------------
 
@@ -129,6 +136,7 @@ map <silent> b <Plug>CamelCaseMotion_b
 " at the end of last line in match window
 let g:ctrlp_lazy_update = 5
 let g:ctrlp_map = '<Leader>s'
+let g:ctrlp_match_func = { 'match': 'cpsm#CtrlPMatch' }
 let g:ctrlp_match_window = 'bottom,order:ttb,max:15'
 let g:ctrlp_mruf_relative = 1
 let g:ctrlp_root_markers = ['mix.exs']

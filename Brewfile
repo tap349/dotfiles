@@ -18,6 +18,10 @@ tap 'homebrew/services'
 
 # run `aws configure` after installation
 brew 'awscli'
+# for cpsm vim plugin
+brew 'cmake'
+# for cpsm vim plugin
+brew 'boost'
 brew 'elixir'
 # required by ~/scripts/fontpatcher
 brew 'fontforge'
