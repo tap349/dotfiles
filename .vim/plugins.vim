@@ -24,6 +24,7 @@ Plug 'vim-ruby/vim-ruby'
 
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'jasoncodes/ctrlp-modified.vim'
+" https://www.reddit.com/r/vim/comments/38m0g7/cpsm_a_ctrlp_matcher/
 Plug 'nixprime/cpsm'
 
 " git
@@ -51,6 +52,9 @@ Plug 'scrooloose/syntastic'
 Plug 'tap349/ag.vim'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-rails'
+" commands :A, etc. for ruby non-rails applications,
+" also adds lib/ to vim path (same as `set path+=lib`)
+Plug 'tpope/vim-rake' | Plug 'tpope/vim-projectionist'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'xolox/vim-misc'
