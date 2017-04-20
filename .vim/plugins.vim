@@ -430,8 +430,8 @@ let g:NERDTreeDirArrowCollapsible = '▾'
 " don't collaps dirs that have only one child
 let NERDTreeCascadeSingleChildDir = 0
 
-nmap <silent> <Leader>n :NERDTreeFind<CR>
 nmap <silent> <F2> :NERDTreeToggle<CR>
+nmap <silent> <Leader>n :NERDTreeFind<CR>
 
 "-------------------------------------------------------------------------------
 " QFEnter
@@ -521,7 +521,8 @@ function! TagbarStatusFunc(current, sort, fname, ...) abort
   return lightline#statusline(!a:current)
 endfunction
 
-nmap <silent> <Leader>t :TagbarToggle<CR>
+nmap <silent> <F3> :TagbarToggle<CR>
+nmap <silent> <Leader>t :TagbarOpen fj<CR>
 
 "-------------------------------------------------------------------------------
 " vim-buffergator
