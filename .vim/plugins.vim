@@ -52,6 +52,7 @@ Plug 'scrooloose/syntastic'
 Plug 'tap349/ag.vim'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-rails'
+" https://github.com/vim-ruby/vim-ruby/issues/32
 " commands :A, etc. for ruby non-rails applications,
 " also adds lib/ to vim path (same as `set path+=lib`)
 Plug 'tpope/vim-rake' | Plug 'tpope/vim-projectionist'
@@ -140,7 +141,7 @@ let g:cpsm_match_empty_query = 0
 " at the end of last line in match window
 let g:ctrlp_lazy_update = 5
 let g:ctrlp_map = '<Leader>s'
-let g:ctrlp_match_func = { 'match': 'cpsm#CtrlPMatch' }
+"let g:ctrlp_match_func = { 'match': 'cpsm#CtrlPMatch' }
 let g:ctrlp_match_window = 'bottom,order:ttb,max:15'
 let g:ctrlp_mruf_relative = 1
 let g:ctrlp_root_markers = ['mix.exs']
@@ -426,6 +427,7 @@ endfunction
 " http://vim.1045645.n5.nabble.com/mapping-control-0-1-or-backtick-td1189910.html
 "-------------------------------------------------------------------------------
 
+let g:NERDCreateDefaultMappings = 0
 let g:NERDSpaceDelims = 0
 let g:NERDDefaultAlign = 'left'
 
@@ -488,13 +490,22 @@ let g:syntastic_ruby_rubocop_exec = '~/.rbenv/shims/rubocop'
 " uncomment in case you need special options for syntastic
 "let g:syntastic_cucumber_cucumber_args='--profile syntastic'
 
-" automatically run checkers for different filetypes
-" (they are run on every buffer save which might be very slow)
-let g:syntastic_coffee_checkers = []
-"let g:syntastic_ruby_checkers = ['mri', 'rubocop']
-let g:syntastic_ruby_checkers = []
-let g:syntastic_sass_checkers = []
-let g:syntastic_slim_checkers = []
+" define available checkers for filetypes
+" (by default more checkers might be available).
+" all available checkers for all filetypes are listed in
+" http://github.com/vim-syntastic/syntastic/blob/master/doc/syntastic-checkers.txt
+"
+" if this array is empty for some filetype then for that filetype:
+" - no checkers are run automatically in active mode
+" - no checkers are run when calling SyntasticCheck without arguments
+" - checkers can be run by passing explicitly them to SyntasticCheck only
+"
+" if this array is not empty for some filetype then for that filetype:
+" - only specified checkers are run in active mode
+" - only specified are run when calling SyntasticCheck without arguments
+" - when passing checkers explicitly to SyntasticCheck checkers in this
+"   array are ignored
+let g:syntastic_ruby_checkers = ['mri', 'rubocop']
 
 " http://vim.wikia.com/wiki/Simplifying_regular_expressions_using_magic_and_no-magic
 " '\m^shadowing outer local variable'
@@ -506,13 +517,23 @@ let g:syntastic_ruby_mri_quiet_messages = {
       \   ]
       \ }
 
+" disable automatic checking for all types
+" (exceptions can be listed in active_filetypes array)
+let g:syntastic_mode_map = {
+      \   'mode': 'passive',
+      \   'active_filetypes': [],
+      \   'passive_filetypes': []
+      \ }
+
 " show syntastic errors in separate window
 "nmap <silent> <Leader>e :Errors<CR>
+nmap <silent> <Leader>c :call <SID>MySyntasticCheck()<CR>
 
-nmap <silent> <Leader>r :call <SID>MySyntasticCheck()<CR>
-
+" run all checkers from g:syntastic_<filetype>_checkers for
+" current filetype unless checkers are passed explicitly as
+" arguments to SyntasticCheck
 function! s:MySyntasticCheck()
-  SyntasticCheck mri rubocop
+  SyntasticCheck
   call lightline#update()
 endfunction
 

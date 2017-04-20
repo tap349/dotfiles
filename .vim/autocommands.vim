@@ -33,8 +33,11 @@ augroup END
 
 augroup my_lightline
   autocmd!
-  " to remove syntastic message after save if there are no more errors
-  autocmd BufWritePost *.rb,*.arb,*.jb call lightline#update()
+  " to remove syntastic message in statusline after save if
+  " there are no errors left
+  " (for this to work active mode must be enabled in syntastic -
+  " currently passive mode is enabled)
+  "autocmd BufWritePost *.rb,*.feature call lightline#update()
 augroup END
 
 " used to disable <CR> in quickfix window - now it's
