@@ -534,7 +534,6 @@ let g:buffergator_suppress_keymaps = 1
 "let g:buffergator_viewport_split_policy = 'R'
 "let g:buffergator_vsplit_size = 60
 
-nmap <F3> :BuffergatorToggle<CR>
 nmap <silent> <C-p> :BuffergatorMruCyclePrev<CR>
 nmap <silent> <C-n> :BuffergatorMruCycleNext<CR>
 
