@@ -40,6 +40,7 @@ Plug 'bkad/CamelCaseMotion'
 Plug 'c-brenn/phoenix.vim' | Plug 'tpope/vim-projectionist'
 Plug 'easymotion/vim-easymotion'
 Plug 'ervandew/supertab'
+Plug 'godlygeek/tabular'
 Plug 'flazz/vim-colorschemes'
 Plug 'itchyny/lightline.vim' | Plug 'tpope/vim-fugitive'
 Plug 'jeetsukumaran/vim-buffergator'
@@ -442,7 +443,9 @@ let g:NERDTreeDirArrowExpandable = '▸'
 let g:NERDTreeDirArrowCollapsible = '▾'
 
 " don't collaps dirs that have only one child
-let NERDTreeCascadeSingleChildDir = 0
+let g:NERDTreeCascadeSingleChildDir = 0
+
+let g:NERDTreeWinSize = 40
 
 nmap <silent> <F2> :NERDTreeToggle<CR>
 nmap <silent> <Leader>n :NERDTreeFind<CR>
@@ -536,6 +539,12 @@ function! s:MySyntasticCheck()
   SyntasticCheck
   call lightline#update()
 endfunction
+
+"-------------------------------------------------------------------------------
+" tabular
+"-------------------------------------------------------------------------------
+
+" see mappings for specific filetypes in ~/.vim/after/ftplugin
 
 "-------------------------------------------------------------------------------
 " tagbar
