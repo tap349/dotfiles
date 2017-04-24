@@ -170,6 +170,9 @@ cask 'utorrent'
 # - app preferences:
 #   - General:
 #     - Quick Entry: <C-S-a>
+#   - Appearance:
+#     - Font Size: Big
+#     - [ ] Show notes under tasks
 #   - Sync:
 #     - Setup:
 #       - Link Dropbox Account
