@@ -49,7 +49,7 @@ UPTIMUS=~/dev/uptimus
 
 # mount points
 
-opr7=/Volumes/opr7
+OPR7=/Volumes/opr7
 PI=/Volumes/pi
 
 #-------------------------------------------------------------------------------

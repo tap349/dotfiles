@@ -65,8 +65,14 @@ source $ZSH/oh-my-zsh.sh
 #
 # environment variables, aliases and functions are moved to ~/.zshenv
 # because it's loaded for all shells (not only interactive ones) -
-# for example, it allows execute zsh functions with the shell in vim
+# for example, it allows execute zsh functions in vim shell
 #
 # also rbenv initialization is moved to ~/.zshenv as well
 #
 #-----------------------------------------------------------------------------------------
+
+# define overwritten by oh-my-zsh aliases from ~/.zshenv
+# once again here (must be done after sourcing oh-my-zsh)
+
+unalias ll
+alias ll='ls -alp'

@@ -7,6 +7,7 @@ endif
 
 augroup filetypedetect
   autocmd! BufRead,BufNewFile *.arb,*.jb setfiletype ruby
+  autocmd! BufRead,BufNewFile *.service,*.socket,*.timer setfiletype sh
   " using rspec filetype for specs doesn't change highlighting
   " at all but prevents rubocop checker from running on them
   "autocmd! BufRead,BufNewFile *_spec.rb setfiletype rspec
