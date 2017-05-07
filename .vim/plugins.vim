@@ -445,7 +445,7 @@ let g:NERDTreeDirArrowCollapsible = '▾'
 " don't collaps dirs that have only one child
 let g:NERDTreeCascadeSingleChildDir = 0
 
-let g:NERDTreeWinSize = 40
+let g:NERDTreeWinSize = 35
 
 nmap <silent> <F2> :NERDTreeToggle<CR>
 nmap <silent> <Leader>n :NERDTreeFind<CR>
