@@ -66,6 +66,7 @@ brew 'the_silver_searcher'
 brew 'tree'
 brew 'unrar'
 brew 'wget'
+brew 'yarn'
 # - make it a login shell: `chsh -s /bin/zsh`
 #   (all available shells are listed in /etc/shells,
 #   current shell can be printed with `echo $0` command)
