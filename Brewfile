@@ -9,6 +9,7 @@ cask_args appdir: '/Applications'
 # remove formula with its unused dependencies:
 # `brew rmtree mpv`
 tap 'beeftornado/rmtree'
+tap 'puma/puma'
 tap 'caskroom/cask'
 tap 'homebrew/bundle'
 tap 'homebrew/services'
@@ -16,7 +17,8 @@ tap 'homebrew/services'
 #brew 'chromedriver'
 #brew 'djview4'
 
-# run `aws configure` after installation
+# after installation:
+# - `aws configure`
 brew 'awscli'
 # for cpsm vim plugin
 brew 'cmake'
@@ -52,6 +54,11 @@ brew 'p7zip'
 brew 'phantomjs'
 # https://github.com/Homebrew/brew/blob/master/docs/Versions.md
 brew 'postgresql@9.5', restart_service: :changed
+# after installation:
+# - `sudo puma-dev -setup`
+# - `puma-dev -install`
+# - add symlinks to _~/.puma-dev/_
+brew 'puma-dev'
 # - it's much easier to install pow manually:
 #   `curl get.pow.cx | sh`
 # - create symlinks for all required projects:
