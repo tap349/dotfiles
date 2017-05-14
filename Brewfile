@@ -58,6 +58,8 @@ brew 'postgresql@9.5', restart_service: :changed
 # - `sudo puma-dev -setup`
 # - `puma-dev -install`
 # - add symlinks to _~/.puma-dev/_
+# - add `gem 'puma'` to _Gemfile_ of all symlinked applications
+#   (for development and test groups only)
 brew 'puma-dev'
 # - it's much easier to install pow manually:
 #   `curl get.pow.cx | sh`
