@@ -242,7 +242,6 @@ let g:lightline.winwidth = 200
 
 " statusline
 
-
 " https://github.com/itchyny/lightline.vim/issues/223
 " it's not possible to hide right arrow separators for NerdTree
 " when component returns empty string
