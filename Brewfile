@@ -134,6 +134,7 @@ cask 'flux'
 #     - Proxy SwitchyOmega (configure proxy per site)
 #     + Quick Javascript Switcher
 #     - RSS Subscription Extension (by Google) - optional
+#     + Session Buddy
 #     + Tag Assistant (by Google) (enabled per tab)
 #     + The Great Suspender
 #     + Viewport Dimensions (Hide in Chrome Menu)
