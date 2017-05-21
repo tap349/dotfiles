@@ -101,6 +101,10 @@ alias mcu='mc -u'
 # dev
 #-------------------------------------------------------------------------------
 
+# elixir
+
+alias iex='iex -S mix'
+
 # rails, rake, rspec
 
 alias rails='bin/rails'
