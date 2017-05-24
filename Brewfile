@@ -48,10 +48,10 @@ brew 'mas'
 brew 'memcached', restart_service: :changed
 brew 'mc'
 brew 'mpv'
-# for react-native
-brew 'node'
 # for reenter_feed
-brew 'nodejs'
+# for react-native
+# (same as nodejs)
+brew 'node'
 brew 'p7zip'
 brew 'phantomjs'
 # https://github.com/Homebrew/brew/blob/master/docs/Versions.md
@@ -90,7 +90,6 @@ brew 'yarn'
 #   - https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/INSTALL.md#oh-my-zsh
 brew 'zsh'
 
-cask 'android-sdk'
 # for Raspeberry Pi
 cask 'applepi-baker'
 cask 'calibre'
@@ -165,7 +164,7 @@ cask 'google-chrome'
 # see also http://tap349.github.io/iterm/rails/2016/05/03/iTerm/
 # (all these settings are already included in exported settings file)
 cask 'iterm2'
-# for android-sdk
+# for Android Studio
 cask 'java'
 # - system preferences:
 #   - Users & Groups -> Login Items: remove

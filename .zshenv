@@ -10,9 +10,20 @@ setopt no_global_rcs
 #
 #-------------------------------------------------------------------------------
 
-# NOTE: add /opt/chefdk/bin to PATH in ~/.zlogin
+# removes duplicate entries from PATH
 typeset -U path
+
+# NOTE: add /opt/chefdk/bin to PATH in ~/.zlogin
 path=(~/scripts /usr/local/bin $path)
+
+# Android SDK
+export ANDROID_HOME=$HOME/Library/Android/sdk
+# `android` is located here
+path=($path $ANDROID_HOME/tools)
+# `avdmanager` is located here
+path=($path $ANDROID_HOME/tools/bin)
+# `adb` is located here
+path=($path $ANDROID_HOME/platform-tools)
 
 # for iterm to display cyrillic
 export LANG=en_US.UTF-8
