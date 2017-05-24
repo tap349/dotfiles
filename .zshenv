@@ -16,13 +16,15 @@ typeset -U path
 # NOTE: add /opt/chefdk/bin to PATH in ~/.zlogin
 path=(~/scripts /usr/local/bin $path)
 
-# Android SDK
-export ANDROID_HOME=$HOME/Library/Android/sdk
-# `android` is located here
+# required by `react-native-cli` to be set
+export ANDROID_HOME=/usr/local/share/android-sdk
+# might be required by `emulator` to be set
+#export ANDROID_SDK_ROOT=/usr/local/share/android-sdk
+# `android`
 path=($path $ANDROID_HOME/tools)
-# `avdmanager` is located here
+# `sdkmanager` and `avdmanager`
 path=($path $ANDROID_HOME/tools/bin)
-# `adb` is located here
+# `adb`
 path=($path $ANDROID_HOME/platform-tools)
 
 # for iterm to display cyrillic
@@ -103,6 +105,10 @@ alias mcu='mc -u'
 #-------------------------------------------------------------------------------
 # dev
 #-------------------------------------------------------------------------------
+
+# android
+
+alias emulator='cd /usr/local/share/android-sdk/emulator && ./emulator'
 
 # elixir
 
