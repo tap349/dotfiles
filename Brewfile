@@ -48,7 +48,7 @@ brew 'mas'
 brew 'memcached', restart_service: :changed
 brew 'mc'
 brew 'mpv'
-# for react native
+# for react-native
 brew 'node'
 # for reenter_feed
 brew 'nodejs'
@@ -76,7 +76,7 @@ brew 'ssh-copy-id'
 brew 'the_silver_searcher'
 brew 'tree'
 brew 'unrar'
-# for react native
+# for react-native
 brew 'watchman'
 brew 'wget'
 brew 'yarn'
@@ -90,6 +90,7 @@ brew 'yarn'
 #   - https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/INSTALL.md#oh-my-zsh
 brew 'zsh'
 
+cask 'android-sdk'
 # for Raspeberry Pi
 cask 'applepi-baker'
 cask 'calibre'
@@ -164,6 +165,8 @@ cask 'google-chrome'
 # see also http://tap349.github.io/iterm/rails/2016/05/03/iTerm/
 # (all these settings are already included in exported settings file)
 cask 'iterm2'
+# for android-sdk
+cask 'java'
 # - system preferences:
 #   - Users & Groups -> Login Items: remove
 cask 'keybase'
