@@ -37,6 +37,8 @@ DOWNLOADS=~/Downloads
 
 CHEF=~/dev/chef/zero
 CHEF_REENTER=~/dev/chef-reenter
+ICEPERK=~/dev/complead/iceperk
+ICEPERKAPP=~/dev/complead/iceperkapp
 NEKO_ACHIEVEMENTS=~/dev/neko-achievements
 NTV_CLIENT=~/dev/ntv/client
 NTV_SERVER=~/dev/ntv/server
@@ -74,6 +76,8 @@ alias cr='cd $CHEF_REENTER'
 alias cdn='cd $REENTER_CDN'
 alias rb='cd $REENTER_BUILDER'
 alias rf='cd $REENTER_FEED'
+alias i='cd $ICEPERK'
+alias ia='cd $ICEPERKAPP'
 alias n='cd $NEKO_ACHIEVEMENTS'
 alias nc='cd $NTV_CLIENT'
 alias ns='cd $NTV_SERVER'
