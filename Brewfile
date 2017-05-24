@@ -48,6 +48,8 @@ brew 'mas'
 brew 'memcached', restart_service: :changed
 brew 'mc'
 brew 'mpv'
+# for react native
+brew 'node'
 # for reenter_feed
 brew 'nodejs'
 brew 'p7zip'
@@ -74,6 +76,8 @@ brew 'ssh-copy-id'
 brew 'the_silver_searcher'
 brew 'tree'
 brew 'unrar'
+# for react native
+brew 'watchman'
 brew 'wget'
 brew 'yarn'
 # - make it a login shell: `chsh -s /bin/zsh`
