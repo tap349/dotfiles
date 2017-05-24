@@ -35,22 +35,16 @@ DOWNLOADS=~/Downloads
 
 # projects
 
-CHEF=~/dev/chef/zero
-CHEF_REENTER=~/dev/chef-reenter
 ICEPERK=~/dev/complead/iceperk
 ICEPERKAPP=~/dev/complead/iceperkapp
-NEKO_ACHIEVEMENTS=~/dev/neko-achievements
+NEKO_ACHIEVEMENTS=~/dev/morr/neko-achievements
 NTV_CLIENT=~/dev/ntv/client
-NTV_SERVER=~/dev/ntv/server
 NTV_SYSTEMD_UNITS=~/dev/ntv/systemd_units
 NTV_WIFI=~/dev/ntv/wifi
-PUMBA=~/dev/pumba
-REENTER_BUILDER=~/dev/reenter_builder
-REENTER_CDN=~/dev/reenter_cdn
-REENTER_FEED=~/dev/reenter_feed
-SHIKIMORI=~/dev/shikimori
-UMKA=~/dev/umka
-UPTIMUS=~/dev/uptimus
+PUMBA=~/dev/ingate/pumba
+REENTER_BUILDER=~/dev/ingate/reenter_builder
+REENTER_FEED=~/dev/ingate/reenter_feed
+SHIKIMORI=~/dev/morr/shikimori
 
 # mount points
 
@@ -71,22 +65,16 @@ alias blog='cd $BLOG'
 alias dot='cd $DOTFILES'
 alias dl='cd $DOWNLOADS'
 
-alias c='cd $CHEF'
-alias cr='cd $CHEF_REENTER'
-alias cdn='cd $REENTER_CDN'
 alias rb='cd $REENTER_BUILDER'
 alias rf='cd $REENTER_FEED'
 alias ic='cd $ICEPERK'
 alias ica='cd $ICEPERKAPP'
 alias n='cd $NEKO_ACHIEVEMENTS'
 alias nc='cd $NTV_CLIENT'
-alias ns='cd $NTV_SERVER'
 alias nu='cd $NTV_SYSTEMD_UNITS'
 alias nw='cd $NTV_WIFI'
 alias p='cd $PUMBA'
 alias s='cd $SHIKIMORI'
-alias um='cd $UMKA'
-alias up='cd $UPTIMUS'
 
 alias opr7='cd $OPR7'
 alias pi='cd $PI'
