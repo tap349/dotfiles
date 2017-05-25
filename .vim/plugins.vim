@@ -89,7 +89,10 @@ let g:ag_mapping_message = 0
 " ignore the same directories as in wildignore:
 " ~/.agignore ignore file is used by default or else
 " it can be specified with `--path-to-ignore` ag option
-let g:ag_prg = 'ag --vimgrep --literal'
+"
+" using `--hidden` doesn't force search in ignored directories
+" (unlike for CtrlP)
+let g:ag_prg = 'ag --vimgrep --literal --hidden'
 " always run from current working directory (default)
 "let g:ag_working_path_mode = 'r'
 
@@ -151,7 +154,9 @@ let g:ctrlp_switch_buffer = 'et'
 let g:ctrlp_use_caching = 1
 " it's not possible to use g:ag_prg variable here - options differ.
 " add `-g ""` to print filenames (otherwise nothing is found)
-let g:ctrlp_user_command = 'ag %s --files-with-matches -g ""'
+"
+" using `--hidden` forces search in directories ignored in wildignore
+let g:ctrlp_user_command = 'ag %s --files-with-matches -g "" --hidden'
 " don't set working directory with ctrlp
 let g:ctrlp_working_path_mode = 0
 

@@ -63,7 +63,7 @@ set wildmode=longest:full,full
 " don't prefix directories relative to project root with asterisk -
 " that is prefer public/* to */public/*.
 " this is known to have caused problems with spec/vcr_cassettes/ directory:
-" when refreshing it in nerdtree directory kept on collapsing all the time
+" when refreshing it in nerdtree the directory kept on collapsing all the time
 set wildignore+=*.log,public/*,spec/vcr_cassettes/*,tmp/*,deps/*,node_modules/*
 
 "-------------------------------------------------------------------------------
