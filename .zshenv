@@ -108,7 +108,7 @@ alias mcu='mc -u'
 
 # android
 
-alias emulator='cd /usr/local/share/android-sdk/emulator && ./emulator'
+alias emulator='cd $ANDROID_HOME/emulator && ./emulator'
 
 # elixir
 
@@ -132,6 +132,10 @@ alias migrate='bin/rake db:migrate && RAILS_ENV=test bin/rake db:migrate'
 alias rollback='bin/rake db:rollback && RAILS_ENV=test bin/rake db:rollback'
 alias drop='bin/rake db:drop && RAILS_ENV=test bin/rake db:drop'
 alias recreate='bin/rake db:recreate && RAILS_ENV=test bin/rake db:recreate'
+
+# react native
+
+alias avd='emulator -avd Nexus_5X_API_23_x86_64 -gpu host -skin 1080x1920'
 
 # other gems
 
