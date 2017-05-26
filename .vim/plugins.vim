@@ -156,7 +156,7 @@ let g:ctrlp_use_caching = 1
 " add `-g ""` to print filenames (otherwise nothing is found)
 "
 " using `--hidden` forces search in directories ignored in wildignore
-let g:ctrlp_user_command = 'ag %s --files-with-matches -g "" --hidden'
+let g:ctrlp_user_command = 'ag %s --files-with-matches -g ""'
 " don't set working directory with ctrlp
 let g:ctrlp_working_path_mode = 0
 
