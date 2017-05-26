@@ -104,44 +104,14 @@ alias mcu='mc -u'
 
 #-------------------------------------------------------------------------------
 # dev
+#
+# alias definitions are recursive, the order in which they are defined doesn't
+# matter - they can still use each other (so called hoisting in JavaScript)
 #-------------------------------------------------------------------------------
-
-# android
-
-alias emulator='cd $ANDROID_HOME/emulator && ./emulator'
 
 # elixir
 
 alias iex='iex -S mix'
-
-# rails, rake, rspec
-
-alias rails='bin/rails'
-alias rake='bin/rake'
-alias rspec='bin/rspec'
-
-alias r='bin/rails'
-alias rc='bin/rails console'
-alias rd='bin/rails dbconsole'
-alias rs='bin/rails server'
-
-alias create_user='bin/rake db:create_user && RAILS_ENV=test bin/rake db:create_user'
-alias create='bin/rake db:create && RAILS_ENV=test bin/rake db:create'
-alias schema_load='bin/rake db:schema:load && RAILS_ENV=test bin/rake db:schema:load'
-alias migrate='bin/rake db:migrate && RAILS_ENV=test bin/rake db:migrate'
-alias rollback='bin/rake db:rollback && RAILS_ENV=test bin/rake db:rollback'
-alias drop='bin/rake db:drop && RAILS_ENV=test bin/rake db:drop'
-alias recreate='bin/rake db:recreate && RAILS_ENV=test bin/rake db:recreate'
-
-# react native
-
-alias avd='emulator -avd Nexus_5X_API_23_x86_64 -gpu host -skin 1080x1920'
-
-# other gems
-
-alias cap='bundle exec cap'
-alias guard='bundle exec guard'
-alias sidekiq='bundle exec sidekiq --config ./config/sidekiq.yml'
 
 # git
 
@@ -153,6 +123,36 @@ alias gdc='git diff --cached'
 alias gl="git log --graph --pretty=format:'%Cred%h%Creset %C(yellow)%d%Creset %s - %C(bold blue)%an%Creset, %Cgreen%cr' --abbrev-commit"
 alias gs='git status'
 alias gbd='git_delete_branches'
+
+# rails
+
+alias rails='bin/rails'
+
+alias r='rails'
+alias rc='rails console'
+alias rd='rails dbconsole'
+alias rs='rails server'
+
+alias create_user='rake db:create_user && RAILS_ENV=test rake db:create_user'
+alias create='rake db:create && RAILS_ENV=test rake db:create'
+alias schema_load='rake db:schema:load && RAILS_ENV=test rake db:schema:load'
+alias migrate='rake db:migrate && RAILS_ENV=test rake db:migrate'
+alias rollback='rake db:rollback && RAILS_ENV=test rake db:rollback'
+alias drop='rake db:drop && RAILS_ENV=test rake db:drop'
+alias recreate='rake db:recreate && RAILS_ENV=test rake db:recreate'
+
+# react native
+
+alias avd='emulator -avd Nexus_5X_API_23_x86_64 -gpu host -skin 1080x1920'
+alias emulator='cd $ANDROID_HOME/emulator && ./emulator'
+
+# ruby, other gems
+
+alias cap='bundle exec cap'
+alias guard='bundle exec guard'
+alias rake='bin/rake'
+alias rspec='bin/rspec'
+alias sidekiq='bundle exec sidekiq --config ./config/sidekiq.yml'
 
 # misc
 
