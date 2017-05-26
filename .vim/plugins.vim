@@ -47,6 +47,7 @@ Plug 'jeetsukumaran/vim-buffergator'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'majutsushi/tagbar'
 Plug 'mhinz/vim-hugefile'
+Plug 'othree/javascript-libraries-syntax.vim'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/syntastic'
@@ -230,6 +231,12 @@ endfunction
 "" error unless preview window has been opened from the very beginning
 "let g:Gitv_OpenPreviewOnLaunch = 1
 "let g:Gitv_WipeAllOnClose = 1
+
+"-------------------------------------------------------------------------------
+" javascript-libraries-syntax.vim
+"-------------------------------------------------------------------------------
+
+let g:used_javascript_libs = 'react,underscore'
 
 "-------------------------------------------------------------------------------
 " lightline.vim
