@@ -126,6 +126,8 @@ alias gbd='git_delete_branches'
 
 # rails
 
+alias log='tail -f log/development.log'
+
 alias rails='bin/rails'
 
 alias r='rails'
@@ -146,18 +148,13 @@ alias recreate='rake db:recreate && RAILS_ENV=test rake db:recreate'
 alias avd='emulator -avd Nexus_5X_API_23_x86_64 -gpu host -skin 1080x1920'
 alias emulator='cd $ANDROID_HOME/emulator && ./emulator'
 
-# ruby, other gems
+# ruby, gems
 
 alias cap='bundle exec cap'
 alias guard='bundle exec guard'
 alias rake='bin/rake'
 alias rspec='bin/rspec'
 alias sidekiq='bundle exec sidekiq --config ./config/sidekiq.yml'
-
-# misc
-
-alias css_to_sass='sass-convert --from css --to sass -R'
-alias log='tail -f log/development.log'
 
 # shikimori
 
@@ -169,15 +166,16 @@ alias shikisync=sync_shikimori_images
 # it's to possible to SSH in 2 ways:
 #
 # 1) ssh <host from .ssh/config>
-# 2) ssh <username>@<host from /etc/hosts>
+# 2) ssh <username>@<IP or domain>
 #
 # in the 1st case user is supplied from .ssh/config
 #
-# in both cases public key for matching host is used to authenticate user
-# if it has been previously added to .ssh/authorized_keys on server
+# in both cases public key (default one or the one specified in SSH config
+# record) is used to authenticate user if it has been previously added to
+# .ssh/authorized_keys on server
 #
-# in case matching host can't be found in .ssh/config ssh fallbacks
-# to password-based authentication (e.g. when using IP or alternative domain)
+# in case user is not authorized (supplied public key is not present in
+# .ssh/authorized_keys on server) SSH fallbacks to password-based authentication
 
 #-------------------------------------------------------------------------------
 #
