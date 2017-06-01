@@ -250,7 +250,7 @@ let g:lightline = {}
 let g:lightline.enable = { 'statusline': 1, 'tabline': 1 }
 let g:lightline.colorscheme = 'lucius'
 " https://github.com/itchyny/lightline.vim/issues/220
-let g:lightline.winwidth = 200
+let g:lightline.winwidth = 220
 
 " statusline
 

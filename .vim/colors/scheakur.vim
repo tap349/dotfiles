@@ -46,7 +46,7 @@ if &background == 'light'
 	hi Ignore guifg=#666666 ctermfg=240
 	"hi IncSearch guifg=#2e2e2e guibg=#f4b3c2 gui=none ctermfg=234 ctermbg=218
 	hi IncSearch guifg=#2e2e2e guibg=#ffff44 gui=none ctermfg=234 ctermbg=218
-	hi LineNr guifg=#567686 guibg=#e2e2d0 ctermfg=236 ctermbg=145
+	hi LineNr guifg=#668696 guibg=#ececda ctermfg=236 ctermbg=145
 	hi MatchParen guifg=#0e8ed3 guibg=#dbf2ff ctermfg=31 ctermbg=152
 	hi ModeMsg guifg=#337ca3 ctermfg=24
 	hi MoreMsg guifg=#1e7b3d ctermfg=22
