@@ -30,13 +30,13 @@ Plug 'nixprime/cpsm'
 " git
 
 Plug 'airblade/vim-gitgutter'
-" https://github.com/c-brenn/phoenix.vim#installation
 Plug 'tap349/vim-extradite' | Plug 'tpope/vim-fugitive'
 
 " other
 
 Plug 'ap/vim-css-color'
 Plug 'bkad/CamelCaseMotion'
+" https://github.com/c-brenn/phoenix.vim#installation
 Plug 'c-brenn/phoenix.vim' | Plug 'tpope/vim-projectionist'
 Plug 'easymotion/vim-easymotion'
 Plug 'ervandew/supertab'
@@ -731,6 +731,8 @@ let g:rails_projections = {
 \   }
 \ }
 
+" for elixir filetype open alternate file using alt
+" (see after/ftplugin/elixir.vim)
 nmap <Leader>, :A<CR>
 nmap <Leader>v :AV<CR>
 

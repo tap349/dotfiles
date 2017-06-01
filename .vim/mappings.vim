@@ -275,6 +275,19 @@ xnoremap * y/<C-r>"<CR>
 "                                                                              =
 "===============================================================================
 
+" define command globally (without s: prefix) so that it can be used
+" in after/ftplugin/elixir.vim - I cannot define it in ftplugin file
+" because vim complains that it's redefined when opening elixir file
+function! AltCommand(path, vim_command)
+  let l:alternate = system('alt ' . a:path)
+
+  if empty(l:alternate)
+    echo 'no alternate file for ' . a:path . ' exists'
+  else
+    exec a:vim_command . " " . l:alternate
+  endif
+endfunction
+
 function! s:GoToLastActiveTab()
   " return if g:lasttabnr variable is not set - it means current
   " tab is the only one and other tabs have never been opened
