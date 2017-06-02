@@ -282,7 +282,9 @@ function! AltCommand(path, vim_command)
   let l:alternate = system('alt ' . a:path)
 
   if empty(l:alternate)
-    echo 'no alternate file for ' . a:path . ' exists'
+    echohl WarningMsg
+    echo 'No alternate file for ' . a:path . ' exists!'
+    echohl Normal
   else
     exec a:vim_command . " " . l:alternate
   endif
