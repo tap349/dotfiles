@@ -145,7 +145,15 @@ cask 'flux'
 #     + The Great Suspender
 #     + Viewport Dimensions (Hide in Chrome Menu)
 #     + uBlock Origin
-#   - Theme (search on page) -> Black Carbon + silver meta
+#   - Theme:
+#     - Black Carbon + silver meta
+#     - Carbon Light
+#     - or else search using keywords:
+#       - flat
+#       - brushed
+#       - graphite
+#       - macos
+#       - material
 #   - chrome://plugins:
 #     - disable Adobe Flash Player
 # - bookmarks bar:

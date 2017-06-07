@@ -31302,7 +31302,7 @@
 	<key>Default Bookmark Guid</key>
 	<string>9D3A6D63-A851-4F12-AFB4-40D98DE1829C</string>
 	<key>DimBackgroundWindows</key>
-	<false/>
+	<true/>
 	<key>DimInactiveSplitPanes</key>
 	<true/>
 	<key>DimOnlyText</key>
@@ -31461,9 +31461,11 @@
 	<key>MaxVertically</key>
 	<false/>
 	<key>NSNavLastRootDirectory</key>
-	<string>~/.dotfiles/.config/iterm2</string>
+	<string>~/Documents</string>
 	<key>NSNavPanelExpandedSizeForOpenMode</key>
 	<string>{712, 459}</string>
+	<key>NSNavPanelExpandedSizeForSaveMode</key>
+	<string>{712, 521}</string>
 	<key>NSQuotedKeystrokeBinding</key>
 	<string></string>
 	<key>NSRepeatCountBinding</key>
@@ -31489,14 +31491,23 @@
 	<array/>
 	<key>NSTableView Sort Ordering KeyBingingTable</key>
 	<array/>
+	<key>NSToolbar Configuration com.apple.NSColorPanel</key>
+	<dict>
+		<key>TB Is Shown</key>
+		<integer>1</integer>
+	</dict>
+	<key>NSWindow Frame SessionsPreferences</key>
+	<string>138 74 606 456 0 0 1280 777 </string>
 	<key>NSWindow Frame SharedPreferences</key>
-	<string>625 316 796 473 0 0 1920 1057 </string>
+	<string>625 622 918 381 0 0 1920 1057 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>0 484 650 573 0 0 1920 1057 </string>
+	<string>0 15 1274 762 0 0 1280 777 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
 	<string>0 15 1274 762 0 0 1280 777 </string>
 	<key>NSWindow Frame iTerm Window 2</key>
-	<string>0 484 650 573 0 0 1920 1057 </string>
+	<string>0 15 1274 762 0 0 1280 777 </string>
+	<key>NSWindow Frame iTerm Window 3</key>
+	<string>289 61 650 573 0 0 1280 777 </string>
 	<key>NeverWarnAboutShortLivedSessions_9D3A6D63-A851-4F12-AFB4-40D98DE1829C</key>
 	<true/>
 	<key>NeverWarnAboutShortLivedSessions_9D3A6D63-A851-4F12-AFB4-40D98DE1829C_selection</key>
@@ -31698,6 +31709,8 @@
 			<integer>80</integer>
 			<key>Command</key>
 			<string></string>
+			<key>Cursor Boost</key>
+			<real>0.046182753164556965</real>
 			<key>Cursor Color</key>
 			<dict>
 				<key>Blue Component</key>
@@ -32057,7 +32070,7 @@
 			<key>Log Directory</key>
 			<string></string>
 			<key>Minimum Contrast</key>
-			<real>0.0</real>
+			<real>0.053253560126582278</real>
 			<key>Mouse Reporting</key>
 			<true/>
 			<key>Name</key>
@@ -32214,6 +32227,19 @@
 			</array>
 			<key>Sync Title</key>
 			<false/>
+			<key>Tab Color</key>
+			<dict>
+				<key>Alpha Component</key>
+				<real>1</real>
+				<key>Blue Component</key>
+				<real>0.19750697910785675</real>
+				<key>Color Space</key>
+				<string>Calibrated</string>
+				<key>Green Component</key>
+				<real>0.18963322043418884</real>
+				<key>Red Component</key>
+				<real>0.18806359171867371</real>
+			</dict>
 			<key>Tags</key>
 			<array/>
 			<key>Terminal Type</key>
@@ -32235,6 +32261,8 @@
 			<key>Use Italic Font</key>
 			<true/>
 			<key>Use Non-ASCII Font</key>
+			<false/>
+			<key>Use Tab Color</key>
 			<false/>
 			<key>Vertical Spacing</key>
 			<real>1</real>
@@ -32362,7 +32390,7 @@
 	<key>SmartPlacement</key>
 	<false/>
 	<key>SplitPaneDimmingAmount</key>
-	<real>0.40000000596046448</real>
+	<real>0.10981070307584911</real>
 	<key>SwitchTabModifier</key>
 	<integer>4</integer>
 	<key>SwitchWindowModifier</key>
