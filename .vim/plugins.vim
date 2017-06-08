@@ -497,6 +497,7 @@ let g:SuperTabLongestHighlight = 1
 " turn on debugging (logs to vim messages)
 "let let g:syntastic_debug = 1
 
+let g:syntastic_javascript_standard_exec = 'semistandard'
 let g:syntastic_ruby_mri_exec = '~/.rbenv/shims/ruby'
 let g:syntastic_ruby_rubocop_exec = '~/.rbenv/shims/rubocop'
 
@@ -519,6 +520,7 @@ let g:syntastic_ruby_rubocop_exec = '~/.rbenv/shims/rubocop'
 " - only specified are run when calling SyntasticCheck without arguments
 " - when passing checkers explicitly to SyntasticCheck checkers in this
 "   array are ignored
+let g:syntastic_javascript_checkers = ['standard']
 let g:syntastic_ruby_checkers = ['mri', 'rubocop']
 
 " http://vim.wikia.com/wiki/Simplifying_regular_expressions_using_magic_and_no-magic
@@ -541,13 +543,19 @@ let g:syntastic_mode_map = {
 
 " show syntastic errors in separate window
 "nmap <silent> <Leader>e :Errors<CR>
-nmap <silent> <Leader>c :call <SID>MySyntasticCheck()<CR>
+nmap <silent> <Leader>cc :call <SID>MySyntasticCheck()<CR>
+nmap <silent> <Leader>cr :call <SID>MySyntasticReset()<CR>
 
 " run all checkers from g:syntastic_<filetype>_checkers for
 " current filetype unless checkers are passed explicitly as
 " arguments to SyntasticCheck
 function! s:MySyntasticCheck()
   SyntasticCheck
+  call lightline#update()
+endfunction
+
+function! s:MySyntasticReset()
+  SyntasticReset
   call lightline#update()
 endfunction
 
