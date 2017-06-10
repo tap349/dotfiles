@@ -495,9 +495,11 @@ let g:SuperTabLongestHighlight = 1
 "-------------------------------------------------------------------------------
 
 " turn on debugging (logs to vim messages)
-"let let g:syntastic_debug = 1
+"let g:syntastic_debug = 1
+"let g:syntastic_debug = 3
+"let g:syntastic_debug = 33
 
-let g:syntastic_javascript_standard_exec = 'semistandard'
+let g:syntastic_javascript_eslint_exe = '$(npm bin)/eslint'
 let g:syntastic_ruby_mri_exec = '~/.rbenv/shims/ruby'
 let g:syntastic_ruby_rubocop_exec = '~/.rbenv/shims/rubocop'
 
@@ -520,7 +522,7 @@ let g:syntastic_ruby_rubocop_exec = '~/.rbenv/shims/rubocop'
 " - only specified are run when calling SyntasticCheck without arguments
 " - when passing checkers explicitly to SyntasticCheck checkers in this
 "   array are ignored
-let g:syntastic_javascript_checkers = ['standard']
+let g:syntastic_javascript_checkers = ['eslint']
 let g:syntastic_ruby_checkers = ['mri', 'rubocop']
 
 " http://vim.wikia.com/wiki/Simplifying_regular_expressions_using_magic_and_no-magic
