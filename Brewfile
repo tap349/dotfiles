@@ -13,7 +13,6 @@ tap 'puma/puma'
 tap 'caskroom/cask'
 tap 'homebrew/bundle'
 tap 'homebrew/services'
-tap 'uptech/homebrew-oss'
 
 #brew 'chromedriver'
 #brew 'djview4'
@@ -77,7 +76,6 @@ brew 'ssh-copy-id'
 brew 'the_silver_searcher'
 brew 'tree'
 brew 'unrar'
-brew 'uptech/oss/alt'
 # for react-native
 brew 'watchman'
 brew 'wget'
@@ -139,6 +137,7 @@ cask 'flux'
 #     + Noisli
 #     - Proxy SwitchyOmega (configure proxy per site)
 #     + Quick Javascript Switcher
+#     + Redux DevTools
 #     - RSS Subscription Extension (by Google) - optional
 #     + Session Buddy
 #     + Tag Assistant (by Google) (enabled per tab)
