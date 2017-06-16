@@ -1,43 +1,81 @@
+"*******************************************************************************
+"
+" plugins
+"
+" NOTE: don't use noremap for plugin mappings
+"
+"*******************************************************************************
+
 "===============================================================================
-"                                                                              =
-" plugins                                                                      =
-"                                                                              =
-" NOTE: don't use noremap for plugin mappings                                  =
-"                                                                              =
+"
+" installation
+"
 "===============================================================================
 
 call plug#begin('~/.vim/plugged')
 
-" file types support
-
-" it seemed to me that using vim-polyglot introduced some lag
-" in general - when switching tabs, switching to visual mode, etc.
-"Plug 'sheerun/vim-polyglot'
-Plug 'elixir-lang/vim-elixir'
-Plug 'kchmck/vim-coffee-script'
-Plug 'keith/rspec.vim'
-Plug 'tap349/vim-markdown'
-Plug 'slim-template/vim-slim'
-Plug 'vim-ruby/vim-ruby'
-
+"-------------------------------------------------------------------------------
 " ctrlp
+"-------------------------------------------------------------------------------
 
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'jasoncodes/ctrlp-modified.vim'
 " https://www.reddit.com/r/vim/comments/38m0g7/cpsm_a_ctrlp_matcher/
 Plug 'nixprime/cpsm'
 
+"-------------------------------------------------------------------------------
+" elixir / phoenix
+"-------------------------------------------------------------------------------
+
+Plug 'elixir-lang/vim-elixir'
+Plug 'andyl/vim-projectionist-elixir' | Plug 'tpope/vim-projectionist'
+" https://github.com/c-brenn/phoenix.vim#installation
+Plug 'c-brenn/phoenix.vim' | Plug 'tpope/vim-projectionist'
+"Plug 'avdgaag/vim-phoenix' | Plug 'tpope/vim-projectionist'
+
+"-------------------------------------------------------------------------------
 " git
+"-------------------------------------------------------------------------------
 
 Plug 'airblade/vim-gitgutter'
 Plug 'tap349/vim-extradite' | Plug 'tpope/vim-fugitive'
 
-" other
+"-------------------------------------------------------------------------------
+" javascript / coffeescript / react
+"-------------------------------------------------------------------------------
+
+Plug 'kchmck/vim-coffee-script'
+Plug 'pangloss/vim-javascript'
+Plug 'mxw/vim-jsx' | Plug 'pangloss/vim-javascript'
+
+"-------------------------------------------------------------------------------
+" ruby / rails
+"-------------------------------------------------------------------------------
+
+Plug 'keith/rspec.vim'
+Plug 'vim-ruby/vim-ruby'
+Plug 'tpope/vim-rails'
+" https://github.com/vim-ruby/vim-ruby/issues/32
+" commands :A, etc. for ruby non-rails applications,
+" also adds lib/ to vim path (same as `set path+=lib`)
+Plug 'tpope/vim-rake' | Plug 'tpope/vim-projectionist'
+
+"-------------------------------------------------------------------------------
+" other file types support
+"-------------------------------------------------------------------------------
+
+" it seemed to me that using vim-polyglot introduced some lag
+" in general - when switching tabs, switching to visual mode, etc.
+"Plug 'sheerun/vim-polyglot'
+Plug 'tap349/vim-markdown'
+Plug 'slim-template/vim-slim'
+
+"-------------------------------------------------------------------------------
+" other plugins
+"-------------------------------------------------------------------------------
 
 Plug 'ap/vim-css-color'
 Plug 'bkad/CamelCaseMotion'
-" https://github.com/c-brenn/phoenix.vim#installation
-Plug 'c-brenn/phoenix.vim' | Plug 'tpope/vim-projectionist'
 Plug 'easymotion/vim-easymotion'
 Plug 'ervandew/supertab'
 Plug 'godlygeek/tabular'
@@ -47,35 +85,39 @@ Plug 'jeetsukumaran/vim-buffergator'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'majutsushi/tagbar'
 Plug 'mhinz/vim-hugefile'
-Plug 'othree/javascript-libraries-syntax.vim'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/syntastic'
 Plug 'tap349/ag.vim'
 Plug 'tpope/vim-endwise'
-Plug 'tpope/vim-rails'
-" https://github.com/vim-ruby/vim-ruby/issues/32
-" commands :A, etc. for ruby non-rails applications,
-" also adds lib/ to vim path (same as `set path+=lib`)
-Plug 'tpope/vim-rake' | Plug 'tpope/vim-projectionist'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'xolox/vim-misc'
 Plug 'yssl/QFEnter'
 
+"-------------------------------------------------------------------------------
 " unused (but still can be used again somewhen)
+"-------------------------------------------------------------------------------
 
 "Plug 'Yggdroot/indentLine'
 "Plug 'jamessan/vim-gnupg'
 "Plug 'scheakur/vim-scheakur'
 "Plug 'xolox/vim-session'
 
+"-------------------------------------------------------------------------------
 " plugins to try in the future
+"-------------------------------------------------------------------------------
 
 "Plug 'Shougo/vimfiler.vim'
 "Plug 'Shougo/vimshell.vim'
 
 call plug#end()
+
+"===============================================================================
+"
+" configuration
+"
+"===============================================================================
 
 "-------------------------------------------------------------------------------
 " ag.vim
@@ -146,7 +188,7 @@ let g:cpsm_match_empty_query = 0
 " at the end of last line in match window
 let g:ctrlp_lazy_update = 5
 let g:ctrlp_map = '<Leader>s'
-let g:ctrlp_match_func = { 'match': 'cpsm#CtrlPMatch' }
+"let g:ctrlp_match_func = { 'match': 'cpsm#CtrlPMatch' }
 let g:ctrlp_match_window = 'bottom,order:ttb,max:15'
 let g:ctrlp_mruf_relative = 1
 let g:ctrlp_root_markers = ['mix.exs']
@@ -231,12 +273,6 @@ endfunction
 "" error unless preview window has been opened from the very beginning
 "let g:Gitv_OpenPreviewOnLaunch = 1
 "let g:Gitv_WipeAllOnClose = 1
-
-"-------------------------------------------------------------------------------
-" javascript-libraries-syntax.vim
-"-------------------------------------------------------------------------------
-
-let g:used_javascript_libs = 'react,underscore'
 
 "-------------------------------------------------------------------------------
 " lightline.vim
@@ -690,6 +726,12 @@ let g:gutentags_project_root = ['mix.exs']
 let g:hugefile_trigger_size = 1
 
 "-------------------------------------------------------------------------------
+" vim-jsx
+"-------------------------------------------------------------------------------
+
+let g:jsx_ext_required = 0
+
+"-------------------------------------------------------------------------------
 " vim-markdown
 "-------------------------------------------------------------------------------
 
@@ -741,8 +783,6 @@ let g:rails_projections = {
 \   }
 \ }
 
-" for elixir filetype open alternate file using alt
-" (see after/ftplugin/elixir.vim)
 nmap <Leader>, :A<CR>
 nmap <Leader>v :AV<CR>
 

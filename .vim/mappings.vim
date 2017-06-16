@@ -1,8 +1,8 @@
-"===============================================================================
-"                                                                              =
-" mappings                                                                     =
-"                                                                              =
-"===============================================================================
+"*******************************************************************************
+"
+" mappings
+"
+"*******************************************************************************
 
 " Leader: global and plugin mappings
 " LocalLeader: mappings local to current buffer (<buffer> mappings)
@@ -15,7 +15,9 @@ let maplocalleader = '\'
 "set macmeta
 
 "===============================================================================
-" normal mode                                                                  =
+"
+" normal mode
+"
 "===============================================================================
 
 "-------------------------------------------------------------------------------
@@ -177,7 +179,9 @@ nnoremap Y y$
 nnoremap gp `[v`]
 
 "===============================================================================
-" insert mode                                                                  =
+"
+" insert mode
+"
 "===============================================================================
 
 inoremap <C-Backspace> <Esc>
@@ -220,12 +224,14 @@ inoremap <silent> <A-S-Down> <C-o>:tabmove 0<CR>
 inoremap <silent> <A-S-Up> <C-o>:tabmove<CR>
 
 "===============================================================================
-" visual mode                                                                  =
-"                                                                              =
-" http://stackoverflow.com/a/3787802/3632318                                   =
-"                                                                              =
-" vmap and vnoremap work in visual and select modes,                           =
-" use xmap and xnoremap to have mapping in visual mode only                    =
+"
+" visual mode
+"
+" http://stackoverflow.com/a/3787802/3632318
+"
+" vmap and vnoremap work in visual and select modes,
+" use xmap and xnoremap to have mapping in visual mode only
+"
 "===============================================================================
 
 xnoremap <C-Backspace> <Esc>
@@ -270,9 +276,9 @@ xnoremap L g_
 xnoremap * y/<C-r>"<CR>
 
 "===============================================================================
-"                                                                              =
-" functions for mappings                                                       =
-"                                                                              =
+"
+" functions for mappings
+"
 "===============================================================================
 
 " define command globally (without s: prefix) so that it can be used

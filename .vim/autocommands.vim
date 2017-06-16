@@ -1,12 +1,12 @@
-"===============================================================================
-"                                                                              =
-" autocommands                                                                 =
-"                                                                              =
-" exclamation mark means to remove all autocommands associated with event,     =
-" pattern and command - the point here is that by default autocommands are     =
-" are accumulated every time .vimrc is sourced.                                =
-"                                                                              =
-"===============================================================================
+"*******************************************************************************
+"
+" autocommands
+"
+" exclamation mark means to remove all autocommands associated with event,
+" pattern and command - the point here is that by default autocommands are
+" are accumulated every time .vimrc is sourced.
+"
+"*******************************************************************************
 
 augroup backup
   autocmd!
@@ -51,9 +51,9 @@ augroup END
 "augroup END
 
 "===============================================================================
-"                                                                              =
-" functions for autocommands                                                   =
-"                                                                              =
+"
+" functions for autocommands
+"
 "===============================================================================
 
 function! s:SetBackupDir()

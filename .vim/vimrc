@@ -1,23 +1,23 @@
 "*******************************************************************************
-"                                                                              *
-" http://vimhelp.appspot.com/vim_faq.txt.html                                  *
-" idiomatic vimrc: https://gist.github.com/romainl/9ecd7b09a693816997ba        *
-"                                                                              *
-" version 7.4 and higher support ~/.vim/vimrc location                         *
-"                                                                              *
-" these keys generate the same characters:                                     *
-"                                                                              *
-" - <Tab> and <C-i>                                                            *
-" - <CR> and <C-m>                                                             *
-" - <Esc> and <C-[>                                                            *
-" - <C-S-h> and <C-h> (any character)                                          *
-"                                                                              *
+"
+" http://vimhelp.appspot.com/vim_faq.txt.html
+" idiomatic vimrc: https://gist.github.com/romainl/9ecd7b09a693816997ba
+"
+" version 7.4 and higher support ~/.vim/vimrc location
+"
+" these keys generate the same characters:
+"
+" - <Tab> and <C-i>
+" - <CR> and <C-m>
+" - <Esc> and <C-[>
+" - <C-S-h> and <C-h> (any character)
+"
 "*******************************************************************************
 
 "===============================================================================
-"                                                                              =
-" general options                                                              =
-"                                                                              =
+"
+" general options
+"
 "===============================================================================
 
 syntax on
@@ -154,22 +154,22 @@ set list
 set listchars=nbsp:·,tab:▸·,trail:·,precedes:«,extends:»
 
 "===============================================================================
-"                                                                              =
-" performance tweaks                                                           =
-"                                                                              =
-" http://stackoverflow.com/questions/16902317                                  =
-"                                                                              =
+"
+" performance tweaks
+"
+" http://stackoverflow.com/questions/16902317
+"
 "===============================================================================
 
 set lazyredraw
 set regexpengine=2
 set synmaxcol=200
 
-"=============================================================================="
-"                                                                              "
-" look and feel                                                                "
-"                                                                              "
-"=============================================================================="
+"===============================================================================
+"
+" look and feel
+"
+"===============================================================================
 
 " disable beeping
 set vb t_vb=
@@ -300,9 +300,9 @@ set shell=/usr/local/bin/zsh
 "set columns=999
 
 "===============================================================================
-"                                                                              =
-" abbreviations                                                                =
-"                                                                              =
+"
+" abbreviations
+"
 "===============================================================================
 
 iabbrev ii i18n_i
@@ -311,9 +311,9 @@ iabbrev teh the
 iabbrev tt i18n_t
 
 "===============================================================================
-"                                                                              =
-" source external vim files                                                    =
-"                                                                              =
+"
+" source external vim files
+"
 "===============================================================================
 
 runtime macros/matchit.vim
