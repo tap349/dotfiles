@@ -26,6 +26,8 @@ brew 'cmake'
 # for cpsm vim plugin
 brew 'boost'
 brew 'elixir'
+# for iTerm2
+brew 'font-inconsolata-lgc'
 # required by ~/scripts/fontpatcher
 brew 'fontforge'
 brew 'git'
