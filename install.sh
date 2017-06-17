@@ -72,7 +72,10 @@ echo ==========================================================================
 echo COPYING FONTS...
 echo ==========================================================================
 
-cp -R Library/Fonts/ ~/Library/Fonts/
+echo
+echo -e "${RED_FG}copy required fonts manually!${RESET_ALL}"
+echo
+#cp -R Library/Fonts/ ~/Library/Fonts/
 
 echo --------------------------------------------------------------------------
 echo FONTS COPIED
