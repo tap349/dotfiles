@@ -11,6 +11,7 @@ cask_args appdir: '/Applications'
 tap 'beeftornado/rmtree'
 tap 'puma/puma'
 tap 'caskroom/cask'
+tap 'caskroom/fonts'
 tap 'homebrew/bundle'
 tap 'homebrew/services'
 
