@@ -20,7 +20,7 @@ endif
 let colors_name = "github"
 
 " {{{ General colors
-hi Normal   ctermfg=0   ctermbg=255  guifg=#000000   guibg=#F8F8FF
+hi Normal   ctermfg=0   ctermbg=255  guifg=#000000   guibg=#F3F3FA
 hi Cursor   ctermfg=239   ctermbg=15  guifg=#F8F8FF   guibg=#444454
 hi Visual   ctermfg=15   ctermbg=61  guifg=#FFFFFF   guibg=#3465a3
 hi VisualNOS   ctermfg=15   ctermbg=24  guifg=#FFFFFF   guibg=#204a87
@@ -29,12 +29,12 @@ hi Folded   ctermfg=8 ctermbg=15 guifg=#808080 guibg=#ECECEC gui=bold cterm=bold
 hi Title    ctermfg=167 guifg=#ef5939
 hi StatusLine ctermfg=238 ctermbg=250 guifg=#404040 guibg=#bbbbbb gui=bold cterm=bold
 hi StatusLineNC ctermfg=238 ctermbg=252 guifg=#404040 guibg=#d4d4d4 gui=italic cterm=italic
-hi VertSplit ctermfg=250 ctermbg=250 guibg=#d3eaf5   guifg=#c3bac5 gui=none cterm=none
-hi LineNr   ctermfg=246 ctermbg=15 guifg=#959595 guibg=#ECECEC gui=bold cterm=bold
+hi VertSplit ctermfg=250 ctermbg=250 guibg=#F3F3FA   guifg=#83aac5 gui=none cterm=none
+hi LineNr   ctermfg=246 ctermbg=15 guifg=#B8B8C2 guibg=#F3F3FA cterm=bold
 hi SpecialKey ctermfg=6 guifg=#177F80 gui=italic cterm=italic
 hi WarningMsg ctermfg=167 guifg=#ef5939
 hi ErrorMsg ctermbg=15 ctermfg=196 guibg=#f8f8ff guifg=#ff1100 gui=undercurl cterm=undercurl
-hi ColorColumn ctermbg=254 guibg=#f2f2f8
+hi ColorColumn ctermbg=254 guibg=#e8e8ef
 " }}}
 
 " {{{ Vim => 7.0 specific colors
