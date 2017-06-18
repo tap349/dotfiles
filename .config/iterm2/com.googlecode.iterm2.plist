@@ -31496,14 +31496,16 @@
 		<key>TB Is Shown</key>
 		<integer>1</integer>
 	</dict>
+	<key>NSWindow Frame NSFontPanel</key>
+	<string>266 206 698 332 0 0 1280 777 </string>
 	<key>NSWindow Frame SessionsPreferences</key>
 	<string>138 74 606 456 0 0 1280 777 </string>
 	<key>NSWindow Frame SharedPreferences</key>
-	<string>625 622 918 381 0 0 1920 1057 </string>
+	<string>269 191 918 495 0 0 1280 777 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>0 15 1274 762 0 0 1280 777 </string>
+	<string>0 0 1276 777 0 0 1280 777 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
-	<string>0 15 1274 762 0 0 1280 777 </string>
+	<string>0 167 650 573 0 0 1280 777 </string>
 	<key>NSWindow Frame iTerm Window 2</key>
 	<string>0 15 1274 762 0 0 1280 777 </string>
 	<key>NSWindow Frame iTerm Window 3</key>
@@ -32080,7 +32082,7 @@
 			<key>Non-ASCII Anti Aliased</key>
 			<true/>
 			<key>Normal Font</key>
-			<string>InconsolataLGCForPowerline 14</string>
+			<string>InconsolataLGC 14</string>
 			<key>Option Key Sends</key>
 			<integer>2</integer>
 			<key>Prompt Before Closing 2</key>
