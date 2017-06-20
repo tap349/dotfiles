@@ -28,6 +28,7 @@ brew 'boost'
 brew 'elixir'
 # for iTerm2
 brew 'font-inconsolata-lgc'
+brew 'font-iosevka'
 # required by ~/scripts/fontpatcher
 brew 'fontforge'
 brew 'git'
