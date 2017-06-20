@@ -387,6 +387,7 @@ endfunction
 function! LightlineFilename()
   if s:IsPluginWindow() | return '' | end
   if s:IsQuickfix() | return w:quickfix_title | end
+  if s:IsExtradite() | return ExtraditeCommitDate() | end
 
   let fname = s:IsNotebookWindow() ? expand('%:t') : expand('%')
   return ('' != LightlineReadonly() ? LightlineReadonly() . ' ' : '') .
@@ -458,6 +459,10 @@ endfunction
 
 function! s:IsTagbar()
   return expand('%:t') =~ 'Tagbar'
+endfunction
+
+function! s:IsExtradite()
+  return &ft == 'extradite'
 endfunction
 
 function! s:IsHelp()
@@ -760,28 +765,28 @@ set confirm
 
 " the first projection is for `set confirm` to work in app/ directory
 let g:rails_projections = {
-\   'app/*.rb': {
-\     'alternate': 'spec/{}_spec.rb'
-\   },
-\   'app/admin/*.rb': {
-\     'alternate': 'spec/controllers/admin/{}_controller_spec.rb'
-\   },
-\   'spec/controllers/admin/*_controller_spec.rb': {
-\     'alternate': 'app/admin/{}.rb'
-\   },
-\   'lib/*.rb': {
-\     'alternate': 'spec/{}_spec.rb'
-\   },
-\   'spec/*_spec.rb': {
-\     'alternate': 'lib/{}.rb'
-\   },
-\   'config/locales/*ru.yml': {
-\     'alternate': 'config/locales/{}en.yml'
-\   },
-\   'config/locales/*en.yml': {
-\     'alternate': 'config/locales/{}ru.yml'
-\   }
-\ }
+      \   'app/*.rb': {
+      \     'alternate': 'spec/{}_spec.rb'
+      \   },
+      \   'app/admin/*.rb': {
+      \     'alternate': 'spec/controllers/admin/{}_controller_spec.rb'
+      \   },
+      \   'spec/controllers/admin/*_controller_spec.rb': {
+      \     'alternate': 'app/admin/{}.rb'
+      \   },
+      \   'lib/*.rb': {
+      \     'alternate': 'spec/{}_spec.rb'
+      \   },
+      \   'spec/*_spec.rb': {
+      \     'alternate': 'lib/{}.rb'
+      \   },
+      \   'config/locales/*ru.yml': {
+      \     'alternate': 'config/locales/{}en.yml'
+      \   },
+      \   'config/locales/*en.yml': {
+      \     'alternate': 'config/locales/{}ru.yml'
+      \   }
+      \ }
 
 nmap <Leader>, :A<CR>
 nmap <Leader>v :AV<CR>

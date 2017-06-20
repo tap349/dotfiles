@@ -228,6 +228,8 @@ endif
 
 "set linespace=5
 "set guifont=Fira\ Mono:h14
+"set linespace=2
+"set guifont=Iosevka:h15
 set linespace=5
 set guifont=Andale\ Mono\ MT\ Std:h14
 
