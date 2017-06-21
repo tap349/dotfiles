@@ -14,6 +14,8 @@ tap 'caskroom/cask'
 tap 'caskroom/fonts'
 tap 'homebrew/bundle'
 tap 'homebrew/services'
+# for wuzz
+tap 'ZloeSabo/homebrew-nettools'
 
 #brew 'chromedriver'
 #brew 'djview4'
@@ -26,9 +28,6 @@ brew 'cmake'
 # for cpsm vim plugin
 brew 'boost'
 brew 'elixir'
-# for iTerm2
-brew 'font-inconsolata-lgc'
-brew 'font-iosevka'
 # required by ~/scripts/fontpatcher
 brew 'fontforge'
 brew 'git'
@@ -83,6 +82,7 @@ brew 'unrar'
 # for react-native
 brew 'watchman'
 brew 'wget'
+brew 'wuzz'
 brew 'yarn'
 # - make it a login shell: `chsh -s /bin/zsh`
 #   (all available shells are listed in /etc/shells,
@@ -107,6 +107,9 @@ cask 'docker'
 #   - 'Working late' preset
 #   - [x] Start f.lux at login (set by default)
 cask 'flux'
+# for iTerm2
+cask 'font-inconsolata-lgc'
+cask 'font-iosevka'
 # app preferences (bookmarks bar, extensions, etc.) are synchronized
 # if you sign in to Chrome (my email is a***.t***.i***@gmail.com)
 #

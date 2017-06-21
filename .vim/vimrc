@@ -210,26 +210,26 @@ endif
 "-------------------------------------------------------------------------------
 
 "set linespace=6
-"set guifont=Andale\ Mono:h14
+"set guifont=Andale\ Mono:h15
 "set linespace=2
 "set guifont=Andale\ Mono\ MT\ Std:h14
 "set linespace=4
 "set guifont=Cousine:h14
 "set linespace=7
 "set guifont=Droid\ Sans\ Mono\ for\ Powerline:h14
-"set linespace=1
-"set guifont=Inconsolata-dz\ For\ Powerline:h14
-"set linespace=0
-"set guifont=Inconsolata\ LGC\ For\ Powerline:h14
-"set linespace=2
-"set guifont=Input\ Mono\ Narrow:h13
-"set linespace=6
-"set guifont=MonacoB\ for\ Powerline:h13
-
 "set linespace=5
 "set guifont=Fira\ Mono:h14
+"set linespace=1
+"set guifont=Inconsolata-dz:h14
+"set linespace=1
+"set guifont=Inconsolata\ LGC:h15
 "set linespace=2
-"set guifont=Iosevka:h15
+"set guifont=Input\ Mono\ Narrow:h13
+"set linespace=3
+"set guifont=MonacoB\ for\ Powerline:h14
+
+"set linespace=4
+"set guifont=Iosevka:h16
 set linespace=5
 set guifont=Andale\ Mono\ MT\ Std:h14
 
