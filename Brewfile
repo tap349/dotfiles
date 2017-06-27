@@ -110,7 +110,6 @@ cask 'docker'
 cask 'flux'
 # for iTerm2
 cask 'font-inconsolata-lgc'
-cask 'font-iosevka'
 # app preferences (bookmarks bar, extensions, etc.) are synchronized
 # if you sign in to Chrome (my email is a***.t***.i***@gmail.com)
 #
