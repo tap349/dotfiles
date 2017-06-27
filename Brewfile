@@ -34,6 +34,7 @@ brew 'git'
 brew 'gpg'
 brew 'htop'
 brew 'imagemagick'
+brew 'jq'
 # used as viewer for html files in mc
 brew 'lynx'
 # - install vim-plug:
