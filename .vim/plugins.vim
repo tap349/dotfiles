@@ -370,8 +370,16 @@ function! LightlineFugitive()
 
   if !exists('*fugitive#head') | return '' | end
 
-  let branch = fugitive#head()
-  return branch !=# '' ? '⎇ ' . branch : ''
+  let l:branch = fugitive#head()
+  let l:fname = expand('%')
+
+  if strwidth(l:branch . l:fname) > 0.6 * winwidth(0)
+    let l:branch = ''
+  elseif l:branch != ''
+    let l:branch = '⎇ ' . l:branch
+  endif
+
+  return l:branch
 endfunction
 
 function! LightlineCtrlPItem()
@@ -389,9 +397,9 @@ function! LightlineFilename()
   if s:IsQuickfix() | return w:quickfix_title | end
   if s:IsExtradite() | return ExtraditeCommitDate() | end
 
-  let fname = s:IsNotebookWindow() ? expand('%:t') : expand('%')
+  let l:fname = s:IsNotebookWindow() ? expand('%:t') : expand('%')
   return ('' != LightlineReadonly() ? LightlineReadonly() . ' ' : '') .
-        \ ('' != fname ? fname : '[No Name]') .
+        \ ('' != l:fname ? l:fname : '[No Name]') .
         \ ('' != LightlineModified() ? ' ' . LightlineModified() : '')
 endfunction
 
@@ -409,12 +417,12 @@ endfunction
 function! LightlineCtrlPMark()
   if !s:IsCtrlP() | return '' | end
 
-  let search_modes = [
+  let l:search_modes = [
         \   g:lightline.ctrlp_prev,
         \   g:lightline.ctrlp_item,
         \   g:lightline.ctrlp_next
         \ ]
-  return lightline#concatenate(search_modes, 0)
+  return lightline#concatenate(l:search_modes, 0)
 endfunction
 
 function! LightlineFiletype()
