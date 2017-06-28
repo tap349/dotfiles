@@ -600,13 +600,19 @@ nmap <silent> <Leader>cr :call <SID>MySyntasticReset()<CR>
 " run all checkers from g:syntastic_<filetype>_checkers for
 " current filetype unless checkers are passed explicitly as
 " arguments to SyntasticCheck
+"
+" http://vim.wikia.com/wiki/Highlight_unwanted_spaces
 function! s:MySyntasticCheck()
   SyntasticCheck
   call lightline#update()
+
+  hi ExtraWhitespace guibg=#87CEFA
+  match ExtraWhitespace /\s\+$/
 endfunction
 
 function! s:MySyntasticReset()
   SyntasticReset
+  match
   call lightline#update()
 endfunction
 
