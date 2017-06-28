@@ -606,7 +606,7 @@ function! s:MySyntasticCheck()
   SyntasticCheck
   call lightline#update()
 
-  hi ExtraWhitespace guibg=#87CEFA
+  hi ExtraWhitespace guibg=#FFD700 guifg=black
   match ExtraWhitespace /\s\+$/
 endfunction
 
