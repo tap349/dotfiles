@@ -28,6 +28,13 @@ augroup vimrc
   autocmd BufWritePost $MYVIMRC source $MYVIMRC | call lightline#enable()
 augroup END
 
+" http://vim.wikia.com/wiki/Highlight_unwanted_spaces#Resolving_performance_problems
+" fix possible memory leaks
+augroup matches
+  autocmd!
+  autocmd BufWinLeave * call clearmatches()
+augroup END
+
 " `my_` prefix is used when there already exists autocommand group
 " with the same name in some vim plugin
 

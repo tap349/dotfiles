@@ -604,15 +604,16 @@ nmap <silent> <Leader>cr :call <SID>MySyntasticReset()<CR>
 " http://vim.wikia.com/wiki/Highlight_unwanted_spaces
 function! s:MySyntasticCheck()
   hi ExtraWhitespace guibg=#FFD700 guifg=black
-  match ExtraWhitespace /\s\+$/
+  call matchadd('ExtraWhitespace', '\s\+$')
 
   SyntasticCheck
   call lightline#update()
 endfunction
 
 function! s:MySyntasticReset()
+  call clearmatches()
+
   SyntasticReset
-  match
   call lightline#update()
 endfunction
 
