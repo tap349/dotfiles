@@ -604,6 +604,7 @@ nmap <silent> <Leader>cr :call <SID>MySyntasticReset()<CR>
 " http://vim.wikia.com/wiki/Highlight_unwanted_spaces
 function! s:MySyntasticCheck()
   hi ExtraWhitespace guibg=#FFD700 guifg=black
+  " adds match for current window only
   call matchadd('ExtraWhitespace', '\s\+$')
 
   SyntasticCheck

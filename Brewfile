@@ -108,8 +108,15 @@ cask 'docker'
 #   - 'Working late' preset
 #   - [x] Start f.lux at login (set by default)
 cask 'flux'
+cask 'font-cousine'
+cask 'font-d2coding'
+cask 'font-droid-sans-mono'
+cask 'font-fira-mono'
+cask 'font-inconsolata-dz'
 # for iTerm2
 cask 'font-inconsolata-lgc'
+cask 'font-input'
+cask 'font-iosevka'
 # app preferences (bookmarks bar, extensions, etc.) are synchronized
 # if you sign in to Chrome (my email is a***.t***.i***@gmail.com)
 #
