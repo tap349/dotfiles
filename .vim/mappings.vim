@@ -172,10 +172,7 @@ nnoremap Y y$
 " http://superuser.com/a/382582
 " http://vim.wikia.com/wiki/Selecting_your_pasted_text
 "
-" highlight last inserted or pasted text (works till save):
-" the last character of previously inserted text is the one right
-" after inserted text -> this command selects one character more
-" than actually inserted (though it's all okay for pasted text)
+" highlight last inserted or pasted text (works till save)
 nnoremap gp `[v`]
 
 "===============================================================================
