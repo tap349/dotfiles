@@ -120,7 +120,7 @@ alias ga='git add -A .'
 alias gc='noglob git_commit'
 alias gd='git diff'
 alias gdc='git diff --cached'
-alias gl="git log --graph --pretty=format:'%Cred%h%Creset %C(yellow)%d%Creset %s - %C(bold blue)%an%Creset, %Cgreen%cr' --abbrev-commit"
+alias gl='git_log'
 alias gs='git status'
 alias gbd='git_delete_branches'
 
@@ -148,6 +148,7 @@ alias recreate='rake db:recreate && RAILS_ENV=test rake db:recreate'
 alias and='react-native run-android'
 alias ios='react-native run-ios'
 
+# emulator alias below is used
 alias avd='emulator -avd Nexus_5X_API_23_x86_64 -gpu host -skin 1080x1920'
 alias emulator='cd $ANDROID_HOME/emulator && ./emulator'
 
@@ -237,6 +238,11 @@ git_commit() {
 
 git_delete_branches() {
   git branch | grep -v -E '(master|develop)' | xargs git branch -d
+}
+
+git_log() {
+  local format='%Cred%h%Creset %C(yellow)%d%Creset %s - %C(bold blue)%an%Creset, %Cgreen%cr'
+  git log --graph --pretty=format:${format} --abbrev-commit
 }
 
 # shikimori
