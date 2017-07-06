@@ -117,7 +117,7 @@ alias iex='iex -S mix'
 
 alias g='git'
 alias ga='git add -A .'
-alias gc='git_commit'
+alias gc='noglob git_commit'
 alias gd='git diff'
 alias gdc='git diff --cached'
 alias gl="git log --graph --pretty=format:'%Cred%h%Creset %C(yellow)%d%Creset %s - %C(bold blue)%an%Creset, %Cgreen%cr' --abbrev-commit"
