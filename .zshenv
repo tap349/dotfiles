@@ -231,6 +231,7 @@ publish() {
 
 # git
 
+# https://unix.stackexchange.com/questions/274257
 git_commit() {
   [[ -z $1 ]] && echo error: specify git commit message && return 1
   git commit -m "$*"
