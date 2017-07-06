@@ -44,7 +44,7 @@ Plug 'tap349/vim-extradite' | Plug 'tpope/vim-fugitive'
 " javascript / coffeescript / react
 "-------------------------------------------------------------------------------
 
-Plug 'kchmck/vim-coffee-script'
+"Plug 'kchmck/vim-coffee-script'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx' | Plug 'pangloss/vim-javascript'
 

@@ -164,7 +164,7 @@ set listchars=nbsp:·,tab:▸·,trail:·,precedes:«,extends:»
 set lazyredraw
 " with regexpengine 2 vim might lose syntax highlighting occasionally
 " (say, when replacing `game` with `game` in `let(:game)` using `ce`)
-set regexpengine=1
+set regexpengine=0
 set synmaxcol=200
 
 "===============================================================================
@@ -306,10 +306,8 @@ set shell=/usr/local/bin/zsh
 "
 "===============================================================================
 
-iabbrev ii i18n_i
 iabbrev lasnt last
 iabbrev teh the
-iabbrev tt i18n_t
 
 "===============================================================================
 "
