@@ -188,7 +188,7 @@ let g:cpsm_match_empty_query = 0
 "-------------------------------------------------------------------------------
 " ctrlp.vim
 "
-" wildignore is used to get the list of ignored files
+" wildignore and .gitignore are used to get the list of ignored files
 "-------------------------------------------------------------------------------
 
 " instant update causes cursor to appear and flicker
