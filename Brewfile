@@ -194,6 +194,7 @@ cask 'java'
 cask 'keybase'
 cask 'openemu'
 cask 'pgadmin4'
+cask 'psequel'
 cask 'skype'
 # - app preferences:
 #   - Menubar: Temperature only
