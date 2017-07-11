@@ -51,9 +51,6 @@ DOWNLOADS=~/Downloads
 ICEPERK=~/dev/complead/iceperk
 ICEPERKAPP=~/dev/complead/iceperkapp
 NEKO_ACHIEVEMENTS=~/dev/morr/neko-achievements
-NTV_CLIENT=~/dev/ntv/client
-NTV_SYSTEMD_UNITS=~/dev/ntv/systemd_units
-NTV_WIFI=~/dev/ntv/wifi
 PUMBA=~/dev/ingate/pumba
 REENTER_BUILDER=~/dev/ingate/reenter_builder
 REENTER_FEED=~/dev/ingate/reenter_feed
@@ -78,15 +75,12 @@ alias blog='cd $BLOG'
 alias dot='cd $DOTFILES'
 alias dl='cd $DOWNLOADS'
 
-alias rb='cd $REENTER_BUILDER'
-alias rf='cd $REENTER_FEED'
 alias ic='cd $ICEPERK'
 alias ica='cd $ICEPERKAPP'
 alias n='cd $NEKO_ACHIEVEMENTS'
-alias nc='cd $NTV_CLIENT'
-alias nu='cd $NTV_SYSTEMD_UNITS'
-alias nw='cd $NTV_WIFI'
 alias p='cd $PUMBA'
+alias rb='cd $REENTER_BUILDER'
+alias rf='cd $REENTER_FEED'
 alias s='cd $SHIKIMORI'
 
 alias opr7='cd $OPR7'
