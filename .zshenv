@@ -50,6 +50,7 @@ DOWNLOADS=~/Downloads
 
 ICEPERK=~/dev/complead/iceperk
 ICEPERKAPP=~/dev/complead/iceperkapp
+ICEPERKCHEF=~/dev/complead/iceperkchef
 NEKO_ACHIEVEMENTS=~/dev/morr/neko-achievements
 PUMBA=~/dev/ingate/pumba
 REENTER_BUILDER=~/dev/ingate/reenter_builder
@@ -77,6 +78,7 @@ alias dl='cd $DOWNLOADS'
 
 alias ic='cd $ICEPERK'
 alias ica='cd $ICEPERKAPP'
+alias icc='cd $ICEPERKCHEF'
 alias n='cd $NEKO_ACHIEVEMENTS'
 alias p='cd $PUMBA'
 alias rb='cd $REENTER_BUILDER'
