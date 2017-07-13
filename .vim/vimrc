@@ -231,8 +231,6 @@ endif
 "set guifont=Inconsolata-dz:h14
 "set linespace=2
 "set guifont=Inconsolata\ LGC:h15
-"set linespace=5
-"set guifont=InputMonoCondensed\ Light:h15
 "set linespace=3
 "set guifont=MonacoB\ for\ Powerline:h16
 "set linespace=4
@@ -240,8 +238,10 @@ endif
 "set linespace=4
 "set guifont=D2Coding:h16
 
-set linespace=5
-set guifont=Andale\ Mono\ MT\ Std:h14
+"set linespace=5
+"set guifont=Andale\ Mono\ MT\ Std:h14
+set linespace=0
+set guifont=Input:h14
 
 "-------------------------------------------------------------------------------
 " gui options
