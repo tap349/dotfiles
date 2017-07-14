@@ -117,8 +117,9 @@ alias gc='noglob git_commit'
 alias gd='git diff'
 alias gdc='git diff --cached'
 alias gl='git_log'
+alias gp='git push'
 alias gs='git status'
-alias gbd='git_delete_branches'
+alias gbd='git_branches_delete'
 
 # rails
 
@@ -234,7 +235,7 @@ git_commit() {
   git commit -m "$*"
 }
 
-git_delete_branches() {
+git_branches_delete() {
   git branch | grep -v -E '(master|develop)' | xargs git branch -d
 }
 

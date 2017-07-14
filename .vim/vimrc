@@ -167,11 +167,11 @@ set listchars=nbsp:·,tab:▸·,trail:·,precedes:«,extends:»
 "
 "===============================================================================
 
-set lazyredraw
+"set lazyredraw
 " with regexpengine 2 vim might lose syntax highlighting occasionally
 " (say, when replacing `game` with `game` in `let(:game)` using `ce`)
-set regexpengine=1
-set synmaxcol=200
+"set regexpengine=2
+"set synmaxcol=100
 
 "===============================================================================
 "
@@ -207,7 +207,8 @@ set transparency=0
 
 if hostname() == 'MacBook-Pro-Personal.local'
   set background=light
-  colorscheme PaperColor
+  colorscheme summerfruit_tap
+  "colorscheme PaperColor
 else
   set background=light
   colorscheme PaperColor
