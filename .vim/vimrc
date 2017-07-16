@@ -207,8 +207,7 @@ set transparency=0
 
 if hostname() == 'MacBook-Pro-Personal.local'
   set background=light
-  colorscheme summerfruit_tap
-  "colorscheme PaperColor
+  colorscheme PaperColor
 else
   set background=light
   colorscheme PaperColor

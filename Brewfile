@@ -99,6 +99,7 @@ brew 'zsh'
 cask 'applepi-baker'
 cask 'calibre'
 cask 'chefdk'
+cask 'dash'
 # run docker app after installation
 # (otherwise `docker` command might be not available in terminal)
 cask 'docker'
