@@ -99,6 +99,20 @@ brew 'zsh'
 cask 'applepi-baker'
 cask 'calibre'
 cask 'chefdk'
+# - app preferences:
+#   - General:
+#     - Startup:
+#       - [x] Launch Dash at login
+#       - [x] Restore all open tabs from last session
+#     - Global search shortcut: F1
+#     - Behavior:
+#       - [x] Show dock icon
+#       - [ ] Show menu bar icon
+#       - [ ] Dismiss main window when I activate a different app
+#   - Web Search:
+#     - [ ] Google
+#     - [ ] DuckDuckGo
+#     - [ ] Stack Overflow
 cask 'dash'
 # run docker app after installation
 # (otherwise `docker` command might be not available in terminal)
