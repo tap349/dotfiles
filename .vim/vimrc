@@ -172,9 +172,18 @@ set listchars=nbsp:·,tab:▸·,trail:·,precedes:«,extends:»
 "
 "===============================================================================
 
-set lazyredraw
-set regexpengine=2
-set synmaxcol=100
+" commented as a result of ongoing fight with losing highlighting
+" (fixes losing highlighting after inlining action constant in
+" TeamAdminsPage#componenDidMount)
+"set lazyredraw
+
+" most problems with disappearing highlighting are solved by
+" removing `cpo-$` option but some problems still persist:
+" e.g. sometimes when I go to the end of line and switch to
+" insert mode (`A`) highlighting is getting lost again -
+" that's why I've switched to regexpengine=0 (autodetection).
+set regexpengine=0
+set synmaxcol=150
 
 "===============================================================================
 "
@@ -189,7 +198,7 @@ set vb t_vb=
 " colors
 "-------------------------------------------------------------------------------
 
-set transparency=0
+"set transparency=0
 
 "let g:solarized_bold = 1
 "let g:solarized_contrast = 'normal'
