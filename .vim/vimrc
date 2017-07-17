@@ -85,7 +85,12 @@ set diffopt=filler,vertical
 
 set colorcolumn=81
 "execute 'set colorcolumn=' . join(range(81,250), ',')
-set cpoptions+=$
+
+" using cpo-$ quite too often breaks syntax highligting
+" (say, when replacing `set` in `Neko.Achievement.Store.set(store)`
+" or when replacing `game` with `game` in `let(:game)` using `ce`) -
+" at first I thought regexpengine was the culprit.
+"set cpoptions+=$
 
 "-------------------------------------------------------------------------------
 " folding
@@ -167,11 +172,9 @@ set listchars=nbsp:·,tab:▸·,trail:·,precedes:«,extends:»
 "
 "===============================================================================
 
-"set lazyredraw
-" with regexpengine 2 vim might lose syntax highlighting occasionally
-" (say, when replacing `game` with `game` in `let(:game)` using `ce`)
-"set regexpengine=2
-"set synmaxcol=100
+set lazyredraw
+set regexpengine=2
+set synmaxcol=100
 
 "===============================================================================
 "
@@ -207,7 +210,8 @@ set transparency=0
 
 if hostname() == 'MacBook-Pro-Personal.local'
   set background=light
-  colorscheme PaperColor
+  "colorscheme PaperColor
+  colorscheme summerfruit_tap
 else
   set background=light
   colorscheme PaperColor
