@@ -125,8 +125,6 @@ alias gbd='git_branches_delete'
 
 alias log='tail -f log/development.log'
 
-alias rails='bin/rails'
-
 alias r='rails'
 alias rc='rails console'
 alias rd='rails dbconsole'
@@ -154,8 +152,6 @@ alias emulator='cd $ANDROID_HOME/emulator && ./emulator'
 
 alias cap='bundle exec cap'
 alias guard='bundle exec guard'
-alias rake='bin/rake'
-alias rspec='bin/rspec'
 alias sidekiq='bundle exec sidekiq --config ./config/sidekiq.yml'
 
 # shikimori

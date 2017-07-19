@@ -149,6 +149,7 @@ cask 'font-iosevka'
 #     + Blank New Tab (Hide in Chrome Menu)
 #     + Browsec VPN
 #     + Clouder (Hide in Chrome Menu)
+#     + cVim
 #     + Dashlane (not available in webstore - can be added on first Dashlane run)
 #     - Data Saver (turn off - turned on after installation)
 #     + Ghostery:
