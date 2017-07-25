@@ -183,7 +183,7 @@ set listchars=nbsp:·,tab:▸·,trail:·,precedes:«,extends:»
 " insert mode (`A`) highlighting is getting lost again -
 " that's why I've switched to regexpengine=0 (autodetection).
 set regexpengine=0
-set synmaxcol=150
+"set synmaxcol=150
 
 "===============================================================================
 "
@@ -220,6 +220,7 @@ let g:solarized_contrast = 'high'
 if hostname() == 'MacBook-Pro-Personal.local'
   set background=light
   "colorscheme PaperColor
+  "colorscheme earendel
   colorscheme github
 else
   set background=light
@@ -321,21 +322,13 @@ set shell=/usr/local/bin/zsh
 
 "===============================================================================
 "
-" abbreviations
-"
-"===============================================================================
-
-iabbrev lasnt last
-iabbrev teh the
-
-"===============================================================================
-"
 " source external vim files
 "
 "===============================================================================
 
 runtime macros/matchit.vim
 
+source ~/.vim/abbreviations.vim
 source ~/.vim/mappings.vim
 source ~/.vim/autocommands.vim
 source ~/.vim/plugins.vim

@@ -143,6 +143,8 @@ alias recreate='rake db:recreate && RAILS_ENV=test rake db:recreate'
 alias and='react-native run-android'
 alias ios='react-native run-ios'
 alias ios5="react-native run-ios --simulator 'iPhone 5'"
+alias logios='react-native log-ios'
+alias logand='react-native log-android'
 
 # emulator alias below is used
 alias avd='emulator -avd Nexus_5X_API_23_x86_64 -gpu host -skin 1080x1920'
