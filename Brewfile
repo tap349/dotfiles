@@ -78,6 +78,7 @@ brew 'rbenv-ctags'
 brew 'redis', restart_service: :changed
 brew 'ssh-copy-id'
 brew 'the_silver_searcher'
+brew 'tmux'
 brew 'tree'
 brew 'unrar'
 # for react-native
