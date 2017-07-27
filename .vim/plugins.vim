@@ -69,6 +69,7 @@ Plug 'tpope/vim-rake' | Plug 'tpope/vim-projectionist'
 "Plug 'sheerun/vim-polyglot'
 Plug 'tap349/vim-markdown'
 Plug 'slim-template/vim-slim'
+Plug 'slime-lang/vim-slime-syntax'
 
 "-------------------------------------------------------------------------------
 " other plugins
