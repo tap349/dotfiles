@@ -35,6 +35,9 @@ export LC_ALL=en_US.UTF-8
 export EDITOR=mvim
 export HOMEBREW_GITHUB_API_TOKEN=03adebc410e1f8de5a2765a5f5890ff8beb76d5f
 
+# https://hexdocs.pm/iex/IEx.html#module-shell-history
+export ERL_AFLAGS="-kernel shell_history enabled"
+
 CDPATH=~:~/dev
 TERM='xterm-256color'
 
