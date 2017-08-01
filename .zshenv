@@ -51,7 +51,7 @@ DOWNLOADS=~/Downloads
 
 # projects
 
-BILLING=~/dev/complead/billing
+ICEPERKBILLING=~/dev/complead/iceperkbilling
 ICEPERK=~/dev/complead/iceperk
 ICEPERKAPP=~/dev/complead/iceperkapp
 ICEPERKCHEF=~/dev/complead/iceperkchef
@@ -80,7 +80,7 @@ alias blog='cd $BLOG'
 alias dot='cd $DOTFILES'
 alias dl='cd $DOWNLOADS'
 
-alias b='cd $BILLING'
+alias icb='cd $ICEPERKBILLING'
 alias ic='cd $ICEPERK'
 alias ica='cd $ICEPERKAPP'
 alias icc='cd $ICEPERKCHEF'

@@ -196,7 +196,7 @@ let g:cpsm_match_empty_query = 0
 " at the end of last line in match window
 let g:ctrlp_lazy_update = 5
 let g:ctrlp_map = '<Leader>s'
-"let g:ctrlp_match_func = { 'match': 'cpsm#CtrlPMatch' }
+let g:ctrlp_match_func = { 'match': 'cpsm#CtrlPMatch' }
 let g:ctrlp_match_window = 'bottom,order:ttb,max:15'
 let g:ctrlp_mruf_relative = 1
 let g:ctrlp_root_markers = ['mix.exs']
