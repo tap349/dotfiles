@@ -45,27 +45,6 @@ HISTSIZE=100000
 HISTFILESIZE=200000
 setopt HIST_IGNORE_DUPS
 
-BLOG=~/blog
-DOTFILES=~/.dotfiles
-DOWNLOADS=~/Downloads
-
-# projects
-
-ICEPERKBILLING=~/dev/complead/iceperkbilling
-ICEPERK=~/dev/complead/iceperk
-ICEPERKAPP=~/dev/complead/iceperkapp
-ICEPERKCHEF=~/dev/complead/iceperkchef
-NEKO_ACHIEVEMENTS=~/dev/morr/neko-achievements
-PUMBA=~/dev/ingate/pumba
-REENTER_BUILDER=~/dev/ingate/reenter_builder
-REENTER_FEED=~/dev/ingate/reenter_feed
-SHIKIMORI=~/dev/morr/shikimori
-
-# mount points
-
-OPR7=/Volumes/opr7
-PI=/Volumes/pi
-
 #-------------------------------------------------------------------------------
 #
 # aliases
@@ -76,22 +55,23 @@ PI=/Volumes/pi
 # cd
 #-------------------------------------------------------------------------------
 
-alias blog='cd $BLOG'
-alias dot='cd $DOTFILES'
-alias dl='cd $DOWNLOADS'
+alias blog='cd ~/blog'
+alias dot='cd ~/.dotfiles'
+alias dl='cd ~/Downloads'
 
-alias icb='cd $ICEPERKBILLING'
-alias ic='cd $ICEPERK'
-alias ica='cd $ICEPERKAPP'
-alias icc='cd $ICEPERKCHEF'
-alias n='cd $NEKO_ACHIEVEMENTS'
-alias p='cd $PUMBA'
-alias rb='cd $REENTER_BUILDER'
-alias rf='cd $REENTER_FEED'
-alias s='cd $SHIKIMORI'
+alias icb='cd ~/dev/complead/iceperkbilling'
+alias ic='cd ~/dev/complead/iceperk'
+alias ica='cd ~/dev/complead/iceperkapp'
+alias icc='cd ~/dev/complead/iceperkchef'
+alias iccx='cd ~/dev/complead/iceperkchefex'
+alias n='cd ~/dev/morr/neko-achievements'
+alias p='cd ~/dev/ingate/pumba'
+alias rb='cd ~/dev/ingate/reenter_builder'
+alias rf='cd ~/dev/ingate/reenter_feed'
+alias s='cd ~/dev/morr/shikimori'
 
-alias opr7='cd $OPR7'
-alias pi='cd $PI'
+alias opr7='cd /Volumes/opr7'
+alias pi='cd /Volumes/pi'
 
 #-------------------------------------------------------------------------------
 # system
