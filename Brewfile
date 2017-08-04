@@ -20,6 +20,7 @@ tap 'ZloeSabo/homebrew-nettools'
 #brew 'chromedriver'
 #brew 'djview4'
 
+brew 'asdf'
 # after installation:
 # - `aws configure`
 brew 'awscli'
