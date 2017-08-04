@@ -1,4 +1,4 @@
-# don't use /etc/zprofile - it might reorder directories in PATH
+# don't use /etc/zprofile - it might reorder directories in PATH:
 # https://mattprice.me/2015/zsh-path-issues-osx-el-capitan/
 setopt no_global_rcs
 
@@ -161,6 +161,17 @@ alias shikisync=sync_shikimori_images
 #
 # in case user is not authorized (supplied public key is not present in
 # .ssh/authorized_keys on server) SSH fallbacks to password-based authentication
+
+#-------------------------------------------------------------------------------
+#
+# asdf initialization
+#
+# it seems completions are not available for zsh yet:
+# https://github.com/asdf-vm/asdf/tree/master/completions
+#
+#-------------------------------------------------------------------------------
+
+source /usr/local/opt/asdf/asdf.sh
 
 #-------------------------------------------------------------------------------
 #
