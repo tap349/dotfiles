@@ -200,7 +200,7 @@ set vb t_vb=
 
 "set transparency=0
 
-"let g:solarized_bold = 1
+let g:solarized_bold = 1
 let g:solarized_contrast = 'high'
 "let g:solarized_diffmode = 'normal'
 "let g:solarized_italic = 0
