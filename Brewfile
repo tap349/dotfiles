@@ -103,7 +103,7 @@ cask 'chefdk'
 # - app preferences:
 #   - General:
 #     - Startup:
-#       - [x] Launch Dash at login
+#       - [ ] Launch Dash at login
 #       - [x] Restore all open tabs from last session
 #     - Global search shortcut: F1
 #     - Behavior:
