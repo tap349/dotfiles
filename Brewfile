@@ -242,6 +242,10 @@ mas '2Do', id: 477670270
 mas 'Cloud Mail.Ru', id: 893068358
 # to add Safari extension first open Dashlane, then Safari -
 # you'll be prompted to install Dashlane extension
+#
+# - app preferences:
+#   - General:
+#     - [x] Start Dashlane at login
 mas 'Dashlane - Password Manager, Secure Digital Wallet', id: 552383089
 mas 'Evernote', id: 406056744
 # - on first run agree to start Flexiglass every time systems starts
