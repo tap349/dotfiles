@@ -23,6 +23,7 @@ tap 'ZloeSabo/homebrew-nettools'
 # after installation:
 # - `aws configure`
 brew 'awscli'
+brew 'ccze'
 # for cpsm vim plugin
 brew 'cmake'
 # for cpsm vim plugin
