@@ -29,4 +29,6 @@ defaults write org.vim.MacVim MMFullScreenFadeTime 0
 
 # add /opt/chefdk/bin to PATH here because ~/.zlogin is sourced
 # after ~/.zshrc where shims directory is prepended to PATH
-path=(/opt/chefdk/bin $path)
+#
+# UPDATE: use `chef exec` instead
+#path=(/opt/chefdk/bin $path)

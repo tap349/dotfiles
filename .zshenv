@@ -13,7 +13,7 @@ setopt no_global_rcs
 # removes duplicate entries from PATH
 typeset -U path
 
-# NOTE: add /opt/chefdk/bin to PATH in ~/.zlogin
+# NOTE: /opt/chefdk/bin is added to PATH in ~/.zlogin
 path=(~/scripts /usr/local/bin $path)
 
 # required by `react-native-cli` to be set
@@ -104,7 +104,7 @@ alias gdc='git diff --cached'
 alias gl='git_log'
 alias gp='git push'
 alias gs='git status'
-alias gbd='git_branches_delete'
+alias gbd='git_branch_delete'
 
 # rails
 
@@ -221,6 +221,21 @@ publish() {
   git push
 }
 
+# chef
+
+# https://stackoverflow.com/a/5955623/3632318
+# https://stackoverflow.com/a/34533957/3632318
+converge() {
+  local name="$1"
+  local env="$2"
+
+  if [ -z $env ]; then env='prod'; fi
+
+  # it's much faster than `chef exec knife node environment_set $name $env`
+  sed -i '' -e "/chef_environment/ s/: \".*\"/: \"${env}\"/" nodes/${name}.json
+  chef exec berks vendor && chef exec knife zero converge "name:${name}"
+}
+
 # git
 
 # https://unix.stackexchange.com/questions/274257
@@ -229,7 +244,7 @@ git_commit() {
   git commit -m "$*"
 }
 
-git_branches_delete() {
+git_branch_delete() {
   git branch | grep -v -E '(master|develop)' | xargs git branch -d
 }
 
