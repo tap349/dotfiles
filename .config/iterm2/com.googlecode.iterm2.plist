@@ -31501,13 +31501,13 @@
 	<key>NSWindow Frame SessionsPreferences</key>
 	<string>138 74 606 456 0 0 1280 777 </string>
 	<key>NSWindow Frame SharedPreferences</key>
-	<string>632 563 918 381 0 0 1920 1057 </string>
+	<string>213 393 918 381 0 0 1280 777 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>0 1 1914 1056 0 0 1920 1057 </string>
-	<key>NSWindow Frame iTerm Window 1</key>
-	<string>0 1 1914 1056 0 0 1920 1057 </string>
-	<key>NSWindow Frame iTerm Window 2</key>
 	<string>0 15 1274 762 0 0 1280 777 </string>
+	<key>NSWindow Frame iTerm Window 1</key>
+	<string>0 15 1274 762 0 0 1280 777 </string>
+	<key>NSWindow Frame iTerm Window 2</key>
+	<string>0 204 650 573 0 0 1280 777 </string>
 	<key>NSWindow Frame iTerm Window 3</key>
 	<string>289 61 650 573 0 0 1280 777 </string>
 	<key>NeverWarnAboutShortLivedSessions_9D3A6D63-A851-4F12-AFB4-40D98DE1829C</key>
@@ -31676,13 +31676,13 @@
 				<key>Alpha Component</key>
 				<real>1</real>
 				<key>Blue Component</key>
-				<real>0.18097275495529175</real>
+				<real>0.12287437170743942</real>
 				<key>Color Space</key>
 				<string>Calibrated</string>
 				<key>Green Component</key>
-				<real>0.12440142035484314</real>
+				<real>0.071981936693191528</real>
 				<key>Red Component</key>
-				<real>0.1073475182056427</real>
+				<real>0.057392653077840805</real>
 			</dict>
 			<key>Background Image Is Tiled</key>
 			<false/>
