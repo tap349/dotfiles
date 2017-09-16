@@ -168,7 +168,8 @@ function! s:MyLAg()
   " :help escape()
   " :help shellescape()
   "
-  " why such a complicated combination?
+  " WHY SUCH A COMPLICATED COMBINATION?
+  "
   " for `LAg!` to work we need to:
   "
   " - not to escape `!` at all
