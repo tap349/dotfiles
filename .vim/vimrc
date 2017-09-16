@@ -84,7 +84,7 @@ set diffopt=filler,vertical
 "-------------------------------------------------------------------------------
 
 set colorcolumn=81
-"execute 'set colorcolumn=' . join(range(81,250), ',')
+"exec 'set colorcolumn=' . join(range(81,250), ',')
 
 " using cpo-$ quite too often breaks syntax highligting
 " (say, when replacing `set` in `Neko.Achievement.Store.set(store)`

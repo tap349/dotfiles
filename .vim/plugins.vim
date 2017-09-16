@@ -150,7 +150,42 @@ let g:ag_prg = 'ag --vimgrep --literal'
 " - (!) don't jump to first found file
 "
 " QFEnter works with both quickfix windows and location lists
-map <Leader>/ :LAg!<Space>
+"map <Leader>/ :LAg!<Space>
+map <Leader>/ :call <SID>MyLAg()<CR>
+
+" `!` is not allowed in function name
+function! s:MyLAg()
+  let l:search_phrase = input(':LAg! ')
+  redraw
+  echo 'Searching...'
+
+  " don't use `silent` - or else no message
+  " will be shown when no matches are found
+  "
+  " https://github.com/mileszs/ack.vim/issues/5
+  " https://stackoverflow.com/a/15403852/3632318
+  " https://stackoverflow.com/questions/5669194
+  " :help escape()
+  " :help shellescape()
+  "
+  " why such a complicated combination?
+  " for `LAg!` to work we need to:
+  "
+  " - not to escape `!` at all
+  " - escape `%#` twice
+  " - escape other special characters (slashes, etc.) once
+  "
+  " - `shellescape({string})`
+  "   escapes all special characters excluding `!%#` once
+  " - `shellescape({string}, 1)`
+  "   escapes all special characters including `!%#` once
+  " - `escape({string}, {chars})`
+  "   escapes only the characters it's told to escape
+  "
+  " => escape all special characters with `shellescape` excluding
+  "    `!%#` once and escape `%#` manually with `escape` twice
+  exec ':LAg! ' . escape(escape(shellescape(l:search_phrase), '%#'), '%#')
+endfunction
 
 "-------------------------------------------------------------------------------
 " CamelCaseMotion
