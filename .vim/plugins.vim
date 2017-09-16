@@ -177,14 +177,14 @@ function! s:MyLAg()
   " - escape other special characters (slashes, etc.) once
   "
   " - `shellescape({string})`
-  "   escapes all special characters excluding `!%#` once
+  "   escapes all special characters once (excluding `!%#`)
   " - `shellescape({string}, 1)`
-  "   escapes all special characters including `!%#` once
+  "   escapes all special characters once (including `!%#`)
   " - `escape({string}, {chars})`
   "   escapes only the characters it's told to escape
   "
-  " => escape all special characters with `shellescape` excluding
-  "    `!%#` once and escape `%#` manually with `escape` twice
+  " => escape all special characters with `shellescape` once
+  "   (excluding `!%#`) and escape `%#` with `escape` twice
   exec ':LAg! ' . escape(escape(shellescape(l:search_phrase), '%#'), '%#')
 endfunction
 
