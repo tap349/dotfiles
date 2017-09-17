@@ -155,7 +155,7 @@ map <Leader>/ :call <SID>MyLAg()<CR>
 
 " `!` is not allowed in function name
 function! s:MyLAg()
-  let l:search_phrase = input(':LAg! ')
+  let l:input_phrase = input(':LAg! ')
   redraw
   echo 'Searching...'
 
@@ -175,17 +175,39 @@ function! s:MyLAg()
   " - not to escape `!` at all
   " - escape `%#` twice
   " - escape other special characters (slashes, etc.) once
+  " - not to treat strings starting with dashes as Ag options
   "
-  " - `shellescape({string})`
+  " - `shellescape({string})`:
   "   escapes all special characters once (excluding `!%#`)
-  " - `shellescape({string}, 1)`
+  " - `shellescape({string}, 1)`:
   "   escapes all special characters once (including `!%#`)
-  " - `escape({string}, {chars})`
+  " - `escape({string}, {chars})`:
   "   escapes only the characters it's told to escape
+  " - `--` (options delimiter):
+  "   signifies the end of Ag options
   "
   " => escape all special characters with `shellescape` once
-  "   (excluding `!%#`) and escape `%#` with `escape` twice
-  exec ':LAg! ' . escape(escape(shellescape(l:search_phrase), '%#'), '%#')
+  "   (excluding `!%#`), escape `%#` with `escape` twice and
+  "   let `--` deal with strings starting with dashes
+  let l:delimiter = ' -- '
+  let l:split_args = split(l:input_phrase, l:delimiter)
+
+  " no options
+  if len(l:split_args) == 1
+    let l:options = ''
+    let l:search_phrase = join(l:split_args)
+  else
+    let l:options = l:split_args[0]
+    let l:search_phrase = join(l:split_args[1:-1], l:delimiter)
+  endif
+
+  " search might break if ' -- ' is contained within search phrase
+  " and user doesn't provide Ag options - then part of search phrase
+  " is parsed as Ag option list which might yield unpredictable result
+  exec ':LAg! '
+        \ . l:options
+        \ . l:delimiter
+        \ . escape(escape(shellescape(l:search_phrase), '%#'), '%#')
 endfunction
 
 "-------------------------------------------------------------------------------
