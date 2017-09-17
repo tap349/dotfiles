@@ -201,9 +201,9 @@ function! s:MyLAg()
     let l:search_phrase = join(l:split_args[1:-1], l:delimiter)
   endif
 
-  " search might break if ' -- ' is contained within search phrase
+  " search might break if ' -- ' is a substring of search phrase
   " and user doesn't provide Ag options - then part of search phrase
-  " is parsed as Ag option list which might yield unpredictable result
+  " is parsed as Ag options which might yield unpredictable results
   exec ':LAg! '
         \ . l:options
         \ . l:delimiter
