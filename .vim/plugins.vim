@@ -156,8 +156,8 @@ map <Leader>/ :call <SID>MyLAg()<CR>
 " `!` is not allowed in function name
 function! s:MyLAg()
   let l:input_phrase = input(':LAg! ')
-  redraw
-  echo 'Searching...'
+  "redraw
+  "echo 'Searching...'
 
   " don't use `silent` - or else no message
   " will be shown when no matches are found
