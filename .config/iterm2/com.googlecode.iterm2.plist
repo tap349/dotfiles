@@ -31311,6 +31311,8 @@
 	<false/>
 	<key>DisableFullscreenTransparency</key>
 	<false/>
+	<key>EnableProxyIcon</key>
+	<false/>
 	<key>EnableRendezvous</key>
 	<false/>
 	<key>FocusFollowsMouse</key>
@@ -31446,6 +31448,8 @@
 	<integer>116</integer>
 	<key>HotkeyCode</key>
 	<integer>40</integer>
+	<key>HotkeyMigratedFromSingleToMulti</key>
+	<true/>
 	<key>HotkeyModifiers</key>
 	<integer>1310985</integer>
 	<key>IRMemory</key>
@@ -31485,7 +31489,7 @@
 		BAtzdHJlYW10eXBlZIHoA4QBQISEhAhOU1N0cmluZwGEhAhOU09iamVjdACF
 		hAErATGG
 		</data>
-		<string>322</string>
+		<string>330</string>
 	</array>
 	<key>NSTableView Hidden Columns KeyBingingTable</key>
 	<array/>
@@ -31498,18 +31502,20 @@
 	</dict>
 	<key>NSWindow Frame NSFontPanel</key>
 	<string>266 206 698 332 0 0 1280 777 </string>
+	<key>NSWindow Frame SUUpdateAlert</key>
+	<string>328 288 620 392 0 0 1280 777 </string>
 	<key>NSWindow Frame SessionsPreferences</key>
 	<string>138 74 606 456 0 0 1280 777 </string>
 	<key>NSWindow Frame SharedPreferences</key>
-	<string>213 393 918 381 0 0 1280 777 </string>
+	<string>236 274 770 429 0 0 1280 777 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>0 15 1274 762 0 0 1280 777 </string>
+	<string>0 0 1276 777 0 0 1280 777 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
-	<string>0 15 1274 762 0 0 1280 777 </string>
+	<string>0 0 1276 777 0 0 1280 777 </string>
 	<key>NSWindow Frame iTerm Window 2</key>
-	<string>0 204 650 573 0 0 1280 777 </string>
+	<string>0 15 1274 762 0 0 1280 777 </string>
 	<key>NSWindow Frame iTerm Window 3</key>
-	<string>289 61 650 573 0 0 1280 777 </string>
+	<string>0 15 1274 762 0 0 1280 777 </string>
 	<key>NeverWarnAboutShortLivedSessions_9D3A6D63-A851-4F12-AFB4-40D98DE1829C</key>
 	<true/>
 	<key>NeverWarnAboutShortLivedSessions_9D3A6D63-A851-4F12-AFB4-40D98DE1829C_selection</key>
@@ -31676,13 +31682,13 @@
 				<key>Alpha Component</key>
 				<real>1</real>
 				<key>Blue Component</key>
-				<real>0.12287437170743942</real>
+				<real>0.14446590840816498</real>
 				<key>Color Space</key>
 				<string>Calibrated</string>
 				<key>Green Component</key>
-				<real>0.071981936693191528</real>
+				<real>0.084826327860355377</real>
 				<key>Red Component</key>
-				<real>0.057392653077840805</real>
+				<real>0.067716531455516815</real>
 			</dict>
 			<key>Background Image Is Tiled</key>
 			<false/>
@@ -32106,7 +32112,7 @@
 			<key>Log Directory</key>
 			<string></string>
 			<key>Minimum Contrast</key>
-			<real>0.025712025316455698</real>
+			<real>0.068013251582278486</real>
 			<key>Mouse Reporting</key>
 			<true/>
 			<key>Name</key>
@@ -32263,6 +32269,19 @@
 			</array>
 			<key>Sync Title</key>
 			<false/>
+			<key>Tab Color</key>
+			<dict>
+				<key>Alpha Component</key>
+				<real>1</real>
+				<key>Blue Component</key>
+				<real>0.895355224609375</real>
+				<key>Color Space</key>
+				<string>sRGB</string>
+				<key>Green Component</key>
+				<real>0.86471701173915627</real>
+				<key>Red Component</key>
+				<real>0.85219685127958655</real>
+			</dict>
 			<key>Tags</key>
 			<array/>
 			<key>Terminal Type</key>
@@ -32271,6 +32290,19 @@
 			<real>0.0</real>
 			<key>Triggers</key>
 			<array/>
+			<key>Underline Color</key>
+			<dict>
+				<key>Alpha Component</key>
+				<real>1</real>
+				<key>Blue Component</key>
+				<real>0.52914255391806364</real>
+				<key>Color Space</key>
+				<string>sRGB</string>
+				<key>Green Component</key>
+				<real>0.52914255391806364</real>
+				<key>Red Component</key>
+				<real>0.777984619140625</real>
+			</dict>
 			<key>Unlimited Scrollback</key>
 			<false/>
 			<key>Use Bold Font</key>
@@ -32286,6 +32318,8 @@
 			<key>Use Non-ASCII Font</key>
 			<false/>
 			<key>Use Tab Color</key>
+			<false/>
+			<key>Use Underline Color</key>
 			<false/>
 			<key>Vertical Spacing</key>
 			<real>1</real>
@@ -32401,7 +32435,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2016-11-28T20:55:34Z</date>
+	<date>2017-09-20T18:21:22Z</date>
 	<key>SUSendProfileInfo</key>
 	<false/>
 	<key>SavePasteHistory</key>
@@ -32414,12 +32448,14 @@
 	<false/>
 	<key>SplitPaneDimmingAmount</key>
 	<real>0.10981070307584911</real>
+	<key>StretchTabsToFillBar</key>
+	<false/>
 	<key>SwitchTabModifier</key>
 	<integer>4</integer>
 	<key>SwitchWindowModifier</key>
 	<integer>6</integer>
 	<key>TabStyle</key>
-	<integer>1</integer>
+	<integer>2</integer>
 	<key>TabViewType</key>
 	<integer>0</integer>
 	<key>ThreeFingerEmulates</key>
@@ -32449,7 +32485,7 @@
 	<key>findRegex_iTerm</key>
 	<false/>
 	<key>iTerm Version</key>
-	<string>3.0.12</string>
+	<string>3.1.2.beta.1</string>
 	<key>kCPKSelectionViewPreferredModeKey</key>
 	<integer>0</integer>
 	<key>kCPKSelectionViewShowHSBTextFieldsKey</key>
