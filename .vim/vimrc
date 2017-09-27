@@ -57,7 +57,7 @@ set switchbuf=usetab
 set completeopt+=longest
 
 set wildmenu
-set wildmode=longest:full,full
+set wildmode=full,longest:full
 " used by command-t and ctrlp - it should be kept in sync with ~/.agignore
 "
 " don't prefix directories relative to project root with asterisk -

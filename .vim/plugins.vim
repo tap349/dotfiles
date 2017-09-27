@@ -154,41 +154,39 @@ let g:ag_prg = 'ag --vimgrep --literal'
 map <Leader>/ :call <SID>MyLAg()<CR>
 
 " `!` is not allowed in function name
+"
+" https://github.com/mileszs/ack.vim/issues/5
+" https://stackoverflow.com/a/15403852/3632318
+" https://stackoverflow.com/questions/5669194
+" :help escape()
+" :help shellescape()
+"
+" WHY SUCH A COMPLICATED COMBINATION FOR SEARCH PHRASE?
+"
+" for `LAg!` to work we need to:
+"
+" - not to escape `!` at all
+" - escape `%#` twice
+" - escape other special characters (slashes, etc.) once
+" - not to treat strings starting with dashes as Ag options
+"
+" - `shellescape({string})`:
+"   escapes all special characters once (excluding `!%#`)
+" - `shellescape({string}, 1)`:
+"   escapes all special characters once (including `!%#`)
+" - `escape({string}, {chars})`:
+"   escapes only the characters it's told to escape
+" - `--` (options delimiter):
+"   signifies the end of Ag options
+"
+" => escape all special characters with `shellescape` once
+"   (excluding `!%#`), escape `%#` with `escape` twice and
+"   let `--` deal with strings starting with dashes
 function! s:MyLAg()
   let l:input_phrase = input(':LAg! ')
   "redraw
   "echo 'Searching...'
 
-  " don't use `silent` - or else no message
-  " will be shown when no matches are found
-  "
-  " https://github.com/mileszs/ack.vim/issues/5
-  " https://stackoverflow.com/a/15403852/3632318
-  " https://stackoverflow.com/questions/5669194
-  " :help escape()
-  " :help shellescape()
-  "
-  " WHY SUCH A COMPLICATED COMBINATION?
-  "
-  " for `LAg!` to work we need to:
-  "
-  " - not to escape `!` at all
-  " - escape `%#` twice
-  " - escape other special characters (slashes, etc.) once
-  " - not to treat strings starting with dashes as Ag options
-  "
-  " - `shellescape({string})`:
-  "   escapes all special characters once (excluding `!%#`)
-  " - `shellescape({string}, 1)`:
-  "   escapes all special characters once (including `!%#`)
-  " - `escape({string}, {chars})`:
-  "   escapes only the characters it's told to escape
-  " - `--` (options delimiter):
-  "   signifies the end of Ag options
-  "
-  " => escape all special characters with `shellescape` once
-  "   (excluding `!%#`), escape `%#` with `escape` twice and
-  "   let `--` deal with strings starting with dashes
   let l:delimiter = ' -- '
   let l:split_args = split(l:input_phrase, l:delimiter)
 
@@ -201,6 +199,9 @@ function! s:MyLAg()
     let l:search_phrase = join(l:split_args[1:-1], l:delimiter)
   endif
 
+  " don't use `silent` - or else no message will be shown when
+  " no matches are found
+  "
   " search might break if ' -- ' is a substring of search phrase
   " and user doesn't provide Ag options - then part of search phrase
   " is parsed as Ag options which might yield unpredictable results
@@ -254,7 +255,7 @@ let g:cpsm_match_empty_query = 0
 " at the end of last line in match window
 let g:ctrlp_lazy_update = 5
 let g:ctrlp_map = '<Leader>s'
-let g:ctrlp_match_func = { 'match': 'cpsm#CtrlPMatch' }
+"let g:ctrlp_match_func = { 'match': 'cpsm#CtrlPMatch' }
 let g:ctrlp_match_window = 'bottom,order:ttb,max:15'
 let g:ctrlp_mruf_relative = 1
 let g:ctrlp_root_markers = ['mix.exs']

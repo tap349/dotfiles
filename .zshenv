@@ -243,8 +243,9 @@ git_commit() {
   git commit -m "$*"
 }
 
+# current branch is prefixed with `*` in `git branch` output
 git_branch_delete() {
-  git branch | grep -v -E '(master|develop)' | xargs git branch -d
+  git branch | grep -v -E '(master|develop|\*)' | xargs git branch -d
 }
 
 git_log() {
