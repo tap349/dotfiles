@@ -57,7 +57,8 @@ set switchbuf=usetab
 set completeopt+=longest
 
 set wildmenu
-set wildmode=full,longest:full
+" don't change the order of options - it matters
+set wildmode=longest:full,full
 " used by command-t and ctrlp - it should be kept in sync with ~/.agignore
 "
 " don't prefix directories relative to project root with asterisk -
@@ -216,11 +217,12 @@ let g:solarized_contrast = 'high'
 "colorscheme solarized
 "colorscheme summerfruit_tap
 "colorscheme vylight
+"colorscheme earendel
+"colorscheme autumn
+"colorscheme bclear
 
 if hostname() == 'MacBook-Pro-Personal.local'
   set background=light
-  "colorscheme PaperColor
-  "colorscheme earendel
   colorscheme github
 else
   set background=light
