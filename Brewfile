@@ -4,7 +4,9 @@
 # - see comments before package or application for postinstallation setup
 # - see `brew services` on how to manage services for supported forumalae
 
-cask_args appdir: '/Applications'
+#-------------------------------------------------------------------------------
+# Taps (third-party repositories)
+#-------------------------------------------------------------------------------
 
 # remove formula with its unused dependencies:
 # `brew rmtree mpv`
@@ -16,6 +18,10 @@ tap 'homebrew/bundle'
 tap 'homebrew/services'
 # for wuzz
 tap 'ZloeSabo/homebrew-nettools'
+
+#-------------------------------------------------------------------------------
+# Homebrew
+#-------------------------------------------------------------------------------
 
 #brew 'chromedriver'
 #brew 'djview4'
@@ -96,6 +102,12 @@ brew 'yarn'
 #   - https://github.com/zsh-users/zsh-autosuggestions#oh-my-zsh
 #   - https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/INSTALL.md#oh-my-zsh
 brew 'zsh'
+
+#-------------------------------------------------------------------------------
+# Homebrew-Cask
+#-------------------------------------------------------------------------------
+
+cask_args appdir: '/Applications'
 
 # for Raspeberry Pi
 cask 'applepi-baker'
@@ -224,6 +236,12 @@ cask 'unetbootin'
 #   - Users & Groups -> Login Items (don't hide): remove
 cask 'utorrent'
 
+#-------------------------------------------------------------------------------
+# App Store
+#
+# mas search Trello
+#-------------------------------------------------------------------------------
+
 # - link to dropbox account and sync (Replace Local Data)
 # - app preferences:
 #   - General:
@@ -286,3 +304,4 @@ mas 'Xcode', id: 497799835
 #     - General -> Show Magnifier: <M-2>
 mas 'Sip', id: 507257563
 mas 'Telegram Desktop', id: 946399090
+mas 'Trello', id: 1278508951
