@@ -90,7 +90,7 @@ Plug 'mhinz/vim-hugefile'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/syntastic'
-Plug 'tap349/ag.vim'
+Plug 'tap349/ack.vim'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
@@ -122,37 +122,15 @@ call plug#end()
 "===============================================================================
 
 "-------------------------------------------------------------------------------
-" ag.vim
+" ack.vim
 "
-" I use my fork: https://github.com/tap349/ag.vim
-" (removed all default keybindings and used QFEnter keybindings instead)
-"
-" ~/.agignore is used to get the list of ignored files
+" rg respects ./.gitignore and ~/.ignore files
 "-------------------------------------------------------------------------------
 
-"let g:ag_highlight = 1
-" don't show help on ag.vim keys (it's not up-to-date now)
-let g:ag_mapping_message = 0
-" ignore the same directories as in wildignore:
-" ~/.agignore ignore file is used by default or else
-" it can be specified with `--path-to-ignore` ag option
-"
-" when using `--hidden` option:
-"
-" 1) ignored files list is respected (unlike in ctrlp)
-" 2) all hidden files and directories are searched in
-"   (except for ignored ones)
-let g:ag_prg = 'ag --vimgrep --literal'
-" always run from current working directory (default)
-"let g:ag_working_path_mode = 'r'
+let g:ackprg = 'rg --fixed-strings --smart-case --vimgrep'
 
-" - (L) use location list instead of quickfix window
-"   (allows to have different searches in different tabs)
-" - (!) don't jump to first found file
-"
 " QFEnter works with both quickfix windows and location lists
-"map <Leader>/ :LAg!<Space>
-map <Leader>/ :call <SID>MyLAg()<CR>
+map <Leader>/ :call <SID>MyLAck()<CR>
 
 " `!` is not allowed in function name
 "
@@ -162,14 +140,14 @@ map <Leader>/ :call <SID>MyLAg()<CR>
 " :help escape()
 " :help shellescape()
 "
-" WHY SUCH A COMPLICATED COMBINATION FOR SEARCH PHRASE?
-"
-" for `LAg!` to work we need to:
+" for rg to work we need:
 "
 " - not to escape `!` at all
-" - escape `%#` twice
-" - escape other special characters (slashes, etc.) once
-" - not to treat strings starting with dashes as Ag options
+" - to escape `%#` twice
+" - to escape other special characters (slashes, etc.) once
+" - not to treat strings starting with dashes as rg options
+"
+" useful functions:
 "
 " - `shellescape({string})`:
 "   escapes all special characters once (excluding `!%#`)
@@ -178,38 +156,48 @@ map <Leader>/ :call <SID>MyLAg()<CR>
 " - `escape({string}, {chars})`:
 "   escapes only the characters it's told to escape
 " - `--` (options delimiter):
-"   signifies the end of Ag options
+"   signifies the end of rg options
 "
-" => escape all special characters with `shellescape` once
-"   (excluding `!%#`), escape `%#` with `escape` twice and
-"   let `--` deal with strings starting with dashes
-function! s:MyLAg()
-  let l:input_phrase = input(':LAg! ')
-  "redraw
-  "echo 'Searching...'
+" => escape all special characters excluding `!%#` with
+"    `shellescape`, escape `%#` with `escape` twice
+"    and let `--` deal with strings starting with dashes
+function! s:MyLAck()
+  let l:input_phrase = input(':LAck! ')
 
   let l:delimiter = ' -- '
   let l:split_args = split(l:input_phrase, l:delimiter)
 
-  " no options
-  if len(l:split_args) == 1
+  " empty search phrase - ack.vim searches word under cursor
+  if len(l:split_args) == 0
+    let l:options = ''
+    let l:delimiter = ''
+    let l:search_phrase = ''
+  " search phrase without options
+  elseif len(l:split_args) == 1
     let l:options = ''
     let l:search_phrase = join(l:split_args)
+  " search phrase and options
   else
     let l:options = l:split_args[0]
     let l:search_phrase = join(l:split_args[1:-1], l:delimiter)
+  endif
+
+  " ack.vim already escapes `|%#` once in autoload/ack.vim -
+  " we need to do it twice so escape `%#` once again here
+  "
+  " don't escape search phrase on empty input - this results into
+  " '' which prevents ack.vim from searching the word under cursor
+  if len(l:split_args) != 0
+    let l:search_phrase = escape(shellescape(l:search_phrase), '%#')
   endif
 
   " don't use `silent` - or else no message will be shown when
   " no matches are found
   "
   " search might break if ' -- ' is a substring of search phrase
-  " and user doesn't provide Ag options - then part of search phrase
-  " is parsed as Ag options which might yield unpredictable results
-  exec ':LAg! '
-        \ . l:options
-        \ . l:delimiter
-        \ . escape(escape(shellescape(l:search_phrase), '%#'), '%#')
+  " and user doesn't provide rg options - then part of search phrase
+  " is parsed as rg options which might yield unpredictable results
+  exec ':LAck! ' . l:options . l:delimiter . l:search_phrase
 endfunction
 
 "-------------------------------------------------------------------------------
@@ -263,17 +251,9 @@ let g:ctrlp_match_window = 'bottom,order:ttb,max:15'
 let g:ctrlp_mruf_relative = 1
 let g:ctrlp_root_markers = ['mix.exs']
 let g:ctrlp_switch_buffer = 'et'
-" you might consider turning off caching at all when using ag
 let g:ctrlp_use_caching = 1
-" it's not possible to use g:ag_prg variable here - options differ.
-" add `-g ""` to print filenames (otherwise nothing is found)
-"
-" when using `--hidden` option:
-"
-" 1) ignored files list is NOT respected (unlike in ag)
-" 2) all hidden files and directories are searched for
-"   (including ignored ones)
-let g:ctrlp_user_command = 'ag %s --files-with-matches -g ""'
+" https://github.com/BurntSushi/ripgrep/issues/75
+let g:ctrlp_user_command = 'rg --files %s'
 " don't set working directory with ctrlp
 let g:ctrlp_working_path_mode = 0
 
