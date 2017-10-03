@@ -179,13 +179,13 @@ function! s:MyLAck()
   elseif len(l:split_args) == 1 && l:input_phrase =~ l:delimiter
     call <SID>ShowErrorMessage('empty search')
     return
-  " search phrase without glob
+  " search phrase without options
   elseif len(l:split_args) == 1
-    let l:glob_option = ''
+    let l:options = ''
     let l:search_phrase = join(l:split_args)
-  " search phrase with glob
+  " search phrase with options
   else
-    let l:glob_option = '-g ''*' . l:split_args[0] . '*'''
+    let l:options = l:split_args[0]
     let l:search_phrase = join(l:split_args[1:-1], l:delimiter)
   endif
 
@@ -195,10 +195,10 @@ function! s:MyLAck()
   " escape `%#` once again here so that they're escaped twice
   "
   " search might break if ' -- ' is a substring of search phrase
-  " and user doesn't provide rg glob - then part of search phrase
-  " is parsed as rg glob which might yield undesirable results
+  " and user doesn't provide options - then part of search phrase
+  " is parsed as options which might yield unpredictable results
   exec ':LAck! '
-        \ . l:glob_option
+        \ . l:options
         \ . l:delimiter
         \ . escape(shellescape(l:search_phrase), '%#')
 endfunction
