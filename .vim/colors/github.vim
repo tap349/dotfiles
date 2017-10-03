@@ -32,7 +32,7 @@ hi StatusLineNC ctermfg=238 ctermbg=252 guifg=#404040 guibg=#d4d4d4 gui=italic c
 hi VertSplit ctermfg=250 ctermbg=250 guibg=#F3F3FA   guifg=#83aac5 gui=none cterm=none
 hi LineNr   ctermfg=246 ctermbg=15 guifg=#B8B8C2 guibg=#F3F3FA cterm=bold
 hi SpecialKey ctermfg=6 guifg=#177F80 gui=italic cterm=italic
-hi WarningMsg ctermfg=167 guifg=#ef5939
+hi WarningMsg ctermfg=167 guifg=#df1100
 hi ErrorMsg ctermbg=15 ctermfg=196 guibg=#f8f8ff guifg=#ff1100 gui=undercurl cterm=undercurl
 hi ColorColumn ctermbg=254 guibg=#e8e8ef
 " }}}
