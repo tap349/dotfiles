@@ -167,7 +167,7 @@ map <Leader>/ :call <SID>MyLAck()<CR>
 "    `shellescape`, escape `%#` with `escape` twice
 "    and let `--` deal with strings starting with dashes
 function! s:MyLAck()
-  let l:input_phrase = input('🔎 ')
+  let l:input_phrase = input('⮁ ')
   let l:delimiter = ' -- '
   let l:split_args = split(l:input_phrase, l:delimiter)
 
