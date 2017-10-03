@@ -135,7 +135,20 @@ let g:ackprg = 'rg --fixed-strings --smart-case --vimgrep'
 let g:ack_use_cword_for_empty_search = 0
 
 " QFEnter works with both quickfix windows and location lists
-map <Leader>/ :call <SID>MyLAck()<CR>
+map <Leader>/ :call <SID>Search()<CR>
+map <Leader>\ :call <SID>SearchWithGlob()<CR>
+
+function! s:Search()
+  let l:input_phrase = input('⮁ ')
+  call <SID>MyLAck(l:input_phrase, '')
+endfunction
+
+function! s:SearchWithGlob()
+  let l:input_phrase = input('[1/2] SEARCH ⮁ ')
+  redraw!
+  let l:glob = input('[2/2] GLOB ⮁ ')
+  call <SID>MyLAck(l:input_phrase, l:glob)
+endfunction
 
 " `!` is not allowed in function name
 "
@@ -166,47 +179,48 @@ map <Leader>/ :call <SID>MyLAck()<CR>
 " => escape all special characters excluding `!%#` with
 "    `shellescape`, escape `%#` with `escape` twice
 "    and let `--` deal with strings starting with dashes
-function! s:MyLAck()
-  let l:input_phrase = input('⮁ ')
-  let l:delimiter = ' -- '
-  let l:split_args = split(l:input_phrase, l:delimiter)
+function! s:MyLAck(input_phrase, ...)
+  let l:glob = get(a:, 1, '')
+  let l:glob_option = len(l:glob) ? '-g ''*' . l:glob . '*''' : ''
 
-  " no arguments at all
-  if len(l:split_args) == 0
-    call <SID>ShowErrorMessage('empty search')
+  let l:delimiter = ' -- '
+  let l:split_args = split(a:input_phrase, l:delimiter)
+  let l:args_len = len(l:split_args)
+
+  " no arguments
+  if l:args_len == 0
+    call <SID>ShowWarningMessage('Empty search')
     return
-  " empty search phrase (say, `jb -- `)
-  elseif len(l:split_args) == 1 && l:input_phrase =~ l:delimiter
-    call <SID>ShowErrorMessage('empty search')
+  " options only (`-w -- `)
+  elseif l:args_len == 1 && a:input_phrase =~ l:delimiter . '$'
+    call <SID>ShowWarningMessage('Empty search')
     return
-  " search phrase without options
-  elseif len(l:split_args) == 1
-    let l:options = ''
+  " search phrase only (` -- foo` or `foo`)
+  elseif l:args_len == 1
+    let l:options = l:glob_option
     let l:search_phrase = join(l:split_args)
-  " search phrase with options
+  " options and search phrase
   else
-    let l:options = l:split_args[0]
+    let l:options = l:glob_option . ' ' . l:split_args[0]
     let l:search_phrase = join(l:split_args[1:-1], l:delimiter)
   endif
 
-  " don't use `silent` - it suppresses 'no match found' message
-  "
   " ack.vim already escapes `|%#` once in autoload/ack.vim -
   " escape `%#` once again here so that they're escaped twice
+  let l:escaped_search_phrase = escape(shellescape(l:search_phrase), '%#')
+
+  " don't use `silent` - it suppresses 'no match found' message
   "
   " search might break if ' -- ' is a substring of search phrase
   " and user doesn't provide options - then part of search phrase
   " is parsed as options which might yield unpredictable results
-  exec ':LAck! '
-        \ . l:options
-        \ . l:delimiter
-        \ . escape(shellescape(l:search_phrase), '%#')
+  exec ':LAck! ' . l:options . l:delimiter . l:escaped_search_phrase
 endfunction
 
-function! s:ShowErrorMessage(message)
+function! s:ShowWarningMessage(message)
   redraw!
   echohl WarningMsg
-  echo 'Error: ' . a:message
+  echo a:message
   echohl Normal
 endfunction
 
