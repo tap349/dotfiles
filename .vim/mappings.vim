@@ -304,7 +304,7 @@ cnoremap <C-e> <End>
 "  if empty(l:alternate)
 "    echohl WarningMsg
 "    echo 'No alternate file for ' . a:path . ' exists!'
-"    echohl Normal
+"    echohl None
 "  else
 "    exec a:vim_command . " " . l:alternate
 "  endif

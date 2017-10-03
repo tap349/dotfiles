@@ -139,14 +139,20 @@ map <Leader>/ :call <SID>Search()<CR>
 map <Leader>\ :call <SID>SearchWithGlob()<CR>
 
 function! s:Search()
-  let l:input_phrase = input('⮁ ')
+  echohl AckSearch
+  let l:input_phrase = input(' SEARCH ⮁ ')
+  echohl None
+
   call <SID>MyLAck(l:input_phrase, '')
 endfunction
 
 function! s:SearchWithGlob()
+  echohl AckSearch
   let l:input_phrase = input('[1/2] SEARCH ⮁ ')
   redraw!
   let l:glob = input('[2/2] GLOB ⮁ ')
+  echohl None
+
   call <SID>MyLAck(l:input_phrase, l:glob)
 endfunction
 
@@ -221,7 +227,7 @@ function! s:ShowWarningMessage(message)
   redraw!
   echohl WarningMsg
   echo a:message
-  echohl Normal
+  echohl None
 endfunction
 
 "-------------------------------------------------------------------------------

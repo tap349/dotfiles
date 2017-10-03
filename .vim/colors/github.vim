@@ -114,9 +114,9 @@ if has("spell")
 endif
 " }}}
 
-"------------------------------------------------------------------------------
+"-------------------------------------------------------------------------------
 " vim-gitgutter
-"------------------------------------------------------------------------------
+"-------------------------------------------------------------------------------
 
 hi GitGutterAdd               guibg=#befece guifg=#0e8e0e
 hi GitGutterChange            guibg=#deeefe guifg=#6e6efe
@@ -127,3 +127,10 @@ hi GitGutterAddLine           guibg=#befece
 hi GitGutterChangeLine        guibg=#deeefe
 hi GitGutterDeleteLine        guibg=#fee2e2
 hi GitGutterChangeDeleteLine  guibg=#fedefe
+
+"-------------------------------------------------------------------------------
+" ack.vim
+"-------------------------------------------------------------------------------
+
+hi AckSearch guifg=#0B049B gui=bold
+"hi AckSearch guifg=#778888 gui=none
