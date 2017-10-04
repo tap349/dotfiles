@@ -132,5 +132,5 @@ hi GitGutterChangeDeleteLine  guibg=#fedefe
 " ack.vim
 "-------------------------------------------------------------------------------
 
-hi AckSearch guifg=#0B049B gui=bold
+hi AckSearch guifg=#638aa5
 "hi AckSearch guifg=#778888 gui=none

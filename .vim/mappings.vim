@@ -313,15 +313,11 @@ cnoremap <C-e> <End>
 function! s:GoToLastActiveTab()
   " return if g:lasttabnr variable is not set - it means current
   " tab is the only one and other tabs have never been opened
-  if !exists('g:lasttabnr')
-    return
-  endif
+  if !exists('g:lasttabnr') | return | endif
 
   " return if there is only one tab left
   " (all other tabs have been closed)
-  if tabpagenr('$') == 1
-    return
-  endif
+  if tabpagenr('$') == 1 | return | endif
 
   exec 'tabnext ' . g:lasttabnr
 endfunction
