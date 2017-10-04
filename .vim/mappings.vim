@@ -88,6 +88,7 @@ nnoremap <C-Tab> :call <SID>GoToLastActiveTab()<CR>
 
 " same as <C-6>
 nnoremap <silent> <C-s> :b#<CR>
+nnoremap <silent> <S-Backspace> :bd<CR>
 
 "nnoremap <silent> <C-p> :bprevious<CR>
 "nnoremap <silent> <C-n> :bnext<CR>
