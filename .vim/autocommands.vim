@@ -23,11 +23,15 @@ augroup tabs
   autocmd TabLeave * let g:lasttabnr = tabpagenr()
 augroup END
 
-augroup vimrc
-  autocmd!
-  autocmd BufWritePost $MYVIMRC source $MYVIMRC | call lightline#enable()
-  autocmd BufWritePost *.vim source $MYVIMRC | call lightline#enable()
-augroup END
+" some colors might be occasionally broken after sourcing
+" vimrc in autocmd - that was the case with SignColumn
+" highlight group which is used by vim-gitgutter plugin
+" but not defined explicitly in github colorscheme
+"augroup vimrc
+"  autocmd!
+"  autocmd BufWritePost $MYVIMRC source $MYVIMRC | call lightline#enable()
+"  autocmd BufWritePost *.vim source $MYVIMRC | call lightline#enable()
+"augroup END
 
 " http://vim.wikia.com/wiki/Highlight_unwanted_spaces#Resolving_performance_problems
 " fix possible memory leaks

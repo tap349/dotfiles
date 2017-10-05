@@ -20,7 +20,15 @@
 "
 "===============================================================================
 
-syntax on
+" syntax is on even without this command
+
+" using `syntax on` might cause syntax highlighting to be
+" lost partially after sourcing vimrc (say, in rspec files)
+"
+" the only downside of not using `syntax on` is that
+" RGB values lose their colors after sourcing vimrc -
+" use `filetype detect` or reload file in that case
+"syntax on
 
 set noautochdir
 set nocompatible
@@ -46,7 +54,7 @@ set noswapfile
 " http://usevim.com/2012/10/19/vim101-set-hidden
 set hidden
 " http://vim.wikia.com/wiki/Using_tab_pages
-" `newtab` causes all quickfix files (Ag, etc.) to be opened in new tab
+" `newtab` causes all quickfix files to be opened in new tab
 set switchbuf=usetab
 
 "-------------------------------------------------------------------------------
@@ -59,7 +67,7 @@ set completeopt+=longest
 set wildmenu
 " don't change the order of options - it matters
 set wildmode=longest:full,full
-" used by command-t and ctrlp - it should be kept in sync with ~/.agignore
+" used by command-t and ctrlp - it should be kept in sync with ~/.ignore
 "
 " don't prefix directories relative to project root with asterisk -
 " that is prefer public/* to */public/*.

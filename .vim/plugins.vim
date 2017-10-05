@@ -782,6 +782,11 @@ nmap <F6> :Gvdiff<CR>
 " vim-gitgutter
 "-------------------------------------------------------------------------------
 
+" same colors as in Normal highlight group (SignColumn
+" highlight group is not defined in github colorscheme so
+" sign column colors might be broken after sourcing vimrc)
+hi SignColumn                 guibg=#F3F3FA
+
 hi GitGutterAdd               guibg=#befece guifg=#0e8e0e
 hi GitGutterChange            guibg=#deeefe guifg=#6e6efe
 hi GitGutterDelete            guibg=#fee2e2 guifg=#fe4e4e
