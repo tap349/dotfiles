@@ -26,6 +26,7 @@ augroup END
 augroup vimrc
   autocmd!
   autocmd BufWritePost $MYVIMRC source $MYVIMRC | call lightline#enable()
+  autocmd BufWritePost *.vim source $MYVIMRC | call lightline#enable()
 augroup END
 
 " http://vim.wikia.com/wiki/Highlight_unwanted_spaces#Resolving_performance_problems
