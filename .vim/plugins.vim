@@ -127,7 +127,7 @@ call plug#end()
 " rg respects ./.gitignore and ~/.ignore files
 "-------------------------------------------------------------------------------
 
-let g:ackprg = 'rg --fixed-strings --smart-case --vimgrep'
+let g:ackprg = 'rg -FS --sort-files --vimgrep'
 " disable empty search (searching the word under cursor) -
 " it complicates the logic to parse user input excessively
 "
@@ -140,6 +140,7 @@ map <Leader>\ :call <SID>SearchWithGlob()<CR>
 
 function! s:Search()
   echohl AckSearch
+  "let l:input_phrase = input('⎸SEARCH ⮁ ')
   let l:input_phrase = input(' SEARCH ⮁ ')
   echohl None
 
@@ -148,8 +149,10 @@ endfunction
 
 function! s:SearchWithGlob()
   echohl AckSearch
+  "let l:input_phrase = input('⎸SEARCH [1/2] ⮁ ')
   let l:input_phrase = input(' SEARCH [1/2] ⮁ ')
   redraw!
+  "let l:glob = input('⎸GLOB [2/2] ⮁ ')
   let l:glob = input(' GLOB [2/2] ⮁ ')
   echohl None
 
