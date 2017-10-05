@@ -127,8 +127,9 @@ call plug#end()
 " rg respects ./.gitignore and ~/.ignore files
 "-------------------------------------------------------------------------------
 
-hi AckSearch guifg=#638aa5
-"hi AckSearch guifg=#778888 gui=none
+"hi AckSearch guibg=#ECD745
+"hi AckSearch guifg=#638AA5
+hi AckSearch guifg=#778888
 
 let g:ackprg = 'rg -FS --sort-files --vimgrep'
 " disable empty search (searching the word under cursor) -
@@ -141,9 +142,13 @@ let g:ack_use_cword_for_empty_search = 0
 map <Leader>/ :call <SID>Search()<CR>
 map <Leader>\ :call <SID>SearchWithGlob()<CR>
 
+" useful symbols: ⎸⮁⮀
+"
+" TODO:
+" let l:m = matchadd('AckSearch', ' SEARCH ')
+" matchdelete(l:m)
 function! s:Search()
   echohl AckSearch
-  "let l:input_phrase = input('⎸SEARCH ⮁ ')
   let l:input_phrase = input(' SEARCH ⮁ ')
   echohl None
 
@@ -152,10 +157,8 @@ endfunction
 
 function! s:SearchWithGlob()
   echohl AckSearch
-  "let l:input_phrase = input('⎸SEARCH [1/2] ⮁ ')
   let l:input_phrase = input(' SEARCH [1/2] ⮁ ')
   redraw!
-  "let l:glob = input('⎸GLOB [2/2] ⮁ ')
   let l:glob = input(' GLOB [2/2] ⮁ ')
   echohl None
 
