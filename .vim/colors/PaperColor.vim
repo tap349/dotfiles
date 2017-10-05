@@ -1317,20 +1317,6 @@ if has("gui_running")
 endif
 
 "------------------------------------------------------------------------------
-" vim-gitgutter
-"------------------------------------------------------------------------------
-
-hi GitGutterAdd               guibg=#befece guifg=#0e8e0e
-hi GitGutterChange            guibg=#deeefe guifg=#6e6efe
-hi GitGutterDelete            guibg=#fee2e2 guifg=#fe4e4e
-hi GitGutterChangeDelete      guibg=#fedefe guifg=#ee0eee
-
-hi GitGutterAddLine           guibg=#befece
-hi GitGutterChangeLine        guibg=#deeefe
-hi GitGutterDeleteLine        guibg=#fee2e2
-hi GitGutterChangeDeleteLine  guibg=#fedefe
-
-"------------------------------------------------------------------------------
 " the section must be at the very end
 "------------------------------------------------------------------------------
 

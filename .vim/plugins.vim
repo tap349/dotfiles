@@ -127,6 +127,9 @@ call plug#end()
 " rg respects ./.gitignore and ~/.ignore files
 "-------------------------------------------------------------------------------
 
+hi AckSearch guifg=#638aa5
+"hi AckSearch guifg=#778888 gui=none
+
 let g:ackprg = 'rg -FS --sort-files --vimgrep'
 " disable empty search (searching the word under cursor) -
 " it complicates the logic to parse user input excessively
@@ -782,7 +785,17 @@ nmap <F6> :Gvdiff<CR>
 " vim-gitgutter
 "-------------------------------------------------------------------------------
 
-set updatetime=500
+hi GitGutterAdd               guibg=#befece guifg=#0e8e0e
+hi GitGutterChange            guibg=#deeefe guifg=#6e6efe
+hi GitGutterDelete            guibg=#fee2e2 guifg=#fe4e4e
+hi GitGutterChangeDelete      guibg=#fedefe guifg=#ee0eee
+
+hi GitGutterAddLine           guibg=#befece
+hi GitGutterChangeLine        guibg=#deeefe
+hi GitGutterDeleteLine        guibg=#fee2e2
+hi GitGutterChangeDeleteLine  guibg=#fedefe
+
+set updatetime=250
 
 let g:gitgutter_enabled = 0
 "let g:gitgutter_map_keys = 0
