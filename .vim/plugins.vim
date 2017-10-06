@@ -143,7 +143,7 @@ map <Leader>\ :call <SID>SearchWithGlob()<CR>
 " useful symbols: ⎸│⮁⮀
 function! s:Search( )
   echohl AckSearch
-  let l:input_phrase = input('⎸SEARCH ⮁ ')
+  let l:input_phrase = input(' SEARCH ⮁ ')
   echohl None
 
   call <SID>MyLAck(l:input_phrase)
@@ -151,9 +151,9 @@ endfunction
 
 function! s:SearchWithGlob()
   echohl AckSearch
-  let l:input_phrase = input('⎸SEARCH ⮁⮁ ')
+  let l:input_phrase = input(' SEARCH ⮁⮁ ')
   redraw!
-  let l:glob = input('⎸GLOB ⮁⮁ ')
+  let l:glob = input(' GLOB ⮁⮁ ')
   echohl None
 
   call <SID>MyLAck(l:input_phrase, l:glob)
@@ -567,6 +567,11 @@ endfunction
 function! s:IsQuickfix()
   return &ft == 'qf'
 endfunction
+
+" refresh lightline - otherwise it
+" might become colorless after sourcing vimrc
+" (command was previously called in `augroup vimrc`)
+"call lightline#enable()
 
 "-------------------------------------------------------------------------------
 " nerdcommenter
