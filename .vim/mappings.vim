@@ -16,6 +16,31 @@ let maplocalleader = '\'
 
 "===============================================================================
 "
+" all modes
+"
+"===============================================================================
+
+"-------------------------------------------------------------------------------
+" <C-c> and <C-Backspace>
+"-------------------------------------------------------------------------------
+
+" turn off highlighting and clear messages
+" <C-c> in normal mode aborts any pending command
+nnoremap <silent> <C-c> <C-c>:nohlsearch<Bar>:echo<CR>
+nmap <silent> <C-Backspace> <C-c>
+
+" map to <Esc> for vertical editing to work
+inoremap <silent> <C-c> <Esc>
+imap <silent> <C-Backspace> <C-c>
+
+xnoremap <C-Backspace> <Esc>
+" <C-Backspace> in command mode acts like <Esc> -
+" it interrupts current function execution but
+" doesn't exit command mode immediately like <C-c>
+cnoremap <C-Backspace> <C-c>
+
+"===============================================================================
+"
 " normal mode
 "
 "===============================================================================
@@ -136,15 +161,6 @@ command! EncodeInUTF8 :edit ++encoding=utf-8<CR>
 nnoremap <silent> <Tab> :w<CR>
 
 "-------------------------------------------------------------------------------
-" search
-"-------------------------------------------------------------------------------
-
-" turn off highlighting and clear messages
-" <C-c> in normal mode aborts any pending command
-nnoremap <silent> <C-c> <C-c>:nohlsearch<Bar>:echo<CR>
-nnoremap <silent> <C-Backspace> :nohlsearch<Bar>:echo<CR>
-
-"-------------------------------------------------------------------------------
 " sourcing configuration files
 "-------------------------------------------------------------------------------
 
@@ -182,9 +198,6 @@ nnoremap gp `[v`]
 "
 "===============================================================================
 
-inoremap <C-Backspace> <Esc>
-" map to Esc for vertical editing to work
-inoremap <C-c> <Esc>
 inoremap jj <Esc>
 
 "-------------------------------------------------------------------------------
@@ -231,8 +244,6 @@ inoremap <silent> <A-S-Up> <C-o>:tabmove<CR>
 " use xmap and xnoremap to have mapping in visual mode only
 "
 "===============================================================================
-
-xnoremap <C-Backspace> <Esc>
 
 "-------------------------------------------------------------------------------
 " editing

@@ -127,7 +127,9 @@ call plug#end()
 " rg respects ./.gitignore and ~/.ignore files
 "-------------------------------------------------------------------------------
 
-hi AckSearch guifg=#EF1493 gui=bold
+"hi AckSearch guifg=#EF1493 gui=bold
+"hi AckSearch guifg=#DF1473 gui=bold
+hi AckSearch guifg=#0D297B gui=bold
 
 let g:ackprg = 'rg -FS --sort-files --vimgrep'
 " disable empty search (searching the word under cursor) -
