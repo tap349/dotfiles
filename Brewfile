@@ -42,6 +42,8 @@ brew 'gpg'
 brew 'htop'
 brew 'imagemagick'
 brew 'jq'
+# provides rsvg-convert utility to convert svg to png
+brew 'librsvg'
 # used as viewer for html files in mc
 brew 'lynx'
 # - install vim-plug:
