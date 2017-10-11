@@ -129,11 +129,11 @@ call plug#end()
 
 "hi AckSearch guifg=#EF1493 gui=italic,bold
 "hi AckSearch guifg=#DF1473 gui=italic,bold
-hi AckSearch guifg=#0D297B gui=italic,bold
+"hi AckSearch guifg=#0D297B gui=italic,bold
 "hi AckSearch guifg=#8B814C gui=italic,bold
 "hi AckSearch guifg=#B8860B gui=italic,bold
 "hi AckSearch guifg=#68838B gui=italic,bold
-"hi AckSearch guifg=#545454 gui=italic,bold
+hi AckSearch guifg=#545454 gui=italic,bold
 
 let g:ackprg = 'rg -FS --sort-files --vimgrep'
 " disable empty search (searching the word under cursor) -
@@ -848,6 +848,9 @@ nmap <silent> <Leader>ht :GitGutterToggle<CR>
 
 let g:gutentags_cache_dir = '~/.vim/tags'
 let g:gutentags_enabled = 1
+" don't update tag file when any project file is saved -
+" run :GutentagsUpdate manually to update tag file
+let g:gutentags_generate_on_write = 0
 " default project root markers are appended to this list
 " (probably gutentags can also use g:ctrlp_root_markers).
 " don't use .gitignore as project root marker because of ~/.gitignore
