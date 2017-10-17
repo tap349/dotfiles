@@ -7,6 +7,7 @@ echo ==========================================================================
 files=(
   .config/mc
   .config/mpv
+  .gnupg/gpg.conf
   .local/share/mc/skins
   .oh-my-zsh/custom/themes
   .ssh/config

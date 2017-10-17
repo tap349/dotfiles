@@ -1,6 +1,7 @@
 [user]
   name = Alexey Terekhov
-  email = alexey.terekhov.ingate@gmail.com
+  email = alexey.terekhov.tap349@gmail.com
+  signingkey = ACFDF508F789A2CB
 
 [merge]
   summary = true
@@ -45,3 +46,6 @@
 
 [credential]
   helper = osxkeychain
+
+[commit]
+  gpgsign = true

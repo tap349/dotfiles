@@ -38,6 +38,10 @@ export HOMEBREW_GITHUB_API_TOKEN=03adebc410e1f8de5a2765a5f5890ff8beb76d5f
 # https://hexdocs.pm/iex/IEx.html#module-shell-history
 export ERL_AFLAGS="-kernel shell_history enabled"
 
+# for gpg to sign commits
+# https://github.com/keybase/keybase-issues/issues/1712#issuecomment-141226705
+export GPG_TTY=$(tty)
+
 CDPATH=~:~/dev
 TERM='xterm-256color'
 
@@ -216,7 +220,7 @@ post() {
 
 publish() {
   git add -A .
-  git commit -m "update `date +%Y-%m-%d_%H:%M:%S`"
+  git commit -S -m "update `date +%Y-%m-%d_%H:%M:%S`"
   git push
 }
 
@@ -240,7 +244,7 @@ converge() {
 # https://unix.stackexchange.com/questions/274257
 git_commit() {
   [[ -z $1 ]] && echo error: specify git commit message && return 1
-  git commit -m "$*"
+  git commit -S -m "$*"
 }
 
 # current branch is prefixed with `*` in `git branch` output

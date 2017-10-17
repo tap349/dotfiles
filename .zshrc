@@ -39,7 +39,7 @@ ZSH_THEME='tap-af-magic'
 
 # https://github.com/rails/spring/tree/v0.0.9#usage
 UNBUNDLED_COMMANDS=(spring)
-plugins=(ssh-agent zsh-autosuggestions zsh-syntax-highlighting)
+plugins=(ssh-agent gpg-agent zsh-autosuggestions zsh-syntax-highlighting)
 
 # https://github.com/robbyrussell/oh-my-zsh/tree/master/plugins/ssh-agent
 zstyle :omz:plugins:ssh-agent agent-forwarding on

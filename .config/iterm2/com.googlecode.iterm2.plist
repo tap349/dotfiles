@@ -31505,13 +31505,13 @@
 	<key>NSWindow Frame SUUpdateAlert</key>
 	<string>328 288 620 392 0 0 1280 777 </string>
 	<key>NSWindow Frame SessionsPreferences</key>
-	<string>138 74 606 456 0 0 1280 777 </string>
+	<string>138 74 606 469 0 0 1280 777 </string>
 	<key>NSWindow Frame SharedPreferences</key>
-	<string>326 196 918 394 0 0 1280 777 </string>
+	<string>260 346 918 394 0 0 1280 777 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
 	<string>0 0 1276 777 0 0 1280 777 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
-	<string>0 0 1276 777 0 0 1280 777 </string>
+	<string>0 202 650 575 0 0 1280 777 </string>
 	<key>NSWindow Frame iTerm Window 2</key>
 	<string>0 0 1276 777 0 0 1280 777 </string>
 	<key>NSWindow Frame iTerm Window 3</key>
@@ -31712,7 +31712,7 @@
 			<key>Blink Allowed</key>
 			<false/>
 			<key>Blinking Cursor</key>
-			<true/>
+			<false/>
 			<key>Blur</key>
 			<false/>
 			<key>Blur Radius</key>
@@ -31768,7 +31768,7 @@
 				<real>0.089180983603000641</real>
 			</dict>
 			<key>Cursor Type</key>
-			<integer>1</integer>
+			<integer>2</integer>
 			<key>Custom Command</key>
 			<string>No</string>
 			<key>Custom Directory</key>
@@ -32435,7 +32435,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2017-09-20T18:21:22Z</date>
+	<date>2017-09-21T14:37:27Z</date>
 	<key>SUSendProfileInfo</key>
 	<false/>
 	<key>SavePasteHistory</key>
@@ -32482,6 +32482,8 @@
 	<string>/-+\~_.</string>
 	<key>findIgnoreCase_iTerm</key>
 	<true/>
+	<key>findMode_iTerm</key>
+	<integer>0</integer>
 	<key>findRegex_iTerm</key>
 	<false/>
 	<key>iTerm Version</key>
