@@ -184,6 +184,7 @@ cask 'font-iosevka'
 #     + Quick Javascript Switcher
 #     + Redux DevTools
 #     - RSS Subscription Extension (by Google) - optional
+#     + Scrum for Trello
 #     + Session Buddy
 #     + Tag Assistant (by Google) (enabled per tab)
 #     + The Great Suspender
