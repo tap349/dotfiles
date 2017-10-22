@@ -212,7 +212,6 @@ inoremap <C-d> <Delete>
 
 inoremap {{ {<Space><Space>}<Esc>hi
 inoremap }} {}<Esc>i
-inoremap >> <View></View><Esc>2T<
 "inoremap )) ()<Esc>i
 "inoremap ]] []<Esc>i
 
