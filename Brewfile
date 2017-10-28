@@ -233,6 +233,7 @@ cask 'skype'
 #   - [x] Check for updates on startup
 #   - [x] Autostart smcFanControl after login
 cask 'smcfancontrol'
+cask 'steam'
 cask 'unetbootin'
 # - `open /usr/local/Caskroom/utorrent/latest/uTorrent.app`
 # - system preferences:
