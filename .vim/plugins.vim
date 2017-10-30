@@ -849,7 +849,7 @@ nmap <silent> <Leader>ht :GitGutterToggle<CR>
 "set statusline+=%{gutentags#statusline()}
 
 let g:gutentags_cache_dir = '~/.vim/tags'
-let g:gutentags_enabled = 1
+let g:gutentags_enabled = 0
 " don't update tag file when any project file is saved -
 " run :GutentagsUpdate manually to update tag file
 let g:gutentags_generate_on_write = 0
