@@ -170,6 +170,11 @@ nnoremap <Leader>.v :source $MYVIMRC<CR>
 " suppress unwanted keys (set to noop)
 "-------------------------------------------------------------------------------
 
+"nnoremap <Up> <nop>
+"nnoremap <Down> <nop>
+"nnoremap <Left> <nop>
+"nnoremap <Right> <nop>
+
 nnoremap Q <nop>
 nnoremap K <nop>
 nnoremap <F1> <nop>
