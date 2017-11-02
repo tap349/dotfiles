@@ -16,17 +16,6 @@ typeset -U path
 # NOTE: /opt/chefdk/bin is added to PATH in ~/.zlogin
 path=(~/scripts /usr/local/bin $path)
 
-# required by `react-native-cli` to be set
-export ANDROID_HOME=/usr/local/share/android-sdk
-# might be required by `emulator` to be set
-#export ANDROID_SDK_ROOT=/usr/local/share/android-sdk
-# `android`
-path=($path $ANDROID_HOME/tools)
-# `sdkmanager` and `avdmanager`
-path=($path $ANDROID_HOME/tools/bin)
-# `adb`
-path=($path $ANDROID_HOME/platform-tools)
-
 # for iterm to display cyrillic
 export LANG=en_US.UTF-8
 # for mc to display cyrillic
@@ -34,9 +23,6 @@ export LC_ALL=en_US.UTF-8
 
 export EDITOR=mvim
 export HOMEBREW_GITHUB_API_TOKEN=03adebc410e1f8de5a2765a5f5890ff8beb76d5f
-
-# https://hexdocs.pm/iex/IEx.html#module-shell-history
-export ERL_AFLAGS="-kernel shell_history enabled"
 
 # for gpg to sign commits
 # https://github.com/keybase/keybase-issues/issues/1712#issuecomment-141226705
@@ -48,6 +34,29 @@ TERM='xterm-256color'
 HISTSIZE=100000
 HISTFILESIZE=200000
 setopt HIST_IGNORE_DUPS
+
+# Elixir
+
+# https://hexdocs.pm/iex/IEx.html#module-shell-history
+export ERL_AFLAGS="-kernel shell_history enabled"
+
+# Android
+
+# required by `react-native-cli` to be set
+export ANDROID_HOME=/usr/local/share/android-sdk
+# might be required by `emulator` to be set
+#export ANDROID_SDK_ROOT=/usr/local/share/android-sdk
+# `android`
+path=($path $ANDROID_HOME/tools)
+# `sdkmanager` and `avdmanager`
+path=($path $ANDROID_HOME/tools/bin)
+# `adb`
+path=($path $ANDROID_HOME/platform-tools)
+
+# iOS
+
+# https://github.com/bradmartin/nativescript-videoplayer/issues/76
+export SIMCTL_CHILD_OS_ACTIVITY_MODE="disable"
 
 #-------------------------------------------------------------------------------
 #
