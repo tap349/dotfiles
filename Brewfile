@@ -38,6 +38,7 @@ brew 'elixir'
 # required by ~/scripts/fontpatcher
 brew 'fontforge'
 brew 'git'
+brew 'golang'
 brew 'gpg'
 brew 'htop'
 brew 'imagemagick'
