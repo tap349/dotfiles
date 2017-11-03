@@ -5,6 +5,5 @@
 
 source 'https://rubygems.org'
 
-gem 'foreman'
 gem 'git-up'
 gem 'rubocop'
