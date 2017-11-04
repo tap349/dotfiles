@@ -82,6 +82,7 @@ Plug 'easymotion/vim-easymotion'
 Plug 'ervandew/supertab'
 Plug 'flazz/vim-colorschemes'
 Plug 'godlygeek/tabular'
+Plug 'haya14busa/vim-asterisk'
 Plug 'itchyny/lightline.vim' | Plug 'tpope/vim-fugitive'
 Plug 'jeetsukumaran/vim-buffergator'
 Plug 'ludovicchabant/vim-gutentags'
@@ -755,6 +756,23 @@ nmap * <Plug>(anzu-star-with-echo)
 nmap # <Plug>(anzu-sharp-with-echo)
 
 "-------------------------------------------------------------------------------
+" vim-asterisk
+"-------------------------------------------------------------------------------
+
+let g:asterisk#keeppos = 1
+
+" the difference between * and g* is that g* never attempts to surround
+" searched text with word boundaries - it always searches for substring
+map * <Plug>(asterisk-*)
+map # <Plug>(asterisk-#)
+map g* <Plug>(asterisk-g*)
+map g# <Plug>(asterisk-g#)
+map z* <Plug>(asterisk-z*)
+map gz* <Plug>(asterisk-gz*)
+map z# <Plug>(asterisk-z#)
+map gz# <Plug>(asterisk-gz#)
+
+"-------------------------------------------------------------------------------
 " vim-buffergator
 "-------------------------------------------------------------------------------
 
@@ -905,6 +923,7 @@ let g:vim_markdown_frontmatter = 1
 " example projections: https://gist.github.com/henrik/5676109
 "-------------------------------------------------------------------------------
 
+" suggest creating alternate file if it doesn't exist
 " https://github.com/tpope/vim-rails/issues/443
 set confirm
 
