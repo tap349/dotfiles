@@ -87,6 +87,7 @@ Plug 'jeetsukumaran/vim-buffergator'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'majutsushi/tagbar'
 Plug 'mhinz/vim-hugefile'
+Plug 'osyo-manga/vim-anzu'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/syntastic'
@@ -743,6 +744,15 @@ endfunction
 
 nmap <silent> <F3> :TagbarToggle<CR>
 nmap <silent> <Leader>t :TagbarOpen fj<CR>
+
+"-------------------------------------------------------------------------------
+" vim-anzu
+"-------------------------------------------------------------------------------
+
+nmap n <Plug>(anzu-n-with-echo)
+nmap N <Plug>(anzu-N-with-echo)
+nmap * <Plug>(anzu-star-with-echo)
+nmap # <Plug>(anzu-sharp-with-echo)
 
 "-------------------------------------------------------------------------------
 " vim-buffergator
