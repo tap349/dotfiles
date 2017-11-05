@@ -2,7 +2,7 @@
 "
 " plugins
 "
-" NOTE: don't use noremap for plugin mappings
+" NOTE: don't use noremap in plugin mappings
 "
 "*******************************************************************************
 
@@ -616,7 +616,7 @@ nmap <silent> <Leader>n :NERDTreeFind<CR>
 " QFEnter
 "
 " QFEnter respects `switchbuf` option! if selected file is opened
-" in another tab all mappings below just switch to that tab
+" in another tab, all mappings below just switch to that tab
 "-------------------------------------------------------------------------------
 
 " disable automatic opening of quickfix window (or location list)
