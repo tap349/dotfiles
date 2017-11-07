@@ -285,7 +285,7 @@ let g:cpsm_match_empty_query = 0
 
 " instant update causes cursor to appear and flicker
 " at the end of last line in match window
-let g:ctrlp_lazy_update = 5
+let g:ctrlp_lazy_update = 2
 let g:ctrlp_map = '<Leader>s'
 " default matcher fails to find, say, user model
 " when there are a lot of user assets
