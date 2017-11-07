@@ -63,6 +63,11 @@ set switchbuf=usetab
 
 " menu,preview - default
 set completeopt+=longest
+" https://stackoverflow.com/a/2460593/3632318
+" https://github.com/tpope/vim-sensible/issues/51#issuecomment-19865228
+" https://medium.com/usevim/set-complete-e76b9f196f0f
+" :help cpt
+set complete-=t,i
 
 set wildmenu
 " don't change the order of options - it matters
