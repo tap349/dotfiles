@@ -148,6 +148,10 @@ set shiftwidth=2
 set softtabstop=2
 set tabstop=2
 
+" :help cino-:
+" the same indent for `switch()` and `case` in JavaScript
+set cinoptions=:0
+
 "-------------------------------------------------------------------------------
 " navigation
 "-------------------------------------------------------------------------------
