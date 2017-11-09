@@ -44,18 +44,6 @@ augroup matches
   autocmd BufWinLeave * call clearmatches()
 augroup END
 
-" `my_` prefix is used when there already exists autocommand group
-" with the same name in some vim plugin
-
-augroup my_lightline
-  autocmd!
-  " to remove syntastic message in statusline after save if
-  " there are no errors left
-  " (for this to work active mode must be enabled in syntastic -
-  " currently passive mode is enabled)
-  "autocmd BufWritePost *.rb,*.feature call lightline#update()
-augroup END
-
 " used to disable <CR> in quickfix window - now it's
 " not necessary because QFEnter mapping already does it
 "augroup quickfix

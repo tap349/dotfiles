@@ -72,19 +72,15 @@ set completeopt+=longest
 set wildmenu
 " don't change the order of options - it matters
 set wildmode=longest:full,full
-" used by command-t and ctrlp - it should be kept in sync with ~/.ignore
+" specifying directory with asterisk on both ends (say, */public/*)
+" is known to cause problems with spec/vcr_cassettes/ directory: it
+" is collapsing after being refreshed in NerdTree
 "
-" don't prefix directories relative to project root with asterisk -
-" that is prefer public/* to */public/*.
-" this is known to have caused problems with spec/vcr_cassettes/ directory:
-" when refreshing it in nerdtree the directory kept on collapsing all the time
+" log/, tmp/, deps/ and node_modules/ are usually already filtered
+" out by project's .gitignore
 set wildignore+=.git/*,
-      \*.log,
-      \public/*,
-      \spec/vcr_cassettes/*,
-      \tmp/*,
-      \deps/*,
-      \node_modules/*
+      \*/public,
+      \*/spec/vcr_cassettes
 
 "-------------------------------------------------------------------------------
 " diff

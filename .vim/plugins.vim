@@ -15,15 +15,6 @@
 call plug#begin('~/.vim/plugged')
 
 "-------------------------------------------------------------------------------
-" ctrlp
-"-------------------------------------------------------------------------------
-
-Plug 'ctrlpvim/ctrlp.vim'
-Plug 'jasoncodes/ctrlp-modified.vim'
-" https://www.reddit.com/r/vim/comments/38m0g7/cpsm_a_ctrlp_matcher/
-Plug 'nixprime/cpsm'
-
-"-------------------------------------------------------------------------------
 " elixir / phoenix
 "-------------------------------------------------------------------------------
 
@@ -96,6 +87,9 @@ Plug 'tap349/ack.vim'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
+Plug 'wincent/command-t', {
+      \   'do': 'cd ruby/command-t/ext/command-t && RBENV_VERSION=system ruby extconf.rb && make'
+      \ }
 Plug 'xolox/vim-misc'
 Plug 'yssl/QFEnter'
 
@@ -126,7 +120,7 @@ call plug#end()
 "-------------------------------------------------------------------------------
 " ack.vim
 "
-" rg respects ./.gitignore and ~/.ignore files
+" rg respects .gitignore and .ignore files
 "-------------------------------------------------------------------------------
 
 "hi AckSearch guifg=#EF1493 gui=italic,bold
@@ -253,112 +247,58 @@ map <silent> b <Plug>CamelCaseMotion_b
 
 "-------------------------------------------------------------------------------
 " command-t
+"
+" linked version of Ruby: :ruby puts "#{RUBY_VERSION}-p#{RUBY_PATCHLEVEL}"
+"
+" Command-T respects .gitignore file (only when Git file scanner is used)
+" and wildignore option (when g:CommandTWildIgnore is set to &wildignore)
 "-------------------------------------------------------------------------------
 
-"let g:CommandTCancelMap = '<C-c>'
-"let g:CommandTMatchWindowAtTop = 0
-"let g:CommandTMatchWindowReverse = 0
-"let g:CommandTMaxHeight = 17
-"let g:CommandTMaxFiles = 25000
-"let g:CommandTWildIgnore = &wildignore . 'public/**,tmp/**,**/*.log'
+hi CommandTHighlightColor guibg=#d7e2ea gui=none
 
-"nmap <F1> :CommandT<CR>
-"imap <F1> <Esc>:CommandT<CR>
-"nmap <S-F1> :CommandTBuffer<CR>
-"nmap <Leader><F1>r :CommandTFlush<CR>:CommandT<CR>
+let g:CommandTFileScanner = 'git'
+" when using git file scanner, new files are not visible by default -
+" even after flushing the cache (because they are not tracked by git)
+let g:CommandTGitIncludeUntracked = 1
+let g:CommandTHighlightColor = 'CommandTHighlightColor'
+let g:CommandTMatchWindowAtTop = 0
+let g:CommandTMatchWindowReverse = 0
+let g:CommandTMaxHeight = 15
+let g:CommandTSmartCase = 1
+let g:CommandTTraverseSCM = 'pwd'
+let g:CommandTWildIgnore = &wildignore
+
+" only tab command will try to find already existing window with
+" specified buffer - all other commands will just open a new window
+"
+" `CommandTOpen tabe` has a bug when file is opened in horizontal
+" split in current tab instead of a new tab (in some cases only)
+let g:CommandTAcceptSelectionCommand = 'e'
+let g:CommandTAcceptSelectionSplitCommand = 'sp'
+let g:CommandTAcceptSelectionTabCommand = 'tabe'
+let g:CommandTAcceptSelectionVSplitCommand = 'vs'
+
+let g:CommandTCursorLeftMap = '<C-b>'
+let g:CommandTCursorRightMap = '<C-f>'
+let g:CommandTRefreshMap = '<C-r>'
+
+nmap <silent> <Leader>s <Plug>(CommandT)
+nmap <silent> <Leader>m <Plug>(CommandTMRU)
+
+" when Command-T window is dismissed (cancelled) and there is a
+" previous search, all matches of the latter are highlighted for
+" a moment (it looks like flickering of previous search matches)
+"
+" it's a hack to remove this instantaneous highlighting (still it doesn't
+" stop the highlighting if it was present before opening Command-T window)
+augroup my_command_t
+  autocmd! User CommandTDidHideMatchListing
+  autocmd User CommandTDidHideMatchListing nohlsearch
+augroup END
 
 "" http://vimdoc.sourceforge.net/htmldoc/usr_40.html
 "command! -nargs=+ GotoOrOpenTab call GotoOrOpenTab('<args>')
 "let g:CommandTAcceptSelectionTabCommand = 'GotoOrOpenTab'
-
-"-------------------------------------------------------------------------------
-" cpsm
-"-------------------------------------------------------------------------------
-
-let g:cpsm_match_empty_query = 0
-
-"-------------------------------------------------------------------------------
-" ctrlp.vim
-"
-" CtrlP respects ./.gitignore file and wildignore option
-"-------------------------------------------------------------------------------
-
-" instant update causes cursor to appear and flicker
-" at the end of last line in match window
-let g:ctrlp_lazy_update = 2
-let g:ctrlp_map = '<Leader>s'
-" default matcher fails to find, say, user model
-" when there are a lot of user assets
-let g:ctrlp_match_func = { 'match': 'cpsm#CtrlPMatch' }
-let g:ctrlp_match_window = 'bottom,order:ttb,max:15'
-let g:ctrlp_mruf_relative = 1
-let g:ctrlp_root_markers = ['mix.exs']
-let g:ctrlp_switch_buffer = 'et'
-let g:ctrlp_use_caching = 1
-" https://github.com/BurntSushi/ripgrep/issues/75
-let g:ctrlp_user_command = 'rg --files %s'
-" don't set working directory with ctrlp
-let g:ctrlp_working_path_mode = 0
-
-let g:ctrlp_prompt_mappings = {
-      \   'PrtDeleteWord()':    ['<C-w>'],
-      \   'PrtClear()':         ['<C-u>'],
-      \   'PrtSelectMove("j")': ['<C-n>', 'Down'],
-      \   'PrtSelectMove("k")': ['<C-p>', 'Up'],
-      \   'PrtHistory(-1)':     ['<C-j>'],
-      \   'PrtHistory(1)':      ['<C-k>'],
-      \   'ToggleType(1)':      ['<C-l>'],
-      \   'ToggleType(-1)':     ['<C-h>'],
-      \   'PrtExpandDir()':     ['<Tab>'],
-      \   'PrtInsert()':        ['<C-\>'],
-      \   'PrtCurStart()':      ['<C-a>'],
-      \   'PrtCurEnd()':        ['<C-e>'],
-      \   'PrtCurLeft()':       ['<C-b>', '<Left>'],
-      \   'PrtCurRight()':      ['<C-f>', '<Right>'],
-      \   'PrtClearCache()':    ['<C-r>'],
-      \   'CreateNewFile()':    ['<C-y>'],
-      \   'OpenMulti()':        ['<C-o>'],
-      \   'PrtExit()':          ['<Esc>', '<C-c>', '<C-g>']
-      \ }
-
-let g:ctrlp_buffer_func = {
-      \   'enter': 'CtrlPBufferFunc_1',
-      \   'exit':  'CtrlPBufferFunc_2'
-      \ }
-
-function! CtrlPBufferFunc_1()
-  hi CursorLine guibg=#d7e2ea
-  call lightline#update_once()
-endfunction
-
-function! CtrlPBufferFunc_2()
-  hi CursorLine guibg=#e4e4e4
-endfunction
-
-let g:ctrlp_status_func = {
-      \ 'main': 'CtrlPStatusFunc_1',
-      \ 'prog': 'CtrlPStatusFunc_2'
-      \ }
-
-function! CtrlPStatusFunc_1(focus, byfname, regex, prev, item, next, marked)
-  let g:lightline.ctrlp_regex = a:regex
-  let g:lightline.ctrlp_prev = a:prev
-  let g:lightline.ctrlp_item = a:item
-  let g:lightline.ctrlp_next = a:next
-  return lightline#statusline(0)
-endfunction
-
-function! CtrlPStatusFunc_2(str)
-  return lightline#statusline(0)
-endfunction
-
-"-------------------------------------------------------------------------------
-" ctrlp-modified.vim
-"-------------------------------------------------------------------------------
-
-" do not use so far - see issue in 2do
-"map <Leader>m :CtrlPModified<CR>
-"map <Leader>M :CtrlPBranch<CR>
 
 "-------------------------------------------------------------------------------
 " gitv
@@ -405,7 +345,7 @@ let g:lightline.mode_map = {
       \ }
 
 let g:lightline.active = {
-      \   'left': [['mode'], ['fugitive', 'ctrlpitem'], ['filename']],
+      \   'left': [['mode'], ['fugitive'], ['filename']],
       \   'right': [['syntastic', 'lineinfo'], ['filetype']]
       \ }
 let g:lightline.inactive = {
@@ -431,9 +371,7 @@ let g:lightline.component = {
 let g:lightline.component_function = {
       \   'mode': 'LightlineMode',
       \   'fugitive': 'LightlineFugitive',
-      \   'ctrlpitem': 'LightlineCtrlPItem',
       \   'filename': 'LightlineFilename',
-      \   'ctrlpmark': 'LightlineCtrlPMark',
       \   'filetype': 'LightlineFiletype',
       \   'lineinfo': 'LightlineLineinfo'
       \ }
@@ -455,7 +393,7 @@ let g:lightline.component_type = {
 
 function! LightlineMode()
   return s:IsNerdTree() ? 'NERD' :
-        \ s:IsCtrlP() ? 'CtrlP' :
+        \ s:IsCommandT() ? 'CommandT' :
         \ s:IsTagbar() ? 'Tagbar' :
         \ s:IsNarrowWindow() ? '' : lightline#mode()
 endfunction
@@ -479,15 +417,6 @@ function! LightlineFugitive()
   return l:branch
 endfunction
 
-function! LightlineCtrlPItem()
-  if !s:IsCtrlP() | return '' | end
-
-  " :help g:ctrlp_status_func
-  " g:lightline.ctrlp_regex: 0 - not regex mode, 1 - regex mode
-  call lightline#link('nR'[g:lightline.ctrlp_regex])
-  return g:lightline.ctrlp_item
-endfunction
-
 " https://github.com/vim-airline/vim-airline/blob/master/autoload/airline/extensions/quickfix.vim
 function! LightlineFilename()
   if s:IsPluginWindow() | return '' | end
@@ -509,17 +438,6 @@ endfunction
 
 function! LightlineModified()
   return &ma && &mod ? '+' : ''
-endfunction
-
-function! LightlineCtrlPMark()
-  if !s:IsCtrlP() | return '' | end
-
-  let l:search_modes = [
-        \   g:lightline.ctrlp_prev,
-        \   g:lightline.ctrlp_item,
-        \   g:lightline.ctrlp_next
-        \ ]
-  return lightline#concatenate(l:search_modes, 0)
 endfunction
 
 function! LightlineFiletype()
@@ -546,7 +464,7 @@ endfunction
 
 function! s:IsPluginWindow()
   if s:IsNerdTree() | return 1 | end
-  if s:IsCtrlP() | return 1 | end
+  if s:IsCommandT() | return 1 | end
   if s:IsTagbar() | return 1 | end
 
   return 0
@@ -556,10 +474,8 @@ function! s:IsNerdTree()
   return expand('%:t') =~ 'NERD_tree'
 endfunction
 
-function! s:IsCtrlP()
-  " g:lightline.ctrlp_item must be set in ctrlp configuration:
-  " has_key(g:lightline, 'ctrlp_item') must return 1
-  return expand('%:t') == 'ControlP'
+function! s:IsCommandT()
+  return &ft == 'command-t'
 endfunction
 
 function! s:IsTagbar()
@@ -582,6 +498,18 @@ endfunction
 " might become colorless after sourcing vimrc
 " (command was previously called in `augroup vimrc`)
 "call lightline#enable()
+
+" `my_` prefix is used when there already exists autocommand group
+" with the same name in some vim plugin
+
+"augroup my_lightline
+"  autocmd!
+"  " to remove syntastic message in statusline after save if
+"  " there are no errors left
+"  " (for this to work active mode must be enabled in syntastic -
+"  " currently passive mode is enabled)
+"  "autocmd BufWritePost *.rb,*.feature call lightline#update()
+"augroup END
 
 "-------------------------------------------------------------------------------
 " nerdcommenter
@@ -883,8 +811,10 @@ let g:gutentags_enabled = 0
 let g:gutentags_generate_on_write = 0
 " default project root markers are appended to this list
 " (probably gutentags can also use g:ctrlp_root_markers).
-" don't use .gitignore as project root marker because of ~/.gitignore
-" (tags for all files within home directory will be created)
+"
+" don't use .gitignore as project root marker because ~/.gitignore
+" might already exist => tags for all files in home directory will
+" be created then)
 let g:gutentags_project_root = ['mix.exs']
 
 "-------------------------------------------------------------------------------
