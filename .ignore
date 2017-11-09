@@ -1,6 +1,0 @@
-log/
-public/
-spec/vcr_cassettes/
-tmp/
-deps/
-node_modules/
