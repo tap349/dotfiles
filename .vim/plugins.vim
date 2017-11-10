@@ -129,9 +129,9 @@ call plug#end()
 "hi AckSearch guifg=#136183 gui=italic,bold
 "hi AckSearch guifg=#8B814C gui=italic,bold
 "hi AckSearch guifg=#B8860B gui=italic,bold
-hi AckSearch guifg=#68838B gui=italic,bold
+"hi AckSearch guifg=#68838B gui=italic,bold
 "hi AckSearch guifg=#545454 gui=italic,bold
-"hi AckSearch guifg=#444454 gui=italic,bold
+hi AckSearch guifg=#444454 gui=italic,bold
 
 let g:ackprg = 'rg -FS --sort-files --vimgrep'
 " disable empty search (searching the word under cursor) -
@@ -192,6 +192,8 @@ endfunction
 " => escape all special characters excluding `!%#` with
 "    `shellescape`, escape `%#` with `escape` twice
 "    and let `--` deal with strings starting with dashes
+"
+" NOTE: still IDK how to search for literal '--'
 function! s:MyLAck(input_phrase, ...)
   let l:glob = get(a:, 1, '')
   let l:glob_option = len(l:glob) ? '-g ''*' . l:glob . '*''' : ''
