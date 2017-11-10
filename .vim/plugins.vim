@@ -56,9 +56,6 @@ Plug 'tpope/vim-rake' | Plug 'tpope/vim-projectionist'
 " other file types support
 "-------------------------------------------------------------------------------
 
-" it seemed to me that using vim-polyglot introduced some lag
-" in general - when switching tabs, switching to visual mode, etc.
-"Plug 'sheerun/vim-polyglot'
 Plug 'tap349/vim-markdown'
 Plug 'slim-template/vim-slim'
 Plug 'slime-lang/vim-slime-syntax'
@@ -485,8 +482,7 @@ function! s:IsQuickfix()
   return &ft == 'qf'
 endfunction
 
-" refresh lightline - otherwise it
-" might become colorless after sourcing vimrc
+" refresh lightline - or else it might become colorless after sourcing vimrc
 " (command was previously called in `augroup vimrc`)
 "call lightline#enable()
 
@@ -577,7 +573,7 @@ let g:syntastic_ruby_rubocop_exec = '~/.rbenv/shims/rubocop'
 " uncomment in case you need special options for syntastic
 "let g:syntastic_cucumber_cucumber_args='--profile syntastic'
 
-" define available checkers for filetypes
+" define available checkers for filetypes explicitly
 " (by default more checkers might be available).
 " all available checkers for all filetypes are listed in
 " http://github.com/vim-syntastic/syntastic/blob/master/doc/syntastic-checkers.txt
@@ -828,15 +824,6 @@ let g:jsx_ext_required = 0
 "let g:vim_markdown_folding_level = 1
 let g:vim_markdown_folding_style_pythonic = 1
 let g:vim_markdown_frontmatter = 1
-
-"-------------------------------------------------------------------------------
-" vim-polyglot
-"-------------------------------------------------------------------------------
-
-" using this plugin causes noticeable delay
-" when opening new buffer with coffee file -
-" highlighting still works without it
-"let g:polyglot_disabled = ['coffee']
 
 "-------------------------------------------------------------------------------
 " vim-rails
