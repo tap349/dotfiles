@@ -97,7 +97,6 @@ Plug 'yssl/QFEnter'
 "Plug 'Yggdroot/indentLine'
 "Plug 'jamessan/vim-gnupg'
 "Plug 'scheakur/vim-scheakur'
-"Plug 'xolox/vim-session'
 
 "-------------------------------------------------------------------------------
 " plugins to try in the future
@@ -862,14 +861,3 @@ let g:rails_projections = {
 
 nmap <Leader>, :A<CR>
 nmap <Leader>v :AV<CR>
-
-"-------------------------------------------------------------------------------
-" vim-session
-"-------------------------------------------------------------------------------
-
-"let g:session_autoload = 'no'
-"let g:session_autosave = 'no'
-
-"nmap <F7>d :DeleteSession<Space>
-"nmap <F7>o :OpenSession<Space>
-"nmap <F7>s :SaveSession<Space>
