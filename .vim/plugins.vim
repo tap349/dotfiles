@@ -129,9 +129,9 @@ call plug#end()
 "hi AckSearch guifg=#136183 gui=italic,bold
 "hi AckSearch guifg=#8B814C gui=italic,bold
 "hi AckSearch guifg=#B8860B gui=italic,bold
-"hi AckSearch guifg=#68838B gui=italic,bold
+hi AckSearch guifg=#68838B gui=italic,bold
 "hi AckSearch guifg=#545454 gui=italic,bold
-hi AckSearch guifg=#444454 gui=italic,bold
+"hi AckSearch guifg=#444454 gui=italic,bold
 
 let g:ackprg = 'rg -FS --sort-files --vimgrep'
 " disable empty search (searching the word under cursor) -
