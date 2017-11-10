@@ -136,8 +136,9 @@ nmap <silent> ¬ :tabmove +1<CR>
 
 " http://vim.wikia.com/wiki/Open_file_under_cursor
 "set isfname-=.
-"nnoremap <C-w>F :vertical wincmd f<CR>
-nmap <C-w>F <C-w>f<C-w>L
+nnoremap <C-w>F :vertical wincmd f<CR>
+" fallback in case mapping above doesn't work
+"nmap <C-w>F <C-w>f<C-w>L
 
 nmap <silent> <S-Up> :resize +5<CR>
 nmap <silent> <S-Down> :resize -5<CR>
