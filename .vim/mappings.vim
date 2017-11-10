@@ -10,9 +10,8 @@
 let mapleader = ','
 let maplocalleader = '\'
 
-" it should allow to use option (alt) in most mappings
-" but it breaks mappings for moving tabs (:tabmove)
-"set macmeta
+" it should allow to use meta key (option/alt) in most mappings
+set macmeta
 
 "===============================================================================
 "
@@ -21,10 +20,10 @@ let maplocalleader = '\'
 "===============================================================================
 
 "-------------------------------------------------------------------------------
-" <C-c> and <C-Backspace>
+" <C-c>, <C-Backspace> and <C-g>
 "-------------------------------------------------------------------------------
 
-" turn off highlighting and clear messages
+" turn off highlighting and clear messages,
 " <C-c> in normal mode aborts any pending command
 nnoremap <silent> <C-c> <C-c>:nohlsearch<Bar>:echo<CR>
 nmap <silent> <C-Backspace> <C-c>
@@ -34,10 +33,12 @@ inoremap <silent> <C-c> <Esc>
 imap <silent> <C-Backspace> <C-c>
 
 xnoremap <C-Backspace> <Esc>
-" <C-Backspace> in command mode acts like <Esc> -
-" it interrupts current function execution but
-" doesn't exit command mode immediately like <C-c>
+" <C-Backspace> and <C-g> in command mode act like <Esc> - they
+" interrupt current function execution but don't exit command mode
+" immediately like <C-c> (say, when calling user defined vimscript
+" function - see s:SearchWithGlob() in plugins.vim)
 cnoremap <C-Backspace> <C-c>
+cnoremap <C-g> <C-c>
 
 "===============================================================================
 "
@@ -129,8 +130,11 @@ nnoremap <C-g> <C-i>
 nnoremap <silent> <C-h> :tabprevious<CR>
 nnoremap <silent> <C-l> :tabnext<CR>
 
-nmap <silent> ˙ :tabmove -1<CR>
-nmap <silent> ¬ :tabmove +1<CR>
+" these hacks for meta key are not needed when macmeta is set
+"nmap <silent> ˙ :tabmove -1<CR>
+"nmap <silent> ¬ :tabmove +1<CR>
+nmap <silent> <M-h> :tabmove -1<CR>
+nmap <silent> <M-l> :tabmove +1<CR>
 
 "------- window ----------------------------------------------------------------
 
@@ -140,10 +144,10 @@ nnoremap <C-w>F :vertical wincmd f<CR>
 " fallback in case mapping above doesn't work
 "nmap <C-w>F <C-w>f<C-w>L
 
-nmap <silent> <S-Up> :resize +5<CR>
-nmap <silent> <S-Down> :resize -5<CR>
-nmap <silent> <S-Left> :vertical resize -5<CR>
-nmap <silent> <S-Right> :vertical resize +5<CR>
+nnoremap <silent> <S-Up> :resize +5<CR>
+nnoremap <silent> <S-Down> :resize -5<CR>
+nnoremap <silent> <S-Left> :vertical resize -5<CR>
+nnoremap <silent> <S-Right> :vertical resize +5<CR>
 
 "-------------------------------------------------------------------------------
 " reload file using different encoding
@@ -225,19 +229,15 @@ inoremap }} {}<Esc>i
 " navigation
 "-------------------------------------------------------------------------------
 
+inoremap <C-a> <C-o>I
 inoremap <C-b> <Left>
+inoremap <C-e> <C-o>A
 inoremap <C-f> <Right>
 inoremap <C-n> <Down>
 inoremap <C-p> <Up>
-inoremap <C-a> <C-o>I
-inoremap <C-e> <C-o>A
 
-"------- tab --------------------------------------------------------------------
-
-inoremap <silent> <A-S-Left> <C-o>:tabmove -1<CR>
-inoremap <silent> <A-S-Right> <C-o>:tabmove +1<CR>
-inoremap <silent> <A-S-Down> <C-o>:tabmove 0<CR>
-inoremap <silent> <A-S-Up> <C-o>:tabmove<CR>
+inoremap <M-b> <S-Left>
+inoremap <M-f> <S-Right>
 
 "===============================================================================
 "
@@ -287,7 +287,9 @@ xnoremap L g_
 " searching
 "-------------------------------------------------------------------------------
 
-xnoremap * y/<C-r>"<CR>
+" IDK what exactly this mapping does but I guess the
+" same functionality must be provided by vim-asterisk
+"xnoremap * y/<C-r>"<CR>
 
 "===============================================================================
 "
@@ -298,10 +300,13 @@ xnoremap * y/<C-r>"<CR>
 "
 "===============================================================================
 
-cnoremap <C-b> <Left>
-cnoremap <C-f> <Right>
 cnoremap <C-a> <Home>
+cnoremap <C-b> <Left>
 cnoremap <C-e> <End>
+cnoremap <C-f> <Right>
+
+cnoremap <M-b> <S-Left>
+cnoremap <M-f> <S-Right>
 
 "===============================================================================
 "
