@@ -72,7 +72,7 @@ Plug 'godlygeek/tabular'
 Plug 'haya14busa/vim-asterisk'
 Plug 'itchyny/lightline.vim' | Plug 'tpope/vim-fugitive'
 Plug 'jeetsukumaran/vim-buffergator'
-Plug 'junegunn/goyo.vim'
+Plug 'tap349/goyo.vim'
 Plug 'junegunn/limelight.vim'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'majutsushi/tagbar'
@@ -305,6 +305,7 @@ augroup END
 "-------------------------------------------------------------------------------
 
 let g:goyo_height = '100%'
+let g:goyo_width = 81
 
 function! s:GoyoEnter()
   " cursor line is always vertically centered
