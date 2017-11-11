@@ -33,10 +33,9 @@ Plug 'tap349/vim-extradite' | Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb' | Plug 'tpope/vim-fugitive'
 
 "-------------------------------------------------------------------------------
-" javascript / coffeescript / react
+" javascript / react
 "-------------------------------------------------------------------------------
 
-"Plug 'kchmck/vim-coffee-script'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx' | Plug 'pangloss/vim-javascript'
 
