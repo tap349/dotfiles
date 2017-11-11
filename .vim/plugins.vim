@@ -84,7 +84,7 @@ Plug 'tap349/ack.vim'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
-Plug 'wincent/command-t', {
+Plug 'tap349/command-t', {
       \   'do': 'cd ruby/command-t/ext/command-t && RBENV_VERSION=system ruby extconf.rb && make'
       \ }
 Plug 'xolox/vim-misc'
@@ -273,7 +273,7 @@ let g:CommandTWildIgnore = &wildignore
 " split in current tab instead of a new tab (in some cases only)
 let g:CommandTAcceptSelectionCommand = 'e'
 let g:CommandTAcceptSelectionSplitCommand = 'sp'
-let g:CommandTAcceptSelectionTabCommand = 'tabe'
+let g:CommandTAcceptSelectionTabCommand = 'CommandTOpen tabe'
 let g:CommandTAcceptSelectionVSplitCommand = 'vs'
 
 let g:CommandTCursorLeftMap = '<C-b>'

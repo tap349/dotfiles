@@ -84,8 +84,8 @@ function! s:GoToPrevTab()
   let s:prevtabcount = tabpagenr('$')
 endfunction
 
-" returns 1 (true) if buffer hidden or 0 (false) otherwise
 " http://stackoverflow.com/a/8459043
+" returns 1 (true) if buffer hidden or 0 (false) otherwise
 "function! BufHidden(buf)
 "  let active_buffers = []
 "  let tabs = range(1, tabpagenr('$'))

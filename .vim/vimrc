@@ -51,7 +51,7 @@ set noswapfile
 " buffers
 "-------------------------------------------------------------------------------
 
-" http://usevim.com/2012/10/19/vim101-set-hidden
+" https://medium.com/usevim/vim-101-set-hidden-f78800142855
 set hidden
 " http://vim.wikia.com/wiki/Using_tab_pages
 " `newtab` causes all quickfix files to be opened in new tab
