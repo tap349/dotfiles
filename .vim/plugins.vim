@@ -73,6 +73,8 @@ Plug 'godlygeek/tabular'
 Plug 'haya14busa/vim-asterisk'
 Plug 'itchyny/lightline.vim' | Plug 'tpope/vim-fugitive'
 Plug 'jeetsukumaran/vim-buffergator'
+Plug 'junegunn/goyo.vim'
+Plug 'junegunn/limelight.vim'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'majutsushi/tagbar'
 Plug 'mhinz/vim-hugefile'
@@ -294,9 +296,38 @@ augroup my_command_t
   autocmd User CommandTDidHideMatchListing nohlsearch
 augroup END
 
-"" http://vimdoc.sourceforge.net/htmldoc/usr_40.html
+" http://vimdoc.sourceforge.net/htmldoc/usr_40.html
+" https://github.com/wincent/command-t/pull/315
 "command! -nargs=+ GotoOrOpenTab call GotoOrOpenTab('<args>')
 "let g:CommandTAcceptSelectionTabCommand = 'GotoOrOpenTab'
+
+"-------------------------------------------------------------------------------
+" goyo.vim
+"-------------------------------------------------------------------------------
+
+let g:goyo_height = '100%'
+
+function! s:GoyoEnter()
+  " cursor line is always vertically centered
+  set scrolloff=999
+
+  setlocal colorcolumn=81
+  hi ColorColumn guibg=#E8E8EF
+
+  Limelight
+endfunction
+
+function! s:GoyoLeave()
+  set scrolloff=2
+
+  Limelight!
+endfunction
+
+augroup my_goyo
+  autocmd!
+  autocmd User GoyoEnter call <SID>GoyoEnter()
+  autocmd User GoyoLeave call <SID>GoyoLeave()
+augroup END
 
 "-------------------------------------------------------------------------------
 " lightline.vim
@@ -496,6 +527,14 @@ endfunction
 "  " currently passive mode is enabled)
 "  "autocmd BufWritePost *.rb,*.feature call lightline#update()
 "augroup END
+
+"-------------------------------------------------------------------------------
+" limelight.vim
+"-------------------------------------------------------------------------------
+
+let g:limelight_default_coefficient = 0.6
+let g:limelight_paragraph_span = 0
+let g:limelight_priority = -1
 
 "-------------------------------------------------------------------------------
 " nerdcommenter
