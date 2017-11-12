@@ -532,8 +532,13 @@ endfunction
 " limelight.vim
 "-------------------------------------------------------------------------------
 
-let g:limelight_default_coefficient = 0.6
+let g:limelight_default_coefficient = 0.7
 let g:limelight_paragraph_span = 0
+
+" settings for markdown
+let g:limelight_bop = '^#'
+let g:limelight_eop = '\ze\n^#'
+
 let g:limelight_priority = -1
 
 "-------------------------------------------------------------------------------
