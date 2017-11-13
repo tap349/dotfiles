@@ -152,9 +152,9 @@ endfunction
 
 function! s:SearchWithGlob()
   echohl AckSearch
-  let l:input_phrase = input(' SEARCH ⮁⮁ ')
-  redraw!
   let l:glob = input(' GLOB ⮁⮁ ')
+  redraw!
+  let l:input_phrase = input(' SEARCH ⮁⮁ ')
   echohl None
 
   call <SID>MyLAck(l:input_phrase, l:glob)
