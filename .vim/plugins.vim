@@ -562,6 +562,7 @@ map <Leader><Space> <Plug>NERDCommenterToggle
 let g:NERDTreeDirArrowExpandable = '▸'
 let g:NERDTreeDirArrowCollapsible = '▾'
 
+let g:NERDTreeCaseSensitiveSort = 1
 " don't collaps dirs that have only one child
 let g:NERDTreeCascadeSingleChildDir = 0
 
