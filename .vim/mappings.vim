@@ -7,7 +7,8 @@
 " Leader: global and plugin mappings
 " LocalLeader: mappings local to current buffer (<buffer> mappings)
 
-let mapleader = ','
+" https://stackoverflow.com/a/9578616
+let mapleader = "\<Space>"
 let maplocalleader = '\'
 
 " it should allow to use meta key (option/alt) in most mappings
@@ -65,7 +66,8 @@ nmap <silent> <CR> o<Esc>
 " insert newline before current line
 nmap <silent> <S-CR> O<Esc>
 " insert space
-nmap <silent> <Space> i<Space><Esc>l
+" now <Space> is used as Leader
+"nmap <silent> <Space> i<Space><Esc>l
 
 "-------------------------------------------------------------------------------
 " fold
