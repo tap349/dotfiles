@@ -75,7 +75,6 @@ Plug 'jeetsukumaran/vim-buffergator'
 Plug 'tap349/goyo.vim'
 Plug 'junegunn/limelight.vim'
 Plug 'ludovicchabant/vim-gutentags'
-Plug 'majutsushi/tagbar'
 Plug 'mhinz/vim-hugefile'
 Plug 'osyo-manga/vim-anzu'
 Plug 'scrooloose/nerdcommenter'
@@ -211,7 +210,7 @@ function! s:MyLAck(input_phrase, ...)
   elseif l:args_len == 1
     let l:options = l:glob_option
     let l:search_phrase = join(l:split_args)
-  " options and search phrase
+  " options and search phrase (`-w -- foo`)
   else
     let l:options = l:glob_option . ' ' . l:split_args[0]
     let l:search_phrase = join(l:split_args[1:-1], l:delimiter)
@@ -412,7 +411,6 @@ let g:lightline.component_type = {
 function! LightlineMode()
   return s:IsNerdTree() ? 'NERD' :
         \ s:IsCommandT() ? 'CommandT' :
-        \ s:IsTagbar() ? 'Tagbar' :
         \ s:IsNarrowWindow() ? '' : lightline#mode()
 endfunction
 
@@ -483,7 +481,6 @@ endfunction
 function! s:IsPluginWindow()
   if s:IsNerdTree() | return 1 | end
   if s:IsCommandT() | return 1 | end
-  if s:IsTagbar() | return 1 | end
 
   return 0
 endfunction
@@ -494,10 +491,6 @@ endfunction
 
 function! s:IsCommandT()
   return &ft == 'command-t'
-endfunction
-
-function! s:IsTagbar()
-  return expand('%:t') =~ 'Tagbar'
 endfunction
 
 function! s:IsExtradite()
@@ -684,26 +677,6 @@ endfunction
 "-------------------------------------------------------------------------------
 
 " see mappings for specific filetypes in ~/.vim/after/ftplugin
-
-"-------------------------------------------------------------------------------
-" tagbar
-"-------------------------------------------------------------------------------
-
-let g:tagbar_autofocus = 1
-let g:tagbar_compact = 0
-let g:tagbar_iconchars = ['▸', '▾']
-let g:tagbar_silent = 1
-let g:tagbar_sort = 0
-let g:tagbar_width = 50
-
-let g:tagbar_status_func = 'TagbarStatusFunc'
-
-function! TagbarStatusFunc(current, sort, fname, ...) abort
-  return lightline#statusline(!a:current)
-endfunction
-
-nmap <silent> <F3> :TagbarToggle<CR>
-nmap <silent> <Leader>t :TagbarOpen fj<CR>
 
 "-------------------------------------------------------------------------------
 " vim-anzu
