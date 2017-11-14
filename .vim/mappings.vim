@@ -66,8 +66,7 @@ nmap <silent> <CR> o<Esc>
 " insert newline before current line
 nmap <silent> <S-CR> O<Esc>
 " insert space
-" now <Space> is used as Leader
-"nmap <silent> <Space> i<Space><Esc>l
+nmap <silent> <Space><Space> i<Space><Esc>l
 
 "-------------------------------------------------------------------------------
 " fold
@@ -128,7 +127,6 @@ nnoremap <C-g> <C-i>
 
 "------- tab -------------------------------------------------------------------
 
-nnoremap <silent> <Leader>c :tabclose<CR>
 " same as using gT and gt
 nnoremap <silent> <C-h> :tabprevious<CR>
 nnoremap <silent> <C-l> :tabnext<CR>
