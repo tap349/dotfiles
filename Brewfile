@@ -70,6 +70,8 @@ brew 'p7zip'
 brew 'phantomjs'
 # https://github.com/Homebrew/brew/blob/master/docs/Versions.md
 brew 'postgresql@9.5', restart_service: :changed
+# for psql
+brew 'postgresql', restart_service: :changed
 # after installation:
 # - `sudo puma-dev -setup`
 # - `puma-dev -install`

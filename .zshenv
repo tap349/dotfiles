@@ -13,7 +13,8 @@ setopt no_global_rcs
 # removes duplicate entries from PATH
 typeset -U path
 
-# NOTE: /opt/chefdk/bin is added to PATH in ~/.zlogin
+# NOTE: /opt/chefdk/bin/ is added to PATH in ~/.zlogin
+# NOTE: /usr/local/bin/ contains different symlinks added by brew
 path=(~/scripts /usr/local/bin $path)
 
 # for iterm to display cyrillic
