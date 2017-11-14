@@ -128,6 +128,7 @@ nnoremap <C-g> <C-i>
 
 "------- tab -------------------------------------------------------------------
 
+nnoremap <silent> <Leader>c :tabclose<CR>
 " same as using gT and gt
 nnoremap <silent> <C-h> :tabprevious<CR>
 nnoremap <silent> <C-l> :tabnext<CR>

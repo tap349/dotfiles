@@ -280,7 +280,7 @@ let g:CommandTCursorLeftMap = '<C-b>'
 let g:CommandTCursorRightMap = '<C-f>'
 let g:CommandTRefreshMap = '<C-r>'
 
-nmap <silent> <Leader>s <Plug>(CommandT)
+nmap <silent> <Leader>t <Plug>(CommandT)
 nmap <silent> <Leader>m <Plug>(CommandTMRU)
 
 " when Command-T window is dismissed (cancelled) and there is a
@@ -648,8 +648,8 @@ let g:syntastic_mode_map = {
 
 " show syntastic errors in separate window
 "nmap <silent> <Leader>e :Errors<CR>
-nmap <silent> <Leader>cc :call <SID>MySyntasticCheck()<CR>
-nmap <silent> <Leader>cr :call <SID>MySyntasticReset()<CR>
+nmap <silent> <Leader>sc :call <SID>MySyntasticCheck()<CR>
+nmap <silent> <Leader>sr :call <SID>MySyntasticReset()<CR>
 
 " run all checkers from g:syntastic_<filetype>_checkers for
 " current filetype unless checkers are passed explicitly as
