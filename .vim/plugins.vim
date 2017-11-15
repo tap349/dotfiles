@@ -546,7 +546,7 @@ let g:NERDCreateDefaultMappings = 0
 let g:NERDSpaceDelims = 0
 let g:NERDDefaultAlign = 'left'
 
-map <Leader>c <Plug>NERDCommenterToggle
+map <Leader><Space> <Plug>NERDCommenterToggle
 
 "-------------------------------------------------------------------------------
 " nerdtree
