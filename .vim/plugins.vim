@@ -364,7 +364,7 @@ let g:lightline.mode_map = {
 
 let g:lightline.active = {
       \   'left': [['mode'], ['fugitive'], ['filename']],
-      \   'right': [['syntastic', 'lineinfo'], ['filetype']]
+      \   'right': [['lineinfo'], ['filetype', 'syntastic']]
       \ }
 let g:lightline.inactive = {
       \   'left': [['filename']],
@@ -387,12 +387,17 @@ let g:lightline.component = {
       \   'fileencodingformat': '%{&fenc !=# "" ? &fenc : &enc}[%{&ff}]'
       \ }
 let g:lightline.component_function = {
-      \   'mode': 'LightlineMode',
-      \   'fugitive': 'LightlineFugitive',
-      \   'filename': 'LightlineFilename',
-      \   'filetype': 'LightlineFiletype',
-      \   'lineinfo': 'LightlineLineinfo'
+      \   'mode': 'MyLightlineMode',
+      \   'fugitive': 'MyLightlineFugitive',
+      \   'filename': 'MyLightlineFilename',
+      \   'filetype': 'MyLightlineFiletype',
+      \   'lineinfo': 'MyLightlineLineinfo'
       \ }
+" expanding components have priority over function components
+" (used for warning and critical components)
+"
+" expanding components are updated only when lightline#update() is called
+" (github.com/itchyny/lightline.vim/blob/master/doc/lightline.txt#L415)
 let g:lightline.component_expand = {
       \   'syntastic': 'SyntasticStatuslineFlag'
       \ }
@@ -409,13 +414,13 @@ let g:lightline.component_type = {
 " &mod = &modified
 " &ro = &readonly
 
-function! LightlineMode()
+function! MyLightlineMode()
   return s:IsNerdTree() ? 'NERD' :
         \ s:IsCommandT() ? 'CommandT' :
         \ s:IsNarrowWindow() ? '' : lightline#mode()
 endfunction
 
-function! LightlineFugitive()
+function! MyLightlineFugitive()
   if s:IsNotebookWindow() | return '' | end
   if s:IsNarrowWindow() | return '' | end
   if s:IsPluginWindow() | return '' | end
@@ -435,7 +440,7 @@ function! LightlineFugitive()
 endfunction
 
 " https://github.com/vim-airline/vim-airline/blob/master/autoload/airline/extensions/quickfix.vim
-function! LightlineFilename()
+function! MyLightlineFilename()
   if s:IsPluginWindow() | return '' | end
   if s:IsQuickfix() | return w:quickfix_title | end
   if s:IsExtradite() | return ExtraditeCommitDate() | end
@@ -457,19 +462,26 @@ function! LightlineModified()
   return &ma && &mod ? '+' : ''
 endfunction
 
-function! LightlineFiletype()
+function! MyLightlineFiletype()
   if s:IsNotebookWindow() | return '' | end
   if s:IsPluginWindow() | return '' | end
 
   return &ft != '' ? &ft : 'no ft'
 endfunction
 
-function! LightlineLineinfo()
+function! MyLightlineLineinfo()
   if s:IsNarrowWindow() | return '' | end
   if s:IsPluginWindow() | return '' | end
 
   return printf('%3d/%d☰ : %-2d', line('.'), line('$'), col('.'))
 endfunction
+
+"function! MySyntasticStatus()
+"  if s:IsNarrowWindow() | return '' | end
+"  if s:IsPluginWindow() | return '' | end
+
+"  return SyntasticStatuslineFlag()
+"endfunction
 
 function! s:IsNarrowWindow()
   return winwidth(0) <= 60
@@ -623,9 +635,10 @@ let g:syntastic_ruby_rubocop_exec = '~/.rbenv/shims/rubocop'
 "
 " if this array is not empty for some filetype then for that filetype:
 " - only specified checkers are run in active mode
-" - only specified are run when calling SyntasticCheck without arguments
-" - when passing checkers explicitly to SyntasticCheck checkers in this
-"   array are ignored
+" - only specified checkers are run when calling SyntasticCheck
+"   without arguments
+" - when passing checkers explicitly to SyntasticCheck, checkers
+"   in this array are ignored
 let g:syntastic_javascript_checkers = ['eslint']
 let g:syntastic_ruby_checkers = ['mri', 'rubocop']
 
@@ -639,8 +652,9 @@ let g:syntastic_ruby_mri_quiet_messages = {
       \   ]
       \ }
 
-" disable automatic checking for all types
-" (exceptions can be listed in active_filetypes array)
+" passive mode by default
+" (automatic checking is disabled for all types -
+" exceptions can be listed in active_filetypes)
 let g:syntastic_mode_map = {
       \   'mode': 'passive',
       \   'active_filetypes': [],
@@ -649,29 +663,33 @@ let g:syntastic_mode_map = {
 
 " show syntastic errors in separate window
 "nmap <silent> <Leader>e :Errors<CR>
-nmap <silent> <Leader>sc :call <SID>MySyntasticCheck()<CR>
-nmap <silent> <Leader>sr :call <SID>MySyntasticReset()<CR>
+"nmap <silent> <Leader>sc :call <SID>MySyntasticCheck()<CR>
+"nmap <silent> <Leader>sr :call <SID>MySyntasticReset()<CR>
+
+" toggles syntastic mode (active/passive):
+" when mode is active, SyntasticCheck is run on each save
+nmap <silent> <Leader>s :call SyntasticToggleMode()<CR>
 
 " run all checkers from g:syntastic_<filetype>_checkers for
 " current filetype unless checkers are passed explicitly as
 " arguments to SyntasticCheck
 "
 " http://vim.wikia.com/wiki/Highlight_unwanted_spaces
-function! s:MySyntasticCheck()
-  hi ExtraWhitespace guibg=#FFD700 guifg=black
-  " adds match for current window only
-  call matchadd('ExtraWhitespace', '\s\+$')
+"function! s:MySyntasticCheck()
+"  hi ExtraWhitespace guibg=#FFD700 guifg=black
+"  " adds match for current window only
+"  call matchadd('ExtraWhitespace', '\s\+$')
 
-  SyntasticCheck
-  call lightline#update()
-endfunction
+"  SyntasticCheck
+"  call lightline#update()
+"endfunction
 
-function! s:MySyntasticReset()
-  call clearmatches()
+"function! s:MySyntasticReset()
+"  call clearmatches()
 
-  SyntasticReset
-  call lightline#update()
-endfunction
+"  SyntasticReset
+"  call lightline#update()
+"endfunction
 
 "-------------------------------------------------------------------------------
 " tabular
