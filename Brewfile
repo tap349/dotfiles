@@ -136,6 +136,7 @@ cask 'dash'
 # run docker app after installation
 # (otherwise `docker` command might be not available in terminal)
 cask 'docker'
+cask 'firefox'
 # - system preferences:
 #   - Users & Groups -> Login Items (hide): add
 # - app preferences:
