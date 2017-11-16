@@ -291,7 +291,7 @@ nmap <silent> <Leader>m <Plug>(CommandTMRU)
 " it's a hack to remove this instantaneous highlighting (still it doesn't
 " stop the highlighting if it was present before opening Command-T window)
 augroup my_command_t
-  autocmd! User CommandTDidHideMatchListing
+  autocmd!
   autocmd User CommandTDidHideMatchListing nohlsearch
 augroup END
 
@@ -399,7 +399,7 @@ let g:lightline.component_function = {
 " expanding components are updated only when lightline#update() is called
 " (github.com/itchyny/lightline.vim/blob/master/doc/lightline.txt#L415)
 let g:lightline.component_expand = {
-      \   'syntastic': 'SyntasticStatuslineFlag'
+      \   'syntastic': 'MySyntasticStatus'
       \ }
 let g:lightline.component_type = {
       \   'syntastic': 'warning'
@@ -476,12 +476,17 @@ function! MyLightlineLineinfo()
   return printf('%3d/%d☰ : %-2d', line('.'), line('$'), col('.'))
 endfunction
 
-"function! MySyntasticStatus()
-"  if s:IsNarrowWindow() | return '' | end
-"  if s:IsPluginWindow() | return '' | end
+function! MySyntasticStatus()
+  if g:syntastic_mode_map['mode'] == 'passive' | return '' | end
 
-"  return SyntasticStatuslineFlag()
-"endfunction
+  if s:IsNarrowWindow() | return '' | end
+  if s:IsPluginWindow() | return '' | end
+
+  let l:flag = SyntasticStatuslineFlag()
+  let l:status = len(l:flag) ? l:flag : 'Syntastic: OK'
+
+  return l:status
+endfunction
 
 function! s:IsNarrowWindow()
   return winwidth(0) <= 60
@@ -611,10 +616,12 @@ let g:SuperTabLongestHighlight = 1
 " syntastic
 "-------------------------------------------------------------------------------
 
-" turn on debugging (logs to vim messages)
+" turn on debugging (logs to Vim messages)
 "let g:syntastic_debug = 1
 "let g:syntastic_debug = 3
 "let g:syntastic_debug = 33
+
+let g:syntastic_stl_format = 'Syntax: L%F (%t)'
 
 let g:syntastic_javascript_eslint_exe = '$(npm bin)/eslint'
 let g:syntastic_ruby_mri_exec = '~/.rbenv/shims/ruby'
@@ -662,15 +669,37 @@ let g:syntastic_mode_map = {
       \   'passive_filetypes': []
       \ }
 
+" toggles syntastic mode (active/passive):
+" when mode is active, SyntasticCheck is run on each save
+nmap <silent> <Leader>c :call <SID>MySyntasticToggleMode()<CR>
+
+function! s:MySyntasticToggleMode()
+  silent call SyntasticToggleMode()
+
+  if g:syntastic_mode_map['mode'] == 'active'
+    augroup my_syntastic
+      autocmd!
+      autocmd BufWritePost * call lightline#update()
+    augroup END
+
+    echo 'Running Syntastic...'
+    SyntasticCheck
+    redraw!
+    call lightline#update()
+  else
+    augroup my_syntastic
+      autocmd!
+    augroup END
+
+    SyntasticReset
+    call lightline#update()
+  endif
+endfunction
+
 " show syntastic errors in separate window
 "nmap <silent> <Leader>e :Errors<CR>
 "nmap <silent> <Leader>sc :call <SID>MySyntasticCheck()<CR>
 "nmap <silent> <Leader>sr :call <SID>MySyntasticReset()<CR>
-
-" toggles syntastic mode (active/passive):
-" when mode is active, SyntasticCheck is run on each save
-" (c stands for check)
-nmap <silent> <Leader>c :call SyntasticToggleMode()<CR>
 
 " run all checkers from g:syntastic_<filetype>_checkers for
 " current filetype unless checkers are passed explicitly as
@@ -681,14 +710,14 @@ nmap <silent> <Leader>c :call SyntasticToggleMode()<CR>
 "  hi ExtraWhitespace guibg=#FFD700 guifg=black
 "  " adds match for current window only
 "  call matchadd('ExtraWhitespace', '\s\+$')
-
+"
 "  SyntasticCheck
 "  call lightline#update()
 "endfunction
 
 "function! s:MySyntasticReset()
 "  call clearmatches()
-
+"
 "  SyntasticReset
 "  call lightline#update()
 "endfunction
@@ -697,7 +726,7 @@ nmap <silent> <Leader>c :call SyntasticToggleMode()<CR>
 " tabular
 "-------------------------------------------------------------------------------
 
-" see mappings for specific filetypes in ~/.vim/after/ftplugin
+" see mappings for specific filetypes in ~/.vim/after/ftplugin/
 
 "-------------------------------------------------------------------------------
 " vim-anzu
