@@ -88,7 +88,6 @@ Plug 'tpope/vim-unimpaired'
 Plug 'tap349/command-t', {
       \   'do': 'cd ruby/command-t/ext/command-t && RBENV_VERSION=system ruby extconf.rb && make'
       \ }
-Plug 'xolox/vim-misc'
 Plug 'yssl/QFEnter'
 
 "-------------------------------------------------------------------------------
@@ -98,6 +97,7 @@ Plug 'yssl/QFEnter'
 "Plug 'Yggdroot/indentLine'
 "Plug 'jamessan/vim-gnupg'
 "Plug 'scheakur/vim-scheakur'
+"Plug 'xolox/vim-misc'
 
 "-------------------------------------------------------------------------------
 " plugins to try in the future
