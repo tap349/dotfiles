@@ -281,7 +281,7 @@ let g:CommandTCursorLeftMap = '<C-b>'
 let g:CommandTCursorRightMap = '<C-f>'
 let g:CommandTRefreshMap = '<C-r>'
 
-nmap <silent> <Leader>t <Plug>(CommandT)
+nmap <silent> <Leader>n <Plug>(CommandT)
 nmap <silent> <Leader>m <Plug>(CommandTMRU)
 
 " when Command-T window is dismissed (cancelled) and there is a
@@ -575,7 +575,7 @@ let g:NERDTreeCascadeSingleChildDir = 0
 let g:NERDTreeWinSize = 35
 
 nmap <silent> <F2> :NERDTreeToggle<CR>
-nmap <silent> <Leader>n :NERDTreeFind<CR>
+nmap <silent> <Leader>t :NERDTreeFind<CR>
 
 "-------------------------------------------------------------------------------
 " QFEnter
@@ -668,7 +668,8 @@ let g:syntastic_mode_map = {
 
 " toggles syntastic mode (active/passive):
 " when mode is active, SyntasticCheck is run on each save
-nmap <silent> <Leader>s :call SyntasticToggleMode()<CR>
+" (c stands for check)
+nmap <silent> <Leader>c :call SyntasticToggleMode()<CR>
 
 " run all checkers from g:syntastic_<filetype>_checkers for
 " current filetype unless checkers are passed explicitly as
@@ -746,7 +747,7 @@ let g:EasyMotion_enter_jump_first = 1
 " https://github.com/easymotion/vim-easymotion#default-bindings
 map <Leader> <Plug>(easymotion-prefix)
 
-" these are defaults:
+" these are defaults (when g:EasyMotion_do_mapping = 1):
 "nmap <Leader>f <Plug>(easymotion-f)
 "nmap <Leader>t <Plug>(easymotion-f)
 "nmap <Leader>F <Plug>(easymotion-F)

@@ -26,18 +26,20 @@ set macmeta
 " turn off highlighting and clear messages,
 " <C-c> in normal mode aborts any pending command
 nnoremap <silent> <C-c> <C-c>:nohlsearch<Bar>:echo<CR>
-nmap <silent> <C-Backspace> <C-c>
+"nmap <silent> <C-Backspace> <C-c>
 
 " map to <Esc> for vertical editing to work
 inoremap <silent> <C-c> <Esc>
-imap <silent> <C-Backspace> <C-c>
+"imap <silent> <C-Backspace> <C-c>
+imap <silent> <C-g> <C-c>
 
-xnoremap <C-Backspace> <Esc>
+"xnoremap <C-Backspace> <Esc>
+
 " <C-Backspace> and <C-g> in command mode act like <Esc> - they
 " interrupt current function execution but don't exit command mode
 " immediately like <C-c> (say, when calling user defined vimscript
 " function - see s:SearchWithGlob() in plugins.vim)
-cnoremap <C-Backspace> <C-c>
+"cnoremap <C-Backspace> <C-c>
 cnoremap <C-g> <C-c>
 
 "===============================================================================
@@ -125,6 +127,8 @@ nnoremap <silent> <S-Backspace> :bd<CR>
 nnoremap <C-g> <C-i>
 
 "------- tab -------------------------------------------------------------------
+
+nnoremap <silent> <C-Backspace> :bd<CR>
 
 " same as using gT and gt
 nnoremap <silent> <C-h> :tabprevious<CR>
