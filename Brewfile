@@ -303,13 +303,12 @@ mas 'Monosnap', id: 540348655
 mas 'Pomodoro Timer', id: 872515009
 # - system preferences:
 #   - Users & Groups -> Login Items (don't hide): add
-mas 'VPNAutoConnect', id: 532510878
-mas 'Xcode', id: 497799835
-# - system preferences:
-#   - Users & Groups -> Login Items (don't hide): add
 # - app preferences:
 #   - Shortcuts:
 #     - General -> Show Magnifier: <M-2>
 mas 'Sip', id: 507257563
 mas 'Telegram Desktop', id: 946399090
-mas 'Trello', id: 1278508951
+# - system preferences:
+#   - Users & Groups -> Login Items (don't hide): add
+mas 'VPNAutoConnect', id: 532510878
+mas 'Xcode', id: 497799835
