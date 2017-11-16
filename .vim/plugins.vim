@@ -554,9 +554,10 @@ let g:limelight_priority = -1
 " http://vim.1045645.n5.nabble.com/mapping-control-0-1-or-backtick-td1189910.html
 "-------------------------------------------------------------------------------
 
+let g:NERDCommentEmptyLines = 1
 let g:NERDCreateDefaultMappings = 0
-let g:NERDSpaceDelims = 0
 let g:NERDDefaultAlign = 'left'
+let g:NERDSpaceDelims = 0
 
 map <Leader><Space> <Plug>NERDCommenterToggle
 
