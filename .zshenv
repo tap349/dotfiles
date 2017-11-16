@@ -141,6 +141,7 @@ alias recreate='rake db:recreate && RAILS_ENV=test rake db:recreate'
 
 alias and='react-native run-android'
 alias ios='react-native run-ios'
+alias ios4="react-native run-ios --simulator 'iPhone 4s'"
 alias ios5="react-native run-ios --simulator 'iPhone 5'"
 alias logios='react-native log-ios | ccze -A -o nolookups'
 alias logand='react-native log-android | ccze -A -o nolookups'
