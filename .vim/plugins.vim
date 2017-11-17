@@ -85,7 +85,7 @@ Plug 'tap349/ack.vim'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
-Plug 'tap349/command-t', {
+Plug 'wincent/command-t', {
       \   'do': 'cd ruby/command-t/ext/command-t && RBENV_VERSION=system ruby extconf.rb && make'
       \ }
 Plug 'yssl/QFEnter'
