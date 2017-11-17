@@ -692,6 +692,7 @@ function! s:MySyntasticToggleMode()
     augroup END
 
     SyntasticReset
+    redraw!
     call lightline#update()
   endif
 endfunction
