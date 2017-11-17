@@ -128,7 +128,7 @@ nnoremap <C-g> <C-i>
 
 "------- tab -------------------------------------------------------------------
 
-nnoremap <silent> <C-Backspace> :bd<CR>
+nnoremap <silent> <C-Backspace> :tabc<CR>
 
 " same as using gT and gt
 nnoremap <silent> <C-h> :tabprevious<CR>

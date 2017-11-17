@@ -284,6 +284,9 @@ let g:CommandTRefreshMap = '<C-r>'
 nmap <silent> <Leader>n <Plug>(CommandT)
 nmap <silent> <Leader>m <Plug>(CommandTMRU)
 
+" `my_` prefix is used when there already exists autocommand group
+" with the same name in some vim plugin (or might exist)
+"
 " when Command-T window is dismissed (cancelled) and there is a
 " previous search, all matches of the latter are highlighted for
 " a moment (it looks like flickering of previous search matches)
@@ -523,21 +526,9 @@ function! s:IsQuickfix()
   return &ft == 'qf'
 endfunction
 
-" refresh lightline - or else it might become colorless after sourcing vimrc
-" (command was previously called in `augroup vimrc`)
+" refresh lightline - or else it might become colorless after sourcing
+" vimrc (command was previously called in `augroup vimrc`)
 "call lightline#enable()
-
-" `my_` prefix is used when there already exists autocommand group
-" with the same name in some vim plugin
-
-"augroup my_lightline
-"  autocmd!
-"  " to remove syntastic message in statusline after save if
-"  " there are no errors left
-"  " (for this to work active mode must be enabled in syntastic -
-"  " currently passive mode is enabled)
-"  "autocmd BufWritePost *.rb,*.feature call lightline#update()
-"augroup END
 
 "-------------------------------------------------------------------------------
 " limelight.vim
