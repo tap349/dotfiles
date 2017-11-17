@@ -147,7 +147,7 @@ alias logios='react-native log-ios | ccze -A -o nolookups'
 alias logand='react-native log-android | ccze -A -o nolookups'
 
 # emulator points to /usr/local/bin/emulator
-alias avd='$ANDROID_HOME/emulator/emulator -avd Nexus_5X_API_23_x86_64 -gpu host -skin 1080x1920'
+alias avd='$ANDROID_HOME/emulator/emulator -avd Nexus_5X_API_23_x86_64 -gpu host -skin 1080x1920 &'
 
 # ruby, gems
 
