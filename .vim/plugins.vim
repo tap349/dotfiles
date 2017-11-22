@@ -682,10 +682,18 @@ function! s:MySyntasticToggleMode()
       autocmd!
     augroup END
 
-    SyntasticReset
+    " reset syntastic in all buffers (including other tabs) -
+    " `SyntasticReset` resets syntastic in current buffer only
+    call <SID>Bufdo('SyntasticReset')
     redraw!
     call lightline#update()
   endif
+endfunction
+
+function! s:Bufdo(command)
+  let l:currentBufnr = bufnr('%')
+  exec 'bufdo ' . a:command
+  exec 'buffer ' . l:currentBufnr
 endfunction
 
 " show syntastic errors in separate window
