@@ -66,6 +66,7 @@ brew 'mpv'
 # for react-native
 # (same as nodejs)
 brew 'node'
+brew 'octave'
 brew 'p7zip'
 brew 'phantomjs'
 # https://github.com/Homebrew/brew/blob/master/docs/Versions.md
