@@ -7,3 +7,4 @@ source 'https://rubygems.org'
 
 gem 'git-up'
 gem 'rubocop'
+gem 'cocoapods'
