@@ -34,7 +34,10 @@ TERM='xterm-256color'
 
 HISTSIZE=100000
 HISTFILESIZE=200000
+
 setopt HIST_IGNORE_DUPS
+# don't save command in history if it starts with space
+setopt HIST_IGNORE_SPACE
 
 # Elixir
 
