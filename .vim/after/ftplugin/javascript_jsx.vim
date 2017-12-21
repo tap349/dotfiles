@@ -2,4 +2,4 @@
 "inoremap >>v <View></View><Esc>F<i<CR><Esc>k$
 
 "imap >> <View></View><Esc>F<
-imap >> <><C-b>
+imap >> <View><Esc>T<
