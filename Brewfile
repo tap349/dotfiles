@@ -152,6 +152,7 @@ cask 'font-inconsolata-dz'
 # for iTerm2
 cask 'font-inconsolata-lgc'
 cask 'font-iosevka'
+cask 'genymotion'
 # app preferences (bookmarks bar, extensions, etc.) are synchronized
 # if you sign in to Chrome (my email is a***.t***.i***@gmail.com)
 #
