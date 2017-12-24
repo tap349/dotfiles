@@ -1,5 +1,6 @@
-"inoremap >>t <Text></Text><Esc>F<i<CR><Esc>k$
-"inoremap >>v <View></View><Esc>F<i<CR><Esc>k$
+"inoremap <buffer> >>t <Text></Text><Esc>F<i<CR><Esc>k$
+"inoremap <buffer> >>v <View></View><Esc>F<i<CR><Esc>k$
 
-"imap >> <View></View><Esc>F<
-imap >> <View><Esc>T<
+"imap <buffer> >> <View></View><Esc>F<
+imap <buffer> >> <View><Esc>T<
+vmap <silent> <buffer> s :sort<CR>:w<CR>

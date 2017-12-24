@@ -448,7 +448,9 @@ function! MyLightlineFilename()
   if s:IsQuickfix() | return w:quickfix_title | end
   if s:IsExtradite() | return ExtraditeCommitDate() | end
 
-  let l:fname = s:IsNotebookWindow() ? expand('%:t') : expand('%')
+  let l:fname = s:IsNotebookWindow()
+        \ ? expand('%:h:t') . '/' . expand('%:t')
+        \ : expand('%')
   return ('' != LightlineReadonly() ? LightlineReadonly() . ' ' : '') .
         \ ('' != l:fname ? l:fname : '[No Name]') .
         \ ('' != LightlineModified() ? ' ' . LightlineModified() : '')
