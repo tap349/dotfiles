@@ -16,6 +16,9 @@ typeset -U path
 # NOTE: /opt/chefdk/bin/ is added to PATH in ~/.zlogin
 # NOTE: /usr/local/bin/ contains different symlinks added by brew
 path=(~/scripts /usr/local/bin $path)
+# add bin/ directory of old version of postgresql instead of
+# creating symlinks for each binary manually
+path=(/usr/local/Cellar/postgresql@9.5/9.5.10/bin $path)
 
 # for iterm to display cyrillic
 export LANG=en_US.UTF-8
@@ -135,7 +138,7 @@ alias rs='rails server'
 alias create_user='rake db:create_user && RAILS_ENV=test rake db:create_user'
 alias create='rake db:create && RAILS_ENV=test rake db:create'
 alias schema_load='rake db:schema:load && RAILS_ENV=test rake db:schema:load'
-alias migrate='rake db:migrate && RAILS_ENV=test rake db:migrate'
+alias migrate='rake db:migrate && rake db:test:clone'
 alias rollback='rake db:rollback && RAILS_ENV=test rake db:rollback'
 alias drop='rake db:drop && RAILS_ENV=test rake db:drop'
 alias recreate='rake db:recreate && RAILS_ENV=test rake db:recreate'
