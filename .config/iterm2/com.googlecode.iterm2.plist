@@ -31513,7 +31513,7 @@
 	<key>NSWindow Frame SessionsPreferences</key>
 	<string>138 74 606 469 0 0 1280 777 </string>
 	<key>NSWindow Frame SharedPreferences</key>
-	<string>260 293 796 473 0 0 1280 777 </string>
+	<string>260 254 937 512 0 0 1280 777 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
 	<string>0 0 1280 777 0 0 1280 777 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
@@ -32120,7 +32120,7 @@
 			<key>Minimum Contrast</key>
 			<real>0.095777294303797472</real>
 			<key>Mouse Reporting</key>
-			<true/>
+			<false/>
 			<key>Name</key>
 			<string>Default</string>
 			<key>Non Ascii Font</key>
@@ -32140,7 +32140,7 @@
 			<key>Screen</key>
 			<integer>-1</integer>
 			<key>Scrollback Lines</key>
-			<integer>1000000</integer>
+			<integer>200000</integer>
 			<key>Scrollback With Status Bar</key>
 			<false/>
 			<key>Scrollback in Alternate Screen</key>
