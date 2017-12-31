@@ -5,18 +5,31 @@
 #-----------------------------------------------------------------------------------------
 # MacVim defaults
 #
-# https://code.google.com/p/macvim/wiki/UserDefaults
+# https://github.com/macvim-dev/macvim/wiki/FAQ
 # :h macvim-prefs
+#
+# most preferences are boolean values:
+# both 0/1 and false/true are accepted
+#
+# reset current preferences:
+# $ defaults delete org.vim.MacVim
+#
+# show current preferences:
+# $ defaults read org.vim.MacVim
 #-----------------------------------------------------------------------------------------
 
-defaults write org.vim.MacVim MMShowAddTabButton false
-defaults write org.vim.MacVim MMNoTitleBarWindow true
-defaults write org.vim.MacVim MMZoomBoth true
+defaults write org.vim.MacVim MMShowAddTabButton 0
+defaults write org.vim.MacVim MMNoTitleBarWindow 1
+defaults write org.vim.MacVim MMZoomBoth 1
 defaults write org.vim.MacVim MMTextInsetTop 0
 defaults write org.vim.MacVim MMTextInsetRight 5
 defaults write org.vim.MacVim MMTextInsetBottom 0
 defaults write org.vim.MacVim MMTextInsetLeft 5
 defaults write org.vim.MacVim MMFullScreenFadeTime 0
+# https://github.com/macvim-dev/macvim/wiki/FAQ#black-screen-on-full-screen
+defaults write org.vim.MacVim MMUseCGLayerAlways 1
+# https://github.com/macvim-dev/macvim/issues/390#issuecomment-254252969
+defaults write org.vim.MacVim SUEnableAutomaticChecks 0
 #defaults write org.vim.MacVim MMNoFontSubstitution 1
 #defaults write org.vim.MacVim MMNativeFullScreen 1
 #defaults write org.vim.MacVim MMTabMinWidth 120
