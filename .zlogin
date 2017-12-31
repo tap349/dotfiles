@@ -8,8 +8,12 @@
 # https://github.com/macvim-dev/macvim/wiki/FAQ
 # :h macvim-prefs
 #
-# most preferences are boolean values:
-# both 0/1 and false/true are accepted
+# in general preferences are set by specifying their type and value:
+# - default write org.vim.MacVim MMShowAddTabButton -bool false
+#
+# in most cases, I guess, type can be omitted:
+# - default write org.vim.MacVim MMShowAddTabButton 0
+# - default write org.vim.MacVim MMShowAddTabButton false
 #
 # reset current preferences:
 # $ defaults delete org.vim.MacVim
