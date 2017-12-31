@@ -35,7 +35,7 @@ brew 'cmake'
 # for cpsm vim plugin
 brew 'boost'
 brew 'elixir'
-# required by ~/scripts/fontpatcher
+# for ~/scripts/fontpatcher
 brew 'fontforge'
 brew 'git'
 brew 'gpg'
@@ -134,12 +134,17 @@ cask 'chefdk'
 #     - [ ] DuckDuckGo
 #     - [ ] Stack Overflow
 cask 'dash'
+# for elasticsearch in iceperk
+#
 # run docker app after installation
 # (otherwise `docker` command might be not available in terminal)
+#
+# - system preferences:
+#   - Users & Groups -> Login Items: add (don't hide)
 cask 'docker'
 cask 'firefox'
 # - system preferences:
-#   - Users & Groups -> Login Items (hide): add
+#   - Users & Groups -> Login Items: add (hide)
 # - app preferences:
 #   - 'Working late' preset
 #   - [x] Start f.lux at login (set by default)
@@ -163,7 +168,7 @@ cask 'genymotion'
 #  - Sign in to Chrome (page is opened automatically)
 #
 # - system preferences:
-#   - Users & Groups -> Login Items (don't hide): remove
+#   - Users & Groups -> Login Items: remove (don't hide)
 # - app preferences:
 #   - Settings -> On startup: Continue where you left off
 #   - Extensions (allow all of them in incognito):
@@ -243,7 +248,7 @@ cask 'steam'
 cask 'unetbootin'
 # - `open /usr/local/Caskroom/utorrent/latest/uTorrent.app`
 # - system preferences:
-#   - Users & Groups -> Login Items (don't hide): remove
+#   - Users & Groups -> Login Items: remove (don't hide)
 cask 'utorrent'
 
 #-------------------------------------------------------------------------------
@@ -304,13 +309,13 @@ mas 'Microsoft Remote Desktop', id: 715768417
 mas 'Monosnap', id: 540348655
 mas 'Pomodoro Timer', id: 872515009
 # - system preferences:
-#   - Users & Groups -> Login Items (don't hide): add
+#   - Users & Groups -> Login Items: add (don't hide)
 # - app preferences:
 #   - Shortcuts:
 #     - General -> Show Magnifier: <M-2>
 mas 'Sip', id: 507257563
 mas 'Telegram Desktop', id: 946399090
 # - system preferences:
-#   - Users & Groups -> Login Items (don't hide): add
+#   - Users & Groups -> Login Items: add (don't hide)
 mas 'VPNAutoConnect', id: 532510878
 mas 'Xcode', id: 497799835
