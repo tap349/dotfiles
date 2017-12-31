@@ -31315,6 +31315,8 @@
 	<false/>
 	<key>EnableRendezvous</key>
 	<false/>
+	<key>ExcludeBackgroundColorsFromCopiedStyle</key>
+	<true/>
 	<key>FocusFollowsMouse</key>
 	<false/>
 	<key>FsTabDelay</key>
@@ -31454,6 +31456,8 @@
 	<integer>1310985</integer>
 	<key>IRMemory</key>
 	<integer>4</integer>
+	<key>IncludePasteHistoryInAdvancedPaste</key>
+	<true/>
 	<key>JobName</key>
 	<true/>
 	<key>LeftCommand</key>
@@ -31513,11 +31517,11 @@
 	<key>NSWindow Frame SessionsPreferences</key>
 	<string>138 74 606 469 0 0 1280 777 </string>
 	<key>NSWindow Frame SharedPreferences</key>
-	<string>260 267 796 473 0 0 1280 777 </string>
+	<string>260 306 1018 447 0 0 1280 777 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
 	<string>0 0 1280 777 0 0 1280 777 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
-	<string>0 0 1280 777 0 0 1280 777 </string>
+	<string>0 202 650 575 0 0 1280 777 </string>
 	<key>NSWindow Frame iTerm Window 2</key>
 	<string>0 0 1276 777 0 0 1280 777 </string>
 	<key>NSWindow Frame iTerm Window 3</key>
@@ -32454,6 +32458,8 @@
 	<false/>
 	<key>ShowPaneTitles</key>
 	<true/>
+	<key>SlowPasteBytesPerCall</key>
+	<integer>64</integer>
 	<key>SlowPasteDelayBetweenCalls</key>
 	<real>0.125</real>
 	<key>SmartPlacement</key>
@@ -32508,7 +32514,7 @@
 	<key>findRegex_iTerm</key>
 	<false/>
 	<key>iTerm Version</key>
-	<string>3.1.2.beta.1</string>
+	<string>3.1.5</string>
 	<key>kCPKSelectionViewPreferredModeKey</key>
 	<integer>0</integer>
 	<key>kCPKSelectionViewShowHSBTextFieldsKey</key>
