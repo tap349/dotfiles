@@ -444,9 +444,10 @@ endfunction
 
 " https://github.com/vim-airline/vim-airline/blob/master/autoload/airline/extensions/quickfix.vim
 function! MyLightlineFilename()
+  if s:IsExtradite() | return ExtraditeCommitDate() | end
+  if s:IsVimPlug() | return expand('%') | end
   if s:IsPluginWindow() | return '' | end
   if s:IsQuickfix() | return w:quickfix_title | end
-  if s:IsExtradite() | return ExtraditeCommitDate() | end
 
   let l:fname = s:IsNotebookWindow()
         \ ? expand('%:h:t') . '/' . expand('%:t')
@@ -518,6 +519,10 @@ endfunction
 
 function! s:IsExtradite()
   return &ft == 'extradite'
+endfunction
+
+function! s:IsVimPlug()
+  return &ft == 'vim-plug'
 endfunction
 
 function! s:IsHelp()
