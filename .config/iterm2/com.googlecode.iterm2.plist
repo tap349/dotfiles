@@ -31513,7 +31513,7 @@
 	<key>NSWindow Frame SessionsPreferences</key>
 	<string>138 74 606 469 0 0 1280 777 </string>
 	<key>NSWindow Frame SharedPreferences</key>
-	<string>260 267 1018 447 0 0 1280 777 </string>
+	<string>260 267 796 473 0 0 1280 777 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
 	<string>0 0 1280 777 0 0 1280 777 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
@@ -32423,9 +32423,9 @@
 	<key>PromptOnQuit</key>
 	<false/>
 	<key>QuickPasteBytesPerCall</key>
-	<integer>1536</integer>
+	<integer>1504</integer>
 	<key>QuickPasteDelayBetweenCalls</key>
-	<real>0.0066666663624346256</real>
+	<real>0.0068020266480743885</real>
 	<key>QuitWhenAllWindowsClosed</key>
 	<true/>
 	<key>RestoreWindowContents</key>
