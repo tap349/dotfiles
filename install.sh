@@ -23,6 +23,7 @@ files=(
   .powconfig
   .pryrc
   .zlogin
+  .zprofile
   .zshenv
   .zshrc
 )
