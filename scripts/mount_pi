@@ -1,2 +1,1 @@
-mkdir /Volumes/pi
-mount_smbfs //pi@192.168.0.130/pi /Volumes/pi/
+mount_smbfs //pi@192.168.0.130/pi ~/mount/pi/

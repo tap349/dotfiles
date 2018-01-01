@@ -8,26 +8,26 @@
 
 if [ "$1" = "mount" ]
 then
-	shift
+ shift
 
-	if [ -z "$1" -o -z "$2" ]
-	then
-		echo error: specify both virtual volume file and mountpoint
-		exit
-	fi
+ if [ -z "$1" -o -z "$2" ]
+ then
+  echo error: specify both virtual volume file and mountpoint
+  exit
+ fi
 
-	/Applications/TrueCrypt.app/Contents/MacOS/TrueCrypt --mount "$1" "$2"
+ /Applications/TrueCrypt.app/Contents/MacOS/TrueCrypt --mount "$1" "$2"
 elif [ "$1" = "umount" ]
 then
-	shift
+ shift
 
-	if [ -z "$1" ]
-	then
-		echo error: specify virtual volume file
-		exit
-	fi
+ if [ -z "$1" ]
+ then
+  echo error: specify virtual volume file
+  exit
+ fi
 
-	truecrypt -d "$1"
+ truecrypt -d "$1"
 else
-	echo error: specify operation: mount or umount
+ echo error: specify operation: mount or umount
 fi
