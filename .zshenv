@@ -20,7 +20,7 @@ path=(~/scripts /usr/local/bin $path)
 # creating symlinks for each binary manually
 path=(/usr/local/Cellar/postgresql@9.5/9.5.10/bin $path)
 
-# for iterm to display cyrillic
+# for iTerm2 to display cyrillic
 export LANG=en_US.UTF-8
 # for mc to display cyrillic
 export LC_ALL=en_US.UTF-8
@@ -45,7 +45,7 @@ setopt HIST_IGNORE_SPACE
 # Elixir
 
 # https://hexdocs.pm/iex/IEx.html#module-shell-history
-export ERL_AFLAGS="-kernel shell_history enabled"
+export ERL_AFLAGS='-kernel shell_history enabled'
 
 # Android
 
@@ -63,7 +63,7 @@ path=($path $ANDROID_HOME/platform-tools)
 # iOS
 
 # https://github.com/bradmartin/nativescript-videoplayer/issues/76
-export SIMCTL_CHILD_OS_ACTIVITY_MODE="disable"
+export SIMCTL_CHILD_OS_ACTIVITY_MODE='disable'
 
 #-------------------------------------------------------------------------------
 #
