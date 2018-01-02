@@ -613,6 +613,9 @@ let g:SuperTabLongestHighlight = 1
 
 "-------------------------------------------------------------------------------
 " syntastic
+"
+" run `SyntasticInfo` to get the list of available
+" and enabled checkers for current filetype
 "-------------------------------------------------------------------------------
 
 " turn on debugging (logs to Vim messages)
@@ -620,6 +623,9 @@ let g:SuperTabLongestHighlight = 1
 "let g:syntastic_debug = 3
 "let g:syntastic_debug = 33
 
+" display errors found by all checkers for current filetype at once
+" :help syntastic_aggregate_errors
+let g:syntastic_aggregate_errors = 1
 let g:syntastic_stl_format = 'Syntax: L%F (%t)'
 
 let g:syntastic_javascript_eslint_exe = '$(npm bin)/eslint'
