@@ -646,7 +646,7 @@ let g:syntastic_ruby_rubocop_exec = '~/.rbenv/shims/rubocop'
 "   without arguments
 " - when passing checkers explicitly to SyntasticCheck, checkers
 "   in this array are ignored
-let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_javascript_checkers = ['eslint', 'flow']
 let g:syntastic_ruby_checkers = ['mri', 'rubocop']
 
 " http://vim.wikia.com/wiki/Simplifying_regular_expressions_using_magic_and_no-magic
