@@ -38,6 +38,7 @@ Plug 'tpope/vim-rhubarb' | Plug 'tpope/vim-fugitive'
 
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx' | Plug 'pangloss/vim-javascript'
+Plug 'flowtype/vim-flow'
 
 "-------------------------------------------------------------------------------
 " ruby / rails
@@ -803,6 +804,17 @@ let g:extradite_showhash = 1
 map <silent> <Leader>g :Extradite<CR>
 
 "-------------------------------------------------------------------------------
+" vim-flow
+"-------------------------------------------------------------------------------
+
+let g:flow#enable = 0
+let g:flow#omnifunc = 0
+
+map <silent> <Leader>fj :FlowJumpToDef<CR>
+map <silent> <Leader>fm :FlowMake<CR>
+map <silent> <Leader>ft :FlowType<CR>
+
+"-------------------------------------------------------------------------------
 " vim-fugitive
 "-------------------------------------------------------------------------------
 
@@ -845,6 +857,7 @@ nmap <silent> <Leader>ht :GitGutterToggle<CR>
 
 "-------------------------------------------------------------------------------
 " vim-gutentags
+"
 " https://andrew.stwrt.ca/posts/vim-ctags/
 " https://github.com/mmorearty/elixir-ctags
 "
