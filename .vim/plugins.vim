@@ -815,7 +815,10 @@ map <silent> <Leader>g :Extradite<CR>
 "-------------------------------------------------------------------------------
 
 let g:flow#enable = 0
-let g:flow#flowpath = '$(npm bin)/flow'
+" somehow it works without setting correct flowpath
+" (and doesn't work when correct flowpath is set -
+" Flow* commands are not even listed in command line)
+"let g:flow#flowpath = '$(npm bin)/flow'
 let g:flow#omnifunc = 0
 
 map <silent> <Leader>fj :FlowJumpToDef<CR>
