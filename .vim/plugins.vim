@@ -623,6 +623,7 @@ let g:SuperTabLongestHighlight = 1
 let g:syntastic_stl_format = 'Syntax: L%F (%t)'
 
 let g:syntastic_javascript_eslint_exe = '$(npm bin)/eslint'
+let g:syntastic_javascript_flow_exe = '$(npm bin)/flow'
 let g:syntastic_ruby_mri_exec = '~/.rbenv/shims/ruby'
 let g:syntastic_ruby_rubocop_exec = '~/.rbenv/shims/rubocop'
 
@@ -808,6 +809,7 @@ map <silent> <Leader>g :Extradite<CR>
 "-------------------------------------------------------------------------------
 
 let g:flow#enable = 0
+let g:flow#flowpath = '$(npm bin)/flow'
 let g:flow#omnifunc = 0
 
 map <silent> <Leader>fj :FlowJumpToDef<CR>
