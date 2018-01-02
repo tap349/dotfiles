@@ -822,7 +822,7 @@ let g:flow#enable = 0
 let g:flow#omnifunc = 0
 
 map <silent> <Leader>fj :FlowJumpToDef<CR>
-map <silent> <Leader>ft :FlowType<CR>
+"map <silent> <Leader>ft :FlowType<CR>
 
 "-------------------------------------------------------------------------------
 " vim-fugitive
