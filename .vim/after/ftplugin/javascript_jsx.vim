@@ -3,4 +3,3 @@
 
 "imap <buffer> >> <View></View><Esc>F<
 imap <buffer> >> <View><Esc>T<
-vmap <silent> <buffer> s :sort<CR>:w<CR>
