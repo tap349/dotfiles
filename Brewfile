@@ -35,7 +35,6 @@ brew 'cmake'
 # for cpsm vim plugin
 brew 'boost'
 brew 'elixir'
-brew 'flow'
 # for ~/scripts/fontpatcher
 brew 'fontforge'
 brew 'git'
