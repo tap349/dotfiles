@@ -624,7 +624,7 @@ let g:SuperTabLongestHighlight = 1
 
 " display errors found by all checkers for current filetype at once
 " :help syntastic_aggregate_errors
-let g:syntastic_aggregate_errors = 1
+"let g:syntastic_aggregate_errors = 1
 let g:syntastic_stl_format = 'Syntax: L%F (%t)'
 
 let g:syntastic_javascript_eslint_exe = '$(npm bin)/eslint'
@@ -652,7 +652,7 @@ let g:syntastic_ruby_rubocop_exec = '~/.rbenv/shims/rubocop'
 "   without arguments
 " - when passing checkers explicitly to SyntasticCheck, checkers
 "   in this array are ignored
-let g:syntastic_javascript_checkers = ['eslint', 'flow']
+let g:syntastic_javascript_checkers = ['eslint']
 let g:syntastic_ruby_checkers = ['mri', 'rubocop']
 
 " http://vim.wikia.com/wiki/Simplifying_regular_expressions_using_magic_and_no-magic
