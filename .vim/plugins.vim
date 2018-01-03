@@ -624,11 +624,20 @@ let g:SuperTabLongestHighlight = 1
 
 " display errors found by all checkers for current filetype at once
 " :help syntastic_aggregate_errors
-"let g:syntastic_aggregate_errors = 1
+let g:syntastic_aggregate_errors = 1
 let g:syntastic_stl_format = 'Syntax: L%F (%t)'
 
+" passive mode by default
+" (automatic checking is disabled for all types -
+" exceptions can be listed in active_filetypes)
+let g:syntastic_mode_map = {
+      \   'mode': 'passive',
+      \   'active_filetypes': [],
+      \   'passive_filetypes': []
+      \ }
+
 let g:syntastic_javascript_eslint_exe = '$(npm bin)/eslint'
-let g:syntastic_javascript_flow_exe = '$(npm bin)/flow'
+let g:syntastic_javascript_flow_exe = '$(npm bin)/flow focus-check'
 let g:syntastic_ruby_mri_exec = '~/.rbenv/shims/ruby'
 let g:syntastic_ruby_rubocop_exec = '~/.rbenv/shims/rubocop'
 
@@ -662,20 +671,10 @@ let g:syntastic_ruby_mri_quiet_messages = {
 "   without arguments
 " - when passing checkers explicitly to SyntasticCheck, checkers
 "   in this array are ignored
-let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_javascript_checkers = ['eslint', 'flow']
 let g:syntastic_ruby_checkers = ['mri', 'rubocop']
 
-" passive mode by default
-" (automatic checking is disabled for all types -
-" exceptions can be listed in active_filetypes)
-let g:syntastic_mode_map = {
-      \   'mode': 'passive',
-      \   'active_filetypes': [],
-      \   'passive_filetypes': []
-      \ }
-
-nmap <silent> <Leader>sc :call <SID>MySyntasticCheck()<CR>
-nmap <silent> <Leader>sf :call <SID>MySyntasticCheckFlow()<CR>
+nmap <silent> <Leader>c :call <SID>MySyntasticCheck()<CR>
 
 " when mode is active, SyntasticCheck is run on each save
 function! s:MySyntasticCheck()
@@ -689,7 +688,6 @@ function! s:MySyntasticCheck()
 
     echo 'Running Syntastic...'
     SyntasticCheck
-    redraw!
   else
     augroup my_syntastic
       autocmd!
@@ -698,30 +696,10 @@ function! s:MySyntasticCheck()
     " reset syntastic in all buffers (including other tabs) -
     " `SyntasticReset` resets syntastic in current buffer only
     silent call <SID>Bufdo('SyntasticReset')
-    echo 'Syntastic Reset'
   endif
 
+  redraw!
   call lightline#update()
-endfunction
-
-let s:syntastic_flow = 0
-function! s:MySyntasticCheckFlow()
-  " 0 - false, 1 - true
-  if !s:syntastic_flow
-    echo 'Running Flow...'
-    SyntasticCheck flow
-    Errors
-    wincmd p
-    redraw!
-
-    let s:syntastic_flow = 1
-  else
-    lclose
-    silent call <SID>Bufdo('SyntasticReset')
-    echo 'Flow Reset'
-
-    let s:syntastic_flow = 0
-  endif
 endfunction
 
 function! s:Bufdo(command)
