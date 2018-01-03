@@ -38,7 +38,6 @@ Plug 'tpope/vim-rhubarb' | Plug 'tpope/vim-fugitive'
 
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx' | Plug 'pangloss/vim-javascript'
-Plug 'flowtype/vim-flow'
 
 "-------------------------------------------------------------------------------
 " ruby / rails
@@ -814,14 +813,14 @@ map <silent> <Leader>g :Extradite<CR>
 " vim-flow
 "-------------------------------------------------------------------------------
 
-let g:flow#enable = 0
-" somehow it works without setting correct flowpath
-" (and doesn't work when correct flowpath is set -
-" Flow* commands are not even listed in command line)
-"let g:flow#flowpath = '$(npm bin)/flow'
-let g:flow#omnifunc = 0
-
-map <silent> <Leader>fj :FlowJumpToDef<CR>
+"let g:flow#enable = 0
+"" somehow it works without setting correct flowpath
+"" (and doesn't work when correct flowpath is set -
+"" Flow* commands are not even listed in command line)
+""let g:flow#flowpath = '$(npm bin)/flow'
+"let g:flow#omnifunc = 0
+"
+"map <silent> <Leader>fj :FlowJumpToDef<CR>
 "map <silent> <Leader>ft :FlowType<CR>
 
 "-------------------------------------------------------------------------------
