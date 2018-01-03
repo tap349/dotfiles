@@ -632,6 +632,16 @@ let g:syntastic_javascript_flow_exe = '$(npm bin)/flow'
 let g:syntastic_ruby_mri_exec = '~/.rbenv/shims/ruby'
 let g:syntastic_ruby_rubocop_exec = '~/.rbenv/shims/rubocop'
 
+" http://vim.wikia.com/wiki/Simplifying_regular_expressions_using_magic_and_no-magic
+" '\m^shadowing outer local variable'
+let g:syntastic_ruby_mri_quiet_messages = {
+      \   'regex': [
+      \     '\m`&'' interpreted as argument prefix',
+      \     '\m`*'' interpreted as argument prefix',
+      \     '\mambiguous first argument; put parentheses or a space even after `/'' operator'
+      \   ]
+      \ }
+
 " profile is defined in cucumber.yml
 " uncomment in case you need special options for syntastic
 "let g:syntastic_cucumber_cucumber_args='--profile syntastic'
@@ -655,16 +665,6 @@ let g:syntastic_ruby_rubocop_exec = '~/.rbenv/shims/rubocop'
 let g:syntastic_javascript_checkers = ['eslint']
 let g:syntastic_ruby_checkers = ['mri', 'rubocop']
 
-" http://vim.wikia.com/wiki/Simplifying_regular_expressions_using_magic_and_no-magic
-" '\m^shadowing outer local variable'
-let g:syntastic_ruby_mri_quiet_messages = {
-      \   'regex': [
-      \     '\m`&'' interpreted as argument prefix',
-      \     '\m`*'' interpreted as argument prefix',
-      \     '\mambiguous first argument; put parentheses or a space even after `/'' operator'
-      \   ]
-      \ }
-
 " passive mode by default
 " (automatic checking is disabled for all types -
 " exceptions can be listed in active_filetypes)
@@ -674,11 +674,11 @@ let g:syntastic_mode_map = {
       \   'passive_filetypes': []
       \ }
 
-" toggles syntastic mode (active/passive):
-" when mode is active, SyntasticCheck is run on each save
-nmap <silent> <Leader>c :call <SID>MySyntasticToggleMode()<CR>
+nmap <silent> <Leader>sc :call <SID>MySyntasticCheck()<CR>
+nmap <silent> <Leader>sf :call <SID>MySyntasticCheckFlow()<CR>
 
-function! s:MySyntasticToggleMode()
+" when mode is active, SyntasticCheck is run on each save
+function! s:MySyntasticCheck()
   silent call SyntasticToggleMode()
 
   if g:syntastic_mode_map['mode'] == 'active'
@@ -690,7 +690,6 @@ function! s:MySyntasticToggleMode()
     echo 'Running Syntastic...'
     SyntasticCheck
     redraw!
-    call lightline#update()
   else
     augroup my_syntastic
       autocmd!
@@ -698,9 +697,30 @@ function! s:MySyntasticToggleMode()
 
     " reset syntastic in all buffers (including other tabs) -
     " `SyntasticReset` resets syntastic in current buffer only
-    call <SID>Bufdo('SyntasticReset')
+    silent call <SID>Bufdo('SyntasticReset')
+    echo 'Syntastic Reset'
+  endif
+
+  call lightline#update()
+endfunction
+
+let s:syntastic_flow = 0
+function! s:MySyntasticCheckFlow()
+  " 0 - false, 1 - true
+  if !s:syntastic_flow
+    echo 'Running Flow...'
+    SyntasticCheck flow
+    Errors
+    wincmd p
     redraw!
-    call lightline#update()
+
+    let s:syntastic_flow = 1
+  else
+    lclose
+    silent call <SID>Bufdo('SyntasticReset')
+    echo 'Flow Reset'
+
+    let s:syntastic_flow = 0
   endif
 endfunction
 
