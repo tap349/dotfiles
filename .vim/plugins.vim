@@ -637,6 +637,7 @@ let g:syntastic_mode_map = {
       \ }
 
 let g:syntastic_javascript_eslint_exe = '$(npm bin)/eslint'
+" https://github.com/vim-syntastic/syntastic/issues/1754
 let g:syntastic_javascript_flow_exe = '$(npm bin)/flow focus-check'
 let g:syntastic_ruby_mri_exec = '~/.rbenv/shims/ruby'
 let g:syntastic_ruby_rubocop_exec = '~/.rbenv/shims/rubocop'
