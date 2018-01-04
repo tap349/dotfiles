@@ -139,7 +139,6 @@ let g:ack_use_cword_for_empty_search = 0
 
 " QFEnter works with both quickfix windows and location lists
 map <Leader>/ :call <SID>Search()<CR>
-map <Leader>\ :call <SID>SearchWithGlob()<CR>
 
 " useful symbols: ⎸│⮁⮀
 function! s:Search( )
@@ -148,16 +147,6 @@ function! s:Search( )
   echohl None
 
   call <SID>MyLAck(l:input_phrase)
-endfunction
-
-function! s:SearchWithGlob()
-  echohl AckSearch
-  let l:glob = input(' GLOB ⮁⮁ ')
-  redraw!
-  let l:input_phrase = input(' SEARCH ⮁⮁ ')
-  echohl None
-
-  call <SID>MyLAck(l:input_phrase, l:glob)
 endfunction
 
 " `!` is not allowed in function name
