@@ -99,8 +99,9 @@ nnoremap <Leader>oz :tabnew<CR>:edit ~/.zshenv<CR>
 "nnoremap j gj
 "nnoremap k gk
 
-nnoremap <C-j> 10j
-nnoremap <C-k> 10k
+" used by ALE now
+"nnoremap <C-j> 10j
+"nnoremap <C-k> 10k
 
 " g_ (unlike $) doesn't select newline character in visual mode
 nnoremap H ^

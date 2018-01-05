@@ -61,6 +61,14 @@ Plug 'slim-template/vim-slim'
 Plug 'slime-lang/vim-slime-syntax'
 
 "-------------------------------------------------------------------------------
+" linting
+"-------------------------------------------------------------------------------
+
+Plug 'maximbaz/lightline-ale' | Plug 'itchyny/lightline.vim'
+Plug 'scrooloose/syntastic'
+Plug 'w0rp/ale'
+
+"-------------------------------------------------------------------------------
 " other plugins
 "-------------------------------------------------------------------------------
 
@@ -73,15 +81,14 @@ Plug 'godlygeek/tabular'
 Plug 'haya14busa/vim-asterisk'
 Plug 'itchyny/lightline.vim' | Plug 'tpope/vim-fugitive'
 Plug 'jeetsukumaran/vim-buffergator'
-Plug 'tap349/goyo.vim'
 Plug 'junegunn/limelight.vim'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'mhinz/vim-hugefile'
 Plug 'osyo-manga/vim-anzu'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
-Plug 'scrooloose/syntastic'
 Plug 'tap349/ack.vim'
+Plug 'tap349/goyo.vim'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
@@ -226,6 +233,34 @@ function! s:ShowWarningMessage(message)
 endfunction
 
 "-------------------------------------------------------------------------------
+" ale
+"-------------------------------------------------------------------------------
+
+" NOTE: not applied unless vimrc is sourced
+"
+" highlight group is not defined in github colorscheme so
+" sign column colors might be broken after sourcing vimrc
+"hi SignColumn guibg=#F3E4EA
+
+let g:ale_sign_error = '>>'
+let g:ale_sign_warning = '>>'
+
+let g:ale_lint_on_enter = 0
+" https://github.com/w0rp/ale/issues/505
+" issue is closed but ALE still lints opened files
+" when g:ale_lint_on_filetype_changed = 1 (default)
+let g:ale_lint_on_filetype_changed = 0
+let g:ale_lint_on_save = 1
+let g:ale_lint_on_text_changed = 'never'
+
+let g:ale_linters = {
+      \   'javascript': ['eslint', 'flow']
+      \ }
+
+nmap <silent> <C-k> <Plug>(ale_previous_wrap)
+nmap <silent> <C-j> <Plug>(ale_next_wrap)
+
+"-------------------------------------------------------------------------------
 " CamelCaseMotion
 "-------------------------------------------------------------------------------
 
@@ -242,7 +277,7 @@ map <silent> b <Plug>CamelCaseMotion_b
 " and wildignore option (when g:CommandTWildIgnore is set to &wildignore)
 "-------------------------------------------------------------------------------
 
-hi CommandTHighlightColor guibg=#d7e2ea gui=none
+hi CommandTHighlightColor guibg=#D7E2EA gui=none
 
 let g:CommandTFileScanner = 'git'
 " when using git file scanner, new files are not visible by default -
@@ -356,7 +391,7 @@ let g:lightline.mode_map = {
 
 let g:lightline.active = {
       \   'left': [['mode'], ['fugitive'], ['filename']],
-      \   'right': [['lineinfo'], ['filetype', 'syntastic']]
+      \   'right': [['lineinfo'], ['filetype'], ['linter_errors', 'linter_warnings', 'linter_ok']]
       \ }
 let g:lightline.inactive = {
       \   'left': [['filename']],
@@ -391,10 +426,15 @@ let g:lightline.component_function = {
 " expanding components are updated only when lightline#update() is called
 " (github.com/itchyny/lightline.vim/blob/master/doc/lightline.txt#L415)
 let g:lightline.component_expand = {
-      \   'syntastic': 'MySyntasticStatus'
+      \   'syntastic': 'MySyntasticStatus',
+      \   'linter_warnings': 'lightline#ale#warnings',
+      \   'linter_errors': 'lightline#ale#errors',
+      \   'linter_ok': 'lightline#ale#ok'
       \ }
 let g:lightline.component_type = {
-      \   'syntastic': 'warning'
+      \   'syntastic': 'warning',
+      \   'linter_warnings': 'warning',
+      \   'linter_errors': 'error'
       \ }
 
 " functions for components
@@ -525,6 +565,14 @@ endfunction
 " refresh lightline - or else it might become colorless after sourcing
 " vimrc (command was previously called in `augroup vimrc`)
 "call lightline#enable()
+
+"-------------------------------------------------------------------------------
+" lightline-ale
+"-------------------------------------------------------------------------------
+
+let g:lightline#ale#indicator_warnings = 'W:'
+let g:lightline#ale#indicator_errors = 'E:'
+let g:lightline#ale#indicator_ok = 'OK'
 
 "-------------------------------------------------------------------------------
 " limelight.vim
@@ -822,20 +870,15 @@ nmap <F1> :Gblame<CR>
 " vim-gitgutter
 "-------------------------------------------------------------------------------
 
-" same colors as in Normal highlight group (SignColumn
-" highlight group is not defined in github colorscheme so
-" sign column colors might be broken after sourcing vimrc)
-hi SignColumn                 guibg=#F3F3FA
+hi GitGutterAdd               guibg=#BEFECE guifg=#0E8E0E
+hi GitGutterChange            guibg=#DEEEFE guifg=#6E6EFE
+hi GitGutterDelete            guibg=#FEE2E2 guifg=#FE4E4E
+hi GitGutterChangeDelete      guibg=#FEDEFE guifg=#EE0EEE
 
-hi GitGutterAdd               guibg=#befece guifg=#0e8e0e
-hi GitGutterChange            guibg=#deeefe guifg=#6e6efe
-hi GitGutterDelete            guibg=#fee2e2 guifg=#fe4e4e
-hi GitGutterChangeDelete      guibg=#fedefe guifg=#ee0eee
-
-hi GitGutterAddLine           guibg=#befece
-hi GitGutterChangeLine        guibg=#deeefe
-hi GitGutterDeleteLine        guibg=#fee2e2
-hi GitGutterChangeDeleteLine  guibg=#fedefe
+hi GitGutterAddLine           guibg=#BEFECE
+hi GitGutterChangeLine        guibg=#DEEEFE
+hi GitGutterDeleteLine        guibg=#FEE2E2
+hi GitGutterChangeDeleteLine  guibg=#FEDEFE
 
 set updatetime=250
 
