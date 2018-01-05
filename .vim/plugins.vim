@@ -65,7 +65,6 @@ Plug 'slime-lang/vim-slime-syntax'
 "-------------------------------------------------------------------------------
 
 Plug 'maximbaz/lightline-ale' | Plug 'itchyny/lightline.vim'
-Plug 'scrooloose/syntastic'
 Plug 'w0rp/ale'
 
 "-------------------------------------------------------------------------------
@@ -426,13 +425,11 @@ let g:lightline.component_function = {
 " expanding components are updated only when lightline#update() is called
 " (github.com/itchyny/lightline.vim/blob/master/doc/lightline.txt#L415)
 let g:lightline.component_expand = {
-      \   'syntastic': 'MySyntasticStatus',
       \   'linter_warnings': 'lightline#ale#warnings',
       \   'linter_errors': 'lightline#ale#errors',
       \   'linter_ok': 'lightline#ale#ok'
       \ }
 let g:lightline.component_type = {
-      \   'syntastic': 'warning',
       \   'linter_warnings': 'warning',
       \   'linter_errors': 'error'
       \ }
@@ -509,18 +506,6 @@ function! MyLightlineLineinfo()
   if s:IsPluginWindow() | return '' | end
 
   return printf('%3d/%d☰ : %-2d', line('.'), line('$'), col('.'))
-endfunction
-
-function! MySyntasticStatus()
-  if g:syntastic_mode_map['mode'] == 'passive' | return '' | end
-
-  if s:IsNarrowWindow() | return '' | end
-  if s:IsPluginWindow() | return '' | end
-
-  let l:flag = SyntasticStatuslineFlag()
-  let l:status = len(l:flag) ? l:flag : 'Syntastic: OK'
-
-  return l:status
 endfunction
 
 function! s:IsNarrowWindow()
@@ -646,131 +631,6 @@ let g:SuperTabDefaultCompletionType = '<C-n>'
 " used only when completeopt has 'longest' option
 let g:SuperTabLongestEnhanced = 1
 let g:SuperTabLongestHighlight = 1
-
-"-------------------------------------------------------------------------------
-" syntastic
-"
-" run `SyntasticInfo` to get the list of available
-" and enabled checkers for current filetype
-"-------------------------------------------------------------------------------
-
-" turn on debugging (logs to Vim messages)
-"let g:syntastic_debug = 1
-"let g:syntastic_debug = 3
-"let g:syntastic_debug = 33
-
-" display errors found by all checkers for current filetype at once
-" :help syntastic_aggregate_errors
-let g:syntastic_aggregate_errors = 1
-let g:syntastic_stl_format = 'Syntax: L%F (%t)'
-
-" passive mode by default
-" (automatic checking is disabled for all types -
-" exceptions can be listed in active_filetypes)
-let g:syntastic_mode_map = {
-      \   'mode': 'passive',
-      \   'active_filetypes': [],
-      \   'passive_filetypes': []
-      \ }
-
-let g:syntastic_javascript_eslint_exe = '$(npm bin)/eslint'
-" https://github.com/vim-syntastic/syntastic/issues/1754
-let g:syntastic_javascript_flow_exe = '$(npm bin)/flow focus-check'
-let g:syntastic_ruby_mri_exec = '~/.rbenv/shims/ruby'
-let g:syntastic_ruby_rubocop_exec = '~/.rbenv/shims/rubocop'
-
-" http://vim.wikia.com/wiki/Simplifying_regular_expressions_using_magic_and_no-magic
-" '\m^shadowing outer local variable'
-let g:syntastic_ruby_mri_quiet_messages = {
-      \   'regex': [
-      \     '\m`&'' interpreted as argument prefix',
-      \     '\m`*'' interpreted as argument prefix',
-      \     '\mambiguous first argument; put parentheses or a space even after `/'' operator'
-      \   ]
-      \ }
-
-" profile is defined in cucumber.yml
-" uncomment in case you need special options for syntastic
-"let g:syntastic_cucumber_cucumber_args='--profile syntastic'
-
-" define available checkers for filetypes explicitly
-" (by default more checkers might be available).
-" all available checkers for all filetypes are listed in
-" http://github.com/vim-syntastic/syntastic/blob/master/doc/syntastic-checkers.txt
-"
-" if this array is empty for some filetype then for that filetype:
-" - no checkers are run automatically in active mode
-" - no checkers are run when calling SyntasticCheck without arguments
-" - checkers can be run by passing explicitly them to SyntasticCheck only
-"
-" if this array is not empty for some filetype then for that filetype:
-" - only specified checkers are run in active mode
-" - only specified checkers are run when calling SyntasticCheck
-"   without arguments
-" - when passing checkers explicitly to SyntasticCheck, checkers
-"   in this array are ignored
-let g:syntastic_javascript_checkers = ['eslint', 'flow']
-let g:syntastic_ruby_checkers = ['mri', 'rubocop']
-
-nmap <silent> <Leader>c :call <SID>MySyntasticCheck()<CR>
-
-" when mode is active, SyntasticCheck is run on each save
-function! s:MySyntasticCheck()
-  silent call SyntasticToggleMode()
-
-  if g:syntastic_mode_map['mode'] == 'active'
-    augroup my_syntastic
-      autocmd!
-      autocmd BufWritePost * call lightline#update()
-    augroup END
-
-    echo 'Running Syntastic...'
-    SyntasticCheck
-  else
-    augroup my_syntastic
-      autocmd!
-    augroup END
-
-    " reset syntastic in all buffers (including other tabs) -
-    " `SyntasticReset` resets syntastic in current buffer only
-    silent call <SID>Bufdo('SyntasticReset')
-  endif
-
-  redraw!
-  call lightline#update()
-endfunction
-
-function! s:Bufdo(command)
-  let l:currentBufnr = bufnr('%')
-  exec 'bufdo ' . a:command
-  exec 'buffer ' . l:currentBufnr
-endfunction
-
-" show syntastic errors in separate window
-"nmap <silent> <Leader>e :Errors<CR>
-"nmap <silent> <Leader>sc :call <SID>MySyntasticCheck()<CR>
-"nmap <silent> <Leader>sr :call <SID>MySyntasticReset()<CR>
-
-" run all checkers from g:syntastic_<filetype>_checkers for
-" current filetype unless checkers are passed explicitly as
-" arguments to SyntasticCheck
-"
-" http://vim.wikia.com/wiki/Highlight_unwanted_spaces
-"function! s:MySyntasticCheck()
-"  hi ExtraWhitespace guibg=#FFD700 guifg=black
-"  " adds match for current window only
-"  call matchadd('ExtraWhitespace', '\s\+$')
-"
-"  SyntasticCheck
-"  call lightline#update()
-"endfunction
-
-"function! s:MySyntasticReset()
-"  call clearmatches()
-"
-"  SyntasticReset
-"  call lightline#update()
-"endfunction
 
 "-------------------------------------------------------------------------------
 " tabular
