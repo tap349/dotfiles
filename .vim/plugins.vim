@@ -235,19 +235,20 @@ endfunction
 " ale
 "-------------------------------------------------------------------------------
 
-" NOTE: not applied unless vimrc is sourced
+" NOTE: bug - not applied unless vimrc is sourced
 "
 " highlight group is not defined in github colorscheme so
 " sign column colors might be broken after sourcing vimrc
 "hi SignColumn guibg=#F3E4EA
 
+" syntastic signs
 let g:ale_sign_error = '>>'
 let g:ale_sign_warning = '>>'
 
-let g:ale_lint_on_enter = 0
 " https://github.com/w0rp/ale/issues/505
 " issue is closed but ALE still lints opened files
 " when g:ale_lint_on_filetype_changed = 1 (default)
+let g:ale_lint_on_enter = 0
 let g:ale_lint_on_filetype_changed = 0
 let g:ale_lint_on_save = 1
 let g:ale_lint_on_text_changed = 'never'
@@ -704,20 +705,6 @@ let g:extradite_resize = 0
 let g:extradite_showhash = 1
 
 map <silent> <Leader>g :Extradite<CR>
-
-"-------------------------------------------------------------------------------
-" vim-flow
-"-------------------------------------------------------------------------------
-
-"let g:flow#enable = 0
-"" somehow it works without setting correct flowpath
-"" (and doesn't work when correct flowpath is set -
-"" Flow* commands are not even listed in command line)
-""let g:flow#flowpath = '$(npm bin)/flow'
-"let g:flow#omnifunc = 0
-"
-"map <silent> <Leader>fj :FlowJumpToDef<CR>
-"map <silent> <Leader>ft :FlowType<CR>
 
 "-------------------------------------------------------------------------------
 " vim-fugitive
