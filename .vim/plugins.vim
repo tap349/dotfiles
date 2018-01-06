@@ -257,7 +257,7 @@ let g:ale_sign_error = '⮀'
 let g:ale_lint_on_save = 1
 let g:ale_lint_on_text_changed = 'never'
 
-" disable all linters for plugin windows explicitly
+" disable linting for plugin windows explicitly
 let g:ale_linters = {
       \   'command-t': [],
       \   'elixir': [],
