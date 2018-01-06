@@ -63,10 +63,9 @@ brew 'memcached', restart_service: :changed
 brew 'mc'
 brew 'mpv'
 # for reenter_feed
-# for react-native
+# for React Native
 # (same as nodejs)
 brew 'node'
-brew 'octave'
 brew 'p7zip'
 brew 'phantomjs'
 # https://github.com/Homebrew/brew/blob/master/docs/Versions.md
@@ -94,7 +93,7 @@ brew 'ssh-copy-id'
 brew 'tmux'
 brew 'tree'
 brew 'unrar'
-# for react-native
+# for React Native
 brew 'watchman'
 brew 'wget'
 brew 'wuzz'
