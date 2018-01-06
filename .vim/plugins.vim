@@ -245,6 +245,9 @@ endfunction
 hi ALEWarningSign guibg=#FDE1FD guifg=#0512FB gui=bold
 hi ALEErrorSign guibg=#F4DBDC guifg=#662529 gui=bold
 
+" only linters from g:ale_linters are enabled
+let g:ale_linters_explicit = 1
+
 " syntastic signs
 " (sign column width is fixed - 2 characters)
 let g:ale_sign_warning = '⮁'
@@ -257,11 +260,8 @@ let g:ale_sign_error = '⮀'
 let g:ale_lint_on_save = 1
 let g:ale_lint_on_text_changed = 'never'
 
-" disable linting for plugin windows explicitly
 let g:ale_linters = {
-      \   'command-t': [],
       \   'elixir': [],
-      \   'extradite': [],
       \   'javascript': ['eslint', 'flow']
       \ }
 
