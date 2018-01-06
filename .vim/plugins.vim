@@ -241,14 +241,18 @@ endfunction
 " sign column colors might be broken after sourcing vimrc
 "hi SignColumn guibg=#F3E4EA
 
+" same colors as in lucius lightline colorscheme
+hi ALEWarningSign guibg=#FDE1FD guifg=#0512FB gui=bold
+hi ALEErrorSign guibg=#F4DBDC guifg=#662529 gui=bold
+
 " syntastic signs
-let g:ale_sign_warning = '>>'
-let g:ale_sign_error = '>>'
+" (sign column width is fixed - 2 characters)
+let g:ale_sign_warning = '⮁'
+let g:ale_sign_error = '⮀'
 
 " https://github.com/w0rp/ale/issues/505
 " uncomment next 2 lines to disable linting of opened files
-" (when these options are enabled ALE also runs when opening
-" Command-T window - IDK how to disable it so far)
+" (when these options are enabled ALE also runs when opening)
 let g:ale_lint_on_enter = 0
 let g:ale_lint_on_filetype_changed = 0
 let g:ale_lint_on_save = 1

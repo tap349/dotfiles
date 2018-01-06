@@ -14,7 +14,6 @@ let s:link_water_light = '#DAECF5'
 let s:madang = '#B1FEB2'
 let s:mercury = '#E4E4E4'
 let s:orient = '#0B6085'
-let s:pink_lace = '#FDE1FD'
 let s:portafino = '#FFFEB3'
 let s:regal_blue = '#054066'
 let s:san_marino = '#4472AC'
@@ -27,7 +26,7 @@ let s:p = {'normal': {}, 'inactive': {}, 'insert': {}, 'replace': {}, 'visual': 
 let s:p.normal.left = [[s:mercury, s:orient], [s:regal_blue, s:link_water_light]]
 let s:p.normal.middle = [[s:tuatara, s:mercury]]
 let s:p.normal.right = copy(s:p.normal.left)
-let s:p.normal.warning = [[s:blue, s:pink_lace]]
+let s:p.normal.warning = [['#0512FB', '#FDE1FD']]
 let s:p.normal.error = [['#662529', '#F4DBDC']]
 let s:p.normal.ok = [['#004000', '#e5f2e5']]
 
