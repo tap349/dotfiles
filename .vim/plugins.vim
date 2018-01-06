@@ -247,8 +247,10 @@ let g:ale_sign_error = '>>'
 
 " https://github.com/w0rp/ale/issues/505
 " uncomment next 2 lines to disable linting of opened files
-"let g:ale_lint_on_enter = 0
-"let g:ale_lint_on_filetype_changed = 0
+" (when these options are enabled ALE also runs when opening
+" Command-T window - IDK how to disable it so far)
+let g:ale_lint_on_enter = 0
+let g:ale_lint_on_filetype_changed = 0
 let g:ale_lint_on_save = 1
 let g:ale_lint_on_text_changed = 'never'
 
