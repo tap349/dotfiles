@@ -252,13 +252,15 @@ let g:ale_sign_error = '⮀'
 
 " https://github.com/w0rp/ale/issues/505
 " uncomment next 2 lines to disable linting of opened files
-" (when these options are enabled ALE also runs when opening)
+" (when these options are enabled ALE also runs when opening
+" Command-T window)
 let g:ale_lint_on_enter = 0
 let g:ale_lint_on_filetype_changed = 0
 let g:ale_lint_on_save = 1
 let g:ale_lint_on_text_changed = 'never'
 
 let g:ale_linters = {
+      \   'elixir': [],
       \   'javascript': ['eslint', 'flow']
       \ }
 
