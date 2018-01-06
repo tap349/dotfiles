@@ -390,9 +390,12 @@ let g:lightline.mode_map = {
       \   'c' : 'COMMAND'
       \ }
 
+" https://github.com/itchyny/lightline.vim/issues/203
+" group linter components with filetype to avoid extra left
+" arrow when linter components are hidden in plugin window
 let g:lightline.active = {
       \   'left': [['mode'], ['fugitive'], ['filename']],
-      \   'right': [['lineinfo'], ['filetype'], ['linter_warnings', 'linter_errors', 'linter_ok']]
+      \   'right': [['lineinfo'], ['filetype', 'linter_warnings', 'linter_errors', 'linter_ok']]
       \ }
 let g:lightline.inactive = {
       \   'left': [['filename']],
@@ -427,10 +430,11 @@ let g:lightline.component_function = {
 " expanding components are updated only when lightline#update() is called
 " (github.com/itchyny/lightline.vim/blob/master/doc/lightline.txt#L415)
 let g:lightline.component_expand = {
-      \   'linter_warnings': 'lightline#ale#warnings',
-      \   'linter_errors': 'lightline#ale#errors',
-      \   'linter_ok': 'lightline#ale#ok'
+      \   'linter_warnings': 'MyLightlineLinterWarnings',
+      \   'linter_errors': 'MyLightlineLinterErrors',
+      \   'linter_ok': 'MyLightlineLinterOk'
       \ }
+" values are color names from lightline colorscheme
 let g:lightline.component_type = {
       \   'linter_warnings': 'warning',
       \   'linter_errors': 'error',
@@ -447,15 +451,15 @@ let g:lightline.component_type = {
 " &ro = &readonly
 
 function! MyLightlineMode()
-  return s:IsNerdTree() ? 'NERD' :
-        \ s:IsCommandT() ? 'CommandT' :
-        \ s:IsNarrowWindow() ? '' : lightline#mode()
+  return <SID>IsNerdTree() ? 'NERD' :
+        \ <SID>IsCommandT() ? 'CommandT' :
+        \ <SID>IsNarrowWindow() ? '' : lightline#mode()
 endfunction
 
 function! MyLightlineFugitive()
-  if s:IsNotebookWindow() | return '' | end
-  if s:IsNarrowWindow() | return '' | end
-  if s:IsPluginWindow() | return '' | end
+  if <SID>IsNotebookWindow() | return '' | end
+  if <SID>IsNarrowWindow() | return '' | end
+  if <SID>IsPluginWindow() | return '' | end
 
   if !exists('*fugitive#head') | return '' | end
 
@@ -473,12 +477,12 @@ endfunction
 
 " https://github.com/vim-airline/vim-airline/blob/master/autoload/airline/extensions/quickfix.vim
 function! MyLightlineFilename()
-  if s:IsExtradite() | return ExtraditeCommitDate() | end
-  if s:IsVimPlug() | return expand('%') | end
-  if s:IsPluginWindow() | return '' | end
-  if s:IsQuickfix() | return w:quickfix_title | end
+  if <SID>IsExtradite() | return ExtraditeCommitDate() | end
+  if <SID>IsVimPlug() | return expand('%') | end
+  if <SID>IsPluginWindow() | return '' | end
+  if <SID>IsQuickfix() | return w:quickfix_title | end
 
-  let l:fname = s:IsNotebookWindow()
+  let l:fname = <SID>IsNotebookWindow()
         \ ? expand('%:h:t') . '/' . expand('%:t')
         \ : expand('%')
   return ('' != LightlineReadonly() ? LightlineReadonly() . ' ' : '') .
@@ -487,7 +491,7 @@ function! MyLightlineFilename()
 endfunction
 
 function! LightlineReadonly()
-  if s:IsHelp() | return '' | end
+  if <SID>IsHelp() | return '' | end
   if &ro | return '⭤' | end
 
   return ''
@@ -498,17 +502,29 @@ function! LightlineModified()
 endfunction
 
 function! MyLightlineFiletype()
-  if s:IsNotebookWindow() | return '' | end
-  if s:IsPluginWindow() | return '' | end
+  if <SID>IsNotebookWindow() | return '' | end
+  if <SID>IsPluginWindow() | return '' | end
 
   return &ft != '' ? &ft : 'no ft'
 endfunction
 
 function! MyLightlineLineinfo()
-  if s:IsNarrowWindow() | return '' | end
-  if s:IsPluginWindow() | return '' | end
+  if <SID>IsNarrowWindow() | return '' | end
+  if <SID>IsPluginWindow() | return '' | end
 
   return printf('%3d/%d☰ : %-2d', line('.'), line('$'), col('.'))
+endfunction
+
+function! MyLightlineLinterWarnings()
+  return <SID>IsPluginWindow() ? '' : lightline#ale#warnings()
+endfunction
+
+function! MyLightlineLinterErrors()
+  return <SID>IsPluginWindow() ? '' : lightline#ale#errors()
+endfunction
+
+function! MyLightlineLinterOk()
+  return <SID>IsPluginWindow() ? '' : lightline#ale#ok()
 endfunction
 
 function! s:IsNarrowWindow()
@@ -520,8 +536,8 @@ function! s:IsNotebookWindow()
 endfunction
 
 function! s:IsPluginWindow()
-  if s:IsNerdTree() | return 1 | end
-  if s:IsCommandT() | return 1 | end
+  if <SID>IsNerdTree() | return 1 | end
+  if <SID>IsCommandT() | return 1 | end
 
   return 0
 endfunction
@@ -559,7 +575,7 @@ endfunction
 "-------------------------------------------------------------------------------
 
 " https://en.wikipedia.org/wiki/X_mark
-let g:lightline#ale#indicator_warnings = '✗'
+let g:lightline#ale#indicator_warnings = '▲'
 let g:lightline#ale#indicator_errors = '✗'
 " set it to ' ' (not empty string) to hide OK status at all
 let g:lightline#ale#indicator_ok = '✓'
