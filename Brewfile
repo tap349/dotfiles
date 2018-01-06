@@ -317,4 +317,7 @@ mas 'Telegram Desktop', id: 946399090
 # - system preferences:
 #   - Users & Groups -> Login Items: add (don't hide)
 mas 'VPNAutoConnect', id: 532510878
+# after installation or update:
+# - `sudo xcodebuild -license accept` (accept license)
+# - `xcode-select --install` (install CLT)
 mas 'Xcode', id: 497799835
