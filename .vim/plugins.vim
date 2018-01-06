@@ -242,14 +242,13 @@ endfunction
 "hi SignColumn guibg=#F3E4EA
 
 " syntastic signs
-let g:ale_sign_error = '>>'
 let g:ale_sign_warning = '>>'
+let g:ale_sign_error = '>>'
 
 " https://github.com/w0rp/ale/issues/505
-" issue is closed but ALE still lints opened files
-" when g:ale_lint_on_filetype_changed = 1 (default)
-let g:ale_lint_on_enter = 0
-let g:ale_lint_on_filetype_changed = 0
+" uncomment next 2 lines to disable linting of opened files
+"let g:ale_lint_on_enter = 0
+"let g:ale_lint_on_filetype_changed = 0
 let g:ale_lint_on_save = 1
 let g:ale_lint_on_text_changed = 'never'
 
@@ -391,7 +390,7 @@ let g:lightline.mode_map = {
 
 let g:lightline.active = {
       \   'left': [['mode'], ['fugitive'], ['filename']],
-      \   'right': [['lineinfo'], ['filetype'], ['linter_errors', 'linter_warnings', 'linter_ok']]
+      \   'right': [['lineinfo'], ['filetype'], ['linter_warnings', 'linter_errors', 'linter_ok']]
       \ }
 let g:lightline.inactive = {
       \   'left': [['filename']],
@@ -432,7 +431,8 @@ let g:lightline.component_expand = {
       \ }
 let g:lightline.component_type = {
       \   'linter_warnings': 'warning',
-      \   'linter_errors': 'error'
+      \   'linter_errors': 'error',
+      \   'linter_ok': 'ok'
       \ }
 
 " functions for components
@@ -556,9 +556,11 @@ endfunction
 " lightline-ale
 "-------------------------------------------------------------------------------
 
-let g:lightline#ale#indicator_warnings = 'W:'
-let g:lightline#ale#indicator_errors = 'E:'
-let g:lightline#ale#indicator_ok = 'OK'
+" https://en.wikipedia.org/wiki/X_mark
+let g:lightline#ale#indicator_warnings = '✗'
+let g:lightline#ale#indicator_errors = '✗'
+" set it to ' ' (not empty string) to hide OK status at all
+let g:lightline#ale#indicator_ok = '✓'
 
 "-------------------------------------------------------------------------------
 " limelight.vim
