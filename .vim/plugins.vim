@@ -258,12 +258,14 @@ let g:ale_set_quickfix = 0
 let g:ale_sign_warning = '⮁'
 let g:ale_sign_error = '⮁'
 
-let g:ale_echo_msg_warning_str = 'W'
-let g:ale_echo_msg_error_str = 'E'
-let g:ale_echo_msg_format = '%linter%: [%severity%] %s'
+"let g:ale_echo_msg_warning_str = 'W'
+"let g:ale_echo_msg_error_str = 'E'
+" use %severity% to display 'W' or 'E'
+let g:ale_echo_msg_format = '[%linter%] %s'
 
 " https://github.com/w0rp/ale/issues/505
-" uncomment next 2 lines to disable linting of opened files
+" to disable g:ale_lint_on_enter, it's necessary
+" to disable g:ale_lint_on_filetype_changed as well
 "let g:ale_lint_on_enter = 0
 "let g:ale_lint_on_filetype_changed = 0
 let g:ale_lint_on_save = 1
