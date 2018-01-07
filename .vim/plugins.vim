@@ -247,11 +247,20 @@ hi ALEErrorSign guibg=#F4DBDC guifg=#662529 gui=bold
 
 " only linters from g:ale_linters are enabled
 let g:ale_linters_explicit = 1
+" location list is populated by default -
+" this might overwrite the contents of already
+" opened location list (e.g., search results)
+let g:ale_set_loclist = 0
+let g:ale_set_quickfix = 0
 
 " syntastic signs
 " (sign column width is fixed - 2 characters)
 let g:ale_sign_warning = '⮁'
-let g:ale_sign_error = '⮀'
+let g:ale_sign_error = '⮁'
+
+let g:ale_echo_msg_warning_str = 'W'
+let g:ale_echo_msg_error_str = 'E'
+let g:ale_echo_msg_format = '%linter%: [%severity%] %s'
 
 " https://github.com/w0rp/ale/issues/505
 " uncomment next 2 lines to disable linting of opened files
@@ -261,7 +270,7 @@ let g:ale_lint_on_save = 1
 let g:ale_lint_on_text_changed = 'never'
 
 let g:ale_linters = {
-      \   'elixir': [],
+      \   'elixir': ['credo'],
       \   'javascript': ['eslint', 'flow']
       \ }
 
@@ -366,6 +375,9 @@ augroup END
 
 "-------------------------------------------------------------------------------
 " lightline.vim
+"
+" on how statusline of lightline is updated:
+" https://github.com/itchyny/lightline.vim/issues/236#issuecomment-315203103
 "-------------------------------------------------------------------------------
 
 set laststatus=2
@@ -424,6 +436,7 @@ let g:lightline.tab = {
 let g:lightline.component = {
       \   'fileencodingformat': '%{&fenc !=# "" ? &fenc : &enc}[%{&ff}]'
       \ }
+" function components are updated on every cursor motion
 let g:lightline.component_function = {
       \   'mode': 'MyLightlineMode',
       \   'fugitive': 'MyLightlineFugitive',
@@ -524,15 +537,24 @@ function! MyLightlineLineinfo()
 endfunction
 
 function! MyLightlineLinterWarnings()
-  return <SID>IsPluginWindow() ? '' : lightline#ale#warnings()
+  if <SID>IsQuickfix() | return '' | end
+  if <SID>IsPluginWindow() | return '' | end
+
+  return lightline#ale#warnings()
 endfunction
 
 function! MyLightlineLinterErrors()
-  return <SID>IsPluginWindow() ? '' : lightline#ale#errors()
+  if <SID>IsQuickfix() | return '' | end
+  if <SID>IsPluginWindow() | return '' | end
+
+  return lightline#ale#errors()
 endfunction
 
 function! MyLightlineLinterOk()
-  return <SID>IsPluginWindow() ? '' : lightline#ale#ok()
+  if <SID>IsQuickfix() | return '' | end
+  if <SID>IsPluginWindow() | return '' | end
+
+  return lightline#ale#ok()
 endfunction
 
 function! s:IsNarrowWindow()
@@ -580,6 +602,10 @@ endfunction
 
 "-------------------------------------------------------------------------------
 " lightline-ale
+"
+" https://github.com/itchyny/lightline.vim/issues/236
+" https://github.com/statico/dotfiles/blob/45aa1ba59b275ef72d8e5cc98f8d6aa360518e00/.vim/vimrc#L412
+" https://github.com/delphinus/lightline-delphinus
 "-------------------------------------------------------------------------------
 
 " https://en.wikipedia.org/wiki/X_mark
