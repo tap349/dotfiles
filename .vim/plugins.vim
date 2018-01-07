@@ -247,6 +247,7 @@ hi ALEErrorSign guibg=#F4DBDC guifg=#662529 gui=bold
 
 " only linters from g:ale_linters are enabled
 let g:ale_linters_explicit = 1
+
 " location list is populated by default -
 " this might overwrite the contents of already
 " opened location list (e.g., search results)
@@ -613,7 +614,8 @@ endfunction
 " https://en.wikipedia.org/wiki/X_mark
 let g:lightline#ale#indicator_warnings = '▲'
 let g:lightline#ale#indicator_errors = '✗'
-let g:lightline#ale#indicator_ok = '✓'
+"let g:lightline#ale#indicator_ok = '✓'
+let g:lightline#ale#indicator_ok = 'OK'
 
 "-------------------------------------------------------------------------------
 " limelight.vim
