@@ -441,6 +441,7 @@ let g:lightline.component_expand = {
       \   'linter_errors': 'MyLightlineLinterErrors',
       \   'linter_ok': 'MyLightlineLinterOk'
       \ }
+" this configuration applies to component_expand only
 " values are color names from lightline colorscheme
 let g:lightline.component_type = {
       \   'linter_warnings': 'warning',
@@ -498,7 +499,7 @@ function! MyLightlineFilename()
 endfunction
 
 function! LightlineReadonly()
-  if <SID>IsHelp() | return '' | end
+  "if <SID>IsHelp() | return '' | end
   if &ro | return '⭤' | end
 
   return ''
@@ -584,7 +585,6 @@ endfunction
 " https://en.wikipedia.org/wiki/X_mark
 let g:lightline#ale#indicator_warnings = '▲'
 let g:lightline#ale#indicator_errors = '✗'
-" set it to ' ' (not empty string) to hide OK status at all
 let g:lightline#ale#indicator_ok = '✓'
 
 "-------------------------------------------------------------------------------
