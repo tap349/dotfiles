@@ -614,8 +614,8 @@ endfunction
 " https://en.wikipedia.org/wiki/X_mark
 let g:lightline#ale#indicator_warnings = '▲'
 let g:lightline#ale#indicator_errors = '✗'
-"let g:lightline#ale#indicator_ok = '✓'
-let g:lightline#ale#indicator_ok = 'OK'
+let g:lightline#ale#indicator_ok = '✓'
+"let g:lightline#ale#indicator_ok = 'OK'
 
 "-------------------------------------------------------------------------------
 " limelight.vim
