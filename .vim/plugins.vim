@@ -277,6 +277,7 @@ let g:ale_linters = {
       \   'javascript': ['eslint', 'flow']
       \ }
 
+" TODO: https://github.com/w0rp/ale/pull/1271
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
 
@@ -614,8 +615,8 @@ endfunction
 " https://en.wikipedia.org/wiki/X_mark
 let g:lightline#ale#indicator_warnings = '▲'
 let g:lightline#ale#indicator_errors = '✗'
-let g:lightline#ale#indicator_ok = '✓'
-"let g:lightline#ale#indicator_ok = 'OK'
+"let g:lightline#ale#indicator_ok = '✓'
+let g:lightline#ale#indicator_ok = 'ok'
 
 "-------------------------------------------------------------------------------
 " limelight.vim
