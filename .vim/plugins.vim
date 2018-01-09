@@ -257,6 +257,9 @@ let g:ale_set_quickfix = 0
 
 " syntastic signs
 " (sign column width is fixed - 2 characters)
+"
+" http://xahlee.info/comp/unicode_arrows.html
+" → ➩ ➤ ➞ ➔ ➯ ➪ ➥
 let g:ale_sign_warning = '⮁'
 let g:ale_sign_error = '⮁'
 
