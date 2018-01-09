@@ -151,6 +151,7 @@ alias ios4="react-native run-ios --simulator 'iPhone 4s'"
 alias ios5="react-native run-ios --simulator 'iPhone 5'"
 alias logios='react-native log-ios | ccze -A -o nolookups'
 alias logand='react-native log-android | ccze -A -o nolookups'
+alias build_android_release='cd android && ./gradlew assembleRelease && cd ..'
 
 # emulator points to /usr/local/bin/emulator
 alias avd='$ANDROID_HOME/emulator/emulator -avd Nexus_5X_API_23_x86_64 -gpu host -skin 1080x1920'
