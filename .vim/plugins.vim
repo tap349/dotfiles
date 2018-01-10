@@ -255,11 +255,13 @@ let g:ale_linters_explicit = 1
 let g:ale_set_loclist = 0
 let g:ale_set_quickfix = 0
 
-" syntastic signs
+" lightline signs
 " (sign column width is fixed - 2 characters)
 "
 " http://xahlee.info/comp/unicode_arrows.html
 " → ➩ ➤ ➞ ➔ ➯ ➪ ➥
+"
+" TODO: https://github.com/ryanoasis/vim-devicons
 let g:ale_sign_warning = '⮁'
 let g:ale_sign_error = '⮁'
 
@@ -619,8 +621,8 @@ endfunction
 " https://en.wikipedia.org/wiki/X_mark
 let g:lightline#ale#indicator_warnings = '▲'
 let g:lightline#ale#indicator_errors = '✗'
-"let g:lightline#ale#indicator_ok = '✓'
-let g:lightline#ale#indicator_ok = 'ok'
+let g:lightline#ale#indicator_ok = '✓'
+"let g:lightline#ale#indicator_ok = 'ok'
 
 "-------------------------------------------------------------------------------
 " limelight.vim
