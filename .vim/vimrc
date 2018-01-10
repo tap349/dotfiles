@@ -31,6 +31,9 @@
 "syntax on
 
 set noautochdir
+" https://stackoverflow.com/a/9605639/3632318
+" also unset balloonexpr option in ruby.vim
+set noballooneval
 set nocompatible
 set nospell
 set nowrap
