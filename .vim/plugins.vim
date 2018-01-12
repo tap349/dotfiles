@@ -618,8 +618,10 @@ endfunction
 " https://github.com/delphinus/lightline-delphinus
 "-------------------------------------------------------------------------------
 
-" https://en.wikipedia.org/wiki/X_mark
-let g:lightline#ale#indicator_warnings = '▲'
+" https://www.w3schools.com/charsets/ref_utf_dingbats.asp
+" https://www.w3schools.com/charsets/ref_utf_punctuation.asp
+" ▼▲⧫❗◊Δ✗✓⁙
+let g:lightline#ale#indicator_warnings = '⁘'
 let g:lightline#ale#indicator_errors = '✗'
 let g:lightline#ale#indicator_ok = '✓'
 "let g:lightline#ale#indicator_ok = 'ok'
