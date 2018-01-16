@@ -302,6 +302,8 @@ map <silent> b <Plug>CamelCaseMotion_b
 "
 " Command-T respects .gitignore file (only when Git file scanner is used)
 " and wildignore option (when g:CommandTWildIgnore is set to &wildignore)
+"
+" start search with `.` to find hidden files
 "-------------------------------------------------------------------------------
 
 hi CommandTHighlightColor guibg=#D7E2EA gui=none
