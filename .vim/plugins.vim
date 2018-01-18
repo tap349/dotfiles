@@ -243,8 +243,10 @@ endfunction
 "hi SignColumn guibg=#F3E4EA
 
 " same colors as in lucius lightline colorscheme
-hi ALEWarningSign guibg=#FDE1FD guifg=#0512FB gui=bold
-hi ALEErrorSign guibg=#F4DBDC guifg=#662529 gui=bold
+"hi ALEWarningSign guibg=#FDE1FD guifg=#0512FB gui=bold
+"hi ALEErrorSign guibg=#F4DBDC guifg=#662529 gui=bold
+hi ALEWarningSign guifg=#326ECC
+hi ALEErrorSign guifg=#EF5832
 
 " only linters from g:ale_linters are enabled
 let g:ale_linters_explicit = 1
@@ -259,11 +261,11 @@ let g:ale_set_quickfix = 0
 " (sign column width is fixed - 2 characters)
 "
 " http://xahlee.info/comp/unicode_arrows.html
-" → ➩ ➤ ➞ ➔ ➯ ➪ ➥
+" ⮁→ ➩ ➤ ➞ ➔ ➯ ➪ ➥
 "
 " TODO: https://github.com/ryanoasis/vim-devicons
-let g:ale_sign_warning = '⮁'
-let g:ale_sign_error = '⮁'
+let g:ale_sign_warning = '⁘'
+let g:ale_sign_error = '✗'
 
 "let g:ale_echo_msg_warning_str = 'W'
 "let g:ale_echo_msg_error_str = 'E'
