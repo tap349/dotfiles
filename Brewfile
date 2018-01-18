@@ -34,7 +34,8 @@ brew 'ccze'
 brew 'cmake'
 # for cpsm vim plugin
 brew 'boost'
-brew 'elixir'
+# install via asdf
+#brew 'elixir'
 # for ~/scripts/fontpatcher
 brew 'fontforge'
 brew 'git'
