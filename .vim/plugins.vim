@@ -280,7 +280,8 @@ let g:ale_lint_on_text_changed = 'never'
 
 let g:ale_linters = {
       \   'elixir': ['credo'],
-      \   'javascript': ['eslint', 'flow']
+      \   'javascript': ['eslint', 'flow'],
+      \   'ruby': ['rubocop']
       \ }
 
 " TODO: https://github.com/w0rp/ale/pull/1271
