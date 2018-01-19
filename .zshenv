@@ -135,13 +135,13 @@ alias rc='rails console'
 alias rd='rails dbconsole'
 alias rs='rails server'
 
-alias create_user='rake db:create_user && RAILS_ENV=test rake db:create_user'
-alias create='rake db:create && RAILS_ENV=test rake db:create'
-alias schema_load='rake db:schema:load && RAILS_ENV=test rake db:schema:load'
-alias migrate='rake db:migrate && RALIS_ENV=test rake db:migrate'
-alias rollback='rake db:rollback && RAILS_ENV=test rake db:rollback'
-alias drop='rake db:drop && RAILS_ENV=test rake db:drop'
-alias recreate='rake db:recreate && RAILS_ENV=test rake db:recreate'
+alias create_user='rails db:create_user && RAILS_ENV=test rails db:create_user'
+alias create='rails db:create && RAILS_ENV=test rails db:create'
+alias schema_load='rails db:schema:load && RAILS_ENV=test rails db:schema:load'
+alias migrate='rails db:migrate && RALIS_ENV=test rails db:migrate'
+alias rollback='rails db:rollback && RAILS_ENV=test rails db:rollback'
+alias drop='rails db:drop && RAILS_ENV=test rails db:drop'
+alias recreate='rails db:recreate && RAILS_ENV=test rails db:recreate'
 
 # react native
 
