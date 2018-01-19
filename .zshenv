@@ -47,6 +47,13 @@ setopt HIST_IGNORE_SPACE
 # https://hexdocs.pm/iex/IEx.html#module-shell-history
 export ERL_AFLAGS='-kernel shell_history enabled'
 
+# React Native
+
+# set React Native Debugger as JavaScript debugger
+# https://github.com/jhen0409/react-native-debugger/blob/master/docs/getting-started.md#launch-by-cli-or-react-native-packager-macos-only
+# https://github.com/artsy/emission/blob/45417ca425f2cba7d2da21902ef8ff1cd093a024/package.json#L28
+export REACT_DEBUGGER="open -g 'rndebugger://set-debugger-loc?port=8081' --args"
+
 # Android
 
 # required by `react-native-cli` to be set
