@@ -1,6 +1,5 @@
 {
   "dependencies": {
-    "react-devtools": "^3.0.0",
     "rnpm": "^1.9.0"
   }
 }
