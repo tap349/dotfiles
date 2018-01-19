@@ -237,6 +237,7 @@ cask 'keybase'
 cask 'openemu'
 cask 'pgadmin4'
 cask 'psequel'
+cask 'react-native-debugger'
 cask 'skype'
 # - app preferences:
 #   - Menubar: Temperature only
