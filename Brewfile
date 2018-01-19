@@ -193,7 +193,6 @@ cask 'genymotion'
 #     + Noisli
 #     - Proxy SwitchyOmega (configure proxy per site)
 #     + Quick Javascript Switcher
-#     + Redux DevTools
 #     - RSS Subscription Extension (by Google) - optional
 #     + Scrum for Trello
 #     + Session Buddy
