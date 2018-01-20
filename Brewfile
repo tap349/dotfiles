@@ -216,6 +216,7 @@ cask 'genymotion'
 # - developer tools:
 #   - Dock to bottom
 cask 'google-chrome'
+cask 'insomnia'
 # - app preferences:
 #   - General -> Preferences:
 #     - [x] Load preferences from a custom folder or URL:
