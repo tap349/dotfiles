@@ -271,6 +271,7 @@ let g:ale_sign_error = '✗'
 "let g:ale_echo_msg_error_str = 'E'
 " use %severity% to display 'W' or 'E'
 let g:ale_echo_msg_format = '[%linter%] %s'
+let g:ale_set_balloons = 0
 
 " https://github.com/w0rp/ale/issues/505
 " to disable g:ale_lint_on_enter, it's necessary
