@@ -157,6 +157,10 @@ alias ios5="react-native run-ios --simulator 'iPhone 5'"
 alias logios='react-native log-ios | ccze -A -o nolookups'
 alias logand='react-native log-android | ccze -A -o nolookups'
 alias build_android_release='cd android && ./gradlew assembleRelease; cd ..'
+# 1. Clear watchman watches: `watchman watch-del-all`.
+# 2. Delete the `node_modules` folder: `rm -rf node_modules && npm install`.
+# 3. Reset Metro Bundler cache: `rm -rf $TMPDIR/react-*` or `npm start -- --reset-cache`.
+# 4. Remove haste cache: `rm -rf $TMPDIR/haste-map-react-native-packager-*`.
 alias yarn_reset='watchman watch-del-all && rm -rf "$TMPDIR/react-*" && rm -rf node_modules/ && yarn cache clean && yarn install'
 
 # emulator points to /usr/local/bin/emulator
