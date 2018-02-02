@@ -149,6 +149,7 @@ cask 'firefox'
 #   - 'Working late' preset
 #   - [x] Start f.lux at login (set by default)
 cask 'flux'
+cask 'font-fontawesome'
 cask 'font-cousine'
 cask 'font-d2coding'
 cask 'font-droid-sans-mono'
