@@ -14,6 +14,7 @@ tap 'beeftornado/rmtree'
 tap 'puma/puma'
 tap 'caskroom/cask'
 tap 'caskroom/fonts'
+tap 'caskroom/versions'
 tap 'homebrew/bundle'
 tap 'homebrew/services'
 # for wuzz
@@ -232,7 +233,8 @@ cask 'insomnia'
 # (all these settings are already included in exported settings file)
 cask 'iterm2'
 # for android-sdk
-cask 'java'
+# https://github.com/facebook/react-native/issues/17688
+cask 'java8'
 # - system preferences:
 #   - Users & Groups -> Login Items: remove
 cask 'keybase'
