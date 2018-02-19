@@ -509,7 +509,19 @@ function! MyLightlineFugitive()
     let l:branch = '⎇ ' . l:branch
   endif
 
-  return l:branch
+  let l:gitgutter_sign = get(g:, 'gitgutter_enabled', 0) ? ' [±]' : ''
+
+  "let l:hunks = ''
+  "if get(g:, 'gitgutter_enabled', 0)
+  "  let l:hunk_array = GitGutterGetHunkSummary()
+  "  let l:hunk_symbols = ['+', '~', '-']
+  "
+  "  for i in [0, 1, 2]
+  "    let l:hunks .= printf('%s%s ', l:hunk_symbols[i], l:hunk_array[i])
+  "  endfor
+  "endif
+
+  return l:branch . l:gitgutter_sign
 endfunction
 
 " https://github.com/vim-airline/vim-airline/blob/master/autoload/airline/extensions/quickfix.vim
