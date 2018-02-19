@@ -813,7 +813,7 @@ nmap <silent> <Leader>ht :GitGutterToggle<CR>
 "nmap [c <Plug>GitGutterPrevHunk
 
 "nmap <Leader>hp <Plug>GitGutterPreviewHunk
-"nmap <Leader>hr <Plug>GitGutterRevertHunk
+"nmap <Leader>hu <Plug>GitGutterUndoHunk
 "nmap <Leader>hs <Plug>GitGutterStageHunk
 
 "-------------------------------------------------------------------------------
