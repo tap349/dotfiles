@@ -509,7 +509,7 @@ function! MyLightlineFugitive()
     let l:branch = '⎇ ' . l:branch
   endif
 
-  let l:gitgutter_sign = get(g:, 'gitgutter_enabled', 0) ? ' [±]' : ''
+  let l:gitgutter_sign = get(g:, 'gitgutter_enabled', 0) ? ' ±' : ''
 
   "let l:hunks = ''
   "if get(g:, 'gitgutter_enabled', 0)
