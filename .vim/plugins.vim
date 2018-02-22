@@ -509,7 +509,7 @@ function! MyLightlineFugitive()
     let l:branch = '⎇ ' . l:branch
   endif
 
-  let l:gitgutter_sign = get(g:, 'gitgutter_enabled', 0) ? ' ±' : ''
+  let l:gitgutter_sign = get(g:, 'gitgutter_enabled', 0) ? '± ' : ''
 
   "let l:hunks = ''
   "if get(g:, 'gitgutter_enabled', 0)
@@ -521,7 +521,7 @@ function! MyLightlineFugitive()
   "  endfor
   "endif
 
-  return l:branch . l:gitgutter_sign
+  return l:gitgutter_sign . l:branch
 endfunction
 
 " https://github.com/vim-airline/vim-airline/blob/master/autoload/airline/extensions/quickfix.vim
