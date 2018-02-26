@@ -241,13 +241,16 @@ let g:solarized_contrast = 'normal'
 "colorscheme autumn
 "colorscheme bclear
 
-if hostname() == 'MacBook-Pro-Personal.local'
-  set background=light
-  colorscheme github
-else
-  set background=light
-  colorscheme PaperColor
-endif
+set background=light
+colorscheme github
+
+"if hostname() == 'MacBook-Pro-Personal.local'
+"  set background=light
+"  colorscheme github
+"else
+"  set background=light
+"  colorscheme PaperColor
+"endif
 
 "-------------------------------------------------------------------------------
 " font
