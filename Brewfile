@@ -35,6 +35,7 @@ brew 'ccze'
 brew 'cmake'
 # for cpsm vim plugin
 brew 'boost'
+brew 'djvu2pdf'
 # install via asdf
 #brew 'elixir'
 # for ~/scripts/fontpatcher
