@@ -1,0 +1,279 @@
+# all cops:
+#
+# https://github.com/bbatsov/rubocop/blob/master/manual/cops.md
+# http://www.rubydoc.info/gems/rubocop/0.27.0/RuboCop/Cop
+
+AllCops:
+  Exclude:
+    - 'db/schema.rb'
+    - 'config/routes/**/*'
+    - 'log/**/*'
+    - 'public/**/*'
+    - 'tmp/**/*'
+    - 'vendor/**/*'
+    - 'Gemfile*'
+    - 'sandbox.rb'
+  TargetRubyVersion: 2.5
+
+#-------------------------------------------------------------------------------
+# https://github.com/bbatsov/rubocop/blob/master/config/default.yml
+#-------------------------------------------------------------------------------
+
+#################### Layout ###########################
+
+Layout/AlignParameters:
+  # Alignment of parameters in multi-line method calls.
+  #
+  # The `with_first_parameter` style aligns the following lines along the same
+  # column as the first parameter.
+  #
+  #     method_call(a,
+  #                 b)
+  #
+  # The `with_fixed_indentation` style aligns the following lines with one
+  # level of indentation relative to the start of the line with the method call.
+  #
+  #     method_call(a,
+  #       b)
+  EnforcedStyle: with_fixed_indentation
+  SupportedStyles:
+    - with_first_parameter # default
+    - with_fixed_indentation
+  # By default, the indentation width from Layout/IndentationWidth is used
+  # But it can be overridden by setting this parameter
+  IndentationWidth: ~
+
+# Checks the indentation of the first element in an array literal.
+Layout/IndentArray:
+  # The value `special_inside_parentheses` means that array literals with
+  # brackets that have their opening bracket on the same line as a surrounding
+  # opening round parenthesis, shall have their first element indented relative
+  # to the first position inside the parenthesis.
+  #
+  # The value `consistent` means that the indentation of the first element shall
+  # always be relative to the first position of the line where the opening
+  # bracket is.
+  #
+  # The value `align_brackets` means that the indentation of the first element
+  # shall always be relative to the position of the opening bracket.
+  EnforcedStyle: consistent
+  SupportedStyles:
+    - special_inside_parentheses # default
+    - consistent
+    - align_brackets
+  # By default, the indentation width from `Layout/IndentationWidth` is used
+  # But it can be overridden by setting this parameter
+  IndentationWidth: ~
+
+Layout/MultilineMethodCallBraceLayout:
+  EnforcedStyle: symmetrical
+  SupportedStyles:
+    # symmetrical: closing brace is positioned in same way as opening brace
+    # new_line: closing brace is always on a new line
+    # same_line: closing brace is always on the same line as last argument
+    - symmetrical # default
+    - new_line
+    - same_line
+
+Layout/MultilineMethodCallIndentation:
+  EnforcedStyle: indented
+  SupportedStyles:
+    - aligned # default
+    - indented
+    - indented_relative_to_receiver
+  # By default, the indentation width from Layout/IndentationWidth is used
+  # But it can be overridden by setting this parameter
+  IndentationWidth: ~
+
+#################### Naming ###########################
+
+Naming/VariableNumber:
+  EnforcedStyle: snake_case
+  SupportedStyles:
+    - snake_case
+    - normalcase # default
+    - non_integer
+
+#################### Metrics ##########################
+
+Metrics/AbcSize:
+  # The ABC size is a calculated magnitude, so this number can be an Integer or
+  # a Float.
+  Max: 25 # default 15
+
+Metrics/BlockLength:
+  CountComments: false  # count full line comments?
+  Max: 25
+  ExcludedMethods:
+    - context
+    - define
+    - describe
+    - draw
+    - it
+
+Metrics/ClassLength:
+  CountComments: false
+  Max: 100 # default 100
+
+Metrics/LineLength:
+  Max: 80 # default 80
+  # To make it possible to copy or click on URIs in the code, we allow lines
+  # containing a URI to be longer than Max.
+  AllowHeredoc: true
+  AllowURI: true
+  URISchemes:
+    - http
+    - https
+  # The IgnoreCopDirectives option causes the LineLength rule to ignore cop
+  # directives like '# rubocop: enable ...' when calculating a line's length.
+  IgnoreCopDirectives: false
+  # The IgnoredPatterns option is a list of !ruby/regexp and/or string
+  # elements. Strings will be converted to Regexp objects. A line that matches
+  # any regular expression listed in this option will be ignored by LineLength.
+  IgnoredPatterns: []
+
+Metrics/MethodLength:
+  CountComments: false  # count full line comments?
+  Max: 20 # default 20
+
+#################### Style ############################
+
+Style/ClassAndModuleChildren:
+  # Checks the style of children definitions at classes and modules.
+  #
+  # Basically there are two different styles:
+  #
+  # `nested` - have each child on a separate line
+  #   class Foo
+  #     class Bar
+  #     end
+  #   end
+  #
+  # `compact` - combine definitions as much as possible
+  #   class Foo::Bar
+  #   end
+  #
+  # The compact style is only forced, for classes or modules with one child.
+  EnforcedStyle: compact
+  SupportedStyles:
+    - nested # default
+    - compact
+
+Style/FrozenStringLiteralComment:
+  EnforcedStyle: when_needed
+  SupportedStyles:
+    # `when_needed` will add the frozen string literal comment to files
+    # only when the `TargetRubyVersion` is set to 2.3+.
+    - when_needed # default
+    # `always` will always add the frozen string literal comment to a file
+    # regardless of the Ruby version or if `freeze` or `<<` are called on a
+    # string literal. If you run code against multiple versions of Ruby, it is
+    # possible that this will create errors in Ruby 2.3.0+.
+    - always
+    # `never` will enforce that the frozen string literal comment does not
+    # exist in a file.
+    - never
+  Exclude:
+    - 'app/views/**/*'
+    - 'db/**/*'
+    - 'Guardfile'
+
+Style/Lambda:
+  EnforcedStyle: literal
+  SupportedStyles:
+    - line_count_dependent # default
+    - lambda
+    - literal
+
+Style/LambdaCall:
+  EnforcedStyle: call
+  SupportedStyles:
+    - call # default
+    - braces
+
+Style/MethodCallWithArgsParentheses:
+  Enabled: true # default false
+  IgnoreMacros: true
+  IgnoredMethods:
+    - add_column
+    - eq
+    - mount
+    - not_to
+    - puts
+    - raise
+    - raise_error
+    - redirect_to
+    - render
+    - require
+    - require_relative
+    - to
+
+Style/MethodDefParentheses:
+  EnforcedStyle: require_parentheses
+  SupportedStyles:
+    - require_parentheses # default
+    - require_no_parentheses
+    - require_no_parentheses_except_multiline
+
+Style/RegexpLiteral:
+  EnforcedStyle: slashes
+  # slashes: Always use slashes.
+  # percent_r: Always use `%r`.
+  # mixed: Use slashes on single-line regexes, and `%r` on multi-line regexes.
+  SupportedStyles:
+    - slashes # default
+    - percent_r
+    - mixed
+  # If `false`, the cop will always recommend using `%r` if one or more slashes
+  # are found in the regexp string.
+  AllowInnerSlashes: false
+
+Style/ReturnNil:
+  EnforcedStyle: return
+  SupportedStyles:
+    - return # default
+    - return_nil
+
+Style/SymbolArray:
+  Enabled: false # default true
+  EnforcedStyle: percent
+  MinSize: 0
+  SupportedStyles:
+    - percent # default
+    - brackets
+
+#-------------------------------------------------------------------------------
+# https://github.com/bbatsov/rubocop/blob/master/config/enabled.yml
+# https://github.com/bbatsov/rubocop/blob/master/config/disabled.yml
+#-------------------------------------------------------------------------------
+
+# I don't use space before comment when temporarily commenting out
+# unused code - let rubocop still show errors so that I'm forced to
+# remove unused code ASAP
+Layout/LeadingCommentSpace:
+  Description: 'Comments should start with a space.'
+  StyleGuide: '#hash-space'
+  Enabled: true # default true
+
+Lint/UnneededSplatExpansion:
+  Description: 'Checks for splat unnecessarily being called on literals'
+  Enabled: false # default true
+
+Style/BlockComments:
+  Description: 'Do not use block comments.'
+  StyleGuide: '#no-block-comments'
+  Enabled: true # default true
+  Exclude:
+    - 'spec/spec_helper.rb'
+
+Style/Documentation:
+  Description: 'Document classes and non-namespace modules.'
+  Enabled: false # default true
+  Exclude:
+    - 'spec/**/*'
+
+Style/UnneededInterpolation:
+  Description: 'Checks for strings that are just an interpolated expression.'
+  Enabled: true
+  Exclude:
+    - 'spec/**/*'
