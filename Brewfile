@@ -202,6 +202,7 @@ cask 'genymotion'
 #     + Tag Assistant (by Google) (enabled per tab)
 #     + The Great Suspender
 #     + Viewport Dimensions (Hide in Chrome Menu)
+#     + Vk Videos and Music Download (Hide in Chrome Menu)
 #     + uBlock Origin
 #   - Theme:
 #     - Black Carbon + silver meta
