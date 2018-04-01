@@ -48,7 +48,7 @@ if version >= 700
 
     " pmenu
     hi Pmenu         guifg=#4d526b   guibg=#e6e8ef
-    hi PmenuSel      guifg=#4d526b   guibg=#c6c8d1
+    hi PmenuSel      guifg=#2d324b   guibg=#c6c8d1
     " pmenu scrollbar colors
     hi PmenuSbar     guibg=#c6c8d1
     hi PmenuThumb    guibg=#3d425b
