@@ -47,7 +47,7 @@ if version >= 700
     "hi PmenuThumb   ctermfg=248 ctermbg=248 guifg=#aaaaaa guibg=#aaaaaa
 
     " pmenu
-    hi Pmenu         guifg=#4d526b   guibg=#e6e8ef
+    hi Pmenu         guifg=#2d324b   guibg=#e6e8ea
     hi PmenuSel      guifg=#2d324b   guibg=#c6c8d1
     " pmenu scrollbar colors
     hi PmenuSbar     guibg=#c6c8d1
