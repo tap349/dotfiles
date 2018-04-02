@@ -338,7 +338,7 @@ let g:CommandTCursorLeftMap = '<C-b>'
 let g:CommandTCursorRightMap = '<C-f>'
 let g:CommandTRefreshMap = '<C-r>'
 
-nmap <silent> <Leader>s <Plug>(CommandT)
+nmap <silent> <Leader>n <Plug>(CommandT)
 nmap <silent> <Leader>m <Plug>(CommandTMRU)
 
 " `my_` prefix is used when there already exists autocommand group
