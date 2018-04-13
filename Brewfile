@@ -257,6 +257,7 @@ cask 'unetbootin'
 # - system preferences:
 #   - Users & Groups -> Login Items: remove (don't hide)
 cask 'utorrent'
+cask 'whatsapp'
 
 #-------------------------------------------------------------------------------
 # App Store
