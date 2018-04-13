@@ -55,8 +55,9 @@ Plug 'tpope/vim-rake' | Plug 'tpope/vim-projectionist'
 " other file types support
 "-------------------------------------------------------------------------------
 
-Plug 'plasticboy/vim-markdown'
 "Plug 'tap349/vim-markdown'
+Plug 'digitaltoad/vim-pug'
+Plug 'plasticboy/vim-markdown'
 Plug 'slim-template/vim-slim'
 Plug 'slime-lang/vim-slime-syntax'
 
