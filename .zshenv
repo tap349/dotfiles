@@ -154,6 +154,7 @@ alias and='react-native run-android'
 alias ios='react-native run-ios'
 alias ios4="react-native run-ios --simulator 'iPhone 4s'"
 alias ios5="react-native run-ios --simulator 'iPhone 5'"
+alias ios6p="react-native run-ios --simulator 'iPhone 6 Plus'"
 alias logios='react-native log-ios | ccze -A -o nolookups'
 alias logand='react-native log-android | ccze -A -o nolookups'
 alias build_android_release='cd android && ./gradlew assembleRelease; cd ..'
