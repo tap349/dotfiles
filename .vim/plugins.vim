@@ -85,6 +85,7 @@ Plug 'junegunn/limelight.vim'
 Plug 'junegunn/vader.vim'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'mhinz/vim-hugefile'
+Plug 'mhinz/vim-startify'
 Plug 'osyo-manga/vim-anzu'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
@@ -871,6 +872,16 @@ let g:gutentags_project_root = ['mix.exs']
 "-------------------------------------------------------------------------------
 
 let g:hugefile_trigger_size = 1
+
+"-------------------------------------------------------------------------------
+" vim-startify
+"-------------------------------------------------------------------------------
+
+let g:startify_lists = [
+      \ { 'type': 'dir',       'header': [   'MRU ' . getcwd()] },
+      \ { 'type': 'files',     'header': [   'MRU']             },
+      \ { 'type': 'bookmarks', 'header': [   'Bookmarks']       },
+      \ ]
 
 "-------------------------------------------------------------------------------
 " vim-jsx
