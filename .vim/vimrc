@@ -241,8 +241,13 @@ let g:solarized_contrast = 'normal'
 "colorscheme autumn
 "colorscheme bclear
 
-set background=light
-colorscheme github
+if getcwd() =~ 'iceperk$'
+  set background=light
+  colorscheme solarized
+else
+  set background=light
+  colorscheme github
+endif
 
 "if hostname() == 'MacBook-Pro-Personal.local'
 "  set background=light
