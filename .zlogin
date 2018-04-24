@@ -39,13 +39,3 @@ defaults write org.vim.MacVim SUEnableAutomaticChecks 0
 #defaults write org.vim.MacVim MMTabMinWidth 120
 #defaults write org.vim.MacVim MMTabMaxWidth 250
 #defaults write org.vim.MacVim MMTabOptimumWidth 200
-
-#-----------------------------------------------------------------------------------------
-# PATH
-#-----------------------------------------------------------------------------------------
-
-# add /opt/chefdk/bin to PATH here because ~/.zlogin is sourced
-# after ~/.zshrc where shims directory is prepended to PATH
-#
-# UPDATE: use `chef exec` instead
-#path=(/opt/chefdk/bin $path)

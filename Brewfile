@@ -121,7 +121,8 @@ cask_args appdir: '/Applications'
 # for Raspeberry Pi
 cask 'applepi-baker'
 cask 'calibre'
-cask 'chefdk'
+# install required gems (knife-zero, chef, berkshelf) using Gemfile
+#cask 'chefdk'
 # - app preferences:
 #   - General:
 #     - Startup:
