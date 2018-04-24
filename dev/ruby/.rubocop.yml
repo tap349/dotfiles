@@ -207,6 +207,8 @@ Style/MethodCallWithArgsParentheses:
     - require
     - require_relative
     - to
+  Exclude:
+    - 'config/initializers/*.rb'
 
 Style/MethodDefParentheses:
   EnforcedStyle: require_parentheses
