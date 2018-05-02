@@ -83,8 +83,7 @@ set wildmode=longest:full,full
 " out by project's .gitignore
 set wildignore+=.git/*,
       \*/public,
-      \*/spec/vcr_cassettes,
-      \*/priv
+      \*/spec/vcr_cassettes
 
 "-------------------------------------------------------------------------------
 " diff
