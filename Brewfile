@@ -40,6 +40,8 @@ brew 'djvu2pdf'
 #brew 'elixir'
 # for ~/scripts/fontpatcher
 brew 'fontforge'
+# for shikimori
+brew 'geoip'
 brew 'git'
 brew 'gpg'
 brew 'honcho'
