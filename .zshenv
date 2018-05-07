@@ -95,6 +95,7 @@ alias p='cd ~/dev/ingate/pumba'
 alias rb='cd ~/dev/ingate/reenter_builder'
 alias rf='cd ~/dev/ingate/reenter_feed'
 alias s='cd ~/dev/complead/sith'
+alias sx='cd ~/dev/complead/sithex'
 
 alias opr7='cd /Volumes/opr7'
 alias pi='cd /Volumes/pi'
