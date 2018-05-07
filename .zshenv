@@ -94,7 +94,7 @@ alias n='cd ~/dev/morr/neko-achievements'
 alias p='cd ~/dev/ingate/pumba'
 alias rb='cd ~/dev/ingate/reenter_builder'
 alias rf='cd ~/dev/ingate/reenter_feed'
-alias s='cd ~/dev/morr/shikimori'
+alias s='cd ~/dev/complead/sith'
 
 alias opr7='cd /Volumes/opr7'
 alias pi='cd /Volumes/pi'
