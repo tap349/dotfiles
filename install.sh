@@ -10,6 +10,7 @@ files=(
   .config/yarn
   .gnupg/gpg.conf
   .local/share/mc/skins
+  .ngrok2/ngrok.yml
   .oh-my-zsh/custom/themes
   .ssh/config
   .vim
