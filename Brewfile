@@ -75,7 +75,8 @@ brew 'octave'
 brew 'p7zip'
 brew 'phantomjs'
 # https://github.com/Homebrew/brew/blob/master/docs/Versions.md
-brew 'postgresql@9.5', restart_service: :changed
+# now postgresql@9.5 is run inside docker container
+#brew 'postgresql@9.5', restart_service: :changed
 # for psql
 brew 'postgresql', restart_service: :changed
 # after installation:
@@ -244,6 +245,7 @@ cask 'java8'
 # - system preferences:
 #   - Users & Groups -> Login Items: remove
 cask 'keybase'
+cask 'ngrok'
 cask 'openemu'
 cask 'pgadmin4'
 cask 'psequel'
