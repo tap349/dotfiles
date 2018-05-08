@@ -17,7 +17,10 @@ typeset -U path
 path=(~/scripts /usr/local/bin $path)
 # add bin/ directory of old version of postgresql instead of
 # creating symlinks for each binary manually
-path=(/usr/local/Cellar/postgresql@9.5/9.5.10/bin $path)
+#
+# UPDATE: now postgresql@9.5 is run inside docker container so we
+# can use bin/ directory of the latest version of postgresql (10)
+#path=(/usr/local/Cellar/postgresql@9.5/9.5.10/bin $path)
 
 # for iTerm2 to display cyrillic
 export LANG=en_US.UTF-8
