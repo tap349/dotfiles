@@ -241,7 +241,7 @@ let g:solarized_contrast = 'normal'
 "colorscheme autumn
 "colorscheme bclear
 
-if getcwd() =~ 'iceperk$'
+if getcwd() =~ 'iceperk$\|sith$'
   set background=light
   colorscheme solarized
 else
