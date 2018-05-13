@@ -211,6 +211,7 @@ Style/MethodCallWithArgsParentheses:
     - to
   Exclude:
     - 'config/initializers/*.rb'
+    - 'db/migrate/*.rb'
     - 'spec/rails_helper.rb'
     - 'spec/spec_helper.rb'
 
