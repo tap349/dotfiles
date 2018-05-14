@@ -99,6 +99,8 @@ alias rb='cd ~/dev/ingate/reenter_builder'
 alias rf='cd ~/dev/ingate/reenter_feed'
 alias s='cd ~/dev/complead/sith'
 alias sx='cd ~/dev/complead/sithex'
+alias sc='cd ~/dev/complead/sithchef'
+alias sxc='cd ~/dev/complead/sithexchef'
 
 alias opr7='cd /Volumes/opr7'
 alias pi='cd /Volumes/pi'
