@@ -5,14 +5,15 @@
 
 AllCops:
   Exclude:
-    - 'db/schema.rb'
+    - 'Capfile'
+    - 'Gemfile*'
     - 'config/routes/**/*'
+    - 'db/schema.rb'
     - 'log/**/*'
     - 'public/**/*'
+    - 'sandbox.rb'
     - 'tmp/**/*'
     - 'vendor/**/*'
-    - 'Gemfile*'
-    - 'sandbox.rb'
   TargetRubyVersion: 2.5
 
 #-------------------------------------------------------------------------------
