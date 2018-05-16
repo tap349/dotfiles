@@ -199,7 +199,6 @@ Style/MethodCallWithArgsParentheses:
   IgnoreMacros: true
   IgnoredMethods:
     - add_column
-    - eq
     - mount
     - not_to
     - puts
