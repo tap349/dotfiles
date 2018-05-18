@@ -1,6 +1,8 @@
 # don't use /etc/zprofile - it might reorder directories in PATH:
 # https://mattprice.me/2015/zsh-path-issues-osx-el-capitan/
 setopt no_global_rcs
+# say, to be able to use case-insensitive globbing (#i)
+setopt extendedglob
 
 #-------------------------------------------------------------------------------
 #
@@ -114,6 +116,10 @@ alias ll='ls -alp'
 alias m='mvim'
 alias mail='less +G /var/mail/tap'
 alias mcu='mc -u'
+# http://reasoniamhere.com/2014/01/11/outrageously-useful-tips-to-master-your-z-shell/
+# (#i) - case-insensitive globbing
+# (Om) - sort by modification date (asc)
+alias q='open -F (#i)*.(jpeg|jpg|png)(Om)'
 
 #-------------------------------------------------------------------------------
 # dev
