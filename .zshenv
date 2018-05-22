@@ -4,13 +4,13 @@ setopt no_global_rcs
 # say, to be able to use case-insensitive globbing (#i)
 setopt extendedglob
 
-#-------------------------------------------------------------------------------
+#===============================================================================
 #
 # environment variables
 #
-# export variable if you want programs run from zsh to see it
+# export variable if you want programs run from Zsh to see it
 #
-#-------------------------------------------------------------------------------
+#===============================================================================
 
 # removes duplicate entries from PATH
 typeset -U path
@@ -46,19 +46,32 @@ setopt HIST_IGNORE_DUPS
 # don't save command in history if it starts with space
 setopt HIST_IGNORE_SPACE
 
+#-------------------------------------------------------------------------------
 # Elixir
+#-------------------------------------------------------------------------------
 
 # https://hexdocs.pm/iex/IEx.html#module-shell-history
 export ERL_AFLAGS='-kernel shell_history enabled'
 
+#-------------------------------------------------------------------------------
 # React Native
+#-------------------------------------------------------------------------------
 
 # set React Native Debugger as JavaScript debugger
 # https://github.com/jhen0409/react-native-debugger/blob/master/docs/getting-started.md#launch-by-cli-or-react-native-packager-macos-only
 # https://github.com/artsy/emission/blob/45417ca425f2cba7d2da21902ef8ff1cd093a024/package.json#L28
 export REACT_DEBUGGER="open -g 'rndebugger://set-debugger-loc?port=8081' --args"
 
+#-------------------------------------------------------------------------------
+# iOS
+#-------------------------------------------------------------------------------
+
+# https://github.com/bradmartin/nativescript-videoplayer/issues/76
+export SIMCTL_CHILD_OS_ACTIVITY_MODE='disable'
+
+#-------------------------------------------------------------------------------
 # Android
+#-------------------------------------------------------------------------------
 
 # required by `react-native-cli` to be set
 export ANDROID_HOME=/usr/local/share/android-sdk
@@ -71,20 +84,15 @@ path=($path $ANDROID_HOME/tools/bin)
 # `adb`
 path=($path $ANDROID_HOME/platform-tools)
 
-# iOS
-
-# https://github.com/bradmartin/nativescript-videoplayer/issues/76
-export SIMCTL_CHILD_OS_ACTIVITY_MODE='disable'
-
-#-------------------------------------------------------------------------------
+#===============================================================================
 #
 # aliases
 #
-#-------------------------------------------------------------------------------
+#===============================================================================
 
-#-------------------------------------------------------------------------------
+#===============================================================================
 # cd
-#-------------------------------------------------------------------------------
+#===============================================================================
 
 alias blog='cd ~/blog'
 alias dot='cd ~/.dotfiles'
@@ -107,9 +115,9 @@ alias sxc='cd ~/dev/complead/sithexchef'
 alias opr7='cd /Volumes/opr7'
 alias pi='cd /Volumes/pi'
 
-#-------------------------------------------------------------------------------
+#===============================================================================
 # system
-#-------------------------------------------------------------------------------
+#===============================================================================
 
 alias df='df -h'
 alias ll='ls -alp'
@@ -121,18 +129,24 @@ alias mcu='mc -u'
 # (Om) - sort by modification date (asc)
 alias q='open -F (#i)*.(jpeg|jpg|png)(Om)'
 
-#-------------------------------------------------------------------------------
+#===============================================================================
 # dev
 #
 # alias definitions are recursive, the order in which they are defined doesn't
 # matter - they can still use each other (so called hoisting in JavaScript)
-#-------------------------------------------------------------------------------
+#===============================================================================
 
-# elixir
+alias h='honcho start'
+
+#-------------------------------------------------------------------------------
+# Elixir
+#-------------------------------------------------------------------------------
 
 alias iex='iex -S mix'
 
-# git
+#-------------------------------------------------------------------------------
+# Git
+#-------------------------------------------------------------------------------
 
 alias g='git'
 alias ga='git add -A .'
@@ -144,7 +158,9 @@ alias gp='git push'
 alias gs='git status'
 alias gbd='git_branch_delete'
 
-# rails
+#-------------------------------------------------------------------------------
+# Rails
+#-------------------------------------------------------------------------------
 
 alias log='tail -f log/development.log'
 
@@ -159,38 +175,47 @@ alias rs='rails server'
 # Created database 'iceperk_development'
 # Created database 'iceperk_test'
 
-# react native
+#-------------------------------------------------------------------------------
+# React Native
+#-------------------------------------------------------------------------------
 
-alias and='react-native run-android'
-alias ios='react-native run-ios'
-alias ios4="react-native run-ios --simulator 'iPhone 4s'"
-alias ios5="react-native run-ios --simulator 'iPhone 5'"
-alias ios6p="react-native run-ios --simulator 'iPhone 6 Plus'"
-alias logios='react-native log-ios | ccze -A -o nolookups'
-alias logand='react-native log-android | ccze -A -o nolookups'
-alias build_android_release='cd android && ./gradlew assembleRelease; cd ..'
 # 1. Clear watchman watches: `watchman watch-del-all`.
 # 2. Delete the `node_modules` folder: `rm -rf node_modules && npm install`.
 # 3. Reset Metro Bundler cache: `rm -rf $TMPDIR/react-*` or `npm start -- --reset-cache`.
 # 4. Remove haste cache: `rm -rf $TMPDIR/haste-map-react-native-packager-*`.
 alias yarn_reset='watchman watch-del-all && rm -rf "$TMPDIR/react-*" && rm -rf node_modules/ && yarn cache clean && yarn install'
 
+alias ios='react-native run-ios'
+alias ios4="react-native run-ios --simulator 'iPhone 4s'"
+alias ios5="react-native run-ios --simulator 'iPhone 5'"
+alias ios6p="react-native run-ios --simulator 'iPhone 6 Plus'"
+alias logios='react-native log-ios | ccze -A -o nolookups'
+
 # emulator points to /usr/local/bin/emulator
 alias avd='$ANDROID_HOME/emulator/emulator -avd Nexus_5X_API_23_x86_64 -gpu host -skin 1080x1920'
+alias and='react-native run-android'
+alias logand='react-native log-android | ccze -A -o nolookups'
+alias build_android_release='cd android && ./gradlew assembleRelease; cd ..'
 
-# ruby, gems
+#-------------------------------------------------------------------------------
+# Ruby, gems
+#-------------------------------------------------------------------------------
 
 alias cap='bundle exec cap'
 alias guard='bundle exec guard'
 alias sidekiq='bundle exec sidekiq --config ./config/sidekiq.yml'
 
+#-------------------------------------------------------------------------------
 # shikimori
+#-------------------------------------------------------------------------------
 
 alias git-sub-up="git submodule foreach 'git fetch origin --tags; git checkout master; git pull' && git pull && git submodule update --init --recursive"
 alias shikisync=sync_shikimori_images
 
+#-------------------------------------------------------------------------------
 # SSH
-#
+#-------------------------------------------------------------------------------
+
 # it's to possible to SSH in 2 ways:
 #
 # 1) ssh <host from .ssh/config>
@@ -205,30 +230,30 @@ alias shikisync=sync_shikimori_images
 # in case user is not authorized (supplied public key is not present in
 # .ssh/authorized_keys on server) SSH fallbacks to password-based authentication
 
-#-------------------------------------------------------------------------------
+#===============================================================================
 #
 # asdf initialization
 #
 # it seems completions are not available for zsh yet:
 # https://github.com/asdf-vm/asdf/tree/master/completions
 #
-#-------------------------------------------------------------------------------
+#===============================================================================
 
 source $HOME/.asdf/asdf.sh
 
-#-------------------------------------------------------------------------------
+#===============================================================================
 #
 # rbenv initialization (invoke after setting PATH)
 #
-#-------------------------------------------------------------------------------
+#===============================================================================
 
 eval "$(rbenv init -)"
 
-#-------------------------------------------------------------------------------
+#===============================================================================
 #
 # functions
 #
-#-------------------------------------------------------------------------------
+#===============================================================================
 
 f() {
   find . -type f \
@@ -252,7 +277,9 @@ hitch() {
   if [[ -s "$HOME/.hitch_export_authors" ]]; then source "$HOME/.hitch_export_authors" ; fi
 }
 
+#-------------------------------------------------------------------------------
 # blog
+#-------------------------------------------------------------------------------
 
 post() {
   noglob rake "post:create[$*]"
@@ -264,7 +291,9 @@ publish() {
   git push
 }
 
-# chef
+#-------------------------------------------------------------------------------
+# Chef
+#-------------------------------------------------------------------------------
 
 # https://stackoverflow.com/a/5955623/3632318
 # https://stackoverflow.com/a/34533957/3632318
@@ -279,7 +308,9 @@ converge() {
   chef exec berks vendor && chef exec knife zero converge "name:${name}"
 }
 
-# git
+#-------------------------------------------------------------------------------
+# Git
+#-------------------------------------------------------------------------------
 
 # https://unix.stackexchange.com/questions/274257
 git_commit() {
@@ -297,7 +328,9 @@ git_log() {
   git log --graph --pretty=format:${format} --abbrev-commit
 }
 
+#-------------------------------------------------------------------------------
 # shikimori
+#-------------------------------------------------------------------------------
 
 sync_shikimori_images() {
   local local_path=~/shikimori.org/images/
