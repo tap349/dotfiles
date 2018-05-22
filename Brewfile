@@ -185,7 +185,7 @@ cask 'genymotion'
 #     + Browsec VPN
 #     + Clouder (Hide in Chrome Menu)
 #     + cVim
-#     + Dashlane (can be added on first Dashlane run)
+#     + Dashlane (also can be added on first Dashlane run)
 #     - Data Saver (turn off - turned on after installation)
 #     + Ghostery:
 #       - General:
