@@ -4,3 +4,5 @@
 .vim/tmp/
 
 .vim/autoload/plug.vim.old
+
+.config/mpv/watch_later/
