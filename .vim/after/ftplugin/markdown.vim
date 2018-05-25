@@ -5,7 +5,10 @@ iabbrev dl
       \<CR>  <dt></dt>
       \<CR><dd></dd>
       \<CR></dl>
-      \<Esc><<4k^
+      \<Esc><<A
+      \<CR>
+      \<CR><hr>
+      \<Esc>6k^
 
 nmap <buffer> <LocalLeader>p :!publish<CR>
 nmap <buffer> <LocalLeader>g :Goyo<CR>
