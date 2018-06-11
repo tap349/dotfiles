@@ -127,7 +127,7 @@ alias mcu='mc -u'
 # http://reasoniamhere.com/2014/01/11/outrageously-useful-tips-to-master-your-z-shell/
 # (#i) - case-insensitive globbing
 # (Om) - sort by modification date (asc)
-alias q='open -F (#i)*.(jpeg|jpg|png)(Om)'
+alias q='open -Fn (#i)*.(jpeg|jpg|png)(Om)'
 
 #===============================================================================
 # dev
