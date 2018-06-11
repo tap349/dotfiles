@@ -140,7 +140,7 @@ cask 'calibre'
 #     - [ ] Google
 #     - [ ] DuckDuckGo
 #     - [ ] Stack Overflow
-cask 'dash'
+#cask 'dash'
 # for elasticsearch in iceperk
 #
 # run docker app after installation
