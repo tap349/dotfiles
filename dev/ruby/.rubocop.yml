@@ -204,6 +204,7 @@ Style/MethodCallWithArgsParentheses:
     - puts
     - raise
     - raise_error
+    - redirect_back
     - redirect_to
     - render
     - require
