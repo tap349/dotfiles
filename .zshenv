@@ -162,7 +162,9 @@ alias gbd='git_branch_delete'
 # Rails
 #-------------------------------------------------------------------------------
 
-alias log='tail -f log/development.log'
+# https://www.brianstorti.com/stop-using-tail/
+# press <C-c>/<S-f> to switch between modes
+alias log='less +F log/development.log'
 
 alias r='rails'
 alias rc='rails console'
