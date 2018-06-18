@@ -488,7 +488,7 @@ regex/\.([pP][dD][fF])$
 
 # html
 regex/\.([hH][tT][mM][lL]?)$
-	Open=(if test -n "" && test -n "$DISPLAY"; then ( file://%d/%p &) 1>&2; else links %f || lynx -force_html %f || ${PAGER:-more} %f; fi) 2>/dev/null
+	Open=open %f
 	View=%view{ascii} links -dump %f 2>/dev/null || w3m -dump %f 2>/dev/null || lynx -dump -force_html %f
 
 # StarOffice 5.2
