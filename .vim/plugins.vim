@@ -21,7 +21,8 @@ call plug#begin('~/.vim/plugged')
 Plug 'elixir-lang/vim-elixir'
 Plug 'andyl/vim-projectionist-elixir' | Plug 'tpope/vim-projectionist'
 " https://github.com/c-brenn/phoenix.vim#installation
-Plug 'c-brenn/phoenix.vim' | Plug 'tpope/vim-projectionist'
+" comment out now since I don't remember what it's used for
+"Plug 'c-brenn/phoenix.vim' | Plug 'tpope/vim-projectionist'
 "Plug 'avdgaag/vim-phoenix' | Plug 'tpope/vim-projectionist'
 
 "-------------------------------------------------------------------------------
