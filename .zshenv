@@ -110,7 +110,7 @@ alias rf='cd ~/dev/ingate/reenter_feed'
 alias s='cd ~/dev/complead/sith'
 alias sx='cd ~/dev/complead/sithex'
 alias sc='cd ~/dev/complead/sithchef'
-alias sxc='cd ~/dev/complead/sithexchef'
+alias sxa='cd ~/dev/complead/sithex-ansible'
 
 alias opr7='cd /Volumes/opr7'
 alias pi='cd /Volumes/pi'
@@ -137,6 +137,12 @@ alias q='open -Fn (#i)*.(jpeg|jpg|png)(Om)'
 #===============================================================================
 
 alias h='honcho start'
+
+#-------------------------------------------------------------------------------
+# Ansible
+#-------------------------------------------------------------------------------
+
+alias ap='ansible-playbook -i hosts'
 
 #-------------------------------------------------------------------------------
 # Elixir
