@@ -202,6 +202,7 @@ cask 'genymotion'
 #     + Noisli
 #     - Proxy SwitchyOmega (configure proxy per site)
 #     + Quick Javascript Switcher
+#     + React Developer Tools (Hide in Chrome Menu)
 #     - RSS Subscription Extension (by Google) - optional
 #     + Scrum for Trello (Hide in Chrome Menu)
 #     + Session Buddy
