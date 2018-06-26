@@ -68,7 +68,6 @@ brew 'mas'
 brew 'memcached', restart_service: :changed
 brew 'mc'
 brew 'mpv'
-# for reenter_feed
 # for React Native
 # (same as nodejs)
 brew 'node'
