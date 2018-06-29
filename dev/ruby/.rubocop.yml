@@ -9,6 +9,7 @@ AllCops:
     - 'Gemfile*'
     - 'config/routes/**/*'
     - 'db/schema.rb'
+    - 'lib/capistrano/tasks/**/*'
     - 'lib/tasks/**/*'
     - 'log/**/*'
     - 'public/**/*'
