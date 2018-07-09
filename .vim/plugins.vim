@@ -938,3 +938,13 @@ let g:rails_projections = {
 
 nmap <Leader>, :A<CR>
 nmap <Leader>v :AV<CR>
+
+"-------------------------------------------------------------------------------
+" vim-unimpaired
+"
+" :help unimpaired-customization
+"-------------------------------------------------------------------------------
+
+" commit d58794f breaks shifting blocks visually by replacing
+" square bracket maps with angle bracket maps in visual mode
+let g:xremap = { '<': '', '>': '' }
