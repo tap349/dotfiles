@@ -56,10 +56,22 @@ endif
 " }}}
 
 " {{{ Diff highlighting
-hi DiffAdd    ctermfg=233 ctermbg=194 guifg=#003300 guibg=#DDFFDD gui=none cterm=none
-hi DiffChange ctermbg=255  guibg=#ececec gui=none   cterm=none
-hi DiffText   ctermfg=233  ctermbg=189  guifg=#000033 guibg=#DDDDFF gui=none cterm=none
-hi DiffDelete ctermfg=252 ctermbg=224   guifg=#DDCCCC guibg=#FFDDDD gui=none    cterm=none
+hi DiffAdd    guibg=#BEFECE
+hi DiffChange guibg=#DEEEFE
+hi DiffText   guibg=#DDDDFF
+hi DiffDelete guibg=#FEE2E2
+" }}}
+
+" {{{ GitGutter highlighting
+hi GitGutterAdd               guibg=#BEFECE guifg=#0E8E0E
+hi GitGutterChange            guibg=#DEEEFE guifg=#6E6EFE
+hi GitGutterDelete            guibg=#FEE2E2 guifg=#FE4E4E
+hi GitGutterChangeDelete      guibg=#FEDEFE guifg=#EE0EEE
+
+hi GitGutterAddLine           guibg=#BEFECE
+hi GitGutterChangeLine        guibg=#DEEEFE
+hi GitGutterDeleteLine        guibg=#FEE2E2
+hi GitGutterChangeDeleteLine  guibg=#FEDEFE
 " }}}
 
 " {{{ Syntax highlighting

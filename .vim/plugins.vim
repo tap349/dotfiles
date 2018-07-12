@@ -806,15 +806,19 @@ nmap <F1> :Gblame<CR>
 " vim-gitgutter
 "-------------------------------------------------------------------------------
 
-hi GitGutterAdd               guibg=#BEFECE guifg=#0E8E0E
-hi GitGutterChange            guibg=#DEEEFE guifg=#6E6EFE
-hi GitGutterDelete            guibg=#FEE2E2 guifg=#FE4E4E
-hi GitGutterChangeDelete      guibg=#FEDEFE guifg=#EE0EEE
+" NOTE: set custom gitgutter colors in colorscheme or else they'll
+"       be overridden with diff colors from that colorscheme every
+"       time you load it
 
-hi GitGutterAddLine           guibg=#BEFECE
-hi GitGutterChangeLine        guibg=#DEEEFE
-hi GitGutterDeleteLine        guibg=#FEE2E2
-hi GitGutterChangeDeleteLine  guibg=#FEDEFE
+"hi GitGutterAdd               guibg=#BEFECE guifg=#0E8E0E
+"hi GitGutterChange            guibg=#DEEEFE guifg=#6E6EFE
+"hi GitGutterDelete            guibg=#FEE2E2 guifg=#FE4E4E
+"hi GitGutterChangeDelete      guibg=#FEDEFE guifg=#EE0EEE
+
+"hi GitGutterAddLine           guibg=#BEFECE
+"hi GitGutterChangeLine        guibg=#DEEEFE
+"hi GitGutterDeleteLine        guibg=#FEE2E2
+"hi GitGutterChangeDeleteLine  guibg=#FEDEFE
 
 set updatetime=250
 
