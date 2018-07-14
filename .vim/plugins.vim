@@ -82,12 +82,12 @@ Plug 'godlygeek/tabular'
 Plug 'haya14busa/vim-asterisk'
 Plug 'itchyny/lightline.vim' | Plug 'tpope/vim-fugitive'
 Plug 'jeetsukumaran/vim-buffergator'
-Plug 'junegunn/limelight.vim'
 Plug 'junegunn/vader.vim'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'mhinz/vim-hugefile'
 Plug 'mhinz/vim-startify'
 Plug 'osyo-manga/vim-anzu'
+Plug 'pearofducks/ansible-vim'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
 Plug 'tap349/ack.vim'
@@ -106,6 +106,7 @@ Plug 'yssl/QFEnter'
 
 "Plug 'Yggdroot/indentLine'
 "Plug 'jamessan/vim-gnupg'
+"Plug 'junegunn/limelight.vim'
 "Plug 'scheakur/vim-scheakur'
 "Plug 'xolox/vim-misc'
 
@@ -293,6 +294,14 @@ let g:ale_linters = {
 " TODO: https://github.com/w0rp/ale/pull/1271
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
+
+"-------------------------------------------------------------------------------
+" ansible-vim
+"-------------------------------------------------------------------------------
+
+" keywords highlighted by default: when, become, become_user, notify
+" extra keywords which can be highlighted: register, vars
+let g:ansible_extra_keywords_highlight = 1
 
 "-------------------------------------------------------------------------------
 " CamelCaseMotion
