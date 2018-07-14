@@ -301,7 +301,7 @@ nmap <silent> <C-j> <Plug>(ale_next_wrap)
 
 " normal keywords: import_tasks, when, become, become_user, notify
 " extra keywords: register, vars, ignore_errors
-let g:ansible_extra_keywords_highlight = 1
+"let g:ansible_extra_keywords_highlight = 1
 
 "-------------------------------------------------------------------------------
 " CamelCaseMotion
