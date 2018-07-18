@@ -70,8 +70,24 @@ rules:
   react/jsx-uses-react: 1
   react/jsx-uses-vars: 1
   react/jsx-boolean-value:
-    - warn
+    - error
     - never
+  react/no-string-refs:
+    - error
+  react/jsx-wrap-multilines:
+    - error
+    - declaration: parens-new-line
+      assignment: parens-new-line
+      return: parens-new-line
+      arrow: parens-new-line
+      condition: parens-new-line
+      logical: ignore
+      prop: ignore
+  react/self-closing-comp:
+    - error
+    - component: true
+      html: true
+  react/jsx-closing-bracket-location: 1
   # [ ], default: "always"
   semi:
     - error
