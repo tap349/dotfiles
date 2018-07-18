@@ -74,6 +74,10 @@ hi GitGutterDeleteLine        guibg=#FEE2E2
 hi GitGutterChangeDeleteLine  guibg=#FEDEFE
 " }}}
 
+" {{{ GitGutter highlighting
+hi CommandTHighlightColor guibg=#D7E2EA gui=none
+" }}}
+
 " {{{ Syntax highlighting
 hi Ignore   ctermfg=8 guifg=#808080
 hi Identifier   ctermfg=31 guifg=#0086B3

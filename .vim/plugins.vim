@@ -322,7 +322,10 @@ map <silent> b <Plug>CamelCaseMotion_b
 " start search with `.` to find hidden files
 "-------------------------------------------------------------------------------
 
-hi CommandTHighlightColor guibg=#D7E2EA gui=none
+" NOTE: set CommandTHighlightColor in colorschemes or else this color
+"       becomes undefined every time new colorscheme is loaded
+
+"hi CommandTHighlightColor guibg=#D7E2EA gui=none
 
 let g:CommandTFileScanner = 'git'
 " when using git file scanner, new files are not visible by default -
@@ -815,9 +818,8 @@ nmap <F1> :Gblame<CR>
 " vim-gitgutter
 "-------------------------------------------------------------------------------
 
-" NOTE: set custom gitgutter colors in colorscheme or else they'll
-"       be overridden with diff colors from that colorscheme every
-"       time you load it
+" NOTE: set custom gitgutter colors in colorschemes or else they're overridden
+"       with diff colors from those colorschemes when they are loaded
 
 "hi GitGutterAdd               guibg=#BEFECE guifg=#0E8E0E
 "hi GitGutterChange            guibg=#DEEEFE guifg=#6E6EFE
