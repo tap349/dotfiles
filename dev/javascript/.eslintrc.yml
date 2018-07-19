@@ -61,6 +61,14 @@ rules:
   object-curly-spacing:
     - error
     - never
+  # [ ], default: "always"
+  semi:
+    - error
+    - always
+  # [ ], default: "always"
+  space-before-function-paren:
+    - error
+    - always
   react/jsx-handler-names:
     - warn
     - eventHandlerPrefix: _handle
@@ -88,11 +96,3 @@ rules:
     - component: true
       html: true
   react/jsx-closing-bracket-location: 1
-  # [ ], default: "always"
-  semi:
-    - error
-    - always
-  # [ ], default: "always"
-  space-before-function-paren:
-    - error
-    - always
