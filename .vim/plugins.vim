@@ -91,7 +91,6 @@ Plug 'pearofducks/ansible-vim'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
 Plug 'tap349/ack.vim'
-Plug 'tap349/goyo.vim'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
@@ -108,6 +107,7 @@ Plug 'yssl/QFEnter'
 "Plug 'jamessan/vim-gnupg'
 "Plug 'junegunn/limelight.vim'
 "Plug 'scheakur/vim-scheakur'
+"Plug 'tap349/goyo.vim'
 "Plug 'xolox/vim-misc'
 
 "-------------------------------------------------------------------------------
@@ -376,35 +376,6 @@ augroup END
 "let g:CommandTAcceptSelectionTabCommand = 'GotoOrOpenTab'
 
 "-------------------------------------------------------------------------------
-" goyo.vim
-"-------------------------------------------------------------------------------
-
-let g:goyo_height = '100%'
-let g:goyo_width = 81
-
-function! s:GoyoEnter()
-  " cursor line is always vertically centered
-  set scrolloff=999
-
-  setlocal colorcolumn=81
-  hi ColorColumn guibg=#E8E8EF
-
-  Limelight
-endfunction
-
-function! s:GoyoLeave()
-  set scrolloff=2
-
-  Limelight!
-endfunction
-
-augroup my_goyo
-  autocmd!
-  autocmd User GoyoEnter call <SID>GoyoEnter()
-  autocmd User GoyoLeave call <SID>GoyoLeave()
-augroup END
-
-"-------------------------------------------------------------------------------
 " lightline.vim
 "
 " on how statusline of lightline is updated:
@@ -660,19 +631,6 @@ let g:lightline#ale#indicator_errors = '✗ '
 let g:lightline#ale#indicator_ok = ''
 "let g:lightline#ale#indicator_ok = '✓'
 "let g:lightline#ale#indicator_ok = 'ok'
-
-"-------------------------------------------------------------------------------
-" limelight.vim
-"-------------------------------------------------------------------------------
-
-let g:limelight_default_coefficient = 0.7
-let g:limelight_paragraph_span = 0
-
-" settings for markdown
-let g:limelight_bop = '^#'
-let g:limelight_eop = '\ze\n^#'
-
-let g:limelight_priority = -1
 
 "-------------------------------------------------------------------------------
 " nerdcommenter
