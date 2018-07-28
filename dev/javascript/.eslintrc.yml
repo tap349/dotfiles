@@ -19,10 +19,12 @@ plugins:
 #
 # rule format:
 #
-# `name: setting` or `name: [setting, config]` where
-# - `setting` is one of `off` (0), `warn` (1) or `error` (2)
-#   (prefer 1 instead of `warn` or `error` for `foo-uses-bar` rules)
-# - `config` is rule-specific
+# `name: enabled` or `name: [enabled, options]` where
+# - `enabled` is one of `off` (0), `warn` (1) or `error` (2)
+# - `options` are rule-specific configuration options
+#
+# if rule has no options, both forms are allowed:
+# `name: enabled` and `name: [enabled]`
 rules:
   # [ ], default: "never"
   comma-dangle:
@@ -75,13 +77,12 @@ rules:
   react/jsx-max-props-per-line:
     - warn
     - when: multiline
-  react/jsx-uses-react: 1
-  react/jsx-uses-vars: 1
+  react/jsx-uses-react: error
+  react/jsx-uses-vars: error
   react/jsx-boolean-value:
     - error
     - never
-  react/no-string-refs:
-    - error
+  react/no-string-refs: error
   react/jsx-wrap-multilines:
     - error
     - declaration: parens-new-line
@@ -95,4 +96,10 @@ rules:
     - error
     - component: true
       html: true
-  react/jsx-closing-bracket-location: 1
+  react/jsx-closing-bracket-location:
+    - error
+  react/require-default-props:
+    - error
+    - forbidDefaultForRequired: true
+  react/no-unused-prop-types:
+    - error
