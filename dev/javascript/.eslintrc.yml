@@ -96,10 +96,8 @@ rules:
     - error
     - component: true
       html: true
-  react/jsx-closing-bracket-location:
-    - error
+  react/jsx-closing-bracket-location: error
   react/require-default-props:
     - error
     - forbidDefaultForRequired: true
-  react/no-unused-prop-types:
-    - error
+  react/no-unused-prop-types: error
