@@ -186,8 +186,8 @@ cask 'genymotion'
 #     + Browsec VPN
 #     - Clouder (Hide in Chrome Menu)
 #     + cVim
-#     + Dashlane (also can be added on first Dashlane run)
-#     - Data Saver (turn off - turned on after installation)
+#     + Dashlane (select Desktop mode, can be added on first Dashlane run)
+#     - Data Saver (turn off - turned on by default)
 #     + Ghostery:
 #       - General:
 #         - [ ] Show the purple box in the corner of my browser
