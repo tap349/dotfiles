@@ -142,7 +142,9 @@ alias h='honcho start'
 # Ansible
 #-------------------------------------------------------------------------------
 
+alias ag='ansible-galaxy'
 alias ap='ansible-playbook'
+alias av='ansible-vault'
 
 #-------------------------------------------------------------------------------
 # Elixir
