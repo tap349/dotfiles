@@ -31,6 +31,7 @@ brew 'ansible'
 # after installation:
 # - `aws configure`
 brew 'awscli'
+brew 'bfg'
 brew 'ccze'
 # for cpsm vim plugin
 brew 'cmake'
