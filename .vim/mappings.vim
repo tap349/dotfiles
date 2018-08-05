@@ -11,7 +11,7 @@ let mapleader = ','
 let maplocalleader = '\'
 
 " it should allow to use meta key (option/alt) in most mappings
-set macmeta
+if has('gui_running') | set macmeta | endif
 
 "===============================================================================
 "
