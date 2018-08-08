@@ -37,6 +37,7 @@ brew 'ccze'
 brew 'cmake'
 # for cpsm vim plugin
 brew 'boost'
+brew 'cgoban'
 brew 'djvu2pdf'
 # install via asdf
 #brew 'elixir'
