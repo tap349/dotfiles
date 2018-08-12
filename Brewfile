@@ -39,6 +39,7 @@ brew 'cmake'
 brew 'boost'
 brew 'cgoban'
 brew 'djvu2pdf'
+brew 'elasticsearch'
 # install via asdf
 #brew 'elixir'
 # for ~/scripts/fontpatcher
