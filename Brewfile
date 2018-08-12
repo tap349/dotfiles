@@ -269,6 +269,8 @@ cask 'unetbootin'
 #   - Users & Groups -> Login Items: remove (don't hide)
 cask 'utorrent'
 cask 'whatsapp'
+# for cgoban
+cask 'xquartz'
 
 #-------------------------------------------------------------------------------
 # App Store
