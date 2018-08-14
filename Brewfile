@@ -53,6 +53,7 @@ brew 'honcho'
 brew 'htop'
 brew 'imagemagick'
 brew 'jq'
+brew 'kibana'
 # provides rsvg-convert utility to convert svg to png
 brew 'librsvg'
 # used as viewer for html files in mc
