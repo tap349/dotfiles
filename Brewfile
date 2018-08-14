@@ -37,7 +37,8 @@ brew 'ccze'
 brew 'cmake'
 # for cpsm vim plugin
 brew 'boost'
-brew 'cgoban'
+# install manually by downloading dmg file
+#brew 'cgoban'
 brew 'djvu2pdf'
 brew 'elasticsearch'
 # install via asdf
@@ -269,8 +270,6 @@ cask 'unetbootin'
 #   - Users & Groups -> Login Items: remove (don't hide)
 cask 'utorrent'
 cask 'whatsapp'
-# for cgoban
-cask 'xquartz'
 
 #-------------------------------------------------------------------------------
 # App Store
