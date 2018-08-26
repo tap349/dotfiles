@@ -103,7 +103,8 @@ alias ica='cd ~/dev/complead/iceperkapp'
 alias icb='cd ~/dev/complead/iceperkbilling'
 alias icbc='cd ~/dev/complead/iceperkbillingchef'
 alias icc='cd ~/dev/complead/iceperkchef'
-alias l='cd ~/dev/complead/lain'
+# define alias in ~/.zshrc
+#alias l='cd ~/dev/complead/lain'
 alias n='cd ~/dev/morr/neko-achievements'
 alias p='cd ~/dev/ingate/pumba'
 alias rb='cd ~/dev/ingate/reenter_builder'
@@ -121,7 +122,8 @@ alias pi='cd /Volumes/pi'
 #===============================================================================
 
 alias df='df -h'
-alias ll='ls -alp'
+# define alias in ~/.zshrc
+#alias ll='ls -alp'
 alias m='mvim'
 alias mail='less +G /var/mail/tap'
 alias mcu='mc -u'

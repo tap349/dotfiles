@@ -88,5 +88,9 @@ unset zle_bracketed_paste
 # define overwritten by oh-my-zsh aliases from ~/.zshenv
 # once again here (must be done after sourcing oh-my-zsh)
 
+unalias l
+unalias la
 unalias ll
+
+alias l='cd ~/dev/complead/lain'
 alias ll='ls -alp'
