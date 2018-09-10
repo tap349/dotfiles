@@ -1,4 +1,5 @@
 # https://eslint.org/docs/rules/
+# https://gist.github.com/yyscamper/781d8e0b3c184a77d5af15a3f623dddb
 env:
   browser: true
   es6: true
@@ -26,6 +27,11 @@ plugins:
 # if rule has no options, both forms are allowed:
 # `name: enabled` and `name: [enabled]`
 rules:
+  # https://eslint.org/docs/rules/arrow-parens.html#further-reading
+  arrow-parens:
+    - error
+    - as-needed
+    - requireForBlockBody: true
   # [ ], default: "never"
   comma-dangle:
     - warn
