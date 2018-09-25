@@ -25,9 +25,9 @@
 defaults write org.vim.MacVim MMShowAddTabButton 0
 defaults write org.vim.MacVim MMNoTitleBarWindow 1
 defaults write org.vim.MacVim MMZoomBoth 1
-defaults write org.vim.MacVim MMTextInsetTop 0
-defaults write org.vim.MacVim MMTextInsetRight 5
-defaults write org.vim.MacVim MMTextInsetBottom 0
+defaults write org.vim.MacVim MMTextInsetTop 1
+defaults write org.vim.MacVim MMTextInsetRight 3
+defaults write org.vim.MacVim MMTextInsetBottom 3
 defaults write org.vim.MacVim MMTextInsetLeft 5
 defaults write org.vim.MacVim MMFullScreenFadeTime 0
 # https://github.com/macvim-dev/macvim/wiki/FAQ#black-screen-on-full-screen
