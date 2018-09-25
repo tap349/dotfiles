@@ -190,7 +190,6 @@ cask 'genymotion'
 #     + Blank New Tab (Hide in Chrome Menu)
 #     + Browsec VPN
 #     - Clouder (Hide in Chrome Menu)
-#     + cVim
 #     + Dashlane (select Desktop mode, can be added on first Dashlane run)
 #     - Data Saver (turn off - turned on by default)
 #     + Ghostery:
@@ -216,6 +215,7 @@ cask 'genymotion'
 #     + Viewport Dimensions (Hide in Chrome Menu)
 #     + Vk Videos and Music Download (Hide in Chrome Menu)
 #     + uBlock Origin
+#     + Vimium
 #   - Theme:
 #     - Black Carbon + silver meta
 #     - Carbon Light
