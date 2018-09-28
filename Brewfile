@@ -128,7 +128,7 @@ brew 'zsh'
 cask_args appdir: '/Applications'
 
 # for Raspeberry Pi
-cask 'applepi-baker'
+#cask 'applepi-baker'
 cask 'calibre'
 # install required gems (knife-zero, chef, berkshelf) using Gemfile
 #cask 'chefdk'
