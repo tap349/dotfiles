@@ -14,6 +14,7 @@ files=(
   .ssh/config
   .vim
   scripts
+  colors.tdesktop-palette
   .ctags
   .gitconfig
   .gitignore
