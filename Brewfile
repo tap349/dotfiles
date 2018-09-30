@@ -290,10 +290,17 @@ cask 'whatsapp'
 #       - Link Dropbox Account
 mas '2Do', id: 477670270
 # on first run:
-# - select ~/Documents folder
-#   (Cloud Mail.Ru subfolder will be created automatically)
-# - select to start application on system startup
-# - select folders to synchronize (books/, videos/, education/)
+# - select folders to synchronize (books/, education/, videos/)
+# - Settings:
+#   - General (tab):
+#     - Select a folder to synchronize with the Cloud: ~/Documents
+#       (Cloud Mail.Ru subfolder will be created automatically)
+#     - [x] Start application on system startup
+#   - Screenshoter (tab):
+#     - [x] Enable screenshoter:
+#       - Full screenshot: <M-S-5>
+#       - Area screenshot: <M-S-6>
+#       - Active window screenshot: <M-S-7>
 mas 'Cloud Mail.Ru', id: 893068358
 # to add Safari extension first open Dashlane, then Safari -
 # you'll be prompted to install Dashlane extension
