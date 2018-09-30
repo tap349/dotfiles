@@ -97,6 +97,7 @@ brew 'puma-dev'
 #   `ln -s ~/dev/reenter_builder ~/.pow`
 #brew 'pow'
 # http://tap349.github.io/rbenv/ruby/chef/capistrano/2016/03/30/rbenv
+brew 'rabbitmq'
 brew 'rbenv'
 brew 'rbenv-ctags'
 brew 'redis', restart_service: :changed
