@@ -78,7 +78,6 @@ brew 'mpv'
 brew 'node'
 brew 'octave'
 brew 'p7zip'
-brew 'phantomjs'
 # https://github.com/Homebrew/brew/blob/master/docs/Versions.md
 # now postgresql@9.5 is run inside docker container
 #brew 'postgresql@9.5', restart_service: :changed
@@ -257,6 +256,7 @@ cask 'ngrok'
 cask 'openemu'
 cask 'opera'
 cask 'pgadmin4'
+cask 'phantomjs'
 cask 'psequel'
 cask 'react-native-debugger'
 cask 'skype'
