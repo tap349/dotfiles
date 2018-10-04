@@ -149,6 +149,8 @@ nmap <silent> <M-l> :tabmove +1<CR>
 
 " https://vi.stackexchange.com/a/3369
 " fallback in case mapping above doesn't work
+" (the drawback of this solution is that you get vertical
+" split with the same file opened if new file is not found)
 nmap <C-w>F <C-w>vgf
 "nmap <C-w>F <C-w>f<C-w>L
 
