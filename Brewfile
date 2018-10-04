@@ -155,7 +155,7 @@ cask 'calibre'
 # - system preferences:
 #   - Users & Groups -> Login Items: add (don't hide)
 cask 'docker'
-cask 'firefox'
+#cask 'firefox'
 # - system preferences:
 #   - Users & Groups -> Login Items: add (hide)
 # - app preferences:
