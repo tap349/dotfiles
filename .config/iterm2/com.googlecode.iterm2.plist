@@ -31524,11 +31524,11 @@
 	<key>NSWindow Frame SessionsPreferences</key>
 	<string>138 74 606 469 0 0 1280 777 </string>
 	<key>NSWindow Frame SharedPreferences</key>
-	<string>260 77 796 473 0 0 1280 777 </string>
+	<string>260 120 918 452 0 0 1280 777 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
 	<string>0 0 1280 777 0 0 1280 777 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
-	<string>0 202 650 575 0 0 1280 777 </string>
+	<string>0 0 1280 777 0 0 1280 777 </string>
 	<key>NSWindow Frame iTerm Window 2</key>
 	<string>0 202 650 575 0 0 1280 777 </string>
 	<key>NSWindow Frame iTerm Window 3</key>
@@ -32343,7 +32343,7 @@
 			<key>Visual Bell</key>
 			<true/>
 			<key>Window Type</key>
-			<integer>0</integer>
+			<integer>12</integer>
 			<key>Working Directory</key>
 			<string>/Users/tap</string>
 		</dict>
