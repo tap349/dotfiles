@@ -25,11 +25,13 @@ unmapAllExcept([
   "/",
   "C",
   "D",
+  "E",
   "G",
   "N",
+  "R",
   "S",
-  "cs",
   "b",
+  "cs",
   "d",
   "e",
   "f",
@@ -54,8 +56,13 @@ unmapAllExcept([
   "yy",
 ]);
 
+// it's not unmapped by unmapAllExcept
+unmap("<Ctrl-h>");
+
 map(",n", "t");
 map("<Ctrl-d>", "d");
+map("<Ctrl-h>", "E");
+map("<Ctrl-l>", "R");
 map("<Ctrl-u>", "e");
 map("F", "C");
 map("H", "S");
