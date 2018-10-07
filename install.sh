@@ -22,6 +22,7 @@ files=(
   .irbrc
   .powconfig
   .pryrc
+  .surfingkeys.js
   .zlogin
   .zprofile
   .zshenv

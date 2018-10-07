@@ -1,0 +1,64 @@
+//unmap(";j");
+//unmap("<Ctrl-6>");
+//unmap("B");
+//unmap("E");
+//unmap("F");
+//unmap("R");
+//unmap("W");
+//unmap("X");
+//unmap("cc");
+//unmap("cf");
+//unmap("g$");
+//unmap("g0");
+//unmap("ob");
+//unmap("og");
+//unmap("om");
+//unmap("ow");
+//unmap("q");
+//unmap("sm");
+//unmap("t");
+//unmap("v");
+//unmap("yf");
+//unmap("yg");
+
+unmapAllExcept([
+  "/",
+  "C",
+  "D",
+  "G",
+  "N",
+  "S",
+  "cs",
+  "b",
+  "d",
+  "e",
+  "f",
+  "gU",
+  "gg",
+  "h",
+  "i",
+  "j",
+  "k",
+  "l",
+  "n",
+  "on",
+  "r",
+  "se",
+  "sg",
+  "w",
+  "x",
+  "ya",
+  "yt",
+  "yv",
+  "yy",
+]);
+
+map("<Ctrl-d>", "d");
+map("<Ctrl-u>", "e");
+map("F", "C");
+map("H", "S");
+map("L", "D");
+map("d", "x");
+map("gs", "se");
+map("t", "on");
+map("yl", "ya");
