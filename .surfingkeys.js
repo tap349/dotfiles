@@ -45,6 +45,7 @@ unmapAllExcept([
   "r",
   "se",
   "sg",
+  "t",
   "w",
   "x",
   "ya",
@@ -53,6 +54,7 @@ unmapAllExcept([
   "yy",
 ]);
 
+map(",n", "t");
 map("<Ctrl-d>", "d");
 map("<Ctrl-u>", "e");
 map("F", "C");
