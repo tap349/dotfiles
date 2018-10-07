@@ -1,0 +1,18 @@
+#!/bin/bash
+
+OPERA_DIR="$HOME/Library/Application Support/com.operasoftware.Opera"
+OPERA_BACKUP_DIR="$HOME/.dotfiles/Library/Application Support/com.operasoftware.Opera"
+
+files=(
+  Bookmarks
+  BookmarksExtras
+  Preferences
+  'Secure Preferences'
+  Shortcuts
+  prefs_override.json
+)
+
+for file in "${files[@]}"; do
+  echo "copying $file..."
+  cp "$OPERA_DIR/$file" "$OPERA_BACKUP_DIR/$file"
+done
