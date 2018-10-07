@@ -193,10 +193,10 @@ cask 'genymotion'
 #     + Dashlane (select Desktop mode, can be added on first Dashlane run)
 #     - Data Saver (turn off - turned on by default)
 #     + Ghostery:
-#       - General:
-#         - [ ] Show the purple box in the corner of my browser
-#       - Blocking Options:
+#       - Global Blocking:
 #         - Block All (except Comments)
+#       - Purple Box:
+#         - [ ] Show the purple box in the corner of my browser
 #     + Google Docs (installed by default)
 #     + Google Docs Offline (installed by default)
 #     + Google Sheets (installed by default)
