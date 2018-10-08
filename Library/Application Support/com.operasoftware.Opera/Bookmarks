@@ -1,5 +1,5 @@
 {
-   "checksum": "e51b042a11dbe64634fe0ba3b3938c60",
+   "checksum": "c94ad944d6245b1dbcec676b610b40df",
    "roots": {
       "bookmark_bar": {
          "children": [ {
@@ -467,21 +467,21 @@
                "date_added": "13170258120468287",
                "id": "83",
                "name": "FD",
-               "sync_transaction_version": "220",
+               "sync_transaction_version": "241",
                "type": "url",
                "url": "https://developers.facebook.com/apps/1119248331422152/dashboard/"
             }, {
                "date_added": "13171371640598287",
                "id": "84",
                "name": "GAE",
-               "sync_transaction_version": "222",
+               "sync_transaction_version": "242",
                "type": "url",
                "url": "https://developers.facebook.com/tools/explorer/145634995501895/"
             }, {
                "date_added": "13171728545033364",
                "id": "85",
                "name": "ATD",
-               "sync_transaction_version": "223",
+               "sync_transaction_version": "243",
                "type": "url",
                "url": "https://developers.facebook.com/tools/debug/accesstoken/"
             }, {
@@ -1991,7 +1991,7 @@
                      "date_added": "13160010214165772",
                      "id": "618",
                      "name": "Craft GraphQL APIs in Elixir with Absinthe: Flexible, Robust Services for Queries, Mutations, and Subscriptions by Bruce Williams and Ben Wilson | The Pragmatic Bookshelf",
-                     "sync_transaction_version": "3",
+                     "sync_transaction_version": "246",
                      "type": "url",
                      "url": "https://pragprog.com/book/wwgraphql/craft-graphql-apis-in-elixir-with-absinthe"
                   }, {
@@ -4758,7 +4758,7 @@
                   "date_added": "13160010214165772",
                   "id": "267",
                   "name": "Craft GraphQL APIs in Elixir with Absinthe: Flexible, Robust Services for Queries, Mutations, and Subscriptions by Bruce Williams and Ben Wilson | The Pragmatic Bookshelf",
-                  "sync_transaction_version": "3",
+                  "sync_transaction_version": "245",
                   "type": "url",
                   "url": "https://pragprog.com/book/wwgraphql/craft-graphql-apis-in-elixir-with-absinthe"
                }, {
@@ -4772,8 +4772,11 @@
                "date_added": "13183171532156240",
                "date_modified": "13183171532156240",
                "id": "265",
+               "meta_info": {
+                  "layoutMode": "1"
+               },
                "name": "GraphQL",
-               "sync_transaction_version": "136",
+               "sync_transaction_version": "244",
                "type": "folder"
             }, {
                "children": [ {
@@ -5565,7 +5568,7 @@
          "sync_transaction_version": "3",
          "type": "folder"
       },
-      "sync_transaction_version": "240",
+      "sync_transaction_version": "246",
       "synced": {
          "children": [  ],
          "date_added": "13171019200156036",
