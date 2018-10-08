@@ -37,17 +37,17 @@ unmapAllExcept([
   "f",
   "gU",
   "gg",
-  //"h",
+  //"h", // yandex music hotkey
   "i",
   "j",
   "k",
-  //"l",
+  //"l", // yandex music hotkey
   "n",
   "on",
   "r",
   "se",
   "sg",
-  "t",
+  //"t", // github hotkey
   "w",
   "x",
   "ya",
@@ -59,7 +59,7 @@ unmapAllExcept([
 // it's not unmapped by unmapAllExcept
 unmap("<Ctrl-h>");
 
-map(",n", "t");
+//map(",n", "t");
 map("<Ctrl-d>", "d");
 map("<Ctrl-h>", "E");
 map("<Ctrl-l>", "R");
