@@ -37,11 +37,11 @@ unmapAllExcept([
   "f",
   "gU",
   "gg",
-  "h",
+  //"h",
   "i",
   "j",
   "k",
-  "l",
+  //"l",
   "n",
   "on",
   "r",
@@ -69,5 +69,5 @@ map("H", "S");
 map("L", "D");
 map("d", "x");
 map("gs", "se");
-map("t", "on");
+//map("t", "on");
 map("yl", "ya");
