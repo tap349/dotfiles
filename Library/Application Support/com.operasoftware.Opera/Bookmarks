@@ -1,5 +1,5 @@
 {
-   "checksum": "c94ad944d6245b1dbcec676b610b40df",
+   "checksum": "cbc35ccb865a8fe3ed2c964d94fcd656",
    "roots": {
       "bookmark_bar": {
          "children": [ {
@@ -128,7 +128,7 @@
                "date_added": "13144780940938897",
                "id": "36",
                "name": "Glosbe",
-               "sync_transaction_version": "3",
+               "sync_transaction_version": "261",
                "type": "url",
                "url": "https://ru.glosbe.com/"
             }, {
@@ -374,22 +374,39 @@
                   "date_added": "13171727968642475",
                   "id": "71",
                   "name": "KhLead",
-                  "sync_transaction_version": "62",
+                  "sync_transaction_version": "259",
                   "type": "url",
                   "url": "https://www.facebook.com/KhLead-424414704661317/"
                }, {
                   "date_added": "13179315391142521",
                   "id": "72",
                   "name": "AdLee.Cambodia",
-                  "sync_transaction_version": "82",
+                  "sync_transaction_version": "260",
                   "type": "url",
                   "url": "https://www.facebook.com/AdLee.Cambodia/"
+               }, {
+                  "date_added": "13183474448396325",
+                  "id": "730",
+                  "meta_info": {
+                     "imageData": "https://sync-thumbnails.operacdn.com/97be14a00082e1525a74697e6834facc176fc467c9639beee202c8ed2cc58c26.jpe",
+                     "imageDataType": "2",
+                     "imageID": "77D88EB40DD28B4ECAA8AF25DAC6560F330E715D33F8603DF30638F7C1CD10E6",
+                     "imageIdentifier": "1ef843af",
+                     "imageType": "2"
+                  },
+                  "name": "AdLee Indonesia",
+                  "sync_transaction_version": "258",
+                  "type": "url",
+                  "url": "https://www.facebook.com/adleeindonesia/"
                } ],
                "date_added": "13183171531986226",
-               "date_modified": "13183171531986226",
+               "date_modified": "13183474496474635",
                "id": "70",
+               "meta_info": {
+                  "layoutMode": "1"
+               },
                "name": "Pages",
-               "sync_transaction_version": "3",
+               "sync_transaction_version": "257",
                "type": "folder"
             }, {
                "children": [ {
@@ -492,7 +509,7 @@
                   "imageType": "1"
                },
                "name": "Jira (AdLee ERP)",
-               "sync_transaction_version": "228",
+               "sync_transaction_version": "263",
                "type": "url",
                "url": "https://iadlee.atlassian.net/secure/Dashboard.jspa"
             }, {
@@ -621,7 +638,7 @@
             "url": "https://github.com/joshnuss/design-patterns-in-elixir"
          } ],
          "date_added": "13171019200156022",
-         "date_modified": "13183412182893795",
+         "date_modified": "13183474449586493",
          "id": "1",
          "name": "Bookmarks Bar",
          "sync_transaction_version": "3",
@@ -2851,7 +2868,7 @@
                      "date_added": "13144780940938897",
                      "id": "385",
                      "name": "Glosbe",
-                     "sync_transaction_version": "3",
+                     "sync_transaction_version": "262",
                      "type": "url",
                      "url": "https://ru.glosbe.com/"
                   }, {
@@ -5552,7 +5569,7 @@
                "type": "folder"
             } ],
             "date_added": "13171019200989702",
-            "date_modified": "13183412174546091",
+            "date_modified": "13183474448396325",
             "id": "19",
             "name": "Other Bookmarks",
             "sync_transaction_version": "3",
@@ -5568,7 +5585,7 @@
          "sync_transaction_version": "3",
          "type": "folder"
       },
-      "sync_transaction_version": "246",
+      "sync_transaction_version": "263",
       "synced": {
          "children": [  ],
          "date_added": "13171019200156036",
