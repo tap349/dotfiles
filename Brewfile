@@ -197,6 +197,8 @@ cask 'genymotion'
 #         - Block All (except Comments)
 #       - Purple Box:
 #         - [ ] Show the purple box in the corner of my browser
+#       - Notifications:
+#         - [ ] Show tracker count badge on the Ghostery icon in browser toolbar
 #     + Google Docs (installed by default)
 #     + Google Docs Offline (installed by default)
 #     + Google Sheets (installed by default)
