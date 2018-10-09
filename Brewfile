@@ -214,7 +214,9 @@ cask 'genymotion'
 #     + The Great Suspender
 #     + Viewport Dimensions (Hide in Chrome Menu)
 #     + Vk Videos and Music Download (Hide in Chrome Menu)
-#     + uBlock Origin
+#     + uBlock Origin:
+#       - Settings:
+#         - [ ] Show the number of blocked requests on the icon
 #     + Vimium
 #   - Theme:
 #     - Black Carbon + silver meta
