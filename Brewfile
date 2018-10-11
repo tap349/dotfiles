@@ -211,7 +211,6 @@ cask 'genymotion'
 #     + React Developer Tools (Hide in Chrome Menu)
 #     - RSS Subscription Extension (by Google) - optional
 #     + Scrum for Trello (Hide in Chrome Menu)
-#     + Session Buddy
 #     - Tag Assistant (by Google) (enabled per tab)
 #     + The Great Suspender
 #     + Viewport Dimensions (Hide in Chrome Menu)
@@ -219,7 +218,6 @@ cask 'genymotion'
 #     + uBlock Origin:
 #       - Settings:
 #         - [ ] Show the number of blocked requests on the icon
-#     + Vimium
 #   - Theme:
 #     - Black Carbon + silver meta
 #     - Carbon Light
