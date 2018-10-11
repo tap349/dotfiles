@@ -203,11 +203,11 @@ cask 'genymotion'
 #     + Google Docs Offline (installed by default)
 #     + Google Sheets (installed by default)
 #     - Google Slides (installed by default)
-#     + GoUniverse
+#     + GoUniverse (Hide in Chrome Menu)
 #     + JSON Formatter (Hide in Chrome Menu)
-#     + Noisli
+#     + Noisli (Hide in Chrome Menu)
 #     - Proxy SwitchyOmega (configure proxy per site)
-#     + Quick Javascript Switcher
+#     + Quick Javascript Switcher (Hide in Chrome Menu)
 #     + React Developer Tools (Hide in Chrome Menu)
 #     - RSS Subscription Extension (by Google) - optional
 #     + Scrum for Trello (Hide in Chrome Menu)
