@@ -189,35 +189,33 @@ cask 'genymotion'
 #     + AdBlock
 #     + Blank New Tab (Hide in Chrome Menu)
 #     + Browsec VPN
-#     - Clouder (Hide in Chrome Menu)
 #     + Dashlane (select Desktop mode, can be added on first Dashlane run)
 #     - Data Saver (turn off - turned on by default)
 #     + Ghostery:
 #       - Global Blocking:
 #         - Block All (except Comments)
-#       - Purple Box:
-#         - [ ] Show the purple box in the corner of my browser
 #       - Notifications:
 #         - [ ] Show tracker count badge on the Ghostery icon in browser toolbar
-#     + Google Docs (installed by default)
+#       - Purple Box:
+#         - [ ] Show the purple box in the corner of my browser
 #     + Google Docs Offline (installed by default)
-#     + Google Sheets (installed by default)
-#     - Google Slides (installed by default)
 #     + GoUniverse (Hide in Chrome Menu)
 #     + JSON Formatter (Hide in Chrome Menu)
+#     + Music Downloader Professional (Hide in Chrome Menu)
 #     + Noisli (Hide in Chrome Menu)
 #     - Proxy SwitchyOmega (configure proxy per site)
 #     + Quick Javascript Switcher (Hide in Chrome Menu)
 #     + React Developer Tools (Hide in Chrome Menu)
-#     - RSS Subscription Extension (by Google) - optional
 #     + Scrum for Trello (Hide in Chrome Menu)
 #     - Tag Assistant (by Google) (enabled per tab)
 #     + The Great Suspender
-#     + Viewport Dimensions (Hide in Chrome Menu)
-#     + Vk Videos and Music Download (Hide in Chrome Menu)
 #     + uBlock Origin:
 #       - Settings:
 #         - [ ] Show the number of blocked requests on the icon
+#     + Viewport Dimensions (Hide in Chrome Menu)
+#     + Google Docs (installed by default)
+#     + Google Sheets (installed by default)
+#     - Google Slides (installed by default)
 #   - Theme:
 #     - Black Carbon + silver meta
 #     - Carbon Light
