@@ -186,12 +186,13 @@ cask 'genymotion'
 # - app preferences:
 #   - Settings -> On startup: Continue where you left off
 #   - Extensions (allow all of them in incognito):
-#     + AdBlock
+#     + AdBlock (Hide in Chrome Menu)
+#       - [ ] Show number of ads blocked on AdBlock button
 #     + Blank New Tab (Hide in Chrome Menu)
 #     + Browsec VPN
 #     + Dashlane (select Desktop mode, can be added on first Dashlane run)
 #     - Data Saver (turn off - turned on by default)
-#     + Ghostery:
+#     + Ghostery (Hide in Chrome Menu):
 #       - Global Blocking:
 #         - Block All (except Comments)
 #       - Notifications:
@@ -213,7 +214,7 @@ cask 'genymotion'
 #     + Scrum for Trello (Hide in Chrome Menu)
 #     - Tag Assistant (by Google) (enabled per tab)
 #     + The Great Suspender
-#     + uBlock Origin:
+#     + uBlock Origin (Hide in Chrome Menu):
 #       - Settings:
 #         - [ ] Show the number of blocked requests on the icon
 #     + Viewport Dimensions (Hide in Chrome Menu)
