@@ -200,7 +200,11 @@ cask 'genymotion'
 #         - [ ] Show the purple box in the corner of my browser
 #     + Google Docs Offline (installed by default)
 #     + GoUniverse (Hide in Chrome Menu)
-#     + JSON Formatter (Hide in Chrome Menu)
+#     - JSON Formatter (Hide in Chrome Menu)
+#     + JSON Viewer (Hide in Chrome Menu)
+#       - Theme: mdn-like
+#       - Structure:
+  #       - "lineNumbers": false
 #     + Music Downloader Professional (Hide in Chrome Menu)
 #     + Noisli (Hide in Chrome Menu)
 #     - Proxy SwitchyOmega (configure proxy per site)
