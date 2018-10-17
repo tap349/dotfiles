@@ -204,7 +204,7 @@ cask 'genymotion'
 #     + JSON Viewer (Hide in Chrome Menu)
 #       - Theme: mdn-like
 #       - Structure:
-  #       - "lineNumbers": false
+#         - "lineNumbers": false
 #     + Music Downloader Professional (Hide in Chrome Menu)
 #     + Noisli (Hide in Chrome Menu)
 #     - Proxy SwitchyOmega (configure proxy per site)
