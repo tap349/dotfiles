@@ -209,7 +209,7 @@ cask 'genymotion'
 #     + Music Downloader Professional (Hide in Chrome Menu)
 #     + Noisli (Hide in Chrome Menu)
 #     - Proxy SwitchyOmega (configure proxy per site)
-#     + Quick Javascript Switcher (Hide in Chrome Menu)
+#     - Quick Javascript Switcher (Hide in Chrome Menu)
 #     + React Developer Tools (Hide in Chrome Menu)
 #     + Scrum for Trello (Hide in Chrome Menu)
 #     - Tag Assistant (by Google) (enabled per tab)
@@ -217,7 +217,7 @@ cask 'genymotion'
 #     + uBlock Origin (Hide in Chrome Menu):
 #       - Settings:
 #         - [ ] Show the number of blocked requests on the icon
-#     + Viewport Dimensions (Hide in Chrome Menu)
+#     - Viewport Dimensions (Hide in Chrome Menu)
 #     + Google Docs (installed by default)
 #     + Google Sheets (installed by default)
 #     - Google Slides (installed by default)
