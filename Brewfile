@@ -237,6 +237,7 @@ cask 'genymotion'
 # - developer tools:
 #   - Dock to bottom
 cask 'google-chrome'
+cask 'gopanda'
 cask 'insomnia'
 # - app preferences:
 #   - General -> Preferences:
