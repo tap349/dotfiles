@@ -352,6 +352,7 @@ mas 'Pomodoro Timer', id: 872515009
 #     - General -> Show Magnifier: <M-2>
 mas 'Sip', id: 507257563
 mas 'Telegram Desktop', id: 946399090
+mas 'Trello', id: 1278508951
 # - system preferences:
 #   - Users & Groups -> Login Items: add (don't hide)
 mas 'VPNAutoConnect', id: 532510878
