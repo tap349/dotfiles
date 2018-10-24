@@ -319,8 +319,6 @@ mas 'Cloud Mail.Ru', id: 893068358
 #     - [x] Start Dashlane at login
 mas 'Dashlane - Password Manager, Secure Digital Wallet', id: 552383089
 mas 'Evernote', id: 406056744
-# - on first run agree to start Flexiglass every time systems starts
-#
 # - system preferences:
 #   - Security & Privacy -> Privacy -> Accessibility
 # - app preferences:
@@ -330,6 +328,8 @@ mas 'Evernote', id: 406056744
 #   - Layouts:
 #     - Maximize: <S-M-CR>
 #   - Preferences:
+#     - [x] Autostart on system login
+#     - [x] Show icon in menu bar
 #     - [ ] Show icon in Dock
 mas 'Flexiglass', id: 426410278
 mas 'FTP Server', id: 987045856
