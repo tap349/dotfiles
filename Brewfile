@@ -40,7 +40,7 @@ brew 'boost'
 # install manually by downloading dmg file
 #brew 'cgoban'
 brew 'djvu2pdf'
-brew 'elasticsearch'
+brew 'elasticsearch', restart_service: :changed
 # install via asdf
 #brew 'elixir'
 # for ~/scripts/fontpatcher
