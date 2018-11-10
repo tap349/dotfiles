@@ -23,6 +23,7 @@ files=(
   .powconfig
   .pryrc
   .surfingkeys.js
+  .taskrc
   .zlogin
   .zprofile
   .zshenv

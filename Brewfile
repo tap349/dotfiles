@@ -102,6 +102,10 @@ brew 'rbenv-ctags'
 brew 'redis', restart_service: :changed
 brew 'ripgrep'
 brew 'ssh-copy-id'
+# https://taskwarrior.org/download
+brew 'task'
+brew 'taskd'
+brew 'tasksh'
 brew 'tig'
 brew 'tmux'
 brew 'tree'
