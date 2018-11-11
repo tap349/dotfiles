@@ -29,3 +29,7 @@ include /usr/local/Cellar/task/2.5.1/share/doc/task/rc/solarized-dark-256.theme
 #include /usr/local/Cellar/task/2.5.1/share/doc/task/rc/solarized-light-256.theme
 #include /usr/local/Cellar/task/2.5.1/share/doc/task/rc/no-color.theme
 
+report.next.labels=Project,ID,Deps,P,Tag,Recur,S,Due,Until,Description,Urg
+report.next.columns=project,id,depends,priority,tags,recur,scheduled.countdown,due.relative,until.remaining,description,urgency
+
+alias.l=project:dev.lain

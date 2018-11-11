@@ -130,6 +130,8 @@ set foldnestmax=10
 " q - allow formatting of comments with 'gq'
 " l - don't break long lines in insert mode
 " j - remove comment leader when joining lines
+"
+" `t` option is also removed by most file type plugins
 set formatoptions-=tc
 set formatoptions+=rj
 
