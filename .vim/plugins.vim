@@ -93,7 +93,6 @@ Plug 'tap349/ack.vim'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
-Plug 'vimwiki/vimwiki'
 Plug 'wincent/command-t', {
       \   'do': 'cd ruby/command-t/ext/command-t && RBENV_VERSION=system ruby extconf.rb && make'
       \ }
@@ -922,33 +921,3 @@ nmap <Leader>v :AV<CR>
 " commit d58794f breaks shifting blocks visually by replacing
 " square bracket maps with angle bracket maps in visual mode
 let g:xremap = { '<': '', '>': '' }
-
-"-------------------------------------------------------------------------------
-" vimwiki
-"
-" :help vimwiki-mappings
-"-------------------------------------------------------------------------------
-
-let g:vimwiki_list = [
-      \ { 'path': '~/vimwiki/', 'syntax': 'markdown', 'ext': '.md' }
-      \ ]
-
-" there's no flag to disable all vimwiki mappings -
-" it's possible to remap them one by one only
-
-" <CR> by default
-nmap <Leader>wf <Plug>VimwikiFollowLink
-" <S-CR> by default
-nmap <Leader>we <Plug>VimwikiSplitLink
-" <C-CR> by default
-nmap <Leader>wq <Plug>VimwikiVSplitLink
-
-" <Tab> by default
-nmap <Leader>wn <Plug>VimwikiNextLink
-" <S-Tab> by default
-nmap <Leader>wp <Plug>VimwikiPrevLink
-
-" <C-Down> by default
-nmap <Leader>wdn <Plug>VimwikiDiaryNextDay
-" <C-Up> by default
-nmap <Leader>wdp <Plug>VimwikiDiaryPrevDay

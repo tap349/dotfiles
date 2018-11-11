@@ -1,3 +1,8 @@
+" http://vim.wikia.com/wiki/Automatic_word_wrapping
+" hard wrap is used by default (newline characters are inserted)
+setlocal formatoptions+=t
+setlocal textwidth=79
+
 iabbrev -> →
 " http://vim.wikia.com/wiki/Multi-line_abbreviations
 iabbrev dl 
