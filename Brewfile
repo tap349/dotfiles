@@ -295,6 +295,8 @@ cask 'whatsapp'
 # - app preferences:
 #   - General:
 #     - Quick Entry: <C-S-a>
+#     - [x] GTD Inbox
+#     - [x] Launch 2Do Helper on System Startup
 #   - Appearance:
 #     - Font Size: Big
 #     - [ ] Show notes under tasks

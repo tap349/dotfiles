@@ -96,7 +96,7 @@ Plug 'tpope/vim-unimpaired'
 Plug 'wincent/command-t', {
       \   'do': 'cd ruby/command-t/ext/command-t && RBENV_VERSION=system ruby extconf.rb && make'
       \ }
-Plug 'yssl/QFEnter'
+Plug 'tap349/QFEnter'
 
 "-------------------------------------------------------------------------------
 " unused (but still can be used again somewhen)
@@ -677,6 +677,7 @@ let g:qfenter_enable_autoquickfix = 0
 let g:qfenter_keymap = {}
 let g:qfenter_keymap.open = ['<CR>']
 let g:qfenter_keymap.open_keep = ['<S-CR>']
+let g:qfenter_keymap.open_close = ['<C-CR>']
 let g:qfenter_keymap.hopen = ['<C-s>']
 let g:qfenter_keymap.vopen = ['<C-v>']
 let g:qfenter_keymap.topen = ['<C-t>']
