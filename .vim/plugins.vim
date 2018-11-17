@@ -139,7 +139,7 @@ call plug#end()
 "hi AckSearch guifg=#B8860B gui=italic,bold
 "hi AckSearch guifg=#68838B gui=italic,bold
 "hi AckSearch guifg=#545454 gui=italic
-hi AckSearch guifg=#444454 gui=italic
+hi AckSearch guifg=#444454 gui=italic,bold
 
 let g:ackprg = 'rg -FS --sort-files --vimgrep'
 " disable empty search (searching the word under cursor) -
@@ -753,7 +753,7 @@ map <Leader> <Plug>(easymotion-prefix)
 "nmap <Leader>t <Plug>(easymotion-t)
 "nmap <Leader>F <Plug>(easymotion-F)
 
-nmap <Leader>W <Plug>(easymotion-bd-w)
+nmap <Leader>s <Plug>(easymotion-bd-w)
 
 "-------------------------------------------------------------------------------
 " vim-extradite
