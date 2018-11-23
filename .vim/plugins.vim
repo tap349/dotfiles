@@ -89,6 +89,7 @@ Plug 'osyo-manga/vim-anzu'
 Plug 'pearofducks/ansible-vim'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
+Plug 'tap349/QFEnter'
 Plug 'tap349/ack.vim'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-surround'
@@ -96,7 +97,6 @@ Plug 'tpope/vim-unimpaired'
 Plug 'wincent/command-t', {
       \   'do': 'cd ruby/command-t/ext/command-t && RBENV_VERSION=system ruby extconf.rb && make'
       \ }
-Plug 'tap349/QFEnter'
 
 "-------------------------------------------------------------------------------
 " unused (but still can be used again somewhen)
