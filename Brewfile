@@ -108,6 +108,7 @@ brew 'taskd'
 brew 'tasksh'
 brew 'tig'
 brew 'tmux'
+brew 'tokei'
 brew 'tree'
 brew 'unrar'
 # for React Native
