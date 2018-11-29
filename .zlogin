@@ -31,7 +31,8 @@ defaults write org.vim.MacVim MMTextInsetBottom 4
 defaults write org.vim.MacVim MMTextInsetLeft 5
 defaults write org.vim.MacVim MMFullScreenFadeTime 0
 # https://github.com/macvim-dev/macvim/wiki/FAQ#black-screen-on-full-screen
-defaults write org.vim.MacVim MMUseCGLayerAlways 1
+# it's longer required on macOS Mojave and MacVim 8.1-151_2
+#defaults write org.vim.MacVim MMUseCGLayerAlways 1
 # https://github.com/macvim-dev/macvim/issues/390#issuecomment-254252969
 defaults write org.vim.MacVim SUEnableAutomaticChecks 0
 #defaults write org.vim.MacVim MMNoFontSubstitution 1
