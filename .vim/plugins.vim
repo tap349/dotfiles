@@ -550,7 +550,7 @@ function! MyLightlineLineinfo()
   if <SID>IsNarrowWindow() | return '' | end
   if <SID>IsPluginWindow() | return '' | end
 
-  return printf('%3d/%d☰ : %-2d', line('.'), line('$'), col('.'))
+  return printf('%3d/%d☰ : %-3d', line('.'), line('$'), col('.'))
 endfunction
 
 function! MyLightlineLinterWarnings()
