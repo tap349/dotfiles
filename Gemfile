@@ -5,6 +5,6 @@
 
 source 'https://rubygems.org'
 
+gem 'cocoapods'
 gem 'git-up'
 gem 'rubocop'
-gem 'cocoapods'
