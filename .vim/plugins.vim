@@ -255,6 +255,9 @@ hi ALEErrorSign guifg=#EF5832
 " only linters from g:ale_linters are enabled
 let g:ale_linters_explicit = 1
 
+" don't highlight problems: gui=underline and gui=undercurl
+" look ugly when Core Text renderer is not used
+let g:ale_set_highlights = 0
 " location list is populated by default -
 " this might overwrite the contents of already
 " opened location list (e.g., search results)

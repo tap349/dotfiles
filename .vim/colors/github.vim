@@ -33,7 +33,7 @@ hi VertSplit ctermfg=250 ctermbg=250 guibg=#F3F3FA   guifg=#83aac5 gui=none cter
 hi LineNr   ctermfg=246 ctermbg=15 guifg=#B8B8C2 guibg=#F3F3FA cterm=bold
 hi SpecialKey ctermfg=6 guifg=#177F80 gui=italic cterm=italic
 hi WarningMsg ctermfg=167 guifg=#df1100
-hi ErrorMsg ctermbg=15 ctermfg=196 guibg=#f8f8ff guifg=#ff1100 gui=undercurl cterm=undercurl
+hi ErrorMsg ctermbg=15 ctermfg=196 guibg=#f8f8ff guifg=#ff1100
 hi ColorColumn ctermbg=254 guibg=#E8E8EF
 " }}}
 
@@ -91,7 +91,7 @@ hi Type     ctermfg=60 guifg=#445588 gui=bold   cterm=bold
 hi Number   ctermfg=30 guifg=#1C9898
 hi Todo     ctermfg=15 ctermbg=88 guifg=#FFFFFF guibg=#990000 gui=bold cterm=bold
 hi Special  ctermfg=28 guifg=#159828 gui=bold   cterm=bold
-hi Todo         ctermbg=15 ctermfg=196 guibg=#f8f8ff guifg=#ff1100 gui=underline cterm=underline
+hi Todo         ctermbg=15 ctermfg=196 guibg=#f8f8ff guifg=#ff1100
 hi Label        ctermfg=0 guifg=#000000 gui=bold    cterm=bold
 hi StorageClass ctermfg=0 guifg=#000000 gui=bold    cterm=bold
 hi Structure    ctermfg=0 guifg=#000000 gui=bold    cterm=bold
