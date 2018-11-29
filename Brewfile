@@ -67,6 +67,7 @@ brew 'lynx'
 #   - General:
 #     - After last window closes: Quit MacVim
 #   - Advanced:
+#     - [ ] Use Core Text renderer (it crashes MacVim since from 8.1-151_1)
 #     - [ ] Draw marked text inline
 brew 'macvim'
 brew 'mas'
