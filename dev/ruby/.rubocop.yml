@@ -19,7 +19,7 @@ AllCops:
   TargetRubyVersion: 2.5
 
 #-------------------------------------------------------------------------------
-# https://github.com/bbatsov/rubocop/blob/master/config/default.yml
+# https://github.com/rubocop-hq/rubocop/blob/master/config/default.yml
 #-------------------------------------------------------------------------------
 
 #################### Layout ###########################
@@ -46,6 +46,10 @@ Layout/AlignParameters:
   # But it can be overridden by setting this parameter
   IndentationWidth: ~
 
+Layout/EmptyLineAfterGuardClause:
+  Description: 'Add empty line after guard clause.'
+  Enabled: false # true by default
+
 # Checks the indentation of the first element in an array literal.
 Layout/IndentArray:
   # The value `special_inside_parentheses` means that array literals with
@@ -68,6 +72,14 @@ Layout/IndentArray:
   # But it can be overridden by setting this parameter
   IndentationWidth: ~
 
+# I don't use space before comment when temporarily commenting out
+# unused code - let rubocop still show errors so that I'm forced to
+# remove unused code ASAP
+Layout/LeadingCommentSpace:
+  Description: 'Comments should start with a space.'
+  StyleGuide: '#hash-space'
+  Enabled: true # true by default
+
 Layout/MultilineMethodCallBraceLayout:
   EnforcedStyle: symmetrical
   SupportedStyles:
@@ -88,6 +100,12 @@ Layout/MultilineMethodCallIndentation:
   # But it can be overridden by setting this parameter
   IndentationWidth: ~
 
+#################### Lint #############################
+
+Lint/UnneededSplatExpansion:
+  Description: 'Checks for splat unnecessarily being called on literals'
+  Enabled: false # true by default
+
 #################### Naming ###########################
 
 Naming/VariableNumber:
@@ -102,10 +120,10 @@ Naming/VariableNumber:
 Metrics/AbcSize:
   # The ABC size is a calculated magnitude, so this number can be an Integer or
   # a Float.
-  Max: 30 # default 15
+  Max: 30 # 15 by default
 
 Metrics/BlockLength:
-  CountComments: false  # count full line comments?
+  CountComments: false # count full line comments?
   Max: 25
   ExcludedMethods:
     - context
@@ -116,10 +134,10 @@ Metrics/BlockLength:
 
 Metrics/ClassLength:
   CountComments: false
-  Max: 100 # default 100
+  Max: 100 # 100 by default
 
 Metrics/LineLength:
-  Max: 80 # default 80
+  Max: 80 # 80 by default
   # To make it possible to copy or click on URIs in the code, we allow lines
   # containing a URI to be longer than Max.
   AllowHeredoc: true
@@ -137,9 +155,16 @@ Metrics/LineLength:
 
 Metrics/MethodLength:
   CountComments: false  # count full line comments?
-  Max: 20 # default 20
+  Max: 20 # 20 by default
 
 #################### Style ############################
+
+Style/BlockComments:
+  Description: 'Do not use block comments.'
+  StyleGuide: '#no-block-comments'
+  Enabled: true # true by default
+  Exclude:
+    - 'spec/spec_helper.rb'
 
 Style/ClassAndModuleChildren:
   # Checks the style of children definitions at classes and modules.
@@ -162,6 +187,16 @@ Style/ClassAndModuleChildren:
     - nested # default
     - compact
 
+Style/Documentation:
+  Description: 'Document classes and non-namespace modules.'
+  Enabled: false # true by default
+  Exclude:
+    - 'spec/**/*'
+
+Style/EachWithObject:
+  Description: 'Prefer `each_with_object` over `inject` or `reduce`.'
+  Enabled: false # true by default
+
 Style/FrozenStringLiteralComment:
   EnforcedStyle: when_needed
   SupportedStyles:
@@ -183,6 +218,13 @@ Style/FrozenStringLiteralComment:
     - 'spec/rails_helper.rb'
     - 'spec/spec_helper.rb'
 
+Style/IfUnlessModifier:
+  Description: >-
+                 Favor modifier if/unless usage when you have a
+                 single-line body.
+  StyleGuide: '#if-as-a-modifier'
+  Enabled: false # true by default
+
 Style/Lambda:
   EnforcedStyle: literal
   SupportedStyles:
@@ -197,7 +239,7 @@ Style/LambdaCall:
     - braces
 
 Style/MethodCallWithArgsParentheses:
-  Enabled: true # default false
+  Enabled: true # false by default
   IgnoreMacros: true
   IgnoredMethods:
     - add_column
@@ -225,6 +267,33 @@ Style/MethodDefParentheses:
     - require_no_parentheses
     - require_no_parentheses_except_multiline
 
+Style/MultilineBlockChain:
+  Description: 'Avoid multi-line chains of blocks.'
+  StyleGuide: '#single-line-blocks'
+  Enabled: false # true by default
+
+Style/NumericPredicate:
+  Description: >-
+    Checks for the use of predicate- or comparison methods for
+    numeric comparisons.
+  StyleGuide: '#predicate-methods'
+  Safe: false
+  # This will change to a new method call which isn't guaranteed to be on the
+  # object. Switching these methods has to be done with knowledge of the types
+  # of the variables which rubocop doesn't have.
+  SafeAutoCorrect: false
+  AutoCorrect: false
+  Enabled: true
+  EnforcedStyle: comparison
+  SupportedStyles:
+    - predicate # default
+    - comparison
+  IgnoredMethods: []
+  # Exclude RSpec specs because assertions like `expect(1).to be > 0` cause
+  # false positives.
+  Exclude:
+    - 'spec/**/*'
+
 Style/RegexpLiteral:
   EnforcedStyle: slashes
   # slashes: Always use slashes.
@@ -245,16 +314,22 @@ Style/ReturnNil:
     - return_nil
 
 Style/SymbolArray:
-  Enabled: false # default true
+  Enabled: false # true by default
   EnforcedStyle: percent
   MinSize: 0
   SupportedStyles:
     - percent # default
     - brackets
 
+Style/UnneededInterpolation:
+  Description: 'Checks for strings that are just an interpolated expression.'
+  Enabled: true
+  Exclude:
+    - 'spec/**/*'
+
 # `WordArray` enforces how array literals of word-like strings should be expressed.
 Style/WordArray:
-  Enabled: false # default true
+  Enabled: false # true by default
   EnforcedStyle: percent
   SupportedStyles:
     # percent style: %w(word1 word2)
@@ -267,50 +342,3 @@ Style/WordArray:
   MinSize: 0
   # The regular expression `WordRegex` decides what is considered a word.
   WordRegex: !ruby/regexp '/\A[\p{Word}\n\t]+\z/'
-
-#-------------------------------------------------------------------------------
-# https://github.com/bbatsov/rubocop/blob/master/config/enabled.yml
-# https://github.com/bbatsov/rubocop/blob/master/config/disabled.yml
-#-------------------------------------------------------------------------------
-
-# I don't use space before comment when temporarily commenting out
-# unused code - let rubocop still show errors so that I'm forced to
-# remove unused code ASAP
-Layout/LeadingCommentSpace:
-  Description: 'Comments should start with a space.'
-  StyleGuide: '#hash-space'
-  Enabled: true # default true
-
-Lint/UnneededSplatExpansion:
-  Description: 'Checks for splat unnecessarily being called on literals'
-  Enabled: false # default true
-
-Style/BlockComments:
-  Description: 'Do not use block comments.'
-  StyleGuide: '#no-block-comments'
-  Enabled: true # default true
-  Exclude:
-    - 'spec/spec_helper.rb'
-
-Style/Documentation:
-  Description: 'Document classes and non-namespace modules.'
-  Enabled: false # default true
-  Exclude:
-    - 'spec/**/*'
-
-Style/EachWithObject:
-  Description: 'Prefer `each_with_object` over `inject` or `reduce`.'
-  Enabled: false # default true
-
-Style/IfUnlessModifier:
-  Description: >-
-                 Favor modifier if/unless usage when you have a
-                 single-line body.
-  StyleGuide: '#if-as-a-modifier'
-  Enabled: false # default true
-
-Style/UnneededInterpolation:
-  Description: 'Checks for strings that are just an interpolated expression.'
-  Enabled: true
-  Exclude:
-    - 'spec/**/*'
