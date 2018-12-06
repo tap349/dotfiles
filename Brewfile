@@ -154,7 +154,7 @@ cask 'calibre'
 #     - [ ] Stack Overflow
 #cask 'dash'
 # - app preferences:
-#   - Date & Time Format: E H:mm
+#   - Date & Time Format: E HH:mm
 #   - [x] Show Icon
 #   - [x] Launch Day-O at login
 cask 'day-o'
