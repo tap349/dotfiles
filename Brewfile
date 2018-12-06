@@ -153,6 +153,11 @@ cask 'calibre'
 #     - [ ] DuckDuckGo
 #     - [ ] Stack Overflow
 #cask 'dash'
+# - app preferences:
+#   - Date & Time Format: E H:mm
+#   - [x] Show Icon
+#   - [x] Launch Day-O at login
+cask 'day-o'
 # for elasticsearch in iceperk
 #
 # run docker app after installation
