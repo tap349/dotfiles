@@ -172,7 +172,7 @@ cask 'docker'
 # - app preferences:
 #   - 'Working late' preset
 #   - [x] Start f.lux at login (set by default)
-cask 'flux'
+#cask 'flux'
 cask 'font-fontawesome'
 cask 'font-cousine'
 cask 'font-d2coding'
