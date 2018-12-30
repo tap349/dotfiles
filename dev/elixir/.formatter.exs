@@ -1,5 +1,7 @@
 [
   import_deps: [:ecto, :phoenix, :absinthe],
   inputs: ["*.{ex,exs}", "priv/*/seeds.exs", "{config,lib,test}/**/*.{ex,exs}"],
-  subdirectories: ["priv/*/migrations"]
+  subdirectories: ["priv/*/migrations"],
+  # 98 by default
+  line_length: 80
 ]
