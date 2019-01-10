@@ -104,16 +104,14 @@ alias ica='cd ~/dev/compleader/iceperkapp'
 alias icb='cd ~/dev/compleader/iceperkbilling'
 alias icbc='cd ~/dev/compleader/iceperkbillingchef'
 alias icc='cd ~/dev/compleader/iceperkchef'
-# define alias in ~/.zshrc
+# alias is defined in ~/.zshrc
 #alias l='cd ~/dev/compleader/lain'
 alias n='cd ~/dev/morr/neko-achievements'
+alias nn='cd ~/dev/compleader/nana'
 alias p='cd ~/dev/ingate/pumba'
-alias r='cd ~/dev/compleader/reika'
-alias rb='cd ~/dev/ingate/reenter_builder'
-alias rf='cd ~/dev/ingate/reenter_feed'
+alias rk='cd ~/dev/compleader/reika'
 alias s='cd ~/dev/compleader/sith'
 alias sc='cd ~/dev/compleader/sithchef'
-alias sx='cd ~/dev/compleader/sithex'
 
 alias opr7='cd /Volumes/opr7'
 alias pi='cd /Volumes/pi'
@@ -179,6 +177,7 @@ alias gbd='git_branch_delete'
 # press <C-c>/<S-f> to switch between modes
 alias log='less +F log/development.log'
 
+alias r='rails'
 alias rc='rails console'
 alias rd='rails dbconsole'
 alias rs='rails server'
