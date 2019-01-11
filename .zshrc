@@ -92,5 +92,5 @@ unalias l
 unalias la
 unalias ll
 
-alias l='cd ~/dev/complead/lain'
+alias l='cd ~/dev/compleader/lain'
 alias ll='ls -alp'
