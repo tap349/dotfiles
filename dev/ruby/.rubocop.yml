@@ -254,6 +254,7 @@ Style/MethodCallWithArgsParentheses:
     - require
     - require_relative
     - to
+    - yield
   Exclude:
     - 'config/initializers/*.rb'
     - 'db/migrate/*.rb'
