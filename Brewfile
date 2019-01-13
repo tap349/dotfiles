@@ -229,6 +229,7 @@ cask 'genymotion'
 #       - Settings:
 #         - [ ] Show the number of blocked requests on the icon
 #     - Viewport Dimensions (Hide in Chrome Menu)
+#     + VLC Video Downloader
 #     + Google Docs (installed by default)
 #     + Google Sheets (installed by default)
 #     - Google Slides (installed by default)
