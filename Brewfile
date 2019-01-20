@@ -157,7 +157,7 @@ cask 'calibre'
 #   - Date & Time Format: E HH:mm
 #   - [x] Show Icon
 #   - [x] Launch Day-O at login
-cask 'day-o'
+#cask 'day-o'
 # for elasticsearch in iceperk
 #
 # run docker app after installation
