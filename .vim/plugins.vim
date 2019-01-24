@@ -41,6 +41,23 @@ Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx' | Plug 'pangloss/vim-javascript'
 
 "-------------------------------------------------------------------------------
+" css / scss
+"-------------------------------------------------------------------------------
+
+Plug 'ap/vim-css-color'
+" SCSS files are highlighted by default without any plugins but
+" sometimes highlighting is getting broken → use dedicated plugin
+Plug 'cakebaker/scss-syntax.vim'
+
+"-------------------------------------------------------------------------------
+" slim / slime / pug
+"-------------------------------------------------------------------------------
+
+"Plug 'digitaltoad/vim-pug'
+Plug 'slim-template/vim-slim'
+Plug 'slime-lang/vim-slime-syntax'
+
+"-------------------------------------------------------------------------------
 " ruby / rails
 "-------------------------------------------------------------------------------
 
@@ -53,14 +70,11 @@ Plug 'tpope/vim-rails'
 Plug 'tpope/vim-rake' | Plug 'tpope/vim-projectionist'
 
 "-------------------------------------------------------------------------------
-" other file types support
+" syntax plugins for other file types
 "-------------------------------------------------------------------------------
 
-"Plug 'tap349/vim-markdown'
-Plug 'digitaltoad/vim-pug'
+Plug 'pearofducks/ansible-vim'
 Plug 'plasticboy/vim-markdown'
-Plug 'slim-template/vim-slim'
-Plug 'slime-lang/vim-slime-syntax'
 
 "-------------------------------------------------------------------------------
 " linting
@@ -73,7 +87,6 @@ Plug 'w0rp/ale'
 " other plugins
 "-------------------------------------------------------------------------------
 
-Plug 'ap/vim-css-color'
 Plug 'bkad/CamelCaseMotion'
 Plug 'easymotion/vim-easymotion'
 Plug 'ervandew/supertab'
@@ -86,7 +99,6 @@ Plug 'ludovicchabant/vim-gutentags'
 Plug 'mhinz/vim-hugefile'
 Plug 'mhinz/vim-startify'
 Plug 'osyo-manga/vim-anzu'
-Plug 'pearofducks/ansible-vim'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
 Plug 'tap349/QFEnter'
