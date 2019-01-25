@@ -241,6 +241,7 @@ let g:solarized_contrast = 'high'
 "colorscheme earendel
 "colorscheme autumn
 "colorscheme bclear
+"colorscheme plain
 
 "if getcwd() =~ 'iceperk$\|sith$'
 if getcwd() =~ 'iceperk$'
