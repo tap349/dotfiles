@@ -270,6 +270,7 @@ cask 'java8'
 # - system preferences:
 #   - Users & Groups -> Login Items: remove
 cask 'keybase'
+cask 'krisp'
 # go app with AI
 #cask 'leela'
 cask 'ngrok'
