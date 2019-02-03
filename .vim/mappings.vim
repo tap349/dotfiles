@@ -54,7 +54,7 @@ cnoremap <C-g> <C-c>
 "-------------------------------------------------------------------------------
 
 " :help expand
-nnoremap <silent> <Leader>yf :let @*=expand('%')<CR>
+nnoremap <silent> <Leader>y :let @*=expand('%')<CR>
 
 "-------------------------------------------------------------------------------
 " edit without leaving normal mode
