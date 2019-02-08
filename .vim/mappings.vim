@@ -33,6 +33,9 @@ inoremap <silent> <C-c> <Esc>
 "imap <silent> <C-Backspace> <C-c>
 imap <silent> <C-g> <C-c>
 
+" <C-c> doesn't exit visual mode since MacVim 8.1.873 (154)
+vnoremap <silent> <C-c> <Esc>
+
 "xnoremap <C-Backspace> <Esc>
 
 " <C-Backspace> and <C-g> in command mode act like <Esc> - they
