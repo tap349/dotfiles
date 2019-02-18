@@ -138,3 +138,8 @@ if has("spell")
     hi spellLocal   guisp=#729fcf
 endif
 " }}}
+
+" {{{ Elixir
+"hi elixirPrivateFunctionDeclaration guifg=#112244 gui=bold
+hi elixirPrivateFunctionDeclaration guifg=#DD5555 gui=bold
+" }}}
