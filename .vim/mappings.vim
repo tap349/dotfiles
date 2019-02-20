@@ -33,8 +33,12 @@ inoremap <silent> <C-c> <Esc>
 "imap <silent> <C-Backspace> <C-c>
 imap <silent> <C-g> <C-c>
 
-" <C-c> doesn't exit visual mode since MacVim 8.1.873 (154)
-vnoremap <silent> <C-c> <Esc>
+" <C-c> doesn't exit visual and command modes since MacVim 8.1.873 (154)
+"
+" somehow these mappings do what I want - mapping <C-c>
+" to <Esc> doesn't work correctly in command mode
+vnoremap <silent> <C-c> <C-c>
+cnoremap <silent> <C-c> <C-c>
 
 "xnoremap <C-Backspace> <Esc>
 
