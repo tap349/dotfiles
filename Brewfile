@@ -196,7 +196,11 @@ cask 'genymotion'
 # - system preferences:
 #   - Users & Groups -> Login Items: remove (don't hide)
 # - app preferences:
-#   - Settings -> On startup: Continue where you left off
+#   - Settings:
+#     - On startup: Continue where you left off
+#     - Content Settings...:
+#       - Flash:
+#         - [x] Ask first (recommended)
 #   - Extensions (allow all of them in incognito):
 #     + AdBlock (Hide in Chrome Menu)
 #       - [ ] Show number of ads blocked on AdBlock button
@@ -212,20 +216,25 @@ cask 'genymotion'
 #       - Purple Box:
 #         - [ ] Show the purple box in the corner of my browser
 #     + Google Docs Offline (installed by default)
-#     + GoUniverse (Hide in Chrome Menu)
+#     - GoUniverse (Hide in Chrome Menu)
 #     - JSON Formatter (Hide in Chrome Menu)
 #     + JSON Viewer (Hide in Chrome Menu)
 #       - Theme: mdn-like
 #       - Structure:
 #         - "lineNumbers": false
-#     + Music Downloader Professional (Hide in Chrome Menu)
 #     + Noisli (Hide in Chrome Menu)
 #     - Proxy SwitchyOmega (configure proxy per site)
 #     - Quick Javascript Switcher (Hide in Chrome Menu)
-#     + React Developer Tools (Hide in Chrome Menu)
-#     + Scrum for Trello (Hide in Chrome Menu)
+#     - React Developer Tools (Hide in Chrome Menu)
+#     - Scrum for Trello (Hide in Chrome Menu)
 #     - Tag Assistant (by Google) (enabled per tab)
 #     + The Great Suspender
+#       - Settings:
+#         - [x] Never suspend pinned tabs
+#         - [x] Never suspend tabs that contain unsaved form inputs
+#         - [x] Never suspend tabs that are playing audio
+#         - [x] Never suspend active tab in each window
+#         - [x] Never suspend tabs when offline
 #     + uBlock Origin (Hide in Chrome Menu):
 #       - Settings:
 #         - [ ] Show the number of blocked requests on the icon
