@@ -6,17 +6,18 @@
 
 #-------------------------------------------------------------------------------
 # Taps (third-party repositories)
+#
+# homebrew/bundle and homebrew/services are automatically installed (tapped)
+# when corresponding commands (`brew bundle` or `brew services`) are run
 #-------------------------------------------------------------------------------
 
 # remove formula with its unused dependencies:
 # `brew rmtree mpv`
 tap 'beeftornado/rmtree'
+tap 'homebrew/cask'
+tap 'homebrew/cask-fonts'
+tap 'homebrew/cask-versions'
 tap 'puma/puma'
-tap 'caskroom/cask'
-tap 'caskroom/fonts'
-tap 'caskroom/versions'
-tap 'homebrew/bundle'
-tap 'homebrew/services'
 # for wuzz
 tap 'ZloeSabo/homebrew-nettools'
 
