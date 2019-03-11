@@ -845,17 +845,22 @@ nmap <silent> <Leader>ht :GitGutterToggle<CR>
 "set statusline+=%{gutentags#statusline()}
 
 let g:gutentags_cache_dir = '~/.vim/tags'
-let g:gutentags_enabled = 0
-" don't update tag file when any project file is saved -
-" run :GutentagsUpdate manually to update tag file
-let g:gutentags_generate_on_write = 0
+let g:gutentags_enabled = 1
+" :GutentagsUpdate updates tag file with current buffer only
+" :GutentagsUpdate! is too expensive (even if run manually)
+"
+" => updating tag file with current buffer automatically when
+"    it's saved turns out to be not that bad alternative
+let g:gutentags_generate_on_write = 1
 " default project root markers are appended to this list
 " (probably gutentags can also use g:ctrlp_root_markers).
 "
 " don't use .gitignore as project root marker because ~/.gitignore
 " might already exist => tags for all files in home directory will
 " be created then)
-let g:gutentags_project_root = ['mix.exs']
+"let g:gutentags_project_root = ['mix.exs']
+
+"nmap <silent> <Leader>c :GutentagsUpdate<CR>
 
 "-------------------------------------------------------------------------------
 " vim-hugefile
