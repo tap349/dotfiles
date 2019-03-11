@@ -15,7 +15,6 @@ files=(
   .vim
   scripts
   colors.tdesktop-palette
-  .ctags
   .gitconfig
   .gitignore
   .iex.exs

@@ -11,6 +11,8 @@
 # when corresponding commands (`brew bundle` or `brew services`) are run
 #-------------------------------------------------------------------------------
 
+# for wuzz
+tap 'ZloeSabo/homebrew-nettools'
 # remove formula with its unused dependencies:
 # `brew rmtree mpv`
 tap 'beeftornado/rmtree'
@@ -18,8 +20,7 @@ tap 'homebrew/cask'
 tap 'homebrew/cask-fonts'
 tap 'homebrew/cask-versions'
 tap 'puma/puma'
-# for wuzz
-tap 'ZloeSabo/homebrew-nettools'
+tap 'universal-ctags/universal-ctags'
 
 #-------------------------------------------------------------------------------
 # Homebrew
@@ -100,7 +101,6 @@ brew 'puma-dev'
 # http://tap349.github.io/rbenv/ruby/chef/capistrano/2016/03/30/rbenv
 brew 'rabbitmq'
 brew 'rbenv'
-brew 'rbenv-ctags'
 brew 'redis', restart_service: :changed
 brew 'ripgrep'
 brew 'ssh-copy-id'
@@ -112,6 +112,9 @@ brew 'tasksh'
 brew 'tmux'
 brew 'tokei'
 brew 'tree'
+# universal-ctags handle Ruby code and have built-in Elixir support -
+# no need for external ctags file
+brew 'universal-ctags', args: ['HEAD']
 brew 'unrar'
 # for React Native
 brew 'watchman'
