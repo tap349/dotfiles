@@ -768,7 +768,7 @@ map <Leader> <Plug>(easymotion-prefix)
 "nmap <Leader>t <Plug>(easymotion-t)
 "nmap <Leader>F <Plug>(easymotion-F)
 
-nmap <Leader>s <Plug>(easymotion-bd-w)
+nmap <Leader>w <Plug>(easymotion-bd-w)
 
 "-------------------------------------------------------------------------------
 " vim-extradite
@@ -861,8 +861,6 @@ let g:gutentags_generate_on_write = 1
 " might already exist => tags for all files in home directory will
 " be created then)
 "let g:gutentags_project_root = ['mix.exs']
-
-"nmap <silent> <Leader>c :GutentagsUpdate<CR>
 
 "-------------------------------------------------------------------------------
 " vim-hugefile
