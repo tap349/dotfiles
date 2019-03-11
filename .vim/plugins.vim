@@ -845,13 +845,15 @@ nmap <silent> <Leader>ht :GitGutterToggle<CR>
 "set statusline+=%{gutentags#statusline()}
 
 let g:gutentags_cache_dir = '~/.vim/tags'
-let g:gutentags_enabled = 1
+let g:gutentags_enabled = 0
+
 " :GutentagsUpdate updates tag file with current buffer only
 " :GutentagsUpdate! is too expensive (even if run manually)
 "
 " => updating tag file with current buffer automatically when
 "    it's saved turns out to be not that bad alternative
 let g:gutentags_generate_on_write = 1
+
 " default project root markers are appended to this list
 " (probably gutentags can also use g:ctrlp_root_markers).
 "
