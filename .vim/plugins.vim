@@ -91,7 +91,6 @@ Plug 'bkad/CamelCaseMotion'
 Plug 'easymotion/vim-easymotion'
 Plug 'ervandew/supertab'
 Plug 'flazz/vim-colorschemes'
-Plug 'godlygeek/tabular'
 Plug 'haya14busa/vim-asterisk'
 Plug 'itchyny/lightline.vim' | Plug 'tpope/vim-fugitive'
 Plug 'jeetsukumaran/vim-buffergator'
@@ -115,6 +114,7 @@ Plug 'wincent/command-t', {
 "-------------------------------------------------------------------------------
 
 "Plug 'Yggdroot/indentLine'
+"Plug 'godlygeek/tabular'
 "Plug 'jamessan/vim-gnupg'
 "Plug 'junegunn/limelight.vim'
 "Plug 'junegunn/vader.vim'
@@ -707,12 +707,6 @@ let g:SuperTabDefaultCompletionType = '<C-n>'
 " used only when completeopt has 'longest' option
 let g:SuperTabLongestEnhanced = 1
 let g:SuperTabLongestHighlight = 1
-
-"-------------------------------------------------------------------------------
-" tabular
-"-------------------------------------------------------------------------------
-
-" see mappings for specific filetypes in ~/.vim/after/ftplugin/
 
 "-------------------------------------------------------------------------------
 " vim-anzu
