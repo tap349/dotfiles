@@ -206,7 +206,9 @@ set listchars=nbsp:·,tab:▸·,trail:·,precedes:«,extends:»
 " insert mode (`A`) highlighting is getting lost again -
 " that's why I've switched to regexpengine=0 (autodetection).
 set regexpengine=0
-set synmaxcol=200
+set synmaxcol=250
+" https://github.com/vim/vim/issues/2049
+set maxmempattern=2000
 
 "===============================================================================
 "
