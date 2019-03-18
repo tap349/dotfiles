@@ -33,7 +33,7 @@
       # If you want to enforce a style guide and need a more traditional linting
       # experience, you can change `strict` to `true` below:
       #
-      strict: false,
+      strict: true,
       #
       # If you want to use uncolored output by default, you can change `color`
       # to `false` below:
@@ -64,8 +64,10 @@
         # You can customize the priority of any check
         # Priority values are: `low, normal, high, higher`
         #
-        {Credo.Check.Design.AliasUsage, [priority: :low]},
-        {Credo.Check.Design.AliasUsage, [priority: :low, if_called_more_often_than: 1]},
+        {
+          Credo.Check.Design.AliasUsage,
+          [priority: :low, if_called_more_often_than: 10]
+        },
         # For some checks, you can also set other parameters
         #
         # If you don't want the `setup` and `test` macro calls in ExUnit tests
@@ -86,11 +88,17 @@
         {Credo.Check.Readability.AliasOrder, []},
         {Credo.Check.Readability.FunctionNames, []},
         {Credo.Check.Readability.LargeNumbers, []},
-        {Credo.Check.Readability.MaxLineLength, [priority: :low, max_length: 85]},
+        {Credo.Check.Readability.MaxLineLength,
+         [priority: :low, max_length: 85]},
         {Credo.Check.Readability.ModuleAttributeNames, []},
-        {Credo.Check.Readability.ModuleDoc, [priority: :low]},
+        # disable this check by ignoring all module names
+        {
+          Credo.Check.Readability.ModuleDoc,
+          [priority: :low, ignore_names: ~r/.*/]
+        },
         {Credo.Check.Readability.ModuleNames, []},
-        {Credo.Check.Readability.ParenthesesOnZeroArityDefs, [priority: :normal]},
+        {Credo.Check.Readability.ParenthesesOnZeroArityDefs,
+         [priority: :normal]},
         {Credo.Check.Readability.ParenthesesInCondition, []},
         {Credo.Check.Readability.PredicateFunctionNames, []},
         {Credo.Check.Readability.PreferImplicitTry, []},
@@ -116,7 +124,10 @@
         {Credo.Check.Refactor.NegatedConditionsWithElse, []},
         {Credo.Check.Refactor.Nesting, []},
         {Credo.Check.Refactor.PipeChainStart,
-         [excluded_argument_types: [:atom, :binary, :fn, :keyword], excluded_functions: []]},
+         [
+           excluded_argument_types: [:atom, :binary, :fn, :keyword],
+           excluded_functions: []
+         ]},
         {Credo.Check.Refactor.UnlessWithElse, []},
 
         #
