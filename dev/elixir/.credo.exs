@@ -89,7 +89,7 @@
         {Credo.Check.Readability.FunctionNames, []},
         {Credo.Check.Readability.LargeNumbers, []},
         {Credo.Check.Readability.MaxLineLength,
-         [priority: :low, max_length: 85]},
+         [priority: :low, max_length: 80]},
         {Credo.Check.Readability.ModuleAttributeNames, []},
         # disable this check by ignoring all module names
         {
@@ -123,13 +123,11 @@
         {Credo.Check.Refactor.NegatedConditionsInUnless, []},
         {Credo.Check.Refactor.NegatedConditionsWithElse, []},
         {Credo.Check.Refactor.Nesting, []},
-        # it doesn't play well with Witchcraft operators
-        {Credo.Check.Refactor.PipeChainStart, false},
-        #{Credo.Check.Refactor.PipeChainStart,
-        # [
-        #   excluded_argument_types: [:atom, :binary, :fn, :keyword],
-        #   excluded_functions: []
-        # ]},
+        {Credo.Check.Refactor.PipeChainStart,
+         [
+           excluded_argument_types: [:atom, :binary, :fn, :keyword],
+           excluded_functions: []
+         ]},
         {Credo.Check.Refactor.UnlessWithElse, []},
 
         #
