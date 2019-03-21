@@ -99,7 +99,7 @@ alias dot='cd ~/.dotfiles'
 alias dl='cd ~/Downloads'
 
 alias a='cd ~/dev/compleader/ansible'
-alias eva='cd ~/dev/compleader/eva'
+alias f='cd ~/dev/compleader/francesca'
 alias ic='cd ~/dev/compleader/iceperk'
 alias ica='cd ~/dev/compleader/iceperkapp'
 alias icb='cd ~/dev/compleader/iceperkbilling'
@@ -107,8 +107,8 @@ alias icbc='cd ~/dev/compleader/iceperkbillingchef'
 alias icc='cd ~/dev/compleader/iceperkchef'
 alias lain='cd ~/dev/compleader/lain'
 alias lucy='cd ~/dev/compleader/lucy'
-alias neko='cd ~/dev/morr/neko-achievements'
 alias nana='cd ~/dev/compleader/nana'
+alias neko='cd ~/dev/morr/neko-achievements'
 alias p='cd ~/dev/ingate/pumba'
 alias reika='cd ~/dev/compleader/reika'
 alias s='cd ~/dev/compleader/sith'
@@ -268,19 +268,6 @@ eval "$(rbenv init -)"
 # functions
 #
 #===============================================================================
-
-f() {
-  find . -type f \
-    \( -name "*.rb" -or -name "*.erb" -or -name "*.rss" -or -name "*.xml" -or -name "*.slim" -or -name "*.haml" -or \
-       -name "*.html" -or -name "*.js" -or -name "*.coffee" -or -name "*.ejs" -or -name "*.jst" -or -name "*.eco" -or \
-       -name "*.css" -or -name "*.scss" -or -name "*.sass" -or -name "*.yml" -or -name "*.vim" -or -name "*.rabl" -or \
-       -name "*.builder"  -or -name "*.txt" \) \
-    -exec grep -l "$*" {} \;
-}
-
-fvim() {
-  mvim `f "$*"`
-}
 
 gr() {
   fgrep --color --exclude-dir={log,public,tmp,.git} -Iir "$@" .
