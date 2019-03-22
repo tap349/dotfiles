@@ -347,6 +347,7 @@ let g:CommandTFileScanner = 'git'
 " even after flushing the cache (because they are not tracked by git)
 let g:CommandTGitIncludeUntracked = 1
 let g:CommandTHighlightColor = 'CommandTHighlightColor'
+let g:CommandTInputDebounce = 10
 let g:CommandTMatchWindowAtTop = 0
 let g:CommandTMatchWindowReverse = 0
 let g:CommandTMaxHeight = 15
