@@ -44,6 +44,10 @@ plugins=(ssh-agent gpg-agent zsh-autosuggestions zsh-syntax-highlighting)
 # https://github.com/robbyrussell/oh-my-zsh/tree/master/plugins/ssh-agent
 zstyle :omz:plugins:ssh-agent agent-forwarding on
 
+# https://github.com/zsh-users/zsh-autosuggestions
+ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
+ZSH_AUTOSUGGEST_USE_ASYNC=1
+
 #-----------------------------------------------------------------------------------------
 # source oh-my-zsh.sh after all configuration is done
 #-----------------------------------------------------------------------------------------
