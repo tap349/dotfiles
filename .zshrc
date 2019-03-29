@@ -50,7 +50,7 @@ zstyle :omz:plugins:ssh-agent agent-forwarding on
 
 ZSH=$HOME/.oh-my-zsh
 
-# don't forget to update manually:
+# NOTE: don't forget to update manually from time to time:
 # $ upgrade_oh_my_zsh
 DISABLE_AUTO_UPDATE=true
 
