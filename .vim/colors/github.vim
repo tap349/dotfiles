@@ -140,6 +140,7 @@ endif
 " }}}
 
 " {{{ Elixir
+"hi elixirPrivateFunctionDeclaration guifg=#114244 gui=bold
 hi elixirPrivateFunctionDeclaration guifg=#112244 gui=bold
 "hi elixirPrivateFunctionDeclaration guifg=#990000 gui=bold,italic cterm=bold
 "hi elixirPrivateFunctionDeclaration guifg=#DD5555 gui=bold
