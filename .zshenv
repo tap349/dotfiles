@@ -99,6 +99,7 @@ alias dot='cd ~/.dotfiles'
 alias dl='cd ~/Downloads'
 
 alias a='cd ~/dev/compleader/ansible'
+alias alice='cd ~/dev/compleader/alice'
 alias francesca='cd ~/dev/compleader/francesca'
 alias ic='cd ~/dev/compleader/iceperk'
 alias ica='cd ~/dev/compleader/iceperkapp'
