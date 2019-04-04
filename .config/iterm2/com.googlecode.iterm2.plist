@@ -6,6 +6,8 @@
 	<true/>
 	<key>AllowClipboardAccess</key>
 	<true/>
+	<key>AlternateMouseScroll</key>
+	<true/>
 	<key>AnimateDimming</key>
 	<false/>
 	<key>AppleAntiAliasingThreshold</key>
@@ -31524,13 +31526,13 @@
 	<key>NSWindow Frame SessionsPreferences</key>
 	<string>138 74 606 469 0 0 1280 777 </string>
 	<key>NSWindow Frame SharedPreferences</key>
-	<string>260 120 918 452 0 0 1280 777 </string>
+	<string>164 129 1016 512 0 0 1280 777 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
 	<string>0 0 1280 777 0 0 1280 777 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
 	<string>0 0 1280 777 0 0 1280 777 </string>
 	<key>NSWindow Frame iTerm Window 2</key>
-	<string>0 202 650 575 0 0 1280 777 </string>
+	<string>0 0 1280 777 0 0 1280 777 </string>
 	<key>NSWindow Frame iTerm Window 3</key>
 	<string>0 13 1274 764 0 0 1280 777 </string>
 	<key>NeverWarnAboutShortLivedSessions_9D3A6D63-A851-4F12-AFB4-40D98DE1829C</key>
@@ -31731,9 +31733,9 @@
 			<key>Blinking Cursor</key>
 			<false/>
 			<key>Blur</key>
-			<false/>
+			<true/>
 			<key>Blur Radius</key>
-			<real>13.629777908325195</real>
+			<real>6.179959152918781</real>
 			<key>Bold Color</key>
 			<dict>
 				<key>Blue Component</key>
@@ -31752,7 +31754,7 @@
 			<key>Command</key>
 			<string></string>
 			<key>Cursor Boost</key>
-			<real>0.027294303797468358</real>
+			<real>0.02312104430379747</real>
 			<key>Cursor Color</key>
 			<dict>
 				<key>Blue Component</key>
@@ -32129,7 +32131,7 @@
 			<key>Log Directory</key>
 			<string></string>
 			<key>Minimum Contrast</key>
-			<real>0.095777294303797472</real>
+			<real>0.18052808544303797</real>
 			<key>Mouse Reporting</key>
 			<false/>
 			<key>Name</key>
@@ -32140,6 +32142,8 @@
 			<true/>
 			<key>Normal Font</key>
 			<string>InconsolataLGC 14</string>
+			<key>Only The Default BG Color Uses Transparency</key>
+			<true/>
 			<key>Option Key Sends</key>
 			<integer>2</integer>
 			<key>Prompt Before Closing 2</key>
@@ -32304,7 +32308,7 @@
 			<key>Terminal Type</key>
 			<string>xterm-256color</string>
 			<key>Transparency</key>
-			<real>0.0</real>
+			<real>0.0021058058375634518</real>
 			<key>Triggers</key>
 			<array/>
 			<key>Underline Color</key>
