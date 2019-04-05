@@ -114,6 +114,7 @@ alias pumba='cd ~/dev/ingate/pumba'
 alias reika='cd ~/dev/compleader/reika'
 alias sith='cd ~/dev/compleader/sith'
 alias sithchef='cd ~/dev/compleader/sithchef'
+alias yancy='cd ~/dev/compleader/alice/apps/yancy'
 
 alias opr7='cd /Volumes/opr7'
 alias pi='cd /Volumes/pi'
