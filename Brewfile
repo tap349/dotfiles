@@ -316,6 +316,11 @@ cask 'whatsapp'
 #-------------------------------------------------------------------------------
 
 # - link to dropbox account and sync (Replace Local Data)
+# - top menu:
+#   - Edit:
+#     - Spelling and Grammar:
+#       - [ ] Automatic spell checking
+#       - [ ] Automatic spell correction
 # - app preferences:
 #   - General:
 #     - Quick Entry: <C-S-a>
