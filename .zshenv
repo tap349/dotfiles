@@ -100,6 +100,7 @@ alias dl='cd ~/Downloads'
 
 alias a='cd ~/dev/compleader/ansible'
 alias alice='cd ~/dev/compleader/alice'
+alias christine='cd ~/dev/compleader/alice/apps/christine'
 alias francesca='cd ~/dev/compleader/alice/apps/francesca'
 alias ic='cd ~/dev/compleader/iceperk'
 alias ica='cd ~/dev/compleader/iceperkapp'
