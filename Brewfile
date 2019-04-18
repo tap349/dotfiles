@@ -81,10 +81,7 @@ brew 'mpv'
 brew 'node'
 brew 'octave'
 brew 'p7zip'
-# https://github.com/Homebrew/brew/blob/master/docs/Versions.md
-# now postgresql@9.5 is run inside docker container
-#brew 'postgresql@9.5', restart_service: :changed
-# for psql
+brew 'pg_top'
 brew 'postgresql', restart_service: :changed
 # after installation:
 # - `sudo puma-dev -setup`
