@@ -506,7 +506,7 @@ function! MyLightlineFugitive()
   let l:branch = fugitive#head()
   let l:fname = expand('%')
 
-  if strwidth(l:branch . l:fname) > 0.6 * winwidth(0)
+  if strwidth(l:branch . l:fname) > 0.8 * winwidth(0)
     let l:branch = ''
   elseif l:branch != ''
     let l:branch = '⎇ ' . l:branch
