@@ -428,8 +428,8 @@ let g:lightline.mode_map = {
       \ }
 
 " https://github.com/itchyny/lightline.vim/issues/203
-" group linter components with filetype to avoid extra left
-" arrow when linter components are hidden in plugin window
+" group linter components with filetype to avoid extra left arrow when
+" linter components are hidden in plugin window
 let g:lightline.active = {
       \   'left': [['mode'], ['fugitive'], ['filename']],
       \   'right': [['lineinfo'], ['filetype', 'linter_warnings', 'linter_errors', 'linter_ok']]
@@ -441,7 +441,7 @@ let g:lightline.inactive = {
 
 " tabline
 
-let g:lightline.tabline = { 'left': [['tabs']], 'right': [] }
+let g:lightline.tabline = { 'left': [['tabs']], 'right': [['pwd']] }
 let g:lightline.tabline_separator = { 'left': '', 'right': '' }
 let g:lightline.tabline_subseparator = { 'left': '', 'right': '' }
 let g:lightline.tab = {
@@ -452,7 +452,8 @@ let g:lightline.tab = {
 " components
 
 let g:lightline.component = {
-      \   'fileencodingformat': '%{&fenc !=# "" ? &fenc : &enc}[%{&ff}]'
+      \   'fileencodingformat': '%{&fenc !=# "" ? &fenc : &enc}[%{&ff}]',
+      \   'pwd': '%{fnamemodify(getcwd(), ":t")}'
       \ }
 " function components are updated on every cursor motion
 let g:lightline.component_function = {
@@ -462,8 +463,8 @@ let g:lightline.component_function = {
       \   'filetype': 'MyLightlineFiletype',
       \   'lineinfo': 'MyLightlineLineinfo'
       \ }
-" expanding components have priority over function components
-" (used for warning and critical components)
+" expanding components have priority over function components (used for
+" warning and critical components)
 "
 " expanding components are updated only when lightline#update() is called
 " (github.com/itchyny/lightline.vim/blob/master/doc/lightline.txt#L415)
@@ -472,15 +473,15 @@ let g:lightline.component_expand = {
       \   'linter_errors': 'MyLightlineLinterErrors',
       \   'linter_ok': 'MyLightlineLinterOk'
       \ }
-" this configuration applies to component_expand only
-" values are color names from lightline colorscheme
+" this configuration applies to component_expand only, values are color
+" names from lightline colorscheme
 let g:lightline.component_type = {
       \   'linter_warnings': 'warning',
       \   'linter_errors': 'error',
       \   'linter_ok': 'ok'
       \ }
 
-" functions for components
+" options for components:
 "
 " &enc = &encoding
 " &fenc = &fileencoding
@@ -536,19 +537,19 @@ function! MyLightlineFilename()
   let l:fname = <SID>IsNotebookWindow()
         \ ? expand('%:h:t') . '/' . expand('%:t')
         \ : expand('%')
-  return ('' != LightlineReadonly() ? LightlineReadonly() . ' ' : '') .
-        \ ('' != l:fname ? l:fname : '[No Name]') .
-        \ ('' != LightlineModified() ? ' ' . LightlineModified() : '')
+  return (MyLightlineReadonly() != '' ? MyLightlineReadonly() . ' ' : '') .
+        \ (l:fname != '' ? l:fname : '[No Name]') .
+        \ (MyLightlineModified() != '' ? ' ' . MyLightlineModified() : '')
 endfunction
 
-function! LightlineReadonly()
+function! MyLightlineReadonly()
   "if <SID>IsHelp() | return '' | end
   if &ro | return '⭤' | end
 
   return ''
 endfunction
 
-function! LightlineModified()
+function! MyLightlineModified()
   return &ma && &mod ? '+' : ''
 endfunction
 
