@@ -56,11 +56,12 @@ cnoremap <C-g> <C-c>
 "===============================================================================
 
 "-------------------------------------------------------------------------------
+" https://stackoverflow.com/a/24463362/3632318
+"
 " copy current file path to clipboard
-" (relative to PWD or absolute path if current file is not in PWD)
+" (path relative to PWD or absolute path if current file is not in PWD)
 "-------------------------------------------------------------------------------
 
-" https://stackoverflow.com/a/24463362/3632318
 nnoremap <silent> <Leader>y :let @*=fnamemodify(expand('%'), ':.')<CR>
 
 "-------------------------------------------------------------------------------
