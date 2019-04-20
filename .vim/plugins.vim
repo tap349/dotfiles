@@ -534,9 +534,10 @@ function! MyLightlineFilename()
   if <SID>IsPluginWindow() | return '' | end
   if <SID>IsQuickfix() | return w:quickfix_title | end
 
+  " https://stackoverflow.com/a/24463362/3632318
   let l:fname = <SID>IsNotebookWindow()
         \ ? expand('%:h:t') . '/' . expand('%:t')
-        \ : expand('%')
+        \ : fnamemodify(expand('%'), ':~:.')
   return (MyLightlineReadonly() != '' ? MyLightlineReadonly() . ' ' : '') .
         \ (l:fname != '' ? l:fname : '[No Name]') .
         \ (MyLightlineModified() != '' ? ' ' . MyLightlineModified() : '')

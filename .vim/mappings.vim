@@ -56,12 +56,12 @@ cnoremap <C-g> <C-c>
 "===============================================================================
 
 "-------------------------------------------------------------------------------
-" copy current file name to clipboard
-" (relative to PWD or absolute path if file is not in current dir)
+" copy current file path to clipboard
+" (relative to PWD or absolute path if current file is not in PWD)
 "-------------------------------------------------------------------------------
 
-" :help expand
-nnoremap <silent> <Leader>y :let @*=expand('%')<CR>
+" https://stackoverflow.com/a/24463362/3632318
+nnoremap <silent> <Leader>y :let @*=fnamemodify(expand('%'), ':.')<CR>
 
 "-------------------------------------------------------------------------------
 " edit without leaving normal mode
