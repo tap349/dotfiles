@@ -12,13 +12,15 @@ let s:atoll = '#0B6085'
 let s:blue = '#0512FB'
 let s:ecro_white = '#F4F4E6'
 let s:ghost = '#C5CDD8'
+let s:jet_stream = '#C1D7D7'
 let s:link_water = '#DAECF5'
 let s:mine_shaft = '#222222'
+let s:pale_leaf = '#C8D7C1'
 let s:portafino = '#FFFEB3'
 let s:reef = '#B1FEB2'
+let s:seashell = '#F1F1F1'
 let s:teal_blue = '#054066'
 let s:tundora = '#444444'
-let s:seashell = '#F1F1F1'
 
 let s:p = {'normal': {}, 'inactive': {}, 'insert': {}, 'replace': {}, 'visual': {}, 'tabline': {}}
 
@@ -46,6 +48,8 @@ let s:p.tabline.left = [[s:tundora, s:athens_gray]]
 let s:p.tabline.tabsel = [[s:mine_shaft, s:ghost]]
 let s:p.tabline.middle = copy(s:p.tabline.left)
 "let s:p.tabline.right = [[s:tundora, s:seashell]]
-let s:p.tabline.right = [[s:tundora, s:ecro_white]]
+"let s:p.tabline.right = [[s:tundora, s:ecro_white]]
+let s:p.tabline.right = [[s:tundora, s:jet_stream]]
+"let s:p.tabline.right = [[s:tundora, s:pale_leaf]]
 
 let g:lightline#colorscheme#lucius#palette = lightline#colorscheme#fill(s:p)
