@@ -451,6 +451,7 @@ let g:lightline.tab = {
 
 " components
 
+" https://stackoverflow.com/a/24463362/3632318
 let g:lightline.component = {
       \   'fileencodingformat': '%{&fenc !=# "" ? &fenc : &enc}[%{&ff}]',
       \   'pwd': '%{fnamemodify(getcwd(), ":t")}'
