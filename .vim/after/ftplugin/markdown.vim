@@ -3,9 +3,9 @@
 setlocal formatoptions+=t
 setlocal textwidth=79
 
-iabbrev -> →
+iabbrev <buffer> -> →
 " http://vim.wikia.com/wiki/Multi-line_abbreviations
-iabbrev dl 
+iabbrev <buffer> dl 
       \<dl>
       \<CR>  <dt></dt>
       \<CR><dd></dd>
