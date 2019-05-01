@@ -469,6 +469,9 @@ regex/\.([mM][24][vV])$
 regex/\.([rR][mM])$
 	Include=video
 
+regex/\.([wW][eE][bB][mM])$
+	Include=video
+
 include/video
 	Open=mpv %f >/dev/null 2>&1 &
 
