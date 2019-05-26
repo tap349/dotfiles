@@ -365,6 +365,7 @@ mas 'Evernote', id: 406056744
 #     - [ ] Show icon in Dock
 mas 'Flexiglass', id: 426410278
 mas 'FTP Server', id: 987045856
+mas 'iMovie', id: 408981434
 #mas 'LINE', id: 539883307
 #mas 'Magic Go', id: 1060433592
 mas 'Marked 2', id: 890031187
