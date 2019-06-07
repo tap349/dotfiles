@@ -196,11 +196,13 @@ alias rs='rails server'
 # React Native
 #-------------------------------------------------------------------------------
 
+# message from `npm start`:
+#
 # 1. Clear watchman watches: `watchman watch-del-all`.
 # 2. Delete the `node_modules` folder: `rm -rf node_modules && npm install`.
 # 3. Reset Metro Bundler cache: `rm -rf $TMPDIR/react-*` or `npm start -- --reset-cache`.
 # 4. Remove haste cache: `rm -rf $TMPDIR/haste-map-react-native-packager-*`.
-alias npm_reset='watchman watch-del-all && rm -rf "$TMPDIR/react-*" && rm -rf node_modules/ && npm cache clean && npm install'
+alias npm_reset='watchman watch-del-all && rm -rf "$TMPDIR/react-*" && rm -rf node_modules && npm cache clean && npm install'
 
 alias ios='react-native run-ios'
 alias ios4="react-native run-ios --simulator 'iPhone 4s'"
