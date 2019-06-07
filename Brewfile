@@ -216,6 +216,7 @@ cask 'genymotion'
 #       - Purple Box:
 #         - [ ] Show the purple box in the corner of my browser
 #     + Google Docs Offline (installed by default)
+#     + Grammarly for Chrome
 #     - GoUniverse (Hide in Chrome Menu)
 #     - JSON Formatter (Hide in Chrome Menu)
 #     + JSON Viewer (Hide in Chrome Menu)
