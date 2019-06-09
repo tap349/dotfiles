@@ -202,7 +202,14 @@ alias rs='rails server'
 # 2. Delete the `node_modules` folder: `rm -rf node_modules && npm install`.
 # 3. Reset Metro Bundler cache: `rm -rf $TMPDIR/react-*` or `npm start -- --reset-cache`.
 # 4. Remove haste cache: `rm -rf $TMPDIR/haste-map-react-native-packager-*`.
-alias npm_reset='watchman watch-del-all && rm -rf "$TMPDIR/react-*" && rm -rf node_modules && npm cache clean && npm install'
+#
+# $ npm cache clean
+# npm ERR! As of npm@5, the npm cache self-heals from corruption issues and
+# data extracted from the cache is guaranteed to be valid. If you want to make
+# sure everything is consistent, use 'npm cache verify' instead.
+#
+# => no need to run `npm cache clean`
+alias npm_reset='watchman watch-del-all && rm -rf "$TMPDIR/react-*" && rm -rf node_modules && npm install'
 
 alias ios='react-native run-ios'
 alias ios4="react-native run-ios --simulator 'iPhone 4s'"
