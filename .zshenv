@@ -196,6 +196,8 @@ alias rs='rails server'
 # React Native
 #-------------------------------------------------------------------------------
 
+alias rn='react-native'
+
 alias npm_reset='\
   watchman watch-del-all &&
   rm -rf "$TMPDIR/react-native-packager-cache-*" &&

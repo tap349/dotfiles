@@ -894,9 +894,8 @@ let g:jsx_ext_required = 0
 "let g:vim_markdown_folding_disabled = 0
 "let g:vim_markdown_folding_level = 1
 let g:vim_markdown_folding_style_pythonic = 1
-" basically disables automatic folding when file is opened
-" (it's set to 1 by default - that is enabled for headers)
-let g:vim_markdown_folding_level = 6
+" set to 1 by default (enabled for headers)
+let g:vim_markdown_folding_level = 3
 
 let g:vim_markdown_frontmatter = 1
 
