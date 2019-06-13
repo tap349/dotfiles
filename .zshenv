@@ -208,6 +208,16 @@ alias npm_reset='\
   npm install
   '
 
+alias yarn_reset='\
+  watchman watch-del-all &&
+  rm -rf "$TMPDIR/react-native-packager-cache-*" &&
+  rm -rf "$TMPDIR/metro-bundler-cache-*" &&
+  rm -rf "$TMPDIR/haste-map-react-native-packager-*" &&
+  rm -rf node_modules &&
+  yarn cache clean &&
+  yarn install
+  '
+
 alias ios='react-native run-ios'
 alias ios4="react-native run-ios --simulator 'iPhone 4s'"
 alias ios5="react-native run-ios --simulator 'iPhone 5'"
