@@ -45,6 +45,7 @@ brew 'djvu2pdf'
 brew 'elasticsearch', restart_service: :changed
 # install via asdf
 #brew 'elixir'
+brew 'fish'
 # for ~/scripts/fontpatcher
 brew 'fontforge'
 # for shikimori
