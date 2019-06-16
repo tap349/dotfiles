@@ -54,6 +54,8 @@ ZSH_AUTOSUGGEST_USE_ASYNC=1
 
 ZSH=$HOME/.oh-my-zsh
 
+# https://github.com/robbyrussell/oh-my-zsh/blob/master/README.md#getting-updates
+#
 # NOTE: don't forget to update manually from time to time:
 # $ upgrade_oh_my_zsh
 DISABLE_AUTO_UPDATE=true
