@@ -39,7 +39,8 @@ ZSH_THEME='tap-af-magic'
 
 # https://github.com/rails/spring/tree/v0.0.9#usage
 UNBUNDLED_COMMANDS=(spring)
-plugins=(ssh-agent gpg-agent zsh-autosuggestions zsh-syntax-highlighting)
+# disabled plugins: (zsh-syntax-highlighting)
+plugins=(ssh-agent gpg-agent zsh-autosuggestions)
 
 # https://github.com/robbyrussell/oh-my-zsh/tree/master/plugins/ssh-agent
 zstyle :omz:plugins:ssh-agent agent-forwarding on
@@ -55,10 +56,11 @@ ZSH_AUTOSUGGEST_USE_ASYNC=1
 ZSH=$HOME/.oh-my-zsh
 
 # https://github.com/robbyrussell/oh-my-zsh/blob/master/README.md#getting-updates
-#
-# NOTE: don't forget to update manually from time to time:
-# $ upgrade_oh_my_zsh
+# don't forget to run `upgrade_oh_my_zsh` manually
 DISABLE_AUTO_UPDATE=true
+
+# to speed up loading
+ZSH_DISABLE_COMPFIX=true
 
 source $ZSH/oh-my-zsh.sh
 
