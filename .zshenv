@@ -1,3 +1,15 @@
+#*******************************************************************************
+#
+# http://unix.stackexchange.com/a/71258
+#
+# environment variables, aliases and functions are moved to ~/.zshenv since
+# it's loaded for all shells (not only interactive ones) - say, it allows to
+# execute zsh functions in vim shell
+#
+# rbenv initialization is moved to ~/.zshenv as well
+#
+#*******************************************************************************
+
 # don't use /etc/zprofile - it might reorder directories in PATH:
 # https://mattprice.me/2015/zsh-path-issues-osx-el-capitan/
 setopt no_global_rcs
@@ -5,11 +17,9 @@ setopt no_global_rcs
 setopt extendedglob
 
 #===============================================================================
-#
 # environment variables
 #
 # export variable if you want programs run from Zsh to see it
-#
 #===============================================================================
 
 # removes duplicate entries from PATH
@@ -39,12 +49,13 @@ export GPG_TTY=$(tty)
 CDPATH=~:~/dev
 TERM='xterm-256color'
 
-HISTSIZE=100000
-HISTFILESIZE=200000
-
+# history options and variables are overwritten by zprezto history module
 setopt HIST_IGNORE_DUPS
-# don't save command in history if it starts with space
 setopt HIST_IGNORE_SPACE
+
+HISTFILE=~/.zsh_history
+HISTFILESIZE=200000
+HISTSIZE=100000
 
 #-------------------------------------------------------------------------------
 # Elixir
@@ -83,14 +94,15 @@ path=($path $ANDROID_HOME/tools/bin)
 path=($path $ANDROID_HOME/platform-tools)
 
 #===============================================================================
-#
 # aliases
 #
+# alias definitions are recursive, the order in which they are defined doesn't
+# matter - they can still use each other (so called hoisting in JavaScript)
 #===============================================================================
 
-#===============================================================================
+#-------------------------------------------------------------------------------
 # cd
-#===============================================================================
+#-------------------------------------------------------------------------------
 
 alias blog='cd ~/blog'
 alias dot='cd ~/.dotfiles'
@@ -120,13 +132,12 @@ alias yancy='cd ~/dev/compleader/alice/apps/yancy'
 alias opr7='cd /Volumes/opr7'
 alias pi='cd /Volumes/pi'
 
-#===============================================================================
+#-------------------------------------------------------------------------------
 # system
-#===============================================================================
+#-------------------------------------------------------------------------------
 
 alias df='df -h'
-# define alias in ~/.zshrc
-#alias ll='ls -alp'
+alias ll='ls -alp'
 alias m='mvim'
 alias mail='less +G /var/mail/tap'
 alias mcu='mc -u'
@@ -136,12 +147,9 @@ alias mcu='mc -u'
 alias q='open -Fn (#i)*.(jpeg|jpg|png)(Om)'
 alias t='EDITOR=vim task'
 
-#===============================================================================
-# dev
-#
-# alias definitions are recursive, the order in which they are defined doesn't
-# matter - they can still use each other (so called hoisting in JavaScript)
-#===============================================================================
+#-------------------------------------------------------------------------------
+# dev (general)
+#-------------------------------------------------------------------------------
 
 alias h='honcho start'
 
@@ -185,12 +193,6 @@ alias r='rails'
 alias rc='rails console'
 alias rd='rails dbconsole'
 alias rs='rails server'
-
-# test database is managed automatically in Rails 5:
-#
-# $ rails db:create
-# Created database 'iceperk_development'
-# Created database 'iceperk_test'
 
 #-------------------------------------------------------------------------------
 # React Native
@@ -263,28 +265,15 @@ alias shikisync=sync_shikimori_images
 # .ssh/authorized_keys on server) SSH fallbacks to password-based authentication
 
 #===============================================================================
-#
-# asdf initialization
-#
-# it seems completions are not available for zsh yet:
-# https://github.com/asdf-vm/asdf/tree/master/completions
-#
+# initialization
 #===============================================================================
 
 source $HOME/.asdf/asdf.sh
-
-#===============================================================================
-#
-# rbenv initialization (invoke after setting PATH)
-#
-#===============================================================================
-
+# invoke after setting PATH
 eval "$(rbenv init -)"
 
 #===============================================================================
-#
 # functions
-#
 #===============================================================================
 
 gr() {
