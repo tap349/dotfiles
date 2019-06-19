@@ -25,7 +25,7 @@ setopt extendedglob
 # removes duplicate entries from PATH
 typeset -U path
 
-# NOTE: /usr/local/bin/ contains different symlinks added by brew
+# /usr/local/bin/ contains different symlinks added by brew
 path=(~/scripts /usr/local/bin $path)
 # add bin/ directory of old version of postgresql instead of
 # creating symlinks for each binary manually
@@ -49,13 +49,12 @@ export GPG_TTY=$(tty)
 CDPATH=~:~/dev
 TERM='xterm-256color'
 
-# history options and variables are overwritten by zprezto history module
-setopt HIST_IGNORE_DUPS
-setopt HIST_IGNORE_SPACE
-
 HISTFILE=~/.zsh_history
 HISTFILESIZE=200000
 HISTSIZE=100000
+
+setopt HIST_IGNORE_DUPS
+setopt HIST_IGNORE_SPACE
 
 #-------------------------------------------------------------------------------
 # Elixir

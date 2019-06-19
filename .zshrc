@@ -9,5 +9,3 @@
 
 # https://stackoverflow.com/a/33456330/3632318
 unset zle_bracketed_paste
-
-source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
