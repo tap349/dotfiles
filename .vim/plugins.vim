@@ -73,6 +73,8 @@ Plug 'tpope/vim-rake' | Plug 'tpope/vim-projectionist'
 " syntax plugins for other file types
 "-------------------------------------------------------------------------------
 
+" this fork fixes indentation of switch statement
+Plug 'kmarius/vim-fish'
 Plug 'pearofducks/ansible-vim'
 Plug 'plasticboy/vim-markdown'
 
