@@ -37,6 +37,7 @@
 [core]
   autocrlf = input
   editor = mvim -f --nomru
+  pager = less -+X -+F
 
 [push]
   default = current
