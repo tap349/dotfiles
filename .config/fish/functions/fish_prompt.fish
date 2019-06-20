@@ -1,16 +1,8 @@
 function fish_prompt --description 'Write out the prompt'
   #-----------------------------------------------------------------------------
-  # PWD
-  #-----------------------------------------------------------------------------
-
-  set_color 1580C6
-  echo -n (prompt_pwd)
-  echo -n (my_prompt_pwd)
-  set_color normal
-
-  #-----------------------------------------------------------------------------
-  # Git
+  # fish_vcs_prompt
   #
+  # https://github.com/fish-shell/fish-shell/blob/master/sphinx_doc_src/cmds/fish_vcs_prompt.rst
   # https://github.com/fish-shell/fish-shell/blob/master/sphinx_doc_src/cmds/fish_git_prompt.rst
   # https://mariuszs.github.io/blog/2013/informative_git_prompt.html
   #-----------------------------------------------------------------------------
@@ -99,6 +91,15 @@ function fish_prompt --description 'Write out the prompt'
       set color_cwd $fish_color_cwd
       set suffix '$'
   end
+
+  #-----------------------------------------------------------------------------
+  # PWD
+  #-----------------------------------------------------------------------------
+
+  set_color 1580C6
+  echo -n (prompt_pwd)
+  echo -n (my_prompt_pwd)
+  set_color normal
 
   #-----------------------------------------------------------------------------
   # final prompt

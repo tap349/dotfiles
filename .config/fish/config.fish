@@ -6,10 +6,11 @@
 # system
 #-------------------------------------------------------------------------------
 
+set -x EDITOR mvim
 set -x LANG en_US.UTF-8
 set -x LC_ALL en_US.UTF-8
-set -x EDITOR mvim
 set -x PAGER less
+set -x PATH $PATH ~/bin
 
 #-------------------------------------------------------------------------------
 # Elixir
@@ -27,16 +28,8 @@ set -x ERL_AFLAGS '-kernel shell_history enabled'
 # https://github.com/artsy/emission/blob/45417ca425f2cba7d2da21902ef8ff1cd093a024/package.json#L28
 set -x REACT_DEBUGGER "open -g 'rndebugger://set-debugger-loc?port=8081' --args"
 
-#-------------------------------------------------------------------------------
-# iOS
-#-------------------------------------------------------------------------------
-
 # https://github.com/bradmartin/nativescript-videoplayer/issues/76
 set -x SIMCTL_CHILD_OS_ACTIVITY_MODE 'disable'
-
-#-------------------------------------------------------------------------------
-# Android
-#-------------------------------------------------------------------------------
 
 # required by `react-native-cli` to be set
 set -x ANDROID_HOME /usr/local/share/android-sdk
@@ -235,6 +228,17 @@ end
 set fish_color_command 27AD2F
 set fish_color_error FF93B2
 set fish_color_param normal
+
+#===============================================================================
+# bindings
+#===============================================================================
+
+#-------------------------------------------------------------------------------
+# re_search
+#-------------------------------------------------------------------------------
+
+# re_search process remains in memory after exit
+#bind \cr re_search
 
 #===============================================================================
 # MacVim defaults
