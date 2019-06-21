@@ -8,6 +8,7 @@ files=(
   .config/mc
   .config/mpv
   .config/yarn
+  .config/zsh
   .gnupg/gpg.conf
   .local/share/mc/skins
   .ssh/config
@@ -22,10 +23,7 @@ files=(
   .pryrc
   .surfingkeys.js
   .taskrc
-  .zlogin
-  .zprofile
   .zshenv
-  .zshrc
 )
 
 # http://misc.flogisoft.com/bash/tip_colors_and_formatting

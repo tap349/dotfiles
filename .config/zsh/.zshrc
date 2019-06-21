@@ -1,0 +1,58 @@
+#*******************************************************************************
+#
+# http://zsh.sourceforge.net/Intro/intro_3.html
+#
+#*******************************************************************************
+
+#-------------------------------------------------------------------------------
+# compinit
+#-------------------------------------------------------------------------------
+
+autoload -Uz compinit
+
+# https://github.com/sorin-ionescu/prezto/blob/master/modules/completion/init.zsh#L34
+# https://gist.github.com/ctechols/ca1035271ad134841284
+if [[ -n $ZDATADIR/.zcompdump(#qN.mh-20) ]]; then
+  # > https://github.com/zsh-users/zsh/blob/master/Completion/compinit#L63
+  # >
+  # > The -C flag bypasses both the check for rebuilding the dump file and the
+  # > usual call to compaudit; the -i flag causes insecure directories found by
+  # > compaudit to be ignored
+  #
+  # don't rebuild .zcompdump if it's modified less than 20 hours ago
+  compinit -i -C
+else
+  # > http://zsh.sourceforge.net/Doc/Release/Completion-System.html#Use-of-compinit
+  # >
+  # > The dumped file is .zcompdump in the same directory as the startup files
+  # > (i.e. $ZDOTDIR or $HOME); alternatively, an explicit file name can be given
+  # > by ‘compinit -d dumpfile’.
+  compinit -i -d $ZDATADIR/.zcompdump
+fi
+
+# menu-style autocompletion
+zstyle ':completion:*' menu select
+
+#-------------------------------------------------------------------------------
+# ZLE configuration
+#
+# > http://zsh.sourceforge.net/Guide/zshguide04.html
+# >
+# > Hence you configure it by sticking commands in your .zshrc - as it's only
+# > useful for an interactive shell, only /etc/zshrc and .zshrc make sense for
+# > this purpose
+#-------------------------------------------------------------------------------
+
+# https://stackoverflow.com/a/33456330/3632318
+unset zle_bracketed_paste
+
+#-------------------------------------------------------------------------------
+# source other files
+#-------------------------------------------------------------------------------
+
+# asdf is used for both Elixir and Ruby
+source $HOME/.asdf/asdf.sh
+
+source $ZDOTDIR/bindings.zsh
+# source plugins.zsh at the end of .zshrc
+source $ZDOTDIR/plugins.zsh

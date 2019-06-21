@@ -88,7 +88,7 @@ nnoremap <Backspace> za
 "-------------------------------------------------------------------------------
 
 nnoremap <Leader>ov :tabnew<CR>:edit $MYVIMRC<CR>
-nnoremap <Leader>oz :tabnew<CR>:edit ~/.zshenv<CR>
+nnoremap <Leader>oz :tabnew<CR>:edit $ZDOTDIR/.zshenv<CR>
 
 "-------------------------------------------------------------------------------
 " fullscreen

@@ -1,0 +1,31 @@
+[cmdline]
+0=
+
+[Dir Hist New Right Panel]
+0=/Users/tap/dev/compleader/alice
+1=/Users/tap
+2=/Users/tap/.config/mc/mcedit
+3=/Users/tap/.config/mc
+4=/Users/tap/.config/fish
+5=/Users/tap/.config/configstore
+6=/Users/tap/.config
+
+[Dir Hist New Left Panel]
+0=/Users/tap/dev/compleader/alice
+1=/Users/tap
+
+[input-def]
+0=*
+
+[input-1]
+0=/Users/tap/.zshenv
+1=/Users/tap/.config/zsh
+
+[input-2]
+0=/Users/tap/.dotfiles/.zshenv
+1=/Users/tap/.dotfiles/.config/zsh
+
+[input2]
+0=/Users/tap/.dotfiles/
+1=/Users/tap/.dotfiles/.config/
+2=/Users/tap/.local/share/zsh/
