@@ -59,15 +59,21 @@ export LC_ALL=en_US.UTF-8
 
 #-------------------------------------------------------------------------------
 # zsh history
+#
+# https://stackoverflow.com/a/19454838/3632318
 #-------------------------------------------------------------------------------
 
+# http://zsh.sourceforge.net/Doc/Release/Options.html
 setopt HIST_IGNORE_DUPS
 setopt HIST_IGNORE_SPACE
+setopt INC_APPEND_HISTORY_TIME
 
-# https://stackoverflow.com/a/19454838/3632318
 HISTFILE=$ZDATADIR/.zsh_history
 HISTFILESIZE=10000
 HISTSIZE=10000
+# http://zsh.sourceforge.net/Guide/zshguide02.html
+# history is not persisted if SAVEHIST is not set
+SAVEHIST=10000
 
 #-------------------------------------------------------------------------------
 # homebrew
