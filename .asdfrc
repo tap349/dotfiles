@@ -1,0 +1,2 @@
+# https://github.com/asdf-vm/asdf-ruby#ruby-version-file
+legacy_version_file = yes
