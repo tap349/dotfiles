@@ -34,6 +34,21 @@ typeset -U path
 path=(/usr/local/bin $path)
 
 #-------------------------------------------------------------------------------
+# prompt
+#-------------------------------------------------------------------------------
+
+# http://zsh.sourceforge.net/Doc/Release/Expansion.html#Command-Substitution
+# for command substitution to work in prompt
+setopt prompt_subst
+
+# https://wiki.archlinux.org/index.php/Zsh#Colors
+PS1='\
+%F{032}%~ \
+$(git_prompt)\
+%F{032}%(!.#.») \
+%F{reset}'
+
+#-------------------------------------------------------------------------------
 # locale
 #-------------------------------------------------------------------------------
 

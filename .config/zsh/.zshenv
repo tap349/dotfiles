@@ -15,7 +15,7 @@
 # source other files
 #-------------------------------------------------------------------------------
 
-# source functions.zsh before aliases.zsh since aliases might use functions
-source $ZDOTDIR/env.zsh
+# source functions.zsh first because functions might be used in other files
 source $ZDOTDIR/functions.zsh
+source $ZDOTDIR/env.zsh
 source $ZDOTDIR/aliases.zsh
