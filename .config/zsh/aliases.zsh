@@ -79,7 +79,6 @@ alias gd='git diff'
 alias gdc='git diff --cached'
 alias gl='git_log'
 alias gp='git push'
-alias gpf='git push --force'
 alias gs='git status'
 
 #-------------------------------------------------------------------------------
