@@ -28,8 +28,10 @@
   cmd = mvim -d -f --nomru $LOCAL $REMOTE
 
 [alias]
-  d = difftool
   amend = commit --amend --no-edit
+  d = difftool
+  # https://github.com/aanand/git-up
+  up = pull --rebase --autostash
 
 [git-up "bundler"]
   check = true
