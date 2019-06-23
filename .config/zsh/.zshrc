@@ -51,7 +51,7 @@ unset zle_bracketed_paste
 #-------------------------------------------------------------------------------
 
 # asdf is used for both Elixir and Ruby
-source $HOME/.asdf/asdf.sh
+source ~/.asdf/asdf.sh
 
 source $ZDOTDIR/bindings.zsh
 # source plugins.zsh at the end of .zshrc
