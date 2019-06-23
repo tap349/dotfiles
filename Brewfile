@@ -98,7 +98,8 @@ brew 'puma-dev'
 #brew 'pow'
 # http://tap349.github.io/rbenv/ruby/chef/capistrano/2016/03/30/rbenv
 brew 'rabbitmq'
-brew 'rbenv'
+# asdf is used instead now
+#brew 'rbenv'
 brew 'redis', restart_service: :changed
 brew 'ripgrep'
 brew 'ssh-copy-id'
