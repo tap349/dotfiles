@@ -33,6 +33,8 @@ brew 'ansible'
 # after installation:
 # - `aws configure`
 brew 'awscli'
+# cat on steroids
+brew 'bat'
 brew 'bfg'
 brew 'ccze'
 # for cpsm vim plugin
