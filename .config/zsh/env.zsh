@@ -43,12 +43,11 @@ setopt prompt_subst
 
 # https://wiki.archlinux.org/index.php/Zsh#Colors
 PS1='
-%F{032}%K{#1E2E40}\
-%~ \
+%K{#1F2F40}\
+%F{032} %~ %F{reset}\
 $(git_prompt)\
-%F{032}\
-%(!.#.») \
-%F{reset}%K{reset} '
+%K{reset}\
+%F{032} %(!.#.») %F{reset}'
 
 #-------------------------------------------------------------------------------
 # locale
