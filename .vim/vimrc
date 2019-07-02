@@ -309,8 +309,8 @@ set guioptions+=c
 set guioptions-=rL
 
 " http://stackoverflow.com/a/39816241/3632318
-"set guicursor+=a:blinkon600-blinkoff400
-set guicursor+=a:blinkon0
+set guicursor+=a:blinkon600-blinkoff400
+"set guicursor+=a:blinkon0
 
 "-------------------------------------------------------------------------------
 " indicators
