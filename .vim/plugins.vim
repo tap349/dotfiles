@@ -106,7 +106,7 @@ Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'wincent/command-t', {
-      \   'do': 'cd ruby/command-t/ext/command-t && RBENV_VERSION=system ruby extconf.rb && make'
+      \   'do': 'cd ruby/command-t/ext/command-t && ASDF_RUBY_VERSION=system ruby extconf.rb && make'
       \ }
 
 "-------------------------------------------------------------------------------
