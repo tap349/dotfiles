@@ -1,4 +1,3 @@
-# https://eslint.org/docs/rules/
 # https://gist.github.com/yyscamper/781d8e0b3c184a77d5af15a3f623dddb
 env:
   browser: true
@@ -27,19 +26,22 @@ plugins:
 # if rule has no options, both forms are allowed:
 # `name: enabled` and `name: [enabled]`
 rules:
-  # https://eslint.org/docs/rules/arrow-parens.html#further-reading
+  #-------------------------------------------------------------------------
+  # https://eslint.org/docs/rules/
+  #-------------------------------------------------------------------------
   arrow-parens:
     - error
     - as-needed
-    - requireForBlockBody: true
+    - requireForBlockBody: false
   # [ ], default: "never"
   comma-dangle:
     - warn
     - only-multiline
   # [ ], default: 4
-  indent:
-    - error
-    - 2
+  # eslint and prettier indentation rules might differ for nested blocks
+  #indent:
+  #  - error
+  #  - 2
   # [ ], default: "before": true, "after": true
   keyword-spacing:
     - error
@@ -76,19 +78,20 @@ rules:
   # [ ], default: "always"
   space-before-function-paren:
     - error
+    - never
+  #-------------------------------------------------------------------------
+  # https://github.com/yannickcr/eslint-plugin-react/tree/master/docs/rules
+  #-------------------------------------------------------------------------
+  react/jsx-boolean-value:
+    - error
     - always
+  react/jsx-closing-bracket-location: error
   react/jsx-handler-names:
     - warn
     - eventHandlerPrefix: _handle
   react/jsx-max-props-per-line:
     - warn
     - when: multiline
-  react/jsx-uses-react: error
-  react/jsx-uses-vars: error
-  react/jsx-boolean-value:
-    - error
-    - never
-  react/no-string-refs: error
   react/jsx-wrap-multilines:
     - error
     - declaration: parens-new-line
@@ -98,12 +101,14 @@ rules:
       condition: parens-new-line
       logical: ignore
       prop: ignore
+  react/jsx-uses-react: error
+  react/jsx-uses-vars: error
+  react/no-string-refs: error
+  react/no-unused-prop-types: error
+  react/require-default-props:
+    - error
+    - forbidDefaultForRequired: true
   react/self-closing-comp:
     - error
     - component: true
       html: true
-  react/jsx-closing-bracket-location: error
-  react/require-default-props:
-    - error
-    - forbidDefaultForRequired: true
-  react/no-unused-prop-types: error
