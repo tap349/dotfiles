@@ -301,11 +301,17 @@ let g:ale_set_balloons = 0
 "let g:ale_lint_on_filetype_changed = 0
 let g:ale_lint_on_save = 1
 let g:ale_lint_on_text_changed = 'never'
+let g:ale_fix_on_save = 1
 
 let g:ale_linters = {
       \   'elixir': ['credo'],
       \   'javascript': ['eslint', 'flow'],
       \   'ruby': ['rubocop']
+      \ }
+
+let g:ale_fixers = {
+      \   'javascript': ['prettier'],
+      \   'css': ['prettier']
       \ }
 
 " TODO: https://github.com/w0rp/ale/pull/1271
