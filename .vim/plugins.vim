@@ -294,13 +294,16 @@ let g:ale_sign_error = '✗'
 let g:ale_echo_msg_format = '[%linter%] %s'
 let g:ale_set_balloons = 0
 
+" :help ale-lint
+"
 " https://github.com/w0rp/ale/issues/505
 " to disable g:ale_lint_on_enter, it's necessary
 " to disable g:ale_lint_on_filetype_changed as well
 "let g:ale_lint_on_enter = 0
 "let g:ale_lint_on_filetype_changed = 0
 let g:ale_lint_on_save = 1
-let g:ale_lint_on_text_changed = 'never'
+let g:ale_lint_on_text_changed = 0
+let g:ale_lint_on_insert_leave = 0
 let g:ale_fix_on_save = 1
 
 let g:ale_linters = {
