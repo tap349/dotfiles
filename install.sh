@@ -14,16 +14,12 @@ files=(
   .ssh/config
   .vim
   scripts
-  colors.tdesktop-palette
   .asdfrc
   .gitconfig
   .gitignore
   .iex.exs
   .irbrc
-  .powconfig
   .pryrc
-  .surfingkeys.js
-  .taskrc
   .tool-versions
   .zshenv
 )
