@@ -26,6 +26,8 @@ tap 'universal-ctags/universal-ctags'
 # Homebrew
 #-------------------------------------------------------------------------------
 
+# for minisklad
+brew 'FreeTDS'
 brew 'ansible'
 # after installation:
 # - `aws configure`
