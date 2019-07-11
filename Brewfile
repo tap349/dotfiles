@@ -26,9 +26,6 @@ tap 'universal-ctags/universal-ctags'
 # Homebrew
 #-------------------------------------------------------------------------------
 
-#brew 'chromedriver'
-#brew 'djview4'
-
 brew 'ansible'
 # after installation:
 # - `aws configure`
@@ -37,16 +34,13 @@ brew 'awscli'
 brew 'bat'
 brew 'bfg'
 brew 'ccze'
-# for cpsm vim plugin
-brew 'cmake'
-# for cpsm vim plugin
+#brew 'chromedriver'
 brew 'boost'
 # install manually by downloading dmg file
 #brew 'cgoban'
+#brew 'djview4'
 brew 'djvu2pdf'
 brew 'elasticsearch', restart_service: :changed
-# install via asdf
-#brew 'elixir'
 brew 'fish'
 # for ~/scripts/fontpatcher
 brew 'fontforge'
@@ -138,6 +132,9 @@ brew 'zsh'
 
 cask_args appdir: '/Applications'
 
+# for android-sdk
+# http://blog.tap349.com/react-native/android/2017/05/24/react-native-android/#install-java-8
+cask 'adoptopenjdk8'
 # for Raspeberry Pi
 #cask 'applepi-baker'
 cask 'calibre'
@@ -172,12 +169,6 @@ cask 'calibre'
 #   - Users & Groups -> Login Items: add (don't hide)
 cask 'docker'
 #cask 'firefox'
-# - system preferences:
-#   - Users & Groups -> Login Items: add (hide)
-# - app preferences:
-#   - 'Working late' preset
-#   - [x] Start f.lux at login (set by default)
-#cask 'flux'
 cask 'font-fontawesome'
 cask 'font-cousine'
 cask 'font-d2coding'
@@ -188,8 +179,8 @@ cask 'font-inconsolata-dz'
 cask 'font-inconsolata-lgc'
 cask 'font-iosevka'
 cask 'genymotion'
-# app preferences (bookmarks bar, extensions, etc.) are synchronized
-# if you sign in to Chrome (my email is a***.t***.i***@gmail.com)
+# app preferences (bookmarks bar, extensions, etc.) are synchronized if
+# you sign in to Chrome
 #
 # on first run:
 #  - [x] Set Google Chrome as your default browser
@@ -281,9 +272,6 @@ cask 'insomnia'
 # see also http://tap349.github.io/iterm/rails/2016/05/03/iTerm/
 # (all these settings are already included in exported settings file)
 cask 'iterm2'
-# for android-sdk
-# https://github.com/facebook/react-native/issues/17688
-cask 'java8'
 # - system preferences:
 #   - Users & Groups -> Login Items: remove
 cask 'keybase'
