@@ -67,6 +67,7 @@ rules:
   quotes:
     - error
     - single
+    - avoidEscape: true
   # [ ], default: "never"
   object-curly-spacing:
     - error

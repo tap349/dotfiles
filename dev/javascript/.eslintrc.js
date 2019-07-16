@@ -16,22 +16,24 @@ module.exports = {
     // https://eslint.org/docs/rules/arrow-parens.html#further-reading
     'arrow-parens': ['error', 'as-needed', {requireForBlockBody: false}],
     'comma-dangle': ['warn', 'only-multiline'],
-    indent: ['error', 2],
+    // eslint and prettier indentation rules might differ for nested blocks
+    //indent: ['error', 2],
     'keyword-spacing': ['error', {after: true, before: true}],
     'linebreak-style': ['error', 'unix'],
+    //'max-len': ['warn', 80],
     'no-trailing-spaces': ['error'],
     'no-unused-vars': [
       'error',
       {argsIgnorePattern: '^_', varsIgnorePattern: '^_'},
     ],
-    quotes: ['error', 'single'],
+    quotes: ['error', 'single', {avoidEscape: true}],
     'object-curly-spacing': ['error', 'never'],
     semi: ['error', 'always'],
     'space-before-function-paren': ['error', 'never'],
     //-------------------------------------------------------------------------
     // https://github.com/yannickcr/eslint-plugin-react/tree/master/docs/rules
     //-------------------------------------------------------------------------
-    'react/jsx-boolean-value': ['error', 'never'],
+    'react/jsx-boolean-value': ['error', 'always'],
     'react/jsx-closing-bracket-location': 'error',
     'react/jsx-handler-names': ['warn', {eventHandlerPrefix: '_handle'}],
     'react/jsx-max-props-per-line': ['warn', {when: 'multiline'}],
