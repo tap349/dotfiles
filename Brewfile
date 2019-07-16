@@ -42,7 +42,8 @@ brew 'boost'
 #brew 'cgoban'
 #brew 'djview4'
 brew 'djvu2pdf'
-brew 'elasticsearch', restart_service: :changed
+# use docker-compose.yml instead
+#brew 'elasticsearch', restart_service: :changed
 brew 'fish'
 # for ~/scripts/fontpatcher
 brew 'fontforge'
@@ -54,7 +55,10 @@ brew 'honcho'
 brew 'htop'
 brew 'imagemagick'
 brew 'jq'
-brew 'kibana'
+# use docker-compose.yml instead
+#brew 'kibana'
+# for psql and pg_dump
+brew 'libpq'
 # provides rsvg-convert utility to convert svg to png
 brew 'librsvg'
 # used as viewer for html files in mc
@@ -80,8 +84,11 @@ brew 'mpv'
 brew 'node'
 brew 'octave'
 brew 'p7zip'
-brew 'pg_top'
-brew 'postgresql', restart_service: :changed
+# not used
+#brew 'pg_top'
+# use docker-compose.yml instead
+# install libpq for psql and pg_dump
+#brew 'postgresql', restart_service: :changed
 # after installation:
 # - `sudo puma-dev -setup`
 # - `puma-dev -install`
