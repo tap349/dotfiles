@@ -578,7 +578,9 @@ function! MyLightlineLineinfo()
   if <SID>IsNarrowWindow() | return '' | end
   if <SID>IsPluginWindow() | return '' | end
 
-  return printf('%3d/%d☰ : %-3d', line('.'), line('$'), col('.'))
+  " col() shows byte index of the column position,
+  " virtcol() shows screen column position
+  return printf('%3d/%d☰ : %-3d', line('.'), line('$'), virtcol('.'))
 endfunction
 
 function! MyLightlineLinterWarnings()
