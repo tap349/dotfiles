@@ -169,8 +169,6 @@ cask 'calibre'
 #   - [x] Show Icon
 #   - [x] Launch Day-O at login
 #cask 'day-o'
-# for elasticsearch in iceperk
-#
 # run docker app after installation
 # (otherwise `docker` command might be not available in terminal)
 #
