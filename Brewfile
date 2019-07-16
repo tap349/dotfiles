@@ -48,7 +48,7 @@ brew 'fish'
 # for ~/scripts/fontpatcher
 brew 'fontforge'
 # for shikimori
-brew 'geoip'
+#brew 'geoip'
 brew 'git'
 brew 'gpg'
 brew 'honcho'
