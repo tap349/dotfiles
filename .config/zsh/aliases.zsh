@@ -126,8 +126,7 @@ alias ios5="react-native run-ios --simulator 'iPhone 5'"
 alias ios6p="react-native run-ios --simulator 'iPhone 6 Plus'"
 alias logios='react-native log-ios | ccze -A -o nolookups'
 
-# avd4 is stuck on splash screen
-#alias avd4='$ANDROID_HOME/tools/emulator -avd Nexus_5X_API_19_x86 -gpu host -skin 1080x1920'
+alias avd4='$ANDROID_HOME/tools/emulator -avd Nexus_5X_API_19_x86 -gpu host -skin 1080x1920'
 alias avd6='$ANDROID_HOME/tools/emulator -avd Nexus_5X_API_23_x86_64 -gpu host -skin 1080x1920'
 alias avd9='$ANDROID_HOME/tools/emulator -avd Nexus_5X_API_28_x86_64 -gpu host -skin 1080x1920'
 alias and='react-native run-android'
