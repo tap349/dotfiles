@@ -9,10 +9,11 @@ module.exports = {
   singleQuote: true,
   quoteProps: 'as-needed',
   jsxSingleQuote: true,
-  trailingComma: 'es5',
+  trailingComma: 'all',
   bracketSpacing: false,
   jsxBracketSameLine: false,
   arrowParens: 'avoid',
   requirePragma: false,
   insertPragma: true,
+  proseWrap: 'always',
 };
