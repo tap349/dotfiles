@@ -22,12 +22,11 @@
 
 " syntax is on even without this command
 
-" using `syntax on` might cause syntax highlighting to be
-" lost partially after sourcing vimrc (say, in rspec files)
+" using `syntax on` might cause syntax highlighting to be lost partially
+" after sourcing vimrc (say, in rspec files)
 "
-" the only downside of not using `syntax on` is that
-" RGB values lose their colors after sourcing vimrc -
-" use `filetype detect` or reload file in that case
+" the only downside of not using `syntax on` is that RGB values lose their
+" colors after sourcing vimrc - use `filetype detect` or reload file then
 "syntax on
 
 set noautochdir

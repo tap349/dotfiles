@@ -314,10 +314,11 @@ let g:ale_linters = {
 
 let g:ale_fixers = {
       \   'javascript': ['prettier'],
-      \   'css': ['prettier']
+      \   'css': ['prettier'],
+      \   'markdown': ['prettier']
       \ }
 
-" TODO: https://github.com/w0rp/ale/pull/1271
+" https://github.com/w0rp/ale/pull/1271
 " UPDATE (2019-05-20): fixed in upstream now
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
