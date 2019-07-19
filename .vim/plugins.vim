@@ -824,9 +824,9 @@ let g:gitgutter_enabled = 0
 "let g:gitgutter_map_keys = 0
 let g:gitgutter_highlight_lines = 1
 
-nmap <silent> <Leader>ht :GitGutterToggle<CR>
-"nmap <silent> <Leader>hs :GitGutterStageHunk<CR>
-"nmap <silent> <Leader>hu :GitGutterUndoHunk<CR>
+nmap <Leader>ht :GitGutterToggle<CR>
+"nmap <Leader>hs <Plug>GitGutterStageHunk
+"nmap <silent> <Leader>hu <Plug>GitGutterUndoHunk
 
 "nmap ]c <Plug>GitGutterNextHunk
 "nmap [c <Plug>GitGutterPrevHunk
