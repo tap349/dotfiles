@@ -38,16 +38,18 @@ set nospell
 set nowrap
 
 "-------------------------------------------------------------------------------
-" backup and swap files
+" backup and swapfile
 "-------------------------------------------------------------------------------
 
-set backup
-set noswapfile
-
+" backup
+" uncomment `augroup backup` if `backup` option is set
+set nobackup
 " http://vim.wikia.com/wiki/Editing_crontab
-" swap files (currently disabled)
-"set directory=~/.vim/tmp//
 "set backupskip+=/private/tmp/*
+
+" swapfile
+set noswapfile
+"set directory=~/.vim/tmp//
 
 "-------------------------------------------------------------------------------
 " buffers
