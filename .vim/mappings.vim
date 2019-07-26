@@ -55,13 +55,22 @@ cnoremap <C-g> <C-c>
 "
 "===============================================================================
 
-"-------------------------------------------------------------------------------
+" http://superuser.com/a/382582
+" http://vim.wikia.com/wiki/Selecting_your_pasted_text
+"
+" highlight last inserted or pasted text (works till save)
+nnoremap gp `[v`]
+
+" https://stackoverflow.com/a/16987522/3632318
+" https://stackoverflow.com/questions/8521846/adding-a-regular-expression-to-vimrc-with-nmap-and-imap
+"
+" escape `\|` to make regex work in mapping
+nnoremap <silent> <Leader>u /[^\d0-\d127]\+\([^\d0-\d127]\\|\s\)\+<CR>
+
 " https://stackoverflow.com/a/24463362/3632318
 "
 " copy current file path to clipboard
 " (path relative to PWD or absolute path if current file is not in PWD)
-"-------------------------------------------------------------------------------
-
 nnoremap <silent> <Leader>y :let @*=fnamemodify(expand('%'), ':.')<CR>
 
 "-------------------------------------------------------------------------------
@@ -203,22 +212,10 @@ nnoremap K <nop>
 nnoremap <F1> <nop>
 
 "-------------------------------------------------------------------------------
-" yanking
+" yank
 "-------------------------------------------------------------------------------
 
 nnoremap Y y$
-
-"-------------------------------------------------------------------------------
-" useful maps
-"-------------------------------------------------------------------------------
-
-" TODO: function to toggle focusing in rspec
-
-" http://superuser.com/a/382582
-" http://vim.wikia.com/wiki/Selecting_your_pasted_text
-"
-" highlight last inserted or pasted text (works till save)
-nnoremap gp `[v`]
 
 "===============================================================================
 "
