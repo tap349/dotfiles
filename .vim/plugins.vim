@@ -313,8 +313,13 @@ let g:ale_linters = {
       \ }
 
 let g:ale_fixers = {
+      \   'elixir': ['mix_format'],
       \   'javascript': ['prettier'],
       \   'css': ['prettier'],
+      \   'markdown': ['prettier']
+      \ }
+
+let g:ale_fix_on_save_ignore = {
       \   'markdown': ['prettier']
       \ }
 
@@ -322,6 +327,9 @@ let g:ale_fixers = {
 " UPDATE (2019-05-20): fixed in upstream now
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
+" we can't append `:w<CR>` because ALE fixer is run asynchronously
+" => save formatted file manually
+nmap <Leader>f <Plug>(ale_fix)
 
 "-------------------------------------------------------------------------------
 " ansible-vim

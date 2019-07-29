@@ -17,5 +17,6 @@ iabbrev <buffer> dl
 
 nmap <buffer> <LocalLeader>p :!publish<CR>
 " turn current line into h2 header
-nmap <buffer> <LocalLeader>h :normal! mmyypVr-`m<CR>
+" UPDATE: not used because of prettier
+"nmap <buffer> <LocalLeader>h :normal! mmyypVr-`m<CR>
 nmap <buffer> <LocalLeader>i o<!-- prettier-ignore --><ESC>
