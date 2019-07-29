@@ -312,6 +312,8 @@ let g:ale_linters = {
       \   'ruby': ['rubocop']
       \ }
 
+" NOTE: make sure PWD is set to current project root - or else `mix_format`
+" fixer will not find _.formatter.exs_ file and will use default settings
 let g:ale_fixers = {
       \   'elixir': ['mix_format'],
       \   'javascript': ['prettier'],
