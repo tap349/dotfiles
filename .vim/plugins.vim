@@ -536,7 +536,7 @@ function! MyLightlineFugitive()
     let l:branch = '⎇ ' . l:branch
   endif
 
-  let l:gitgutter_sign = get(g:, 'gitgutter_enabled', 0) ? ' ±' : ''
+  let l:gitgutter_sign = get(g:, 'gitgutter_enabled', 0) ? ' [±]' : ''
 
   "let l:hunks = ''
   "if get(g:, 'gitgutter_enabled', 0)
@@ -834,8 +834,8 @@ let g:gitgutter_enabled = 0
 "let g:gitgutter_map_keys = 0
 let g:gitgutter_highlight_lines = 1
 
-nmap <Leader>ht :GitGutterToggle<CR>
-"nmap <Leader>hs <Plug>GitGutterStageHunk
+nmap <silent> <Leader>ht :GitGutterToggle<CR>
+"nmap <silent> <Leader>hs <Plug>GitGutterStageHunk
 "nmap <silent> <Leader>hu <Plug>GitGutterUndoHunk
 
 "nmap ]c <Plug>GitGutterNextHunk
