@@ -327,8 +327,8 @@ let g:ale_fix_on_save_ignore = {
 
 " https://github.com/w0rp/ale/pull/1271
 " UPDATE (2019-05-20): fixed in upstream now
-nmap <silent> <C-k> <Plug>(ale_previous_wrap)
-nmap <silent> <C-j> <Plug>(ale_next_wrap)
+nmap <C-k> <Plug>(ale_previous_wrap)
+nmap <C-j> <Plug>(ale_next_wrap)
 " we can't append `:w<CR>` because ALE fixer is run asynchronously
 " => save formatted file manually
 nmap <Leader>f <Plug>(ale_fix)
