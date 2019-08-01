@@ -131,4 +131,5 @@ alias avd6='$ANDROID_HOME/tools/emulator -avd Nexus_5X_API_23_x86_64 -gpu host -
 alias avd9='$ANDROID_HOME/tools/emulator -avd Nexus_5X_API_28_x86_64 -gpu host -skin 1080x1920'
 alias and='react-native run-android'
 alias logand='react-native log-android | ccze -A -o nolookups'
-alias build_android_release='cd android && ./gradlew assembleRelease; cd ..'
+alias build_aab='cd android && ./gradlew bundleRelease; cd ..'
+alias build_apk='cd android && ./gradlew assembleRelease; cd ..'
