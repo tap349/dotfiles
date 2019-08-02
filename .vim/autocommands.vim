@@ -8,10 +8,10 @@
 "
 "*******************************************************************************
 
-"augroup backup
-"  autocmd!
-"  autocmd BufWritePre * call s:SetBackupDir()
-"augroup END
+augroup backup
+  autocmd!
+  autocmd BufWritePre * call s:SetBackupDir()
+augroup END
 
 let s:prevtabnr = tabpagenr()
 let s:prevtabcount = tabpagenr('$')
@@ -64,15 +64,17 @@ augroup END
 " would result into weird directories like backupapp, backupcookbooks,
 " backupdeps and backuplib (no files are actually written there) =>
 " it's safe to add extra slash before expanded path to avoid it
-"function! s:SetBackupDir()
-"  let l:backupdir = $HOME . '/.vim/backup/' . expand('%:p:h')
-"  if !isdirectory(l:backupdir)
-"    call mkdir(l:backupdir, 'p', 0700)
-"  endif
-"
-"  let &backupdir = l:backupdir
-"  let &backupext = strftime('~(%Y-%m-%d %H:%M:%S)')
-"endfunction
+function! s:SetBackupDir()
+  let l:backupdir = $HOME . '/.vim/backup/' . expand('%:p:h')
+  if !isdirectory(l:backupdir)
+    call mkdir(l:backupdir, 'p', 0700)
+  endif
+
+  let &backupdir = l:backupdir
+  " new files overwrite existing ones
+  "let &backupext = strftime('~(%Y-%m-%d %H:%M:%S)')
+  let &backupext = strftime('~(%Y-%m-%d %H:%M)')
+endfunction
 
 " http://stackoverflow.com/questions/14079149
 function! s:GoToPrevTab()

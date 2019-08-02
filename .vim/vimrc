@@ -43,7 +43,7 @@ set nowrap
 
 " backup
 " uncomment `augroup backup` if `backup` option is set
-set nobackup
+set backup
 " http://vim.wikia.com/wiki/Editing_crontab
 "set backupskip+=/private/tmp/*
 
