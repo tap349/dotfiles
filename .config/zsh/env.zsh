@@ -32,6 +32,11 @@ setopt EXTENDED_GLOB
 typeset -U path
 # brew creates symlinks in /usr/local/bin/
 path=(/usr/local/bin $path)
+# > `brew info libpq`
+# >
+# > libpq is keg-only, which means it was not symlinked into /usr/local,
+# > because conflicts with postgres formula.
+path=(/usr/local/opt/libpq/bin $path)
 
 #-------------------------------------------------------------------------------
 # prompt

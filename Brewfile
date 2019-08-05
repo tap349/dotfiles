@@ -58,6 +58,9 @@ brew 'jq'
 # use docker-compose.yml instead
 #brew 'kibana'
 # for psql and pg_dump
+#
+# after installation:
+# - add _/usr/local/opt/libpq/bin_ to PATH
 brew 'libpq'
 # provides rsvg-convert utility to convert svg to png
 brew 'librsvg'
@@ -101,7 +104,6 @@ brew 'puma-dev'
 # - create symlinks for all required projects:
 #   `ln -s ~/dev/reenter_builder ~/.pow`
 #brew 'pow'
-# http://tap349.github.io/rbenv/ruby/chef/capistrano/2016/03/30/rbenv
 brew 'rabbitmq'
 # asdf is used instead now
 #brew 'rbenv'
@@ -125,14 +127,8 @@ brew 'watchman'
 brew 'wget'
 brew 'wuzz'
 brew 'yarn'
-# - make it a login shell: `chsh -s /bin/zsh`
-#   (all available shells are listed in /etc/shells,
-#   current shell can be printed with `echo $0` command)
-# - install oh-my-zsh:
-#   - https://github.com/robbyrussell/oh-my-zsh#via-curl
-# - install oh-my-zsh plugins:
-#   - https://github.com/zsh-users/zsh-autosuggestions#oh-my-zsh
-#   - https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/INSTALL.md#oh-my-zsh
+# make it a login shell: `chsh -s /bin/zsh` (all available shells are listed
+# in /etc/shells, current shell can be printed with `echo $0` command)
 brew 'zsh'
 
 #-------------------------------------------------------------------------------
