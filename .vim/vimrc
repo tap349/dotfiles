@@ -41,9 +41,11 @@ set nowrap
 " backup and swapfile
 "-------------------------------------------------------------------------------
 
+" https://gist.github.com/nepsilon/003dd7cfefc20ce1e894db9c94749755
 " backup
 " uncomment `augroup backup` if `backup` option is set
 set backup
+"set backupdir=~/.vim/backup//
 " http://vim.wikia.com/wiki/Editing_crontab
 "set backupskip+=/private/tmp/*
 

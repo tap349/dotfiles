@@ -65,15 +65,17 @@ augroup END
 " backupdeps and backuplib (no files are actually written there) =>
 " it's safe to add extra slash before expanded path to avoid it
 function! s:SetBackupDir()
+  " don't use ~ for home directory - it's not expanded
   let l:backupdir = $HOME . '/.vim/backup/' . expand('%:p:h')
+
   if !isdirectory(l:backupdir)
     call mkdir(l:backupdir, 'p', 0700)
   endif
 
   let &backupdir = l:backupdir
   " new files overwrite existing ones
-  "let &backupext = strftime('~(%Y-%m-%d %H:%M:%S)')
-  let &backupext = strftime('~(%Y-%m-%d %H:%M)')
+  "let &backupext = '-' . strftime('(%Y-%m-%d %H:%M:%S)') . '~'
+  let &backupext = '-' . strftime('(%Y-%m-%d %H:%M)') . '~'
 endfunction
 
 " http://stackoverflow.com/questions/14079149
