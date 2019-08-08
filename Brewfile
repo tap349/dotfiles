@@ -51,6 +51,8 @@ brew 'fontforge'
 #brew 'geoip'
 brew 'git'
 brew 'gpg'
+# to install Gradle Wrapper
+brew 'gradle'
 brew 'honcho'
 brew 'htop'
 brew 'imagemagick'
