@@ -55,5 +55,13 @@ module.exports = {
     'react/no-unused-prop-types': 'error',
     'react/require-default-props': ['error', {forbidDefaultForRequired: true}],
     'react/self-closing-comp': ['error', {component: true, html: true}],
+    //-------------------------------------------------------------------------
+    // https://github.com/gajus/eslint-plugin-flowtype/blob/master/README.md
+    //-------------------------------------------------------------------------
+    'flowtype/space-after-type-colon': [
+      'error',
+      'always',
+      {allowLineBreak: true},
+    ],
   },
 };
