@@ -305,6 +305,7 @@ cask 'unetbootin'
 #   - Users & Groups -> Login Items: remove (don't hide)
 cask 'utorrent'
 cask 'whatsapp'
+cask 'zoomus'
 
 #-------------------------------------------------------------------------------
 # App Store
