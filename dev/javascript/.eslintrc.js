@@ -1,8 +1,15 @@
 /** @format */
 
 module.exports = {
+  // added in RN 0.60.5
+  root: true,
   env: {browser: true, es6: true, node: true},
-  extends: ['eslint:recommended', 'plugin:flowtype/recommended'],
+  extends: [
+    'eslint:recommended',
+    // added in RN 0.60.5
+    '@react-native-community',
+    'plugin:flowtype/recommended',
+  ],
   parser: 'babel-eslint',
   parserOptions: {
     ecmaFeatures: {experimentalObjectRestSpread: true, jsx: true},

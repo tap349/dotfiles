@@ -1,10 +1,12 @@
 # https://gist.github.com/yyscamper/781d8e0b3c184a77d5af15a3f623dddb
+root: true
 env:
   browser: true
   es6: true
   node: true
 extends:
   - 'eslint:recommended'
+  - '@react-native-community'
   - 'plugin:flowtype/recommended'
 parser: 'babel-eslint'
 parserOptions:
