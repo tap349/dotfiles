@@ -40,6 +40,7 @@ module.exports = {
     ],
     quotes: ['error', 'single', {avoidEscape: true}],
     'object-curly-spacing': ['error', 'never'],
+    'jsx-quotes': ['error', 'prefer-single'],
     semi: ['error', 'always'],
     'space-before-function-paren': ['error', 'never'],
     //-------------------------------------------------------------------------
