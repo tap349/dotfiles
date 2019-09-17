@@ -284,6 +284,7 @@ cask 'krisp'
 # go app with AI
 #cask 'leela'
 cask 'ngrok'
+cask 'obs'
 cask 'openemu'
 cask 'opera'
 cask 'pgadmin4'
