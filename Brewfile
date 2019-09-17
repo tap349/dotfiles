@@ -18,7 +18,6 @@ tap 'ZloeSabo/homebrew-nettools'
 tap 'beeftornado/rmtree'
 tap 'homebrew/cask'
 tap 'homebrew/cask-fonts'
-tap 'homebrew/cask-versions'
 tap 'puma/puma'
 tap 'universal-ctags/universal-ctags'
 
