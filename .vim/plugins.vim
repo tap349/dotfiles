@@ -53,7 +53,6 @@ Plug 'cakebaker/scss-syntax.vim'
 " slim / slime / pug
 "-------------------------------------------------------------------------------
 
-"Plug 'digitaltoad/vim-pug'
 Plug 'slim-template/vim-slim'
 Plug 'slime-lang/vim-slime-syntax'
 
@@ -114,6 +113,7 @@ Plug 'wincent/command-t', {
 "-------------------------------------------------------------------------------
 
 "Plug 'Yggdroot/indentLine'
+"Plug 'digitaltoad/vim-pug'
 "Plug 'godlygeek/tabular'
 "Plug 'jamessan/vim-gnupg'
 "Plug 'junegunn/limelight.vim'
