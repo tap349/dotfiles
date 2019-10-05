@@ -37,6 +37,7 @@ Plug 'tpope/vim-rhubarb' | Plug 'tpope/vim-fugitive'
 " javascript / react
 "-------------------------------------------------------------------------------
 
+Plug 'flowtype/vim-flow'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx' | Plug 'pangloss/vim-javascript'
 
@@ -805,6 +806,15 @@ let g:extradite_showhash = 1
 map <silent> <Leader>g :Extradite<CR>
 
 "-------------------------------------------------------------------------------
+" vim-flow
+"-------------------------------------------------------------------------------
+
+let g:flow#enable = 0
+let g:flow#flowpath = trim(system('yarn -s which flow'))
+let g:flow#omnifunc = 1
+let g:flow#showquickfix = 0
+
+"-------------------------------------------------------------------------------
 " vim-fugitive
 "-------------------------------------------------------------------------------
 
@@ -894,18 +904,6 @@ let g:gutentags_generate_on_write = 1
 let g:hugefile_trigger_size = 1
 
 "-------------------------------------------------------------------------------
-" vim-startify
-"-------------------------------------------------------------------------------
-
-let g:startify_change_to_dir = 0
-let g:startify_custom_header = []
-let g:startify_lists = [
-      \ { 'type': 'dir',       'header': ['   MRU ' . getcwd()] },
-      \ { 'type': 'files',     'header': ['   MRU']             },
-      \ { 'type': 'bookmarks', 'header': ['   Bookmarks']       },
-      \ ]
-
-"-------------------------------------------------------------------------------
 " vim-jsx
 "-------------------------------------------------------------------------------
 
@@ -964,6 +962,18 @@ let g:rails_projections = {
 
 nmap <Leader>, :A<CR>
 nmap <Leader>v :AV<CR>
+
+"-------------------------------------------------------------------------------
+" vim-startify
+"-------------------------------------------------------------------------------
+
+let g:startify_change_to_dir = 0
+let g:startify_custom_header = []
+let g:startify_lists = [
+      \ { 'type': 'dir',       'header': ['   MRU ' . getcwd()] },
+      \ { 'type': 'files',     'header': ['   MRU']             },
+      \ { 'type': 'bookmarks', 'header': ['   Bookmarks']       },
+      \ ]
 
 "-------------------------------------------------------------------------------
 " vim-unimpaired

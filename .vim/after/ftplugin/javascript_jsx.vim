@@ -1,6 +1,8 @@
 "inoremap <buffer> >>t <Text></Text><Esc>F<i<CR><Esc>k$
 "inoremap <buffer> >>v <View></View><Esc>F<i<CR><Esc>k$
 
+nmap <buffer> <LocalLeader>f :FlowType<CR>
+
 imap <buffer> >> <><C-b>
 imap <buffer> >V <View><Esc>T<
 imap <buffer> >T <Text><Esc>T<
