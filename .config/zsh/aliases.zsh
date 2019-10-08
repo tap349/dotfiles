@@ -43,7 +43,7 @@ alias yancy='cd ~/dev/compleader/alice/apps/yancy'
 
 alias df='df -h'
 alias ll='ls -alp'
-alias m='mvim'
+alias m='/Applications/MacVim.app/Contents/bin/mvim'
 alias mcu='mc -u'
 # http://reasoniamhere.com/2014/01/11/outrageously-useful-tips-to-master-your-z-shell/
 #

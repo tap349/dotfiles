@@ -82,7 +82,6 @@ brew 'macvim'
 brew 'mas'
 brew 'memcached', restart_service: :changed
 brew 'mc'
-brew 'mpv'
 # for React Native
 # (same as nodejs)
 brew 'node'
@@ -282,6 +281,7 @@ cask 'keybase'
 cask 'krisp'
 # go app with AI
 #cask 'leela'
+cask 'mpv'
 cask 'ngrok'
 cask 'obs'
 cask 'openemu'
