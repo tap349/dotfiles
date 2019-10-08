@@ -172,15 +172,15 @@ cask 'calibre'
 #   - Users & Groups -> Login Items: add (don't hide)
 cask 'docker'
 #cask 'firefox'
-cask 'font-fontawesome'
-cask 'font-cousine'
-cask 'font-d2coding'
-cask 'font-droid-sans-mono'
-cask 'font-fira-mono'
-cask 'font-inconsolata-dz'
+#cask 'font-fontawesome'
+#cask 'font-cousine'
+#cask 'font-d2coding'
+#cask 'font-droid-sans-mono'
+#cask 'font-fira-mono'
+#cask 'font-inconsolata-dz'
 # for iTerm2
 cask 'font-inconsolata-lgc'
-cask 'font-iosevka'
+#cask 'font-iosevka'
 cask 'genymotion'
 # app preferences (bookmarks bar, extensions, etc.) are synchronized if
 # you sign in to Chrome
