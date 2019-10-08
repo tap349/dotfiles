@@ -437,8 +437,11 @@ let g:lightline.winwidth = 220
 " https://github.com/itchyny/lightline.vim/issues/223
 " it's not possible to hide right arrow separators for NerdTree
 " when component returns empty string
-let g:lightline.separator = { 'left': '⮀', 'right': '⮂' }
-let g:lightline.subseparator = { 'left': '⮁', 'right': '⮃' }
+"
+" UPDATE (2019-10-08): right separators are not shown when using Core Text
+" renderer after upgrading to macOS Catalina => don't use separators so far
+"let g:lightline.separator = { 'left': '⮀', 'right': '⮂' }
+"let g:lightline.subseparator = { 'left': '⮁', 'right': '⮃' }
 
 " or else use letters: N, I, R, V, VL, VB, C
 let g:lightline.mode_map = {
