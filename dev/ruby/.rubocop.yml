@@ -46,6 +46,14 @@ Layout/AlignParameters:
   # But it can be overridden by setting this parameter
   IndentationWidth: ~
 
+# IDK how it's different from Layout/AlignParameters
+Layout/AlignArguments:
+  EnforcedStyle: with_fixed_indentation
+  SupportedStyles:
+    - with_first_parameter # default
+    - with_fixed_indentation
+  IndentationWidth: ~
+
 Layout/EmptyLineAfterGuardClause:
   Description: 'Add empty line after guard clause.'
   Enabled: false # true by default
