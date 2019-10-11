@@ -126,7 +126,7 @@ alias yarn_reset='\
 
 alias ios='react-native run-ios'
 alias ios4="react-native run-ios --simulator 'iPhone 4s'"
-alias ios5="react-native run-ios --simulator 'iPhone 5'"
+alias ios5="react-native run-ios --simulator 'iPhone 5s'"
 alias ios6p="react-native run-ios --simulator 'iPhone 6 Plus'"
 alias logios='react-native log-ios | ccze -A -o nolookups'
 
