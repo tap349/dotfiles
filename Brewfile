@@ -202,10 +202,12 @@ cask 'genymotion'
 #   - Extensions (allow all of them in incognito):
 #     + AdBlock (Hide in Chrome Menu)
 #       - [ ] Show number of ads blocked on AdBlock button
+#     - Batch Media Saver from Instagram™
 #     + Blank New Tab (Hide in Chrome Menu)
 #     + Browsec VPN
 #     + Dashlane (select Desktop mode, can be added on first Dashlane run)
-#     - Data Saver (turn off - turned on by default)
+#     - Data Saver
+#     + Downloader for Instagram™ + Direct Message
 #     + Ghostery (Hide in Chrome Menu):
 #       - Global Blocking:
 #         - Block All (except Comments)
