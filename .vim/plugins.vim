@@ -442,6 +442,8 @@ let g:lightline.winwidth = 220
 " renderer after upgrading to macOS Catalina => don't use separators so far
 "let g:lightline.separator = { 'left': '⮀', 'right': '⮂' }
 "let g:lightline.subseparator = { 'left': '⮁', 'right': '⮃' }
+let g:lightline.separator = { 'left': '⮀' }
+let g:lightline.subseparator = { 'left': '⮁' }
 
 " or else use letters: N, I, R, V, VL, VB, C
 let g:lightline.mode_map = {
