@@ -279,7 +279,7 @@ cask 'insomnia'
 cask 'iterm2'
 # - system preferences:
 #   - Users & Groups -> Login Items: remove
-cask 'keybase'
+#cask 'keybase'
 cask 'krisp'
 # go app with AI
 #cask 'leela'
