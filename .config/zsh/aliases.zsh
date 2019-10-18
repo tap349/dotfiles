@@ -109,7 +109,7 @@ alias npm_reset='\
   rm -rf "$TMPDIR/react-native-packager-cache-*" &&
   rm -rf "$TMPDIR/metro-bundler-cache-*" &&
   rm -rf "$TMPDIR/haste-map-react-native-packager-*" &&
-  rm -rf node_modules &&
+  rm -rf "node_modules/*" &&
   npm cache clean --force &&
   npm install
   '
@@ -119,7 +119,7 @@ alias yarn_reset='\
   rm -rf "$TMPDIR/react-native-packager-cache-*" &&
   rm -rf "$TMPDIR/metro-bundler-cache-*" &&
   rm -rf "$TMPDIR/haste-map-react-native-packager-*" &&
-  rm -rf node_modules &&
+  rm -rf "node_modules/*" &&
   yarn cache clean &&
   yarn install
   '
