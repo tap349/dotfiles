@@ -34,6 +34,8 @@ brew 'awscli'
 # cat on steroids
 brew 'bat'
 brew 'bfg'
+# standard `mount -t bind` command doesn't work
+brew 'bindfs'
 brew 'ccze'
 #brew 'chromedriver'
 brew 'boost'
