@@ -438,7 +438,7 @@ let g:lightline.winwidth = 220
 " it's not possible to hide right arrow separators for NerdTree
 " when component returns empty string
 "
-" UPDATE (2019-10-08): right separators are not shown when using Core Text
+" UPDATE (2019-10-08): right separators are not shown when not using Core Text
 " renderer after upgrading to macOS Catalina => don't use separators so far
 "let g:lightline.separator = { 'left': '⮀', 'right': '⮂' }
 "let g:lightline.subseparator = { 'left': '⮁', 'right': '⮃' }
