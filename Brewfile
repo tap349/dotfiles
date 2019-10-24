@@ -74,7 +74,7 @@ brew 'lynx'
 # - install plugins:
 #   :PlugInstall
 #
-# - app preferences:
+# - Preferences:
 #   - General:
 #     - After last window closes: Quit MacVim
 #   - Advanced:
@@ -147,7 +147,7 @@ cask 'adoptopenjdk8'
 cask 'calibre'
 # install required gems (knife-zero, chef, berkshelf) using Gemfile
 #cask 'chefdk'
-# - app preferences:
+# - Preferences:
 #   - General:
 #     - Startup:
 #       - [ ] Launch Dash at login
@@ -162,7 +162,7 @@ cask 'calibre'
 #     - [ ] DuckDuckGo
 #     - [ ] Stack Overflow
 #cask 'dash'
-# - app preferences:
+# - Preferences:
 #   - Date & Time Format: E HH:mm
 #   - [x] Show Icon
 #   - [x] Launch Day-O at login
@@ -170,7 +170,7 @@ cask 'calibre'
 # run docker app after installation
 # (otherwise `docker` command might be not available in terminal)
 #
-# - system preferences:
+# - System Preferences:
 #   - Users & Groups -> Login Items: add (don't hide)
 cask 'docker'
 #cask 'firefox'
@@ -193,9 +193,9 @@ cask 'genymotion'
 #        statistics and crash reports to Google
 #  - Sign in to Chrome (page is opened automatically)
 #
-# - system preferences:
-#   - Users & Groups -> Login Items: remove (don't hide)
-# - app preferences:
+# - System Preferences:
+#   - Users & Groups -> Login Items: remove
+# - Preferences:
 #   - Settings:
 #     - On startup: Continue where you left off
 #     - Content Settings...:
@@ -266,7 +266,7 @@ cask 'genymotion'
 cask 'google-chrome'
 cask 'gopanda'
 cask 'insomnia'
-# - app preferences:
+# - Preferences:
 #   - General -> Preferences:
 #     - [x] Load preferences from a custom folder or URL:
 #       /Users/tap/.dotfiles/.config/iterm2/
@@ -279,7 +279,7 @@ cask 'insomnia'
 # see also http://tap349.github.io/iterm/rails/2016/05/03/iTerm/
 # (all these settings are already included in exported settings file)
 cask 'iterm2'
-# - system preferences:
+# - System Preferences:
 #   - Users & Groups -> Login Items: remove
 #cask 'keybase'
 cask 'krisp'
@@ -295,13 +295,13 @@ cask 'phantomjs'
 cask 'psequel'
 cask 'react-native-debugger'
 cask 'skype'
-# - app preferences:
+# - Preferences:
 #   - Menubar: Temperature only
 #   - [x] Check for updates on startup
 #   - [x] Autostart smcFanControl after login
 cask 'smcfancontrol'
-# - system preferences:
-#   - Users & Groups -> Login Items: remove (don't hide)
+# - System Preferences:
+#   - Users & Groups -> Login Items: remove
 cask 'steam'
 # for Raspeberry Pi (?)
 #cask 'unetbootin'
@@ -320,7 +320,7 @@ cask 'zoomus'
 #     - Spelling and Grammar:
 #       - [ ] Automatic spell checking
 #       - [ ] Automatic spell correction
-# - app preferences:
+# - Preferences:
 #   - General:
 #     - Quick Entry: <C-S-a>
 #     - [x] GTD Inbox
@@ -348,14 +348,14 @@ mas 'Cloud Mail.Ru', id: 893068358
 # to add Safari extension first open Dashlane, then Safari -
 # you'll be prompted to install Dashlane extension
 #
-# - app preferences:
+# - Preferences:
 #   - General:
 #     - [x] Start Dashlane at login
 mas 'Dashlane - Password Manager, Secure Digital Wallet', id: 552383089
 mas 'Evernote', id: 406056744
-# - system preferences:
+# - System Preferences:
 #   - Security & Privacy -> Privacy -> Accessibility
-# - app preferences:
+# - Preferences:
 #   - Window Mover:
 #     - Move: <S-M> + one finger (+ Left Mouse Button for mouse)
 #     - Resize: <S-M> + two fingers (+ Right Mouse Button for mouse)
@@ -372,7 +372,7 @@ mas 'FTP Server', id: 987045856
 #mas 'Magic Go', id: 1060433592
 mas 'Marked 2', id: 890031187
 mas 'Microsoft Remote Desktop', id: 715768417
-# - app preferences:
+# - Preferences:
 #   - General:
 #     - After upload:
 #       - [ ] Open in browser
@@ -383,15 +383,15 @@ mas 'Microsoft Remote Desktop', id: 715768417
 #     - Login -> Login with Facebook (a***.t***.i***@gmail.com)
 mas 'Monosnap', id: 540348655
 mas 'Pomodoro Timer', id: 872515009
-# - system preferences:
+# - System Preferences:
 #   - Users & Groups -> Login Items: add (don't hide)
-# - app preferences:
+# - Preferences:
 #   - Shortcuts:
 #     - General -> Show Magnifier: <M-2>
 mas 'Sip', id: 507257563
 mas 'Telegram Desktop', id: 946399090
 mas 'Trello', id: 1278508951
-# - system preferences:
+# - System Preferences:
 #   - Users & Groups -> Login Items: add (don't hide)
 mas 'VPNAutoConnect', id: 532510878
 # after installation or update:
