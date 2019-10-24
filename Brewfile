@@ -305,10 +305,6 @@ cask 'smcfancontrol'
 cask 'steam'
 # for Raspeberry Pi (?)
 #cask 'unetbootin'
-# - `open /usr/local/Caskroom/utorrent/latest/uTorrent.app`
-# - system preferences:
-#   - Users & Groups -> Login Items: remove (don't hide)
-cask 'utorrent'
 cask 'whatsapp'
 cask 'zoomus'
 
