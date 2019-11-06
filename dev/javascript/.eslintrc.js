@@ -30,6 +30,7 @@ module.exports = {
     curly: ['error', 'multi-line', 'consistent'],
     // eslint and prettier indentation rules might differ for nested blocks
     //indent: ['error', 2],
+    'jsx-quotes': ['error', 'prefer-single'],
     'keyword-spacing': ['error', {after: true, before: true}],
     'linebreak-style': ['error', 'unix'],
     //'max-len': ['warn', 80],
@@ -38,9 +39,9 @@ module.exports = {
       'error',
       {argsIgnorePattern: '^_', varsIgnorePattern: '^_'},
     ],
-    quotes: ['error', 'single', {avoidEscape: true}],
     'object-curly-spacing': ['error', 'never'],
-    'jsx-quotes': ['error', 'prefer-single'],
+    quotes: ['error', 'single', {avoidEscape: true}],
+    radix: ['error', 'as-needed'],
     semi: ['error', 'always'],
     'space-before-function-paren': ['error', 'never'],
     //-------------------------------------------------------------------------
