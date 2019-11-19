@@ -461,7 +461,10 @@ let g:lightline.mode_map = {
 " linter components are hidden in plugin window
 let g:lightline.active = {
       \   'left': [['mode'], ['fugitive'], ['filename']],
-      \   'right': [['lineinfo'], ['filetype', 'linter_warnings', 'linter_errors', 'linter_ok']]
+      \   'right': [
+      \     ['lineinfo'],
+      \     ['filetype', 'linter_checking', 'linter_warnings', 'linter_errors', 'linter_ok']
+      \   ]
       \ }
 let g:lightline.inactive = {
       \   'left': [['filename']],
@@ -501,14 +504,16 @@ let g:lightline.component_function = {
 let g:lightline.component_expand = {
       \   'linter_warnings': 'MyLightlineLinterWarnings',
       \   'linter_errors': 'MyLightlineLinterErrors',
-      \   'linter_ok': 'MyLightlineLinterOk'
+      \   'linter_ok': 'MyLightlineLinterOk',
+      \   'linter_checking': 'MyLightlineLinterChecking'
       \ }
 " this configuration applies to component_expand only, values are color
 " names from lightline colorscheme
 let g:lightline.component_type = {
       \   'linter_warnings': 'warning',
       \   'linter_errors': 'error',
-      \   'linter_ok': 'ok'
+      \   'linter_ok': 'ok',
+      \   'linter_checking': 'checking'
       \ }
 
 " options for components:
@@ -621,6 +626,13 @@ function! MyLightlineLinterOk()
   return lightline#ale#ok()
 endfunction
 
+function! MyLightlineLinterChecking()
+  if <SID>IsQuickfix() | return '' | end
+  if <SID>IsPluginWindow() | return '' | end
+
+  return lightline#ale#checking()
+endfunction
+
 function! s:IsNarrowWindow()
   return winwidth(0) <= 60
 endfunction
@@ -681,6 +693,7 @@ let g:lightline#ale#indicator_errors = '✗ '
 let g:lightline#ale#indicator_ok = ''
 "let g:lightline#ale#indicator_ok = '✓'
 "let g:lightline#ale#indicator_ok = 'ok'
+let g:lightline#ale#indicator_checking = '⟳'
 
 "-------------------------------------------------------------------------------
 " nerdcommenter

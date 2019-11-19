@@ -25,7 +25,8 @@ let s:p.normal.middle = [[s:tundora, s:athens_gray]]
 let s:p.normal.right = copy(s:p.normal.left)
 let s:p.normal.warning = [['#0512FB', '#FDE1FD']]
 let s:p.normal.error = [['#662529', '#F4DBDC']]
-let s:p.normal.ok = [['#004000', '#e5f2e5']]
+let s:p.normal.ok = [['#004000', '#E5F2E5']]
+let s:p.normal.checking = [[s:atoll, '#F5F5CA']]
 
 let s:p.inactive.left = [[s:tundora, s:alto], [s:tundora, s:alto]]
 let s:p.inactive.middle = [[s:tundora, s:alto]]
