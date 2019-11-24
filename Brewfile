@@ -232,6 +232,7 @@ cask 'genymotion'
 #     - Quick Javascript Switcher (Hide in Chrome Menu)
 #     - React Developer Tools (Hide in Chrome Menu)
 #     - Scrum for Trello (Hide in Chrome Menu)
+#     + Session Buddy
 #     - Tag Assistant (by Google) (enabled per tab)
 #     + The Great Suspender
 #       - Settings:
