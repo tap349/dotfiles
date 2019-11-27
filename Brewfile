@@ -173,7 +173,7 @@ cask 'calibre'
 # - System Preferences:
 #   - Users & Groups -> Login Items: add (don't hide)
 cask 'docker'
-#cask 'firefox'
+cask 'firefox'
 #cask 'font-fontawesome'
 #cask 'font-cousine'
 #cask 'font-d2coding'
