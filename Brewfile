@@ -227,7 +227,7 @@ cask 'genymotion'
 #       - Theme: mdn-like
 #       - Structure:
 #         - "lineNumbers": false
-#     + Noisli (Hide in Chrome Menu)
+#     + Noisli
 #     - Proxy SwitchyOmega (configure proxy per site)
 #     - Quick Javascript Switcher (Hide in Chrome Menu)
 #     - React Developer Tools (Hide in Chrome Menu)
