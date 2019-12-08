@@ -333,6 +333,7 @@ cask 'zoomus'
 #     - Setup:
 #       - Link Dropbox Account
 mas '2Do', id: 477670270
+mas 'ABBYY Lingvo European', id: 467622356
 # on first run:
 # - select folders to synchronize (books/, education/, videos/)
 # - Settings:
