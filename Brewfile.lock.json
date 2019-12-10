@@ -8,7 +8,7 @@
         "revision": "be93b42fc1a22ef58b75961ebda0446a2c300cc5"
       },
       "homebrew/cask": {
-        "revision": "9c04728da31d786832574e52d31e1e64fef8df1d"
+        "revision": "97401b95802fd4629b65f63313dfe379f955aef5"
       },
       "homebrew/cask-fonts": {
         "revision": "b506e52bfa56aa435a5d064f0e723095f139a614"
@@ -1133,15 +1133,19 @@
       "Xcode": {
         "id": "497799835",
         "version": "11.2.1"
+      },
+      "ABBYY Lingvo European": {
+        "id": "467622356",
+        "version": "1.11.0"
       }
     }
   },
   "system": {
     "macos": {
       "catalina": {
-        "HOMEBREW_VERSION": "2.2.0-68-g6543f51",
+        "HOMEBREW_VERSION": "2.2.0-70-g2fe99bd",
         "HOMEBREW_PREFIX": "/usr/local",
-        "Homebrew/homebrew-core": "e0a03299424531b5773362ac9c3ccf903513fca1",
+        "Homebrew/homebrew-core": "b82ebf7f81d0e9790e46d14d0786d666664ace12",
         "CLT": "",
         "Xcode": "11.2.1",
         "macOS": "10.15"
