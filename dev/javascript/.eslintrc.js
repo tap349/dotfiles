@@ -34,6 +34,10 @@ module.exports = {
     'keyword-spacing': ['error', {after: true, before: true}],
     'linebreak-style': ['error', 'unix'],
     //'max-len': ['warn', 80],
+    // ESLint complains all the time when using React Hooks since you define
+    // helper functions inside a functional component and arguments of helper
+    // functions have the same names as variables in a functional component
+    'no-shadow': 'off',
     'no-trailing-spaces': ['error'],
     'no-unused-vars': [
       'error',
@@ -78,5 +82,8 @@ module.exports = {
       'always',
       {allowLineBreak: true},
     ],
+    // prettier might split generic type annotation across multiple line
+    // and this rule would complain about it
+    'flowtype/generic-spacing': ['off'],
   },
 };
