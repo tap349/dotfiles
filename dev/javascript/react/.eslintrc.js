@@ -37,7 +37,14 @@ module.exports = {
     quotes: ['error', 'single', {avoidEscape: true}],
     radix: ['error', 'as-needed'],
     semi: ['error', 'always'],
-    'space-before-function-paren': ['error', 'never'],
+    'space-before-function-paren': [
+      'error',
+      {
+        anonymous: 'never',
+        named: 'never',
+        asyncArrow: 'always',
+      },
+    ],
     //-------------------------------------------------------------------------
     // https://github.com/yannickcr/eslint-plugin-react/tree/master/docs/rules
     //-------------------------------------------------------------------------
