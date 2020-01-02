@@ -8,7 +8,7 @@
         "revision": "be93b42fc1a22ef58b75961ebda0446a2c300cc5"
       },
       "homebrew/cask": {
-        "revision": "8451f37294007f977b7f3c1f2db439faaf33de9a"
+        "revision": "8ad6843fa2319bc5d83c0bd327c5df99a9f32b66"
       },
       "homebrew/cask-fonts": {
         "revision": "1407d48a88309eb141dd1900d81398e18ed95ee8"
@@ -303,22 +303,22 @@
         }
       },
       "imagemagick": {
-        "version": "7.0.9-11",
+        "version": "7.0.9-12",
         "bottle": {
           "cellar": "/usr/local/Cellar",
           "prefix": "/usr/local",
           "files": {
             "catalina": {
-              "url": "https://homebrew.bintray.com/bottles/imagemagick-7.0.9-11.catalina.bottle.tar.gz",
-              "sha256": "2b6924c269848c2ceb53adefe4aff13315b0618fe22e539ccf88274ae22719dc"
+              "url": "https://homebrew.bintray.com/bottles/imagemagick-7.0.9-12.catalina.bottle.tar.gz",
+              "sha256": "4dfcd646094ec847694aa6fb1bed486ae0c5f0ed86f43ab4e4dc01d1c539ebe2"
             },
             "mojave": {
-              "url": "https://homebrew.bintray.com/bottles/imagemagick-7.0.9-11.mojave.bottle.tar.gz",
-              "sha256": "fd17113f6834a1840872cf5a1a9b452eee8a6d4b779e0b088374195d9688d83b"
+              "url": "https://homebrew.bintray.com/bottles/imagemagick-7.0.9-12.mojave.bottle.tar.gz",
+              "sha256": "573c6bb23f71c4ee52875bdca6d0a47f325213ff1739550ada37719029b8362e"
             },
             "high_sierra": {
-              "url": "https://homebrew.bintray.com/bottles/imagemagick-7.0.9-11.high_sierra.bottle.tar.gz",
-              "sha256": "b96782fd0fcf4adbb42890c00f8d2ee1aff1eff444b3a3288990cf63a380d3c0"
+              "url": "https://homebrew.bintray.com/bottles/imagemagick-7.0.9-12.high_sierra.bottle.tar.gz",
+              "sha256": "c2698d49eff1a03d9e1aa9181e3213f47aa41c989dbff96da90aa08086163a08"
             }
           }
         }
@@ -715,22 +715,22 @@
         }
       },
       "tokei": {
-        "version": "10.1.0",
+        "version": "10.1.1",
         "bottle": {
           "cellar": ":any_skip_relocation",
           "prefix": "/usr/local",
           "files": {
             "catalina": {
-              "url": "https://homebrew.bintray.com/bottles/tokei-10.1.0.catalina.bottle.tar.gz",
-              "sha256": "72ed8f9825cff756c7429639d7edf6e5d488c7d5500e24f915c1f41d976b39bb"
+              "url": "https://homebrew.bintray.com/bottles/tokei-10.1.1.catalina.bottle.tar.gz",
+              "sha256": "cef6e9ca145b9ff94a20696cca63571010fda98d1867c3841e9d6ceb67f874d7"
             },
             "mojave": {
-              "url": "https://homebrew.bintray.com/bottles/tokei-10.1.0.mojave.bottle.tar.gz",
-              "sha256": "1f634d13729b8474d6c9358006b229971d8c3537ff4ce49a710101b728fdc054"
+              "url": "https://homebrew.bintray.com/bottles/tokei-10.1.1.mojave.bottle.tar.gz",
+              "sha256": "98371ce5532e291e2fecf46aeedd78daadc5fa8cee82971411b03b186b2d4e4a"
             },
             "high_sierra": {
-              "url": "https://homebrew.bintray.com/bottles/tokei-10.1.0.high_sierra.bottle.tar.gz",
-              "sha256": "88fb44377bcb212c5f9c7886f2779ffa3561ba521efbb68603477a0a97540304"
+              "url": "https://homebrew.bintray.com/bottles/tokei-10.1.1.high_sierra.bottle.tar.gz",
+              "sha256": "99d066d7ad2b7aead1725cdeffe95eb97f95d5a7179c5790eed70defc5b09425"
             }
           }
         }
@@ -960,7 +960,7 @@
         }
       },
       "mpv": {
-        "version": "0.30.0",
+        "version": "0.31.0",
         "options": {
           "args": {
             "appdir": "/Applications"
@@ -1024,7 +1024,7 @@
         }
       },
       "react-native-debugger": {
-        "version": "0.10.2",
+        "version": "0.10.5",
         "options": {
           "args": {
             "appdir": "/Applications"
@@ -1065,6 +1065,14 @@
       },
       "zoomus": {
         "version": "4.4.55387.0716",
+        "options": {
+          "args": {
+            "appdir": "/Applications"
+          }
+        }
+      },
+      "flipper": {
+        "version": "0.30.1",
         "options": {
           "args": {
             "appdir": "/Applications"
@@ -1139,9 +1147,9 @@
   "system": {
     "macos": {
       "catalina": {
-        "HOMEBREW_VERSION": "2.2.2-14-gb7ee5a9",
+        "HOMEBREW_VERSION": "2.2.2-50-gc0b9167",
         "HOMEBREW_PREFIX": "/usr/local",
-        "Homebrew/homebrew-core": "a42a7f6b92a8c2e908e784f548a4acb396bc122f",
+        "Homebrew/homebrew-core": "797d09b51cc078b7dfa91f7179fdfefd73a00ca1",
         "CLT": "",
         "Xcode": "11.3",
         "macOS": "10.15.2"

@@ -174,7 +174,6 @@ cask 'calibre'
 #   - Users & Groups -> Login Items: add (don't hide)
 cask 'docker'
 cask 'firefox'
-cask 'flipper'
 #cask 'font-fontawesome'
 #cask 'font-cousine'
 #cask 'font-d2coding'
