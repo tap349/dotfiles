@@ -295,7 +295,7 @@ cask 'opera'
 cask 'pgadmin4'
 cask 'phantomjs'
 cask 'psequel'
-#cask 'react-native-debugger'
+cask 'react-native-debugger'
 cask 'skype'
 # - Preferences:
 #   - Menubar: Temperature only
