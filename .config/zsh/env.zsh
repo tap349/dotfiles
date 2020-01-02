@@ -96,7 +96,7 @@ export ERL_AFLAGS='-kernel shell_history enabled'
 # https://github.com/artsy/emission/blob/45417ca425f2cba7d2da21902ef8ff1cd093a024/package.json#L28
 #
 # set React Native Debugger as JavaScript debugger
-export REACT_DEBUGGER="open -g 'rndebugger://set-debugger-loc?port=8081' --args"
+#export REACT_DEBUGGER="open -g 'rndebugger://set-debugger-loc?port=8081' --args"
 
 # https://github.com/bradmartin/nativescript-videoplayer/issues/76
 export SIMCTL_CHILD_OS_ACTIVITY_MODE='disable'
