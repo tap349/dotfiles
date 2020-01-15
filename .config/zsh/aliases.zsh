@@ -15,6 +15,7 @@ alias blog='cd ~/blog'
 alias dot='cd ~/.dotfiles'
 
 alias a='cd ~/dev/compleader/ansible'
+alias cosette='cd ~/dev/compleader/cosette'
 alias diana='cd ~/dev/compleader/diana'
 alias ic='cd ~/dev/compleader/iceperk'
 alias ica='cd ~/dev/compleader/iceperkapp'
