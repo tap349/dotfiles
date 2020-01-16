@@ -296,7 +296,6 @@ cask 'phantomjs'
 cask 'psequel'
 cask 'react-native-debugger'
 cask 'skype'
-cask 'slack'
 # - Preferences:
 #   - Menubar: Temperature only
 #   - [x] Check for updates on startup
