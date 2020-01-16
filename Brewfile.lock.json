@@ -8,7 +8,7 @@
         "revision": "be93b42fc1a22ef58b75961ebda0446a2c300cc5"
       },
       "homebrew/cask": {
-        "revision": "8ad6843fa2319bc5d83c0bd327c5df99a9f32b66"
+        "revision": "9474032777df5348f5a410ced5cf6733f8e2c84d"
       },
       "homebrew/cask-fonts": {
         "revision": "1407d48a88309eb141dd1900d81398e18ed95ee8"
@@ -68,22 +68,22 @@
         }
       },
       "awscli": {
-        "version": "1.16.300",
+        "version": "1.16.310",
         "bottle": {
           "cellar": ":any_skip_relocation",
           "prefix": "/usr/local",
           "files": {
             "catalina": {
-              "url": "https://homebrew.bintray.com/bottles/awscli-1.16.300.catalina.bottle.tar.gz",
-              "sha256": "1bdb37360ead0f8dd3a9d4982cf4cf95a9f9bee6faf161a91ef3ec1d0496b342"
+              "url": "https://homebrew.bintray.com/bottles/awscli-1.16.310.catalina.bottle.tar.gz",
+              "sha256": "427aeedb5c7920a89704b2861aeb4068b3d23f1db5f854a0814785c1f33bd288"
             },
             "mojave": {
-              "url": "https://homebrew.bintray.com/bottles/awscli-1.16.300.mojave.bottle.tar.gz",
-              "sha256": "c5f6c1522d49507173fd2d7c883e9fb828438ef04f1cd837d5decd12bd0592ac"
+              "url": "https://homebrew.bintray.com/bottles/awscli-1.16.310.mojave.bottle.tar.gz",
+              "sha256": "272f7019bccef9d970bbcdc657ce1bb9a891ddc8afdc80a5c1d6487b464f8adc"
             },
             "high_sierra": {
-              "url": "https://homebrew.bintray.com/bottles/awscli-1.16.300.high_sierra.bottle.tar.gz",
-              "sha256": "96a315b11b9e3c4acdf5d5a74be281e9d66a6262bbb51b5c8d6b06741375ce7e"
+              "url": "https://homebrew.bintray.com/bottles/awscli-1.16.310.high_sierra.bottle.tar.gz",
+              "sha256": "8f36ece466b1bc17b7517495b4bc29648d8e05e8c9ddaee0d94944eaf8c4fa08"
             }
           }
         }
@@ -880,7 +880,7 @@
         }
       },
       "calibre": {
-        "version": "4.7.0",
+        "version": "4.8.0",
         "options": {
           "args": {
             "appdir": "/Applications"
@@ -1078,6 +1078,14 @@
             "appdir": "/Applications"
           }
         }
+      },
+      "slack": {
+        "version": "4.2.0",
+        "options": {
+          "args": {
+            "appdir": "/Applications"
+          }
+        }
       }
     },
     "mas": {
@@ -1149,7 +1157,7 @@
       "catalina": {
         "HOMEBREW_VERSION": "2.2.2-50-gc0b9167",
         "HOMEBREW_PREFIX": "/usr/local",
-        "Homebrew/homebrew-core": "797d09b51cc078b7dfa91f7179fdfefd73a00ca1",
+        "Homebrew/homebrew-core": "4b0efc92ffe87f9fd0c68111db8009fc9ef45cf2",
         "CLT": "",
         "Xcode": "11.3",
         "macOS": "10.15.2"
