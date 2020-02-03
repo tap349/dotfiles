@@ -39,7 +39,8 @@ alias rebecca='cd ~/dev/compleader/alice/apps/rebecca'
 alias veronika='cd ~/dev/compleader/alice/apps/veronika'
 alias yancy='cd ~/dev/compleader/alice/apps/yancy'
 
-# corina, ginger
+# anna
+alias annachef='cd ~/dev/compleader/annachef'
 alias corina='cd ~/dev/compleader/corina'
 alias ginger='cd ~/dev/compleader/ginger'
 
