@@ -43,6 +43,7 @@ brew 'boost'
 #brew 'cgoban'
 #brew 'djview4'
 brew 'djvu2pdf'
+brew 'exiftool'
 # use docker-compose.yml instead
 #brew 'elasticsearch', restart_service: :changed
 brew 'fish'
