@@ -8,10 +8,10 @@
         "revision": "be93b42fc1a22ef58b75961ebda0446a2c300cc5"
       },
       "homebrew/cask": {
-        "revision": "067501cf7e02cb739bea9e39649c36ddd9c0eae0"
+        "revision": "0c61a44153bfa79a1b67574aff4a98df7d1e976d"
       },
       "homebrew/cask-fonts": {
-        "revision": "783ef17621b10966ce78c8387faa38babca5d280"
+        "revision": "0750b0d95787f4af5987fbce807b420e774667d7"
       },
       "puma/puma": {
         "revision": "bd977276dace11f9b31e6181aa770d676a996b11"
@@ -454,22 +454,22 @@
         }
       },
       "memcached": {
-        "version": "1.5.21",
+        "version": "1.5.22",
         "bottle": {
           "cellar": ":any",
           "prefix": "/usr/local",
           "files": {
             "catalina": {
-              "url": "https://homebrew.bintray.com/bottles/memcached-1.5.21.catalina.bottle.tar.gz",
-              "sha256": "e51087b5f555e07edfaec6ea6c7d6f9391cc3e7db70c9a2c0d94c7b1a20ebb51"
+              "url": "https://homebrew.bintray.com/bottles/memcached-1.5.22.catalina.bottle.tar.gz",
+              "sha256": "c06d96884f09dc8ff4c1d6bed20366db116b4c3b837c7bd5d294d831848af454"
             },
             "mojave": {
-              "url": "https://homebrew.bintray.com/bottles/memcached-1.5.21.mojave.bottle.tar.gz",
-              "sha256": "f74f56c7e1e8c358694a0cb4842d4c8e002a4bc7c7249b4cea64997195c0a781"
+              "url": "https://homebrew.bintray.com/bottles/memcached-1.5.22.mojave.bottle.tar.gz",
+              "sha256": "f041a91c262c14161be71a27e47b7b37d837e27fbb2f16ad38036ff3481fd14c"
             },
             "high_sierra": {
-              "url": "https://homebrew.bintray.com/bottles/memcached-1.5.21.high_sierra.bottle.tar.gz",
-              "sha256": "851b26d026604f265cb237f53aaa3d47fde7ceaad564c9eb3ab6b946897a0c9f"
+              "url": "https://homebrew.bintray.com/bottles/memcached-1.5.22.high_sierra.bottle.tar.gz",
+              "sha256": "2fee77cf1c8777a1c6c1eb64086bca30a6ae684b7ec4bfbb41f107c24de8b2c8"
             }
           }
         },
@@ -766,22 +766,22 @@
         }
       },
       "unrar": {
-        "version": "5.8.5",
+        "version": "5.9.1",
         "bottle": {
           "cellar": ":any",
           "prefix": "/usr/local",
           "files": {
             "catalina": {
-              "url": "https://homebrew.bintray.com/bottles/unrar-5.8.5.catalina.bottle.tar.gz",
-              "sha256": "555a39a080ba65da9f8d4a5c02fc95eb810221f9e88dfb741261ce32622e7a00"
+              "url": "https://homebrew.bintray.com/bottles/unrar-5.9.1.catalina.bottle.tar.gz",
+              "sha256": "778a5ef87bc4c4f0c76ad4c774451c2aa03692a7555780e07dd02fdd17e5d961"
             },
             "mojave": {
-              "url": "https://homebrew.bintray.com/bottles/unrar-5.8.5.mojave.bottle.tar.gz",
-              "sha256": "c2011afe36f228c13123bbe3c4a777439f353c5b183313160f0118b79d3af417"
+              "url": "https://homebrew.bintray.com/bottles/unrar-5.9.1.mojave.bottle.tar.gz",
+              "sha256": "8f50cbc0555c19d451f85fbbaaf081586bf9f0bdf788f53c6041aacc7be2bf25"
             },
             "high_sierra": {
-              "url": "https://homebrew.bintray.com/bottles/unrar-5.8.5.high_sierra.bottle.tar.gz",
-              "sha256": "cb838a0e04135acb5b7bd0e92f7a73371208c407c8abeaf0c42b60ae367b609d"
+              "url": "https://homebrew.bintray.com/bottles/unrar-5.9.1.high_sierra.bottle.tar.gz",
+              "sha256": "dd7813a21417cdc5741ca03dfb51bbcf104d1e7430c487aa82012c709d4c70e7"
             }
           }
         }
@@ -864,12 +864,34 @@
             }
           }
         }
+      },
+      "exiftool": {
+        "version": "11.85",
+        "bottle": {
+          "cellar": ":any_skip_relocation",
+          "prefix": "/usr/local",
+          "files": {
+            "catalina": {
+              "url": "https://homebrew.bintray.com/bottles/exiftool-11.85.catalina.bottle.tar.gz",
+              "sha256": "d0d05e8e55257a5132ffbc91bc4789d2828912f8df54ebbfbbe120d9c808d0c9"
+            },
+            "mojave": {
+              "url": "https://homebrew.bintray.com/bottles/exiftool-11.85.mojave.bottle.tar.gz",
+              "sha256": "d0d05e8e55257a5132ffbc91bc4789d2828912f8df54ebbfbbe120d9c808d0c9"
+            },
+            "high_sierra": {
+              "url": "https://homebrew.bintray.com/bottles/exiftool-11.85.high_sierra.bottle.tar.gz",
+              "sha256": "5c2ce26400d6ac9b6b678dfeb845dda3654d8a35be01c1270d8a0216bcb3dd56"
+            }
+          }
+        }
       }
     },
     "cask": {
       "adoptopenjdk8": {
         "version": "8,222:b10",
         "options": {
+          "full_name": "adoptopenjdk8",
           "args": {
             "appdir": "/Applications"
           }
@@ -878,6 +900,7 @@
       "calibre": {
         "version": "4.9.1",
         "options": {
+          "full_name": "calibre",
           "args": {
             "appdir": "/Applications"
           }
@@ -886,6 +909,7 @@
       "docker": {
         "version": "17.03.1-ce,16048",
         "options": {
+          "full_name": "docker",
           "args": {
             "appdir": "/Applications"
           }
@@ -894,6 +918,7 @@
       "firefox": {
         "version": "70.0.1",
         "options": {
+          "full_name": "firefox",
           "args": {
             "appdir": "/Applications"
           }
@@ -902,6 +927,7 @@
       "font-inconsolata-lgc": {
         "version": "latest",
         "options": {
+          "full_name": "font-inconsolata-lgc",
           "args": {
             "appdir": "/Applications"
           }
@@ -910,6 +936,7 @@
       "genymotion": {
         "version": "3.0.4",
         "options": {
+          "full_name": "genymotion",
           "args": {
             "appdir": "/Applications"
           }
@@ -918,6 +945,7 @@
       "google-chrome": {
         "version": "latest",
         "options": {
+          "full_name": "google-chrome",
           "args": {
             "appdir": "/Applications"
           }
@@ -926,6 +954,7 @@
       "gopanda": {
         "version": "latest",
         "options": {
+          "full_name": "gopanda",
           "args": {
             "appdir": "/Applications"
           }
@@ -934,6 +963,7 @@
       "insomnia": {
         "version": "6.2.0",
         "options": {
+          "full_name": "insomnia",
           "args": {
             "appdir": "/Applications"
           }
@@ -942,6 +972,7 @@
       "iterm2": {
         "version": "3.1.5",
         "options": {
+          "full_name": "iterm2",
           "args": {
             "appdir": "/Applications"
           }
@@ -950,14 +981,16 @@
       "krisp": {
         "version": "0.7.6",
         "options": {
+          "full_name": "krisp",
           "args": {
             "appdir": "/Applications"
           }
         }
       },
       "mpv": {
-        "version": "0.31.0",
+        "version": "0.32.0",
         "options": {
+          "full_name": "mpv",
           "args": {
             "appdir": "/Applications"
           }
@@ -966,6 +999,7 @@
       "ngrok": {
         "version": "latest",
         "options": {
+          "full_name": "ngrok",
           "args": {
             "appdir": "/Applications"
           }
@@ -974,6 +1008,7 @@
       "obs": {
         "version": "24.0.6",
         "options": {
+          "full_name": "obs",
           "args": {
             "appdir": "/Applications"
           }
@@ -982,6 +1017,7 @@
       "openemu": {
         "version": "2.0.7",
         "options": {
+          "full_name": "openemu",
           "args": {
             "appdir": "/Applications"
           }
@@ -990,6 +1026,7 @@
       "opera": {
         "version": "53.0.2907.37",
         "options": {
+          "full_name": "opera",
           "args": {
             "appdir": "/Applications"
           }
@@ -998,6 +1035,7 @@
       "pgadmin4": {
         "version": "4.17",
         "options": {
+          "full_name": "pgadmin4",
           "args": {
             "appdir": "/Applications"
           }
@@ -1006,6 +1044,7 @@
       "phantomjs": {
         "version": "2.1.1",
         "options": {
+          "full_name": "phantomjs",
           "args": {
             "appdir": "/Applications"
           }
@@ -1014,6 +1053,7 @@
       "psequel": {
         "version": "1.5.3",
         "options": {
+          "full_name": "psequel",
           "args": {
             "appdir": "/Applications"
           }
@@ -1022,6 +1062,7 @@
       "react-native-debugger": {
         "version": "0.10.5",
         "options": {
+          "full_name": "react-native-debugger",
           "args": {
             "appdir": "/Applications"
           }
@@ -1030,6 +1071,7 @@
       "skype": {
         "version": "latest",
         "options": {
+          "full_name": "skype",
           "args": {
             "appdir": "/Applications"
           }
@@ -1038,6 +1080,7 @@
       "smcfancontrol": {
         "version": "2.6",
         "options": {
+          "full_name": "smcfancontrol",
           "args": {
             "appdir": "/Applications"
           }
@@ -1046,6 +1089,7 @@
       "steam": {
         "version": "latest",
         "options": {
+          "full_name": "steam",
           "args": {
             "appdir": "/Applications"
           }
@@ -1054,6 +1098,7 @@
       "whatsapp": {
         "version": "0.3.1409",
         "options": {
+          "full_name": "whatsapp",
           "args": {
             "appdir": "/Applications"
           }
@@ -1062,6 +1107,7 @@
       "zoomus": {
         "version": "4.4.55387.0716",
         "options": {
+          "full_name": "zoomus",
           "args": {
             "appdir": "/Applications"
           }
@@ -1151,9 +1197,9 @@
   "system": {
     "macos": {
       "catalina": {
-        "HOMEBREW_VERSION": "2.2.4-14-gd4fc6d5",
+        "HOMEBREW_VERSION": "2.2.5-9-g87c35ac",
         "HOMEBREW_PREFIX": "/usr/local",
-        "Homebrew/homebrew-core": "6730a8efebe585c30b6ba9cc54c34af7199450ad",
+        "Homebrew/homebrew-core": "2da0dc898a663118daf535515a9d8eb4052e160f",
         "CLT": "",
         "Xcode": "11.3",
         "macOS": "10.15.2"
