@@ -401,3 +401,4 @@ mas 'VPNAutoConnect', id: 532510878
 # - `sudo xcodebuild -license accept` (accept license)
 # - `xcode-select --install` (install CLT)
 mas 'Xcode', id: 497799835
+mas 'iA Writer', id: 775737590
