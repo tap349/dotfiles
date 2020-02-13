@@ -110,6 +110,7 @@ alias sidekiq='bundle exec sidekiq --config ./config/sidekiq.yml'
 # React Native
 #-------------------------------------------------------------------------------
 
+alias e='expo'
 alias rn='react-native'
 
 alias npm_reset='\
