@@ -46,7 +46,7 @@ brew 'djvu2pdf'
 brew 'exiftool'
 # use docker-compose.yml instead
 #brew 'elasticsearch', restart_service: :changed
-brew 'fish'
+#brew 'fish'
 # for ~/scripts/fontpatcher
 brew 'fontforge'
 # for shikimori
