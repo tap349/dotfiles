@@ -105,8 +105,12 @@ Plug 'tap349/ack.vim'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
+" `macvim` formula depends on `ruby` formula
+" => Homebrew always installs `ruby` formula
+" => asdf, system and Homebrew Ruby versions might differ
+" => use Homebrew Ruby to compile Command-T
 Plug 'wincent/command-t', {
-      \   'do': 'cd ruby/command-t/ext/command-t && ASDF_RUBY_VERSION=2.6.5 ruby extconf.rb && make'
+      \   'do': 'cd ruby/command-t/ext/command-t && /usr/local/Cellar/ruby/2.7.0/bin/ruby extconf.rb && make'
       \ }
 
 "-------------------------------------------------------------------------------
