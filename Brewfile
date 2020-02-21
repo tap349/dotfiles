@@ -305,6 +305,7 @@ cask 'smcfancontrol'
 # - System Preferences:
 #   - Users & Groups -> Login Items: remove
 cask 'steam'
+cask 'transmission'
 # for Raspeberry Pi (?)
 #cask 'unetbootin'
 cask 'whatsapp'
