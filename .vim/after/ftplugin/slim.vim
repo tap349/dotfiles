@@ -1,1 +1,1 @@
-inoremap <buffer> tt t('.')<Esc>F'i
+"inoremap <buffer> tt t('.')<Esc>F'i

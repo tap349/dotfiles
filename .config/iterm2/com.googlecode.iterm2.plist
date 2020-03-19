@@ -31491,7 +31491,7 @@
 	<key>NSWindow Frame iTerm Window 1</key>
 	<string>0 0 1280 777 0 0 1280 777 </string>
 	<key>NSWindow Frame iTerm Window 2</key>
-	<string>0 0 1280 777 0 0 1280 777 </string>
+	<string>0 224 650 553 0 0 1280 777 </string>
 	<key>NSWindow Frame iTerm Window 3</key>
 	<string>0 13 1274 764 0 0 1280 777 </string>
 	<key>NeverWarnAboutShortLivedSessions_9D3A6D63-A851-4F12-AFB4-40D98DE1829C</key>
@@ -32427,7 +32427,7 @@
 	<key>NoSyncLastTipTime</key>
 	<real>505504576.46584803</real>
 	<key>NoSyncLaunchExperienceControllerRunCount</key>
-	<integer>37</integer>
+	<integer>38</integer>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile</key>
 	<true/>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile_selection</key>
@@ -33175,16 +33175,16 @@
 	</array>
 	<key>NoSyncSearchHistory2</key>
 	<array>
-		<string>peter</string>
-		<string>petr</string>
-		<string>peterb</string>
-		<string>ленинг</string>
-		<string>санкт</string>
-		<string>saint</string>
-		<string>leningrad</string>
-		<string>silently</string>
-		<string>client 23</string>
-		<string>deps</string>
+		<string>RuntimeError: Invalid transition</string>
+		<string>access</string>
+		<string>user_id</string>
+		<string>"id" =&gt;</string>
+		<string>"id=&gt;</string>
+		<string>useri</string>
+		<string>formatted_phone_number</string>
+		<string>weight</string>
+		<string>"en"</string>
+		<string>language: </string>
 	</array>
 	<key>NoSyncTimeOfFirstLaunchOfVersionWithTip</key>
 	<real>501977440.84520799</real>
@@ -33296,7 +33296,7 @@
 	<key>ShowBookmarkName</key>
 	<false/>
 	<key>ShowFullScreenTabBar</key>
-	<true/>
+	<false/>
 	<key>ShowPaneTitles</key>
 	<true/>
 	<key>SlowPasteBytesPerCall</key>
