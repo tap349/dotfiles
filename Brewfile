@@ -55,7 +55,8 @@ brew 'git'
 brew 'gpg'
 # to install Gradle Wrapper
 brew 'gradle'
-brew 'honcho'
+# use overmind instead
+#brew 'honcho'
 brew 'htop'
 brew 'imagemagick'
 brew 'jq'
@@ -89,6 +90,7 @@ brew 'mc'
 # (same as nodejs)
 brew 'node'
 brew 'octave'
+brew 'overmind'
 brew 'p7zip'
 # not used
 #brew 'pg_top'
