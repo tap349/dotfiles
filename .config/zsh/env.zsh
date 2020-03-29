@@ -31,6 +31,8 @@ setopt EXTENDED_GLOB
 # removes duplicate entries from PATH
 typeset -U path
 # brew creates symlinks in /usr/local/bin/
+path=($HOME/scripts $path)
+# brew creates symlinks in /usr/local/bin/
 path=(/usr/local/bin $path)
 # > `brew info libpq`
 # >
