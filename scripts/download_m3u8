@@ -3,21 +3,21 @@
 # remove everything starting with ? (URL path)
 playlist_url="${1%\?*}"
 output_filename="${2}.mp4"
-tempdir="./temp"
+tempdir="$PWD/temp"
 
 # temp dir to store .ts files before combing them into mp4
 # (by default .ts files are stored in ~/.cache/m3u8downloader/
 # and might be not removed in case of error)
-mkdir $tempdir
+mkdir "$tempdir"
 
 # https://pypi.org/project/m3u8downloader/
 # $ pip3 install --user m3u8downloader
-~/Library/Python/3.7/bin/downloadm3u8 $playlist_url \
+~/Library/Python/3.7/bin/downloadm3u8 "$playlist_url" \
   --output output.mp4 \
-  --tempdir $tempdir
+  --tempdir "$tempdir"
 
 # downloadm3u8 exits with error when passing `-o $output_filename`
 # directly (maybe because of cyrillic filename)
-mv output.mp4 $output_filename
+mv output.mp4 "$output_filename"
 
-rmdir $tempdir
+rmdir "$tempdir"
