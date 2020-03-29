@@ -253,8 +253,6 @@ if getcwd() =~ 'iceperk$'
   set background=light
   colorscheme solarized
 else
-  "set background=dark
-  "colorscheme solarized
   set background=light
   colorscheme github
 endif
