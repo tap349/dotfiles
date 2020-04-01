@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+input_file="$1"
+output_file="${input_file/mov/mp4}"
+
+ffmpeg -i "$input_file" -vcodec h264 -acodec mp2 "$output_file" && rm "$input_file"
