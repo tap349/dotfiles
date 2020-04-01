@@ -221,15 +221,16 @@ cask 'genymotion'
 #       - Purple Box:
 #         - [ ] Show the purple box in the corner of my browser
 #     + Google Docs Offline (installed by default)
-#     + Grammarly for Chrome (Hide in Chrome Menu):
+#     - GoUniverse (Hide in Chrome Menu)
+#     - Grammarly for Chrome (Hide in Chrome Menu):
 #       - This can read and change site data:
 #         - [x] When you click the extension
-#     - GoUniverse (Hide in Chrome Menu)
 #     - JSON Formatter (Hide in Chrome Menu)
 #     + JSON Viewer (Hide in Chrome Menu)
 #       - Theme: mdn-like
 #       - Structure:
 #         - "lineNumbers": false
+#     + IG Stories for Instagram (Hide in Chrome Menu)
 #     + Noisli
 #     - Proxy SwitchyOmega (configure proxy per site)
 #     - Quick Javascript Switcher (Hide in Chrome Menu)
@@ -248,7 +249,6 @@ cask 'genymotion'
 #       - Settings:
 #         - [ ] Show the number of blocked requests on the icon
 #     - Viewport Dimensions (Hide in Chrome Menu)
-#     + VLC Video Downloader (Hide in Chrome Menu)
 #     + Google Docs (installed by default)
 #     + Google Sheets (installed by default)
 #     - Google Slides (installed by default)
