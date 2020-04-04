@@ -4,6 +4,7 @@
 nmap <silent><buffer> <LocalLeader>f :FlowType<CR>
 
 imap <buffer> >> <><C-b>
+imap <buffer> >? </><C-b>
 imap <buffer> >V <View><Esc>T<
 imap <buffer> >T <Text><Esc>T<
 "imap <buffer> cc console.log('%c ', 'font-size: 20px; color: blue;')<Esc>T%f'i
