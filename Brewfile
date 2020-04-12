@@ -291,7 +291,7 @@ cask 'krisp'
 #cask 'leela'
 cask 'mpv'
 cask 'ngrok'
-# application can't be opened
+# OBS quits unexpectedly after start
 #cask 'obs'
 cask 'openemu'
 cask 'opera'
