@@ -142,6 +142,12 @@ brew 'zsh'
 
 cask_args appdir: '/Applications'
 
+# for mvrviewer-4.6.1213.air
+# https://community.adobe.com/t5/air/adobe-air-framework-is-damaged-and-can-t-be-opened/m-p/10799074#M55885
+#
+# after installation:
+# - `sudo xattr -r -d com.apple.quarantine /Library/Frameworks/Adobe\ AIR.framework`
+cask 'adobe-air'
 # for android-sdk
 # http://blog.tap349.com/react-native/android/2017/05/24/react-native-android/#install-java-8
 cask 'adoptopenjdk8'
