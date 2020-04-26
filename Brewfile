@@ -318,6 +318,9 @@ cask 'transmission'
 # for Raspeberry Pi (?)
 #cask 'unetbootin'
 cask 'whatsapp'
+cask 'wine-stable'
+# for wine-stable
+cask 'xquartz'
 cask 'zoomus'
 
 #-------------------------------------------------------------------------------
