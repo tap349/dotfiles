@@ -345,6 +345,7 @@ cask 'zoomus'
 #       - Link Dropbox Account
 mas '2Do', id: 477670270
 mas 'ABBYY Lingvo European', id: 467622356
+mas 'AdBlock', id: 1402042596
 # on first run:
 # - select folders to synchronize (books/, education/, videos/)
 # - Settings:
@@ -380,6 +381,7 @@ mas 'Evernote', id: 406056744
 #     - [ ] Show icon in Dock
 mas 'Flexiglass', id: 426410278
 mas 'FTP Server', id: 987045856
+mas 'Ghostery Lite', id: 1436953057
 #mas 'iMovie', id: 408981434
 #mas 'LINE', id: 539883307
 #mas 'Magic Go', id: 1060433592
@@ -396,6 +398,7 @@ mas 'Microsoft Remote Desktop', id: 715768417
 #     - Login -> Login with Facebook (a***.t***.i***@gmail.com)
 mas 'Monosnap', id: 540348655
 mas 'Pomodoro Timer', id: 872515009
+mas 'Screen Recorder Pro - Screen Capture HD Video', id: 985439997
 # - System Preferences:
 #   - Users & Groups -> Login Items: add (don't hide)
 # - Preferences:
