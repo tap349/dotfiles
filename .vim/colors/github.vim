@@ -35,6 +35,7 @@ hi SpecialKey ctermfg=6 guifg=#177F80 gui=italic cterm=italic
 hi WarningMsg ctermfg=167 guifg=#df1100
 hi ErrorMsg ctermbg=15 ctermfg=196 guibg=#f8f8ff guifg=#ff1100
 hi ColorColumn ctermbg=254 guibg=#E8E8EF
+hi SignColumn guibg=#F3F3FA
 " }}}
 
 " {{{ Vim => 7.0 specific colors
