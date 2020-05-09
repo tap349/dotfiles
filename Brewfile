@@ -320,6 +320,7 @@ cask 'transmission'
 cask 'vagrant'
 cask 'vagrant-manager'
 cask 'virtualbox'
+cask 'virtualbox-extension-pack'
 cask 'whatsapp'
 cask 'zoomus'
 
