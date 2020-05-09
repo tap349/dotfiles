@@ -317,6 +317,9 @@ cask 'steam'
 cask 'transmission'
 # for Raspeberry Pi (?)
 #cask 'unetbootin'
+cask 'vagrant'
+cask 'vagrant-manager'
+cask 'virtualbox'
 cask 'whatsapp'
 cask 'zoomus'
 
@@ -398,7 +401,7 @@ mas 'Microsoft Remote Desktop', id: 715768417
 #     - Login -> Login with Facebook (a***.t***.i***@gmail.com)
 mas 'Monosnap', id: 540348655
 mas 'Pomodoro Timer', id: 872515009
-mas 'Screen Recorder Pro - Screen Capture HD Video', id: 985439997
+mas 'Screen Recorder Movavi', id: 593854334
 # - System Preferences:
 #   - Users & Groups -> Login Items: add (don't hide)
 # - Preferences:
