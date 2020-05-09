@@ -1186,6 +1186,15 @@
             "appdir": "/Applications"
           }
         }
+      },
+      "virtualbox-extension-pack": {
+        "version": "6.1.6",
+        "options": {
+          "full_name": "virtualbox-extension-pack",
+          "args": {
+            "appdir": "/Applications"
+          }
+        }
       }
     },
     "mas": {
@@ -1262,6 +1271,10 @@
       "Screen Recorder Pro - Screen Capture HD Video": {
         "id": "985439997",
         "version": "3.2.3"
+      },
+      "Screen Recorder Movavi": {
+        "id": "593854334",
+        "version": "10.2"
       }
     }
   },
