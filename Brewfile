@@ -318,7 +318,6 @@ cask 'transmission'
 # for Raspeberry Pi (?)
 #cask 'unetbootin'
 cask 'vagrant'
-cask 'vagrant-manager'
 cask 'virtualbox'
 # for vagrant
 cask 'virtualbox-extension-pack'
