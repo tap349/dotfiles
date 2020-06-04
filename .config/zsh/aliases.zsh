@@ -32,6 +32,7 @@ alias msn='cd ~/dev/blackchestnut/minisklad-node'
 alias msnc='cd ~/dev/blackchestnut/minisklad-node-chef'
 alias neko='cd ~/dev/morr/neko-achievements'
 alias reika='cd ~/dev/compleader/reika'
+alias santi='cd ~/dev/compleader/santi-preview-app'
 alias sith='cd ~/dev/compleader/sith'
 alias sithchef='cd ~/dev/compleader/sithchef'
 
