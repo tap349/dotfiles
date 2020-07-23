@@ -48,13 +48,13 @@ module.exports = {
     //-------------------------------------------------------------------------
     // https://github.com/yannickcr/eslint-plugin-react/tree/master/docs/rules
     //-------------------------------------------------------------------------
-    'react/jsx-boolean-value': ['error', 'always'],
+    'react/jsx-boolean-value': ['error', 'never'],
     'react/jsx-closing-bracket-location': 'error',
     // in ESlint 6.6.0 it's necessary to specify both eventHandlerPrefix
     // and eventHandlerPropPrefix simultaneously
     'react/jsx-handler-names': [
       'warn',
-      {eventHandlerPrefix: '_handle', eventHandlerPropPrefix: 'on'},
+      {eventHandlerPrefix: 'handle', eventHandlerPropPrefix: 'on'},
     ],
     'react/jsx-max-props-per-line': ['warn', {when: 'multiline'}],
     'react/jsx-wrap-multilines': [
@@ -87,5 +87,9 @@ module.exports = {
     // prettier might split generic type annotation across multiple line
     // and this rule would complain about it
     'flowtype/generic-spacing': ['off'],
+    //-------------------------------------------------------------------------
+    // https://github.com/evcohen/eslint-plugin-jsx-a11y/tree/master/docs/rules
+    //-------------------------------------------------------------------------
+    'jsx-a11y/alt-text': 'error',
   },
 };
