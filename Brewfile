@@ -151,7 +151,7 @@ cask 'adobe-air'
 # for android-sdk
 # http://blog.tap349.com/react-native/android/2017/05/24/react-native-android/#install-java-8
 cask 'adoptopenjdk8'
-# for Raspeberry Pi
+# for Raspeberry Pi (no longer available)
 #cask 'applepi-baker'
 cask 'calibre'
 # install required gems (knife-zero, chef, berkshelf) using Gemfile
@@ -297,7 +297,7 @@ cask 'krisp'
 #cask 'leela'
 cask 'mpv'
 cask 'ngrok'
-# OBS quits unexpectedly after start
+# OBS quits unexpectedly after start (no longer available)
 #cask 'obs'
 cask 'openemu'
 cask 'opera'
