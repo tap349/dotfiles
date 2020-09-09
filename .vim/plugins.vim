@@ -443,7 +443,7 @@ let g:lightline.winwidth = 220
 " when component returns empty string
 "
 " UPDATE (2019-10-08): right separators are not shown when not using Core Text
-" renderer after upgrading to macOS Catalina => don't use separators so far
+" renderer after upgrading to macOS Catalina => don't use right separators
 "let g:lightline.separator = { 'left': '⮀', 'right': '⮂' }
 "let g:lightline.subseparator = { 'left': '⮁', 'right': '⮃' }
 let g:lightline.separator = { 'left': '⮀' }

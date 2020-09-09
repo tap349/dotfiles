@@ -15,6 +15,7 @@ alias blog='cd ~/blog'
 alias dot='cd ~/.dotfiles'
 
 alias a='cd ~/dev/compleader/ansible'
+alias as='cd ~/dev/compleader/adsensor'
 alias cosette='cd ~/dev/compleader/cosette'
 alias diana='cd ~/dev/compleader/diana'
 alias ic='cd ~/dev/compleader/iceperk'
@@ -38,6 +39,7 @@ alias reika='cd ~/dev/compleader/reika'
 alias santi='cd ~/dev/compleader/santi-preview-app'
 alias sith='cd ~/dev/compleader/sith'
 alias sithchef='cd ~/dev/compleader/sithchef'
+alias yulia='cd ~/dev/compleader/yulia'
 
 # alice
 alias alice='cd ~/dev/compleader/alice'
