@@ -16,6 +16,7 @@ alias dot='cd ~/.dotfiles'
 
 alias a='cd ~/dev/compleader/ansible'
 alias as='cd ~/dev/compleader/ad_sensor'
+alias asa='cd ~/dev/compleader/ad_sensor_app'
 alias cosette='cd ~/dev/compleader/cosette'
 alias diana='cd ~/dev/compleader/diana'
 alias ic='cd ~/dev/compleader/iceperk'
