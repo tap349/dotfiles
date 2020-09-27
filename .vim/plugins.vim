@@ -37,9 +37,9 @@ Plug 'tpope/vim-rhubarb' | Plug 'tpope/vim-fugitive'
 " javascript / react
 "-------------------------------------------------------------------------------
 
-Plug 'flowtype/vim-flow'
-Plug 'pangloss/vim-javascript'
-Plug 'mxw/vim-jsx' | Plug 'pangloss/vim-javascript'
+Plug 'othree/yajs.vim'
+"Plug 'pangloss/vim-javascript'
+Plug 'amadeus/vim-jsx'
 
 "-------------------------------------------------------------------------------
 " css / scss
@@ -119,6 +119,7 @@ Plug 'wincent/command-t', {
 
 "Plug 'Yggdroot/indentLine'
 "Plug 'digitaltoad/vim-pug'
+"Plug 'flowtype/vim-flow'
 "Plug 'godlygeek/tabular'
 "Plug 'jamessan/vim-gnupg'
 "Plug 'junegunn/limelight.vim'
@@ -924,12 +925,6 @@ let g:gutentags_generate_on_write = 1
 "-------------------------------------------------------------------------------
 
 let g:hugefile_trigger_size = 1
-
-"-------------------------------------------------------------------------------
-" vim-jsx
-"-------------------------------------------------------------------------------
-
-let g:jsx_ext_required = 0
 
 "-------------------------------------------------------------------------------
 " vim-markdown
