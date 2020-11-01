@@ -37,8 +37,8 @@ Plug 'tpope/vim-rhubarb' | Plug 'tpope/vim-fugitive'
 " javascript / react
 "-------------------------------------------------------------------------------
 
-Plug 'othree/yajs.vim'
-"Plug 'pangloss/vim-javascript'
+"Plug 'othree/yajs.vim'
+Plug 'pangloss/vim-javascript'
 Plug 'amadeus/vim-jsx'
 
 "-------------------------------------------------------------------------------
