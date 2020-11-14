@@ -12,7 +12,7 @@ mkdir "$tempdir"
 
 # https://pypi.org/project/m3u8downloader/
 # $ pip3 install --user m3u8downloader
-~/Library/Python/3.7/bin/downloadm3u8 "$playlist_url" \
+~/Library/Python/3.9/bin/downloadm3u8 "$playlist_url" \
   --output output.mp4 \
   --tempdir "$tempdir"
 
