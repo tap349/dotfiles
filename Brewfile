@@ -178,11 +178,9 @@ cask 'calibre'
 #cask 'day-o'
 # run docker app after installation
 # (otherwise `docker` command might be not available in terminal)
-#
-# - System Preferences:
-#   - Users & Groups -> Login Items: add (don't hide)
 cask 'docker'
 cask 'firefox'
+cask 'flux'
 #cask 'font-fontawesome'
 #cask 'font-cousine'
 #cask 'font-d2coding'
@@ -202,8 +200,6 @@ cask 'genymotion'
 #        statistics and crash reports to Google
 #  - Sign in to Chrome (page is opened automatically)
 #
-# - System Preferences:
-#   - Users & Groups -> Login Items: remove
 # - Preferences:
 #   - Settings:
 #     - On startup: Continue where you left off
@@ -289,8 +285,6 @@ cask 'insomnia'
 # see also http://tap349.github.io/iterm/rails/2016/05/03/iTerm/
 # (all these settings are already included in exported settings file)
 cask 'iterm2'
-# - System Preferences:
-#   - Users & Groups -> Login Items: remove
 #cask 'keybase'
 cask 'krisp'
 # go app with AI
@@ -311,8 +305,6 @@ cask 'skype'
 #   - [x] Check for updates on startup
 #   - [x] Autostart smcFanControl after login
 cask 'smcfancontrol'
-# - System Preferences:
-#   - Users & Groups -> Login Items: remove
 cask 'steam'
 cask 'transmission'
 # for Raspeberry Pi (?)
@@ -403,16 +395,12 @@ mas 'Microsoft Remote Desktop', id: 715768417
 mas 'Monosnap', id: 540348655
 mas 'Pomodoro Timer', id: 872515009
 mas 'Screen Recorder Movavi', id: 593854334
-# - System Preferences:
-#   - Users & Groups -> Login Items: add (don't hide)
 # - Preferences:
 #   - Shortcuts:
 #     - General -> Show Magnifier: <M-2>
 mas 'Sip', id: 507257563
 mas 'Telegram Desktop', id: 946399090
 mas 'Trello', id: 1278508951
-# - System Preferences:
-#   - Users & Groups -> Login Items: add (don't hide)
 mas 'VPNAutoConnect', id: 532510878
 # after installation or update:
 # - `sudo xcodebuild -license accept` (accept license)
