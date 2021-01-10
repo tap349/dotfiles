@@ -294,7 +294,7 @@ nmap <silent> <F10> :colorscheme solarized<CR>
 
 "set linespace=5
 "set guifont=Andale\ Mono\ MT\ Std:h14
-set linespace=0
+set linespace=1
 set guifont=Input:h14
 
 "-------------------------------------------------------------------------------

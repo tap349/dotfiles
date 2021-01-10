@@ -1,0 +1,1 @@
+exiftool '-FileName<${DateCreated}-%f.PNG' -d %Y%m%d-%H%M -ext PNG .
