@@ -373,7 +373,7 @@ mas 'Evernote', id: 406056744
 #     - Maximize: <S-M-CR>
 #   - Preferences:
 #     - [x] Autostart on system login
-#     - [x] Show icon in menu bar
+#     - [ ] Show icon in menu bar
 #     - [ ] Show icon in Dock
 mas 'Flexiglass', id: 426410278
 mas 'FTP Server', id: 987045856
