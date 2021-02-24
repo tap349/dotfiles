@@ -179,6 +179,7 @@ cask 'calibre'
 # run docker app after installation
 # (otherwise `docker` command might be not available in terminal)
 cask 'docker'
+cask 'figma'
 cask 'firefox'
 cask 'flux'
 #cask 'font-fontawesome'
@@ -314,7 +315,7 @@ cask 'virtualbox'
 # for vagrant
 cask 'virtualbox-extension-pack'
 cask 'whatsapp'
-cask 'zoomus'
+cask 'zoom'
 
 #-------------------------------------------------------------------------------
 # App Store
