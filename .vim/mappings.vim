@@ -116,10 +116,6 @@ nnoremap <Leader>oz :tabnew<CR>:edit $ZDOTDIR/.zshenv<CR>
 "nnoremap j gj
 "nnoremap k gk
 
-" used by ALE now
-"nnoremap <C-j> 10j
-"nnoremap <C-k> 10k
-
 " g_ (unlike $) doesn't select newline character in visual mode
 nnoremap H ^
 nnoremap L g_

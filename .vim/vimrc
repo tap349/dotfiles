@@ -257,8 +257,6 @@ else
   colorscheme github
 endif
 
-nmap <silent> <F10> :colorscheme solarized<CR>
-
 "if hostname() == 'MacBook-Pro-Personal.local'
 "  set background=light
 "  colorscheme github

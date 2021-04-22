@@ -15,7 +15,7 @@
 call plug#begin('~/.vim/plugged')
 
 "-------------------------------------------------------------------------------
-" elixir / phoenix
+" Elixir / Phoenix
 "-------------------------------------------------------------------------------
 
 Plug 'elixir-lang/vim-elixir'
@@ -26,7 +26,7 @@ Plug 'andyl/vim-projectionist-elixir' | Plug 'tpope/vim-projectionist'
 "Plug 'avdgaag/vim-phoenix' | Plug 'tpope/vim-projectionist'
 
 "-------------------------------------------------------------------------------
-" git
+" Git
 "-------------------------------------------------------------------------------
 
 Plug 'airblade/vim-gitgutter'
@@ -34,7 +34,7 @@ Plug 'tap349/vim-extradite' | Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb' | Plug 'tpope/vim-fugitive'
 
 "-------------------------------------------------------------------------------
-" javascript / react
+" Javascript / React
 "-------------------------------------------------------------------------------
 
 "Plug 'othree/yajs.vim'
@@ -42,7 +42,7 @@ Plug 'pangloss/vim-javascript'
 Plug 'amadeus/vim-jsx'
 
 "-------------------------------------------------------------------------------
-" css / scss
+" CSS / SCSS
 "-------------------------------------------------------------------------------
 
 Plug 'ap/vim-css-color'
@@ -51,14 +51,14 @@ Plug 'ap/vim-css-color'
 Plug 'cakebaker/scss-syntax.vim'
 
 "-------------------------------------------------------------------------------
-" slim / slime / pug
+" Slim / Slime
 "-------------------------------------------------------------------------------
 
 Plug 'slim-template/vim-slim'
 Plug 'slime-lang/vim-slime-syntax'
 
 "-------------------------------------------------------------------------------
-" ruby / rails
+" Ruby / Rails
 "-------------------------------------------------------------------------------
 
 Plug 'keith/rspec.vim'
@@ -70,21 +70,21 @@ Plug 'tpope/vim-rails'
 Plug 'tpope/vim-rake' | Plug 'tpope/vim-projectionist'
 
 "-------------------------------------------------------------------------------
-" syntax plugins for other file types
+" Syntax plugins for other file types
 "-------------------------------------------------------------------------------
 
 Plug 'pearofducks/ansible-vim'
 Plug 'plasticboy/vim-markdown'
 
 "-------------------------------------------------------------------------------
-" linting
+" Linting
 "-------------------------------------------------------------------------------
 
 Plug 'maximbaz/lightline-ale' | Plug 'itchyny/lightline.vim'
 Plug 'w0rp/ale'
 
 "-------------------------------------------------------------------------------
-" other plugins
+" Other plugins
 "-------------------------------------------------------------------------------
 
 Plug 'bkad/CamelCaseMotion'
@@ -97,6 +97,7 @@ Plug 'jeetsukumaran/vim-buffergator'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'mhinz/vim-hugefile'
 Plug 'mhinz/vim-startify'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'osyo-manga/vim-anzu'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
@@ -104,7 +105,6 @@ Plug 'tap349/QFEnter'
 Plug 'tap349/ack.vim'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-surround'
-Plug 'tpope/vim-unimpaired'
 " `macvim` formula depends on `ruby` formula
 " => Homebrew always installs `ruby` formula
 " => asdf, system and Homebrew Ruby versions might differ
@@ -117,6 +117,7 @@ Plug 'wincent/command-t', {
 " unused (but still can be used again somewhen)
 "-------------------------------------------------------------------------------
 
+" this fork fixes indentation of switch statement
 "Plug 'Yggdroot/indentLine'
 "Plug 'digitaltoad/vim-pug'
 "Plug 'flowtype/vim-flow'
@@ -124,10 +125,10 @@ Plug 'wincent/command-t', {
 "Plug 'jamessan/vim-gnupg'
 "Plug 'junegunn/limelight.vim'
 "Plug 'junegunn/vader.vim'
-" this fork fixes indentation of switch statement
 "Plug 'kmarius/vim-fish'
 "Plug 'scheakur/vim-scheakur'
 "Plug 'tap349/goyo.vim'
+"Plug 'tpope/vim-unimpaired'
 "Plug 'xolox/vim-misc'
 
 "-------------------------------------------------------------------------------
@@ -333,8 +334,8 @@ let g:ale_fix_on_save_ignore = {
 
 " https://github.com/w0rp/ale/pull/1271
 " UPDATE (2019-05-20): fixed in upstream now
-nmap <C-k> <Plug>(ale_previous_wrap)
-nmap <C-j> <Plug>(ale_next_wrap)
+nmap [a <Plug>(ale_previous_wrap)
+nmap ]a <Plug>(ale_next_wrap)
 " we can't append `:w<CR>` because ALE fixer is run asynchronously
 " => save formatted file manually
 nmap <Leader>f <Plug>(ale_fix)
@@ -354,6 +355,34 @@ nmap <Leader>f <Plug>(ale_fix)
 map <silent> w <Plug>CamelCaseMotion_w
 map <silent> e <Plug>CamelCaseMotion_e
 map <silent> b <Plug>CamelCaseMotion_b
+
+"-------------------------------------------------------------------------------
+" coc.nvim
+"-------------------------------------------------------------------------------
+
+nmap <Leader>rn <Plug>(coc-rename)
+nmap <silent> gd <Plug>(coc-definition)
+nnoremap <silent> <C-j> :call <SID>show_documentation()<CR>
+
+" https://github.com/neoclide/coc.nvim
+function! s:show_documentation()
+  if (coc#rpc#ready())
+    call CocActionAsync('doHover')
+  else
+    execute '!' . &keywordprg . " " . expand('<cword>')
+  endif
+endfunction
+
+"-------------------------------------------------------------------------------
+" coc-go
+"-------------------------------------------------------------------------------
+
+" https://github.com/josa42/coc-go
+augroup coc_go
+  autocmd!
+  autocmd BufWritePre *.go :silent call CocAction('runCommand', 'editor.action.organizeImport')
+  autocmd BufWritePre *.go :silent call CocAction('format')
+augroup END
 
 "-------------------------------------------------------------------------------
 " command-t
@@ -1000,4 +1029,4 @@ let g:startify_lists = [
 
 " commit d58794f breaks shifting blocks visually by replacing
 " square bracket maps with angle bracket maps in visual mode
-let g:xremap = { '<': '', '>': '' }
+"let g:xremap = { '<': '', '>': '' }
