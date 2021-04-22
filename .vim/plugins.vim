@@ -128,7 +128,6 @@ Plug 'wincent/command-t', {
 "Plug 'kmarius/vim-fish'
 "Plug 'scheakur/vim-scheakur'
 "Plug 'tap349/goyo.vim'
-"Plug 'tpope/vim-unimpaired'
 "Plug 'xolox/vim-misc'
 
 "-------------------------------------------------------------------------------
@@ -362,7 +361,7 @@ map <silent> b <Plug>CamelCaseMotion_b
 
 nmap <Leader>rn <Plug>(coc-rename)
 nmap <silent> gd <Plug>(coc-definition)
-nnoremap <silent> <C-j> :call <SID>show_documentation()<CR>
+nnoremap <silent> <C-k> :call <SID>show_documentation()<CR>
 
 " https://github.com/neoclide/coc.nvim
 function! s:show_documentation()
@@ -1020,13 +1019,3 @@ let g:startify_lists = [
       \ { 'type': 'files',     'header': ['   MRU']             },
       \ { 'type': 'bookmarks', 'header': ['   Bookmarks']       },
       \ ]
-
-"-------------------------------------------------------------------------------
-" vim-unimpaired
-"
-" :help unimpaired-customization
-"-------------------------------------------------------------------------------
-
-" commit d58794f breaks shifting blocks visually by replacing
-" square bracket maps with angle bracket maps in visual mode
-"let g:xremap = { '<': '', '>': '' }
