@@ -94,7 +94,6 @@ Plug 'flazz/vim-colorschemes'
 Plug 'haya14busa/vim-asterisk'
 Plug 'itchyny/lightline.vim' | Plug 'tpope/vim-fugitive'
 Plug 'jeetsukumaran/vim-buffergator'
-Plug 'ludovicchabant/vim-gutentags'
 Plug 'mhinz/vim-hugefile'
 Plug 'mhinz/vim-startify'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -905,48 +904,6 @@ nmap <silent> <Leader>ht :GitGutterToggle<CR>
 "nmap <Leader>hp <Plug>GitGutterPreviewHunk
 "nmap <Leader>hu <Plug>GitGutterUndoHunk
 "nmap <Leader>hs <Plug>GitGutterStageHunk
-
-"-------------------------------------------------------------------------------
-" vim-gutentags
-"
-" https://andrew.stwrt.ca/posts/vim-ctags/
-" https://github.com/mmorearty/elixir-ctags
-"
-" by default `ctags` command generates _tags_ file in project root
-" (gutentags does the same since it's using `ctags`).
-" when gutentags_cache_dir is set it will be used to store tagfiles
-" for all projects like this: _Users-tap-edev-rumbl-tags_
-"
-" <C-]> - jump to tag
-" <C-t> - go back in tag stack (previous tag or original place)
-"
-" don't use comments in ~/.ctags configuration file -
-" or else configuration from this file won't be used by ctags
-"
-" sometimes tags are not found unexpectedly (even though they used
-" to be found before) - closing and opening vim helps in this case
-"-------------------------------------------------------------------------------
-
-" show TAGS when indexing is in progress
-"set statusline+=%{gutentags#statusline()}
-
-let g:gutentags_cache_dir = '~/.vim/tags'
-let g:gutentags_enabled = 0
-
-" :GutentagsUpdate updates tag file with current buffer only
-" :GutentagsUpdate! is too expensive (even if run manually)
-"
-" => updating tag file with current buffer automatically when
-"    it's saved turns out to be not that bad alternative
-let g:gutentags_generate_on_write = 1
-
-" default project root markers are appended to this list
-" (probably gutentags can also use g:ctrlp_root_markers).
-"
-" don't use .gitignore as project root marker because ~/.gitignore
-" might already exist => tags for all files in home directory will
-" be created then)
-"let g:gutentags_project_root = ['mix.exs']
 
 "-------------------------------------------------------------------------------
 " vim-hugefile
