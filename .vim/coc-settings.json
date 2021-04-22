@@ -1,4 +1,5 @@
 {
   "go.goplsArgs": ["-remote=auto", "-logfile", "/tmp/gopls.log"],
-  "go.goplsPath": "/Users/tap/.asdf/shims/gopls"
+  "go.goplsPath": "/Users/tap/.asdf/shims/gopls",
+  "elixirLS.dialyzerEnabled": false
 }
