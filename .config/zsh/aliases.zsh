@@ -41,6 +41,7 @@ alias santi='cd ~/dev/compleader/santi-preview-app'
 alias sith='cd ~/dev/compleader/sith'
 alias sithchef='cd ~/dev/compleader/sithchef'
 alias tamara='cd ~/dev/compleader/tamara'
+alias y='cd ~/dev/compleader/yalper'
 alias yulia='cd ~/dev/compleader/yulia'
 
 # alice
