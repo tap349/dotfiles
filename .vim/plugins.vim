@@ -924,6 +924,23 @@ let g:vim_markdown_frontmatter = 1
 "let g:vim_markdown_conceal_code_blocks = 0
 
 "-------------------------------------------------------------------------------
+" vim-projectionist
+"-------------------------------------------------------------------------------
+
+" https://github.com/fatih/vim-go/issues/831#issue-152046633
+" https://ahamidi.com/projectionist-for-go/
+let g:projectionist_heuristics['*.go'] = {
+      \   '*.go': {
+      \       'alternate': '{}_test.go',
+      \       'type': 'source'
+      \   },
+      \   '*_test.go': {
+      \       'alternate': '{}.go',
+      \       'type': 'test'
+      \   }
+      \ }
+
+"-------------------------------------------------------------------------------
 " vim-rails
 "
 " example projections: https://gist.github.com/henrik/5676109
