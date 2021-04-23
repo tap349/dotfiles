@@ -379,6 +379,7 @@ mas 'Evernote', id: 406056744
 mas 'Flexiglass', id: 426410278
 mas 'FTP Server', id: 987045856
 mas 'Ghostery Lite', id: 1436953057
+mas 'Jira Cloud by Atlassian', id: 1475897096
 #mas 'iMovie', id: 408981434
 #mas 'LINE', id: 539883307
 #mas 'Magic Go', id: 1060433592
