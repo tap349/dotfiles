@@ -356,7 +356,7 @@ map <silent> b <Plug>CamelCaseMotion_b
 
 nmap <Leader>rn <Plug>(coc-rename)
 nmap <silent> <C-]> <Plug>(coc-definition)
-nnoremap <silent> <C-t> :call <SID>show_documentation()<CR>
+nnoremap <silent> <C-k> :call <SID>show_documentation()<CR>
 
 " https://github.com/neoclide/coc.nvim
 function! s:show_documentation()
@@ -929,6 +929,7 @@ let g:vim_markdown_frontmatter = 1
 
 " https://github.com/fatih/vim-go/issues/831#issue-152046633
 " https://ahamidi.com/projectionist-for-go/
+let g:projectionist_heuristics = {}
 let g:projectionist_heuristics['*.go'] = {
       \   '*.go': {
       \       'alternate': '{}_test.go',
