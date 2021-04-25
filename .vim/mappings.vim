@@ -26,7 +26,6 @@ if has('gui_running') | set macmeta | endif
 " turn off highlighting and clear messages,
 " <C-c> in normal mode aborts any pending command
 nnoremap <silent> <C-c> <C-c>:nohlsearch<Bar>:echo<CR>
-"nmap <silent> <C-Backspace> <C-c>
 
 " map to <Esc> for vertical editing to work
 inoremap <silent> <C-c> <Esc>
@@ -125,6 +124,10 @@ nnoremap L g_
 "
 " use <SID> prefix to call functions defined with 's:' in mapping definition
 nnoremap <C-Tab> :call <SID>GoToLastActiveTab()<CR>
+
+" <C-t> is just easier to type (less load for my little finger on Dvorak)
+nnoremap <C-t> <C-o>
+nnoremap <C-o> <nop>
 
 "------- buffer ----------------------------------------------------------------
 

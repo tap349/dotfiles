@@ -328,8 +328,8 @@ let g:ale_fix_on_save_ignore = {
 
 " https://github.com/w0rp/ale/pull/1271
 " UPDATE (2019-05-20): fixed in upstream now
-nmap <C-j> <Plug>(ale_previous_wrap)
-nmap <C-k> <Plug>(ale_next_wrap)
+nmap [a <Plug>(ale_previous_wrap)
+nmap ]a <Plug>(ale_next_wrap)
 " we can't append `:w<CR>` because ALE fixer is run asynchronously
 " => save formatted file manually
 nmap <Leader>f <Plug>(ale_fix)
@@ -355,12 +355,21 @@ map <silent> b <Plug>CamelCaseMotion_b
 "-------------------------------------------------------------------------------
 
 nmap <Leader>rn <Plug>(coc-rename)
+
 nmap <silent> <C-]> <Plug>(coc-definition)
+"nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
 nnoremap <silent> <C-k> :call <SID>show_documentation()<CR>
 
 " https://github.com/neoclide/coc.nvim
 function! s:show_documentation()
-  if (coc#rpc#ready())
+  if coc#float#has_float()
+    " Use <Plug>(coc-float-hide) in mapping
+    call coc#float#close_all()
+  elseif coc#rpc#ready()
     call CocActionAsync('doHover')
   else
     execute '!' . &keywordprg . " " . expand('<cword>')
