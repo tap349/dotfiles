@@ -89,7 +89,6 @@ Plug 'ervandew/supertab'
 Plug 'flazz/vim-colorschemes'
 Plug 'haya14busa/vim-asterisk'
 Plug 'itchyny/lightline.vim' | Plug 'tpope/vim-fugitive'
-Plug 'jeetsukumaran/vim-buffergator'
 Plug 'mhinz/vim-hugefile'
 Plug 'mhinz/vim-startify'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -818,19 +817,6 @@ map z* <Plug>(asterisk-z*)
 map gz* <Plug>(asterisk-gz*)
 map z# <Plug>(asterisk-z#)
 map gz# <Plug>(asterisk-gz#)
-
-"-------------------------------------------------------------------------------
-" vim-buffergator
-"-------------------------------------------------------------------------------
-
-"let g:buffergator_sort_regime = 'basename'
-"let g:buffergator_split_size = 20
-let g:buffergator_suppress_keymaps = 1
-"let g:buffergator_viewport_split_policy = 'R'
-"let g:buffergator_vsplit_size = 60
-
-nmap <silent> <C-p> :BuffergatorMruCyclePrev<CR>
-nmap <silent> <C-n> :BuffergatorMruCycleNext<CR>
 
 "-------------------------------------------------------------------------------
 " vim-easymotion
