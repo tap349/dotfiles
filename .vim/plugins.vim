@@ -73,13 +73,6 @@ Plug 'pearofducks/ansible-vim'
 Plug 'plasticboy/vim-markdown'
 
 "-------------------------------------------------------------------------------
-" Linting
-"-------------------------------------------------------------------------------
-
-Plug 'maximbaz/lightline-ale' | Plug 'itchyny/lightline.vim'
-Plug 'w0rp/ale'
-
-"-------------------------------------------------------------------------------
 " Other plugins
 "-------------------------------------------------------------------------------
 
@@ -251,89 +244,6 @@ function! s:ShowWarningMessage(message)
 endfunction
 
 "-------------------------------------------------------------------------------
-" ale
-"-------------------------------------------------------------------------------
-
-" NOTE: bug - not applied unless vimrc is sourced
-"
-" highlight group is not defined in github colorscheme so
-" sign column colors might be broken after sourcing vimrc
-"hi SignColumn guibg=#F3E4EA
-
-" same colors as in lucius lightline colorscheme
-"hi ALEWarningSign guibg=#FDE1FD guifg=#0512FB gui=bold
-"hi ALEErrorSign guibg=#F4DBDC guifg=#662529 gui=bold
-hi ALEWarningSign guifg=#326ECC
-hi ALEErrorSign guifg=#EF5832
-
-" only linters from g:ale_linters are enabled
-let g:ale_linters_explicit = 1
-
-" don't highlight problems: gui=underline and gui=undercurl
-" look ugly when Core Text renderer is not used
-let g:ale_set_highlights = 0
-" location list is populated by default -
-" this might overwrite the contents of already
-" opened location list (e.g., search results)
-let g:ale_set_loclist = 0
-let g:ale_set_quickfix = 0
-
-" lightline signs
-" (sign column width is fixed - 2 characters)
-"
-" http://xahlee.info/comp/unicode_arrows.html
-" ⮁→ ➩ ➤ ➞ ➔ ➯ ➪ ➥
-"
-" TODO: https://github.com/ryanoasis/vim-devicons
-let g:ale_sign_warning = '⁘'
-let g:ale_sign_error = '✗'
-
-"let g:ale_echo_msg_warning_str = 'W'
-"let g:ale_echo_msg_error_str = 'E'
-" use %severity% to display 'W' or 'E'
-let g:ale_echo_msg_format = '[%linter%] %s'
-let g:ale_set_balloons = 0
-
-" :help ale-lint
-"
-" https://github.com/w0rp/ale/issues/505
-" to disable g:ale_lint_on_enter, it's necessary
-" to disable g:ale_lint_on_filetype_changed as well
-"let g:ale_lint_on_enter = 0
-"let g:ale_lint_on_filetype_changed = 0
-let g:ale_lint_on_save = 1
-let g:ale_lint_on_text_changed = 0
-let g:ale_lint_on_insert_leave = 0
-let g:ale_fix_on_save = 1
-
-let g:ale_linters = {
-      \   'elixir': ['credo'],
-      \   'javascript': ['eslint', 'flow'],
-      \   'ruby': ['rubocop']
-      \ }
-
-" NOTE: make sure PWD is set to current project root - or else `mix_format`
-" fixer will not find _.formatter.exs_ file and will use default settings
-let g:ale_fixers = {
-      \   'elixir': ['mix_format'],
-      \   'javascript': ['prettier'],
-      \   'css': ['prettier'],
-      \   'markdown': ['prettier']
-      \ }
-
-let g:ale_fix_on_save_ignore = {
-      \   'markdown': ['prettier']
-      \ }
-
-" https://github.com/w0rp/ale/pull/1271
-" UPDATE (2019-05-20): fixed in upstream now
-nmap <C-j> <Plug>(ale_previous_wrap)
-nmap <C-k> <Plug>(ale_next_wrap)
-" we can't append `:w<CR>` because ALE fixer is run asynchronously
-" => save formatted file manually
-nmap <Leader>f <Plug>(ale_fix)
-
-"-------------------------------------------------------------------------------
 " ansible-vim
 "-------------------------------------------------------------------------------
 
@@ -351,15 +261,21 @@ map <silent> b <Plug>CamelCaseMotion_b
 
 "-------------------------------------------------------------------------------
 " coc.nvim
+"
+" List of supported language identifiers:
+" https://code.visualstudio.com/docs/languages/identifiers#_known-language-identifiers
 "-------------------------------------------------------------------------------
 
-nmap <Leader>rn <Plug>(coc-rename)
+nmap <silent> <C-j> <Plug>(coc-diagnostic-prev)
+nmap <silent> <C-k> <Plug>(coc-diagnostic-next)
 
 nmap <silent> <C-]> <Plug>(coc-definition)
 "nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
+
+nmap <Leader>rn <Plug>(coc-rename)
 
 nnoremap <silent> <C-n> :call <SID>show_documentation()<CR>
 
@@ -374,6 +290,9 @@ function! s:show_documentation()
     execute '!' . &keywordprg . " " . expand('<cword>')
   endif
 endfunction
+
+" https://prettier.io/docs/en/vim.html
+command! -nargs=0 Prettier :call CocAction('runCommand', 'prettier.formatFile')
 
 "-------------------------------------------------------------------------------
 " coc-go
@@ -493,14 +412,9 @@ let g:lightline.mode_map = {
       \ }
 
 " https://github.com/itchyny/lightline.vim/issues/203
-" group linter components with filetype to avoid extra left arrow when
-" linter components are hidden in plugin window
 let g:lightline.active = {
       \   'left': [['mode'], ['fugitive'], ['filename']],
-      \   'right': [
-      \     ['lineinfo'],
-      \     ['filetype', 'linter_checking', 'linter_warnings', 'linter_errors', 'linter_ok']
-      \   ]
+      \   'right': [['lineinfo'], ['filetype']]
       \ }
 let g:lightline.inactive = {
       \   'left': [['filename']],
@@ -531,25 +445,6 @@ let g:lightline.component_function = {
       \   'filename': 'MyLightlineFilename',
       \   'filetype': 'MyLightlineFiletype',
       \   'lineinfo': 'MyLightlineLineinfo'
-      \ }
-" expanding components have priority over function components (used for
-" warning and critical components)
-"
-" expanding components are updated only when lightline#update() is called
-" (github.com/itchyny/lightline.vim/blob/master/doc/lightline.txt#L415)
-let g:lightline.component_expand = {
-      \   'linter_warnings': 'MyLightlineLinterWarnings',
-      \   'linter_errors': 'MyLightlineLinterErrors',
-      \   'linter_ok': 'MyLightlineLinterOk',
-      \   'linter_checking': 'MyLightlineLinterChecking'
-      \ }
-" this configuration applies to component_expand only, values are color
-" names from lightline colorscheme
-let g:lightline.component_type = {
-      \   'linter_warnings': 'warning',
-      \   'linter_errors': 'error',
-      \   'linter_ok': 'ok',
-      \   'linter_checking': 'checking'
       \ }
 
 " options for components:
@@ -641,34 +536,6 @@ function! MyLightlineLineinfo()
   return printf('%3d/%d☰ : %-3d', line('.'), line('$'), virtcol('.'))
 endfunction
 
-function! MyLightlineLinterWarnings()
-  if <SID>IsQuickfix() | return '' | end
-  if <SID>IsPluginWindow() | return '' | end
-
-  return lightline#ale#warnings()
-endfunction
-
-function! MyLightlineLinterErrors()
-  if <SID>IsQuickfix() | return '' | end
-  if <SID>IsPluginWindow() | return '' | end
-
-  return lightline#ale#errors()
-endfunction
-
-function! MyLightlineLinterOk()
-  if <SID>IsQuickfix() | return '' | end
-  if <SID>IsPluginWindow() | return '' | end
-
-  return lightline#ale#ok()
-endfunction
-
-function! MyLightlineLinterChecking()
-  if <SID>IsQuickfix() | return '' | end
-  if <SID>IsPluginWindow() | return '' | end
-
-  return lightline#ale#checking()
-endfunction
-
 function! s:IsNarrowWindow()
   return winwidth(0) <= 60
 endfunction
@@ -711,25 +578,6 @@ endfunction
 " refresh lightline - or else it might become colorless after sourcing
 " vimrc (command was previously called in `augroup vimrc`)
 "call lightline#enable()
-
-"-------------------------------------------------------------------------------
-" lightline-ale
-"
-" https://github.com/itchyny/lightline.vim/issues/236
-" https://github.com/statico/dotfiles/blob/45aa1ba59b275ef72d8e5cc98f8d6aa360518e00/.vim/vimrc#L412
-" https://github.com/delphinus/lightline-delphinus
-"-------------------------------------------------------------------------------
-
-" https://www.w3schools.com/charsets/ref_utf_dingbats.asp
-" https://www.w3schools.com/charsets/ref_utf_punctuation.asp
-" ▼▲⧫❗◊Δ✗✓⁙
-let g:lightline#ale#indicator_warnings = '⁘ '
-let g:lightline#ale#indicator_errors = '✗ '
-" hide green section completely
-let g:lightline#ale#indicator_ok = ''
-"let g:lightline#ale#indicator_ok = '✓'
-"let g:lightline#ale#indicator_ok = 'ok'
-let g:lightline#ale#indicator_checking = '⟳'
 
 "-------------------------------------------------------------------------------
 " nerdcommenter
