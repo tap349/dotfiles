@@ -1,5 +1,13 @@
 {
+  "coc.preferences.formatOnSaveFiletypes": [
+    "elixir",
+    "go",
+    "javascript",
+    "javascriptreact",
+    "json"
+  ],
+  "elixirLS.dialyzerEnabled": false,
   "go.goplsArgs": ["-remote=auto", "-logfile", "/tmp/gopls.log"],
   "go.goplsPath": "/Users/tap/.asdf/shims/gopls",
-  "elixirLS.dialyzerEnabled": false
+  "tsserver.formatOnType": false
 }
