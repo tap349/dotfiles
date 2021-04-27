@@ -6,6 +6,8 @@
     "javascriptreact",
     "json"
   ],
+  "diagnostic.errorSign": "✗",
+  "diagnostic.maxWindowHeight": 16,
   "elixirLS.dialyzerEnabled": false,
   "go.goplsArgs": ["-remote=auto", "-logfile", "/tmp/gopls.log"],
   "go.goplsPath": "/Users/tap/.asdf/shims/gopls",

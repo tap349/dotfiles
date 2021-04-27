@@ -266,6 +266,9 @@ map <silent> b <Plug>CamelCaseMotion_b
 " https://code.visualstudio.com/docs/languages/identifiers#_known-language-identifiers
 "-------------------------------------------------------------------------------
 
+hi CocErrorSign guifg=#EF5832
+hi CocWarningSign guifg=#D67A2D
+
 nmap <silent> <C-j> <Plug>(coc-diagnostic-prev)
 nmap <silent> <C-k> <Plug>(coc-diagnostic-next)
 
