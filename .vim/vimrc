@@ -364,8 +364,6 @@ set shell=/usr/local/bin/zsh
 "
 "===============================================================================
 
-runtime macros/matchit.vim
-
 source ~/.vim/abbreviations.vim
 source ~/.vim/mappings.vim
 source ~/.vim/autocommands.vim
