@@ -255,6 +255,13 @@ map <silent> b <Plug>CamelCaseMotion_b
 "
 " List of supported language identifiers:
 " https://code.visualstudio.com/docs/languages/identifiers#_known-language-identifiers
+"
+" Some commands like <Plug>(coc-definition) or <Plug>(coc-references) open
+" *coc-list-location* when more than 1 result is found
+"
+" See *coc-list-location* for the list of available actions
+" See *coc-list-mapping* for the list of available mappings
+" See *coc-list-mapping-custom* for how to customize those mappings
 "-------------------------------------------------------------------------------
 
 hi CocErrorSign guifg=#EF5832

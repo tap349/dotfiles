@@ -8,6 +8,9 @@
   ],
   "diagnostic.errorSign": "✗",
   "diagnostic.maxWindowHeight": 16,
+  "list.normalMappings": {
+    "v": "action:vsplit"
+  },
   "elixirLS.dialyzerEnabled": false,
   "go.goplsArgs": ["-remote=auto", "-logfile", "/tmp/gopls.log"],
   "go.goplsPath": "/Users/tap/.asdf/shims/gopls",
