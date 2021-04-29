@@ -78,7 +78,6 @@ Plug 'plasticboy/vim-markdown'
 
 Plug 'bkad/CamelCaseMotion'
 Plug 'easymotion/vim-easymotion'
-Plug 'ervandew/supertab'
 Plug 'flazz/vim-colorschemes'
 Plug 'haya14busa/vim-asterisk'
 Plug 'itchyny/lightline.vim' | Plug 'tpope/vim-fugitive'
@@ -90,7 +89,6 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
 Plug 'tap349/QFEnter'
 Plug 'tap349/ack.vim'
-Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-surround'
 " `macvim` formula depends on `ruby` formula
 " => Homebrew always installs `ruby` formula
@@ -104,17 +102,10 @@ Plug 'wincent/command-t', {
 " unused (but still can be used again somewhen)
 "-------------------------------------------------------------------------------
 
-" this fork fixes indentation of switch statement
-"Plug 'Yggdroot/indentLine'
-"Plug 'digitaltoad/vim-pug'
-"Plug 'flowtype/vim-flow'
+"Plug 'ervandew/supertab'
 "Plug 'godlygeek/tabular'
 "Plug 'jamessan/vim-gnupg'
-"Plug 'junegunn/limelight.vim'
-"Plug 'junegunn/vader.vim'
-"Plug 'kmarius/vim-fish'
-"Plug 'scheakur/vim-scheakur'
-"Plug 'tap349/goyo.vim'
+"Plug 'tpope/vim-endwise'
 "Plug 'xolox/vim-misc'
 
 "-------------------------------------------------------------------------------
@@ -293,6 +284,18 @@ function! s:show_documentation()
     execute '!' . &keywordprg . " " . expand('<cword>')
   endif
 endfunction
+
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1] =~# '\s'
+endfunction
+
+inoremap <silent><expr> <CR> pumvisible() ? coc#_select_confirm() : "\<CR>"
 
 " https://prettier.io/docs/en/vim.html
 command! -nargs=0 Prettier :call CocAction('runCommand', 'prettier.formatFile')
@@ -633,17 +636,6 @@ let g:qfenter_keymap.vopen = ['<C-v>']
 let g:qfenter_keymap.topen = ['<C-t>']
 
 "-------------------------------------------------------------------------------
-" supertab
-"-------------------------------------------------------------------------------
-
-let g:SuperTabCrMapping = 1
-let g:SuperTabDefaultCompletionType = '<C-n>'
-
-" used only when completeopt has 'longest' option
-let g:SuperTabLongestEnhanced = 1
-let g:SuperTabLongestHighlight = 1
-
-"-------------------------------------------------------------------------------
 " vim-anzu
 "-------------------------------------------------------------------------------
 
@@ -696,15 +688,6 @@ let g:extradite_resize = 0
 let g:extradite_showhash = 1
 
 map <silent> <Leader>g :Extradite<CR>
-
-"-------------------------------------------------------------------------------
-" vim-flow
-"-------------------------------------------------------------------------------
-
-let g:flow#enable = 0
-let g:flow#flowpath = trim(system('yarn -s which flow'))
-let g:flow#omnifunc = 1
-let g:flow#showquickfix = 0
 
 "-------------------------------------------------------------------------------
 " vim-fugitive
