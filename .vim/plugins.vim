@@ -264,8 +264,9 @@ map <silent> b <Plug>CamelCaseMotion_b
 " See *coc-list-mapping-custom* for how to customize those mappings
 "-------------------------------------------------------------------------------
 
-hi CocErrorSign guifg=#EF5832
+hi CocErrorSign guifg=#EE0000
 hi CocWarningSign guifg=#D67A2D
+hi CocInfoSign guifg=#0066CC
 
 nmap <silent> <C-j> <Plug>(coc-diagnostic-prev)
 nmap <silent> <C-k> <Plug>(coc-diagnostic-next)
@@ -491,7 +492,7 @@ function! MyLightlineFugitive()
     let l:branch = '⎇ ' . l:branch
   endif
 
-  let l:gitgutter_sign = get(g:, 'gitgutter_enabled', 0) ? ' [±]' : ''
+  let l:gitgutter_sign = get(g:, 'gitgutter_enabled', 0) ? ' ±' : ''
 
   "let l:hunks = ''
   "if get(g:, 'gitgutter_enabled', 0)
