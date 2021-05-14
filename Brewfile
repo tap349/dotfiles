@@ -297,7 +297,6 @@ cask 'ngrok'
 cask 'openemu'
 cask 'opera'
 cask 'phantomjs'
-cask 'psequel'
 cask 'react-native-debugger'
 cask 'skype'
 # - Preferences:
