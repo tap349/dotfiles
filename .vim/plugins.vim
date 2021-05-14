@@ -265,7 +265,7 @@ map <silent> b <Plug>CamelCaseMotion_b
 "-------------------------------------------------------------------------------
 
 hi CocErrorSign guifg=#EE0000
-hi CocWarningSign guifg=#D67A2D
+hi CocWarningSign guifg=#D26A4D
 hi CocInfoSign guifg=#0066CC
 
 nmap <silent> <C-j> <Plug>(coc-diagnostic-prev)

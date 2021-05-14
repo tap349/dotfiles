@@ -296,7 +296,6 @@ cask 'ngrok'
 #cask 'obs'
 cask 'openemu'
 cask 'opera'
-cask 'pgadmin4'
 cask 'phantomjs'
 cask 'psequel'
 cask 'react-native-debugger'
@@ -403,6 +402,7 @@ mas 'Screen Recorder Movavi', id: 593854334
 mas 'Sip', id: 507257563
 mas 'Telegram Desktop', id: 946399090
 mas 'Trello', id: 1278508951
+mas 'Valentina Studio', id: 604825918
 mas 'VPNAutoConnect', id: 532510878
 # after installation or update:
 # - `sudo xcodebuild -license accept` (accept license)
