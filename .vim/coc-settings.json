@@ -15,5 +15,6 @@
   "go.goplsArgs": ["-remote=auto", "-logfile", "/tmp/gopls.log"],
   "go.goplsPath": "/Users/tap/.asdf/shims/gopls",
   "prettier.disableSuccessMessage": true,
-  "tsserver.formatOnType": false
+  "tsserver.formatOnType": false,
+  "javascript.updateImportsOnFileMove.enable": false
 }
