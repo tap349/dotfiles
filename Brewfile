@@ -361,6 +361,7 @@ mas 'Cloud Mail.Ru', id: 893068358
 #   - General:
 #     - [x] Start Dashlane at login
 mas 'Dashlane - Password Manager, Secure Digital Wallet', id: 552383089
+mas 'Dual N-Back - Train of Thought', id: 1104323582
 mas 'Evernote', id: 406056744
 # - System Preferences:
 #   - Security & Privacy -> Privacy -> Accessibility
