@@ -35,7 +35,12 @@ Plug 'tpope/vim-rhubarb' | Plug 'tpope/vim-fugitive'
 
 "Plug 'othree/yajs.vim'
 Plug 'pangloss/vim-javascript'
-Plug 'amadeus/vim-jsx'
+"Plug 'amadeus/vim-jsx'
+"Plug 'leafgarland/typescript-vim'
+"Plug 'peitalin/vim-jsx-typescript'
+"Plug 'HerringtonDarkholme/yats.vim'
+"Plug 'yuezk/vim-js'
+Plug 'maxmellon/vim-jsx-pretty'
 
 "-------------------------------------------------------------------------------
 " CSS / SCSS

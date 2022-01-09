@@ -52,3 +52,8 @@
 
 [commit]
   gpgsign = true
+
+# https://stackoverflow.com/a/60323360/3632318
+# Enforce SSH
+[url "ssh://git@github.com/"]
+  insteadOf = https://github.com/

@@ -4,7 +4,9 @@
     "go",
     "javascript",
     "javascriptreact",
-    "json"
+    "json",
+    "typescript",
+    "typescriptreact"
   ],
   "diagnostic.errorSign": "✗",
   "diagnostic.maxWindowHeight": 16,
@@ -16,5 +18,9 @@
   "go.goplsPath": "/Users/tap/.asdf/shims/gopls",
   "prettier.disableSuccessMessage": true,
   "tsserver.formatOnType": false,
-  "javascript.updateImportsOnFileMove.enable": false
+  "javascript.suggestionActions.enabled": false,
+  "javascript.updateImportsOnFileMove.enable": false,
+  "typescript.suggestionActions.enabled": false,
+  "typescript.updateImportsOnFileMove.enable": false,
+  "eslint.packageManager": "yarn"
 }
