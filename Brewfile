@@ -12,21 +12,21 @@
 #-------------------------------------------------------------------------------
 
 # for wuzz
-tap 'ZloeSabo/homebrew-nettools'
+#tap 'ZloeSabo/homebrew-nettools'
 # remove formula with its unused dependencies:
 # `brew rmtree mpv`
 tap 'beeftornado/rmtree'
 tap 'homebrew/cask'
 tap 'homebrew/cask-fonts'
-tap 'puma/puma'
-tap 'universal-ctags/universal-ctags'
+#tap 'puma/puma'
+#tap 'universal-ctags/universal-ctags'
 
 #-------------------------------------------------------------------------------
 # Homebrew
 #-------------------------------------------------------------------------------
 
 # for minisklad
-brew 'FreeTDS'
+#brew 'FreeTDS'
 brew 'ansible'
 # after installation:
 # - `aws configure`
@@ -36,13 +36,13 @@ brew 'bat'
 brew 'bfg'
 # standard `mount -t bind` command doesn't work
 brew 'bindfs'
-brew 'ccze'
+#brew 'ccze'
 #brew 'chromedriver'
 brew 'boost'
 # install manually by downloading dmg file
 #brew 'cgoban'
 #brew 'djview4'
-brew 'djvu2pdf'
+#brew 'djvu2pdf'
 brew 'exiftool'
 # use docker-compose.yml instead
 #brew 'elasticsearch', restart_service: :changed
@@ -89,8 +89,8 @@ brew 'mc'
 # for React Native
 # (same as nodejs)
 brew 'node'
-brew 'octave'
-brew 'overmind'
+#brew 'octave'
+#brew 'overmind'
 brew 'p7zip'
 # not used
 #brew 'pg_top'
@@ -103,34 +103,34 @@ brew 'p7zip'
 # - add symlinks to _~/.puma-dev/_
 # - add `gem 'puma'` to _Gemfile_ of all symlinked applications
 #   (for development and test groups only)
-brew 'puma-dev'
+#brew 'puma-dev'
 # - it's much easier to install pow manually:
 #   `curl get.pow.cx | sh`
 # - create symlinks for all required projects:
 #   `ln -s ~/dev/reenter_builder ~/.pow`
 #brew 'pow'
-brew 'rabbitmq'
+#brew 'rabbitmq'
 # asdf is used instead now
 #brew 'rbenv'
-brew 'redis', restart_service: :changed
+#brew 'redis', restart_service: :changed
 brew 'ripgrep'
 brew 'ssh-copy-id'
 # https://taskwarrior.org/download
-brew 'task'
-brew 'taskd'
-brew 'tasksh'
+#brew 'task'
+#brew 'taskd'
+#brew 'tasksh'
 #brew 'tig'
 brew 'tmux'
 brew 'tokei'
 brew 'tree'
 # universal-ctags handle Ruby code and have built-in Elixir support -
 # no need for external ctags file
-brew 'universal-ctags', args: ['HEAD']
+#brew 'universal-ctags', args: ['HEAD']
 brew 'unrar'
 # for React Native
 brew 'watchman'
 brew 'wget'
-brew 'wuzz'
+#brew 'wuzz'
 brew 'yarn'
 # make it a login shell: `chsh -s /bin/zsh` (all available shells are listed
 # in /etc/shells, current shell can be printed with `echo $0` command)
@@ -153,7 +153,7 @@ cask 'adobe-air'
 cask 'adoptopenjdk8'
 # for Raspeberry Pi (no longer available)
 #cask 'applepi-baker'
-cask 'calibre'
+#cask 'calibre'
 # install required gems (knife-zero, chef, berkshelf) using Gemfile
 #cask 'chefdk'
 # - Preferences:
@@ -287,23 +287,23 @@ cask 'insomnia'
 # (all these settings are already included in exported settings file)
 cask 'iterm2'
 #cask 'keybase'
-cask 'krisp'
+#cask 'krisp'
 # go app with AI
 #cask 'leela'
 cask 'mpv'
 cask 'ngrok'
 # OBS quits unexpectedly after start (no longer available)
 #cask 'obs'
-cask 'openemu'
+#cask 'openemu'
 cask 'opera'
-cask 'phantomjs'
+#cask 'phantomjs'
 cask 'react-native-debugger'
 cask 'skype'
 # - Preferences:
 #   - Menubar: Temperature only
 #   - [x] Check for updates on startup
 #   - [x] Autostart smcFanControl after login
-cask 'smcfancontrol'
+#cask 'smcfancontrol'
 cask 'steam'
 cask 'transmission'
 # for Raspeberry Pi (?)
@@ -339,7 +339,7 @@ cask 'zoom'
 #     - Setup:
 #       - Link Dropbox Account
 mas '2Do', id: 477670270
-mas 'ABBYY Lingvo European', id: 467622356
+#mas 'ABBYY Lingvo European', id: 467622356
 mas 'AdBlock', id: 1402042596
 # on first run:
 # - select folders to synchronize (books/, education/, videos/)
@@ -395,14 +395,13 @@ mas 'Microsoft Remote Desktop', id: 715768417
 #     - Login -> Login with Facebook (a***.t***.i***@gmail.com)
 mas 'Monosnap', id: 540348655
 mas 'Pomodoro Timer', id: 872515009
-mas 'Screen Recorder Movavi', id: 593854334
+#mas 'Screen Recorder Movavi', id: 593854334
 # - Preferences:
 #   - Shortcuts:
 #     - General -> Show Magnifier: <M-2>
 mas 'Sip', id: 507257563
 mas 'Telegram Desktop', id: 946399090
 mas 'Trello', id: 1278508951
-mas 'Valentina Studio', id: 604825918
 mas 'VPNAutoConnect', id: 532510878
 # after installation or update:
 # - `sudo xcodebuild -license accept` (accept license)
