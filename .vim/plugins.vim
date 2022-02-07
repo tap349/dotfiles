@@ -26,7 +26,7 @@ Plug 'andyl/vim-projectionist-elixir' | Plug 'tpope/vim-projectionist'
 "-------------------------------------------------------------------------------
 
 Plug 'airblade/vim-gitgutter'
-Plug 'tap349/vim-extradite' | Plug 'tpope/vim-fugitive'
+"Plug 'tap349/vim-extradite' | Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb' | Plug 'tpope/vim-fugitive'
 
 "-------------------------------------------------------------------------------
@@ -46,29 +46,29 @@ Plug 'maxmellon/vim-jsx-pretty'
 " CSS / SCSS
 "-------------------------------------------------------------------------------
 
-Plug 'ap/vim-css-color'
+"Plug 'ap/vim-css-color'
 " SCSS files are highlighted by default without any plugins but
 " sometimes highlighting is getting broken → use dedicated plugin
-Plug 'cakebaker/scss-syntax.vim'
+"Plug 'cakebaker/scss-syntax.vim'
 
 "-------------------------------------------------------------------------------
 " Slim / Slime
 "-------------------------------------------------------------------------------
 
-Plug 'slim-template/vim-slim'
-Plug 'slime-lang/vim-slime-syntax'
+"Plug 'slim-template/vim-slim'
+"Plug 'slime-lang/vim-slime-syntax'
 
 "-------------------------------------------------------------------------------
 " Ruby / Rails
 "-------------------------------------------------------------------------------
 
-Plug 'keith/rspec.vim'
-Plug 'vim-ruby/vim-ruby'
-Plug 'tpope/vim-rails'
+"Plug 'keith/rspec.vim'
+"Plug 'vim-ruby/vim-ruby'
+"Plug 'tpope/vim-rails'
 " https://github.com/vim-ruby/vim-ruby/issues/32
 " commands :A, etc. for ruby non-rails applications,
 " also adds lib/ to vim path (same as `set path+=lib`)
-Plug 'tpope/vim-rake' | Plug 'tpope/vim-projectionist'
+"Plug 'tpope/vim-rake' | Plug 'tpope/vim-projectionist'
 
 "-------------------------------------------------------------------------------
 " Syntax plugins for other file types
@@ -83,10 +83,10 @@ Plug 'plasticboy/vim-markdown'
 
 Plug 'bkad/CamelCaseMotion'
 Plug 'easymotion/vim-easymotion'
-Plug 'flazz/vim-colorschemes'
+"Plug 'flazz/vim-colorschemes'
 Plug 'haya14busa/vim-asterisk'
 Plug 'itchyny/lightline.vim' | Plug 'tpope/vim-fugitive'
-Plug 'mhinz/vim-hugefile'
+"Plug 'mhinz/vim-hugefile'
 Plug 'mhinz/vim-startify'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'osyo-manga/vim-anzu'
