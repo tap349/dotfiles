@@ -20,6 +20,8 @@ tap 'homebrew/cask'
 tap 'homebrew/cask-fonts'
 #tap 'puma/puma'
 #tap 'universal-ctags/universal-ctags'
+# https://github.com/osxfuse/osxfuse/issues/818#issuecomment-985739918
+tap 'gromgit/homebrew-fuse'
 
 #-------------------------------------------------------------------------------
 # Homebrew
@@ -89,6 +91,7 @@ brew 'mc'
 # for React Native
 # (same as nodejs)
 brew 'node'
+brew 'ntfs-3g-mac'
 #brew 'octave'
 #brew 'overmind'
 brew 'p7zip'
@@ -290,6 +293,7 @@ cask 'iterm2'
 #cask 'krisp'
 # go app with AI
 #cask 'leela'
+cask 'macfuse'
 cask 'mpv'
 cask 'ngrok'
 # OBS quits unexpectedly after start (no longer available)
