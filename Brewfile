@@ -309,6 +309,7 @@ cask 'skype'
 #   - [x] Autostart smcFanControl after login
 #cask 'smcfancontrol'
 cask 'steam'
+cask 'tomighty'
 cask 'transmission'
 # for Raspeberry Pi (?)
 #cask 'unetbootin'
@@ -342,7 +343,7 @@ cask 'zoom'
 #   - Sync:
 #     - Setup:
 #       - Link Dropbox Account
-mas '2Do', id: 477670270
+#mas '2Do', id: 477670270
 #mas 'ABBYY Lingvo European', id: 467622356
 mas 'AdBlock', id: 1402042596
 # on first run:
@@ -364,9 +365,8 @@ mas 'Cloud Mail.Ru', id: 893068358
 # - Preferences:
 #   - General:
 #     - [x] Start Dashlane at login
-mas 'Dashlane - Password Manager, Secure Digital Wallet', id: 552383089
-mas 'Dual N-Back - Train of Thought', id: 1104323582
-mas 'Evernote', id: 406056744
+#mas 'Dual N-Back - Train of Thought', id: 1104323582
+#mas 'Evernote', id: 406056744
 # - System Preferences:
 #   - Security & Privacy -> Privacy -> Accessibility
 # - Preferences:
@@ -379,14 +379,14 @@ mas 'Evernote', id: 406056744
 #     - [x] Autostart on system login
 #     - [ ] Show icon in menu bar
 #     - [ ] Show icon in Dock
-mas 'Flexiglass', id: 426410278
+#mas 'Flexiglass', id: 426410278
 mas 'FTP Server', id: 987045856
 mas 'Ghostery Lite', id: 1436953057
-mas 'Jira Cloud by Atlassian', id: 1475897096
+#mas 'Jira Cloud by Atlassian', id: 1475897096
 #mas 'iMovie', id: 408981434
 #mas 'LINE', id: 539883307
 #mas 'Magic Go', id: 1060433592
-mas 'Marked 2', id: 890031187
+#mas 'Marked 2', id: 890031187
 mas 'Microsoft Remote Desktop', id: 715768417
 # - Preferences:
 #   - General:
@@ -398,17 +398,17 @@ mas 'Microsoft Remote Desktop', id: 715768417
 #   - Account (to be able to upload screenshots):
 #     - Login -> Login with Facebook (a***.t***.i***@gmail.com)
 mas 'Monosnap', id: 540348655
-mas 'Pomodoro Timer', id: 872515009
+#mas 'Pomodoro Timer', id: 872515009
 #mas 'Screen Recorder Movavi', id: 593854334
 # - Preferences:
 #   - Shortcuts:
 #     - General -> Show Magnifier: <M-2>
 mas 'Sip', id: 507257563
 mas 'Telegram Desktop', id: 946399090
-mas 'Trello', id: 1278508951
-mas 'VPNAutoConnect', id: 532510878
+#mas 'Trello', id: 1278508951
+#mas 'VPNAutoConnect', id: 532510878
 # after installation or update:
 # - `sudo xcodebuild -license accept` (accept license)
 # - `xcode-select --install` (install CLT)
 mas 'Xcode', id: 497799835
-mas 'iA Writer', id: 775737590
+#mas 'iA Writer', id: 775737590
