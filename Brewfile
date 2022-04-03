@@ -299,7 +299,7 @@ cask 'ngrok'
 # OBS quits unexpectedly after start (no longer available)
 #cask 'obs'
 #cask 'openemu'
-cask 'opera'
+#cask 'opera'
 #cask 'phantomjs'
 cask 'react-native-debugger'
 cask 'skype'
