@@ -88,9 +88,9 @@ brew 'macvim'
 brew 'mas'
 #brew 'memcached', restart_service: :changed
 brew 'mc'
-# for React Native
+# for React Native and coc.nvim
 # (same as nodejs)
-#brew 'node'
+brew 'node'
 brew 'ntfs-3g-mac'
 #brew 'octave'
 #brew 'overmind'
