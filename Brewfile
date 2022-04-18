@@ -313,10 +313,10 @@ cask 'tomighty'
 cask 'transmission'
 # for Raspeberry Pi (?)
 #cask 'unetbootin'
-cask 'vagrant'
-cask 'virtualbox'
+#cask 'vagrant'
+#cask 'virtualbox'
 # for vagrant
-cask 'virtualbox-extension-pack'
+#cask 'virtualbox-extension-pack'
 cask 'whatsapp'
 cask 'zoom'
 
