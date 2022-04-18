@@ -24,16 +24,16 @@ publish() {
 
 # https://stackoverflow.com/a/5955623/3632318
 # https://stackoverflow.com/a/34533957/3632318
-converge() {
-  local name="$1"
-  local env="$2"
-
-  if [ -z $env ]; then env='prod'; fi
-
-  # it's much faster than `chef exec knife node environment_set $name $env`
-  sed -i '' -e "/chef_environment/ s/: \".*\"/: \"${env}\"/" nodes/${name}.json
-  chef exec berks vendor && chef exec knife zero converge "name:${name}"
-}
+#converge() {
+#  local name="$1"
+#  local env="$2"
+#
+#  if [ -z $env ]; then env='prod'; fi
+#
+#  # it's much faster than `chef exec knife node environment_set $name $env`
+#  sed -i '' -e "/chef_environment/ s/: \".*\"/: \"${env}\"/" nodes/${name}.json
+#  chef exec berks vendor && chef exec knife zero converge "name:${name}"
+#}
 
 #-------------------------------------------------------------------------------
 # Git

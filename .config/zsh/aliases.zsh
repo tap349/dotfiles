@@ -17,47 +17,41 @@ alias dot='cd ~/.dotfiles'
 alias a='cd ~/dev/compleader/ansible'
 alias as='cd ~/dev/compleader/ad_sensor'
 alias asa='cd ~/dev/compleader/ad_sensor_app'
-alias cosette='cd ~/dev/compleader/cosette'
-alias diana='cd ~/dev/compleader/diana'
-alias f='cd ~/dev/private/flyf'
-alias ic='cd ~/dev/compleader/iceperk'
-alias ica='cd ~/dev/compleader/iceperkapp'
-alias icb='cd ~/dev/compleader/iceperkbilling'
-alias icbc='cd ~/dev/compleader/iceperkbillingchef'
-alias icc='cd ~/dev/compleader/iceperkchef'
-alias ip='cd ~/dev/compleader/iki_parents'
-alias is='cd ~/dev/compleader/iki_school'
-alias it='cd ~/dev/compleader/instatinder'
-alias ita='cd ~/dev/compleader/instatinder-app'
-alias itc='cd ~/dev/compleader/instatinderchef'
-alias lain='cd ~/dev/compleader/lain'
-alias lucy='cd ~/dev/compleader/lucy'
-alias ms='cd ~/dev/blackchestnut/minisklad'
-alias msa='cd ~/dev/blackchestnut/minisklad-app'
-alias msn='cd ~/dev/blackchestnut/minisklad-node'
-alias msnc='cd ~/dev/blackchestnut/minisklad-node-chef'
-alias neko='cd ~/dev/morr/neko-achievements'
-alias reika='cd ~/dev/compleader/reika'
-alias santi='cd ~/dev/compleader/santi-preview-app'
-alias sith='cd ~/dev/compleader/sith'
-alias sithchef='cd ~/dev/compleader/sithchef'
-alias tamara='cd ~/dev/compleader/tamara'
+#alias cosette='cd ~/dev/compleader/cosette'
+#alias diana='cd ~/dev/compleader/diana'
+#alias f='cd ~/dev/private/flyf'
+#alias ic='cd ~/dev/compleader/iceperk'
+#alias ica='cd ~/dev/compleader/iceperkapp'
+#alias icb='cd ~/dev/compleader/iceperkbilling'
+#alias icbc='cd ~/dev/compleader/iceperkbillingchef'
+#alias icc='cd ~/dev/compleader/iceperkchef'
+#alias ip='cd ~/dev/compleader/iki_parents'
+#alias is='cd ~/dev/compleader/iki_school'
+#alias it='cd ~/dev/compleader/instatinder'
+#alias ita='cd ~/dev/compleader/instatinder-app'
+#alias itc='cd ~/dev/compleader/instatinderchef'
+#alias lain='cd ~/dev/compleader/lain'
+#alias lucy='cd ~/dev/compleader/lucy'
+#alias ms='cd ~/dev/blackchestnut/minisklad'
+#alias msa='cd ~/dev/blackchestnut/minisklad-app'
+#alias msn='cd ~/dev/blackchestnut/minisklad-node'
+#alias msnc='cd ~/dev/blackchestnut/minisklad-node-chef'
+#alias neko='cd ~/dev/morr/neko-achievements'
+#alias reika='cd ~/dev/compleader/reika'
+#alias santi='cd ~/dev/compleader/santi-preview-app'
+#alias sith='cd ~/dev/compleader/sith'
+#alias sithchef='cd ~/dev/compleader/sithchef'
+#alias tamara='cd ~/dev/compleader/tamara'
 alias y='cd ~/dev/compleader/yalper'
-alias yulia='cd ~/dev/compleader/yulia'
+#alias yulia='cd ~/dev/compleader/yulia'
 
 # alice
 alias alice='cd ~/dev/compleader/alice'
-alias christine='cd ~/dev/compleader/alice/apps/christine'
-alias francesca='cd ~/dev/compleader/alice/apps/francesca'
-alias martha='cd ~/dev/compleader/alice/apps/martha'
-alias rebecca='cd ~/dev/compleader/alice/apps/rebecca'
-alias veronika='cd ~/dev/compleader/alice/apps/veronika'
-alias yancy='cd ~/dev/compleader/alice/apps/yancy'
 
 # anna
-alias annachef='cd ~/dev/compleader/annachef'
-alias corina='cd ~/dev/compleader/corina'
-alias ginger='cd ~/dev/compleader/ginger'
+#alias annachef='cd ~/dev/compleader/annachef'
+#alias corina='cd ~/dev/compleader/corina'
+#alias ginger='cd ~/dev/compleader/ginger'
 
 #-------------------------------------------------------------------------------
 # system
@@ -112,51 +106,51 @@ alias gs='git status'
 # Rails
 #-------------------------------------------------------------------------------
 
-alias r='rails'
-alias rc='rails console'
-alias rs='rails server'
+#alias r='rails'
+#alias rc='rails console'
+#alias rs='rails server'
 
-alias cap='bundle exec cap'
-alias guard='bundle exec guard'
-alias sidekiq='bundle exec sidekiq --config ./config/sidekiq.yml'
+#alias cap='bundle exec cap'
+#alias guard='bundle exec guard'
+#alias sidekiq='bundle exec sidekiq --config ./config/sidekiq.yml'
 
 #-------------------------------------------------------------------------------
 # React Native
 #-------------------------------------------------------------------------------
 
-alias e='expo'
-alias rn='react-native'
+#alias e='expo'
+#alias rn='react-native'
 
-alias npm_reset='\
-  watchman watch-del-all &&
-  rm -rf "$TMPDIR/react-native-packager-cache-*" &&
-  rm -rf "$TMPDIR/metro-bundler-cache-*" &&
-  rm -rf "$TMPDIR/haste-map-react-native-packager-*" &&
-  rm -rf "node_modules/*" &&
-  npm cache clean --force &&
-  npm install
-  '
+#alias npm_reset='\
+#  watchman watch-del-all &&
+#  rm -rf "$TMPDIR/react-native-packager-cache-*" &&
+#  rm -rf "$TMPDIR/metro-bundler-cache-*" &&
+#  rm -rf "$TMPDIR/haste-map-react-native-packager-*" &&
+#  rm -rf "node_modules/*" &&
+#  npm cache clean --force &&
+#  npm install
+#  '
 
-alias yarn_reset='\
-  watchman watch-del-all &&
-  rm -rf "$TMPDIR/react-native-packager-cache-*" &&
-  rm -rf "$TMPDIR/metro-bundler-cache-*" &&
-  rm -rf "$TMPDIR/haste-map-react-native-packager-*" &&
-  rm -rf "node_modules/*" &&
-  yarn cache clean &&
-  yarn install
-  '
+#alias yarn_reset='\
+#  watchman watch-del-all &&
+#  rm -rf "$TMPDIR/react-native-packager-cache-*" &&
+#  rm -rf "$TMPDIR/metro-bundler-cache-*" &&
+#  rm -rf "$TMPDIR/haste-map-react-native-packager-*" &&
+#  rm -rf "node_modules/*" &&
+#  yarn cache clean &&
+#  yarn install
+#  '
 
-alias ios='react-native run-ios'
-alias ios4="react-native run-ios --simulator 'iPhone 4s'"
-alias ios5="react-native run-ios --simulator 'iPhone 5s'"
-alias ios6p="react-native run-ios --simulator 'iPhone 6 Plus'"
-alias logios='react-native log-ios | ccze -A -o nolookups'
+#alias ios='react-native run-ios'
+#alias ios4="react-native run-ios --simulator 'iPhone 4s'"
+#alias ios5="react-native run-ios --simulator 'iPhone 5s'"
+#alias ios6p="react-native run-ios --simulator 'iPhone 6 Plus'"
+#alias logios='react-native log-ios | ccze -A -o nolookups'
 
 #alias avd4='$ANDROID_HOME/tools/emulator -avd Nexus_5X_API_19_x86 -gpu host -skin 1080x1920'
-alias avd6='$ANDROID_HOME/tools/emulator -avd Nexus_5X_API_23_x86_64 -gpu host -skin 1080x1920'
-alias avd9='$ANDROID_HOME/tools/emulator -avd Nexus_5X_API_28_x86_64 -gpu host -skin 1080x1920'
-alias and='react-native run-android'
-alias logand='react-native log-android | ccze -A -o nolookups'
-alias build_aab='yarn run jetify && cd android && ./gradlew bundleRelease; cd ..'
-alias build_apk='yarn run jetify && cd android && ./gradlew assembleRelease; cd ..'
+#alias avd6='$ANDROID_HOME/tools/emulator -avd Nexus_5X_API_23_x86_64 -gpu host -skin 1080x1920'
+#alias avd9='$ANDROID_HOME/tools/emulator -avd Nexus_5X_API_28_x86_64 -gpu host -skin 1080x1920'
+#alias and='react-native run-android'
+#alias logand='react-native log-android | ccze -A -o nolookups'
+#alias build_aab='yarn run jetify && cd android && ./gradlew bundleRelease; cd ..'
+#alias build_apk='yarn run jetify && cd android && ./gradlew assembleRelease; cd ..'
