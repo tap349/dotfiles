@@ -56,7 +56,7 @@ brew 'fontforge'
 brew 'git'
 brew 'gpg'
 # to install Gradle Wrapper
-brew 'gradle'
+#brew 'gradle'
 # use overmind instead
 #brew 'honcho'
 brew 'htop'
@@ -86,11 +86,11 @@ brew 'lynx'
 #     - [ ] Draw marked text inline
 brew 'macvim'
 brew 'mas'
-brew 'memcached', restart_service: :changed
+#brew 'memcached', restart_service: :changed
 brew 'mc'
 # for React Native
 # (same as nodejs)
-brew 'node'
+#brew 'node'
 brew 'ntfs-3g-mac'
 #brew 'octave'
 #brew 'overmind'
@@ -131,7 +131,7 @@ brew 'tree'
 #brew 'universal-ctags', args: ['HEAD']
 brew 'unrar'
 # for React Native
-brew 'watchman'
+#brew 'watchman'
 brew 'wget'
 #brew 'wuzz'
 brew 'yarn'
@@ -194,7 +194,7 @@ cask 'flux'
 # for iTerm2
 cask 'font-inconsolata-lgc'
 #cask 'font-iosevka'
-cask 'genymotion'
+#cask 'genymotion'
 # app preferences (bookmarks bar, extensions, etc.) are synchronized if
 # you sign in to Chrome
 #
@@ -301,7 +301,7 @@ cask 'ngrok'
 #cask 'openemu'
 #cask 'opera'
 #cask 'phantomjs'
-cask 'react-native-debugger'
+#cask 'react-native-debugger'
 cask 'skype'
 # - Preferences:
 #   - Menubar: Temperature only
@@ -410,5 +410,5 @@ mas 'Telegram Desktop', id: 946399090
 # after installation or update:
 # - `sudo xcodebuild -license accept` (accept license)
 # - `xcode-select --install` (install CLT)
-mas 'Xcode', id: 497799835
+#mas 'Xcode', id: 497799835
 #mas 'iA Writer', id: 775737590
