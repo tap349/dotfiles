@@ -219,7 +219,7 @@ cask 'font-inconsolata-lgc'
 #     + Dashlane (select Desktop mode, can be added on first Dashlane run)
 #     - Data Saver
 #     + Downloader for Instagram™ + Direct Message (Hide in Chrome Menu)
-#     + Ghostery (Hide in Chrome Menu):
+#     - Ghostery (Hide in Chrome Menu):
 #       - Global Blocking:
 #         - Block All (except Comments)
 #       - Notifications:
