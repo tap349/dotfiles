@@ -7,17 +7,19 @@
 	<key>AboutToPasteTabsWithCancel_selection</key>
 	<integer>2</integer>
 	<key>AdjustWindowForFontSizeChange</key>
-	<true/>
+	<false/>
 	<key>AllowClipboardAccess</key>
 	<true/>
 	<key>AlternateMouseScroll</key>
+	<true/>
+	<key>AlwaysOpenWindowAtStartup</key>
 	<true/>
 	<key>AnimateDimming</key>
 	<false/>
 	<key>AutoHideTmuxClientSession</key>
 	<false/>
 	<key>CheckTestRelease</key>
-	<true/>
+	<false/>
 	<key>ClosingHotkeySwitchesSpaces</key>
 	<true/>
 	<key>CommandSelection</key>
@@ -31311,6 +31313,8 @@
 	<false/>
 	<key>DisableFullscreenTransparency</key>
 	<false/>
+	<key>DisableTopRightIndicators</key>
+	<true/>
 	<key>DismemberScrollView</key>
 	<false/>
 	<key>EnableProxyIcon</key>
@@ -31621,7 +31625,7 @@
 			<key>Blink Allowed</key>
 			<false/>
 			<key>Blinking Cursor</key>
-			<true/>
+			<false/>
 			<key>Blur</key>
 			<true/>
 			<key>Blur Radius</key>
@@ -31719,6 +31723,8 @@
 			<integer>0</integer>
 			<key>Initial Text</key>
 			<string></string>
+			<key>Initial Use Transparency</key>
+			<false/>
 			<key>Jobs to Ignore</key>
 			<array>
 				<string>rlogin</string>
@@ -32049,7 +32055,7 @@
 			<key>Screen</key>
 			<integer>-1</integer>
 			<key>Scrollback Lines</key>
-			<integer>200000</integer>
+			<integer>20000</integer>
 			<key>Scrollback With Status Bar</key>
 			<false/>
 			<key>Scrollback in Alternate Screen</key>
@@ -32398,6 +32404,8 @@
 	<false/>
 	<key>SeparateStatusBarsPerPane</key>
 	<false/>
+	<key>SeparateWindowTitlePerTab</key>
+	<false/>
 	<key>ShowBookmarkName</key>
 	<false/>
 	<key>ShowFullScreenTabBar</key>
@@ -32409,7 +32417,7 @@
 	<key>SlowPasteDelayBetweenCalls</key>
 	<real>0.125</real>
 	<key>SmartPlacement</key>
-	<false/>
+	<true/>
 	<key>SoundForEsc</key>
 	<false/>
 	<key>SplitPaneDimmingAmount</key>
@@ -32452,9 +32460,9 @@
 	<key>UseGCDUpdateTimer</key>
 	<true/>
 	<key>UseLionStyleFullscreen</key>
-	<false/>
+	<true/>
 	<key>UseMetal</key>
-	<false/>
+	<true/>
 	<key>VisualIndicatorForEsc</key>
 	<false/>
 	<key>WindowNumber</key>
