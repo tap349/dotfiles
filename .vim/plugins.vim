@@ -308,7 +308,8 @@ function! s:check_back_space() abort
   return !col || getline('.')[col - 1] =~# '\s'
 endfunction
 
-inoremap <silent><expr> <CR> pumvisible() ? coc#_select_confirm() : "\<CR>"
+inoremap <silent><expr> <CR> pumvisible() && !empty(v:completed_item) ?
+      \ coc#_select_confirm() : "\<CR>"
 
 " https://prettier.io/docs/en/vim.html
 command! -nargs=0 Prettier :call CocAction('runCommand', 'prettier.formatFile')
