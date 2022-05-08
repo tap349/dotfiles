@@ -130,6 +130,7 @@ brew 'tree'
 # no need for external ctags file
 #brew 'universal-ctags', args: ['HEAD']
 brew 'unrar'
+brew 'vimr'
 # for React Native
 #brew 'watchman'
 brew 'wget'
