@@ -308,6 +308,7 @@ function! s:check_back_space() abort
   return !col || getline('.')[col - 1] =~# '\s'
 endfunction
 
+" https://github.com/vim/vim/issues/2004#issuecomment-324330465
 inoremap <silent><expr> <CR> pumvisible() && !empty(v:completed_item) ?
       \ coc#_select_confirm() : "\<CR>"
 
