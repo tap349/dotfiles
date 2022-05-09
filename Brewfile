@@ -130,7 +130,6 @@ brew 'tree'
 # no need for external ctags file
 #brew 'universal-ctags', args: ['HEAD']
 brew 'unrar'
-brew 'vimr'
 # for React Native
 #brew 'watchman'
 brew 'wget'
@@ -315,6 +314,7 @@ cask 'transmission'
 # for Raspeberry Pi (?)
 #cask 'unetbootin'
 #cask 'vagrant'
+cask 'vimr'
 #cask 'virtualbox'
 # for vagrant
 #cask 'virtualbox-extension-pack'
