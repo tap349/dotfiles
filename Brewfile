@@ -311,13 +311,12 @@ cask 'skype'
 cask 'steam'
 cask 'tomighty'
 cask 'transmission'
-# for Raspeberry Pi (?)
+# for Raspeberry Pi
 #cask 'unetbootin'
-#cask 'vagrant'
+cask 'vagrant'
 cask 'vimr'
-#cask 'virtualbox'
-# for vagrant
-#cask 'virtualbox-extension-pack'
+cask 'virtualbox'
+cask 'virtualbox-extension-pack'
 cask 'whatsapp'
 cask 'zoom'
 
