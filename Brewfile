@@ -182,6 +182,7 @@ cask 'adoptopenjdk8'
 # run docker app after installation
 # (otherwise `docker` command might be not available in terminal)
 cask 'docker'
+cask 'emacs'
 cask 'figma'
 cask 'firefox'
 cask 'flux'
