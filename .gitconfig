@@ -53,6 +53,9 @@
 [commit]
   gpgsign = true
 
+[gpg]
+  program = gpg
+
 # https://stackoverflow.com/a/60323360/3632318
 # Enforce SSH
 [url "ssh://git@github.com/"]

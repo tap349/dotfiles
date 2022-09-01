@@ -30,10 +30,12 @@ setopt EXTENDED_GLOB
 
 # removes duplicate entries from PATH
 typeset -U path
-# brew creates symlinks in /usr/local/bin/
+# Homebrew creates symlinks in /usr/local/bin/
 path=($HOME/scripts $path)
-# brew creates symlinks in /usr/local/bin/
-path=(/usr/local/bin $path)
+# Homebrew creates symlinks in
+# - /usr/local/bin/ for macOS Intel
+# - /opt/homebrew/bin/ for macOS ARM
+path=(/usr/local/bin /opt/homebrew/bin $path)
 # > `brew info libpq`
 # >
 # > libpq is keg-only, which means it was not symlinked into /usr/local,
