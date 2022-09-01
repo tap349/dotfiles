@@ -7,7 +7,6 @@ echo ==========================================================================
 files=(
   .config/mc
   .config/mpv
-  .config/nvim
   .config/yarn
   .config/zsh
   .gnupg/gpg.conf
