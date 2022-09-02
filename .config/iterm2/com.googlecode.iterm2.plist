@@ -7,7 +7,7 @@
 	<key>AboutToPasteTabsWithCancel_selection</key>
 	<integer>2</integer>
 	<key>AdjustWindowForFontSizeChange</key>
-	<false/>
+	<true/>
 	<key>AllowClipboardAccess</key>
 	<true/>
 	<key>AlternateMouseScroll</key>
@@ -19,7 +19,7 @@
 	<key>AutoHideTmuxClientSession</key>
 	<false/>
 	<key>CheckTestRelease</key>
-	<false/>
+	<true/>
 	<key>ClosingHotkeySwitchesSpaces</key>
 	<true/>
 	<key>CommandSelection</key>
@@ -31312,7 +31312,7 @@
 	<key>DisableAppNap</key>
 	<false/>
 	<key>DisableFullscreenTransparency</key>
-	<false/>
+	<true/>
 	<key>DisableTopRightIndicators</key>
 	<true/>
 	<key>DismemberScrollView</key>
@@ -32409,7 +32409,7 @@
 	<key>ShowBookmarkName</key>
 	<false/>
 	<key>ShowFullScreenTabBar</key>
-	<false/>
+	<true/>
 	<key>ShowPaneTitles</key>
 	<true/>
 	<key>SlowPasteBytesPerCall</key>
@@ -32446,7 +32446,7 @@
 		<string>Profiles</string>
 	</array>
 	<key>TripleClickSelectsFullWrappedLines</key>
-	<false/>
+	<true/>
 	<key>URLHandlersByGuid</key>
 	<dict/>
 	<key>UpdateScreenParamsDelay</key>
