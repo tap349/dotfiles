@@ -5,6 +5,7 @@
 
 .vim/autoload/plug.vim.old
 
+.config/iterm2/AppSupport
 .config/mpv/watch_later/
 .config/mpv/bookmarker.json
 .config/zsh/.zcompdump

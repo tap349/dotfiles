@@ -418,8 +418,10 @@ let g:lightline.winwidth = 220
 " renderer after upgrading to macOS Catalina => don't use right separators
 "let g:lightline.separator = { 'left': '⮀', 'right': '⮂' }
 "let g:lightline.subseparator = { 'left': '⮁', 'right': '⮃' }
-let g:lightline.separator = { 'left': '⮀' }
-let g:lightline.subseparator = { 'left': '⮁' }
+" UPDATE (2022-09-02): these Unicode characters are not shown in macOS Monterey
+" at all => don't use any separators
+"let g:lightline.separator = { 'left': '⮀' }
+"let g:lightline.subseparator = { 'left': '⮁' }
 
 " or else use letters: N, I, R, V, VL, VB, C
 let g:lightline.mode_map = {

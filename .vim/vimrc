@@ -333,11 +333,13 @@ set showtabline=2
 " real winwidth(0) is set only after vimrc is sourced.
 "
 " don't show line numbers on macbook
-if winwidth(0) < 160
-  set nonumber
-else
-  set number
-endif
+"if winwidth(0) < 160
+"  set nonumber
+"else
+"  set number
+"endif
+
+set nonumber
 
 "-------------------------------------------------------------------------------
 " startup
