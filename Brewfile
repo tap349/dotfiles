@@ -23,27 +23,27 @@ tap 'gromgit/homebrew-fuse'
 # Homebrew
 #-------------------------------------------------------------------------------
 
-brew 'ansible'
+#brew 'ansible'
 # After installation:
 # - `aws configure`
 brew 'awscli'
 # `cat` on steroids
 brew 'bat'
-brew 'bfg'
+#brew 'bfg'
 # Standard `mount -t bind` command doesn't work
 brew 'bindfs'
 #brew 'ccze'
-brew 'boost'
+#brew 'boost'
 # Install manually by downloading dmg file
 #brew 'cgoban'
-brew 'exiftool'
+#brew 'exiftool'
 brew 'git'
 brew 'gpg'
 brew 'htop'
 brew 'imagemagick'
 brew 'jq'
 # For psql and pg_dump
-brew 'libpq'
+#brew 'libpq'
 # Used as viewer for html files in mc
 brew 'lynx'
 brew 'macvim'
@@ -59,8 +59,10 @@ brew 'p7zip'
 # Use docker-compose.yml instead, install libpq for psql and pg_dump
 #brew 'postgresql', restart_service: :changed
 brew 'ripgrep'
+# For command-t
+brew 'ruby'
 brew 'ssh-copy-id'
-# For `brew font-inconsolata-lgc`
+# For `brew install font-inconsolata-lgc`
 brew 'svn'
 brew 'tmux'
 brew 'tokei'
@@ -99,7 +101,7 @@ cask 'insomnia'
 cask 'iterm2'
 cask 'macfuse'
 cask 'mpv'
-cask 'ngrok'
+#cask 'ngrok'
 #cask 'openemu'
 #cask 'opera'
 #cask 'skype'
@@ -137,7 +139,7 @@ mas 'Cloud Mail.Ru', id: 893068358
 mas 'Ghostery Lite', id: 1436953057
 #mas 'Jira Cloud by Atlassian', id: 1475897096
 #mas 'Marked 2', id: 890031187
-mas 'Microsoft Remote Desktop', id: 715768417
+#mas 'Microsoft Remote Desktop', id: 715768417
 # - Preferences:
 #   - General:
 #     - After upload:
@@ -149,6 +151,6 @@ mas 'Monosnap', id: 540348655
 # - Preferences:
 #   - Shortcuts:
 #     - General -> Show Magnifier: <M-2>
-mas 'Sip', id: 507257563
+#mas 'Sip', id: 507257563
 mas 'Telegram Desktop', id: 946399090
 #mas 'iA Writer', id: 775737590
