@@ -99,8 +99,11 @@ Plug 'tpope/vim-surround'
 " => Homebrew always installs `ruby` formula
 " => asdf, system and Homebrew Ruby versions might differ
 " => use Homebrew Ruby to compile Command-T
+"
+" For macOS Intel:
+"     \   'do': 'cd ruby/command-t/ext/command-t && /usr/local/opt/ruby/bin/ruby extconf.rb && make'
 Plug 'wincent/command-t', {
-      \   'do': 'cd ruby/command-t/ext/command-t && /usr/local/opt/ruby/bin/ruby extconf.rb && make'
+      \   'do': 'cd ruby/command-t/ext/command-t && /opt/homebrew/opt/ruby/bin/ruby extconf.rb && make'
       \ }
 
 "-------------------------------------------------------------------------------
@@ -298,10 +301,11 @@ function! s:show_documentation()
   endif
 endfunction
 
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
+" Disable for coc.nvim custom popup menu to work
+"inoremap <silent><expr> <TAB>
+"      \ pumvisible() ? "\<C-n>" :
+"      \ <SID>check_back_space() ? "\<TAB>" :
+"      \ coc#refresh()
 
 function! s:check_back_space() abort
   let col = col('.') - 1
@@ -309,8 +313,10 @@ function! s:check_back_space() abort
 endfunction
 
 " https://github.com/vim/vim/issues/2004#issuecomment-324330465
-inoremap <silent><expr> <CR> pumvisible() && !empty(v:completed_item) ?
-      \ coc#_select_confirm() : "\<CR>"
+"inoremap <silent><expr> <CR> pumvisible() && !empty(v:completed_item) ?
+"      \ coc#_select_confirm() : "\<CR>"
+" https://www.reddit.com/r/neovim/comments/weydql/comment/ikkl1eq
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<C-y>"
 
 " https://prettier.io/docs/en/vim.html
 command! -nargs=0 Prettier :call CocAction('runCommand', 'prettier.formatFile')

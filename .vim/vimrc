@@ -294,7 +294,7 @@ endif
 "set linespace=5
 "set guifont=Andale\ Mono\ MT\ Std:h14
 set linespace=1
-set guifont=Input:h14
+set guifont=Input:h15
 
 "-------------------------------------------------------------------------------
 " gui options
