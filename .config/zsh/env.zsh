@@ -1,6 +1,6 @@
 #*******************************************************************************
 #
-# environment variables
+# Environment variables
 #
 #*******************************************************************************
 
@@ -12,7 +12,7 @@ export TERM='xterm-256color'
 export GPG_TTY=$(tty)
 
 #-------------------------------------------------------------------------------
-# zsh options
+# Zsh options
 #
 # http://zsh.sourceforge.net/Doc/Release/Options.html
 #-------------------------------------------------------------------------------
@@ -30,20 +30,20 @@ setopt EXTENDED_GLOB
 
 # removes duplicate entries from PATH
 typeset -U path
-# Homebrew creates symlinks in /usr/local/bin/
 path=($HOME/scripts $path)
 # Homebrew creates symlinks in
-# - /usr/local/bin/ for macOS Intel
-# - /opt/homebrew/bin/ for macOS ARM
+# - /usr/local/bin/ for Intel
+# - /opt/homebrew/bin/ for Apple Silicon
 path=(/usr/local/bin /opt/homebrew/bin $path)
 # > `brew info libpq`
 # >
 # > libpq is keg-only, which means it was not symlinked into /usr/local,
 # > because conflicts with postgres formula.
-path=(/usr/local/opt/libpq/bin $path)
+#path=(/usr/local/opt/libpq/bin $path)
+path=(/opt/homebrew/opt/libpq/bin $path)
 
 #-------------------------------------------------------------------------------
-# prompt
+# Prompt
 #-------------------------------------------------------------------------------
 
 # http://zsh.sourceforge.net/Doc/Release/Expansion.html#Command-Substitution
@@ -59,7 +59,7 @@ $(git_prompt)\
 %F{032} %(!.#.») %F{reset}'
 
 #-------------------------------------------------------------------------------
-# locale
+# Locale
 #-------------------------------------------------------------------------------
 
 # for iTerm2 to display cyrillic
@@ -68,7 +68,7 @@ export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 
 #-------------------------------------------------------------------------------
-# zsh history
+# Zsh history
 #
 # https://stackoverflow.com/a/19454838/3632318
 #-------------------------------------------------------------------------------
@@ -93,29 +93,7 @@ SAVEHIST=10000
 export ERL_AFLAGS='-kernel shell_history enabled'
 
 #-------------------------------------------------------------------------------
-# React Native
-#-------------------------------------------------------------------------------
-
-# https://github.com/jhen0409/react-native-debugger/blob/master/docs/getting-started.md#launch-by-cli-or-react-native-packager-macos-only
-# https://github.com/artsy/emission/blob/45417ca425f2cba7d2da21902ef8ff1cd093a024/package.json#L28
-#
-# set React Native Debugger as JavaScript debugger
-#export REACT_DEBUGGER="open -g 'rndebugger://set-debugger-loc?port=8081' --args"
-
-# https://github.com/bradmartin/nativescript-videoplayer/issues/76
-#export SIMCTL_CHILD_OS_ACTIVITY_MODE='disable'
-
-# required by `react-native-cli` to be set
-#export ANDROID_HOME=/usr/local/share/android-sdk
-# `android`
-#path=($path $ANDROID_HOME/tools)
-# `sdkmanager` and `avdmanager`
-#path=($path $ANDROID_HOME/tools/bin)
-# `adb`
-#path=($path $ANDROID_HOME/platform-tools)
-
-#-------------------------------------------------------------------------------
-# source other files
+# Source other files
 #-------------------------------------------------------------------------------
 
 source $ZDOTDIR/env.secret.zsh
