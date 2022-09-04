@@ -315,8 +315,10 @@ endfunction
 " https://github.com/vim/vim/issues/2004#issuecomment-324330465
 "inoremap <silent><expr> <CR> pumvisible() && !empty(v:completed_item) ?
 "      \ coc#_select_confirm() : "\<CR>"
+
 " https://www.reddit.com/r/neovim/comments/weydql/comment/ikkl1eq
-inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<C-y>"
+"inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<C-y>"
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
 
 " https://prettier.io/docs/en/vim.html
 command! -nargs=0 Prettier :call CocAction('runCommand', 'prettier.formatFile')
