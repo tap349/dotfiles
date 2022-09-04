@@ -31,7 +31,8 @@ brew 'awscli'
 brew 'bat'
 #brew 'bfg'
 # Standard `mount -t bind` command doesn't work
-brew 'bindfs'
+# No bottle for Apple Silicon
+#brew 'bindfs'
 #brew 'ccze'
 #brew 'boost'
 # Install manually by downloading dmg file
@@ -67,9 +68,9 @@ brew 'svn'
 brew 'tmux'
 brew 'tokei'
 brew 'tree'
-brew 'unrar'
 brew 'wget'
 brew 'yarn'
+brew 'youtube-dl'
 # Make it a login shell: `chsh -s /bin/zsh` (all available shells are listed
 # in /etc/shells, current shell can be printed with `echo $0` command)
 brew 'zsh'
@@ -85,7 +86,9 @@ cask_args appdir: '/Applications'
 #
 # After installation:
 # - `sudo xattr -r -d com.apple.quarantine /Library/Frameworks/Adobe\ AIR.framework`
-cask 'adobe-air'
+#
+# `Download failed` error
+#cask 'adobe-air'
 # Run docker app after installation
 # (otherwise `docker` command might be not available in terminal)
 cask 'docker'
@@ -111,7 +114,8 @@ cask 'transmission'
 #cask 'vagrant'
 #cask 'virtualbox'
 #cask 'virtualbox-extension-pack'
-cask 'whatsapp'
+# `Download failed` error
+#cask 'whatsapp'
 cask 'zoom'
 
 #-------------------------------------------------------------------------------
@@ -146,7 +150,7 @@ mas 'Ghostery Lite', id: 1436953057
 #       - [ ] Open in browser
 #     - [x] Launch at login
 #   - Hotkeys:
-#     - Capture area: <M-1>
+#     - Capture area: <M-1> (<M-D-5> is used by default)
 mas 'Monosnap', id: 540348655
 # - Preferences:
 #   - Shortcuts:
