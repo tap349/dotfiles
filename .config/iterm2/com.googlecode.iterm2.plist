@@ -24,6 +24,8 @@
 	<true/>
 	<key>CommandSelection</key>
 	<true/>
+	<key>CompactMinimalTabBarHeight</key>
+	<real>42</real>
 	<key>Control</key>
 	<integer>1</integer>
 	<key>CopyLastNewline</key>
@@ -31301,8 +31303,12 @@
 			</dict>
 		</dict>
 	</dict>
+	<key>CustomTabBarFontSize</key>
+	<real>13</real>
 	<key>Default Bookmark Guid</key>
 	<string>9D3A6D63-A851-4F12-AFB4-40D98DE1829C</string>
+	<key>DefaultTabBarHeight</key>
+	<real>32</real>
 	<key>DimBackgroundWindows</key>
 	<false/>
 	<key>DimInactiveSplitPanes</key>
@@ -31312,6 +31318,8 @@
 	<key>DisableAppNap</key>
 	<false/>
 	<key>DisableFullscreenTransparency</key>
+	<true/>
+	<key>DisableTabBarTooltips</key>
 	<true/>
 	<key>DisableTopRightIndicators</key>
 	<true/>
@@ -31429,6 +31437,12 @@
 	<integer>2</integer>
 	<key>MaxVertically</key>
 	<false/>
+	<key>MinimalTabStyleBackgroundColorDifference</key>
+	<real>0.10000000149011612</real>
+	<key>MinimalTabStyleOutlineStrength</key>
+	<real>0.20000000298023224</real>
+	<key>MinimalTabStyleTreatLeftInsetAsPartOfFirstTab</key>
+	<true/>
 	<key>NeverWarnAboutShortLivedSessions_9D3A6D63-A851-4F12-AFB4-40D98DE1829C</key>
 	<true/>
 	<key>NeverWarnAboutShortLivedSessions_9D3A6D63-A851-4F12-AFB4-40D98DE1829C_selection</key>
@@ -32041,7 +32055,7 @@
 			<key>Non-ASCII Anti Aliased</key>
 			<true/>
 			<key>Normal Font</key>
-			<string>InconsolataLGC 14</string>
+			<string>InconsolataLGC 15</string>
 			<key>Only The Default BG Color Uses Transparency</key>
 			<true/>
 			<key>Option Key Sends</key>
@@ -32456,6 +32470,8 @@
 	<key>UseBorder</key>
 	<false/>
 	<key>UseCompactLabel</key>
+	<true/>
+	<key>UseCustomTabBarFontSize</key>
 	<true/>
 	<key>UseGCDUpdateTimer</key>
 	<true/>
