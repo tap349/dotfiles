@@ -19,7 +19,7 @@ if [[ -n $ZDATADIR/.zcompdump(#qN.mh-20) ]]; then
   # > usual call to compaudit; the -i flag causes insecure directories found by
   # > compaudit to be ignored
   #
-  # don't rebuild .zcompdump if it's modified less than 20 hours ago
+  # Don't rebuild .zcompdump if it's modified less than 20 hours ago
   compinit -i -C
 else
   # > http://zsh.sourceforge.net/Doc/Release/Completion-System.html#Use-of-compinit
@@ -30,7 +30,7 @@ else
   compinit -i -d $ZDATADIR/.zcompdump
 fi
 
-# menu-style autocompletion
+# Menu-style autocompletion
 zstyle ':completion:*' menu select
 
 #-------------------------------------------------------------------------------
@@ -47,12 +47,11 @@ zstyle ':completion:*' menu select
 unset zle_bracketed_paste
 
 #-------------------------------------------------------------------------------
-# source other files
+# Source other files
 #-------------------------------------------------------------------------------
 
-# asdf is used for both Elixir and Ruby
 source ~/.asdf/asdf.sh
 
 source $ZDOTDIR/bindings.zsh
-# source plugins.zsh at the end of .zshrc
+# Source plugins.zsh at the end of .zshrc
 source $ZDOTDIR/plugins.zsh
