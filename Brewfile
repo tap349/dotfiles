@@ -89,6 +89,7 @@ cask_args appdir: '/Applications'
 #
 # `Download failed` error
 #cask 'adobe-air'
+cask 'anki'
 # Run docker app after installation
 # (otherwise `docker` command might be not available in terminal)
 cask 'docker'
