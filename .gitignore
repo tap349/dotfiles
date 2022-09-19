@@ -1,11 +1,12 @@
+.vim/autoload/plug.vim.old
 .vim/backup/
 .vim/plugged/
 .vim/tags/
 .vim/tmp/
 
-.vim/autoload/plug.vim.old
-
 .config/iterm2/AppSupport
 .config/mpv/watch_later/
 .config/mpv/bookmarker.json
 .config/zsh/.zcompdump
+
+Brewfile.lock.json
