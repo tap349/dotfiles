@@ -41,6 +41,7 @@ path=(/usr/local/bin /opt/homebrew/bin $path)
 # > because conflicts with postgres formula.
 #path=(/usr/local/opt/libpq/bin $path)
 path=(/opt/homebrew/opt/libpq/bin $path)
+path=($HOME/soft/google-cloud-sdk/bin $path)
 
 #-------------------------------------------------------------------------------
 # Prompt

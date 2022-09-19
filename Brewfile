@@ -38,6 +38,7 @@ brew 'bat'
 # Install manually by downloading dmg file
 #brew 'cgoban'
 #brew 'exiftool'
+brew 'ffmpeg'
 brew 'git'
 brew 'gpg'
 brew 'htop'
@@ -159,5 +160,6 @@ mas 'Monosnap', id: 540348655
 #   - Shortcuts:
 #     - General -> Show Magnifier: <M-2>
 #mas 'Sip', id: 507257563
+mas 'Slack for Desktop', id: 803453959
 mas 'Telegram Desktop', id: 946399090
 #mas 'iA Writer', id: 775737590
