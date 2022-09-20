@@ -44,6 +44,7 @@ brew 'gpg'
 brew 'htop'
 brew 'imagemagick'
 brew 'jq'
+brew 'k9s'
 # For psql and pg_dump
 #brew 'libpq'
 # Used as viewer for html files in mc
