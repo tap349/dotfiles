@@ -52,6 +52,7 @@ brew 'lynx'
 brew 'macvim'
 brew 'mas'
 brew 'mc'
+brew 'minikube'
 # For React Native and coc.nvim
 # (same as nodejs)
 brew 'node'
