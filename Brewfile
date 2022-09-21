@@ -165,4 +165,6 @@ mas 'Monosnap', id: 540348655
 #mas 'Sip', id: 507257563
 mas 'Slack for Desktop', id: 803453959
 mas 'Telegram Desktop', id: 946399090
+# inDriver
+mas 'WireGuard', id: 1451685025
 #mas 'iA Writer', id: 775737590
