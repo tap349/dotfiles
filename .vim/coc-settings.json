@@ -8,24 +8,17 @@
     "typescript",
     "typescriptreact"
   ],
-  "languageserver": {
-    "golang": {
-      "command": "gopls",
-      "rootPatterns": ["go.work", "go.mod", ".vim/", ".git/", ".hg/"],
-      "filetypes": ["go"],
-      "initializationOptions": {
-        "usePlaceholders": true
-      }
-    }
-  },
   "diagnostic.errorSign": "✗",
   "diagnostic.maxWindowHeight": 16,
   "list.normalMappings": {
     "v": "action:vsplit"
   },
   "elixirLS.dialyzerEnabled": false,
-  "go.goplsArgs": ["-remote=auto", "-logfile", "/tmp/gopls.log"],
-  "go.goplsPath": "/Users/tap/.asdf/shims/gopls",
+  "go": {
+    "goplsArgs": ["-remote=auto", "-logfile", "/tmp/gopls.log"],
+    "goplsPath": "~/.asdf/shims/gopls",
+    "install.gopls": false
+  },
   "prettier.disableSuccessMessage": true,
   "tsserver.formatOnType": false,
   "javascript.suggestionActions.enabled": false,
