@@ -134,7 +134,6 @@ cask 'zoom'
 mas '1Password 7 - Password Manager', id: 1333542190
 mas 'AdBlock', id: 1402042596
 mas 'Cloud Mail.Ru', id: 893068358
-mas 'Dashlane – Password Manager', id: 517914548
 #mas 'Dual N-Back - Train of Thought', id: 1104323582
 #mas 'Evernote', id: 406056744
 # - Preferences:

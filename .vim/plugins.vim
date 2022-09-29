@@ -76,6 +76,7 @@ Plug 'maxmellon/vim-jsx-pretty'
 
 Plug 'pearofducks/ansible-vim'
 Plug 'plasticboy/vim-markdown'
+Plug 'jvirtanen/vim-hcl'
 
 "-------------------------------------------------------------------------------
 " Other plugins
@@ -107,7 +108,7 @@ Plug 'wincent/command-t', {
       \ }
 
 "-------------------------------------------------------------------------------
-" unused (but still can be used again somewhen)
+" Unused (but still can be used again somewhen)
 "-------------------------------------------------------------------------------
 
 "Plug 'ervandew/supertab'
@@ -117,7 +118,7 @@ Plug 'wincent/command-t', {
 "Plug 'xolox/vim-misc'
 
 "-------------------------------------------------------------------------------
-" plugins to try in the future
+" Plugins to try in the future
 "-------------------------------------------------------------------------------
 
 "Plug 'Shougo/vimfiler.vim'
