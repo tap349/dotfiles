@@ -18,6 +18,7 @@ tap 'homebrew/cask'
 tap 'homebrew/cask-fonts'
 # https://github.com/osxfuse/osxfuse/issues/818#issuecomment-985739918
 tap 'gromgit/homebrew-fuse'
+tap 'hashicorp/tap'
 
 #-------------------------------------------------------------------------------
 # Homebrew
@@ -79,7 +80,7 @@ brew 'youtube-dl'
 brew 'zsh'
 
 #-------------------------------------------------------------------------------
-# Homebrew-Cask
+# Cask
 #-------------------------------------------------------------------------------
 
 cask_args appdir: '/Applications'
@@ -169,3 +170,11 @@ mas 'Telegram Desktop', id: 946399090
 # inDriver
 mas 'WireGuard', id: 1451685025
 #mas 'iA Writer', id: 775737590
+
+#-------------------------------------------------------------------------------
+# inDriver
+#-------------------------------------------------------------------------------
+
+tap 'hashicorp/tap'
+
+brew 'hashicorp/tap/terraform'
