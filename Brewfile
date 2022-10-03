@@ -177,3 +177,4 @@ mas 'WireGuard', id: 1451685025
 tap 'hashicorp/tap'
 
 brew 'hashicorp/tap/terraform'
+brew 'kubectx'
