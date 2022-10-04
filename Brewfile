@@ -44,7 +44,6 @@ brew 'gpg'
 brew 'htop'
 brew 'imagemagick'
 brew 'jq'
-brew 'k9s'
 # For psql and pg_dump
 #brew 'libpq'
 # Used as viewer for html files in mc
@@ -176,5 +175,6 @@ mas 'WireGuard', id: 1451685025
 tap 'hashicorp/tap'
 
 brew 'helm'
+brew 'k9s'
 brew 'kubectx'
 brew 'terraform'
