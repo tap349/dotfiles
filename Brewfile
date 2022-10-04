@@ -18,7 +18,6 @@ tap 'homebrew/cask'
 tap 'homebrew/cask-fonts'
 # https://github.com/osxfuse/osxfuse/issues/818#issuecomment-985739918
 tap 'gromgit/homebrew-fuse'
-tap 'hashicorp/tap'
 
 #-------------------------------------------------------------------------------
 # Homebrew
@@ -176,5 +175,6 @@ mas 'WireGuard', id: 1451685025
 
 tap 'hashicorp/tap'
 
-brew 'hashicorp/tap/terraform'
+brew 'helm'
 brew 'kubectx'
+brew 'terraform'
