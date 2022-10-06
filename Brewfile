@@ -97,7 +97,7 @@ cask 'anki'
 cask 'docker'
 cask 'emacs'
 #cask 'figma'
-#cask 'firefox'
+cask 'firefox'
 cask 'flux'
 # For iTerm2
 cask 'font-inconsolata-lgc'
@@ -175,6 +175,7 @@ mas 'WireGuard', id: 1451685025
 tap 'hashicorp/tap'
 
 brew 'helm'
+brew 'ipcalc'
 brew 'k9s'
 brew 'kubectx'
 brew 'terraform'
