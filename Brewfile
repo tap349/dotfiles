@@ -174,6 +174,7 @@ mas 'WireGuard', id: 1451685025
 
 tap 'hashicorp/tap'
 
+brew 'cilium-cli'
 brew 'helm'
 brew 'ipcalc'
 brew 'k9s'
