@@ -176,6 +176,7 @@ tap 'hashicorp/tap'
 
 brew 'cilium-cli'
 brew 'helm'
+brew 'hubble'
 brew 'ipcalc'
 brew 'k9s'
 brew 'kubectx'
