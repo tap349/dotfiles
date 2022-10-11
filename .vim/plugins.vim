@@ -96,16 +96,6 @@ Plug 'scrooloose/nerdtree'
 Plug 'tap349/QFEnter'
 Plug 'tap349/ack.vim'
 Plug 'tpope/vim-surround'
-" `macvim` formula depends on `ruby` formula
-" => Homebrew always installs `ruby` formula
-" => asdf, system and Homebrew Ruby versions might differ
-" => use Homebrew Ruby to compile Command-T
-"
-" For macOS Intel:
-"     \   'do': 'cd ruby/command-t/ext/command-t && /usr/local/opt/ruby/bin/ruby extconf.rb && make'
-Plug 'wincent/command-t', {
-      \   'do': 'cd ruby/command-t/ext/command-t && /opt/homebrew/opt/ruby/bin/ruby extconf.rb && make'
-      \ }
 
 "-------------------------------------------------------------------------------
 " Unused (but still can be used again somewhen)
@@ -334,71 +324,6 @@ augroup coc_go
   autocmd BufWritePre *.go :silent call CocAction('runCommand', 'editor.action.organizeImport')
   autocmd BufWritePre *.go :silent call CocAction('format')
 augroup END
-
-"-------------------------------------------------------------------------------
-" command-t
-"
-" linked version of Ruby: :ruby puts "#{RUBY_VERSION}-p#{RUBY_PATCHLEVEL}"
-"
-" Command-T respects .gitignore file (only when Git file scanner is used)
-" and wildignore option (when g:CommandTWildIgnore is set to &wildignore)
-"
-" start search with `.` to find hidden files
-"-------------------------------------------------------------------------------
-
-" NOTE: set CommandTHighlightColor in colorschemes or else this color
-"       becomes undefined every time new colorscheme is loaded
-
-"hi CommandTHighlightColor guibg=#D7E2EA gui=none
-
-let g:CommandTFileScanner = 'git'
-" when using git file scanner, new files are not visible by default -
-" even after flushing the cache (because they are not tracked by git)
-let g:CommandTGitIncludeUntracked = 1
-let g:CommandTHighlightColor = 'CommandTHighlightColor'
-let g:CommandTInputDebounce = 10
-let g:CommandTMatchWindowAtTop = 0
-let g:CommandTMatchWindowReverse = 0
-let g:CommandTMaxHeight = 15
-let g:CommandTSmartCase = 1
-let g:CommandTTraverseSCM = 'pwd'
-let g:CommandTWildIgnore = &wildignore
-
-" only tab command will try to find already existing window with
-" specified buffer - all other commands will just open a new window
-"
-" `CommandTOpen tabe` has a bug when file is opened in horizontal
-" split in current tab instead of a new tab (in some cases only)
-let g:CommandTAcceptSelectionCommand = 'e'
-let g:CommandTAcceptSelectionSplitCommand = 'sp'
-let g:CommandTAcceptSelectionTabCommand = 'CommandTOpen tabe'
-let g:CommandTAcceptSelectionVSplitCommand = 'vs'
-
-let g:CommandTCursorLeftMap = '<C-b>'
-let g:CommandTCursorRightMap = '<C-f>'
-let g:CommandTRefreshMap = '<C-r>'
-
-nmap <silent> <Leader>n <Plug>(CommandT)
-nmap <silent> <Leader>m <Plug>(CommandTMRU)
-
-" `my_` prefix is used when there already exists autocommand group
-" with the same name in some vim plugin (or might exist)
-"
-" when Command-T window is dismissed (cancelled) and there is a
-" previous search, all matches of the latter are highlighted for
-" a moment (it looks like flickering of previous search matches)
-"
-" it's a hack to remove this instantaneous highlighting (still it doesn't
-" stop the highlighting if it was present before opening Command-T window)
-augroup my_command_t
-  autocmd!
-  autocmd User CommandTDidHideMatchListing nohlsearch
-augroup END
-
-" http://vimdoc.sourceforge.net/htmldoc/usr_40.html
-" https://github.com/wincent/command-t/pull/315
-"command! -nargs=+ GotoOrOpenTab call GotoOrOpenTab('<args>')
-"let g:CommandTAcceptSelectionTabCommand = 'GotoOrOpenTab'
 
 "-------------------------------------------------------------------------------
 " lightline.vim
