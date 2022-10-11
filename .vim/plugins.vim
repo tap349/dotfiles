@@ -159,9 +159,9 @@ let g:ack_use_cword_for_empty_search = 0
 map <Leader>/ :call <SID>Search()<CR>
 
 " useful symbols: ⎸│⮁⮀
-function! s:Search( )
+function! s:Search()
   echohl AckSearch
-  let l:input_phrase = input(' SEARCH ⮁ ')
+  let l:input_phrase = input(' SEARCH > ')
   echohl None
 
   call <SID>MyLAck(l:input_phrase)

@@ -351,7 +351,7 @@ set shortmess+=I
 " /bin/zsh - pre-installed zsh
 "
 " both zshs work with syntastic
-set shell=/usr/local/bin/zsh
+set shell=/opt/homebrew/bin/zsh
 " http://stackoverflow.com/a/4642855/3632318
 " (see last comment - using interactive shell can create problems)
 "set shellcmdflag=-ic
