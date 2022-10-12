@@ -87,6 +87,7 @@ Plug 'easymotion/vim-easymotion'
 "Plug 'flazz/vim-colorschemes'
 Plug 'haya14busa/vim-asterisk'
 Plug 'itchyny/lightline.vim' | Plug 'tpope/vim-fugitive'
+Plug 'junegunn/fzf'
 "Plug 'mhinz/vim-hugefile'
 Plug 'mhinz/vim-startify'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -324,6 +325,12 @@ augroup coc_go
   autocmd BufWritePre *.go :silent call CocAction('runCommand', 'editor.action.organizeImport')
   autocmd BufWritePre *.go :silent call CocAction('format')
 augroup END
+
+"-------------------------------------------------------------------------------
+" fzf
+"-------------------------------------------------------------------------------
+
+nmap <silent> <Leader>n :FZF<CR>
 
 "-------------------------------------------------------------------------------
 " lightline.vim
