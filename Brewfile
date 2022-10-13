@@ -181,3 +181,5 @@ brew 'ipcalc'
 brew 'k9s'
 brew 'kubectx'
 brew 'terraform'
+
+cask 'drawio'
