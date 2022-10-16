@@ -10,7 +10,7 @@
 
 autoload -Uz compinit
 
-# https://github.com/sorin-ionescu/prezto/blob/master/modules/completion/init.zsh#L34
+# https://github.com/sorin-ionescu/prezto/blob/master/modules/completion/init.zsh#L59
 # https://gist.github.com/ctechols/ca1035271ad134841284
 if [[ -n $ZDATADIR/.zcompdump(#qN.mh-20) ]]; then
   # > https://github.com/zsh-users/zsh/blob/master/Completion/compinit#L63
@@ -32,6 +32,13 @@ fi
 
 # Menu-style autocompletion
 zstyle ':completion:*' menu select
+
+#-------------------------------------------------------------------------------
+# Kubectl autocompletion
+# https://kubernetes.io/docs/reference/kubectl/cheatsheet/
+#-------------------------------------------------------------------------------
+
+[[ $commands[kubectl] ]] && source <(kubectl completion zsh)
 
 #-------------------------------------------------------------------------------
 # ZLE configuration
