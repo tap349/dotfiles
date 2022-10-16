@@ -73,3 +73,4 @@ alias gs='git status'
 #-------------------------------------------------------------------------------
 
 alias k='kubectl'
+alias ks='kubectl -n kube-system'
