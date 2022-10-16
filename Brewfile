@@ -129,7 +129,6 @@ cask 'zoom'
 # mas search Trello
 #-------------------------------------------------------------------------------
 
-mas '1Password 7 - Password Manager', id: 1333542190
 mas 'AdBlock', id: 1402042596
 mas 'Cloud Mail.Ru', id: 893068358
 #mas 'Dual N-Back - Train of Thought', id: 1104323582
@@ -164,8 +163,6 @@ mas 'Monosnap', id: 540348655
 #mas 'Sip', id: 507257563
 mas 'Slack for Desktop', id: 803453959
 mas 'Telegram Desktop', id: 946399090
-# inDriver
-mas 'WireGuard', id: 1451685025
 #mas 'iA Writer', id: 775737590
 
 #-------------------------------------------------------------------------------
@@ -183,3 +180,6 @@ brew 'kubectx'
 brew 'terraform'
 
 cask 'drawio'
+
+mas '1Password 7 - Password Manager', id: 1333542190
+mas 'WireGuard', id: 1451685025
