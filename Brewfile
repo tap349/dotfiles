@@ -172,6 +172,7 @@ mas 'Telegram Desktop', id: 946399090
 tap 'hashicorp/tap'
 
 brew 'cilium-cli'
+brew 'clojure'
 brew 'helm'
 brew 'hubble'
 brew 'ipcalc'
@@ -180,6 +181,8 @@ brew 'kubectx'
 brew 'terraform'
 
 cask 'drawio'
+# For clojure
+cask 'temurin'
 
 mas '1Password 7 - Password Manager', id: 1333542190
 mas 'WireGuard', id: 1451685025
