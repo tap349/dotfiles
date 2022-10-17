@@ -16,6 +16,7 @@
 tap 'beeftornado/rmtree'
 tap 'homebrew/cask'
 tap 'homebrew/cask-fonts'
+tap 'homebrew/cask-versions'
 # https://github.com/osxfuse/osxfuse/issues/818#issuecomment-985739918
 tap 'gromgit/homebrew-fuse'
 
@@ -178,6 +179,7 @@ brew 'hubble'
 brew 'ipcalc'
 brew 'k9s'
 brew 'kubectx'
+brew 'leiningen'
 brew 'terraform'
 
 cask 'drawio'
