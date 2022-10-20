@@ -16,7 +16,7 @@
 
 "===============================================================================
 "
-" general options
+" General options
 "
 "===============================================================================
 
@@ -38,7 +38,7 @@ set nospell
 set nowrap
 
 "-------------------------------------------------------------------------------
-" backup and swapfile
+" Backup and swapfile
 "-------------------------------------------------------------------------------
 
 " https://gist.github.com/nepsilon/003dd7cfefc20ce1e894db9c94749755
@@ -54,7 +54,7 @@ set noswapfile
 "set directory=~/.vim/tmp//
 
 "-------------------------------------------------------------------------------
-" buffers
+" Buffers
 "-------------------------------------------------------------------------------
 
 " https://medium.com/usevim/vim-101-set-hidden-f78800142855
@@ -64,7 +64,7 @@ set hidden
 set switchbuf=usetab
 
 "-------------------------------------------------------------------------------
-" completion
+" Completion
 "-------------------------------------------------------------------------------
 
 " https://stackoverflow.com/a/2460593/3632318
@@ -90,14 +90,14 @@ set wildignore+=.git/*,
       \*/spec/vcr_cassettes
 
 "-------------------------------------------------------------------------------
-" diff
+" Diff
 "-------------------------------------------------------------------------------
 
 " show filler lines, use vertical split by default
 set diffopt=filler,vertical
 
 "-------------------------------------------------------------------------------
-" editing
+" Editing
 "-------------------------------------------------------------------------------
 
 set colorcolumn=81
@@ -110,7 +110,7 @@ set colorcolumn=81
 "set cpoptions+=$
 
 "-------------------------------------------------------------------------------
-" folding
+" Folding
 "
 " http://vimcasts.org/episodes/how-to-fold/
 "-------------------------------------------------------------------------------
@@ -122,7 +122,7 @@ set foldmethod=indent
 set foldnestmax=10
 
 "-------------------------------------------------------------------------------
-" formatting
+" Formatting
 "-------------------------------------------------------------------------------
 
 " NOTE: these options might be overriden by filetype plugins!
@@ -140,7 +140,7 @@ set formatoptions-=tc
 set formatoptions+=rj
 
 "-------------------------------------------------------------------------------
-" indentation
+" Indentation
 "-------------------------------------------------------------------------------
 
 " dumb auto indentation - copy indentation from previous line
@@ -158,13 +158,13 @@ set tabstop=2
 set cinoptions=:0
 
 "-------------------------------------------------------------------------------
-" navigation
+" Navigation
 "-------------------------------------------------------------------------------
 
 set scrolloff=2
 
 "-------------------------------------------------------------------------------
-" search
+" Search
 "-------------------------------------------------------------------------------
 
 " https://medium.com/@haya14busa/incsearch-vim-is-dead-long-live-incsearch-2b7070d55250
@@ -178,14 +178,14 @@ set ignorecase
 set smartcase
 
 "-------------------------------------------------------------------------------
-" splitting
+" Splitting
 "-------------------------------------------------------------------------------
 
 set splitbelow
 set splitright
 
 "-------------------------------------------------------------------------------
-" visualize invisible characters
+" Visualize invisible characters
 "-------------------------------------------------------------------------------
 
 set list
@@ -193,7 +193,7 @@ set listchars=nbsp:·,tab:▸·,trail:·,precedes:«,extends:»
 
 "===============================================================================
 "
-" performance tweaks
+" Performance tweaks
 "
 " http://stackoverflow.com/questions/16902317
 "
@@ -216,7 +216,7 @@ set maxmempattern=2000
 
 "===============================================================================
 "
-" look and feel
+" Look and feel
 "
 "===============================================================================
 
@@ -224,7 +224,7 @@ set maxmempattern=2000
 set vb t_vb=
 
 "-------------------------------------------------------------------------------
-" colors
+" Colors
 "-------------------------------------------------------------------------------
 
 "set transparency=0
@@ -249,14 +249,8 @@ let g:solarized_contrast = 'high'
 "colorscheme bclear
 "colorscheme plain
 
-"if getcwd() =~ 'iceperk$\|sith$'
-if getcwd() =~ 'iceperk$'
-  set background=light
-  colorscheme solarized
-else
-  set background=light
-  colorscheme github
-endif
+set background=light
+colorscheme github
 
 "if hostname() == 'MacBook-Pro-Personal.local'
 "  set background=light
@@ -267,7 +261,7 @@ endif
 "endif
 
 "-------------------------------------------------------------------------------
-" font
+" Font
 "-------------------------------------------------------------------------------
 
 "set linespace=6
@@ -297,7 +291,7 @@ set linespace=1
 set guifont=Input:h15
 
 "-------------------------------------------------------------------------------
-" gui options
+" GUI options
 "-------------------------------------------------------------------------------
 
 " NOTE: flags 'rL' must be added in exactly this order (IDK why)!
@@ -313,7 +307,7 @@ set guicursor+=a:blinkon600-blinkoff400
 "set guicursor+=a:blinkon0
 
 "-------------------------------------------------------------------------------
-" indicators
+" Indicators
 "-------------------------------------------------------------------------------
 
 " highlight current line (might slow down navigation)
@@ -342,7 +336,7 @@ set showtabline=2
 set nonumber
 
 "-------------------------------------------------------------------------------
-" startup
+" Startup
 "-------------------------------------------------------------------------------
 
 set shortmess+=I
@@ -363,7 +357,7 @@ set shell=/opt/homebrew/bin/zsh
 
 "===============================================================================
 "
-" source external vim files
+" Source external vim files
 "
 "===============================================================================
 

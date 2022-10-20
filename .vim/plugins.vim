@@ -1,6 +1,6 @@
 "*******************************************************************************
 "
-" plugins
+" Plugins
 "
 " NOTE: don't use noremap in plugin mappings
 "
@@ -8,7 +8,7 @@
 
 "===============================================================================
 "
-" installation
+" Installation
 "
 "===============================================================================
 
@@ -560,6 +560,9 @@ map <Leader><Space> <Plug>NERDCommenterToggle
 "-------------------------------------------------------------------------------
 " nerdtree
 "-------------------------------------------------------------------------------
+
+" https://github.com/preservim/nerdtree/issues/1321
+let g:NERDTreeMinimalMenu = 1
 
 " fix ugly arrows from Andale Mono MT
 let g:NERDTreeDirArrowExpandable = '▸'
