@@ -6,7 +6,8 @@
     "javascriptreact",
     "json",
     "typescript",
-    "typescriptreact"
+    "typescriptreact",
+    "yaml"
   ],
   "diagnostic.errorSign": "✗",
   "diagnostic.maxWindowHeight": 16,
