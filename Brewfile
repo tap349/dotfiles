@@ -183,6 +183,7 @@ brew 'leiningen'
 brew 'terraform'
 
 cask 'drawio'
+cask 'protonvpn'
 # For clojure
 cask 'temurin'
 
