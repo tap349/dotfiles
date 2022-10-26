@@ -31458,12 +31458,16 @@
 			<false/>
 			<key>Ansi 0 Color</key>
 			<dict>
+				<key>Alpha Component</key>
+				<real>1</real>
 				<key>Blue Component</key>
-				<real>0.24704694976076558</real>
+				<real>0.15488186478614807</real>
+				<key>Color Space</key>
+				<string>P3</string>
 				<key>Green Component</key>
-				<real>0.15865734537749271</real>
+				<real>0.10429752618074417</real>
 				<key>Red Component</key>
-				<real>0.17672798441674642</real>
+				<real>0.11025161296129227</real>
 			</dict>
 			<key>Ansi 1 Color</key>
 			<dict>
@@ -31609,13 +31613,13 @@
 				<key>Alpha Component</key>
 				<real>1</real>
 				<key>Blue Component</key>
-				<real>0.208892822265625</real>
+				<real>0.1632252037525177</real>
 				<key>Color Space</key>
-				<string>sRGB</string>
+				<string>P3</string>
 				<key>Green Component</key>
-				<real>0.1199578259561199</real>
+				<real>0.10037115961313248</real>
 				<key>Red Component</key>
-				<real>0.086564808152616024</real>
+				<real>0.084251828491687775</real>
 			</dict>
 			<key>Background Image Is Tiled</key>
 			<false/>
@@ -31653,6 +31657,8 @@
 				<key>Red Component</key>
 				<real>0.62364225449737598</real>
 			</dict>
+			<key>Brighten Bold Text</key>
+			<true/>
 			<key>Character Encoding</key>
 			<integer>4</integer>
 			<key>Close Sessions On End</key>
@@ -32055,7 +32061,7 @@
 			<key>Non-ASCII Anti Aliased</key>
 			<true/>
 			<key>Normal Font</key>
-			<string>InconsolataLGC 15</string>
+			<string>JetBrainsMonoNL-Light 15</string>
 			<key>Only The Default BG Color Uses Transparency</key>
 			<true/>
 			<key>Option Key Sends</key>
@@ -32076,21 +32082,29 @@
 			<true/>
 			<key>Selected Text Color</key>
 			<dict>
+				<key>Alpha Component</key>
+				<real>1</real>
 				<key>Blue Component</key>
-				<real>0.13518966734409332</real>
+				<real>0.17937496304512024</real>
+				<key>Color Space</key>
+				<string>P3</string>
 				<key>Green Component</key>
-				<real>0.07895921915769577</real>
+				<real>0.110893614590168</real>
 				<key>Red Component</key>
-				<real>0.089180983603000641</real>
+				<real>0.11887770146131516</real>
 			</dict>
 			<key>Selection Color</key>
 			<dict>
+				<key>Alpha Component</key>
+				<real>1</real>
 				<key>Blue Component</key>
-				<real>0.44105113636363635</real>
+				<real>0.49926656484603882</real>
+				<key>Color Space</key>
+				<string>P3</string>
 				<key>Green Component</key>
-				<real>0.24077798564594985</real>
+				<real>0.33921581506729126</real>
 				<key>Red Component</key>
-				<real>0.28554791842451294</real>
+				<real>0.36340686678886414</real>
 			</dict>
 			<key>Semantic History</key>
 			<dict>
@@ -32338,7 +32352,7 @@
 			<key>Use Underline Color</key>
 			<false/>
 			<key>Vertical Spacing</key>
-			<real>1</real>
+			<real>1.1100000000000001</real>
 			<key>Visual Bell</key>
 			<true/>
 			<key>Window Type</key>
