@@ -172,6 +172,7 @@ mas 'Telegram Desktop', id: 946399090
 
 tap 'hashicorp/tap'
 
+brew 'argocd'
 brew 'cilium-cli'
 brew 'clojure'
 brew 'helm'
@@ -184,7 +185,7 @@ brew 'terraform'
 
 cask 'drawio'
 cask 'protonvpn'
-# For clojure
+# For Clojure
 cask 'temurin'
 
 mas '1Password 7 - Password Manager', id: 1333542190
