@@ -14,10 +14,7 @@
 alias blog='cd ~/blog'
 alias dot='cd ~/.dotfiles'
 
-alias a='cd ~/dev/compleader/ansible'
-alias as='cd ~/dev/compleader/ad_sensor'
-alias asa='cd ~/dev/compleader/ad_sensor_app'
-alias y='cd ~/dev/compleader/yalper'
+alias ka='cd ~/dev/indrive/k8s-applications'
 
 #-------------------------------------------------------------------------------
 # System
