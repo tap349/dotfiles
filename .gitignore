@@ -10,3 +10,5 @@
 .config/zsh/.zcompdump
 
 Brewfile.lock.json
+
+*~
