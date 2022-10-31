@@ -96,7 +96,6 @@ cask 'anki'
 # Run docker app after installation
 # (otherwise `docker` command might be not available in terminal)
 cask 'docker'
-cask 'emacs'
 #cask 'figma'
 cask 'firefox'
 cask 'flux'
@@ -170,11 +169,13 @@ mas 'Telegram Desktop', id: 946399090
 # inDriver
 #-------------------------------------------------------------------------------
 
+tap 'd12frosted/emacs-plus'
 tap 'hashicorp/tap'
 
 brew 'argocd'
 brew 'cilium-cli'
 brew 'clojure'
+brew 'emacs-plus@29'
 brew 'helm'
 brew 'hubble'
 brew 'ipcalc'
