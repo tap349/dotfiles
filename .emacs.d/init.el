@@ -9,16 +9,8 @@
 ;; https://emacsredux.com/blog/2020/12/04/maximize-the-emacs-frame-on-startup
 (add-hook 'window-setup-hook 'toggle-frame-maximized t)
 
-(electric-pair-mode 1)
-(setq electric-pair-delete-adjacent-pairs t)
-
 ;; https://stackoverflow.com/a/30900018
 (setq vc-follow-symlinks t)
-
-;; http://www.gonsie.com/blorg/tab-bar.html
-(tab-bar-mode 1)
-(setq tab-bar-close-button-show nil)
-(setq tab-bar-format '(tab-bar-format-tabs tab-bar-separator))
 
 ;;----------------------------------------------------------
 ;; Appearance
@@ -28,6 +20,14 @@
 (scroll-bar-mode -1)
 (tool-bar-mode -1)
 (tooltip-mode -1)
+
+;; http://www.gonsie.com/blorg/tab-bar.html
+(tab-bar-mode 1)
+(setq tab-bar-close-button-show nil)
+(setq tab-bar-format '(tab-bar-format-tabs tab-bar-separator))
+
+(electric-pair-mode 1)
+(setq electric-pair-delete-adjacent-pairs t)
 
 (setq column-number-mode t)
 
@@ -65,5 +65,5 @@
 ;;----------------------------------------------------------
 
 ;; https://github.com/bbatsov/projectile
-(projectile-mode +1)
+(projectile-mode 1)
 (define-key projectile-mode-map (kbd "s-p") 'projectile-command-map)
