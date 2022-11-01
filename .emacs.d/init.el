@@ -30,6 +30,14 @@
 
 (setq column-number-mode t)
 
+(add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
+;;(load-theme 'spacemacs-light t)
+;;(load-theme 'tango-plus t)
+(load-theme 'aircon t)
+
+;; https://emacs.stackexchange.com/a/69091
+(set-face-foreground 'vertical-border "#BABACA")
+
 ;; https://www.emacswiki.org/emacs/SetFonts
 (set-face-attribute 'default nil :font "Input-15")
 ;;(set-face-attribute 'region nil :background "#A7D2E8")
@@ -38,11 +46,6 @@
 ;;(set-face-attribute 'show-paren-match nil :background "#FBDE41")
 ;;(set-face-attribute 'show-paren-match nil :background "#CDCDFA")
 ;;(set-face-attribute 'show-paren-match nil :background "#D8B188")
-
-(add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
-;;(load-theme 'spacemacs-light t)
-;;(load-theme 'tango-plus t)
-(load-theme 'aircon t)
 
 ;;----------------------------------------------------------
 ;; Keybindings
