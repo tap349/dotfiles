@@ -10,6 +10,7 @@
 (add-hook 'window-setup-hook 'toggle-frame-maximized t)
 
 (electric-pair-mode 1)
+(setq electric-pair-delete-adjacent-pairs t)
 
 ;; https://stackoverflow.com/a/30900018
 (setq vc-follow-symlinks t)
