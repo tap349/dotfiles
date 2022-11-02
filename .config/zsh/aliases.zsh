@@ -15,6 +15,7 @@ alias blog='cd ~/blog'
 alias dot='cd ~/.dotfiles'
 
 alias ka='cd ~/dev/indrive/k8s-applications'
+alias dpo='cd ~/dev/indrive/dev-platform-orchestrator'
 
 #-------------------------------------------------------------------------------
 # System
