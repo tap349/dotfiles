@@ -15,6 +15,10 @@
 ;; https://stackoverflow.com/a/30900018
 (setq vc-follow-symlinks t)
 
+;; Don't use system clipboard for kill-ring-save, kill-region and yank
+;; Use their clipboard-* counterparts for working with system clipboard
+(setq select-enable-clipboard nil)
+
 ;; https://lists.gnu.org/archive/html/help-gnu-emacs/2016-05/msg00148.html
 ;;(if (daemonp)
 ;;    (add-hook 'after-make-frame-functions #'startup)
@@ -92,6 +96,10 @@
 (global-set-key (kbd "s-}") 'tab-bar-switch-to-next-tab)
 (global-set-key (kbd "s-t") 'tab-bar-new-tab)
 (global-set-key (kbd "s-w") 'tab-bar-close-tab)
+
+(global-set-key (kbd "s-c") 'clipboard-kill-ring-save)
+(global-set-key (kbd "s-x") 'clipboard-kill-region)
+(global-set-key (kbd "s-v") 'clipboard-yank)
 
 ;;----------------------------------------------------------
 ;;
