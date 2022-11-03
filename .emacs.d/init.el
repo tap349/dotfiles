@@ -153,6 +153,12 @@
 (define-key evil-visual-state-map (kbd "L") 'evil-end-of-line)
 
 ;;----------------------------------------------------------
+;; evil-visualstar
+;;----------------------------------------------------------
+
+(global-evil-visualstar-mode 1)
+
+;;----------------------------------------------------------
 ;; projectile
 ;;----------------------------------------------------------
 
@@ -171,7 +177,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages '(evil spacemacs-theme projectile cider)))
+ '(package-selected-packages '(evil-visualstar evil spacemacs-theme projectile cider)))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
