@@ -12,6 +12,11 @@
 ;; https://stackoverflow.com/a/30900018
 (setq vc-follow-symlinks t)
 
+;; https://lists.gnu.org/archive/html/help-gnu-emacs/2016-05/msg00148.html
+;;(if (daemonp)
+;;    (add-hook 'after-make-frame-functions #'startup)
+;;    (add-hook 'window-setup-hook #'startup))
+
 ;;----------------------------------------------------------
 ;; Appearance
 ;;----------------------------------------------------------
@@ -51,6 +56,11 @@
 ;;----------------------------------------------------------
 ;; Keybindings
 ;;----------------------------------------------------------
+
+;; https://www.emacswiki.org/emacs/DvorakKeyboard
+;; NOTE: keyboard-translate doesn’t work in daemon mode
+(keyboard-translate ?\C-u ?\C-x)
+(keyboard-translate ?\C-x ?\C-u)
 
 ;; https://www.emacswiki.org/emacs/DvorakKeyboard
 (global-set-key [?\C-.] 'execute-extended-command)
