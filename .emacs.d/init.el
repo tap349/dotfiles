@@ -137,28 +137,43 @@
 
 (evil-set-leader 'normal (kbd ","))
 
+;; ---------- insert state ----------
+
 ;; https://emacs.stackexchange.com/a/62011
 (define-key evil-insert-state-map (kbd "C-g") 'evil-normal-state)
 
+;; ---------- normal state ----------
+
 (define-key evil-normal-state-map (kbd "C-.") 'execute-extended-command)
+
 (define-key evil-normal-state-map (kbd "H") 'evil-first-non-blank)
-(define-key evil-normal-state-map (kbd "L") 'evil-end-of-line)
+(define-key evil-normal-state-map (kbd "L") 'evil-last-non-blank)
 (define-key evil-normal-state-map (kbd "TAB") 'save-buffer)
+
 (define-key evil-normal-state-map (kbd "RET") 'my-insert-newline-below)
 (define-key evil-normal-state-map (kbd "SPC") 'my-insert-whitespace)
+
 (define-key evil-normal-state-map (kbd "C-w C-l") 'evil-window-right)
 (define-key evil-normal-state-map (kbd "C-w C-h") 'evil-window-left)
 (define-key evil-normal-state-map (kbd "C-w C-k") 'evil-window-up)
 (define-key evil-normal-state-map (kbd "C-w C-j") 'evil-window-down)
+
+(define-key evil-normal-state-map (kbd "<S-right>") 'evil-window-increase-width)
+(define-key evil-normal-state-map (kbd "<S-left>") 'evil-window-decrease-width)
+(define-key evil-normal-state-map (kbd "<S-up>") 'evil-window-increase-height)
+(define-key evil-normal-state-map (kbd "<S-down>") 'evil-window-decrease-height)
+
 (define-key evil-normal-state-map (kbd "<leader>t") 'dired-jump)
 
 ;; https://github.com/noctuid/evil-guide#binding-keys-to-keys-keyboard-macros
 (evil-define-key 'normal 'global
 	"gp" "`[v`]")
 
+;; ---------- visual state ----------
+
 (define-key evil-visual-state-map (kbd "C-.") 'execute-extended-command)
 (define-key evil-visual-state-map (kbd "H") 'evil-first-non-blank)
-(define-key evil-visual-state-map (kbd "L") 'evil-end-of-line)
+(define-key evil-visual-state-map (kbd "L") 'evil-last-non-blank)
 
 ;;----------------------------------------------------------
 ;; evil-visualstar
