@@ -5,6 +5,7 @@
 ;;----------------------------------------------------------
 
 (setq inhibit-startup-message t)
+
 ;; Turn off all alarms (ring-bell and visible-bell)
 (setq ring-bell-function 'ignore)
 
@@ -31,6 +32,10 @@
 (scroll-bar-mode -1)
 (tool-bar-mode -1)
 (tooltip-mode -1)
+
+;; https://www.gnu.org/software/emacs/manual/html_node/efaq/Replacing-highlighted-text.html
+;; Replace selected region with inserted text
+(delete-selection-mode 1)
 
 ;; http://www.gonsie.com/blorg/tab-bar.html
 (tab-bar-mode 1)
@@ -122,6 +127,8 @@
   (interactive)
   (insert " "))
 
+(evil-set-leader 'normal (kbd ","))
+
 ;; https://emacs.stackexchange.com/a/62011
 (define-key evil-insert-state-map (kbd "C-g") 'evil-normal-state)
 
@@ -131,11 +138,17 @@
 (define-key evil-normal-state-map (kbd "TAB") 'save-buffer)
 (define-key evil-normal-state-map (kbd "RET") 'my-insert-newline-below)
 (define-key evil-normal-state-map (kbd "SPC") 'my-insert-whitespace)
+(define-key evil-normal-state-map (kbd "C-w C-l") 'evil-window-right)
+(define-key evil-normal-state-map (kbd "C-w C-h") 'evil-window-left)
+(define-key evil-normal-state-map (kbd "C-w C-k") 'evil-window-up)
+(define-key evil-normal-state-map (kbd "C-w C-j") 'evil-window-down)
+(define-key evil-normal-state-map (kbd "<leader>t") 'dired-jump)
 
 ;; https://github.com/noctuid/evil-guide#binding-keys-to-keys-keyboard-macros
 (evil-define-key 'normal 'global
 	"gp" "`[v`]")
 
+(define-key evil-visual-state-map (kbd "C-.") 'execute-extended-command)
 (define-key evil-visual-state-map (kbd "H") 'evil-first-non-blank)
 (define-key evil-visual-state-map (kbd "L") 'evil-end-of-line)
 
