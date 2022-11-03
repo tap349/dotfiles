@@ -24,6 +24,9 @@
 ;;    (add-hook 'after-make-frame-functions #'startup)
 ;;    (add-hook 'window-setup-hook #'startup))
 
+;; It's considered a good practice to have newline at the end of file
+(setq require-final-newline t)
+
 ;;-----------------------------------------------------------------------------
 ;;
 ;; Appearance
@@ -120,6 +123,7 @@
 (evil-mode 1)
 
 (setq evil-shift-width 2)
+(setq evil-flash-delay 5)
 
 ;; https://www.reddit.com/r/emacs/comments/n1pibp/comment/gwei7fw
 (evil-set-undo-system 'undo-redo)
@@ -137,12 +141,12 @@
 
 (evil-set-leader 'normal (kbd ","))
 
-;; ---------- insert state ----------
+;; -------------------- insert state --------------------
 
 ;; https://emacs.stackexchange.com/a/62011
 (define-key evil-insert-state-map (kbd "C-g") 'evil-normal-state)
 
-;; ---------- normal state ----------
+;; -------------------- normal state --------------------
 
 (define-key evil-normal-state-map (kbd "C-.") 'execute-extended-command)
 
@@ -169,7 +173,7 @@
 (evil-define-key 'normal 'global
 	"gp" "`[v`]")
 
-;; ---------- visual state ----------
+;; -------------------- visual state --------------------
 
 (define-key evil-visual-state-map (kbd "C-.") 'execute-extended-command)
 (define-key evil-visual-state-map (kbd "H") 'evil-first-non-blank)
