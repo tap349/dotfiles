@@ -22,6 +22,7 @@ alias dpo='cd ~/dev/indrive/dev-platform-orchestrator'
 #-------------------------------------------------------------------------------
 
 alias df='df -h'
+alias e='emacs &'
 alias ll='ls -alp'
 alias m='mvim'
 alias mcu='mc -u'
