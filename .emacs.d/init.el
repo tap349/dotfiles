@@ -1,5 +1,7 @@
 ;;----------------------------------------------------------
+;;
 ;; System
+;;
 ;;----------------------------------------------------------
 
 (setq inhibit-startup-message t)
@@ -18,8 +20,12 @@
 ;;    (add-hook 'window-setup-hook #'startup))
 
 ;;----------------------------------------------------------
+;;
 ;; Appearance
+;;
 ;;----------------------------------------------------------
+
+(setq column-number-mode t)
 
 (menu-bar-mode -1)
 (scroll-bar-mode -1)
@@ -34,7 +40,13 @@
 (electric-pair-mode 1)
 (setq electric-pair-delete-adjacent-pairs t)
 
-(setq column-number-mode t)
+;; https://stackoverflow.com/a/1819405/3632318
+(setq-default indent-tabs-mode nil)
+(setq-default tab-width 2)
+(setq indent-line-function 'insert-tab)
+
+;; https://emacs.stackexchange.com/a/21865
+(setq-default show-trailing-whitespace t)
 
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
 ;;(load-theme 'spacemacs-light t)
@@ -54,15 +66,21 @@
 ;;(set-face-attribute 'show-paren-match nil :background "#D8B188")
 
 ;;----------------------------------------------------------
+;;
 ;; Keybindings
+;;
 ;;----------------------------------------------------------
 
 ;; https://www.emacswiki.org/emacs/DvorakKeyboard
 ;; NOTE: keyboard-translate doesn’t work in daemon mode
-(keyboard-translate ?\C-u ?\C-x)
-(keyboard-translate ?\C-x ?\C-u)
+;; UPDATE: Now it's that important when using evil-mode
+;;(keyboard-translate ?\C-u ?\C-x)
+;;(keyboard-translate ?\C-x ?\C-u)
 
 ;; https://www.emacswiki.org/emacs/DvorakKeyboard
+;;
+;; Define key in evil-normal-state-map as well
+;; for it to work in insert and emacs states
 (global-set-key [?\C-.] 'execute-extended-command)
 
 (global-set-key (kbd "s-{") 'tab-bar-switch-to-prev-tab)
@@ -71,9 +89,80 @@
 (global-set-key (kbd "s-w") 'tab-bar-close-tab)
 
 ;;----------------------------------------------------------
+;;
 ;; Packages
+;;
+;;----------------------------------------------------------
+
+;;----------------------------------------------------------
+;; evil
+;;----------------------------------------------------------
+
+;; https://emacs.stackexchange.com/a/41701
+;; Use Emacs keybindings in insert state
+(setq evil-disable-insert-state-bindings t)
+;; https://stackoverflow.com/a/18851955
+(setq evil-want-C-u-scroll t)
+
+(evil-mode 1)
+
+(setq evil-shift-width 2)
+
+;; https://www.reddit.com/r/emacs/comments/n1pibp/comment/gwei7fw
+(evil-set-undo-system 'undo-redo)
+
+;; https://stackoverflow.com/a/14189981
+(defun my-insert-newline-below ()
+  (interactive)
+  (end-of-line)
+  (newline))
+
+;; https://emacs.stackexchange.com/a/72123/39266
+(defun my-insert-whitespace ()
+  (interactive)
+  (insert " "))
+
+;; https://emacs.stackexchange.com/a/62011
+(define-key evil-insert-state-map (kbd "C-g") 'evil-normal-state)
+
+(define-key evil-normal-state-map (kbd "C-.") 'execute-extended-command)
+(define-key evil-normal-state-map (kbd "H") 'evil-first-non-blank)
+(define-key evil-normal-state-map (kbd "L") 'evil-end-of-line)
+(define-key evil-normal-state-map (kbd "TAB") 'save-buffer)
+(define-key evil-normal-state-map (kbd "RET") 'my-insert-newline-below)
+(define-key evil-normal-state-map (kbd "SPC") 'my-insert-whitespace)
+
+;; https://github.com/noctuid/evil-guide#binding-keys-to-keys-keyboard-macros
+(evil-define-key 'normal 'global
+	"gp" "`[v`]")
+
+(define-key evil-visual-state-map (kbd "H") 'evil-first-non-blank)
+(define-key evil-visual-state-map (kbd "L") 'evil-end-of-line)
+
+;;----------------------------------------------------------
+;; projectile
 ;;----------------------------------------------------------
 
 ;; https://github.com/bbatsov/projectile
 (projectile-mode 1)
 (define-key projectile-mode-map (kbd "s-p") 'projectile-command-map)
+
+;;----------------------------------------------------------
+;;
+;; Managed by package.el
+;;
+;;----------------------------------------------------------
+
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages '(evil spacemacs-theme projectile cider)))
+
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
