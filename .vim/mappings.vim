@@ -277,9 +277,6 @@ xnoremap <silent> <C-s> :sort<CR>:w<CR>
 " navigation
 "-------------------------------------------------------------------------------
 
-xnoremap <C-j> 10j
-xnoremap <C-k> 10k
-
 xnoremap H ^
 xnoremap L g_
 
