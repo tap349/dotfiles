@@ -51,6 +51,9 @@
 ;; https://emacs.stackexchange.com/a/21865
 (setq-default show-trailing-whitespace t)
 
+;; nowrap
+(setq-default truncate-lines 1)
+
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
 ;;(load-theme 'spacemacs-light t)
 ;;(load-theme 'tango-plus t)
@@ -143,6 +146,7 @@
 (global-set-key (kbd "s-}") 'tab-bar-switch-to-next-tab)
 (global-set-key (kbd "s-t") 'tab-bar-new-tab)
 (global-set-key (kbd "s-w") 'tab-bar-close-tab)
+(global-set-key (kbd "C-<backspace>") 'tab-bar-close-tab)
 
 ;;-----------------------------------------------------------------------------
 ;;
@@ -217,7 +221,7 @@
 (define-key evil-normal-state-map (kbd "TAB") 'save-buffer)
 
 (define-key evil-normal-state-map (kbd "RET") 'my-insert-newline-below)
-(define-key evil-normal-state-map (kbd "<S-return>") 'my-insert-newline-above)
+(define-key evil-normal-state-map (kbd "S-<return>") 'my-insert-newline-above)
 (define-key evil-normal-state-map (kbd "SPC") 'my-insert-whitespace)
 
 (define-key evil-normal-state-map (kbd "C-w C-s") 'my-evil-window-split)
@@ -230,10 +234,10 @@
 (define-key evil-normal-state-map (kbd "C-w C-k") 'evil-window-up)
 (define-key evil-normal-state-map (kbd "C-w C-j") 'evil-window-down)
 
-(define-key evil-normal-state-map (kbd "<S-right>") 'evil-window-increase-width)
-(define-key evil-normal-state-map (kbd "<S-left>") 'evil-window-decrease-width)
-(define-key evil-normal-state-map (kbd "<S-up>") 'evil-window-increase-height)
-(define-key evil-normal-state-map (kbd "<S-down>") 'evil-window-decrease-height)
+(define-key evil-normal-state-map (kbd "S-<right>") 'evil-window-increase-width)
+(define-key evil-normal-state-map (kbd "S-<left>") 'evil-window-decrease-width)
+(define-key evil-normal-state-map (kbd "S-<up>") 'evil-window-increase-height)
+(define-key evil-normal-state-map (kbd "S-<down>") 'evil-window-decrease-height)
 
 (define-key evil-normal-state-map (kbd "<leader>t") 'dired-jump)
 
