@@ -261,8 +261,9 @@
 ;; projectile
 ;;-----------------------------------------------------------------------------
 
-;; https://github.com/bbatsov/projectile
 (projectile-mode 1)
+
+(setq projectile-completion-system 'helm)
 (define-key projectile-mode-map (kbd "s-p") 'projectile-command-map)
 
 ;;-----------------------------------------------------------------------------
@@ -276,7 +277,8 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages '(evil-visualstar evil spacemacs-theme projectile cider)))
+ '(package-selected-packages
+   '(helm evil-visualstar evil spacemacs-theme projectile cider)))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
