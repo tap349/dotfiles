@@ -154,6 +154,11 @@
 ;;
 ;;-----------------------------------------------------------------------------
 
+;; https://melpa.org/#/getting-started
+(require 'package)
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
+(package-initialize)
+
 ;;-----------------------------------------------------------------------------
 ;; evil
 ;;-----------------------------------------------------------------------------
@@ -252,11 +257,18 @@
 (evil-define-key 'normal 'global
 	"gp" "`[v`]")
 
+
 ;; -------------------- visual state --------------------
 
 (define-key evil-visual-state-map (kbd "C-.") 'execute-extended-command)
 (define-key evil-visual-state-map (kbd "H") 'evil-first-non-blank)
 (define-key evil-visual-state-map (kbd "L") 'evil-last-non-blank)
+
+;;-----------------------------------------------------------------------------
+;; evil-surround
+;;-----------------------------------------------------------------------------
+
+(global-evil-surround-mode 1)
 
 ;;-----------------------------------------------------------------------------
 ;; evil-visualstar
@@ -285,7 +297,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(helm evil-visualstar evil spacemacs-theme projectile cider)))
+   '(evil-surround helm evil-visualstar evil spacemacs-theme projectile cider)))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
