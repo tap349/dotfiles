@@ -233,6 +233,9 @@
 (define-key evil-normal-state-map (kbd "S-<return>") 'my-insert-newline-above)
 (define-key evil-normal-state-map (kbd "SPC") 'my-insert-whitespace)
 
+(define-key evil-normal-state-map (kbd "C-M-f") 'evil-jump-item)
+(define-key evil-normal-state-map (kbd "C-M-b") 'evil-jump-item)
+
 (define-key evil-normal-state-map (kbd "C-w C-s") 'my-evil-window-split)
 (define-key evil-normal-state-map (kbd "C-w s") 'my-evil-window-split)
 (define-key evil-normal-state-map (kbd "C-w C-v") 'my-evil-window-vsplit)
