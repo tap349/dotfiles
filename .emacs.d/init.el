@@ -27,6 +27,9 @@
 ;; It's considered a good practice to have newline at the end of file
 (setq require-final-newline t)
 
+;; Automatically switch to help windows
+(setq help-window-select t)
+
 ;;-----------------------------------------------------------------------------
 ;;
 ;; Appearance
@@ -40,22 +43,10 @@
 (tool-bar-mode -1)
 (tooltip-mode -1)
 
-;; https://www.gnu.org/software/emacs/manual/html_node/efaq/Replacing-highlighted-text.html
-;; Replace selected region with inserted text
-(delete-selection-mode 1)
-
 ;; http://www.gonsie.com/blorg/tab-bar.html
 (tab-bar-mode 1)
 (setq tab-bar-close-button-show nil)
 (setq tab-bar-format '(tab-bar-format-tabs tab-bar-separator))
-
-(electric-pair-mode 1)
-(setq electric-pair-delete-adjacent-pairs t)
-
-;; https://stackoverflow.com/a/1819405/3632318
-(setq-default indent-tabs-mode nil)
-(setq-default tab-width 2)
-(setq indent-line-function 'insert-tab)
 
 ;; https://emacs.stackexchange.com/a/21865
 (setq-default show-trailing-whitespace t)
@@ -79,6 +70,26 @@
 
 ;;-----------------------------------------------------------------------------
 ;;
+;; Editing
+;;
+;;-----------------------------------------------------------------------------
+
+;; https://www.gnu.org/software/emacs/manual/html_node/efaq/Replacing-highlighted-text.html
+;; Replace selected region with inserted text
+(delete-selection-mode 1)
+
+(electric-pair-mode 1)
+(setq electric-pair-delete-adjacent-pairs t)
+
+;; https://stackoverflow.com/a/1819405/3632318
+(setq-default indent-tabs-mode nil)
+(setq-default tab-width 2)
+;; Pressing TAB autoindents current line
+;; (even if point is not at the beginning of the line)
+(setq indent-line-function 'insert-tab)
+
+;;-----------------------------------------------------------------------------
+;;
 ;; Registers (C-x r j)
 ;;
 ;; https://stackoverflow.com/a/12558095/3632318
@@ -94,9 +105,24 @@
 ;;
 ;;-----------------------------------------------------------------------------
 
+;; https://emacs.stackexchange.com/a/40823
+;; See also my-evil-window-split
+(defun my-split-window-below ()
+  (interactive)
+  (split-window-below)
+  (balance-windows)
+  (other-window 1))
+
+;; See also my-evil-window-vsplit
+(defun my-split-window-right ()
+  (interactive)
+  (split-window-right)
+  (balance-windows)
+  (other-window 1))
+
 ;; https://www.emacswiki.org/emacs/DvorakKeyboard
 ;; NOTE: keyboard-translate doesn’t work in daemon mode
-;; UPDATE: Now it's that important when using evil-mode
+;; UPDATE: Now it's not important when using evil-mode
 ;;(keyboard-translate ?\C-u ?\C-x)
 ;;(keyboard-translate ?\C-x ?\C-u)
 
@@ -106,14 +132,17 @@
 ;; for it to work in insert and emacs states
 (global-set-key [?\C-.] 'execute-extended-command)
 
-(global-set-key (kbd "s-{") 'tab-bar-switch-to-prev-tab)
-(global-set-key (kbd "s-}") 'tab-bar-switch-to-next-tab)
-(global-set-key (kbd "s-t") 'tab-bar-new-tab)
-(global-set-key (kbd "s-w") 'tab-bar-close-tab)
+(global-set-key (kbd "C-x 2") 'my-split-window-below)
+(global-set-key (kbd "C-x 3") 'my-split-window-right)
 
 (global-set-key (kbd "s-c") 'clipboard-kill-ring-save)
 (global-set-key (kbd "s-x") 'clipboard-kill-region)
 (global-set-key (kbd "s-v") 'clipboard-yank)
+
+(global-set-key (kbd "s-{") 'tab-bar-switch-to-prev-tab)
+(global-set-key (kbd "s-}") 'tab-bar-switch-to-next-tab)
+(global-set-key (kbd "s-t") 'tab-bar-new-tab)
+(global-set-key (kbd "s-w") 'tab-bar-close-tab)
 
 ;;-----------------------------------------------------------------------------
 ;;
@@ -130,10 +159,12 @@
 (setq evil-disable-insert-state-bindings t)
 ;; https://stackoverflow.com/a/18851955
 (setq evil-want-C-u-scroll t)
+;; Applies to shifting operators >> and <<
+(setq evil-shift-width 2)
 
 (evil-mode 1)
 
-(setq evil-shift-width 2)
+;; Highlight search results for this period
 (setq evil-flash-delay 5)
 
 ;; https://www.reddit.com/r/emacs/comments/n1pibp/comment/gwei7fw
@@ -150,12 +181,27 @@
   (interactive)
   (insert " "))
 
+;; https://emacs.stackexchange.com/a/40823
+(defun my-evil-window-split ()
+  (interactive)
+  (evil-window-split)
+  (balance-windows)
+  (other-window 1))
+
+(defun my-evil-window-vsplit ()
+  (interactive)
+  (evil-window-vsplit)
+  (balance-windows)
+  (other-window 1))
+
 (evil-set-leader 'normal (kbd ","))
 
 ;; -------------------- insert state --------------------
 
 ;; https://emacs.stackexchange.com/a/62011
 (define-key evil-insert-state-map (kbd "C-g") 'evil-normal-state)
+;; Now TAB autoindents current line - see indent-line-function above
+;;(define-key evil-insert-state-map (kbd "TAB") 'tab-to-tab-stop)
 
 ;; -------------------- normal state --------------------
 
@@ -167,6 +213,11 @@
 
 (define-key evil-normal-state-map (kbd "RET") 'my-insert-newline-below)
 (define-key evil-normal-state-map (kbd "SPC") 'my-insert-whitespace)
+
+(define-key evil-normal-state-map (kbd "C-w C-s") 'my-evil-window-split)
+(define-key evil-normal-state-map (kbd "C-w s") 'my-evil-window-split)
+(define-key evil-normal-state-map (kbd "C-w C-v") 'my-evil-window-vsplit)
+(define-key evil-normal-state-map (kbd "C-w v") 'my-evil-window-vsplit)
 
 (define-key evil-normal-state-map (kbd "C-w C-l") 'evil-window-right)
 (define-key evil-normal-state-map (kbd "C-w C-h") 'evil-window-left)
