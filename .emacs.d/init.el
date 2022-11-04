@@ -176,6 +176,11 @@
   (end-of-line)
   (newline))
 
+(defun my-insert-newline-above ()
+  (interactive)
+  (beginning-of-line)
+  (open-line 1))
+
 ;; https://emacs.stackexchange.com/a/72123/39266
 (defun my-insert-whitespace ()
   (interactive)
@@ -212,6 +217,7 @@
 (define-key evil-normal-state-map (kbd "TAB") 'save-buffer)
 
 (define-key evil-normal-state-map (kbd "RET") 'my-insert-newline-below)
+(define-key evil-normal-state-map (kbd "<S-return>") 'my-insert-newline-above)
 (define-key evil-normal-state-map (kbd "SPC") 'my-insert-whitespace)
 
 (define-key evil-normal-state-map (kbd "C-w C-s") 'my-evil-window-split)
