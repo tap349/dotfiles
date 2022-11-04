@@ -203,6 +203,10 @@
   (balance-windows)
   (other-window 1))
 
+(defun my-unhighlight-all-regexp ()
+  (interactive)
+  (unhighlight-regexp t))
+
 (evil-set-leader 'normal (kbd ","))
 
 ;; -------------------- insert state --------------------
@@ -240,6 +244,9 @@
 (define-key evil-normal-state-map (kbd "S-<down>") 'evil-window-decrease-height)
 
 (define-key evil-normal-state-map (kbd "<leader>t") 'dired-jump)
+(define-key evil-normal-state-map (kbd "<leader>n") 'projectile-find-file)
+(define-key evil-normal-state-map (kbd "<leader>hh") 'highlight-symbol-at-point)
+(define-key evil-normal-state-map (kbd "<leader>hu") 'my-unhighlight-all-regexp)
 
 ;; https://github.com/noctuid/evil-guide#binding-keys-to-keys-keyboard-macros
 (evil-define-key 'normal 'global
