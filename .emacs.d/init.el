@@ -277,6 +277,12 @@
 (global-evil-visualstar-mode 1)
 
 ;;-----------------------------------------------------------------------------
+;; helm
+;;-----------------------------------------------------------------------------
+
+(helm-mode 1)
+
+;;-----------------------------------------------------------------------------
 ;; projectile
 ;;-----------------------------------------------------------------------------
 
@@ -284,6 +290,13 @@
 
 (setq projectile-completion-system 'helm)
 (define-key projectile-mode-map (kbd "s-p") 'projectile-command-map)
+
+;;-----------------------------------------------------------------------------
+;; rainbow-delimiters
+;;-----------------------------------------------------------------------------
+
+(rainbow-delimiters-mode 1)
+(add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
 
 ;;-----------------------------------------------------------------------------
 ;;
@@ -297,7 +310,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(evil-surround helm evil-visualstar evil spacemacs-theme projectile cider)))
+   '(rainbow-delimiters evil-surround helm evil-visualstar evil spacemacs-theme projectile cider)))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
