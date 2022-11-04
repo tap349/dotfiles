@@ -208,11 +208,12 @@
   (balance-windows)
   (other-window 1))
 
-(defun my-unhighlight-all-regexp ()
+(defun my-unhighlight-regexp-all ()
   (interactive)
   (unhighlight-regexp t))
 
 (evil-set-leader 'normal (kbd ","))
+(evil-set-leader 'visual (kbd ","))
 
 ;; -------------------- insert state --------------------
 
@@ -254,18 +255,19 @@
 (define-key evil-normal-state-map (kbd "<leader>t") 'dired-jump)
 (define-key evil-normal-state-map (kbd "<leader>n") 'projectile-find-file)
 (define-key evil-normal-state-map (kbd "<leader>hh") 'highlight-symbol-at-point)
-(define-key evil-normal-state-map (kbd "<leader>hu") 'my-unhighlight-all-regexp)
+(define-key evil-normal-state-map (kbd "<leader>hu") 'my-unhighlight-regexp-all)
 
 ;; https://github.com/noctuid/evil-guide#binding-keys-to-keys-keyboard-macros
 (evil-define-key 'normal 'global
 	"gp" "`[v`]")
-
 
 ;; -------------------- visual state --------------------
 
 (define-key evil-visual-state-map (kbd "C-.") 'execute-extended-command)
 (define-key evil-visual-state-map (kbd "H") 'evil-first-non-blank)
 (define-key evil-visual-state-map (kbd "L") 'evil-last-non-blank)
+
+(define-key evil-visual-state-map (kbd "<leader>hh") 'highlight-regexp)
 
 ;;-----------------------------------------------------------------------------
 ;; evil-surround
