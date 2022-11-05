@@ -71,6 +71,9 @@
 ;;(set-face-attribute 'show-paren-match nil :background "#CDCDFA")
 ;;(set-face-attribute 'show-paren-match nil :background "#D8B188")
 
+(global-display-fill-column-indicator-mode 1)
+(setq-default display-fill-column-indicator-column 82)
+
 ;;-----------------------------------------------------------------------------
 ;;
 ;; Editing
@@ -287,6 +290,10 @@
 
 (helm-mode 1)
 
+;; https://emacs.stackexchange.com/a/9446
+;; Disable helm for cd command
+(add-to-list 'helm-completing-read-handlers-alist '(cd))
+
 ;;-----------------------------------------------------------------------------
 ;; projectile
 ;;-----------------------------------------------------------------------------
@@ -305,7 +312,7 @@
 
 ;;-----------------------------------------------------------------------------
 ;;
-;; Managed by package.el
+;; Managed by package.el and customize-group
 ;;
 ;;-----------------------------------------------------------------------------
 
@@ -322,4 +329,4 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
+ '(fill-column-indicator ((t (:foreground "gray83")))))
