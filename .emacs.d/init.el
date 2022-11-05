@@ -222,8 +222,9 @@
 
 ;; https://emacs.stackexchange.com/a/62011
 (define-key evil-insert-state-map (kbd "C-g") 'evil-normal-state)
-;; Now TAB autoindents current line - see indent-line-function above
-;;(define-key evil-insert-state-map (kbd "TAB") 'tab-to-tab-stop)
+;; By default TAB is bound to indent-for-tab-command (autoindent line)
+;; It's still possible to autoindent region with = in normal state
+(define-key evil-insert-state-map (kbd "TAB") 'tab-to-tab-stop)
 
 ;; -------------------- normal state --------------------
 
