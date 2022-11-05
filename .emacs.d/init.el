@@ -166,7 +166,7 @@
 (evil-mode 1)
 
 ;; Highlight search results for this period
-(setq evil-flash-delay 99)
+(setq evil-flash-delay 999)
 
 ;; https://www.reddit.com/r/emacs/comments/n1pibp/comment/gwei7fw
 (evil-set-undo-system 'undo-redo)
