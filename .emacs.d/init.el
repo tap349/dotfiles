@@ -25,10 +25,6 @@
 ;; Automatically switch to help windows
 (setq help-window-select t)
 
-;; https://www.emacswiki.org/emacs/InteractivelyDoThings
-;; https://www.masteringemacs.org/article/introduction-to-ido-mode
-(ido-mode 1)
-
 ;;-----------------------------------------------------------------------------
 ;;
 ;; Appearance
@@ -90,6 +86,19 @@
 ;; Use whitespaces instead of tabs
 (setq-default indent-tabs-mode nil)
 (setq-default tab-width 2)
+
+;;-----------------------------------------------------------------------------
+;;
+;; Search
+;;
+;;-----------------------------------------------------------------------------
+
+;; https://www.emacswiki.org/emacs/InteractivelyDoThings
+;; https://www.masteringemacs.org/article/introduction-to-ido-mode
+(ido-mode 1)
+
+(setq lazy-highlight-initial-delay 0)
+(setq lazy-highlight-max-at-a-time nil)
 
 ;;-----------------------------------------------------------------------------
 ;;
@@ -212,14 +221,14 @@
 (evil-set-leader 'normal (kbd ","))
 (evil-set-leader 'visual (kbd ","))
 
-;; -------------------- insert state --------------------
+;; -------------------- insert state ------------------------------------------
 
 ;; https://emacs.stackexchange.com/a/62011
 (define-key evil-insert-state-map (kbd "C-g") 'evil-normal-state)
 ;;(define-key evil-insert-state-map (kbd "TAB") 'tab-to-tab-stop)
 (define-key evil-insert-state-map (kbd "TAB") 'evil-complete-next)
 
-;; -------------------- normal state --------------------
+;; -------------------- normal state ------------------------------------------
 
 (define-key evil-normal-state-map (kbd "C-.") 'execute-extended-command)
 
@@ -258,7 +267,7 @@
 (evil-define-key 'normal 'global
 	"gp" "`[v`]")
 
-;; -------------------- visual state --------------------
+;; -------------------- visual state ------------------------------------------
 
 (define-key evil-visual-state-map (kbd "C-.") 'execute-extended-command)
 (define-key evil-visual-state-map (kbd "H") 'evil-first-non-blank)
