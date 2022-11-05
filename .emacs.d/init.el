@@ -19,11 +19,6 @@
 ;; Use their clipboard-* counterparts for working with system clipboard
 (setq select-enable-clipboard nil)
 
-;; https://lists.gnu.org/archive/html/help-gnu-emacs/2016-05/msg00148.html
-;;(if (daemonp)
-;;    (add-hook 'after-make-frame-functions #'startup)
-;;    (add-hook 'window-setup-hook #'startup))
-
 ;; It's considered a good practice to have newline at the end of file
 (setq require-final-newline t)
 
@@ -88,11 +83,9 @@
 (setq electric-pair-delete-adjacent-pairs t)
 
 ;; https://stackoverflow.com/a/1819405/3632318
+;; Use whitespaces instead of tabs
 (setq-default indent-tabs-mode nil)
 (setq-default tab-width 2)
-;; Pressing TAB autoindents current line
-;; (even if point is not at the beginning of the line)
-(setq indent-line-function 'insert-tab)
 
 ;;-----------------------------------------------------------------------------
 ;;
@@ -111,21 +104,6 @@
 ;;
 ;;-----------------------------------------------------------------------------
 
-;; https://emacs.stackexchange.com/a/40823
-;; See also my-evil-window-split
-(defun my-split-window-below ()
-  (interactive)
-  (split-window-below)
-  (balance-windows)
-  (other-window 1))
-
-;; See also my-evil-window-vsplit
-(defun my-split-window-right ()
-  (interactive)
-  (split-window-right)
-  (balance-windows)
-  (other-window 1))
-
 ;; https://www.emacswiki.org/emacs/DvorakKeyboard
 ;; NOTE: keyboard-translate doesn’t work in daemon mode
 ;; UPDATE: Now it's not important when using evil-mode
@@ -137,9 +115,6 @@
 ;; Define key in evil-normal-state-map as well
 ;; for it to work in insert and emacs states
 (global-set-key [?\C-.] 'execute-extended-command)
-
-(global-set-key (kbd "C-x 2") 'my-split-window-below)
-(global-set-key (kbd "C-x 3") 'my-split-window-right)
 
 (global-set-key (kbd "s-c") 'clipboard-kill-ring-save)
 (global-set-key (kbd "s-x") 'clipboard-kill-region)
@@ -222,9 +197,8 @@
 
 ;; https://emacs.stackexchange.com/a/62011
 (define-key evil-insert-state-map (kbd "C-g") 'evil-normal-state)
-;; By default TAB is bound to indent-for-tab-command (autoindent line)
-;; It's still possible to autoindent region with = in normal state
-(define-key evil-insert-state-map (kbd "TAB") 'tab-to-tab-stop)
+;;(define-key evil-insert-state-map (kbd "TAB") 'tab-to-tab-stop)
+(define-key evil-insert-state-map (kbd "TAB") 'evil-complete-next)
 
 ;; -------------------- normal state --------------------
 
