@@ -25,6 +25,10 @@
 ;; Automatically switch to help windows
 (setq help-window-select t)
 
+;; https://www.emacswiki.org/emacs/InteractivelyDoThings
+;; https://www.masteringemacs.org/article/introduction-to-ido-mode
+(ido-mode 1)
+
 ;;-----------------------------------------------------------------------------
 ;;
 ;; Appearance
@@ -126,6 +130,16 @@
 (global-set-key (kbd "s-w") 'tab-bar-close-tab)
 (global-set-key (kbd "C-<backspace>") 'tab-bar-close-tab)
 
+;; https://stackoverflow.com/a/455703
+;; Don't change default-directory on find-file
+(defun my-find-file ()
+  (interactive)
+  (setq saved-default-directory default-directory)
+  (ido-find-file)
+  (setq default-directory saved-default-directory))
+
+(global-set-key (kbd "C-x C-f") 'my-find-file)
+
 ;;-----------------------------------------------------------------------------
 ;;
 ;; Packages
@@ -152,10 +166,15 @@
 (evil-mode 1)
 
 ;; Highlight search results for this period
-(setq evil-flash-delay 5)
+(setq evil-flash-delay 99)
 
 ;; https://www.reddit.com/r/emacs/comments/n1pibp/comment/gwei7fw
 (evil-set-undo-system 'undo-redo)
+
+;; https://emacs.stackexchange.com/a/20717/39266
+;; Search for symbol, not for word when using *
+;; (foo-bar: foo - word, foo-bar - symbol)
+(setq-default evil-symbol-word-search t)
 
 ;; https://stackoverflow.com/a/14189981
 (defun my-insert-newline-below ()
