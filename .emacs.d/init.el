@@ -42,6 +42,16 @@
 (tab-bar-mode 1)
 (setq tab-bar-close-button-show nil)
 (setq tab-bar-format '(tab-bar-format-tabs tab-bar-separator))
+;; ZWSP is used to prevent last tab from filling all available space
+(setq tab-bar-separator "​")
+
+;; https://christiantietze.de/posts/2022/02/emacs-tab-bar-numbered-tabs/
+(defun my-tab-bar-tab-name-format-function (tab i)
+  (propertize
+   (concat " " (alist-get 'name tab) " ")
+   'face (funcall tab-bar-tab-face-function tab)))
+
+(setq tab-bar-tab-name-format-function #'my-tab-bar-tab-name-format-function)
 
 ;; https://emacs.stackexchange.com/a/21865
 (setq-default show-trailing-whitespace t)
