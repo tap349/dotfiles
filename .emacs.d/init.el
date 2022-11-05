@@ -288,6 +288,8 @@
 ;; Disable helm for cd command
 (add-to-list 'helm-completing-read-handlers-alist '(cd))
 
+(set-face-attribute 'helm-selection nil :background "#ECE2D8")
+
 ;;-----------------------------------------------------------------------------
 ;; projectile
 ;;-----------------------------------------------------------------------------
