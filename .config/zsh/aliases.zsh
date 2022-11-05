@@ -22,7 +22,8 @@ alias dpo='cd ~/dev/indrive/dev-platform-orchestrator'
 #-------------------------------------------------------------------------------
 
 alias df='df -h'
-alias e='emacs &'
+# https://stackoverflow.com/a/30677813/3632318
+alias e='open -a Emacs --args --chdir $PWD "$@"'
 alias ll='ls -alp'
 alias m='mvim'
 alias mcu='mc -u'
