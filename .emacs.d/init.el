@@ -258,6 +258,10 @@
 (evil-define-key 'normal 'global
 	"gp" "`[v`]")
 
+(evil-define-key 'normal 'cider-repl-mode-map
+  ;; Close cider-error windows with q
+	"q" 'cider-popup-buffer-quit-function)
+
 ;; -------------------- visual state ------------------------------------------
 
 (define-key evil-visual-state-map (kbd "C-.") 'execute-extended-command)
