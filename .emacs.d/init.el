@@ -88,6 +88,11 @@
 ;;
 ;; Search
 ;;
+;; https://www.reddit.com/r/emacs/comments/e2uaaw/evilsearchwordforwardbackward_doesnt_highlight
+;;
+;; Matches are not highlighted immediately after calling evil-search-next -
+;; that's how isearch works, IDK how to circumvent this behaviour now
+;;
 ;;-----------------------------------------------------------------------------
 
 ;; https://www.emacswiki.org/emacs/InteractivelyDoThings
@@ -95,7 +100,6 @@
 (ido-mode 1)
 
 (setq lazy-highlight-initial-delay 0)
-(setq lazy-highlight-max-at-a-time nil)
 
 ;;-----------------------------------------------------------------------------
 ;;
