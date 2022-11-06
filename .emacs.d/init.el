@@ -282,6 +282,13 @@
 
 ;;-----------------------------------------------------------------------------
 ;; evil-visualstar
+;;
+;; https://stackoverflow.com/a/203026/3632318
+;;
+;; There's a similar built-in behaviour to search for words:
+;; C-s C-w (press C-w more to select more subsequent words)
+;; => you can press C-w multiple times to select the whole symbol
+;;
 ;;-----------------------------------------------------------------------------
 
 (global-evil-visualstar-mode 1)
