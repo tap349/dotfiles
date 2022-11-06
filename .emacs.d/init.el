@@ -263,7 +263,7 @@
 	"gp" "`[v`]")
 
 (evil-define-key 'normal 'cider-repl-mode-map
-  ;; Close cider-error windows with q
+  ;; Close *cider-error* windows with q
 	"q" 'cider-popup-buffer-quit-function)
 
 ;; -------------------- visual state ------------------------------------------
@@ -286,7 +286,7 @@
 ;; https://stackoverflow.com/a/203026/3632318
 ;;
 ;; There's a similar built-in behaviour to search for words:
-;; C-s C-w (press C-w more to select more subsequent words)
+;; C-s C-w (press C-w again to include more words)
 ;; => you can press C-w multiple times to select the whole symbol
 ;;
 ;;-----------------------------------------------------------------------------
