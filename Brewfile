@@ -183,6 +183,7 @@ brew 'k9s'
 brew 'kubectx'
 brew 'leiningen'
 brew 'terraform'
+brew 'w3m'
 
 cask 'drawio'
 cask 'protonvpn'

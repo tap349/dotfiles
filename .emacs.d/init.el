@@ -358,7 +358,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(rainbow-delimiters evil-surround helm evil-visualstar evil spacemacs-theme projectile cider)))
+   '(w3m rainbow-delimiters evil-surround helm evil-visualstar evil spacemacs-theme projectile cider)))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
