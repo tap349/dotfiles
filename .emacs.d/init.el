@@ -130,12 +130,6 @@
 (global-set-key (kbd "s-x") 'clipboard-kill-region)
 (global-set-key (kbd "s-v") 'clipboard-yank)
 
-(global-set-key (kbd "s-{") 'tab-bar-switch-to-prev-tab)
-(global-set-key (kbd "s-}") 'tab-bar-switch-to-next-tab)
-(global-set-key (kbd "s-t") 'tab-bar-new-tab)
-(global-set-key (kbd "s-w") 'tab-bar-close-tab)
-(global-set-key (kbd "C-<backspace>") 'tab-bar-close-tab)
-
 ;; https://stackoverflow.com/a/455703
 ;; Don't change default-directory on find-file
 (defun my-find-file ()
@@ -330,6 +324,12 @@
    'face (funcall tab-bar-tab-face-function tab)))
 
 (setq tab-bar-tab-name-format-function #'my-tab-bar-tab-name-format-function)
+
+(global-set-key (kbd "s-{") 'tab-bar-switch-to-prev-tab)
+(global-set-key (kbd "s-}") 'tab-bar-switch-to-next-tab)
+(global-set-key (kbd "s-t") 'tab-bar-new-tab)
+(global-set-key (kbd "s-w") 'tab-bar-close-tab)
+(global-set-key (kbd "C-<backspace>") 'tab-bar-close-tab)
 
 ;;-----------------------------------------------------------------------------
 ;;
