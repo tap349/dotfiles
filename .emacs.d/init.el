@@ -323,7 +323,7 @@
 (setq helm-always-two-windows nil)
 (setq helm-default-display-buffer-functions '(display-buffer-in-side-window))
 
-(set-face-attribute 'helm-selection nil :background "#ECF2D8")
+(set-face-attribute 'helm-selection nil :background "#FCF0B0")
 
 ;;-----------------------------------------------------------------------------
 ;; projectile
