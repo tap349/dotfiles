@@ -4,13 +4,20 @@
 ;;
 ;;-----------------------------------------------------------------------------
 
+;; https://emacsredux.com/blog/2020/12/04/maximize-the-emacs-frame-on-startup
+;;(add-hook 'window-setup-hook 'toggle-frame-maximized t)
+(add-to-list 'default-frame-alist '(fullscreen . maximized))
+
+;; https://emacs.stackexchange.com/a/62959
+(defun startup (_frame)
+  (tab-bar-mode 1))
+
+(add-hook 'after-make-frame-functions #'startup)
+
 (setq inhibit-startup-message t)
 
 ;; Turn off all alarms (ring-bell and visible-bell)
 (setq ring-bell-function 'ignore)
-
-;; https://emacsredux.com/blog/2020/12/04/maximize-the-emacs-frame-on-startup
-(add-hook 'window-setup-hook 'toggle-frame-maximized t)
 
 ;; https://stackoverflow.com/a/30900018
 (setq vc-follow-symlinks t)
@@ -316,7 +323,7 @@
 (setq helm-always-two-windows nil)
 (setq helm-default-display-buffer-functions '(display-buffer-in-side-window))
 
-;;(set-face-attribute 'helm-selection nil :background "#ECE2D8")
+(set-face-attribute 'helm-selection nil :background "#ECF2D8")
 
 ;;-----------------------------------------------------------------------------
 ;; projectile
