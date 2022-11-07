@@ -180,6 +180,20 @@
 ;; (foo-bar: foo - word, foo-bar - symbol)
 (setq-default evil-symbol-word-search t)
 
+(evil-set-leader 'normal (kbd ","))
+(evil-set-leader 'visual (kbd ","))
+
+;; -------------------- insert state ------------------------------------------
+
+;; https://emacs.stackexchange.com/a/62011
+(define-key evil-insert-state-map (kbd "C-g") 'evil-normal-state)
+(define-key evil-insert-state-map (kbd "RET") 'comment-indent-new-line)
+
+;;(define-key evil-insert-state-map (kbd "TAB") 'tab-to-tab-stop)
+(define-key evil-insert-state-map (kbd "TAB") 'evil-complete-next)
+
+;; -------------------- normal state ------------------------------------------
+
 ;; https://stackoverflow.com/a/14189981
 (defun my-insert-newline-below ()
   (interactive)
@@ -195,6 +209,11 @@
 (defun my-insert-whitespace ()
   (interactive)
   (insert " "))
+
+(defun my-evil-open-below ()
+  (interactive)
+  (evil-append-line 1)
+  (comment-indent-new-line))
 
 ;; https://emacs.stackexchange.com/a/40823
 (defun my-evil-window-split ()
@@ -213,18 +232,6 @@
   (interactive)
   (unhighlight-regexp t))
 
-(evil-set-leader 'normal (kbd ","))
-(evil-set-leader 'visual (kbd ","))
-
-;; -------------------- insert state ------------------------------------------
-
-;; https://emacs.stackexchange.com/a/62011
-(define-key evil-insert-state-map (kbd "C-g") 'evil-normal-state)
-;;(define-key evil-insert-state-map (kbd "TAB") 'tab-to-tab-stop)
-(define-key evil-insert-state-map (kbd "TAB") 'evil-complete-next)
-
-;; -------------------- normal state ------------------------------------------
-
 (define-key evil-normal-state-map (kbd "C-.") 'execute-extended-command)
 
 (define-key evil-normal-state-map (kbd "H") 'evil-first-non-blank)
@@ -234,6 +241,8 @@
 (define-key evil-normal-state-map (kbd "RET") 'my-insert-newline-below)
 (define-key evil-normal-state-map (kbd "S-<return>") 'my-insert-newline-above)
 (define-key evil-normal-state-map (kbd "SPC") 'my-insert-whitespace)
+
+(define-key evil-normal-state-map (kbd "o") 'my-evil-open-below)
 
 (define-key evil-normal-state-map (kbd "C-M-f") 'evil-jump-item)
 (define-key evil-normal-state-map (kbd "C-M-b") 'evil-jump-item)
@@ -362,7 +371,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(evil-visualstar evil-nerd-commenter rainbow-delimiters evil-surround helm evil spacemacs-theme projectile cider)))
+   '(magit evil-visualstar evil-nerd-commenter rainbow-delimiters evil-surround helm evil spacemacs-theme projectile cider)))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
