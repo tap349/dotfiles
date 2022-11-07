@@ -287,6 +287,12 @@
 (global-evil-surround-mode 1)
 
 ;;-----------------------------------------------------------------------------
+;; evil-visualstar
+;;-----------------------------------------------------------------------------
+
+(global-evil-visualstar-mode 1)
+
+;;-----------------------------------------------------------------------------
 ;; helm
 ;;-----------------------------------------------------------------------------
 
@@ -356,7 +362,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-           '(evil-nerd-commenter rainbow-delimiters evil-surround helm evil spacemacs-theme projectile cider)))
+   '(evil-visualstar evil-nerd-commenter rainbow-delimiters evil-surround helm evil spacemacs-theme projectile cider)))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
