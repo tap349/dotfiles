@@ -275,23 +275,16 @@
 (define-key evil-visual-state-map (kbd "<leader>hh") 'highlight-regexp)
 
 ;;-----------------------------------------------------------------------------
+;; evil-nerd-commenter
+;;-----------------------------------------------------------------------------
+
+(global-set-key (kbd "<leader>SPC") 'evilnc-comment-or-uncomment-lines)
+
+;;-----------------------------------------------------------------------------
 ;; evil-surround
 ;;-----------------------------------------------------------------------------
 
 (global-evil-surround-mode 1)
-
-;;-----------------------------------------------------------------------------
-;; evil-visualstar
-;;
-;; https://stackoverflow.com/a/203026/3632318
-;;
-;; There's a similar built-in behaviour to search for words:
-;; C-s C-w (press C-w again to include more words)
-;; => you can press C-w multiple times to select the whole symbol
-;;
-;;-----------------------------------------------------------------------------
-
-(global-evil-visualstar-mode 1)
 
 ;;-----------------------------------------------------------------------------
 ;; helm
@@ -303,7 +296,12 @@
 ;; Disable helm for cd command
 (add-to-list 'helm-completing-read-handlers-alist '(cd))
 
-(set-face-attribute 'helm-selection nil :background "#ECE2D8")
+;; https://github.com/emacs-helm/helm/issues/2039
+;; Always show helm window at bottom in a separate window
+(setq helm-always-two-windows nil)
+(setq helm-default-display-buffer-functions '(display-buffer-in-side-window))
+
+;;(set-face-attribute 'helm-selection nil :background "#ECE2D8")
 
 ;;-----------------------------------------------------------------------------
 ;; projectile
@@ -358,7 +356,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(rainbow-delimiters evil-surround helm evil-visualstar evil spacemacs-theme projectile cider)))
+           '(evil-nerd-commenter rainbow-delimiters evil-surround helm evil spacemacs-theme projectile cider)))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
