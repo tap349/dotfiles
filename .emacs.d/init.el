@@ -192,12 +192,20 @@
 
 ;; -------------------- insert state ------------------------------------------
 
+(defun my-insert-tab-or-complete ()
+  (interactive)
+  (let ((chr (preceding-char)))
+    ;; if beginning of line or preceding character is whitespace
+    (if (or (bolp) (= chr 32))
+        ;; insert tab
+        (tab-to-tab-stop)
+      ;; else complete
+      (evil-complete-next))))
+
 ;; https://emacs.stackexchange.com/a/62011
 (define-key evil-insert-state-map (kbd "C-g") 'evil-normal-state)
 (define-key evil-insert-state-map (kbd "RET") 'comment-indent-new-line)
-
-;;(define-key evil-insert-state-map (kbd "TAB") 'tab-to-tab-stop)
-(define-key evil-insert-state-map (kbd "TAB") 'evil-complete-next)
+(define-key evil-insert-state-map (kbd "TAB") 'my-insert-tab-or-complete)
 
 ;; -------------------- normal state ------------------------------------------
 
@@ -323,7 +331,7 @@
 (setq helm-always-two-windows nil)
 (setq helm-default-display-buffer-functions '(display-buffer-in-side-window))
 
-(set-face-attribute 'helm-selection nil :background "#FCF0B0")
+(set-face-attribute 'helm-selection nil :background "#FFF0B0")
 
 ;;-----------------------------------------------------------------------------
 ;; projectile
