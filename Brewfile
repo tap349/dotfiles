@@ -188,8 +188,7 @@ cask 'drawio'
 cask 'graalvm/tap/graalvm-ce-java19'
 cask 'protonvpn'
 # For Clojure
-# graalvm-ce-java19 is also JDK
-#cask 'temurin'
+cask 'temurin'
 
 mas '1Password 7 - Password Manager', id: 1333542190
 mas 'WireGuard', id: 1451685025
