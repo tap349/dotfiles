@@ -163,6 +163,12 @@
 (package-initialize)
 
 ;;-----------------------------------------------------------------------------
+;; dockerfile-mode
+;;-----------------------------------------------------------------------------
+
+(add-to-list 'auto-mode-alist '("Dockerfile" . dockerfile-mode))
+
+;;-----------------------------------------------------------------------------
 ;; evil
 ;;-----------------------------------------------------------------------------
 
@@ -293,6 +299,8 @@
 ;; -------------------- visual state ------------------------------------------
 
 (define-key evil-visual-state-map (kbd "C-.") 'execute-extended-command)
+(define-key evil-visual-state-map (kbd "C-s") 'sort-lines)
+
 (define-key evil-visual-state-map (kbd "H") 'evil-first-non-blank)
 (define-key evil-visual-state-map (kbd "L") 'evil-last-non-blank)
 
@@ -331,7 +339,7 @@
 (setq helm-always-two-windows nil)
 (setq helm-default-display-buffer-functions '(display-buffer-in-side-window))
 
-(set-face-attribute 'helm-selection nil :background "#FFF0B0")
+(set-face-attribute 'helm-selection nil :background "#FFFFD0")
 
 ;;-----------------------------------------------------------------------------
 ;; projectile
@@ -386,7 +394,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(magit evil-visualstar evil-nerd-commenter rainbow-delimiters evil-surround helm evil spacemacs-theme projectile cider)))
+   '(dockerfile-mode magit evil-visualstar evil-nerd-commenter rainbow-delimiters evil-surround helm evil spacemacs-theme projectile cider)))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
