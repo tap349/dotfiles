@@ -780,3 +780,9 @@ let g:startify_lists = [
       \ { 'type': 'files',     'header': ['   MRU']             },
       \ { 'type': 'bookmarks', 'header': ['   Bookmarks']       },
       \ ]
+
+"-------------------------------------------------------------------------------
+" vim-surround
+"-------------------------------------------------------------------------------
+
+let g:surround_no_insert_mappings = 1

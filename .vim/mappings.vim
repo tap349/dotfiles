@@ -26,27 +26,26 @@ if has('gui_running') | set macmeta | endif
 " turn off highlighting and clear messages,
 " <C-c> in normal mode aborts any pending command
 nnoremap <silent> <C-c> <C-c>:nohlsearch<Bar>:echo<CR>
+nnoremap <silent> <C-g> <C-g>:nohlsearch<Bar>:echo<CR>
 
 " map to <Esc> for vertical editing to work
 inoremap <silent> <C-c> <Esc>
-"imap <silent> <C-Backspace> <C-c>
-imap <silent> <C-g> <C-c>
+inoremap <silent> <C-g> <Esc>
 
 " <C-c> doesn't exit visual and command modes since MacVim 8.1.873 (154)
 "
 " somehow these mappings do what I want - mapping <C-c>
 " to <Esc> doesn't work correctly in command mode
-vnoremap <silent> <C-c> <C-c>
-cnoremap <silent> <C-c> <C-c>
-
-"xnoremap <C-Backspace> <Esc>
-
+"
 " <C-Backspace> and <C-g> in command mode act like <Esc> - they
 " interrupt current function execution but don't exit command mode
 " immediately like <C-c> (say, when calling user defined vimscript
 " function - see s:SearchWithGlob() in plugins.vim)
-"cnoremap <C-Backspace> <C-c>
-cnoremap <C-g> <C-c>
+vnoremap <silent> <C-c> <C-c>
+cnoremap <silent> <C-c> <C-c>
+
+vnoremap <silent> <C-g> <C-c>
+cnoremap <silent> <C-g> <C-c>
 
 "===============================================================================
 "
@@ -137,11 +136,6 @@ nnoremap <silent> <S-Backspace> :bd<CR>
 
 "nnoremap <silent> <C-p> :bprevious<CR>
 "nnoremap <silent> <C-n> :bnext<CR>
-
-"------- mark history ----------------------------------------------------------
-
-" this mapping must come before remapping <Tab>
-nnoremap <C-g> <C-i>
 
 "------- tab -------------------------------------------------------------------
 
