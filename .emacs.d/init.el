@@ -347,12 +347,18 @@
 ;; Disable helm for cd command
 (add-to-list 'helm-completing-read-handlers-alist '(cd))
 
+(helm-autoresize-mode 1)
+(setq helm-autoresize-max-height 40)
+(setq helm-autoresize-min-height 40)
+
 ;; https://github.com/emacs-helm/helm/issues/2039
 ;; Always show helm window at bottom in a separate window
 (setq helm-always-two-windows nil)
 (setq helm-default-display-buffer-functions '(display-buffer-in-side-window))
+(setq helm-display-header-line nil)
 
-(set-face-attribute 'helm-selection nil :background "#F8F8C8")
+(set-face-attribute 'helm-selection nil :background "#E8E8E8")
+(set-face-attribute 'helm-source-header nil :height 1.4 :weight 'normal)
 
 ;;-----------------------------------------------------------------------------
 ;; projectile
