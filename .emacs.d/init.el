@@ -163,13 +163,10 @@
 (package-initialize)
 
 ;;-----------------------------------------------------------------------------
-;; dockerfile-mode
-;;-----------------------------------------------------------------------------
-
-(add-to-list 'auto-mode-alist '("Dockerfile" . dockerfile-mode))
-
-;;-----------------------------------------------------------------------------
 ;; evil
+;;
+;; NOTE: evil package should come first so that other packages can define
+;;       their keybindings in evil state keymaps and use leader key
 ;;-----------------------------------------------------------------------------
 
 ;; https://emacs.stackexchange.com/a/41701
@@ -285,17 +282,12 @@
 (define-key evil-normal-state-map (kbd "S-<down>") 'evil-window-decrease-height)
 
 (define-key evil-normal-state-map (kbd "<leader>t") 'dired-jump)
-(define-key evil-normal-state-map (kbd "<leader>n") 'projectile-find-file)
 (define-key evil-normal-state-map (kbd "<leader>hh") 'highlight-symbol-at-point)
 (define-key evil-normal-state-map (kbd "<leader>hu") 'my-unhighlight-regexp-all)
 
 ;; https://github.com/noctuid/evil-guide#binding-keys-to-keys-keyboard-macros
 (evil-define-key 'normal 'global
 	"gp" "`[v`]")
-
-(evil-define-key 'normal 'cider-repl-mode-map
-  ;; Close *cider-error* windows with q
-	"q" 'cider-popup-buffer-quit-function)
 
 ;; -------------------- visual state ------------------------------------------
 
@@ -306,6 +298,26 @@
 (define-key evil-visual-state-map (kbd "L") 'evil-last-non-blank)
 
 (define-key evil-visual-state-map (kbd "<leader>hh") 'highlight-regexp)
+
+;;-----------------------------------------------------------------------------
+;; avy
+;;-----------------------------------------------------------------------------
+
+(define-key evil-normal-state-map (kbd "<leader>w") 'avy-goto-word-1)
+
+;;-----------------------------------------------------------------------------
+;; cider
+;;-----------------------------------------------------------------------------
+
+(evil-define-key 'normal 'cider-repl-mode-map
+  ;; Close *cider-error* windows with q
+	"q" 'cider-popup-buffer-quit-function)
+
+;;-----------------------------------------------------------------------------
+;; dockerfile-mode
+;;-----------------------------------------------------------------------------
+
+(add-to-list 'auto-mode-alist '("Dockerfile" . dockerfile-mode))
 
 ;;-----------------------------------------------------------------------------
 ;; evil-nerd-commenter
@@ -349,7 +361,9 @@
 (projectile-mode 1)
 
 (setq projectile-completion-system 'helm)
+
 (define-key projectile-mode-map (kbd "s-p") 'projectile-command-map)
+(define-key evil-normal-state-map (kbd "<leader>n") 'projectile-find-file)
 
 ;;-----------------------------------------------------------------------------
 ;; rainbow-delimiters
@@ -395,7 +409,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(dockerfile-mode magit evil-visualstar evil-nerd-commenter rainbow-delimiters evil-surround helm evil spacemacs-theme projectile cider)))
+   '(avy dockerfile-mode magit evil-visualstar evil-nerd-commenter rainbow-delimiters evil-surround helm evil spacemacs-theme projectile cider)))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
