@@ -277,6 +277,7 @@
 (define-key evil-normal-state-map (kbd "C-w C-h") 'evil-window-left)
 (define-key evil-normal-state-map (kbd "C-w C-k") 'evil-window-up)
 (define-key evil-normal-state-map (kbd "C-w C-j") 'evil-window-down)
+(define-key evil-normal-state-map (kbd "C-w x") 'window-swap-states)
 
 (define-key evil-normal-state-map (kbd "S-<right>") 'evil-window-increase-width)
 (define-key evil-normal-state-map (kbd "S-<left>") 'evil-window-decrease-width)
@@ -339,7 +340,7 @@
 (setq helm-always-two-windows nil)
 (setq helm-default-display-buffer-functions '(display-buffer-in-side-window))
 
-(set-face-attribute 'helm-selection nil :background "#FFFFD0")
+(set-face-attribute 'helm-selection nil :background "#F8F8C8")
 
 ;;-----------------------------------------------------------------------------
 ;; projectile
