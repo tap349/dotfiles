@@ -5,7 +5,7 @@
 ;;-----------------------------------------------------------------------------
 
 ;; https://emacsredux.com/blog/2020/12/04/maximize-the-emacs-frame-on-startup
-;;(add-hook 'window-setup-hook 'toggle-frame-maximized t)
+;; (add-hook 'window-setup-hook 'toggle-frame-maximized t)
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
 
 ;; https://emacs.stackexchange.com/a/62959
@@ -57,8 +57,8 @@
 (setq-default display-fill-column-indicator-column 82)
 
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
-;;(load-theme 'spacemacs-light t)
-;;(load-theme 'tango-plus t)
+;; (load-theme 'spacemacs-light t)
+;; (load-theme 'tango-plus t)
 (load-theme 'aircon t)
 
 ;; https://emacs.stackexchange.com/a/69091
@@ -66,12 +66,11 @@
 
 ;; https://www.emacswiki.org/emacs/SetFonts
 (set-face-attribute 'default nil :font "Input-15")
-;;(set-face-attribute 'region nil :background "#A7D2E8")
-;;(set-face-attribute 'region nil :foreground "#FFFFFF")
+;; (set-face-attribute 'region nil :background "#BFE2EF")
 ;; https://stackoverflow.com/a/22951243/3632318
-;;(set-face-attribute 'show-paren-match nil :background "#FBDE41")
-;;(set-face-attribute 'show-paren-match nil :background "#CDCDFA")
-;;(set-face-attribute 'show-paren-match nil :background "#D8B188")
+;; (set-face-attribute 'show-paren-match nil :background "#FBDE41")
+;; (set-face-attribute 'show-paren-match nil :background "#CDCDFA")
+;; (set-face-attribute 'show-paren-match nil :background "#D8B188")
 
 ;;-----------------------------------------------------------------------------
 ;;
@@ -124,8 +123,8 @@
 ;; https://www.emacswiki.org/emacs/DvorakKeyboard
 ;; NOTE: keyboard-translate doesn’t work in daemon mode
 ;; UPDATE: Now it's not important when using evil-mode
-;;(keyboard-translate ?\C-u ?\C-x)
-;;(keyboard-translate ?\C-x ?\C-u)
+;; (keyboard-translate ?\C-u ?\C-x)
+;; (keyboard-translate ?\C-x ?\C-u)
 
 ;; https://www.emacswiki.org/emacs/DvorakKeyboard
 ;;
@@ -355,8 +354,10 @@
 (setq helm-default-display-buffer-functions '(display-buffer-in-side-window))
 (setq helm-display-header-line nil)
 
+;; customize-group -> helm -> Helm Faces
 (set-face-attribute 'helm-selection nil :background "#E8E8E8")
 (set-face-attribute 'helm-source-header nil :height 1.4 :weight 'normal)
+(set-face-attribute 'helm-ff-dotted-directory nil :background "#AFAFB6")
 
 ;;-----------------------------------------------------------------------------
 ;; projectile
