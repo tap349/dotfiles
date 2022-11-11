@@ -102,10 +102,6 @@
 ;;
 ;;-----------------------------------------------------------------------------
 
-;; https://www.emacswiki.org/emacs/InteractivelyDoThings
-;; https://www.masteringemacs.org/article/introduction-to-ido-mode
-(ido-mode 1)
-
 (setq lazy-highlight-initial-delay 0)
 
 ;;-----------------------------------------------------------------------------
@@ -142,11 +138,13 @@
 (global-set-key (kbd "s-v") 'clipboard-yank)
 
 ;; https://stackoverflow.com/a/455703
+;; https://stackoverflow.com/a/42057317
+;;
 ;; Don't change default-directory on find-file
 (defun my-find-file ()
   (interactive)
   (setq saved-default-directory default-directory)
-  (ido-find-file)
+  (call-interactively #'find-file)
   (setq default-directory saved-default-directory))
 
 (global-set-key (kbd "C-x C-f") 'my-find-file)
