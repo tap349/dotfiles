@@ -143,7 +143,8 @@
 (defun my-find-file ()
   (interactive)
   (setq saved-default-directory default-directory)
-  (call-interactively #'find-file)
+  ;; (call-interactively #'find-file)
+  (call-interactively #'helm-find-files)
   (setq default-directory saved-default-directory))
 
 (global-set-key (kbd "C-x C-f") 'my-find-file)
@@ -353,10 +354,13 @@
 (setq helm-always-two-windows nil)
 (setq helm-default-display-buffer-functions '(display-buffer-in-side-window))
 (setq helm-display-header-line nil)
+;; Allow to create files from helm-find-files
+(setq helm-ff-allow-non-existing-file-at-point t)
 
 ;; customize-group -> helm -> Helm Faces
-(set-face-attribute 'helm-selection nil :background "#E8E8E8")
+(set-face-attribute 'helm-selection nil :background "#FFE6CA")
 (set-face-attribute 'helm-source-header nil :height 1.4 :weight 'normal)
+(set-face-attribute 'helm-ff-directory nil :background "#DFDFE6")
 (set-face-attribute 'helm-ff-dotted-directory nil :background "#AFAFB6")
 
 ;;-----------------------------------------------------------------------------
