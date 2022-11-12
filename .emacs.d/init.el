@@ -34,6 +34,22 @@
 
 ;;-----------------------------------------------------------------------------
 ;;
+;; Backup
+;;
+;; https://stackoverflow.com/a/151946
+;;
+;;-----------------------------------------------------------------------------
+
+(setq backup-directory-alist `(("." . "~/.emacs.d/saves")))
+
+(setq backup-by-copying t
+      delete-old-versions t
+      version-control t
+      kept-new-versions 4
+      kept-old-versions 2)
+
+;;-----------------------------------------------------------------------------
+;;
 ;; Appearance
 ;;
 ;;-----------------------------------------------------------------------------
@@ -140,14 +156,14 @@
 ;; https://stackoverflow.com/a/42057317
 ;;
 ;; Don't change default-directory on find-file
-(defun my-find-file ()
+(defun my/find-file ()
   (interactive)
   (setq saved-default-directory default-directory)
   ;; (call-interactively #'find-file)
   (call-interactively #'helm-find-files)
   (setq default-directory saved-default-directory))
 
-(global-set-key (kbd "C-x C-f") 'my-find-file)
+(global-set-key (kbd "C-x C-f") 'my/find-file)
 
 ;;-----------------------------------------------------------------------------
 ;;
@@ -193,7 +209,7 @@
 
 ;; -------------------- insert state ------------------------------------------
 
-(defun my-insert-tab-or-complete ()
+(defun my/insert-tab-or-complete ()
   (interactive)
   (let ((chr (preceding-char)))
     ;; if beginning of line or preceding character is whitespace
@@ -206,45 +222,45 @@
 ;; https://emacs.stackexchange.com/a/62011
 (define-key evil-insert-state-map (kbd "C-g") 'evil-normal-state)
 (define-key evil-insert-state-map (kbd "RET") 'comment-indent-new-line)
-(define-key evil-insert-state-map (kbd "TAB") 'my-insert-tab-or-complete)
+(define-key evil-insert-state-map (kbd "TAB") 'my/insert-tab-or-complete)
 
 ;; -------------------- normal state ------------------------------------------
 
 ;; https://stackoverflow.com/a/14189981
-(defun my-insert-newline-below ()
+(defun my/insert-newline-below ()
   (interactive)
   (end-of-line)
   (newline))
 
-(defun my-insert-newline-above ()
+(defun my/insert-newline-above ()
   (interactive)
   (beginning-of-line)
   (open-line 1))
 
 ;; https://emacs.stackexchange.com/a/72123/39266
-(defun my-insert-whitespace ()
+(defun my/insert-whitespace ()
   (interactive)
   (insert " "))
 
-(defun my-evil-open-below ()
+(defun my/evil-open-below ()
   (interactive)
   (evil-append-line 1)
   (comment-indent-new-line))
 
 ;; https://emacs.stackexchange.com/a/40823
-(defun my-evil-window-split ()
+(defun my/evil-window-split ()
   (interactive)
   (evil-window-split)
   (balance-windows)
   (other-window 1))
 
-(defun my-evil-window-vsplit ()
+(defun my/evil-window-vsplit ()
   (interactive)
   (evil-window-vsplit)
   (balance-windows)
   (other-window 1))
 
-(defun my-unhighlight-regexp-all ()
+(defun my/unhighlight-regexp-all ()
   (interactive)
   (unhighlight-regexp t))
 
@@ -254,19 +270,19 @@
 (define-key evil-normal-state-map (kbd "L") 'evil-last-non-blank)
 (define-key evil-normal-state-map (kbd "TAB") 'save-buffer)
 
-(define-key evil-normal-state-map (kbd "RET") 'my-insert-newline-below)
-(define-key evil-normal-state-map (kbd "S-<return>") 'my-insert-newline-above)
-(define-key evil-normal-state-map (kbd "SPC") 'my-insert-whitespace)
+(define-key evil-normal-state-map (kbd "RET") 'my/insert-newline-below)
+(define-key evil-normal-state-map (kbd "S-<return>") 'my/insert-newline-above)
+(define-key evil-normal-state-map (kbd "SPC") 'my/insert-whitespace)
 
-(define-key evil-normal-state-map (kbd "o") 'my-evil-open-below)
+(define-key evil-normal-state-map (kbd "o") 'my/evil-open-below)
 
 (define-key evil-normal-state-map (kbd "C-M-f") 'evil-jump-item)
 (define-key evil-normal-state-map (kbd "C-M-b") 'evil-jump-item)
 
-(define-key evil-normal-state-map (kbd "C-w C-s") 'my-evil-window-split)
-(define-key evil-normal-state-map (kbd "C-w s") 'my-evil-window-split)
-(define-key evil-normal-state-map (kbd "C-w C-v") 'my-evil-window-vsplit)
-(define-key evil-normal-state-map (kbd "C-w v") 'my-evil-window-vsplit)
+(define-key evil-normal-state-map (kbd "C-w C-s") 'my/evil-window-split)
+(define-key evil-normal-state-map (kbd "C-w s") 'my/evil-window-split)
+(define-key evil-normal-state-map (kbd "C-w C-v") 'my/evil-window-vsplit)
+(define-key evil-normal-state-map (kbd "C-w v") 'my/evil-window-vsplit)
 
 (define-key evil-normal-state-map (kbd "C-w C-l") 'evil-window-right)
 (define-key evil-normal-state-map (kbd "C-w C-h") 'evil-window-left)
@@ -281,7 +297,7 @@
 
 (define-key evil-normal-state-map (kbd "<leader>t") 'dired-jump)
 (define-key evil-normal-state-map (kbd "<leader>hh") 'highlight-symbol-at-point)
-(define-key evil-normal-state-map (kbd "<leader>hu") 'my-unhighlight-regexp-all)
+(define-key evil-normal-state-map (kbd "<leader>hu") 'my/unhighlight-regexp-all)
 
 ;; https://github.com/noctuid/evil-guide#binding-keys-to-keys-keyboard-macros
 (evil-define-key 'normal 'global
@@ -354,14 +370,16 @@
 (setq helm-always-two-windows nil)
 (setq helm-default-display-buffer-functions '(display-buffer-in-side-window))
 (setq helm-display-header-line nil)
-;; Allow to create files from helm-find-files
-(setq helm-ff-allow-non-existing-file-at-point t)
 
 ;; customize-group -> helm -> Helm Faces
-(set-face-attribute 'helm-selection nil :background "#FFE6CA")
+(set-face-attribute 'helm-selection nil :background "#FFEFCF")
 (set-face-attribute 'helm-source-header nil :height 1.4 :weight 'normal)
 (set-face-attribute 'helm-ff-directory nil :background "#DFDFE6")
-(set-face-attribute 'helm-ff-dotted-directory nil :background "#AFAFB6")
+(set-face-attribute 'helm-ff-dotted-directory nil
+                    :background "#F4F4FB"
+                    :foreground "#BBBBBB")
+
+(define-key helm-find-files-map (kbd "TAB") 'helm-execute-persistent-action)
 
 ;;-----------------------------------------------------------------------------
 ;; projectile
@@ -393,12 +411,12 @@
 (setq tab-bar-separator "​")
 
 ;; https://christiantietze.de/posts/2022/02/emacs-tab-bar-numbered-tabs/
-(defun my-tab-bar-tab-name-format-function (tab i)
+(defun my/tab-bar-tab-name-format-function (tab i)
   (propertize
    (concat " " (alist-get 'name tab) " ")
    'face (funcall tab-bar-tab-face-function tab)))
 
-(setq tab-bar-tab-name-format-function #'my-tab-bar-tab-name-format-function)
+(setq tab-bar-tab-name-format-function #'my/tab-bar-tab-name-format-function)
 
 (global-set-key (kbd "s-{") 'tab-bar-switch-to-prev-tab)
 (global-set-key (kbd "s-}") 'tab-bar-switch-to-next-tab)
@@ -418,7 +436,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(avy dockerfile-mode magit evil-visualstar evil-nerd-commenter rainbow-delimiters evil-surround helm evil spacemacs-theme projectile cider)))
+   '(avy dockerfile-mode magit evil-visualstar evil-nerd-commenter rainbow-delimiters evil-surround evil spacemacs-theme projectile cider)))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
