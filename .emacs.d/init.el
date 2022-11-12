@@ -476,7 +476,8 @@
  ;; If there is more than one, they won't work right.
  '(fill-column-indicator ((t (:foreground "#DEE4EF"))))
  '(ivy-current-match ((t (:extend t :background "#FFEFCF" :foreground "black"))))
- '(ivy-minibuffer-match-face-1 ((t (:background "#F2F2F7"))))
- '(ivy-minibuffer-match-face-2 ((t (:background "#D7D7DF" :weight normal))))
- '(ivy-minibuffer-match-face-3 ((t (:background "#D7D7DF" :weight normal))))
- '(ivy-minibuffer-match-face-4 ((t (:background "#D7D7DF" :weight normal)))))
+ '(ivy-minibuffer-match-face-1 ((t (:background "#F2F2F9"))))
+ '(ivy-minibuffer-match-face-2 ((t (:background "#D9D9E2" :weight normal))))
+ '(ivy-minibuffer-match-face-3 ((t (:background "#D9D9E2" :weight normal))))
+ '(ivy-minibuffer-match-face-4 ((t (:background "#D9D9E2" :weight normal))))
+ '(swiper-match-face-1 ((t (:inherit 'highlight)))))
