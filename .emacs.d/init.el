@@ -42,11 +42,18 @@
 
 (setq backup-directory-alist `(("." . "~/.emacs.d/saves")))
 
-;; (setq backup-by-copying t
-;;       delete-old-versions t
-;;       version-control t
-;;       kept-new-versions 2
-;;       kept-old-versions 1)
+;;-----------------------------------------------------------------------------
+;;
+;; Scrolling
+;;
+;; https://www.emacswiki.org/emacs/SmoothScrolling
+;;
+;;-----------------------------------------------------------------------------
+
+(setq scroll-step 1)
+(setq scroll-margin 2)
+
+(setq mouse-wheel-progressive-speed nil)
 
 ;;-----------------------------------------------------------------------------
 ;;
@@ -59,7 +66,11 @@
 (tool-bar-mode -1)
 (tooltip-mode -1)
 
+(global-display-fill-column-indicator-mode 1)
+(setq-default display-fill-column-indicator-column 82)
+
 (setq column-number-mode t)
+(setq show-paren-delay 0)
 
 ;; https://emacs.stackexchange.com/a/21865
 (setq-default show-trailing-whitespace t)
@@ -67,10 +78,7 @@
 ;; nowrap
 (setq-default truncate-lines 1)
 
-(setq show-paren-delay 0)
-
-(global-display-fill-column-indicator-mode 1)
-(setq-default display-fill-column-indicator-column 82)
+;; -------------------- theme -------------------------------------------------
 
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
 ;; (load-theme 'spacemacs-light t)
@@ -151,7 +159,6 @@
 (global-set-key (kbd "s-c") 'clipboard-kill-ring-save)
 (global-set-key (kbd "s-x") 'clipboard-kill-region)
 (global-set-key (kbd "s-v") 'clipboard-yank)
-
 
 ;;-----------------------------------------------------------------------------
 ;;
