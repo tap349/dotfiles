@@ -349,7 +349,18 @@
 
 (ivy-mode 1)
 
+;; https://github.com/junegunn/fzf#respecting-gitignore
+;; For counsel-fzf
+(setenv "FZF_DEFAULT_COMMAND" "fd --type f --strip-cwd-prefix --hidden --exclude .git")
+
+(set-face-attribute 'ivy-highlight-face nil
+                    :background "white"
+                    :weight 'semi-bold)
+
 (setq ivy-display-style 'fancy)
+(setq ivy-height 18)
+(setq ivy-initial-inputs-alist nil)
+(setq enable-recursive-minibuffers t)
 
 ;; https://stackoverflow.com/a/455703
 ;; https://stackoverflow.com/a/42057317
@@ -369,6 +380,8 @@
 (global-set-key (kbd "C-h v") 'counsel-describe-variable)
 (global-set-key (kbd "C-x b") 'ivy-switch-buffer)
 
+(define-key evil-normal-state-map (kbd "<leader>n") 'counsel-fzf)
+
 ;;-----------------------------------------------------------------------------
 ;; projectile
 ;;-----------------------------------------------------------------------------
@@ -378,7 +391,6 @@
 (setq projectile-completion-system 'ivy)
 
 (define-key projectile-mode-map (kbd "s-p") 'projectile-command-map)
-(define-key evil-normal-state-map (kbd "<leader>n") 'counsel-fzf)
 
 ;;-----------------------------------------------------------------------------
 ;; rainbow-delimiters
