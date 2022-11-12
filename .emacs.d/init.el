@@ -1,8 +1,12 @@
 ;;-----------------------------------------------------------------------------
 ;;
-;; System
+;; Startup
+;;
+;; https://www.emacswiki.org/emacs/OptimizingEmacsStartup
 ;;
 ;;-----------------------------------------------------------------------------
+
+(setq inhibit-startup-message t)
 
 ;; https://emacsredux.com/blog/2020/12/04/maximize-the-emacs-frame-on-startup
 ;; (add-hook 'window-setup-hook 'toggle-frame-maximized t)
@@ -14,10 +18,19 @@
 
 (add-hook 'after-make-frame-functions #'startup)
 
-(setq inhibit-startup-message t)
+;; Minimize garbage collection during startup
+(setq gc-cons-threshold most-positive-fixnum)
 
-;; Turn off all alarms (ring-bell and visible-bell)
-(setq ring-bell-function 'ignore)
+;; Lower threshold back to 10 MB (default is 800kB)
+(add-hook 'emacs-startup-hook
+          (lambda ()
+            (setq gc-cons-threshold (* 10 1000 1000))))
+
+;;-----------------------------------------------------------------------------
+;;
+;; System
+;;
+;;-----------------------------------------------------------------------------
 
 ;; https://stackoverflow.com/a/30900018
 (setq vc-follow-symlinks t)
@@ -32,14 +45,7 @@
 ;; Automatically switch to help windows
 (setq help-window-select t)
 
-;;-----------------------------------------------------------------------------
-;;
-;; Backup
-;;
 ;; https://stackoverflow.com/a/151946
-;;
-;;-----------------------------------------------------------------------------
-
 (setq backup-directory-alist `(("." . "~/.emacs.d/saves")))
 
 ;;-----------------------------------------------------------------------------
@@ -57,9 +63,12 @@
 
 ;;-----------------------------------------------------------------------------
 ;;
-;; Appearance
+;; Look and feel
 ;;
 ;;-----------------------------------------------------------------------------
+
+;; Turn off all alarms (ring-bell and visible-bell)
+(setq ring-bell-function 'ignore)
 
 (menu-bar-mode -1)
 (scroll-bar-mode -1)
@@ -78,10 +87,11 @@
 ;; nowrap
 (setq-default truncate-lines 1)
 
-;; -------------------- theme -------------------------------------------------
+;;-----------------------------------------------------------------------------
+;; Theme
+;;-----------------------------------------------------------------------------
 
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
-;; (load-theme 'spacemacs-light t)
 ;; (load-theme 'tango-plus t)
 (load-theme 'aircon t)
 
@@ -366,8 +376,11 @@
  "FZF_DEFAULT_COMMAND"
  "fd --type f --strip-cwd-prefix --hidden --exclude .git")
 
-;; Same as in vimrc
-(setq counsel-git-grep-cmd-default "rg -FS --sort-files --vimgrep \"%s\"")
+;; See g:ackprg in vimrc
+;; --no-line-number breaks syntax highlighting
+(setq
+ counsel-git-grep-cmd-default
+ "rg -FS --no-column --sort-files --field-match-separator ': ' --vimgrep \"%s\"")
 
 (setq ivy-use-virtual-buffers t)
 (setq enable-recursive-minibuffers t)
@@ -376,6 +389,7 @@
 (setq ivy-height 18)
 (setq ivy-count-format "")
 (setq ivy-initial-inputs-alist nil)
+(setq ivy-on-del-error-function #'ignore)
 
 ;; https://stackoverflow.com/a/455703
 ;; https://stackoverflow.com/a/42057317
@@ -452,7 +466,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(counsel avy dockerfile-mode magit evil-visualstar evil-nerd-commenter rainbow-delimiters evil-surround evil spacemacs-theme projectile cider)))
+   '(counsel avy dockerfile-mode magit evil-visualstar evil-nerd-commenter rainbow-delimiters evil-surround evil projectile cider)))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
