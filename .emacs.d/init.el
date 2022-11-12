@@ -152,18 +152,6 @@
 (global-set-key (kbd "s-x") 'clipboard-kill-region)
 (global-set-key (kbd "s-v") 'clipboard-yank)
 
-;; https://stackoverflow.com/a/455703
-;; https://stackoverflow.com/a/42057317
-;;
-;; Don't change default-directory on find-file
-(defun my/find-file ()
-  (interactive)
-  (setq saved-default-directory default-directory)
-  ;; (call-interactively #'find-file)
-  (call-interactively #'helm-find-files)
-  (setq default-directory saved-default-directory))
-
-(global-set-key (kbd "C-x C-f") 'my/find-file)
 
 ;;-----------------------------------------------------------------------------
 ;;
@@ -313,6 +301,10 @@
 
 (define-key evil-visual-state-map (kbd "<leader>hh") 'highlight-regexp)
 
+;; -------------------- replace state ------------------------------------------
+
+(define-key evil-replace-state-map (kbd "C-g") 'evil-normal-state)
+
 ;;-----------------------------------------------------------------------------
 ;; avy
 ;;-----------------------------------------------------------------------------
@@ -352,34 +344,30 @@
 (global-evil-visualstar-mode 1)
 
 ;;-----------------------------------------------------------------------------
-;; helm
+;; counsel (ivy / counsel / swiper)
 ;;-----------------------------------------------------------------------------
 
-(helm-mode 1)
+(ivy-mode 1)
 
-;; https://emacs.stackexchange.com/a/9446
-;; Disable helm for cd command
-(add-to-list 'helm-completing-read-handlers-alist '(cd))
+(setq ivy-display-style 'fancy)
 
-(helm-autoresize-mode 1)
-(setq helm-autoresize-max-height 40)
-(setq helm-autoresize-min-height 40)
+;; https://stackoverflow.com/a/455703
+;; https://stackoverflow.com/a/42057317
+;;
+;; Don't change default-directory on find-file
+(defun my/counsel-find-file ()
+  (interactive)
+  (setq saved-default-directory default-directory)
+  (call-interactively #'counsel-find-file)
+  (setq default-directory saved-default-directory))
 
-;; https://github.com/emacs-helm/helm/issues/2039
-;; Always show helm window at bottom in a separate window
-(setq helm-always-two-windows nil)
-(setq helm-default-display-buffer-functions '(display-buffer-in-side-window))
-(setq helm-display-header-line nil)
-
-;; customize-group -> helm -> Helm Faces
-(set-face-attribute 'helm-selection nil :background "#FFEFCF")
-(set-face-attribute 'helm-source-header nil :height 1.4 :weight 'normal)
-(set-face-attribute 'helm-ff-directory nil :background "#DFDFE6")
-(set-face-attribute 'helm-ff-dotted-directory nil
-                    :background "#F4F4FB"
-                    :foreground "#BBBBBB")
-
-(define-key helm-find-files-map (kbd "TAB") 'helm-execute-persistent-action)
+(global-set-key (kbd "C-s") 'swiper-isearch)
+(global-set-key (kbd "M-x") 'counsel-M-x)
+(global-set-key (kbd "C-x C-f") 'my/counsel-find-file)
+(global-set-key (kbd "M-y") 'counsel-yank-pop)
+(global-set-key (kbd "C-h f") 'counsel-describe-function)
+(global-set-key (kbd "C-h v") 'counsel-describe-variable)
+(global-set-key (kbd "C-x b") 'ivy-switch-buffer)
 
 ;;-----------------------------------------------------------------------------
 ;; projectile
@@ -387,10 +375,10 @@
 
 (projectile-mode 1)
 
-(setq projectile-completion-system 'helm)
+(setq projectile-completion-system 'ivy)
 
 (define-key projectile-mode-map (kbd "s-p") 'projectile-command-map)
-(define-key evil-normal-state-map (kbd "<leader>n") 'projectile-find-file)
+(define-key evil-normal-state-map (kbd "<leader>n") 'counsel-fzf)
 
 ;;-----------------------------------------------------------------------------
 ;; rainbow-delimiters
@@ -436,11 +424,16 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(avy dockerfile-mode magit evil-visualstar evil-nerd-commenter rainbow-delimiters evil-surround evil spacemacs-theme projectile cider)))
+   '(counsel avy dockerfile-mode magit evil-visualstar evil-nerd-commenter rainbow-delimiters evil-surround evil spacemacs-theme projectile cider)))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(fill-column-indicator ((t (:foreground "#DEE4EF")))))
+ '(fill-column-indicator ((t (:foreground "#DEE4EF"))))
+ '(ivy-current-match ((t (:extend t :background "#FFEFCF" :foreground "black"))))
+ '(ivy-minibuffer-match-face-1 ((t (:background "#F2F2F5"))))
+ '(ivy-minibuffer-match-face-2 ((t (:background "#D5D5DA" :weight normal))))
+ '(ivy-minibuffer-match-face-3 ((t (:background "#D5D5DA" :weight normal))))
+ '(ivy-minibuffer-match-face-4 ((t (:background "#D5D5DA" :weight normal)))))
