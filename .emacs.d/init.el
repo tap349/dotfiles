@@ -42,11 +42,11 @@
 
 (setq backup-directory-alist `(("." . "~/.emacs.d/saves")))
 
-(setq backup-by-copying t
-      delete-old-versions t
-      version-control t
-      kept-new-versions 4
-      kept-old-versions 2)
+;; (setq backup-by-copying t
+;;       delete-old-versions t
+;;       version-control t
+;;       kept-new-versions 2
+;;       kept-old-versions 1)
 
 ;;-----------------------------------------------------------------------------
 ;;
@@ -349,18 +349,26 @@
 
 (ivy-mode 1)
 
-;; https://github.com/junegunn/fzf#respecting-gitignore
-;; For counsel-fzf
-(setenv "FZF_DEFAULT_COMMAND" "fd --type f --strip-cwd-prefix --hidden --exclude .git")
-
 (set-face-attribute 'ivy-highlight-face nil
                     :background "white"
                     :weight 'semi-bold)
 
+;; https://github.com/junegunn/fzf#respecting-gitignore
+;; For counsel-fzf
+(setenv
+ "FZF_DEFAULT_COMMAND"
+ "fd --type f --strip-cwd-prefix --hidden --exclude .git")
+
+;; Same as in vimrc
+(setq counsel-git-grep-cmd-default "rg -FS --sort-files --vimgrep \"%s\"")
+
+(setq ivy-use-virtual-buffers t)
+(setq enable-recursive-minibuffers t)
+
 (setq ivy-display-style 'fancy)
 (setq ivy-height 18)
+(setq ivy-count-format "")
 (setq ivy-initial-inputs-alist nil)
-(setq enable-recursive-minibuffers t)
 
 ;; https://stackoverflow.com/a/455703
 ;; https://stackoverflow.com/a/42057317
@@ -381,6 +389,7 @@
 (global-set-key (kbd "C-x b") 'ivy-switch-buffer)
 
 (define-key evil-normal-state-map (kbd "<leader>n") 'counsel-fzf)
+(define-key evil-normal-state-map (kbd "<leader>/") 'counsel-git-grep)
 
 ;;-----------------------------------------------------------------------------
 ;; projectile
