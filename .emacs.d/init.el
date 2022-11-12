@@ -378,9 +378,10 @@
 
 ;; See g:ackprg in vimrc
 ;; --no-line-number breaks syntax highlighting
+;; --field-match-separator breaks navigation to selected line
 (setq
  counsel-git-grep-cmd-default
- "rg -FS --no-column --sort-files --field-match-separator ': ' --vimgrep \"%s\"")
+ "rg -FS --no-column --sort-files --vimgrep \"%s\"")
 
 (setq ivy-use-virtual-buffers t)
 (setq enable-recursive-minibuffers t)
@@ -475,7 +476,7 @@
  ;; If there is more than one, they won't work right.
  '(fill-column-indicator ((t (:foreground "#DEE4EF"))))
  '(ivy-current-match ((t (:extend t :background "#FFEFCF" :foreground "black"))))
- '(ivy-minibuffer-match-face-1 ((t (:background "#F2F2F5"))))
- '(ivy-minibuffer-match-face-2 ((t (:background "#D5D5DA" :weight normal))))
- '(ivy-minibuffer-match-face-3 ((t (:background "#D5D5DA" :weight normal))))
- '(ivy-minibuffer-match-face-4 ((t (:background "#D5D5DA" :weight normal)))))
+ '(ivy-minibuffer-match-face-1 ((t (:background "#F2F2F7"))))
+ '(ivy-minibuffer-match-face-2 ((t (:background "#D7D7DF" :weight normal))))
+ '(ivy-minibuffer-match-face-3 ((t (:background "#D7D7DF" :weight normal))))
+ '(ivy-minibuffer-match-face-4 ((t (:background "#D7D7DF" :weight normal)))))
