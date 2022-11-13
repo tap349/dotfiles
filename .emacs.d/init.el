@@ -383,24 +383,14 @@
 (setq enable-recursive-minibuffers t)
 
 (setq ivy-display-style 'fancy)
-(setq ivy-height 16)
+(setq ivy-height 15)
 (setq ivy-count-format "")
 (setq ivy-initial-inputs-alist nil)
 (setq ivy-on-del-error-function #'ignore)
 
-;; https://stackoverflow.com/a/455703
-;; https://stackoverflow.com/a/42057317
-;;
-;; Don't change default-directory on find-file
-(defun my/counsel-find-file ()
-  (interactive)
-  (setq saved-default-directory default-directory)
-  (call-interactively #'counsel-find-file)
-  (setq default-directory saved-default-directory))
-
 (global-set-key (kbd "C-s") 'swiper-isearch)
 (global-set-key (kbd "M-x") 'counsel-M-x)
-(global-set-key (kbd "C-x C-f") 'my/counsel-find-file)
+(global-set-key (kbd "C-x C-f") 'counsel-find-file)
 (global-set-key (kbd "M-y") 'counsel-yank-pop)
 (global-set-key (kbd "C-h f") 'counsel-describe-function)
 (global-set-key (kbd "C-h v") 'counsel-describe-variable)
@@ -463,7 +453,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(counsel avy dockerfile-mode magit evil-visualstar evil-nerd-commenter rainbow-delimiters evil-surround evil projectile cider)))
+   '(json-mode counsel avy dockerfile-mode magit evil-visualstar evil-nerd-commenter rainbow-delimiters evil-surround evil projectile cider)))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
