@@ -383,7 +383,7 @@
 (setq enable-recursive-minibuffers t)
 
 (setq ivy-display-style 'fancy)
-(setq ivy-height 18)
+(setq ivy-height 16)
 (setq ivy-count-format "")
 (setq ivy-initial-inputs-alist nil)
 (setq ivy-on-del-error-function #'ignore)

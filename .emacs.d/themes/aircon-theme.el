@@ -100,6 +100,10 @@
   '((((class color) (min-colors 89))
      (:background "#ffcb63" :foreground "#422c00")))
   "Aircon mango.")
+(defface aircon-vim-isearch
+  '((((class color) (min-colors 89))
+     (:background "#FFFF9C" :foreground "black" :weight bold)))
+  "Aircon vim isearch.")
 (defface aircon-marigold
   `((((class color) (min-colors 89)) (:foreground ,aircon-marigold)))
   "Aircon marigold.")
@@ -148,9 +152,9 @@
  '(region              ((t (:inherit (aircon-athens)))))
  '(secondary-selection ((t (:inherit (aircon-prelude)))))
  '(trailing-whitespace ((t (:inherit (aircon-blush)))))
- '(isearch             ((t (:inherit (aircon-mango)))))
+ '(isearch             ((t (:inherit (aircon-vim-isearch)))))
  '(isearch-fail        ((t (:inherit (aircon-blush)))))
- '(lazy-highlight      ((t (:inherit (aircon-linen)))))
+ '(lazy-highlight      ((t (:inherit (aircon-vim-isearch)))))
  '(tooltip             ((t (:inherit (aircon-linen)))))
  '(match               ((t (:inherit (aircon-linen)))))
  '(show-paren-match    ((t (:inherit (aircon-mango)))))
