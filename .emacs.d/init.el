@@ -366,10 +366,6 @@
 
 (ivy-mode 1)
 
-(set-face-attribute 'ivy-highlight-face nil
-                    :background "white"
-                    :weight 'semi-bold)
-
 ;; https://github.com/junegunn/fzf#respecting-gitignore
 ;; For counsel-fzf
 (setenv
@@ -475,7 +471,6 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(fill-column-indicator ((t (:foreground "#DEE4EF"))))
- '(ivy-current-match ((t (:extend t :background "#FFEFCF" :foreground "black"))))
  '(ivy-minibuffer-match-face-1 ((t (:background "#F2F2F9"))))
  '(ivy-minibuffer-match-face-2 ((t (:background "#D9D9E2" :weight normal))))
  '(ivy-minibuffer-match-face-3 ((t (:background "#D9D9E2" :weight normal))))
