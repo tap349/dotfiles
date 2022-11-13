@@ -475,4 +475,7 @@
  '(ivy-minibuffer-match-face-2 ((t (:background "#D9D9E2" :weight normal))))
  '(ivy-minibuffer-match-face-3 ((t (:background "#D9D9E2" :weight normal))))
  '(ivy-minibuffer-match-face-4 ((t (:background "#D9D9E2" :weight normal))))
- '(swiper-match-face-1 ((t (:inherit 'highlight)))))
+ '(swiper-match-face-1 ((t nil)))
+ '(swiper-match-face-2 ((t (:inherit 'isearch))))
+ '(swiper-match-face-3 ((t (:inherit 'isearch))))
+ '(swiper-match-face-4 ((t (:inherit 'isearch)))))
