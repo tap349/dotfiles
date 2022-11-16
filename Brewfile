@@ -169,12 +169,14 @@ mas 'Telegram Desktop', id: 946399090
 # inDriver
 #-------------------------------------------------------------------------------
 
+tap 'cockroachdb/tap'
 tap 'd12frosted/emacs-plus'
 tap 'hashicorp/tap'
 
 brew 'argocd'
 brew 'cilium-cli'
 brew 'clojure'
+brew 'cockroach'
 brew 'emacs'
 brew 'fd'
 brew 'fzf'
