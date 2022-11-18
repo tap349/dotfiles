@@ -117,7 +117,12 @@
 (delete-selection-mode 1)
 
 (electric-pair-mode 1)
+
+(defun my/electric-pair-inhibit-predicate (char)
+  (minibufferp))
+
 (setq electric-pair-delete-adjacent-pairs t)
+(setq electric-pair-inhibit-predicate 'my/electric-pair-inhibit-predicate)
 
 ;; https://stackoverflow.com/a/1819405/3632318
 ;; Use whitespaces instead of tabs
