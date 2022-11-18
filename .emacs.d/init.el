@@ -370,14 +370,17 @@
 ;; For counsel-fzf
 (setenv
  "FZF_DEFAULT_COMMAND"
- "fd --type f --strip-cwd-prefix --hidden --exclude .git")
+ "fd --type f --strip-cwd-prefix -H -I --exclude .git --exclude target")
 
 ;; See g:ackprg in vimrc
 ;; --no-line-number breaks syntax highlighting
 ;; --field-match-separator breaks navigation to selected line
-(setq
- counsel-git-grep-cmd-default
- "rg -FS --no-column --sort-files --vimgrep \"%s\"")
+;;
+;; UPDATE: git grep works better with special characters
+;;         (say, ripgrep breaks when searching for '->')
+;; (setq
+;;  counsel-git-grep-cmd-default
+;;  "rg -FS --no-column --sort-files --vimgrep \"%s\"")
 
 (setq ivy-use-virtual-buffers t)
 (setq enable-recursive-minibuffers t)
