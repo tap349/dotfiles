@@ -395,6 +395,9 @@
 (setq ivy-count-format "")
 (setq ivy-initial-inputs-alist nil)
 (setq ivy-on-del-error-function #'ignore)
+(setq ivy-more-chars-alist '((counsel-grep . 2)
+                             (counsel-git-grep . 2)
+                             (t . 3)))
 
 (global-set-key (kbd "C-s") 'swiper-isearch)
 (global-set-key (kbd "M-x") 'counsel-M-x)
