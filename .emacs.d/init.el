@@ -209,11 +209,6 @@
 ;; https://www.reddit.com/r/emacs/comments/n1pibp/comment/gwei7fw
 (evil-set-undo-system 'undo-redo)
 
-;; https://emacs.stackexchange.com/a/20717/39266
-;; Search for symbol, not for word when using *
-;; (foo-bar: foo - word, foo-bar - symbol)
-;; (setq-default evil-symbol-word-search t)
-
 (evil-set-leader 'normal (kbd ","))
 (evil-set-leader 'visual (kbd ","))
 
