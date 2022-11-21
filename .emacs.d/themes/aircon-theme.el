@@ -52,6 +52,7 @@
 (defconst aircon-marigold  "#b88325")   ; warning
 (defconst aircon-midnight  "#010e2c")
 (defconst aircon-sandstone "#615855")   ; comment
+(defconst aircon-comment   "#918895")
 (defconst aircon-sapphire  "#2e4d98")   ; keyword
 (defconst aircon-scorpion  "#595959")   ; shadow
 (defconst aircon-shark     "#303645")
@@ -113,6 +114,9 @@
 (defface aircon-sandstone
   `((((class color) (min-colors 89)) (:foreground ,aircon-sandstone)))
   "Aircon sandstone.")
+(defface aircon-comment
+  `((((class color) (min-colors 89)) (:foreground ,aircon-comment)))
+  "Aircon comment.")
 (defface aircon-sapphire
   `((((class color) (min-colors 89)) (:foreground ,aircon-sapphire)))
   "Aircon sapphire.")
@@ -162,7 +166,7 @@
  '(show-paren-match-expression ((t (:inherit (aircon-linen)))))
 
  '(font-lock-builtin-face       ((t (:inherit (aircon-cello bold)))))
- '(font-lock-comment-face       ((t (:inherit (aircon-sandstone italic)))))
+ '(font-lock-comment-face       ((t (:inherit (aircon-comment italic)))))
  '(font-lock-constant-face      ((t (:inherit (aircon-eden)))))
  '(font-lock-function-name-face ((t (:inherit (aircon-grape)))))
  '(font-lock-keyword-face       ((t (:inherit (aircon-sapphire bold)))))
