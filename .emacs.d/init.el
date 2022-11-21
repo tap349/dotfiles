@@ -212,7 +212,7 @@
 ;; https://emacs.stackexchange.com/a/20717/39266
 ;; Search for symbol, not for word when using *
 ;; (foo-bar: foo - word, foo-bar - symbol)
-(setq-default evil-symbol-word-search t)
+;; (setq-default evil-symbol-word-search t)
 
 (evil-set-leader 'normal (kbd ","))
 (evil-set-leader 'visual (kbd ","))
