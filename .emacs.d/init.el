@@ -354,6 +354,14 @@
 
 (global-evil-visualstar-mode 1)
 
+(defun my/evil-visualstar-asterisk ()
+  (interactive)
+  (when (region-active-p)
+    (evil-visualstar/begin-search (region-beginning) (region-end) t)
+    (evil-search-previous)))
+
+(define-key evil-normal-state-map (kbd "z*") 'my/evil-visualstar-asterisk)
+
 ;;-----------------------------------------------------------------------------
 ;; counsel (ivy / counsel / swiper)
 ;;-----------------------------------------------------------------------------
