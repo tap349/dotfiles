@@ -364,7 +364,7 @@
 ;; For counsel-fzf
 (setenv
  "FZF_DEFAULT_COMMAND"
- "fd --type f --strip-cwd-prefix -H -I --exclude .git --exclude target")
+ "fd --type f --strip-cwd-prefix -H -I --exclude .git --exclude target --exclude .cpcache")
 
 ;; See g:ackprg in vimrc
 ;; --no-line-number breaks syntax highlighting
