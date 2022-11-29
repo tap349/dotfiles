@@ -336,7 +336,7 @@
 ;;-----------------------------------------------------------------------------
 
 ;; https://stackoverflow.com/a/4200242
-;; Fix indentation for failjure library
+;; Fix indentation for failjure library (indent like `let`)
 (put 'f/attempt-all 'clojure-indent-function 1)
 
 ;;-----------------------------------------------------------------------------
