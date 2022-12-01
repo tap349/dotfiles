@@ -131,20 +131,6 @@
 
 ;;-----------------------------------------------------------------------------
 ;;
-;; Search
-;;
-;; https://www.reddit.com/r/emacs/comments/e2uaaw/evilsearchwordforwardbackward_doesnt_highlight
-;;
-;; Matches are not highlighted immediately after calling evil-search-next -
-;; that's how isearch works, IDK how to circumvent this behaviour now
-;;
-;;-----------------------------------------------------------------------------
-
-(setq lazy-highlight-initial-delay 0)
-(setq lazy-highlight-no-delay-length 1)
-
-;;-----------------------------------------------------------------------------
-;;
 ;; Registers (C-x r j)
 ;;
 ;; https://stackoverflow.com/a/12558095/3632318
@@ -204,11 +190,17 @@
 
 (evil-mode 1)
 
-;; Highlight search results for this period
-(setq evil-flash-delay 999)
-
 ;; https://www.reddit.com/r/emacs/comments/n1pibp/comment/gwei7fw
 (evil-set-undo-system 'undo-redo)
+
+;; https://www.reddit.com/r/emacs/comments/345by9
+;; https://emacs.stackexchange.com/a/58846/39266
+;; https://github.com/emacs-evil/evil/blob/master/evil-search.el#L672
+;;
+;; evil-search creates overlay to highlight search results with priority 1000
+;; which is higher than priority of region overlay (100) => highlighted search
+;; results are always on top of region selection
+(evil-select-search-module 'evil-search-module 'evil-search)
 
 (evil-set-leader 'normal (kbd ","))
 (evil-set-leader 'visual (kbd ","))
@@ -248,6 +240,7 @@
   (interactive)
   (insert " "))
 
+;; Continues comment on next line unlike evil-open-below
 (defun my/evil-open-below ()
   (interactive)
   (evil-append-line 1)
@@ -266,17 +259,27 @@
   (balance-windows)
   (other-window 1))
 
+(defun my/keyboard-quit ()
+  (interactive)
+  (evil-ex-nohighlight)
+  (keyboard-quit))
+
+(define-key evil-normal-state-map (kbd "C-g") 'my/keyboard-quit)
 (define-key evil-normal-state-map (kbd "C-.") 'execute-extended-command)
+
+(define-key evil-normal-state-map (kbd "TAB") 'save-buffer)
+(define-key evil-normal-state-map (kbd "C-o") 'evil-switch-to-windows-last-buffer)
 
 (define-key evil-normal-state-map (kbd "H") 'evil-first-non-blank)
 (define-key evil-normal-state-map (kbd "L") 'evil-last-non-blank)
-(define-key evil-normal-state-map (kbd "TAB") 'save-buffer)
 
 (define-key evil-normal-state-map (kbd "RET") 'my/insert-newline-below)
 (define-key evil-normal-state-map (kbd "S-<return>") 'my/insert-newline-above)
 (define-key evil-normal-state-map (kbd "SPC") 'my/insert-whitespace)
-
 (define-key evil-normal-state-map (kbd "o") 'my/evil-open-below)
+
+(define-key evil-normal-state-map (kbd "s-[") 'evil-jump-backward)
+(define-key evil-normal-state-map (kbd "s-]") 'evil-jump-forward)
 
 (define-key evil-normal-state-map (kbd "C-M-f") 'evil-jump-item)
 (define-key evil-normal-state-map (kbd "C-M-b") 'evil-jump-item)
@@ -305,13 +308,14 @@
 
 ;; -------------------- visual state ------------------------------------------
 
+;; Bind to keyboard-quit explicitly - otherwise binding for normal state is used
+(define-key evil-visual-state-map (kbd "C-g") 'keyboard-quit)
 (define-key evil-visual-state-map (kbd "C-.") 'execute-extended-command)
+
 (define-key evil-visual-state-map (kbd "C-s") 'sort-lines)
 
 (define-key evil-visual-state-map (kbd "H") 'evil-first-non-blank)
 (define-key evil-visual-state-map (kbd "L") 'evil-last-non-blank)
-
-(define-key evil-visual-state-map (kbd "<leader>hh") 'highlight-regexp)
 
 ;; -------------------- replace state ------------------------------------------
 
@@ -367,7 +371,7 @@
   (interactive)
   (when (region-active-p)
     (evil-visualstar/begin-search (region-beginning) (region-end) t)
-    (evil-search-previous)))
+    (evil-ex-search-previous)))
 
 (define-key evil-normal-state-map (kbd "z*") 'my/evil-visualstar-asterisk)
 
@@ -423,7 +427,6 @@
 (projectile-mode 1)
 
 (setq projectile-completion-system 'ivy)
-
 (define-key projectile-mode-map (kbd "s-p") 'projectile-command-map)
 
 ;;-----------------------------------------------------------------------------
@@ -431,6 +434,7 @@
 ;;-----------------------------------------------------------------------------
 
 (rainbow-delimiters-mode 1)
+
 (add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
 
 ;;-----------------------------------------------------------------------------

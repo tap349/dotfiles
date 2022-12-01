@@ -99,7 +99,7 @@
   "Aircon linen.")
 (defface aircon-mango
   '((((class color) (min-colors 89))
-     (:background "#ffcb63" :foreground "#422c00")))
+     (:background "#ffdb83" :foreground "#422c00")))
   "Aircon mango.")
 (defface aircon-vim-isearch
   '((((class color) (min-colors 89))
