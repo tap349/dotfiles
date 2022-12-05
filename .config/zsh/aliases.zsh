@@ -38,6 +38,7 @@ alias ydl='youtube-dl'
 # Dev
 #-------------------------------------------------------------------------------
 
+alias cr='cockroach start-single-node --insecure --http-port=26256 --host=localhost'
 alias o='overmind start'
 
 #-------------------------------------------------------------------------------
