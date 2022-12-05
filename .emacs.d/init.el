@@ -342,6 +342,11 @@
 ;; https://stackoverflow.com/a/4200242
 ;; Fix indentation for failjure library (indent like `let`)
 (put 'f/attempt-all 'clojure-indent-function 1)
+(put 'f/try-all 'clojure-indent-function 1)
+(put 'f/when-failed 'clojure-indent-function 1)
+(put 'f/when-let-failed? 'clojure-indent-function 1)
+
+(put 'as-> 'clojure-indent-function 1)
 
 ;;-----------------------------------------------------------------------------
 ;; dockerfile-mode
@@ -474,7 +479,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(json-mode counsel avy dockerfile-mode magit evil-visualstar evil-nerd-commenter rainbow-delimiters evil-surround evil projectile cider)))
+   '(yaml-mode json-mode counsel avy dockerfile-mode magit evil-visualstar evil-nerd-commenter rainbow-delimiters evil-surround evil projectile cider)))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
