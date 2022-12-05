@@ -39,7 +39,7 @@ alias ydl='youtube-dl'
 #-------------------------------------------------------------------------------
 
 alias cr='cockroach start-single-node --insecure --http-port=26256 --host=localhost'
-alias o='overmind start'
+alias d='docker'
 
 #-------------------------------------------------------------------------------
 # Clojure
