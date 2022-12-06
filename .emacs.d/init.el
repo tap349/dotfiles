@@ -48,6 +48,8 @@
 ;; https://stackoverflow.com/a/151946
 (setq backup-directory-alist `(("." . "~/.emacs.d/saves")))
 
+(defalias 'yes-or-no-p 'y-or-n-p)
+
 ;;-----------------------------------------------------------------------------
 ;;
 ;; Scrolling
@@ -347,6 +349,12 @@
 (put 'f/when-let-failed? 'clojure-indent-function 1)
 
 (put 'as-> 'clojure-indent-function 1)
+
+;;-----------------------------------------------------------------------------
+;; dired-mode (built-in)
+;;-----------------------------------------------------------------------------
+
+(define-key dired-mode-map (kbd "u") 'dired-up-directory)
 
 ;;-----------------------------------------------------------------------------
 ;; dockerfile-mode
