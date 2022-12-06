@@ -354,7 +354,9 @@
 ;; dired-mode (built-in)
 ;;-----------------------------------------------------------------------------
 
-(define-key dired-mode-map (kbd "u") 'dired-up-directory)
+(add-hook 'dired-mode-hook
+          (lambda ()
+            (define-key dired-mode-map (kbd "u") 'dired-up-directory)))
 
 ;;-----------------------------------------------------------------------------
 ;; dockerfile-mode
