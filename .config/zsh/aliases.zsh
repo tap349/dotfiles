@@ -16,6 +16,7 @@ alias dot='cd ~/.dotfiles'
 
 alias ka='cd ~/dev/indrive/k8s-applications'
 alias dpo='cd ~/dev/indrive/dev-platform-orchestrator'
+alias dps='cd ~/dev/indrive/dev-platform-infrastructure'
 
 #-------------------------------------------------------------------------------
 # System
