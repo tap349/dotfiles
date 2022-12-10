@@ -41,6 +41,9 @@ alias ydl='youtube-dl'
 
 alias cr='cockroach start-single-node --insecure --http-port=26256 --host=localhost'
 alias d='docker'
+alias k='kubectl'
+alias kcr='kubectl exec -it -n platform dev-platform-orchestrator-db-client -- cockroach sql --certs-dir=/cockroach/cockroach-certs --host=dev-platform-orchestrator-db-public --database=dpo'
+alias kpf='kubectl port-forward -n platform service/dev-platform-orchestrator-db-public 26257'
 
 #-------------------------------------------------------------------------------
 # Clojure
@@ -62,11 +65,3 @@ alias gl='git_log'
 alias gp='git push'
 alias gpt='git push --tags'
 alias gs='git status'
-
-#-------------------------------------------------------------------------------
-# Kubernetes
-#-------------------------------------------------------------------------------
-
-alias k='kubectl'
-alias kc='kubectl exec -it -n platform dev-platform-orchestrator-db-client -- cockroach sql --certs-dir=/cockroach/cockroach-certs --host=dev-platform-orchestrator-db-public --database=dpo'
-alias kpf='kubectl port-forward -n platform service/dev-platform-orchestrator-db-public 26257'
