@@ -69,3 +69,4 @@ alias gs='git status'
 
 alias k='kubectl'
 alias kc='kubectl exec -it -n platform dev-platform-orchestrator-db-client -- cockroach sql --certs-dir=/cockroach/cockroach-certs --host=dev-platform-orchestrator-db-public --database=dpo'
+alias kpf='kubectl port-forward -n platform service/dev-platform-orchestrator-db-public 26257'
