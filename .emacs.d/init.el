@@ -16,7 +16,7 @@
 (defun startup (_frame)
   (tab-bar-mode 1))
 
-(add-hook 'after-make-frame-functions #'startup)
+(add-hook 'after-make-frame-functions 'startup)
 
 ;; Minimize garbage collection during startup
 (setq gc-cons-threshold most-positive-fixnum)
@@ -133,6 +133,16 @@
 
 ;;-----------------------------------------------------------------------------
 ;;
+;; Folding
+;;
+;;-----------------------------------------------------------------------------
+
+;; hs-minor-mode can be enabled not in all major modes
+;; Use evil-toggle-fold to toggle folding
+(add-hook 'prog-mode-hook 'hs-minor-mode)
+
+;;-----------------------------------------------------------------------------
+;;
 ;; Registers (C-x r j)
 ;;
 ;; https://stackoverflow.com/a/12558095/3632318
@@ -221,8 +231,8 @@
 
 ;; https://emacs.stackexchange.com/a/62011
 (define-key evil-insert-state-map (kbd "C-g") 'evil-normal-state)
-(define-key evil-insert-state-map (kbd "RET") 'comment-indent-new-line)
-(define-key evil-insert-state-map (kbd "TAB") 'my/insert-tab-or-complete)
+(define-key evil-insert-state-map (kbd "<return>") 'comment-indent-new-line)
+(define-key evil-insert-state-map (kbd "<tab>") 'my/insert-tab-or-complete)
 
 ;; -------------------- normal state ------------------------------------------
 
@@ -269,13 +279,13 @@
 (define-key evil-normal-state-map (kbd "C-g") 'my/keyboard-quit)
 (define-key evil-normal-state-map (kbd "C-.") 'execute-extended-command)
 
-(define-key evil-normal-state-map (kbd "TAB") 'save-buffer)
+(define-key evil-normal-state-map (kbd "<tab>") 'save-buffer)
 (define-key evil-normal-state-map (kbd "C-o") 'evil-switch-to-windows-last-buffer)
 
 (define-key evil-normal-state-map (kbd "H") 'evil-first-non-blank)
 (define-key evil-normal-state-map (kbd "L") 'evil-last-non-blank)
 
-(define-key evil-normal-state-map (kbd "RET") 'my/insert-newline-below)
+(define-key evil-normal-state-map (kbd "<return>") 'my/insert-newline-below)
 (define-key evil-normal-state-map (kbd "S-<return>") 'my/insert-newline-above)
 (define-key evil-normal-state-map (kbd "SPC") 'my/insert-whitespace)
 (define-key evil-normal-state-map (kbd "o") 'my/evil-open-below)
@@ -301,6 +311,8 @@
 (define-key evil-normal-state-map (kbd "S-<left>") 'evil-window-decrease-width)
 (define-key evil-normal-state-map (kbd "S-<up>") 'evil-window-increase-height)
 (define-key evil-normal-state-map (kbd "S-<down>") 'evil-window-decrease-height)
+
+(define-key evil-normal-state-map (kbd "<backspace>") 'evil-toggle-fold)
 
 (define-key evil-normal-state-map (kbd "<leader>t") 'dired-jump)
 
@@ -419,7 +431,7 @@
 (setq ivy-height 15)
 (setq ivy-count-format "")
 (setq ivy-initial-inputs-alist nil)
-(setq ivy-on-del-error-function #'ignore)
+(setq ivy-on-del-error-function 'ignore)
 (setq ivy-more-chars-alist '((counsel-grep . 2)
                              (counsel-git-grep . 2)
                              (t . 3)))
@@ -450,7 +462,7 @@
 
 (rainbow-delimiters-mode 1)
 
-(add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
+(add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
 
 ;;-----------------------------------------------------------------------------
 ;; tab-bar (built-in)
@@ -469,7 +481,7 @@
    (concat " " (alist-get 'name tab) " ")
    'face (funcall tab-bar-tab-face-function tab)))
 
-(setq tab-bar-tab-name-format-function #'my/tab-bar-tab-name-format-function)
+(setq tab-bar-tab-name-format-function 'my/tab-bar-tab-name-format-function)
 
 (global-set-key (kbd "s-{") 'tab-bar-switch-to-prev-tab)
 (global-set-key (kbd "s-}") 'tab-bar-switch-to-next-tab)
