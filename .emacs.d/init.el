@@ -274,6 +274,7 @@
 (defun my/keyboard-quit ()
   (interactive)
   (evil-ex-nohighlight)
+  (iedit--quit)
   (keyboard-quit))
 
 (define-key evil-normal-state-map (kbd "C-g") 'my/keyboard-quit)
@@ -448,6 +449,18 @@
 (define-key evil-normal-state-map (kbd "<leader>/") 'counsel-git-grep)
 
 ;;-----------------------------------------------------------------------------
+;; iedit
+;;-----------------------------------------------------------------------------
+
+(require 'iedit)
+
+;; Use narrowing to apply editing to part of buffer:
+;; - "C-x n d" - narrow-to-defun
+;; - "C-x n n" - narrow-to-region
+;; - "C-x n w" - widen
+(define-key evil-normal-state-map (kbd "C-t") 'iedit-mode)
+
+;;-----------------------------------------------------------------------------
 ;; projectile
 ;;-----------------------------------------------------------------------------
 
@@ -501,7 +514,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(yaml-mode json-mode counsel avy dockerfile-mode magit evil-visualstar evil-nerd-commenter rainbow-delimiters evil-surround evil projectile cider)))
+   '(iedit yaml-mode json-mode counsel avy dockerfile-mode magit evil-visualstar evil-nerd-commenter rainbow-delimiters evil-surround evil projectile cider)))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -517,3 +530,5 @@
  '(swiper-match-face-2 ((t (:inherit 'isearch))))
  '(swiper-match-face-3 ((t (:inherit 'isearch))))
  '(swiper-match-face-4 ((t (:inherit 'isearch)))))
+
+(put 'narrow-to-region 'disabled nil)
