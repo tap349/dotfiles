@@ -184,6 +184,7 @@ brew 'hubble'
 brew 'ipcalc'
 brew 'k9s'
 brew 'kubectx'
+brew 'ncdu'
 
 cask 'drawio'
 cask 'graalvm/tap/graalvm-ce-java19'

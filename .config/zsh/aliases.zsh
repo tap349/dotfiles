@@ -28,6 +28,7 @@ alias e='open -a Emacs --args --chdir $PWD "$@"'
 alias ll='ls -alp'
 alias m='mvim'
 alias mcu='mc -u'
+alias ncdu='ncdu --color off'
 # http://reasoniamhere.com/2014/01/11/outrageously-useful-tips-to-master-your-z-shell/
 #
 # (#i) - case-insensitive globbing
