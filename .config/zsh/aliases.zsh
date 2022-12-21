@@ -44,7 +44,7 @@ alias cr='cockroach start-single-node --insecure --http-port=26256 --host=localh
 alias d='docker'
 alias k='kubectl'
 alias kcr='kubectl exec -it dev-platform-orchestrator-db-client -n platform -- cockroach sql --certs-dir=/cockroach/cockroach-certs --host=dev-platform-orchestrator-db-public --database=dpo'
-alias kl='kubectl logs -fl app.kubernetes.io/name=dev-platform-orchestrator -n platform'
+alias kl='kubectl logs -fl app.kubernetes.io/name=dev-platform-orchestrator -n platform | jq "{timestamp,level,message}"'
 alias kpf='kubectl port-forward service/dev-platform-orchestrator-db-public -n platform 26257'
 
 #-------------------------------------------------------------------------------
