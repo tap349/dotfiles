@@ -188,6 +188,7 @@ brew 'ncdu'
 
 cask 'drawio'
 cask 'graalvm/tap/graalvm-ce-java19'
+cask 'postman'
 cask 'protonvpn'
 
 mas 'WireGuard', id: 1451685025
