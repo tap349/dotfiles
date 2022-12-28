@@ -117,7 +117,6 @@
 ;; https://www.gnu.org/software/emacs/manual/html_node/efaq/Replacing-highlighted-text.html
 ;; Replace selected region with inserted text
 (delete-selection-mode 1)
-
 (electric-pair-mode 1)
 
 (defun my/electric-pair-inhibit-predicate (char)
@@ -149,7 +148,8 @@
 ;;
 ;;-----------------------------------------------------------------------------
 
-(set-register ?e (cons 'file user-init-file))
+;; Register ?e is overwritten by nREPL server (started by cider-jack-in)
+(set-register ?c (cons 'file user-init-file))
 (set-register ?z (cons 'file (substitute-in-file-name "${ZDOTDIR}/.zshenv")))
 
 ;;-----------------------------------------------------------------------------
@@ -190,6 +190,13 @@
 ;;
 ;; NOTE: evil package should come first so that other packages can define
 ;;       their keybindings in evil state keymaps and use leader key
+;;
+;; NOTE: For some reason <return> and RET keys are not the same:
+;;       keybinding for <return> key in evil-normal-state-map has effect in
+;;       Dired mode but keybinding for RET doesn't. Most likely RET key has
+;;       lower precedence and can be overriden by other modes while <return>
+;;       can't be => use RET and TAB where possible to allow other modes to
+;;       override them
 ;;-----------------------------------------------------------------------------
 
 ;; https://emacs.stackexchange.com/a/41701
@@ -231,8 +238,8 @@
 
 ;; https://emacs.stackexchange.com/a/62011
 (define-key evil-insert-state-map (kbd "C-g") 'evil-normal-state)
-(define-key evil-insert-state-map (kbd "<return>") 'comment-indent-new-line)
-(define-key evil-insert-state-map (kbd "<tab>") 'my/insert-tab-or-complete)
+(define-key evil-insert-state-map (kbd "RET") 'comment-indent-new-line)
+(define-key evil-insert-state-map (kbd "TAB") 'my/insert-tab-or-complete)
 
 ;; -------------------- normal state ------------------------------------------
 
@@ -280,14 +287,14 @@
 (define-key evil-normal-state-map (kbd "C-g") 'my/keyboard-quit)
 (define-key evil-normal-state-map (kbd "C-.") 'execute-extended-command)
 
-(define-key evil-normal-state-map (kbd "<tab>") 'save-buffer)
+(define-key evil-normal-state-map (kbd "TAB") 'save-buffer)
 (define-key evil-normal-state-map (kbd "C-o") 'evil-switch-to-windows-last-buffer)
 
 (define-key evil-normal-state-map (kbd "H") 'evil-first-non-blank)
 (define-key evil-normal-state-map (kbd "L") 'evil-last-non-blank)
 
-(define-key evil-normal-state-map (kbd "<return>") 'my/insert-newline-below)
-(define-key evil-normal-state-map (kbd "S-<return>") 'my/insert-newline-above)
+(define-key evil-normal-state-map (kbd "RET") 'my/insert-newline-below)
+(define-key evil-normal-state-map (kbd "S-RET") 'my/insert-newline-above)
 (define-key evil-normal-state-map (kbd "SPC") 'my/insert-whitespace)
 (define-key evil-normal-state-map (kbd "o") 'my/evil-open-below)
 
@@ -318,8 +325,7 @@
 (define-key evil-normal-state-map (kbd "<leader>t") 'dired-jump)
 
 ;; https://github.com/noctuid/evil-guide#binding-keys-to-keys-keyboard-macros
-(evil-define-key 'normal 'global
-	"gp" "`[v`]")
+(evil-define-key 'normal 'global "gp" "`[v`]")
 
 ;; -------------------- visual state ------------------------------------------
 
@@ -346,12 +352,18 @@
 ;; cider
 ;;-----------------------------------------------------------------------------
 
+(add-hook 'cider-test-report-mode-hook
+          (lambda ()
+            (setq show-trailing-whitespace nil)))
+
 (evil-define-key 'normal 'cider-repl-mode-map
   ;; Close *cider-error* windows with q
 	"q" 'cider-popup-buffer-quit-function)
 
 ;;-----------------------------------------------------------------------------
 ;; clojure-mode
+;;
+;; See also project level configuration in .dir-locals.el
 ;;-----------------------------------------------------------------------------
 
 ;; https://stackoverflow.com/a/4200242
@@ -364,12 +376,18 @@
 (put 'as-> 'clojure-indent-function 1)
 
 ;;-----------------------------------------------------------------------------
+;; company
+;;-----------------------------------------------------------------------------
+
+;; (add-hook 'after-init-hook 'global-company-mode)
+
+;;-----------------------------------------------------------------------------
 ;; dired-mode (built-in)
 ;;-----------------------------------------------------------------------------
 
 (add-hook 'dired-mode-hook
           (lambda ()
-            (define-key dired-mode-map (kbd "u") 'dired-up-directory)))
+            (define-key dired-mode-map (kbd "p") 'dired-up-directory)))
 
 ;;-----------------------------------------------------------------------------
 ;; dockerfile-mode
@@ -413,7 +431,12 @@
 ;; For counsel-fzf
 (setenv
  "FZF_DEFAULT_COMMAND"
- "fd --type f --strip-cwd-prefix -H -I --exclude .git --exclude target --exclude .cpcache")
+ "fd --type f --strip-cwd-prefix -H -I \
+    --exclude target \
+    --exclude .git \
+    --exclude .cpcache \
+    --exclude .clj-kondo \
+    --exclude .lsp")
 
 ;; See g:ackprg in vimrc
 ;; --no-line-number breaks syntax highlighting
@@ -461,7 +484,16 @@
 (define-key evil-normal-state-map (kbd "C-t") 'iedit-mode)
 
 ;;-----------------------------------------------------------------------------
+;; lsp-mode
+;;-----------------------------------------------------------------------------
+
+;; (setq lsp-clojure-custom-server-command '("bash" "-c" "~/soft/clojure-lsp"))
+;; (add-hook 'clojure-mode-hook 'lsp)
+
+;;-----------------------------------------------------------------------------
 ;; projectile
+;;
+;; It allows counsel-fzf to search from project root regardless of current file
 ;;-----------------------------------------------------------------------------
 
 (projectile-mode 1)
@@ -469,12 +501,21 @@
 (setq projectile-completion-system 'ivy)
 (define-key projectile-mode-map (kbd "s-p") 'projectile-command-map)
 
+(defun my/toggle-test-vsplit ()
+  (interactive)
+  (my/evil-window-vsplit)
+  (projectile-toggle-between-implementation-and-test))
+
+(define-key evil-normal-state-map (kbd "<leader>,")
+  'projectile-toggle-between-implementation-and-test)
+(define-key evil-normal-state-map (kbd "<leader>v")
+  'my/toggle-test-vsplit)
+
 ;;-----------------------------------------------------------------------------
 ;; rainbow-delimiters
 ;;-----------------------------------------------------------------------------
 
 (rainbow-delimiters-mode 1)
-
 (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
 
 ;;-----------------------------------------------------------------------------
@@ -483,6 +524,7 @@
 
 ;; http://www.gonsie.com/blorg/tab-bar.html
 (tab-bar-mode 1)
+
 (setq tab-bar-close-button-show nil)
 (setq tab-bar-format '(tab-bar-format-tabs tab-bar-separator))
 ;; ZWSP is used to prevent last tab from filling all available space
@@ -514,7 +556,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(iedit yaml-mode json-mode counsel avy dockerfile-mode magit evil-visualstar evil-nerd-commenter rainbow-delimiters evil-surround evil projectile cider)))
+   '(company lsp-mode iedit yaml-mode json-mode counsel avy dockerfile-mode magit evil-visualstar evil-nerd-commenter rainbow-delimiters evil-surround evil projectile cider)))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
