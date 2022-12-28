@@ -51,7 +51,7 @@ alias kpf='kubectl port-forward service/dev-platform-orchestrator-db-public -n p
 # Clojure
 #-------------------------------------------------------------------------------
 
-alias rc='clj -M:repl'
+alias rc='clj -M:dev:repl'
 
 #-------------------------------------------------------------------------------
 # Git
