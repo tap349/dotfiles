@@ -499,6 +499,8 @@
 (projectile-mode 1)
 
 (setq projectile-completion-system 'ivy)
+(setq projectile-create-missing-test-files t)
+
 (define-key projectile-mode-map (kbd "s-p") 'projectile-command-map)
 
 (defun my/toggle-test-vsplit ()
