@@ -558,7 +558,8 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(company lsp-mode iedit yaml-mode json-mode counsel avy dockerfile-mode magit evil-visualstar evil-nerd-commenter rainbow-delimiters evil-surround evil projectile cider)))
+   '(company lsp-mode iedit yaml-mode json-mode counsel avy dockerfile-mode magit evil-visualstar evil-nerd-commenter rainbow-delimiters evil-surround evil projectile cider))
+ '(safe-local-variable-values '((cider-clojure-cli-aliases . ":dev"))))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
