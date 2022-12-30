@@ -234,7 +234,8 @@
         ;; insert tab
         (tab-to-tab-stop)
       ;; else complete
-      (evil-complete-next))))
+      ;; (evil-complete-next)
+      (company-complete))))
 
 ;; https://emacs.stackexchange.com/a/62011
 (define-key evil-insert-state-map (kbd "C-g") 'evil-normal-state)
@@ -379,7 +380,21 @@
 ;; company
 ;;-----------------------------------------------------------------------------
 
-;; (add-hook 'after-init-hook 'global-company-mode)
+(add-hook 'after-init-hook 'global-company-mode)
+
+;; http://company-mode.github.io/manual/Customization.html#Customization
+;; Disable automatic completion
+(setq company-idle-delay nil)
+(setq company-selection-wrap-around nil)
+(setq company-require-match nil)
+
+;; http://company-mode.github.io/manual/Frontends.html#Frontends
+(setq company-tooltip-align-annotations t)
+(setq company-tooltip-minimum 4)
+(setq company-tooltip-limit 10)
+(setq company-tooltip-width-grow-only t)
+(setq company-tooltip-margin 0)
+(setq company-format-margin-function 'company-vscode-light-icons-margin)
 
 ;;-----------------------------------------------------------------------------
 ;; dired-mode (built-in)
@@ -472,6 +487,19 @@
 (define-key evil-normal-state-map (kbd "<leader>/") 'counsel-git-grep)
 
 ;;-----------------------------------------------------------------------------
+;; delight
+;;-----------------------------------------------------------------------------
+
+(delight '((cider-mode " cider" cider)
+           (company-mode nil company)
+           (eldoc-mode nil t)
+           (flycheck-mode nil flycheck)
+           (hs-minor-mode nil hideshow)
+           (ivy-mode nil ivy)
+           (lsp-mode nil lsp-mode)
+           (projectile-mode nil projectile)))
+
+;;-----------------------------------------------------------------------------
 ;; iedit
 ;;-----------------------------------------------------------------------------
 
@@ -487,8 +515,28 @@
 ;; lsp-mode
 ;;-----------------------------------------------------------------------------
 
-;; (setq lsp-clojure-custom-server-command '("bash" "-c" "~/soft/clojure-lsp"))
-;; (add-hook 'clojure-mode-hook 'lsp)
+(add-hook 'clojure-mode-hook 'lsp)
+
+(setq lsp-clojure-custom-server-command '("bash" "-c" "~/soft/clojure-lsp"))
+
+;; https://github.com/emacs-lsp/lsp-mode/issues/2600
+;; clojure-lsp returns 'lsp-request: Internal error' when trying
+;; to call `evil-indent` on the last line of namespace
+;; => Use formatting provided by Emacs by default
+(setq lsp-enable-indentation nil)
+
+;; https://emacs-lsp.github.io/lsp-mode/tutorials/how-to-turn-off/
+;; https://github.com/syl20bnr/spacemacs/issues/14292
+(setq lsp-completion-show-detail t)
+(setq lsp-completion-show-kind t)
+(setq lsp-eldoc-enable-hover nil)
+(setq lsp-enable-symbol-highlighting nil)
+(setq lsp-headerline-breadcrumb-enable nil)
+(setq lsp-lens-enable nil)
+(setq lsp-modeline-code-actions-enable nil)
+(setq lsp-modeline-diagnostics-enable nil)
+(setq lsp-signature-auto-activate nil)
+(setq lsp-signature-render-documentation nil)
 
 ;;-----------------------------------------------------------------------------
 ;; projectile
@@ -517,7 +565,6 @@
 ;; rainbow-delimiters
 ;;-----------------------------------------------------------------------------
 
-(rainbow-delimiters-mode 1)
 (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
 
 ;;-----------------------------------------------------------------------------
@@ -558,7 +605,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(company lsp-mode iedit yaml-mode json-mode counsel avy dockerfile-mode magit evil-visualstar evil-nerd-commenter rainbow-delimiters evil-surround evil projectile cider))
+   '(delight flycheck company lsp-mode iedit yaml-mode json-mode counsel avy dockerfile-mode magit evil-visualstar evil-nerd-commenter rainbow-delimiters evil-surround evil projectile cider))
  '(safe-local-variable-values '((cider-clojure-cli-aliases . ":dev"))))
 
 (custom-set-faces
