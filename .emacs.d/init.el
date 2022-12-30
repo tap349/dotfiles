@@ -358,7 +358,7 @@
             (setq show-trailing-whitespace nil)))
 
 (evil-define-key 'normal 'cider-repl-mode-map
-  ;; Close *cider-error* windows with q
+  ;; Close *cider-error* window with q
 	"q" 'cider-popup-buffer-quit-function)
 
 ;;-----------------------------------------------------------------------------
@@ -391,9 +391,9 @@
 ;; http://company-mode.github.io/manual/Frontends.html#Frontends
 (setq company-tooltip-align-annotations t)
 (setq company-tooltip-minimum 4)
-(setq company-tooltip-limit 10)
+(setq company-tooltip-limit 8)
 (setq company-tooltip-width-grow-only t)
-(setq company-tooltip-margin 0)
+(setq company-tooltip-margin 1)
 (setq company-format-margin-function 'company-vscode-light-icons-margin)
 
 ;;-----------------------------------------------------------------------------
@@ -496,7 +496,7 @@
            (flycheck-mode nil flycheck)
            (hs-minor-mode nil hideshow)
            (ivy-mode nil ivy)
-           (lsp-mode nil lsp-mode)
+           (lsp-mode " LSP" lsp-mode)
            (projectile-mode nil projectile)))
 
 ;;-----------------------------------------------------------------------------
@@ -513,6 +513,7 @@
 
 ;;-----------------------------------------------------------------------------
 ;; lsp-mode
+;; https://emacs-lsp.github.io/lsp-mode/tutorials/clojure-guide
 ;;-----------------------------------------------------------------------------
 
 (add-hook 'clojure-mode-hook 'lsp)
@@ -537,6 +538,14 @@
 (setq lsp-modeline-diagnostics-enable nil)
 (setq lsp-signature-auto-activate nil)
 (setq lsp-signature-render-documentation nil)
+
+(define-key evil-normal-state-map (kbd "C-]") 'lsp-find-definition)
+(define-key evil-normal-state-map (kbd "s-l d") 'lsp-find-definition)
+(define-key evil-normal-state-map (kbd "s-l r") 'lsp-find-references)
+
+(evil-define-key 'normal 'lsp-mode-map
+  ;; Close *xref* window with q
+  "q" 'evil-window-delete)
 
 ;;-----------------------------------------------------------------------------
 ;; projectile
