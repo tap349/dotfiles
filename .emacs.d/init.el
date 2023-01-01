@@ -585,7 +585,6 @@
 ;; - "s-l r o" - lsp-organize-imports
 ;; - "s-l r r" - lsp-rename
 (define-key evil-normal-state-map (kbd "C-]") 'lsp-find-definition)
-(define-key evil-normal-state-map (kbd "s-l c") 'lsp-clojure-clean-ns)
 
 (evil-define-key 'normal 'lsp-mode-map
   ;; Close *xref* window with q
