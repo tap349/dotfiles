@@ -98,15 +98,10 @@
 (load-theme 'aircon t)
 
 ;; https://emacs.stackexchange.com/a/69091
-(set-face-foreground 'vertical-border "#D8D8DE")
-
-;; https://www.emacswiki.org/emacs/SetFonts
 (set-face-attribute 'default nil :font "Input-15")
-;; (set-face-attribute 'region nil :background "#BFE2EF")
-;; https://stackoverflow.com/a/22951243/3632318
-;; (set-face-attribute 'show-paren-match nil :background "#FBDE41")
-;; (set-face-attribute 'show-paren-match nil :background "#CDCDFA")
-;; (set-face-attribute 'show-paren-match nil :background "#D8B188")
+(set-face-attribute 'default nil :font "Input-15")
+(set-face-foreground 'fill-column-indicator "#DEE4EF")
+(set-face-foreground 'vertical-border "#D8D8DE")
 
 ;;-----------------------------------------------------------------------------
 ;;
@@ -351,9 +346,18 @@
 
 ;;-----------------------------------------------------------------------------
 ;; cider
+;;
+;; - "C-c C-x j j" - cider-jack-in
+;; - "C-c C-d C-c" - cider-clojuredocs
+;; - "C-c C-d C-w" - cider-clojuredocs-web
 ;;-----------------------------------------------------------------------------
 
 (add-hook 'cider-test-report-mode-hook
+          (lambda ()
+            (setq show-trailing-whitespace nil)))
+
+;; For *cider-clojuredocs* buffer
+(add-hook 'cider-popup-buffer-mode-hook
           (lambda ()
             (setq show-trailing-whitespace nil)))
 
@@ -532,6 +536,7 @@
 ;; https://github.com/syl20bnr/spacemacs/issues/14292
 (setq lsp-completion-show-detail t)
 (setq lsp-completion-show-kind t)
+;; Use ElDoc provided by CIDER
 (setq lsp-eldoc-enable-hover nil)
 (setq lsp-enable-symbol-highlighting nil)
 (setq lsp-headerline-breadcrumb-enable nil)
@@ -570,12 +575,17 @@
 (define-key evil-normal-state-map (kbd "C-n") 'lsp-ui-doc-toggle)
 
 ;; https://github.com/emacs-lsp/lsp-ui/issues/369
-;; Use list-faces-display to find specific face
 (with-eval-after-load 'lsp-ui-doc
   (set-face-background 'lsp-ui-doc-background "#FEF8EF")
   (set-face-background 'lsp-ui-doc-header "#C8DFEA"))
 
-(add-hook 'markdown-mode-hook 'visual-line-mode)
+;;-----------------------------------------------------------------------------
+;; markdown-mode
+;;-----------------------------------------------------------------------------
+
+(with-eval-after-load 'markdown-mode
+  (set-face-attribute 'markdown-code-face nil :font "Input-15")
+  (set-face-attribute 'markdown-inline-code-face nil :font "Input-15"))
 
 ;;-----------------------------------------------------------------------------
 ;; projectile
@@ -643,16 +653,17 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(company-require-match nil)
  '(package-selected-packages
    '(auto-package-update lsp-ui delight flycheck company lsp-mode iedit yaml-mode json-mode counsel avy dockerfile-mode magit evil-visualstar evil-nerd-commenter rainbow-delimiters evil-surround evil projectile cider))
  '(safe-local-variable-values '((cider-clojure-cli-aliases . ":dev"))))
 
+;; Use list-faces-display to find specific face
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(fill-column-indicator ((t (:foreground "#DEE4EF"))))
  '(ivy-minibuffer-match-face-1 ((t nil)))
  '(ivy-minibuffer-match-face-2 ((t (:inherit 'lazy-highlight))))
  '(ivy-minibuffer-match-face-3 ((t (:inherit 'lazy-highlight))))
