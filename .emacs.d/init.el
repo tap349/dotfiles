@@ -1,5 +1,48 @@
 ;;-----------------------------------------------------------------------------
 ;;
+;; straight.el
+;;
+;;-----------------------------------------------------------------------------
+
+;; https://github.com/radian-software/straight.el#getting-started
+(defvar bootstrap-version)
+(let ((bootstrap-file (expand-file-name
+                       "straight/repos/straight.el/bootstrap.el"
+                       user-emacs-directory))
+      (bootstrap-version 6))
+  (unless (file-exists-p bootstrap-file)
+    (with-current-buffer
+        (url-retrieve-synchronously
+         "https://raw.githubusercontent.com/radian-software/straight.el/develop/install.el"
+         'silent
+         'inhibit-cookies)
+      (goto-char (point-max))
+      (eval-print-last-sexp)))
+  (load bootstrap-file nil 'nomessage))
+
+(straight-use-package 'auto-package-update)
+(straight-use-package 'avy)
+(straight-use-package 'cider)
+(straight-use-package 'company)
+(straight-use-package 'counsel)
+(straight-use-package 'delight)
+(straight-use-package 'dockerfile-mode)
+(straight-use-package 'evil)
+(straight-use-package 'evil-nerd-commenter)
+(straight-use-package 'evil-surround)
+(straight-use-package 'evil-visualstar)
+(straight-use-package 'flycheck)
+(straight-use-package 'iedit)
+(straight-use-package 'json-mode)
+(straight-use-package 'lsp-mode)
+(straight-use-package 'lsp-ui)
+(straight-use-package 'magit)
+(straight-use-package 'projectile)
+(straight-use-package 'rainbow-delimiters)
+(straight-use-package 'yaml-mode)
+
+;;-----------------------------------------------------------------------------
+;;
 ;; Startup
 ;;
 ;; https://www.emacswiki.org/emacs/OptimizingEmacsStartup
@@ -168,17 +211,6 @@
 (global-set-key (kbd "s-c") 'clipboard-kill-ring-save)
 (global-set-key (kbd "s-x") 'clipboard-kill-region)
 (global-set-key (kbd "s-v") 'clipboard-yank)
-
-;;-----------------------------------------------------------------------------
-;;
-;; Packages
-;;
-;;-----------------------------------------------------------------------------
-
-;; https://melpa.org/#/getting-started
-(require 'package)
-(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
-(package-initialize)
 
 ;;-----------------------------------------------------------------------------
 ;; evil
@@ -506,8 +538,6 @@
 ;; iedit
 ;;-----------------------------------------------------------------------------
 
-(require 'iedit)
-
 ;; Use narrowing to apply editing to part of buffer:
 ;; - "C-x n d" - narrow-to-defun
 ;; - "C-x n n" - narrow-to-region
@@ -657,7 +687,7 @@
 
 ;;-----------------------------------------------------------------------------
 ;;
-;; Managed by package.el and customize-group
+;; Managed by customize-group
 ;;
 ;;-----------------------------------------------------------------------------
 
@@ -666,9 +696,6 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(company-require-match nil)
- '(package-selected-packages
-   '(auto-package-update lsp-ui delight flycheck company lsp-mode iedit yaml-mode json-mode counsel avy dockerfile-mode magit evil-visualstar evil-nerd-commenter rainbow-delimiters evil-surround evil projectile cider))
  '(safe-local-variable-values '((cider-clojure-cli-aliases . ":dev"))))
 
 ;; Use list-faces-display to find specific face
