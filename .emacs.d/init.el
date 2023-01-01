@@ -490,7 +490,8 @@
 ;; delight
 ;;-----------------------------------------------------------------------------
 
-(delight '((cider-mode " cider" cider)
+(delight '((auto-revert-mode nil autorevert)
+           (cider-mode " CIDER" cider)
            (company-mode nil company)
            (eldoc-mode nil t)
            (flycheck-mode nil flycheck)
@@ -513,6 +514,7 @@
 
 ;;-----------------------------------------------------------------------------
 ;; lsp-mode
+;;
 ;; https://emacs-lsp.github.io/lsp-mode/tutorials/clojure-guide
 ;;-----------------------------------------------------------------------------
 
@@ -546,6 +548,34 @@
 (evil-define-key 'normal 'lsp-mode-map
   ;; Close *xref* window with q
   "q" 'evil-window-delete)
+
+;;-----------------------------------------------------------------------------
+;; lsp-ui
+;;-----------------------------------------------------------------------------
+
+(setq lsp-ui-sideline-enable nil)
+(setq lsp-ui-peek-enable nil)
+(setq lsp-ui-menu-enable nil)
+
+(setq lsp-ui-doc-enable t)
+(setq lsp-ui-doc-position 'at-point)
+(setq lsp-ui-doc-show-with-cursor nil)
+(setq lsp-ui-doc-show-with-mouse nil)
+(setq lsp-ui-doc-header t)
+(setq lsp-ui-doc-include-signature t)
+(setq lsp-ui-doc-max-width 80)
+(setq lsp-ui-doc-max-height 16)
+(setq lsp-ui-doc-enhanced-markdown nil)
+
+(define-key evil-normal-state-map (kbd "C-n") 'lsp-ui-doc-toggle)
+
+;; https://github.com/emacs-lsp/lsp-ui/issues/369
+;; Use list-faces-display to find specific face
+(with-eval-after-load 'lsp-ui-doc
+  (set-face-background 'lsp-ui-doc-background "#FEF8EF")
+  (set-face-background 'lsp-ui-doc-header "#C8DFEA"))
+
+(add-hook 'markdown-mode-hook 'visual-line-mode)
 
 ;;-----------------------------------------------------------------------------
 ;; projectile
@@ -614,7 +644,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(delight flycheck company lsp-mode iedit yaml-mode json-mode counsel avy dockerfile-mode magit evil-visualstar evil-nerd-commenter rainbow-delimiters evil-surround evil projectile cider))
+   '(auto-package-update lsp-ui delight flycheck company lsp-mode iedit yaml-mode json-mode counsel avy dockerfile-mode magit evil-visualstar evil-nerd-commenter rainbow-delimiters evil-surround evil projectile cider))
  '(safe-local-variable-values '((cider-clojure-cli-aliases . ":dev"))))
 
 (custom-set-faces
