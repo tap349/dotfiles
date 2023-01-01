@@ -378,8 +378,6 @@
 (put 'f/when-failed 'clojure-indent-function 1)
 (put 'f/when-let-failed? 'clojure-indent-function 1)
 
-(put 'as-> 'clojure-indent-function 1)
-
 ;;-----------------------------------------------------------------------------
 ;; company
 ;;-----------------------------------------------------------------------------
@@ -527,8 +525,9 @@
 (setq lsp-clojure-custom-server-command '("bash" "-c" "~/soft/clojure-lsp"))
 
 ;; https://github.com/emacs-lsp/lsp-mode/issues/2600
+;;
 ;; clojure-lsp returns 'lsp-request: Internal error' when trying
-;; to call `evil-indent` on the last line of namespace
+;; to call `evil-indent` on the last line of namespace file
 ;; => Use formatting provided by Emacs by default
 (setq lsp-enable-indentation nil)
 
@@ -553,6 +552,12 @@
 (evil-define-key 'normal 'lsp-mode-map
   ;; Close *xref* window with q
   "q" 'evil-window-delete)
+
+(defun lsp-clojure-add-save-hooks ()
+  ;; Calls cljfmt on current buffer
+  (add-hook 'before-save-hook 'lsp-format-buffer))
+
+(add-hook 'clojure-mode-hook 'lsp-clojure-add-save-hooks)
 
 ;;-----------------------------------------------------------------------------
 ;; lsp-ui
