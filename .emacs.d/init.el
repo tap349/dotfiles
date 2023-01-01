@@ -518,6 +518,7 @@
 ;; lsp-mode
 ;;
 ;; https://emacs-lsp.github.io/lsp-mode/tutorials/clojure-guide
+;; https://clojure-lsp.io/settings
 ;;-----------------------------------------------------------------------------
 
 (add-hook 'clojure-mode-hook 'lsp)
@@ -545,9 +546,16 @@
 (setq lsp-signature-auto-activate nil)
 (setq lsp-signature-render-documentation nil)
 
+;; https://emacs-lsp.github.io/lsp-mode/page/keybindings/
+;; lsp-keymap-prefix is "s-l" by default
+;;
+;; - "s-l = =" - lsp-format-buffer
+;; - "s-l g g" - lsp-find-definition
+;; - "s-l g r" - lsp-find-references
+;; - "s-l r o" - lsp-organize-imports
+;; - "s-l r r" - lsp-rename
 (define-key evil-normal-state-map (kbd "C-]") 'lsp-find-definition)
-(define-key evil-normal-state-map (kbd "s-l d") 'lsp-find-definition)
-(define-key evil-normal-state-map (kbd "s-l r") 'lsp-find-references)
+(define-key evil-normal-state-map (kbd "s-l c") 'lsp-clojure-clean-ns)
 
 (evil-define-key 'normal 'lsp-mode-map
   ;; Close *xref* window with q
