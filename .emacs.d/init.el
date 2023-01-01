@@ -431,7 +431,7 @@
 (setq company-format-margin-function 'company-vscode-light-icons-margin)
 
 ;;-----------------------------------------------------------------------------
-;; dired-mode (built-in)
+;; dired-mode
 ;;-----------------------------------------------------------------------------
 
 (add-hook 'dired-mode-hook
@@ -659,7 +659,7 @@
 (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
 
 ;;-----------------------------------------------------------------------------
-;; tab-bar (built-in)
+;; tab-bar
 ;;-----------------------------------------------------------------------------
 
 ;; http://www.gonsie.com/blorg/tab-bar.html
