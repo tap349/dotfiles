@@ -218,12 +218,12 @@
 ;; NOTE: evil package should come first so that other packages can define
 ;;       their keybindings in evil state keymaps and use leader key
 ;;
-;; NOTE: For some reason <return> and RET keys are not the same:
-;;       keybinding for <return> key in evil-normal-state-map has effect in
-;;       Dired mode but keybinding for RET doesn't. Most likely RET key has
-;;       lower precedence and can be overriden by other modes while <return>
-;;       can't be => use RET and TAB where possible to allow other modes to
-;;       override them
+;; For some reason <return> and RET keys are not the same: keybinding for
+;; <return> key in evil-normal-state-map (insert newline below) is also
+;; active in dired-mode but keybinding for RET is not.
+;; Most likely RET key has lower precedence and can be overriden by other
+;; modes while <return> can't be
+;; => use RET and TAB where possible to allow other modes to override them
 ;;-----------------------------------------------------------------------------
 
 ;; https://emacs.stackexchange.com/a/41701
@@ -419,7 +419,7 @@
 ;; http://company-mode.github.io/manual/Customization.html#Customization
 ;; Disable automatic completion
 (setq company-idle-delay nil)
-(setq company-selection-wrap-around nil)
+(setq company-selection-wrap-around t)
 (setq company-require-match nil)
 
 ;; http://company-mode.github.io/manual/Frontends.html#Frontends
@@ -429,6 +429,10 @@
 (setq company-tooltip-width-grow-only t)
 (setq company-tooltip-margin 1)
 (setq company-format-margin-function 'company-vscode-light-icons-margin)
+
+(with-eval-after-load 'company
+  ;; Use <tab> instead of TAB to override other keybindings
+  (define-key company-active-map (kbd "<tab>") 'company-complete-common))
 
 ;;-----------------------------------------------------------------------------
 ;; dired-mode
@@ -590,11 +594,11 @@
   ;; Close *xref* window with q
   "q" 'evil-window-delete)
 
-(defun lsp-clojure-add-save-hooks ()
+(defun my/lsp-clojure-add-save-hooks ()
   ;; Calls cljfmt on current buffer
   (add-hook 'before-save-hook 'lsp-format-buffer))
 
-(add-hook 'clojure-mode-hook 'lsp-clojure-add-save-hooks)
+(add-hook 'clojure-mode-hook 'my/lsp-clojure-add-save-hooks)
 
 ;;-----------------------------------------------------------------------------
 ;; lsp-ui
