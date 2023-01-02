@@ -26,6 +26,7 @@
 (straight-use-package 'company)
 (straight-use-package 'counsel)
 (straight-use-package 'delight)
+(straight-use-package 'dired-subtree)
 (straight-use-package 'dockerfile-mode)
 (straight-use-package 'evil)
 (straight-use-package 'evil-nerd-commenter)
@@ -34,6 +35,7 @@
 (straight-use-package 'flycheck)
 (straight-use-package 'iedit)
 (straight-use-package 'json-mode)
+(straight-use-package 'kotlin-mode)
 (straight-use-package 'lsp-mode)
 (straight-use-package 'lsp-ui)
 (straight-use-package 'magit)
@@ -322,7 +324,8 @@
 (define-key evil-normal-state-map (kbd "L") 'evil-last-non-blank)
 
 (define-key evil-normal-state-map (kbd "RET") 'my/insert-newline-below)
-(define-key evil-normal-state-map (kbd "S-RET") 'my/insert-newline-above)
+;; S-RET translates to just RET
+(define-key evil-normal-state-map (kbd "S-<return>") 'my/insert-newline-above)
 (define-key evil-normal-state-map (kbd "SPC") 'my/insert-whitespace)
 (define-key evil-normal-state-map (kbd "o") 'my/evil-open-below)
 
@@ -437,46 +440,6 @@
   (define-key company-active-map (kbd "<tab>") 'company-complete-common))
 
 ;;-----------------------------------------------------------------------------
-;; dired-mode
-;;-----------------------------------------------------------------------------
-
-(add-hook 'dired-mode-hook
-          (lambda ()
-            (define-key dired-mode-map (kbd "p") 'dired-up-directory)))
-
-;;-----------------------------------------------------------------------------
-;; dockerfile-mode
-;;-----------------------------------------------------------------------------
-
-(add-to-list 'auto-mode-alist '("Dockerfile" . dockerfile-mode))
-
-;;-----------------------------------------------------------------------------
-;; evil-nerd-commenter
-;;-----------------------------------------------------------------------------
-
-(global-set-key (kbd "<leader>SPC") 'evilnc-comment-or-uncomment-lines)
-
-;;-----------------------------------------------------------------------------
-;; evil-surround
-;;-----------------------------------------------------------------------------
-
-(global-evil-surround-mode 1)
-
-;;-----------------------------------------------------------------------------
-;; evil-visualstar
-;;-----------------------------------------------------------------------------
-
-(global-evil-visualstar-mode 1)
-
-(defun my/evil-visualstar-asterisk ()
-  (interactive)
-  (when (region-active-p)
-    (evil-visualstar/begin-search (region-beginning) (region-end) t)
-    (evil-ex-search-previous)))
-
-(define-key evil-normal-state-map (kbd "z*") 'my/evil-visualstar-asterisk)
-
-;;-----------------------------------------------------------------------------
 ;; counsel (ivy / counsel / swiper)
 ;;-----------------------------------------------------------------------------
 
@@ -491,7 +454,8 @@
     --exclude .git \
     --exclude .cpcache \
     --exclude .clj-kondo \
-    --exclude .lsp")
+    --exclude .lsp \
+    --exclude .gradle")
 
 ;; See g:ackprg in vimrc
 ;; --no-line-number breaks syntax highlighting
@@ -541,6 +505,64 @@
            (projectile-mode nil projectile)))
 
 ;;-----------------------------------------------------------------------------
+;; dired
+;;
+;; - "(" - dired-hide-details-mode
+;;-----------------------------------------------------------------------------
+
+(with-eval-after-load 'dired
+  (define-key dired-mode-map (kbd "p") 'dired-up-directory))
+
+;;-----------------------------------------------------------------------------
+;; dired-subtree
+;;-----------------------------------------------------------------------------
+
+(setq dired-subtree-use-backgrounds t)
+
+(with-eval-after-load 'dired-subtree
+  (set-face-background 'dired-subtree-depth-1-face "#F4F4F4")
+  (set-face-background 'dired-subtree-depth-2-face "#E4E4E4")
+  (set-face-background 'dired-subtree-depth-3-face "#D0D0D0")
+  (set-face-background 'dired-subtree-depth-4-face "#D0D0D0")
+  (set-face-background 'dired-subtree-depth-5-face "#D0D0D0")
+  (set-face-background 'dired-subtree-depth-6-face "#D0D0D0"))
+
+(with-eval-after-load 'dired
+  (define-key dired-mode-map (kbd "TAB") 'dired-subtree-toggle))
+
+;;-----------------------------------------------------------------------------
+;; dockerfile-mode
+;;-----------------------------------------------------------------------------
+
+(add-to-list 'auto-mode-alist '("Dockerfile" . dockerfile-mode))
+
+;;-----------------------------------------------------------------------------
+;; evil-nerd-commenter
+;;-----------------------------------------------------------------------------
+
+(global-set-key (kbd "<leader>SPC") 'evilnc-comment-or-uncomment-lines)
+
+;;-----------------------------------------------------------------------------
+;; evil-surround
+;;-----------------------------------------------------------------------------
+
+(global-evil-surround-mode 1)
+
+;;-----------------------------------------------------------------------------
+;; evil-visualstar
+;;-----------------------------------------------------------------------------
+
+(global-evil-visualstar-mode 1)
+
+(defun my/evil-visualstar-asterisk ()
+  (interactive)
+  (when (region-active-p)
+    (evil-visualstar/begin-search (region-beginning) (region-end) t)
+    (evil-ex-search-previous)))
+
+(define-key evil-normal-state-map (kbd "z*") 'my/evil-visualstar-asterisk)
+
+;;-----------------------------------------------------------------------------
 ;; iedit
 ;;-----------------------------------------------------------------------------
 
@@ -551,15 +573,24 @@
 (define-key evil-normal-state-map (kbd "C-t") 'iedit-mode)
 
 ;;-----------------------------------------------------------------------------
+;; kotlin-mode
+;;-----------------------------------------------------------------------------
+
+;; Unset default keybindings - REPL integration provided by this package
+;; is not very useful
+(with-eval-after-load 'kotlin-mode
+  (define-key kotlin-mode-map (kbd "C-c C-z") nil)
+  (define-key kotlin-mode-map (kbd "C-c C-n") nil)
+  (define-key kotlin-mode-map (kbd "C-c C-r") nil)
+  (define-key kotlin-mode-map (kbd "C-c C-c") nil)
+  (define-key kotlin-mode-map (kbd "C-c C-b") nil))
+
+;;-----------------------------------------------------------------------------
 ;; lsp-mode
 ;;
 ;; https://emacs-lsp.github.io/lsp-mode/tutorials/clojure-guide
 ;; https://clojure-lsp.io/settings
 ;;-----------------------------------------------------------------------------
-
-(add-hook 'clojure-mode-hook 'lsp)
-
-(setq lsp-clojure-custom-server-command '("bash" "-c" "~/soft/clojure-lsp"))
 
 ;; https://github.com/emacs-lsp/lsp-mode/issues/2600
 ;;
@@ -588,19 +619,36 @@
 ;; - "s-l = =" - lsp-format-buffer
 ;; - "s-l g g" - lsp-find-definition
 ;; - "s-l g r" - lsp-find-references
+;; - "s-l g i" - lsp-find-implementation
+;; - "s-l g t" - lsp-find-type-definition
+;; - "s-l g d" - lsp-find-declaration
 ;; - "s-l r o" - lsp-organize-imports
 ;; - "s-l r r" - lsp-rename
-(define-key evil-normal-state-map (kbd "C-]") 'lsp-find-definition)
+;; - "s-l a a" - lsp-execute-code-action
+(with-eval-after-load 'lsp-mode
+  (define-key lsp-mode-map (kbd "C-]") 'lsp-find-definition))
 
-(evil-define-key 'normal 'lsp-mode-map
-  ;; Close *xref* window with q
-  "q" 'evil-window-delete)
+;; -------------------- Clojure -----------------------------------------------
+
+(add-hook 'clojure-mode-hook 'lsp)
+
+(setq lsp-clojure-custom-server-command '("bash" "-c" "~/soft/clojure-lsp"))
 
 (defun my/lsp-clojure-add-save-hooks ()
   ;; Calls cljfmt on current buffer
   (add-hook 'before-save-hook 'lsp-format-buffer))
 
 (add-hook 'clojure-mode-hook 'my/lsp-clojure-add-save-hooks)
+
+;; -------------------- Kotlin ------------------------------------------------
+
+(add-hook 'kotlin-mode-hook 'lsp)
+
+(setq lsp-clients-kotlin-server-executable
+      "~/soft/kotlin-lsp/bin/kotlin-language-server")
+
+(setq lsp-kotlin-completion-snippets-enabled nil)
+(setq lsp-kotlin-debug-adapter-enabled nil)
 
 ;;-----------------------------------------------------------------------------
 ;; lsp-ui
