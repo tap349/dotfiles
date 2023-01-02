@@ -183,6 +183,7 @@ brew 'helm'
 brew 'hubble'
 brew 'ipcalc'
 brew 'k9s'
+brew 'kotlin'
 brew 'kubectx'
 brew 'ncdu'
 
