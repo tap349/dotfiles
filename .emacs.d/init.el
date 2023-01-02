@@ -384,6 +384,8 @@
 ;; - "C-c C-d C-w" - cider-clojuredocs-web
 ;;-----------------------------------------------------------------------------
 
+(setq eldoc-echo-area-use-multiline-p nil)
+
 (add-hook 'cider-test-report-mode-hook
           (lambda ()
             (setq show-trailing-whitespace nil)))
@@ -622,7 +624,7 @@
 
 ;; https://github.com/emacs-lsp/lsp-ui/issues/369
 (with-eval-after-load 'lsp-ui-doc
-  (set-face-background 'lsp-ui-doc-background "#FEF8EF")
+  (set-face-background 'lsp-ui-doc-background "#FAF4EB")
   (set-face-background 'lsp-ui-doc-header "#C8DFEA"))
 
 ;;-----------------------------------------------------------------------------
