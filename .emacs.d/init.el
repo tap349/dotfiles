@@ -29,16 +29,13 @@
 (straight-use-package 'dired-subtree)
 (straight-use-package 'dockerfile-mode)
 (straight-use-package 'evil)
-(straight-use-package 'evil-nerd-commenter)
 (straight-use-package 'evil-surround)
 (straight-use-package 'evil-visualstar)
-(straight-use-package 'flycheck)
-(straight-use-package 'iedit)
+(straight-use-package 'jarchive)
 (straight-use-package 'json-mode)
 (straight-use-package 'kotlin-mode)
-(straight-use-package 'lsp-mode)
-(straight-use-package 'lsp-ui)
 (straight-use-package 'magit)
+(straight-use-package 'markdown-mode)
 (straight-use-package 'projectile)
 (straight-use-package 'rainbow-delimiters)
 (straight-use-package 'yaml-mode)
@@ -52,6 +49,7 @@
 ;;-----------------------------------------------------------------------------
 
 (setq inhibit-startup-message t)
+(setq warning-minimum-level :emergency)
 
 ;; https://emacsredux.com/blog/2020/12/04/maximize-the-emacs-frame-on-startup
 ;; (add-hook 'window-setup-hook 'toggle-frame-maximized t)
@@ -107,6 +105,7 @@
 (setq scroll-margin 2)
 
 (setq mouse-wheel-progressive-speed nil)
+(setq pixel-scroll-precision-mode 1)
 
 ;;-----------------------------------------------------------------------------
 ;;
@@ -152,6 +151,10 @@
 ;;
 ;; Editing
 ;;
+;; Use narrowing to edit part of buffer:
+;; - "C-x n d" - narrow-to-defun
+;; - "C-x n n" - narrow-to-region
+;; - "C-x n w" - widen
 ;;-----------------------------------------------------------------------------
 
 ;; https://www.gnu.org/software/emacs/manual/html_node/efaq/Replacing-highlighted-text.html
@@ -169,6 +172,10 @@
 ;; Use whitespaces instead of tabs
 (setq-default indent-tabs-mode nil)
 (setq-default tab-width 2)
+
+;; Style for comment-region command - don't indent comment characters
+;; Used by my/toggle-comment
+(setq comment-style 'plain)
 
 ;;-----------------------------------------------------------------------------
 ;;
@@ -263,7 +270,6 @@
         ;; insert tab
         (tab-to-tab-stop)
       ;; else complete
-      ;; (evil-complete-next)
       (company-complete))))
 
 ;; https://emacs.stackexchange.com/a/62011
@@ -311,8 +317,16 @@
 (defun my/keyboard-quit ()
   (interactive)
   (evil-ex-nohighlight)
-  (iedit--quit)
   (keyboard-quit))
+
+;; https://stackoverflow.com/a/9697222/3632318
+(defun my/toggle-comment ()
+  (interactive)
+  (let (beg end)
+    (if (region-active-p)
+        (setq beg (region-beginning) end (region-end))
+      (setq beg (line-beginning-position) end (line-end-position)))
+    (comment-or-uncomment-region beg end)))
 
 (define-key evil-normal-state-map (kbd "C-g") 'my/keyboard-quit)
 (define-key evil-normal-state-map (kbd "C-.") 'execute-extended-command)
@@ -352,6 +366,7 @@
 (define-key evil-normal-state-map (kbd "S-<down>") 'evil-window-decrease-height)
 
 (define-key evil-normal-state-map (kbd "<backspace>") 'evil-toggle-fold)
+(define-key evil-normal-state-map (kbd "<leader>SPC") 'my/toggle-comment)
 
 (define-key evil-normal-state-map (kbd "<leader>t") 'dired-jump)
 
@@ -454,7 +469,6 @@
     --exclude .git \
     --exclude .cpcache \
     --exclude .clj-kondo \
-    --exclude .lsp \
     --exclude .gradle")
 
 ;; See g:ackprg in vimrc
@@ -498,10 +512,8 @@
            (cider-mode " CIDER" cider)
            (company-mode nil company)
            (eldoc-mode nil t)
-           (flycheck-mode nil flycheck)
            (hs-minor-mode nil hideshow)
            (ivy-mode nil ivy)
-           (lsp-mode " LSP" lsp-mode)
            (projectile-mode nil projectile)))
 
 ;;-----------------------------------------------------------------------------
@@ -537,10 +549,43 @@
 (add-to-list 'auto-mode-alist '("Dockerfile" . dockerfile-mode))
 
 ;;-----------------------------------------------------------------------------
-;; evil-nerd-commenter
+;; eglot
+;;
+;; Eglot automatically finds LSP server binaries in PATH:
+;;
+;; - clojure-mode => clojure-lsp
+;; - kotlin-mode => kotlin-language-server
+;;
+;; - "C-]" - xref-find-definitions
+;; - "M-?" - xref-find-references
 ;;-----------------------------------------------------------------------------
 
-(global-set-key (kbd "<leader>SPC") 'evilnc-comment-or-uncomment-lines)
+(add-hook 'clojure-mode-hook 'eglot-ensure)
+(add-hook 'kotlin-mode-hook 'eglot-ensure)
+
+(with-eval-after-load 'eglot
+  (define-key eglot-mode-map (kbd "s-l = =") 'eglot-format-buffer)
+  (define-key eglot-mode-map (kbd "s-l a a") 'eglot-code-actions)
+  (define-key eglot-mode-map (kbd "s-l g g") 'xref-find-definitions)
+  (define-key eglot-mode-map (kbd "s-l g r") 'xref-find-references)
+  (define-key eglot-mode-map (kbd "s-l r o") 'eglot-code-action-organize-imports)
+  (define-key eglot-mode-map (kbd "s-l r r") 'eglot-rename))
+
+(defun my/eglot-clojure-add-save-hooks ()
+  ;; Calls cljfmt on current buffer
+  (add-hook 'before-save-hook 'eglot-format-buffer))
+
+(add-hook 'clojure-mode-hook 'my/eglot-clojure-add-save-hooks)
+
+(add-hook 'eglot-managed-mode-hook
+          (lambda ()
+            ;; Show flymake diagnostics first
+            (setq eldoc-documentation-functions
+                  (cons 'flymake-eldoc-function
+                        (remove 'flymake-eldoc-function
+                                eldoc-documentation-functions)))
+            ;; Show all eldoc feedback
+            (setq eldoc-documentation-strategy 'eldoc-documentation-compose)))
 
 ;;-----------------------------------------------------------------------------
 ;; evil-surround
@@ -563,14 +608,10 @@
 (define-key evil-normal-state-map (kbd "z*") 'my/evil-visualstar-asterisk)
 
 ;;-----------------------------------------------------------------------------
-;; iedit
+;; jarchive
 ;;-----------------------------------------------------------------------------
 
-;; Use narrowing to apply editing to part of buffer:
-;; - "C-x n d" - narrow-to-defun
-;; - "C-x n n" - narrow-to-region
-;; - "C-x n w" - widen
-(define-key evil-normal-state-map (kbd "C-t") 'iedit-mode)
+(jarchive-setup)
 
 ;;-----------------------------------------------------------------------------
 ;; kotlin-mode
@@ -584,96 +625,6 @@
   (define-key kotlin-mode-map (kbd "C-c C-r") nil)
   (define-key kotlin-mode-map (kbd "C-c C-c") nil)
   (define-key kotlin-mode-map (kbd "C-c C-b") nil))
-
-;;-----------------------------------------------------------------------------
-;; lsp-mode
-;;
-;; https://emacs-lsp.github.io/lsp-mode/tutorials/clojure-guide
-;; https://clojure-lsp.io/settings
-;;-----------------------------------------------------------------------------
-
-;; https://github.com/emacs-lsp/lsp-mode/issues/2600
-;;
-;; clojure-lsp returns 'lsp-request: Internal error' when trying
-;; to call `evil-indent` on the last line of namespace file
-;; => Use formatting provided by Emacs by default
-(setq lsp-enable-indentation nil)
-
-;; https://emacs-lsp.github.io/lsp-mode/tutorials/how-to-turn-off/
-;; https://github.com/syl20bnr/spacemacs/issues/14292
-(setq lsp-completion-show-detail t)
-(setq lsp-completion-show-kind t)
-;; Use ElDoc provided by CIDER
-(setq lsp-eldoc-enable-hover nil)
-(setq lsp-enable-symbol-highlighting nil)
-(setq lsp-headerline-breadcrumb-enable nil)
-(setq lsp-lens-enable nil)
-(setq lsp-modeline-code-actions-enable nil)
-(setq lsp-modeline-diagnostics-enable nil)
-(setq lsp-signature-auto-activate nil)
-(setq lsp-signature-render-documentation nil)
-
-;; https://emacs-lsp.github.io/lsp-mode/page/keybindings/
-;; lsp-keymap-prefix is "s-l" by default
-;;
-;; - "s-l = =" - lsp-format-buffer
-;; - "s-l g g" - lsp-find-definition
-;; - "s-l g r" - lsp-find-references
-;; - "s-l g i" - lsp-find-implementation
-;; - "s-l g t" - lsp-find-type-definition
-;; - "s-l g d" - lsp-find-declaration
-;; - "s-l r o" - lsp-organize-imports
-;; - "s-l r r" - lsp-rename
-;; - "s-l a a" - lsp-execute-code-action
-(with-eval-after-load 'lsp-mode
-  (define-key lsp-mode-map (kbd "C-]") 'lsp-find-definition))
-
-;; -------------------- Clojure -----------------------------------------------
-
-(add-hook 'clojure-mode-hook 'lsp)
-
-(setq lsp-clojure-custom-server-command '("bash" "-c" "~/soft/clojure-lsp"))
-
-(defun my/lsp-clojure-add-save-hooks ()
-  ;; Calls cljfmt on current buffer
-  (add-hook 'before-save-hook 'lsp-format-buffer))
-
-(add-hook 'clojure-mode-hook 'my/lsp-clojure-add-save-hooks)
-
-;; -------------------- Kotlin ------------------------------------------------
-
-(add-hook 'kotlin-mode-hook 'lsp)
-
-(setq lsp-clients-kotlin-server-executable
-      "~/soft/kotlin-lsp/bin/kotlin-language-server")
-
-(setq lsp-kotlin-completion-snippets-enabled nil)
-(setq lsp-kotlin-debug-adapter-enabled nil)
-
-;;-----------------------------------------------------------------------------
-;; lsp-ui
-;;-----------------------------------------------------------------------------
-
-(setq lsp-ui-sideline-enable nil)
-(setq lsp-ui-peek-enable nil)
-(setq lsp-ui-menu-enable nil)
-
-(setq lsp-ui-doc-enable t)
-(setq lsp-ui-doc-position 'at-point)
-(setq lsp-ui-doc-show-with-cursor nil)
-(setq lsp-ui-doc-show-with-mouse nil)
-(setq lsp-ui-doc-header t)
-(setq lsp-ui-doc-include-signature t)
-(setq lsp-ui-doc-max-width 80)
-(setq lsp-ui-doc-max-height 16)
-(setq lsp-ui-doc-enhanced-markdown nil)
-
-(define-key evil-normal-state-map (kbd "C-n") 'lsp-ui-doc-toggle)
-
-;; https://github.com/emacs-lsp/lsp-ui/issues/369
-(with-eval-after-load 'lsp-ui-doc
-  (set-face-background 'lsp-ui-doc-background "#FAF4EB")
-  (set-face-background 'lsp-ui-doc-header "#C8DFEA"))
 
 ;;-----------------------------------------------------------------------------
 ;; markdown-mode
