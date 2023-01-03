@@ -43,6 +43,7 @@ path=(/usr/local/bin /opt/homebrew/bin $path)
 path=(/opt/homebrew/opt/libpq/bin $path)
 path=($HOME/soft/google-cloud-sdk/bin $path)
 path=(/Library/Java/JavaVirtualMachines/graalvm-ce-java19-22.3.0/Contents/Home/bin $path)
+path=($HOME/bin $path)
 
 #-------------------------------------------------------------------------------
 # Prompt
