@@ -390,12 +390,6 @@
         ;; Close *cider-error* window with q
         ("q" . cider-popup-buffer-quit-function)))
 
-(use-package eldoc
-  :straight nil
-  :delight eldoc-mode
-  :config
-  (setq eldoc-echo-area-use-multiline-p nil))
-
 (use-package clojure-mode
   :straight t)
 
@@ -403,22 +397,23 @@
   :straight t
   :demand t
   :delight company-mode
-  :config
-  (global-company-mode)
-
+  :custom
   ;; http://company-mode.github.io/manual/Customization.html#Customization
   ;; Disable automatic completion
-  (setq company-idle-delay nil)
-  (setq company-selection-wrap-around t)
-  (setq company-require-match nil)
+  (company-idle-delay nil)
+  (company-selection-wrap-around t)
+  (company-require-match nil)
 
   ;; http://company-mode.github.io/manual/Frontends.html#Frontends
-  (setq company-tooltip-align-annotations t)
-  (setq company-tooltip-minimum 4)
-  (setq company-tooltip-limit 8)
-  (setq company-tooltip-width-grow-only t)
-  (setq company-tooltip-margin 1)
-  (setq company-format-margin-function 'company-vscode-light-icons-margin)
+  (company-tooltip-align-annotations t)
+  (company-tooltip-minimum 4)
+  (company-tooltip-limit 8)
+  (company-tooltip-width-grow-only t)
+  (company-tooltip-margin 1)
+  (company-format-margin-function 'company-vscode-light-icons-margin)
+
+  :config
+  (global-company-mode)
 
   :bind
   (:map company-active-map
@@ -441,20 +436,23 @@
     --exclude .cpcache \
     --exclude .clj-kondo \
     --exclude .gradle")
+
+  :custom
+  (ivy-use-virtual-buffers t)
+  (enable-recursive-minibuffers t)
+
+  (ivy-display-style 'fancy)
+  (ivy-height 15)
+  (ivy-count-format "")
+  (ivy-initial-inputs-alist nil)
+  (ivy-on-del-error-function 'ignore)
+  (ivy-more-chars-alist '((counsel-grep . 2)
+                          (counsel-git-grep . 2)
+                          (t . 3)))
+
   :config
   (ivy-mode 1)
 
-  (setq ivy-use-virtual-buffers t)
-  (setq enable-recursive-minibuffers t)
-
-  (setq ivy-display-style 'fancy)
-  (setq ivy-height 15)
-  (setq ivy-count-format "")
-  (setq ivy-initial-inputs-alist nil)
-  (setq ivy-on-del-error-function 'ignore)
-  (setq ivy-more-chars-alist '((counsel-grep . 2)
-                               (counsel-git-grep . 2)
-                               (t . 3)))
   :bind
   (("C-s" . swiper-isearch)
    ("M-x" . counsel-M-x)
@@ -477,15 +475,16 @@
 (use-package dired-subtree
   :straight t
   :demand t
-  :config
-  (setq dired-subtree-use-backgrounds t)
+  :custom
+  (dired-subtree-use-backgrounds t)
 
-  (set-face-background 'dired-subtree-depth-1-face "#F4F4F4")
-  (set-face-background 'dired-subtree-depth-2-face "#E4E4E4")
-  (set-face-background 'dired-subtree-depth-3-face "#D0D0D0")
-  (set-face-background 'dired-subtree-depth-4-face "#D0D0D0")
-  (set-face-background 'dired-subtree-depth-5-face "#D0D0D0")
-  (set-face-background 'dired-subtree-depth-6-face "#D0D0D0")
+  :custom-face
+  (dired-subtree-depth-1-face ((t (:background "#F4F4F4"))))
+  (dired-subtree-depth-2-face ((t (:background "#E4E4E4"))))
+  (dired-subtree-depth-3-face ((t (:background "#D0D0D0"))))
+  (dired-subtree-depth-4-face ((t (:background "#D0D0D0"))))
+  (dired-subtree-depth-5-face ((t (:background "#D0D0D0"))))
+  (dired-subtree-depth-6-face ((t (:background "#D0D0D0"))))
 
   :bind
   (:map dired-mode-map
@@ -526,11 +525,10 @@
    (clojure-mode . my/eglot-clojure-add-save-hooks)
    (eglot-managed-mode . my/show-flymake-eldoc-first))
 
-  :config
+  :custom
   ;; https://github.com/joaotavora/eglot/issues/334
   ;; Disable highlight at point feature
-  (setq eglot-ignored-server-capabilities '(:documentHighlightProvider
-                                            :hoverProvider))
+  (eglot-ignored-server-capabilities '(:documentHighlightProvider))
 
   :bind
   (:map eglot-mode-map
@@ -540,6 +538,12 @@
         ("s-l g r" . xref-find-references)
         ("s-l r o" . eglot-code-action-organize-imports)
         ("s-l r r" . eglot-rename)))
+
+(use-package eldoc
+  :straight nil
+  :delight eldoc-mode
+  :custom
+  (eldoc-echo-area-use-multiline-p nil))
 
 (use-package eldoc-box
   :straight t
@@ -551,11 +555,8 @@
   :hook
   ((eldoc-box-buffer . my/hide-trailing-whitespace))
 
-  :config
-  (setq eldoc-box-fringe-use-same-bg nil)
-  (setq eldoc-box-cleanup-interval 0)
-
-  (set-face-background 'eldoc-box-body "#F2F6F8")
+  :custom-face
+  (eldoc-box-body ((t (:background "#F2F8FA"))))
 
   :bind
   (:map evil-normal-state-map
@@ -614,9 +615,9 @@
 
 (use-package markdown-mode
   :straight t
-  :config
-  (set-face-attribute 'markdown-code-face nil :font "Input-15")
-  (set-face-attribute 'markdown-inline-code-face nil :font "Input-15"))
+  :custom-face
+  (markdown-code-face ((t (:font "Input-15"))))
+  (markdown-inline-code-face ((t (:font "Input-15")))))
 
 ;; It allows counsel-fzf to search from project root regardless of current file
 (use-package projectile
@@ -630,11 +631,12 @@
     (my/evil-window-vsplit)
     (projectile-toggle-between-implementation-and-test))
 
+  :custom
+  (projectile-completion-system 'ivy)
+  (projectile-create-missing-test-files t)
+
   :config
   (projectile-mode 1)
-
-  (setq projectile-completion-system 'ivy)
-  (setq projectile-create-missing-test-files t)
 
   :bind
   (:map projectile-mode-map
@@ -660,16 +662,17 @@
      (concat " " (alist-get 'name tab) " ")
      'face (funcall tab-bar-tab-face-function tab)))
 
+  :custom
+  (tab-bar-close-button-show nil)
+  (tab-bar-format '(tab-bar-format-tabs tab-bar-separator))
+  ;; ZWSP is used to prevent last tab from filling all available space
+  (tab-bar-separator "​")
+
+  (setq tab-bar-tab-name-format-function 'my/tab-bar-tab-name-format-function)
+
   :config
   ;; http://www.gonsie.com/blorg/tab-bar.html
   (tab-bar-mode 1)
-
-  (setq tab-bar-close-button-show nil)
-  (setq tab-bar-format '(tab-bar-format-tabs tab-bar-separator))
-  ;; ZWSP is used to prevent last tab from filling all available space
-  (setq tab-bar-separator "​")
-
-  (setq tab-bar-tab-name-format-function 'my/tab-bar-tab-name-format-function)
 
   :bind
   (("s-{" . tab-bar-switch-to-prev-tab)
