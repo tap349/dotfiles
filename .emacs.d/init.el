@@ -520,10 +520,11 @@
     ;; Show all eldoc feedback
     (setq eldoc-documentation-strategy 'eldoc-documentation-compose))
 
-  :hook ((clojure-mode . eglot-ensure)
-         (kotlin-mode . eglot-ensure)
-         (clojure-mode . my/eglot-clojure-add-save-hooks)
-         (eglot-managed-mode . my/show-flymake-eldoc-first))
+  :hook
+  ((clojure-mode . eglot-ensure)
+   (kotlin-mode . eglot-ensure)
+   (clojure-mode . my/eglot-clojure-add-save-hooks)
+   (eglot-managed-mode . my/show-flymake-eldoc-first))
 
   :config
   ;; https://github.com/joaotavora/eglot/issues/334
