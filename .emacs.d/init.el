@@ -34,8 +34,8 @@
 ;; (setq warning-minimum-level :emergency)
 
 ;; https://emacsredux.com/blog/2020/12/04/maximize-the-emacs-frame-on-startup
-;; (add-hook 'window-setup-hook 'toggle-frame-maximized t)
-(add-to-list 'default-frame-alist '(fullscreen . maximized))
+(add-hook 'window-setup-hook 'toggle-frame-maximized t)
+;; (add-to-list 'default-frame-alist '(fullscreen . maximized))
 
 ;; Minimize garbage collection during startup
 (setq gc-cons-threshold most-positive-fixnum)
@@ -204,9 +204,6 @@
   :straight t
   :delight auto-revert-mode)
 
-;; NOTE: evil package should come first so that other packages can define
-;;       their keybindings in evil state keymaps and use leader key
-;;
 ;; For some reason <return> and RET keys are not the same: keybinding for
 ;; <return> key in evil-normal-state-map (insert newline below) is also
 ;; active in dired-mode but keybinding for RET is not.
@@ -658,6 +655,18 @@
    ("s-t" . tab-bar-new-tab)
    ("s-w" . tab-bar-close-tab)
    ("C-<backspace>" . tab-bar-close-tab)))
+
+(use-package xref
+  :straight nil
+  :after (evil)
+  :config
+  (evil-make-overriding-map xref--xref-buffer-mode-map 'normal)
+  :bind
+  (:map xref--xref-buffer-mode-map
+        ("S-<return>" . xref-show-location-at-point)
+        ("<return>" . xref-goto-xref)
+        ("C-<return>" . xref-quit-and-goto-xref)
+        ("q" . xref-quit-and-pop-marker-stack)))
 
 (use-package yaml-mode
   :straight t)
