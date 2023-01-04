@@ -1,6 +1,6 @@
 ;;-----------------------------------------------------------------------------
 ;;
-;; Packages
+;; Package management
 ;;
 ;;-----------------------------------------------------------------------------
 
@@ -20,25 +20,7 @@
       (eval-print-last-sexp)))
   (load bootstrap-file nil 'nomessage))
 
-(straight-use-package 'auto-package-update)
-(straight-use-package 'avy)
-(straight-use-package 'cider)
-(straight-use-package 'company)
-(straight-use-package 'counsel)
-(straight-use-package 'delight)
-(straight-use-package 'dired-subtree)
-(straight-use-package 'dockerfile-mode)
-(straight-use-package 'evil)
-(straight-use-package 'evil-surround)
-(straight-use-package 'evil-visualstar)
-(straight-use-package 'jarchive)
-(straight-use-package 'json-mode)
-(straight-use-package 'kotlin-mode)
-(straight-use-package 'magit)
-(straight-use-package 'markdown-mode)
-(straight-use-package 'projectile)
-(straight-use-package 'rainbow-delimiters)
-(straight-use-package 'yaml-mode)
+(straight-use-package 'use-package)
 
 ;;-----------------------------------------------------------------------------
 ;;
@@ -49,17 +31,11 @@
 ;;-----------------------------------------------------------------------------
 
 (setq inhibit-startup-message t)
-(setq warning-minimum-level :emergency)
+;; (setq warning-minimum-level :emergency)
 
 ;; https://emacsredux.com/blog/2020/12/04/maximize-the-emacs-frame-on-startup
 ;; (add-hook 'window-setup-hook 'toggle-frame-maximized t)
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
-
-;; https://emacs.stackexchange.com/a/62959
-(defun startup (_frame)
-  (tab-bar-mode 1))
-
-(add-hook 'after-make-frame-functions 'startup)
 
 ;; Minimize garbage collection during startup
 (setq gc-cons-threshold most-positive-fixnum)
@@ -103,7 +79,6 @@
 
 (setq scroll-step 1)
 (setq scroll-margin 2)
-
 (setq mouse-wheel-progressive-speed nil)
 (setq pixel-scroll-precision-mode 1)
 
@@ -155,6 +130,7 @@
 ;; - "C-x n d" - narrow-to-defun
 ;; - "C-x n n" - narrow-to-region
 ;; - "C-x n w" - widen
+;;
 ;;-----------------------------------------------------------------------------
 
 ;; https://www.gnu.org/software/emacs/manual/html_node/efaq/Replacing-highlighted-text.html
@@ -176,16 +152,6 @@
 ;; Style for comment-region command - don't indent comment characters
 ;; Used by my/toggle-comment
 (setq comment-style 'plain)
-
-;;-----------------------------------------------------------------------------
-;;
-;; Folding
-;;
-;;-----------------------------------------------------------------------------
-
-;; hs-minor-mode can be enabled not in all major modes
-;; Use evil-toggle-fold to toggle folding
-(add-hook 'prog-mode-hook 'hs-minor-mode)
 
 ;;-----------------------------------------------------------------------------
 ;;
@@ -222,8 +188,22 @@
 (global-set-key (kbd "s-v") 'clipboard-yank)
 
 ;;-----------------------------------------------------------------------------
-;; evil
 ;;
+;; Packages
+;;
+;;-----------------------------------------------------------------------------
+
+;; Install it first to make :delight option work
+(use-package delight
+  :straight t)
+
+(use-package auto-package-update
+  :straight t)
+
+(use-package autorevert
+  :straight t
+  :delight auto-revert-mode)
+
 ;; NOTE: evil package should come first so that other packages can define
 ;;       their keybindings in evil state keymaps and use leader key
 ;;
@@ -233,324 +213,292 @@
 ;; Most likely RET key has lower precedence and can be overriden by other
 ;; modes while <return> can't be
 ;; => use RET and TAB where possible to allow other modes to override them
-;;-----------------------------------------------------------------------------
+(use-package evil
+  :straight t
+  :demand t
+  :init
+  ;; https://emacs.stackexchange.com/a/41701
+  ;; Use Emacs keybindings in insert state
+  (setq evil-disable-insert-state-bindings t)
+  ;; https://stackoverflow.com/a/18851955
+  (setq evil-want-C-u-scroll t)
+  ;; Applies to shifting operators >> and <<
+  (setq evil-shift-width 2)
 
-;; https://emacs.stackexchange.com/a/41701
-;; Use Emacs keybindings in insert state
-(setq evil-disable-insert-state-bindings t)
-;; https://stackoverflow.com/a/18851955
-(setq evil-want-C-u-scroll t)
-;; Applies to shifting operators >> and <<
-(setq evil-shift-width 2)
+  (defun my/insert-tab-or-complete ()
+    (interactive)
+    (let ((chr (preceding-char)))
+      ;; if beginning of line or preceding character is whitespace
+      (if (or (bolp) (= chr 32))
+          ;; insert tab
+          (tab-to-tab-stop)
+        ;; else complete
+        (company-complete))))
 
-(evil-mode 1)
+  ;; https://stackoverflow.com/a/14189981
+  (defun my/insert-newline-below ()
+    (interactive)
+    (end-of-line)
+    (newline))
 
-;; https://www.reddit.com/r/emacs/comments/n1pibp/comment/gwei7fw
-(evil-set-undo-system 'undo-redo)
+  (defun my/insert-newline-above ()
+    (interactive)
+    (beginning-of-line)
+    (open-line 1))
 
-;; https://www.reddit.com/r/emacs/comments/345by9
-;; https://emacs.stackexchange.com/a/58846/39266
-;; https://github.com/emacs-evil/evil/blob/master/evil-search.el#L672
-;;
-;; evil-search creates overlay to highlight search results with priority 1000
-;; which is higher than priority of region overlay (100) => highlighted search
-;; results are always on top of region selection
-(evil-select-search-module 'evil-search-module 'evil-search)
+  ;; https://emacs.stackexchange.com/a/72123/39266
+  (defun my/insert-whitespace ()
+    (interactive)
+    (insert " "))
 
-(evil-set-leader 'normal (kbd ","))
-(evil-set-leader 'visual (kbd ","))
+  ;; Continues comment on next line unlike evil-open-below
+  (defun my/evil-open-below ()
+    (interactive)
+    (evil-append-line 1)
+    (comment-indent-new-line))
 
-;; -------------------- insert state ------------------------------------------
+  ;; https://emacs.stackexchange.com/a/40823
+  (defun my/evil-window-split ()
+    (interactive)
+    (evil-window-split)
+    (balance-windows)
+    (other-window 1))
 
-(defun my/insert-tab-or-complete ()
-  (interactive)
-  (let ((chr (preceding-char)))
-    ;; if beginning of line or preceding character is whitespace
-    (if (or (bolp) (= chr 32))
-        ;; insert tab
-        (tab-to-tab-stop)
-      ;; else complete
-      (company-complete))))
+  (defun my/evil-window-vsplit ()
+    (interactive)
+    (evil-window-vsplit)
+    (balance-windows)
+    (other-window 1))
 
-;; https://emacs.stackexchange.com/a/62011
-(define-key evil-insert-state-map (kbd "C-g") 'evil-normal-state)
-(define-key evil-insert-state-map (kbd "RET") 'comment-indent-new-line)
-(define-key evil-insert-state-map (kbd "TAB") 'my/insert-tab-or-complete)
+  (defun my/keyboard-quit ()
+    (interactive)
+    (evil-ex-nohighlight)
+    (keyboard-quit))
 
-;; -------------------- normal state ------------------------------------------
+  ;; https://stackoverflow.com/a/9697222/3632318
+  (defun my/toggle-comment ()
+    (interactive)
+    (let (beg end)
+      (if (region-active-p)
+          (setq beg (region-beginning) end (region-end))
+        (setq beg (line-beginning-position) end (line-end-position)))
+      (comment-or-uncomment-region beg end)))
 
-;; https://stackoverflow.com/a/14189981
-(defun my/insert-newline-below ()
-  (interactive)
-  (end-of-line)
-  (newline))
+  :config
+  (evil-mode 1)
 
-(defun my/insert-newline-above ()
-  (interactive)
-  (beginning-of-line)
-  (open-line 1))
+  ;; https://www.reddit.com/r/emacs/comments/n1pibp/comment/gwei7fw
+  (evil-set-undo-system 'undo-redo)
 
-;; https://emacs.stackexchange.com/a/72123/39266
-(defun my/insert-whitespace ()
-  (interactive)
-  (insert " "))
+  ;; https://www.reddit.com/r/emacs/comments/345by9
+  ;; https://emacs.stackexchange.com/a/58846/39266
+  ;; https://github.com/emacs-evil/evil/blob/master/evil-search.el#L672
+  ;;
+  ;; evil-search creates overlay to highlight search results with priority 1000
+  ;; which is higher than priority of region overlay (100) => highlighted search
+  ;; results are always on top of region selection
+  (evil-select-search-module 'evil-search-module 'evil-search)
 
-;; Continues comment on next line unlike evil-open-below
-(defun my/evil-open-below ()
-  (interactive)
-  (evil-append-line 1)
-  (comment-indent-new-line))
+  (evil-set-leader 'normal (kbd ","))
+  (evil-set-leader 'visual (kbd ","))
 
-;; https://emacs.stackexchange.com/a/40823
-(defun my/evil-window-split ()
-  (interactive)
-  (evil-window-split)
-  (balance-windows)
-  (other-window 1))
+  :bind
+  (:map evil-insert-state-map
+        ;; https://emacs.stackexchange.com/a/62011
+        ("C-g" . evil-normal-state)
+        ("RET" . comment-indent-new-line)
+        ("TAB" . my/insert-tab-or-complete))
 
-(defun my/evil-window-vsplit ()
-  (interactive)
-  (evil-window-vsplit)
-  (balance-windows)
-  (other-window 1))
+  (:map evil-normal-state-map
+        ("C-g" . my/keyboard-quit)
+        ("C-." . execute-extended-command)
 
-(defun my/keyboard-quit ()
-  (interactive)
-  (evil-ex-nohighlight)
-  (keyboard-quit))
+        ("TAB" . save-buffer)
+        ("C-o" . evil-switch-to-windows-last-buffer)
 
-;; https://stackoverflow.com/a/9697222/3632318
-(defun my/toggle-comment ()
-  (interactive)
-  (let (beg end)
-    (if (region-active-p)
-        (setq beg (region-beginning) end (region-end))
-      (setq beg (line-beginning-position) end (line-end-position)))
-    (comment-or-uncomment-region beg end)))
+        ("H" . evil-first-non-blank)
+        ("L" . evil-last-non-blank)
 
-(define-key evil-normal-state-map (kbd "C-g") 'my/keyboard-quit)
-(define-key evil-normal-state-map (kbd "C-.") 'execute-extended-command)
+        ("RET" . my/insert-newline-below)
+        ;; S-RET translates to just RET
+        ("S-<return>" . my/insert-newline-above)
+        ("SPC" . my/insert-whitespace)
+        ("o" . my/evil-open-below)
 
-(define-key evil-normal-state-map (kbd "TAB") 'save-buffer)
-(define-key evil-normal-state-map (kbd "C-o") 'evil-switch-to-windows-last-buffer)
+        ("s-[" . evil-jump-backward)
+        ("s-]" . evil-jump-forward)
 
-(define-key evil-normal-state-map (kbd "H") 'evil-first-non-blank)
-(define-key evil-normal-state-map (kbd "L") 'evil-last-non-blank)
+        ("C-M-f" . evil-jump-item)
+        ("C-M-b" . evil-jump-item)
 
-(define-key evil-normal-state-map (kbd "RET") 'my/insert-newline-below)
-;; S-RET translates to just RET
-(define-key evil-normal-state-map (kbd "S-<return>") 'my/insert-newline-above)
-(define-key evil-normal-state-map (kbd "SPC") 'my/insert-whitespace)
-(define-key evil-normal-state-map (kbd "o") 'my/evil-open-below)
+        ("C-w C-s" . my/evil-window-split)
+        ("C-w s" . my/evil-window-split)
+        ("C-w C-v" . my/evil-window-vsplit)
+        ("C-w v" . my/evil-window-vsplit)
 
-(define-key evil-normal-state-map (kbd "s-[") 'evil-jump-backward)
-(define-key evil-normal-state-map (kbd "s-]") 'evil-jump-forward)
+        ("C-w C-l" . evil-window-right)
+        ("C-w C-h" . evil-window-left)
+        ("C-w C-k" . evil-window-up)
+        ("C-w C-j" . evil-window-down)
+        ("C-w x" . window-swap-states)
 
-(define-key evil-normal-state-map (kbd "C-M-f") 'evil-jump-item)
-(define-key evil-normal-state-map (kbd "C-M-b") 'evil-jump-item)
+        ("S-<right>" . evil-window-increase-width)
+        ("S-<left>" . evil-window-decrease-width)
+        ("S-<up>" . evil-window-increase-height)
+        ("S-<down>" . evil-window-decrease-height)
 
-(define-key evil-normal-state-map (kbd "C-w C-s") 'my/evil-window-split)
-(define-key evil-normal-state-map (kbd "C-w s") 'my/evil-window-split)
-(define-key evil-normal-state-map (kbd "C-w C-v") 'my/evil-window-vsplit)
-(define-key evil-normal-state-map (kbd "C-w v") 'my/evil-window-vsplit)
+        ("<backspace>" . evil-toggle-fold)
+        ("<leader>SPC" . my/toggle-comment)
 
-(define-key evil-normal-state-map (kbd "C-w C-l") 'evil-window-right)
-(define-key evil-normal-state-map (kbd "C-w C-h") 'evil-window-left)
-(define-key evil-normal-state-map (kbd "C-w C-k") 'evil-window-up)
-(define-key evil-normal-state-map (kbd "C-w C-j") 'evil-window-down)
-(define-key evil-normal-state-map (kbd "C-w x") 'window-swap-states)
+        ("<leader>t" . dired-jump))
 
-(define-key evil-normal-state-map (kbd "S-<right>") 'evil-window-increase-width)
-(define-key evil-normal-state-map (kbd "S-<left>") 'evil-window-decrease-width)
-(define-key evil-normal-state-map (kbd "S-<up>") 'evil-window-increase-height)
-(define-key evil-normal-state-map (kbd "S-<down>") 'evil-window-decrease-height)
+  (:map evil-visual-state-map
+        ;; Bind to keyboard-quit explicitly -
+        ;; otherwise binding for normal state is used
+        ("C-g" . keyboard-quit)
+        ("C-." . execute-extended-command)
 
-(define-key evil-normal-state-map (kbd "<backspace>") 'evil-toggle-fold)
-(define-key evil-normal-state-map (kbd "<leader>SPC") 'my/toggle-comment)
+        ("C-s" . sort-lines)
 
-(define-key evil-normal-state-map (kbd "<leader>t") 'dired-jump)
+        ("H" . evil-first-non-blank)
+        ("L" . evil-last-non-blank))
 
-;; https://github.com/noctuid/evil-guide#binding-keys-to-keys-keyboard-macros
-(evil-define-key 'normal 'global "gp" "`[v`]")
+  (:map evil-replace-state-map
+        ("C-g" . evil-normal-state)))
 
-;; -------------------- visual state ------------------------------------------
+(use-package avy
+  :straight t
+  :after (evil)
+  :bind
+  (:map evil-normal-state-map
+        ("<leader>w" . avy-goto-word-1)))
 
-;; Bind to keyboard-quit explicitly - otherwise binding for normal state is used
-(define-key evil-visual-state-map (kbd "C-g") 'keyboard-quit)
-(define-key evil-visual-state-map (kbd "C-.") 'execute-extended-command)
-
-(define-key evil-visual-state-map (kbd "C-s") 'sort-lines)
-
-(define-key evil-visual-state-map (kbd "H") 'evil-first-non-blank)
-(define-key evil-visual-state-map (kbd "L") 'evil-last-non-blank)
-
-;; -------------------- replace state ------------------------------------------
-
-(define-key evil-replace-state-map (kbd "C-g") 'evil-normal-state)
-
-;;-----------------------------------------------------------------------------
-;; avy
-;;-----------------------------------------------------------------------------
-
-(define-key evil-normal-state-map (kbd "<leader>w") 'avy-goto-word-1)
-
-;;-----------------------------------------------------------------------------
-;; cider
-;;
 ;; - "C-c C-x j j" - cider-jack-in
 ;; - "C-c C-d C-c" - cider-clojuredocs
 ;; - "C-c C-d C-w" - cider-clojuredocs-web
-;;-----------------------------------------------------------------------------
+(use-package cider
+  :straight t
+  :delight " CIDER"
+  :init
+  (defun my/hide-trailing-whitespace ()
+    (setq show-trailing-whitespace nil))
 
-(setq eldoc-echo-area-use-multiline-p nil)
+  :hook
+  ((cider-test-report-mode . my/hide-trailing-whitespace)
+   ;; For *cider-clojuredocs* buffer
+   (cider-popup-buffer-mode . my/hide-trailing-whitespace))
 
-(add-hook 'cider-test-report-mode-hook
-          (lambda ()
-            (setq show-trailing-whitespace nil)))
+  :bind
+  (:map cider-repl-mode-map
+        ;; Close *cider-error* window with q
+        ("q" . cider-popup-buffer-quit-function)))
 
-;; For *cider-clojuredocs* buffer
-(add-hook 'cider-popup-buffer-mode-hook
-          (lambda ()
-            (setq show-trailing-whitespace nil)))
+(use-package eldoc
+  :straight nil
+  :delight eldoc-mode
+  :config
+  (setq eldoc-echo-area-use-multiline-p nil))
 
-(evil-define-key 'normal 'cider-repl-mode-map
-  ;; Close *cider-error* window with q
-	"q" 'cider-popup-buffer-quit-function)
+(use-package clojure-mode
+  :straight t)
 
-;;-----------------------------------------------------------------------------
-;; clojure-mode
-;;
-;; See also project level configuration in .dir-locals.el
-;;-----------------------------------------------------------------------------
+(use-package company
+  :straight t
+  :demand t
+  :delight company-mode
+  :config
+  (global-company-mode)
 
-;; https://stackoverflow.com/a/4200242
-;; Fix indentation for failjure library (indent like `let`)
-(put 'f/attempt-all 'clojure-indent-function 1)
-(put 'f/try-all 'clojure-indent-function 1)
-(put 'f/when-failed 'clojure-indent-function 1)
-(put 'f/when-let-failed? 'clojure-indent-function 1)
+  ;; http://company-mode.github.io/manual/Customization.html#Customization
+  ;; Disable automatic completion
+  (setq company-idle-delay nil)
+  (setq company-selection-wrap-around t)
+  (setq company-require-match nil)
 
-;;-----------------------------------------------------------------------------
-;; company
-;;-----------------------------------------------------------------------------
+  ;; http://company-mode.github.io/manual/Frontends.html#Frontends
+  (setq company-tooltip-align-annotations t)
+  (setq company-tooltip-minimum 4)
+  (setq company-tooltip-limit 8)
+  (setq company-tooltip-width-grow-only t)
+  (setq company-tooltip-margin 1)
+  (setq company-format-margin-function 'company-vscode-light-icons-margin)
 
-(add-hook 'after-init-hook 'global-company-mode)
+  :bind
+  (:map company-active-map
+        ;; Use <tab> instead of TAB to override other keybindings
+        ("<tab>" . company-complete-common)))
 
-;; http://company-mode.github.io/manual/Customization.html#Customization
-;; Disable automatic completion
-(setq company-idle-delay nil)
-(setq company-selection-wrap-around t)
-(setq company-require-match nil)
-
-;; http://company-mode.github.io/manual/Frontends.html#Frontends
-(setq company-tooltip-align-annotations t)
-(setq company-tooltip-minimum 4)
-(setq company-tooltip-limit 8)
-(setq company-tooltip-width-grow-only t)
-(setq company-tooltip-margin 1)
-(setq company-format-margin-function 'company-vscode-light-icons-margin)
-
-(with-eval-after-load 'company
-  ;; Use <tab> instead of TAB to override other keybindings
-  (define-key company-active-map (kbd "<tab>") 'company-complete-common))
-
-;;-----------------------------------------------------------------------------
-;; counsel (ivy / counsel / swiper)
-;;-----------------------------------------------------------------------------
-
-(ivy-mode 1)
-
-;; https://github.com/junegunn/fzf#respecting-gitignore
-;; For counsel-fzf
-(setenv
- "FZF_DEFAULT_COMMAND"
- "fd --type f --strip-cwd-prefix -H -I \
+;; ivy / counsel / swiper
+(use-package counsel
+  :straight t
+  :delight ivy-mode
+  :after (evil)
+  :init
+  ;; https://github.com/junegunn/fzf#respecting-gitignore
+  ;; For counsel-fzf
+  (setenv
+   "FZF_DEFAULT_COMMAND"
+   "fd --type f --strip-cwd-prefix -H -I \
     --exclude target \
     --exclude .git \
     --exclude .cpcache \
     --exclude .clj-kondo \
     --exclude .gradle")
+  :config
+  (ivy-mode 1)
 
-;; See g:ackprg in vimrc
-;; --no-line-number breaks syntax highlighting
-;; --field-match-separator breaks navigation to selected line
-;;
-;; UPDATE: git grep works better with special characters
-;;         (say, ripgrep breaks when searching for '->')
-;; (setq
-;;  counsel-git-grep-cmd-default
-;;  "rg -FS --no-column --sort-files --vimgrep \"%s\"")
+  (setq ivy-use-virtual-buffers t)
+  (setq enable-recursive-minibuffers t)
 
-(setq ivy-use-virtual-buffers t)
-(setq enable-recursive-minibuffers t)
+  (setq ivy-display-style 'fancy)
+  (setq ivy-height 15)
+  (setq ivy-count-format "")
+  (setq ivy-initial-inputs-alist nil)
+  (setq ivy-on-del-error-function 'ignore)
+  (setq ivy-more-chars-alist '((counsel-grep . 2)
+                               (counsel-git-grep . 2)
+                               (t . 3)))
+  :bind
+  (("C-s" . swiper-isearch)
+   ("M-x" . counsel-M-x)
+   ("C-x C-f" . counsel-find-file)
+   ("M-y" . counsel-yank-pop)
+   ("C-h f" . counsel-describe-function)
+   ("C-h v" . counsel-describe-variable)
+   ("C-x b" . ivy-switch-buffer)
+   (:map evil-normal-state-map
+         ("<leader>n" . counsel-fzf)
+         ("<leader>/" . counsel-git-grep))))
 
-(setq ivy-display-style 'fancy)
-(setq ivy-height 15)
-(setq ivy-count-format "")
-(setq ivy-initial-inputs-alist nil)
-(setq ivy-on-del-error-function 'ignore)
-(setq ivy-more-chars-alist '((counsel-grep . 2)
-                             (counsel-git-grep . 2)
-                             (t . 3)))
-
-(global-set-key (kbd "C-s") 'swiper-isearch)
-(global-set-key (kbd "M-x") 'counsel-M-x)
-(global-set-key (kbd "C-x C-f") 'counsel-find-file)
-(global-set-key (kbd "M-y") 'counsel-yank-pop)
-(global-set-key (kbd "C-h f") 'counsel-describe-function)
-(global-set-key (kbd "C-h v") 'counsel-describe-variable)
-(global-set-key (kbd "C-x b") 'ivy-switch-buffer)
-
-(define-key evil-normal-state-map (kbd "<leader>n") 'counsel-fzf)
-(define-key evil-normal-state-map (kbd "<leader>/") 'counsel-git-grep)
-
-;;-----------------------------------------------------------------------------
-;; delight
-;;-----------------------------------------------------------------------------
-
-(delight '((auto-revert-mode nil autorevert)
-           (cider-mode " CIDER" cider)
-           (company-mode nil company)
-           (eldoc-mode nil t)
-           (hs-minor-mode nil hideshow)
-           (ivy-mode nil ivy)
-           (projectile-mode nil projectile)))
-
-;;-----------------------------------------------------------------------------
-;; dired
-;;
 ;; - "(" - dired-hide-details-mode
-;;-----------------------------------------------------------------------------
+(use-package dired
+  :straight nil
+  :bind
+  (:map dired-mode-map
+        ("p" . dired-up-directory)))
 
-(with-eval-after-load 'dired
-  (define-key dired-mode-map (kbd "p") 'dired-up-directory))
+(use-package dired-subtree
+  :straight t
+  :demand t
+  :config
+  (setq dired-subtree-use-backgrounds t)
 
-;;-----------------------------------------------------------------------------
-;; dired-subtree
-;;-----------------------------------------------------------------------------
-
-(setq dired-subtree-use-backgrounds t)
-
-(with-eval-after-load 'dired-subtree
   (set-face-background 'dired-subtree-depth-1-face "#F4F4F4")
   (set-face-background 'dired-subtree-depth-2-face "#E4E4E4")
   (set-face-background 'dired-subtree-depth-3-face "#D0D0D0")
   (set-face-background 'dired-subtree-depth-4-face "#D0D0D0")
   (set-face-background 'dired-subtree-depth-5-face "#D0D0D0")
-  (set-face-background 'dired-subtree-depth-6-face "#D0D0D0"))
+  (set-face-background 'dired-subtree-depth-6-face "#D0D0D0")
 
-(with-eval-after-load 'dired
-  (define-key dired-mode-map (kbd "TAB") 'dired-subtree-toggle))
+  :bind
+  (:map dired-mode-map
+        ("TAB" . dired-subtree-toggle)))
 
-;;-----------------------------------------------------------------------------
-;; dockerfile-mode
-;;-----------------------------------------------------------------------------
+(use-package dockerfile-mode
+  :straight t
+  :config
+  (add-to-list 'auto-mode-alist '("Dockerfile" . dockerfile-mode)))
 
-(add-to-list 'auto-mode-alist '("Dockerfile" . dockerfile-mode))
-
-;;-----------------------------------------------------------------------------
-;; eglot
-;;
 ;; Eglot automatically finds LSP server binaries in PATH:
 ;;
 ;; - clojure-mode => clojure-lsp
@@ -558,136 +506,161 @@
 ;;
 ;; - "C-]" - xref-find-definitions
 ;; - "M-?" - xref-find-references
-;;-----------------------------------------------------------------------------
+(use-package eglot
+  :straight nil
+  :demand t
+  :init
+  (defun my/eglot-clojure-add-save-hooks ()
+    ;; Calls cljfmt on current buffer
+    (add-hook 'before-save-hook 'eglot-format-buffer))
 
-(add-hook 'clojure-mode-hook 'eglot-ensure)
-(add-hook 'kotlin-mode-hook 'eglot-ensure)
+  (defun my/show-flymake-eldoc-first ()
+    ;; Show flymake diagnostics first
+    (setq eldoc-documentation-functions
+          (cons 'flymake-eldoc-function
+                (remove 'flymake-eldoc-function
+                        eldoc-documentation-functions)))
+    ;; Show all eldoc feedback
+    (setq eldoc-documentation-strategy 'eldoc-documentation-compose))
 
-(with-eval-after-load 'eglot
-  (define-key eglot-mode-map (kbd "s-l = =") 'eglot-format-buffer)
-  (define-key eglot-mode-map (kbd "s-l a a") 'eglot-code-actions)
-  (define-key eglot-mode-map (kbd "s-l g g") 'xref-find-definitions)
-  (define-key eglot-mode-map (kbd "s-l g r") 'xref-find-references)
-  (define-key eglot-mode-map (kbd "s-l r o") 'eglot-code-action-organize-imports)
-  (define-key eglot-mode-map (kbd "s-l r r") 'eglot-rename))
+  :hook ((clojure-mode . eglot-ensure)
+         (kotlin-mode . eglot-ensure)
+         (clojure-mode . my/eglot-clojure-add-save-hooks)
+         (eglot-managed-mode . my/show-flymake-eldoc-first))
 
-(defun my/eglot-clojure-add-save-hooks ()
-  ;; Calls cljfmt on current buffer
-  (add-hook 'before-save-hook 'eglot-format-buffer))
+  :config
+  ;; https://github.com/joaotavora/eglot/issues/334
+  ;; Disable highlight at point feature
+  (setq eglot-ignored-server-capabilities '(:documentHighlightProvider))
 
-(add-hook 'clojure-mode-hook 'my/eglot-clojure-add-save-hooks)
+  :bind
+  (:map eglot-mode-map
+        ("s-l = =" . eglot-format-buffer)
+        ("s-l a a" . eglot-code-actions)
+        ("s-l g g" . xref-find-definitions)
+        ("s-l g r" . xref-find-references)
+        ("s-l r o" . eglot-code-action-organize-imports)
+        ("s-l r r" . eglot-rename)))
 
-(add-hook 'eglot-managed-mode-hook
-          (lambda ()
-            ;; Show flymake diagnostics first
-            (setq eldoc-documentation-functions
-                  (cons 'flymake-eldoc-function
-                        (remove 'flymake-eldoc-function
-                                eldoc-documentation-functions)))
-            ;; Show all eldoc feedback
-            (setq eldoc-documentation-strategy 'eldoc-documentation-compose)))
+(use-package evil-surround
+  :straight t
+  :demand t
+  :config
+  (global-evil-surround-mode 1))
 
-;;-----------------------------------------------------------------------------
-;; evil-surround
-;;-----------------------------------------------------------------------------
+(use-package evil-visualstar
+  :straight t
+  :demand t
+  :after (evil)
+  :init
+  (defun my/evil-visualstar-asterisk ()
+    (interactive)
+    (when (region-active-p)
+      (evil-visualstar/begin-search (region-beginning) (region-end) t)
+      (evil-ex-search-previous)))
 
-(global-evil-surround-mode 1)
+  :config
+  (global-evil-visualstar-mode 1)
 
-;;-----------------------------------------------------------------------------
-;; evil-visualstar
-;;-----------------------------------------------------------------------------
+  :bind
+  (:map evil-normal-state-map
+        ("z*" . my/evil-visualstar-asterisk)))
 
-(global-evil-visualstar-mode 1)
+;; hs-minor-mode can be enabled not in all major modes
+;; Use evil-toggle-fold to toggle folding
+(use-package hideshow
+  :straight nil
+  :delight hs-minor-mode
+  :hook (prog-mode . hs-minor-mode))
 
-(defun my/evil-visualstar-asterisk ()
-  (interactive)
-  (when (region-active-p)
-    (evil-visualstar/begin-search (region-beginning) (region-end) t)
-    (evil-ex-search-previous)))
+(use-package jarchive
+  :straight t
+  :config
+  (jarchive-setup))
 
-(define-key evil-normal-state-map (kbd "z*") 'my/evil-visualstar-asterisk)
+(use-package json-mode
+  :straight t)
 
-;;-----------------------------------------------------------------------------
-;; jarchive
-;;-----------------------------------------------------------------------------
+(use-package kotlin-mode
+  :straight t
+  :bind
+  ;; Unset default keybindings - REPL integration provided
+  ;; by kotlin-mode is not very useful
+  (:map kotlin-mode-map
+        ("C-c C-z" . nil)
+        ("C-c C-n" . nil)
+        ("C-c C-r" . nil)
+        ("C-c C-c" . nil)
+        ("C-c C-b" . nil)))
 
-(jarchive-setup)
-
-;;-----------------------------------------------------------------------------
-;; kotlin-mode
-;;-----------------------------------------------------------------------------
-
-;; Unset default keybindings - REPL integration provided by this package
-;; is not very useful
-(with-eval-after-load 'kotlin-mode
-  (define-key kotlin-mode-map (kbd "C-c C-z") nil)
-  (define-key kotlin-mode-map (kbd "C-c C-n") nil)
-  (define-key kotlin-mode-map (kbd "C-c C-r") nil)
-  (define-key kotlin-mode-map (kbd "C-c C-c") nil)
-  (define-key kotlin-mode-map (kbd "C-c C-b") nil))
-
-;;-----------------------------------------------------------------------------
-;; markdown-mode
-;;-----------------------------------------------------------------------------
-
-(with-eval-after-load 'markdown-mode
+(use-package markdown-mode
+  :straight t
+  :config
   (set-face-attribute 'markdown-code-face nil :font "Input-15")
   (set-face-attribute 'markdown-inline-code-face nil :font "Input-15"))
 
-;;-----------------------------------------------------------------------------
-;; projectile
-;;
 ;; It allows counsel-fzf to search from project root regardless of current file
-;;-----------------------------------------------------------------------------
+(use-package projectile
+  :straight t
+  :demand t
+  :delight
+  :after (evil)
+  :init
+  (defun my/toggle-test-vsplit ()
+    (interactive)
+    (my/evil-window-vsplit)
+    (projectile-toggle-between-implementation-and-test))
 
-(projectile-mode 1)
+  :config
+  (projectile-mode 1)
 
-(setq projectile-completion-system 'ivy)
-(setq projectile-create-missing-test-files t)
+  (setq projectile-completion-system 'ivy)
+  (setq projectile-create-missing-test-files t)
 
-(define-key projectile-mode-map (kbd "s-p") 'projectile-command-map)
+  :bind
+  (:map projectile-mode-map
+        ("s-p" . projectile-command-map))
+  (:map evil-normal-state-map
+        ("<leader>," . projectile-toggle-between-implementation-and-test)
+        ("<leader>v" . my/toggle-test-vsplit)))
 
-(defun my/toggle-test-vsplit ()
-  (interactive)
-  (my/evil-window-vsplit)
-  (projectile-toggle-between-implementation-and-test))
+(use-package magit
+  :straight t)
 
-(define-key evil-normal-state-map (kbd "<leader>,")
-  'projectile-toggle-between-implementation-and-test)
-(define-key evil-normal-state-map (kbd "<leader>v")
-  'my/toggle-test-vsplit)
+(use-package rainbow-delimiters
+  :straight t
+  :hook (prog-mode . rainbow-delimiters-mode))
 
-;;-----------------------------------------------------------------------------
-;; rainbow-delimiters
-;;-----------------------------------------------------------------------------
+(use-package tab-bar
+  :straight nil
+  :demand t
+  :init
+  ;; https://christiantietze.de/posts/2022/02/emacs-tab-bar-numbered-tabs/
+  (defun my/tab-bar-tab-name-format-function (tab i)
+    (propertize
+     (concat " " (alist-get 'name tab) " ")
+     'face (funcall tab-bar-tab-face-function tab)))
 
-(add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
+  :config
+  ;; http://www.gonsie.com/blorg/tab-bar.html
+  (tab-bar-mode 1)
 
-;;-----------------------------------------------------------------------------
-;; tab-bar
-;;-----------------------------------------------------------------------------
+  (setq tab-bar-close-button-show nil)
+  (setq tab-bar-format '(tab-bar-format-tabs tab-bar-separator))
+  ;; ZWSP is used to prevent last tab from filling all available space
+  (setq tab-bar-separator "​")
 
-;; http://www.gonsie.com/blorg/tab-bar.html
-(tab-bar-mode 1)
+  (setq tab-bar-tab-name-format-function 'my/tab-bar-tab-name-format-function)
 
-(setq tab-bar-close-button-show nil)
-(setq tab-bar-format '(tab-bar-format-tabs tab-bar-separator))
-;; ZWSP is used to prevent last tab from filling all available space
-(setq tab-bar-separator "​")
+  :bind
+  (("s-{" . tab-bar-switch-to-prev-tab)
+   ("s-}" . tab-bar-switch-to-next-tab)
+   ("s-t" . tab-bar-new-tab)
+   ("s-w" . tab-bar-close-tab)
+   ("C-<backspace>" . tab-bar-close-tab)))
 
-;; https://christiantietze.de/posts/2022/02/emacs-tab-bar-numbered-tabs/
-(defun my/tab-bar-tab-name-format-function (tab i)
-  (propertize
-   (concat " " (alist-get 'name tab) " ")
-   'face (funcall tab-bar-tab-face-function tab)))
-
-(setq tab-bar-tab-name-format-function 'my/tab-bar-tab-name-format-function)
-
-(global-set-key (kbd "s-{") 'tab-bar-switch-to-prev-tab)
-(global-set-key (kbd "s-}") 'tab-bar-switch-to-next-tab)
-(global-set-key (kbd "s-t") 'tab-bar-new-tab)
-(global-set-key (kbd "s-w") 'tab-bar-close-tab)
-(global-set-key (kbd "C-<backspace>") 'tab-bar-close-tab)
+(use-package yaml-mode
+  :straight t)
 
 ;;-----------------------------------------------------------------------------
 ;;
