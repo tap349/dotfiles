@@ -529,7 +529,8 @@
   :config
   ;; https://github.com/joaotavora/eglot/issues/334
   ;; Disable highlight at point feature
-  (setq eglot-ignored-server-capabilities '(:documentHighlightProvider))
+  (setq eglot-ignored-server-capabilities '(:documentHighlightProvider
+                                            :hoverProvider))
 
   :bind
   (:map eglot-mode-map
@@ -539,6 +540,26 @@
         ("s-l g r" . xref-find-references)
         ("s-l r o" . eglot-code-action-organize-imports)
         ("s-l r r" . eglot-rename)))
+
+(use-package eldoc-box
+  :straight t
+  :after (evil)
+  :init
+  (defun my/hide-trailing-whitespace ()
+    (setq show-trailing-whitespace nil))
+
+  :hook
+  ((eldoc-box-buffer . my/hide-trailing-whitespace))
+
+  :config
+  (setq eldoc-box-fringe-use-same-bg nil)
+  (setq eldoc-box-cleanup-interval 0)
+
+  (set-face-background 'eldoc-box-body "#F2F6F8")
+
+  :bind
+  (:map evil-normal-state-map
+        ("C-n" . eldoc-box-eglot-help-at-point)))
 
 (use-package evil-surround
   :straight t
