@@ -546,7 +546,7 @@
   (eldoc-echo-area-use-multiline-p nil))
 
 (use-package eldoc-box
-  :straight t
+  :straight (eldoc-box :type git :host github :repo "tap349/eldoc-box")
   :after (evil)
   :init
   (defun my/hide-trailing-whitespace ()
@@ -555,12 +555,16 @@
   :hook
   ((eldoc-box-buffer . my/hide-trailing-whitespace))
 
+  :custom
+  (eldoc-box-max-pixel-height 600)
+  (eldoc-box-max-pixel-width 800)
+
   :custom-face
   (eldoc-box-body ((t (:background "#F2F8FA"))))
 
   :bind
   (:map evil-normal-state-map
-        ("C-n" . eldoc-box-eglot-help-at-point)))
+        ("C-n" . eldoc-box-eglot-toggle-help-at-point)))
 
 (use-package evil-surround
   :straight t
@@ -668,7 +672,7 @@
   ;; ZWSP is used to prevent last tab from filling all available space
   (tab-bar-separator "​")
 
-  (setq tab-bar-tab-name-format-function 'my/tab-bar-tab-name-format-function)
+  (tab-bar-tab-name-format-function 'my/tab-bar-tab-name-format-function)
 
   :config
   ;; http://www.gonsie.com/blorg/tab-bar.html
