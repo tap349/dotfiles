@@ -149,9 +149,9 @@
 (setq-default indent-tabs-mode nil)
 (setq-default tab-width 2)
 
-;; Style for comment-region command - don't indent comment characters
+;; Style for comment-region command
 ;; Used by my/toggle-comment
-(setq comment-style 'plain)
+(setq comment-style 'indent)
 
 ;;-----------------------------------------------------------------------------
 ;;
@@ -526,12 +526,14 @@
    (eglot-managed-mode . my/show-flymake-eldoc-first))
 
   :custom
+  (eglot-connect-timeout 60)
   ;; https://github.com/joaotavora/eglot/issues/334
   ;; Disable highlight at point feature
   (eglot-ignored-server-capabilities '(:documentHighlightProvider))
 
   :bind
   (:map eglot-mode-map
+        ;; Keybindings used by lsp-mode by default
         ("s-l = =" . eglot-format-buffer)
         ("s-l a a" . eglot-code-actions)
         ("s-l g g" . xref-find-definitions)
