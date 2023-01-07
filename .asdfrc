@@ -1,2 +1,2 @@
-# https://github.com/asdf-vm/asdf-ruby#ruby-version-file
-legacy_version_file = yes
+# https://github.com/halcyon/asdf-java#java_home-integration
+java_macos_integration_enable = yes
