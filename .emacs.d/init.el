@@ -503,6 +503,7 @@
 ;; - "C-]" - xref-find-definitions
 ;; - "M-?" - xref-find-references
 (use-package eglot
+  ;; Built-in package since Emacs 29
   :straight nil
   :demand t
   :init
@@ -526,10 +527,18 @@
    (eglot-managed-mode . my/show-flymake-eldoc-first))
 
   :custom
-  (eglot-connect-timeout 60)
+  ;; [kotlin-language-server] It might take a lot of time to resolve all
+  ;; dependencies when there are no caches in ~/.gradle/caches
+  (eglot-connect-timeout 300)
   ;; https://github.com/joaotavora/eglot/issues/334
   ;; Disable highlight at point feature
   (eglot-ignored-server-capabilities '(:documentHighlightProvider))
+
+  :config
+  (add-to-list 'eglot-server-programs
+               '(kotlin-mode . ("kotlin-language-server"
+                                :initializationOptions
+                                (:kotlin (:compiler (:jvm (:target "1.8")))))))
 
   :bind
   (:map eglot-mode-map
