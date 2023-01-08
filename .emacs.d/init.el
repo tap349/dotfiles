@@ -431,11 +431,13 @@
   (setenv
    "FZF_DEFAULT_COMMAND"
    "fd --type f --strip-cwd-prefix -H -I \
-    --exclude target \
-    --exclude .git \
-    --exclude .cpcache \
     --exclude .clj-kondo \
-    --exclude .gradle")
+    --exclude .cpcache \
+    --exclude .git \
+    --exclude .gradle \
+    --exclude .idea \
+    --exclude build \
+    --exclude target")
 
   :custom
   (ivy-use-virtual-buffers t)
