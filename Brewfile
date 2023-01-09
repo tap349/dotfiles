@@ -186,9 +186,8 @@ brew 'kubectx'
 brew 'ncdu'
 
 cask 'drawio'
-cask 'intellij-idea-ce'
+cask 'intellij-idea'
 cask 'postman'
 cask 'protonvpn'
-cask 'vscodium'
 
 mas 'WireGuard', id: 1451685025
