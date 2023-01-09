@@ -1,10 +1,13 @@
 "===============================================================================
 "
-" Enable key repeat:
+" https://towardsdatascience.com/the-essential-ideavim-remaps-291d4cd3971b
 "
-" defaults write com.jetbrains.intellij ApplePressAndHoldEnabled -bool false
+" Enable key repeat:
+" `defaults write com.jetbrains.intellij ApplePressAndHoldEnabled -bool false`
 "
 "===============================================================================
+
+let mapleader = ','
 
 "-------------------------------------------------------------------------------
 " Search
@@ -21,6 +24,7 @@ nnoremap <silent> <C-g> <C-g>:nohlsearch<Bar>:echo<CR>
 
 inoremap <C-g> <Esc>
 vnoremap <C-g> <Esc>
+cnoremap <C-g> <Esc>
 
 "-------------------------------------------------------------------------------
 " Navigation
@@ -42,3 +46,10 @@ vnoremap L g_
 "-------------------------------------------------------------------------------
 
 nnoremap <silent> <Tab> :w<CR>
+
+"-------------------------------------------------------------------------------
+" Actions
+" https://gist.github.com/zchee/9c78f91cc5ad771c1f5d
+"-------------------------------------------------------------------------------
+
+nnoremap <leader>t :action SelectInProjectView<CR>
