@@ -29,6 +29,11 @@ vnoremap <C-g> <Esc>
 nnoremap H ^
 nnoremap L g_
 
+inoremap <C-a> <C-o>I
+inoremap <C-b> <Left>
+inoremap <C-e> <C-o>A
+inoremap <C-f> <Right>
+
 vnoremap H ^
 vnoremap L g_
 
