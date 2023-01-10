@@ -27,6 +27,17 @@ vnoremap <C-g> <Esc>
 cnoremap <C-g> <Esc>
 
 "-------------------------------------------------------------------------------
+" Edit
+"-------------------------------------------------------------------------------
+
+" insert newline after current line
+nmap <silent> <CR> o<Esc>
+" insert newline before current line
+nmap <silent> <S-CR> O<Esc>
+" insert space
+nmap <silent> <Space> i<Space><Esc>l
+
+"-------------------------------------------------------------------------------
 " Navigation
 "-------------------------------------------------------------------------------
 
