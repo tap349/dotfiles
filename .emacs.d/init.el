@@ -705,9 +705,9 @@
   (evil-make-overriding-map xref--xref-buffer-mode-map 'normal)
   :bind
   (:map xref--xref-buffer-mode-map
-        ("S-<return>" . xref-show-location-at-point)
-        ("<return>" . xref-goto-xref)
-        ("C-<return>" . xref-quit-and-goto-xref)
+        ("l" . xref-show-location-at-point)
+        ("o" . xref-goto-xref)
+        ("<return>" . xref-quit-and-goto-xref)
         ("q" . xref-quit-and-pop-marker-stack)))
 
 (use-package yaml-mode
