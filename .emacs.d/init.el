@@ -147,7 +147,9 @@
 ;; https://stackoverflow.com/a/1819405/3632318
 ;; Use whitespaces instead of tabs
 (setq-default indent-tabs-mode nil)
+
 (setq-default tab-width 2)
+(setq sh-basic-offset 2)
 
 ;; Style for comment-region command
 ;; Used by my/toggle-comment
