@@ -64,3 +64,5 @@ nnoremap <silent> <Tab> :w<CR>
 "-------------------------------------------------------------------------------
 
 nnoremap <leader>t :action SelectInProjectView<CR>
+nnoremap <leader>n :action GotoFile<CR>
+nnoremap <leader>/ :action FindInPath<CR>
