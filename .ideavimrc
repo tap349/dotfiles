@@ -43,6 +43,8 @@ nmap <silent> <Space> i<Space><Esc>l
 
 nnoremap H ^
 nnoremap L g_
+nnoremap <C-M-b> %
+nnoremap <C-M-f> %
 
 inoremap <C-a> <C-o>I
 inoremap <C-b> <Left>
