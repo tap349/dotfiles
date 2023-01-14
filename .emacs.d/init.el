@@ -367,7 +367,7 @@
 
 (use-package avy
   :straight t
-  :after (evil)
+  :after evil
   :bind
   (:map evil-normal-state-map
         ("<leader>w" . avy-goto-word-1)))
@@ -426,7 +426,7 @@
 (use-package counsel
   :straight t
   :delight ivy-mode
-  :after (evil)
+  :after evil
   :init
   ;; https://github.com/junegunn/fzf#respecting-gitignore
   ;; For counsel-fzf
@@ -562,7 +562,7 @@
 
 (use-package eldoc-box
   :straight (eldoc-box :type git :host github :repo "tap349/eldoc-box")
-  :after (evil)
+  :after evil
   :init
   (defun my/hide-trailing-whitespace ()
     (setq show-trailing-whitespace nil))
@@ -590,7 +590,7 @@
 (use-package evil-visualstar
   :straight t
   :demand t
-  :after (evil)
+  :after evil
   :init
   (defun my/evil-visualstar-asterisk ()
     (interactive)
@@ -604,6 +604,12 @@
   :bind
   (:map evil-normal-state-map
         ("z*" . my/evil-visualstar-asterisk)))
+
+(use-package flymake
+  :straight nil
+  :bind
+  (("M-]" . flymake-goto-next-error)
+   ("M-[" . flymake-goto-prev-error)))
 
 ;; hs-minor-mode can be enabled not in all major modes
 ;; Use evil-toggle-fold to toggle folding
@@ -643,7 +649,7 @@
   :straight t
   :demand t
   :delight
-  :after (evil)
+  :after evil
   :init
   (defun my/toggle-test-vsplit ()
     (interactive)
@@ -702,7 +708,7 @@
 
 (use-package xref
   :straight nil
-  :after (evil)
+  :after evil
   :config
   (evil-make-overriding-map xref--xref-buffer-mode-map 'normal)
   :bind
