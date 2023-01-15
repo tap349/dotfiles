@@ -552,7 +552,9 @@
         ("s-l g g" . xref-find-definitions)
         ("s-l g r" . xref-find-references)
         ("s-l r o" . eglot-code-action-organize-imports)
-        ("s-l r r" . eglot-rename)))
+        ("s-l r r" . eglot-rename)
+        ;; Default keybinding in IntelliJ IDEA
+        ("s-b" . xref-find-references)))
 
 (use-package eldoc
   :straight nil
