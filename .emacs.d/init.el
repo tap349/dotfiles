@@ -372,9 +372,15 @@
   (:map evil-normal-state-map
         ("<leader>w" . avy-goto-word-1)))
 
+;; https://docs.cider.mx/cider/repl/keybindings.html
 ;; - "C-c C-x j j" - cider-jack-in
 ;; - "C-c C-d C-c" - cider-clojuredocs
 ;; - "C-c C-d C-w" - cider-clojuredocs-web
+;;
+;; - "C-c C-t C-t" - cider-test-run-test
+;; - "C-c C-t C-n" - cider-test-run-ns-tests
+;; - "C-c C-t C-p" - cider-test-run-project-tests
+;; - "C-c C-t C-r" - cider-test-rerun-failed-tests
 (use-package cider
   :straight t
   :delight " CIDER"
