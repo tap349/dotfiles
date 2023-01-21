@@ -184,6 +184,7 @@ brew 'ipcalc'
 brew 'k9s'
 brew 'kubectx'
 brew 'ncdu'
+brew 'restic'
 
 cask 'drawio'
 cask 'intellij-idea'
