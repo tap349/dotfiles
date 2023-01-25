@@ -580,8 +580,10 @@
   ((eldoc-box-buffer . my/hide-trailing-whitespace))
 
   :custom
-  (eldoc-box-max-pixel-height 600)
-  (eldoc-box-max-pixel-width 800)
+  ;; https://github.com/sebastiencs/company-box/blob/master/company-box-doc.el#L86
+  ;; Set height and width to a big number to disable wrapping
+  (eldoc-box-max-pixel-height 10000)
+  (eldoc-box-max-pixel-width 10000)
 
   :custom-face
   (eldoc-box-body ((t (:background "#F2F8FA"))))
