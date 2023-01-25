@@ -459,6 +459,7 @@
   (ivy-more-chars-alist '((counsel-grep . 2)
                           (counsel-git-grep . 2)
                           (t . 3)))
+  (ivy-wrap t)
 
   :config
   (ivy-mode 1)
