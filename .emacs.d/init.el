@@ -189,6 +189,17 @@
 (global-set-key (kbd "s-x") 'clipboard-kill-region)
 (global-set-key (kbd "s-v") 'clipboard-yank)
 
+;; Use touchpad to scroll horizontally
+;; (can be useful, say, in eldoc-box popups)
+(global-set-key (kbd "<triple-wheel-left>")
+                (lambda ()
+                  (interactive)
+                  (if truncate-lines (scroll-right 1))))
+(global-set-key (kbd "<triple-wheel-right>")
+                (lambda ()
+                  (interactive)
+                  (if truncate-lines (scroll-left 1))))
+
 ;;-----------------------------------------------------------------------------
 ;;
 ;; Packages
@@ -582,11 +593,11 @@
   :custom
   ;; https://github.com/sebastiencs/company-box/blob/master/company-box-doc.el#L86
   ;; Set height and width to a big number to disable wrapping
-  (eldoc-box-max-pixel-height 10000)
-  (eldoc-box-max-pixel-width 10000)
+  (eldoc-box-max-pixel-height 800)
+  (eldoc-box-max-pixel-width 1000)
 
   :custom-face
-  (eldoc-box-body ((t (:background "#F2F8FA"))))
+  (eldoc-box-body ((t (:background "#F6F4F6"))))
 
   :bind
   (:map evil-normal-state-map
