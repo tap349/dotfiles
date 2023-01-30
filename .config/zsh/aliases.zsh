@@ -15,10 +15,11 @@ alias blog='cd ~/blog'
 alias dot='cd ~/.dotfiles'
 
 alias ka='cd ~/dev/indrive/k8s-applications'
-alias dpo='cd ~/dev/indrive/dev-platform-orchestrator'
-alias dpi='cd ~/dev/indrive/dev-platform-infrastructure'
 alias dpas='cd ~/dev/indrive/dev-platform-access-service'
+alias dpi='cd ~/dev/indrive/dev-platform-infrastructure'
+alias dpo='cd ~/dev/indrive/dev-platform-orchestrator'
 alias dpt='cd ~/dev/indrive/dev-platform-trigger'
+alias dpus='cd ~/dev/indrive/dev-platform-user-service'
 
 #-------------------------------------------------------------------------------
 # System
@@ -45,11 +46,7 @@ alias ydl='youtube-dl'
 alias cr='cockroach start-single-node --insecure --http-port=26256 --host=localhost'
 alias d='docker'
 alias k='kubectl'
-alias kcrdpo='kubectl exec -it dev-platform-orchestrator-db-client -n platform -- cockroach sql --certs-dir=/cockroach/cockroach-certs --host=dev-platform-orchestrator-db-public --database=dpo'
-alias kldpo='kubectl logs -fl app.kubernetes.io/name=dev-platform-orchestrator -n platform | jq "{timestamp,level,thread,message}"'
-alias kldpas='kubectl logs -fl app.kubernetes.io/name=dev-platform-access-service -n platform | jq "{timestamp,level,thread,message}"'
-alias kpfdpo='kubectl port-forward service/dev-platform-orchestrator-db-public -n platform 26257'
-alias kpfdpas='kubectl port-forward service/dev-platform-access-service-db-public -n platform 26257'
+alias kcr='kubectl exec -it dev-platform-orchestrator-db-client -n platform -- cockroach sql --certs-dir=/cockroach/cockroach-certs --host=dev-platform-orchestrator-db-public --database=dpo'
 
 #-------------------------------------------------------------------------------
 # Clojure

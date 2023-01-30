@@ -66,3 +66,32 @@ git_log() {
   local format='%Cred%h%Creset %C(yellow)%d%Creset %s - %C(bold blue)%an%Creset, %Cgreen%cr'
   git log --graph --pretty=format:${format} --abbrev-commit
 }
+
+kl() {
+  local NAME=
+
+  if [[ "$1" == "dpo" ]]; then
+    NAME="dev-platform-orchestrator"
+  fi
+
+  if [[ "$1" == "dpas" ]]; then
+    NAME="dev-platform-access-service"
+  fi
+
+  if [[ "$1" == "dpus" ]]; then
+    NAME="dev-platform-user-service"
+  fi
+
+  if [[ -z $NAME ]]; then
+    echo "Unknown service: '$1'"
+    return 1
+  fi
+
+  kubectl logs -fl "app.kubernetes.io/name=$NAME" -n platform | jq "{timestamp,level,thread,message}"
+}
+
+kpf() {
+  kubectl port-forward service/dev-platform-access-service-db-public -n platform 26260:26257 &
+  kubectl port-forward service/dev-platform-orchestrator-db-public -n platform 26261:26257 &
+  kubectl port-forward service/dev-platform-user-service-db-public -n platform 26262:26257 &
+}
