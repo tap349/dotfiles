@@ -35,7 +35,7 @@ function right_prompt() {
   local color="blue"
 
   if [[ "$ZSH_KUBECTL_CONTEXT" == "prod-eks-cluster" ||
-          "$ZSH_KUBECTL_CONTEXT" == "dev-eks-cluster" ||
+          "$ZSH_KUBECTL_CONTEXT" == "dev-platform-eks-prod" ||
           "$ZSH_KUBECTL_CONTEXT" == "gke_infra-ng" ]]; then
     color=red
   fi
