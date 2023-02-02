@@ -87,7 +87,9 @@ kl() {
     return 1
   fi
 
-  kubectl logs -fl "app.kubernetes.io/name=$NAME" -n platform | jq "{timestamp,level,thread,message}"
+  # https://github.com/kubernetes/kubectl/issues/917
+  # https://stackoverflow.com/a/58649439/3632318
+  kubectl logs -fl "app.kubernetes.io/name=$NAME" -n platform --tail -1 | jq -r '[.timestamp, .level, .message]|@tsv' -C
 }
 
 kpf() {
