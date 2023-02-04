@@ -38,6 +38,7 @@ brew 'bat'
 #brew 'boost'
 # Install manually by downloading dmg file
 #brew 'cgoban'
+brew erlang
 #brew 'exiftool'
 brew 'ffmpeg'
 brew 'git'
