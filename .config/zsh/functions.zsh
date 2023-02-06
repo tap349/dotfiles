@@ -67,11 +67,40 @@ git_log() {
   git log --graph --pretty=format:${format} --abbrev-commit
 }
 
+kcr() {
+  local POD=
+  local HOST=
+  local DATABASE=
+
+  if [[ "$1" == "dpn" ]]; then
+    POD="dev-platform-namespace-db-client"
+    HOST="dev-platform-namespace-db-public"
+    DATABASE="dpn"
+  fi
+
+  if [[ "$1" == "dpc" ]]; then
+    POD="dev-platform-catalog-db-client"
+    HOST="dev-platform-catalog-db-public"
+    DATABASE="dpc"
+  fi
+
+  if [[ -z $NAME ]]; then
+    echo "Unknown service: '$1'"
+    return 1
+  fi
+
+  kubectl exec -it $POD -n platform -- cockroach sql --certs-dir=/cockroach/cockroach-certs --host=$HOST --database=$DATABASE
+}
+
 kl() {
   local NAME=
 
-  if [[ "$1" == "dpo" ]]; then
-    NAME="dev-platform-orchestrator"
+  if [[ "$1" == "dpn" ]]; then
+    NAME="dev-platform-namespace"
+  fi
+
+  if [[ "$1" == "dpc" ]]; then
+    NAME="dev-platform-catalog"
   fi
 
   if [[ "$1" == "dpas" ]]; then
@@ -94,6 +123,7 @@ kl() {
 
 kpf() {
   kubectl port-forward service/dev-platform-access-service-db-public -n platform 26260:26257 &
-  kubectl port-forward service/dev-platform-orchestrator-db-public -n platform 26261:26257 &
-  kubectl port-forward service/dev-platform-user-service-db-public -n platform 26262:26257 &
+  kubectl port-forward service/dev-platform-catalog-db-public -n platform 26261:26257 &
+  kubectl port-forward service/dev-platform-namespace-db-public -n platform 26262:26257 &
+  kubectl port-forward service/dev-platform-user-service-db-public -n platform 26263:26257 &
 }

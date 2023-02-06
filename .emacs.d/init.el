@@ -501,7 +501,7 @@
   (dired-subtree-use-backgrounds t)
 
   :custom-face
-  (dired-subtree-depth-1-face ((t (:background "#FAFAFA"))))
+  (dired-subtree-depth-1-face ((t (:background "#F7F7F7"))))
   (dired-subtree-depth-2-face ((t (:background "#F4F4F4"))))
   (dired-subtree-depth-3-face ((t (:background "#E8E8E8"))))
   (dired-subtree-depth-4-face ((t (:background "#E8E8E8"))))

@@ -14,12 +14,13 @@
 alias blog='cd ~/blog'
 alias dot='cd ~/.dotfiles'
 
-alias ka='cd ~/dev/indrive/k8s-applications'
 alias dpas='cd ~/dev/indrive/dev-platform-access-service'
+alias dpc='cd ~/dev/indrive/dev-platform-catalog'
 alias dpi='cd ~/dev/indrive/dev-platform-infrastructure'
-alias dpo='cd ~/dev/indrive/dev-platform-orchestrator'
+alias dpn='cd ~/dev/indrive/dev-platform-namespace'
 alias dpt='cd ~/dev/indrive/dev-platform-trigger'
 alias dpus='cd ~/dev/indrive/dev-platform-user-service'
+alias ka='cd ~/dev/indrive/k8s-applications'
 
 #-------------------------------------------------------------------------------
 # System
@@ -46,7 +47,6 @@ alias ydl='youtube-dl'
 alias cr='cockroach start-single-node --insecure --http-port=26256 --host=localhost'
 alias d='docker'
 alias k='kubectl'
-alias kcr='kubectl exec -it dev-platform-orchestrator-db-client -n platform -- cockroach sql --certs-dir=/cockroach/cockroach-certs --host=dev-platform-orchestrator-db-public --database=dpo'
 
 #-------------------------------------------------------------------------------
 # Clojure
