@@ -485,7 +485,7 @@
    ("C-x b" . ivy-switch-buffer)
    (:map evil-normal-state-map
          ("<leader>n" . counsel-fzf)
-         ("<leader>/" . counsel-git-grep))))
+         ("<leader>/" . counsel-rg))))
 
 ;; - "(" - dired-hide-details-mode
 (use-package dired
