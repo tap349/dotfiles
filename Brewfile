@@ -58,6 +58,7 @@ brew 'minikube'
 # (same as nodejs)
 brew 'node'
 brew 'ntfs-3g-mac'
+brew 'obsidian'
 #brew 'overmind'
 brew 'p7zip'
 #brew 'pg_top'
