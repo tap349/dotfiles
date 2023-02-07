@@ -458,6 +458,46 @@
     --exclude build \
     --exclude target")
 
+  (defun my/counsel-fzf-split (filename)
+    (interactive)
+    (let ((default-directory (or (counsel--git-root)
+                                 default-directory)))
+      (split-window-below)
+      (other-window 1)
+      (find-file filename)))
+
+  (defun my/counsel-fzf-vsplit (filename)
+    (interactive)
+    (let ((default-directory (or (counsel--git-root)
+                                 default-directory)))
+      (split-window-right)
+      (other-window 1)
+      (find-file filename)))
+
+  (defun my/counsel-fzf-tab (filename)
+    (interactive)
+    (let ((default-directory (or (counsel--git-root)
+                                 default-directory)))
+      (tab-bar-new-tab)
+      (find-file filename)))
+
+  (defun my/counsel-rg-split (input)
+    (interactive)
+    (split-window-below)
+    (other-window 1)
+    (counsel-git-grep-action input))
+
+  (defun my/counsel-rg-vsplit (input)
+    (interactive)
+    (split-window-right)
+    (other-window 1)
+    (counsel-git-grep-action input))
+
+  (defun my/counsel-rg-tab (input)
+    (interactive)
+    (tab-bar-new-tab)
+    (counsel-git-grep-action input))
+
   :custom
   (ivy-use-virtual-buffers t)
   (enable-recursive-minibuffers t)
@@ -475,6 +515,18 @@
   :config
   (ivy-mode 1)
 
+  (ivy-set-actions
+   'counsel-fzf
+   '(("C-s" my/counsel-fzf-split "split")
+     ("C-v" my/counsel-fzf-vsplit "vsplit")
+     ("C-t" my/counsel-fzf-tab "tab")))
+
+  (ivy-set-actions
+   'counsel-rg
+   '(("C-s" my/counsel-rg-split "split")
+     ("C-v" my/counsel-rg-vsplit "vsplit")
+     ("C-t" my/counsel-rg-tab "tab")))
+
   :bind
   (("C-s" . swiper-isearch)
    ("M-x" . counsel-M-x)
@@ -483,6 +535,8 @@
    ("C-h f" . counsel-describe-function)
    ("C-h v" . counsel-describe-variable)
    ("C-x b" . ivy-switch-buffer)
+   (:map ivy-minibuffer-map
+         ("C-u" . ivy-dispatching-done))
    (:map evil-normal-state-map
          ("<leader>n" . counsel-fzf)
          ("<leader>/" . counsel-rg))))
