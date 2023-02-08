@@ -455,8 +455,8 @@
     --exclude .git \
     --exclude .gradle \
     --exclude .idea \
-    --exclude build \
-    --exclude target")
+    --exclude /build \
+    --exclude /target")
 
   (defun my/counsel-fzf-open-split (filename)
     (interactive)
