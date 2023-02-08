@@ -458,7 +458,7 @@
     --exclude build \
     --exclude target")
 
-  (defun my/counsel-fzf-split (filename)
+  (defun my/counsel-fzf-open-split (filename)
     (interactive)
     (let ((default-directory (or (counsel--git-root)
                                  default-directory)))
@@ -466,7 +466,7 @@
       (other-window 1)
       (find-file filename)))
 
-  (defun my/counsel-fzf-vsplit (filename)
+  (defun my/counsel-fzf-open-vsplit (filename)
     (interactive)
     (let ((default-directory (or (counsel--git-root)
                                  default-directory)))
@@ -474,31 +474,40 @@
       (other-window 1)
       (find-file filename)))
 
-  (defun my/counsel-fzf-tab (filename)
+  (defun my/counsel-fzf-open-tab (filename)
     (interactive)
     (let ((default-directory (or (counsel--git-root)
                                  default-directory)))
       (tab-bar-new-tab)
       (find-file filename)))
 
-  (defun my/counsel-rg-split (input)
+  (defun my/counsel-rg-open-split (input)
     (interactive)
     (split-window-below)
     (other-window 1)
     (counsel-git-grep-action input))
 
-  (defun my/counsel-rg-vsplit (input)
+  (defun my/counsel-rg-open-vsplit (input)
     (interactive)
     (split-window-right)
     (other-window 1)
     (counsel-git-grep-action input))
 
-  (defun my/counsel-rg-tab (input)
+  (defun my/counsel-rg-open-tab (input)
     (interactive)
     (tab-bar-new-tab)
     (counsel-git-grep-action input))
 
   :custom
+  (counsel-rg-base-command '("rg"
+                             "--max-columns" "240"
+                             "--with-filename"
+                             "--no-heading"
+                             "--line-number"
+                             "--color" "never"
+                             "--fixed-strings"
+                             "%s"))
+
   (ivy-use-virtual-buffers t)
   (enable-recursive-minibuffers t)
 
@@ -517,15 +526,15 @@
 
   (ivy-set-actions
    'counsel-fzf
-   '(("C-s" my/counsel-fzf-split "split")
-     ("C-v" my/counsel-fzf-vsplit "vsplit")
-     ("C-t" my/counsel-fzf-tab "tab")))
+   '(("C-s" my/counsel-fzf-open-split "split")
+     ("C-v" my/counsel-fzf-open-vsplit "vsplit")
+     ("C-t" my/counsel-fzf-open-tab "tab")))
 
   (ivy-set-actions
    'counsel-rg
-   '(("C-s" my/counsel-rg-split "split")
-     ("C-v" my/counsel-rg-vsplit "vsplit")
-     ("C-t" my/counsel-rg-tab "tab")))
+   '(("C-s" my/counsel-rg-open-split "split")
+     ("C-v" my/counsel-rg-open-vsplit "vsplit")
+     ("C-t" my/counsel-rg-open-tab "tab")))
 
   :bind
   (("C-s" . swiper-isearch)
@@ -651,7 +660,8 @@
   (eldoc-box-max-pixel-width 1000)
 
   :custom-face
-  (eldoc-box-body ((t (:background "#F6F4F6"))))
+  (eldoc-box-border ((t (:background "#EFEFF1"))))
+  (eldoc-box-body ((t (:background "#EFEFF1"))))
 
   :bind
   (:map evil-normal-state-map
