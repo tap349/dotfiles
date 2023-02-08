@@ -553,9 +553,16 @@
 ;; - "(" - dired-hide-details-mode
 (use-package dired
   :straight nil
+  :init
+  (defun my/dired-up-directory ()
+    (interactive)
+    (find-alternate-file ".."))
+
   :bind
   (:map dired-mode-map
-        ("p" . dired-up-directory)))
+        ;; http://xahlee.info/emacs/emacs/emacs_dired_tips.html
+        ("RET" . dired-find-alternate-file)
+        ("p" . my/dired-up-directory)))
 
 (use-package dired-subtree
   :straight t
@@ -836,3 +843,4 @@
  '(swiper-match-face-4 ((t (:inherit 'isearch)))))
 
 (put 'narrow-to-region 'disabled nil)
+(put 'dired-find-alternate-file 'disabled nil)
