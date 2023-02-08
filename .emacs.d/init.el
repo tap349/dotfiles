@@ -462,16 +462,14 @@
     (interactive)
     (let ((default-directory (or (counsel--git-root)
                                  default-directory)))
-      (split-window-below)
-      (other-window 1)
+      (my/evil-window-split)
       (find-file filename)))
 
   (defun my/counsel-fzf-open-vsplit (filename)
     (interactive)
     (let ((default-directory (or (counsel--git-root)
                                  default-directory)))
-      (split-window-right)
-      (other-window 1)
+      (my/evil-window-vsplit)
       (find-file filename)))
 
   (defun my/counsel-fzf-open-tab (filename)
@@ -483,14 +481,12 @@
 
   (defun my/counsel-rg-open-split (input)
     (interactive)
-    (split-window-below)
-    (other-window 1)
+    (my/evil-window-split)
     (counsel-git-grep-action input))
 
   (defun my/counsel-rg-open-vsplit (input)
     (interactive)
-    (split-window-right)
-    (other-window 1)
+    (my/evil-window-vsplit)
     (counsel-git-grep-action input))
 
   (defun my/counsel-rg-open-tab (input)
