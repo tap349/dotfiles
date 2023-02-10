@@ -381,7 +381,7 @@
   :after evil
   :bind
   (:map evil-normal-state-map
-        ("<leader>w" . avy-goto-word-1)))
+        ("<leader>w" . avy-goto-char-2)))
 
 ;; https://docs.cider.mx/cider/repl/keybindings.html
 ;; - "C-c C-x j j" - cider-jack-in
