@@ -312,6 +312,9 @@
   (evil-set-leader 'normal (kbd ","))
   (evil-set-leader 'visual (kbd ","))
 
+  ;; https://stackoverflow.com/a/23918497
+  (evil-set-initial-state 'Buffer-menu-mode 'emacs)
+
   :bind
   (:map evil-insert-state-map
         ;; https://emacs.stackexchange.com/a/62011
@@ -779,6 +782,7 @@
   :custom
   (tab-bar-close-button-show nil)
   (tab-bar-format '(tab-bar-format-tabs tab-bar-separator))
+  (tab-bar-new-tab-choice t)
   ;; ZWSP is used to prevent last tab from filling all available space
   (tab-bar-separator "​")
 
