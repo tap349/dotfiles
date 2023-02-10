@@ -41,6 +41,15 @@ git_prompt() {
       echo -n %F{reset}
     fi
 
+    # https://stackoverflow.com/a/7261049
+    local last_tag=$(git describe --tags --abbrev=0 2> /dev/null)
+
+    if [[ ! -z $last_tag ]]; then
+      echo -n %F{075}
+      echo -n " $last_tag"
+      echo -n %F{reset}
+    fi
+
     echo -n %F{075}
     echo -n ') '
     echo -n %F{reset}
