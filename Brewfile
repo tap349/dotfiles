@@ -34,7 +34,6 @@ brew 'bat'
 # Standard `mount -t bind` command doesn't work
 # No bottle for Apple Silicon
 #brew 'bindfs'
-#brew 'ccze'
 #brew 'boost'
 # Install manually by downloading dmg file
 #brew 'cgoban'

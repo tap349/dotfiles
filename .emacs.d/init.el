@@ -384,7 +384,7 @@
   :after evil
   :bind
   (:map evil-normal-state-map
-        ("<leader>w" . avy-goto-char-2)))
+        ("<leader>w" . avy-goto-word-1)))
 
 ;; https://docs.cider.mx/cider/repl/keybindings.html
 ;; - "C-c C-x j j" - cider-jack-in
@@ -807,7 +807,7 @@
   :bind
   (:map xref--xref-buffer-mode-map
         ("l" . xref-show-location-at-point)
-        ("o" . xref-goto-xref)
+        ("S-<return>" . xref-goto-xref)
         ("<return>" . xref-quit-and-goto-xref)
         ("q" . xref-quit-and-pop-marker-stack)))
 
