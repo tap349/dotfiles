@@ -684,18 +684,22 @@
   :demand t
   :after evil
   :init
-  (defun my/evil-visualstar-asterisk ()
+  (defun my/asterisk-z ()
     (interactive)
-    (when (region-active-p)
-      (evil-visualstar/begin-search (region-beginning) (region-end) t)
-      (evil-ex-search-previous)))
+    (if (region-active-p)
+        (evil-visualstar/begin-search (region-beginning) (region-end) t)
+      (evil-ex-search-word-forward))
+    (evil-ex-search-previous))
 
   :config
   (global-evil-visualstar-mode 1)
 
   :bind
   (:map evil-normal-state-map
-        ("z*" . my/evil-visualstar-asterisk)))
+        ("z*" . my/asterisk-z))
+
+  (:map evil-visual-state-map
+        ("z*" . my/asterisk-z)))
 
 (use-package flymake
   :straight nil
