@@ -136,13 +136,6 @@
 ;; https://www.gnu.org/software/emacs/manual/html_node/efaq/Replacing-highlighted-text.html
 ;; Replace selected region with inserted text
 (delete-selection-mode 1)
-(electric-pair-mode 1)
-
-(defun my/electric-pair-inhibit-predicate (char)
-  (minibufferp))
-
-(setq electric-pair-delete-adjacent-pairs t)
-(setq electric-pair-inhibit-predicate 'my/electric-pair-inhibit-predicate)
 
 ;; https://stackoverflow.com/a/1819405/3632318
 ;; Use whitespaces instead of tabs
@@ -672,6 +665,19 @@
   :bind
   (:map evil-normal-state-map
         ("C-n" . eldoc-box-eglot-toggle-help-at-point)))
+
+(use-package elec-pair
+  :straight nil
+  :init
+  (defun my/electric-pair-inhibit-predicate (_char)
+    (minibufferp))
+
+  :custom
+  (electric-pair-delete-adjacent-pairs t)
+  (electric-pair-inhibit-predicate 'my/electric-pair-inhibit-predicate)
+
+  :config
+  (electric-pair-mode 1))
 
 (use-package evil-surround
   :straight t
