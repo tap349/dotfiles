@@ -550,11 +550,21 @@
     (interactive)
     (find-alternate-file ".."))
 
+  ;; https://emacs.stackexchange.com/a/204/39266
+  (defun my/kill-dired-buffers ()
+    (interactive)
+    (mapc (lambda (buffer)
+            (when (eq (buffer-local-value 'major-mode buffer) 'dired-mode)
+              (kill-buffer buffer)))
+          (buffer-list)))
+
   :bind
   (:map dired-mode-map
         ;; http://xahlee.info/emacs/emacs/emacs_dired_tips.html
-        ("RET" . dired-find-alternate-file)
-        ("p" . my/dired-up-directory)))
+        ;; ("RET" . dired-find-alternate-file)
+        ;; ("p" . my/dired-up-directory)
+        ("p" . dired-up-directory)
+        ("q" . my/kill-dired-buffers)))
 
 (use-package dired-subtree
   :straight t
