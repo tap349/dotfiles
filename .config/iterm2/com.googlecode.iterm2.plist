@@ -32317,7 +32317,38 @@
 			<key>Transparency</key>
 			<real>0.0</real>
 			<key>Triggers</key>
-			<array/>
+			<array>
+				<dict>
+					<key>action</key>
+					<string>iTermHighlightLineTrigger</string>
+					<key>parameter</key>
+					<string>{#95ba76,}</string>
+					<key>partial</key>
+					<true/>
+					<key>regex</key>
+					<string>\tINFO\t</string>
+				</dict>
+				<dict>
+					<key>action</key>
+					<string>iTermHighlightLineTrigger</string>
+					<key>parameter</key>
+					<string>{#e7b178,}</string>
+					<key>partial</key>
+					<true/>
+					<key>regex</key>
+					<string>\tWARN\t</string>
+				</dict>
+				<dict>
+					<key>action</key>
+					<string>iTermHighlightLineTrigger</string>
+					<key>parameter</key>
+					<string>{#ff827e,}</string>
+					<key>partial</key>
+					<true/>
+					<key>regex</key>
+					<string>\tERROR\t</string>
+				</dict>
+			</array>
 			<key>Underline Color</key>
 			<dict>
 				<key>Alpha Component</key>
