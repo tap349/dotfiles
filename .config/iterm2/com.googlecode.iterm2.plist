@@ -32342,7 +32342,7 @@
 					<key>action</key>
 					<string>iTermHighlightLineTrigger</string>
 					<key>parameter</key>
-					<string>{#ff827e,}</string>
+					<string>{#fb8b7b,}</string>
 					<key>partial</key>
 					<true/>
 					<key>regex</key>
