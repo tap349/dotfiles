@@ -76,58 +76,68 @@ git_log() {
   git log --graph --pretty=format:${format} --abbrev-commit
 }
 
-kcr() {
-  local POD=
-  local HOST=
-  local DATABASE=
+#-------------------------------------------------------------------------------
+# kubectl
+#-------------------------------------------------------------------------------
 
-  if [[ "$1" == "dpn" ]]; then
-    POD="dev-platform-namespace-db-client"
-    HOST="dev-platform-namespace-db-public"
-    DATABASE="dpn"
+# `dp` stands for dev-platform
+# https://www.linuxjournal.com/content/return-values-bash-functions
+dp_name() {
+  local RESULT=
+
+  if [[ "$2" == "dpn" ]]; then
+    RESULT="dev-platform-namespace"
   fi
 
-  if [[ "$1" == "dpc" ]]; then
-    POD="dev-platform-catalog-db-client"
-    HOST="dev-platform-catalog-db-public"
-    DATABASE="dpc"
+  if [[ "$2" == "dpc" ]]; then
+    RESULT="dev-platform-catalog"
   fi
 
-  if [[ -z $NAME ]]; then
-    echo "Unknown service: '$1'"
+  if [[ "$2" == "dpas" ]]; then
+    RESULT="dev-platform-access-service"
+  fi
+
+  if [[ "$2" == "dpus" ]]; then
+    RESULT="dev-platform-user-service"
+  fi
+
+  if [[ -z $RESULT ]]; then
+    echo "Unknown service: $2"
     return 1
   fi
+
+  eval $1=$RESULT
+}
+
+kcr() {
+  # Declare local variable - otherwise DP_NAME becomes global
+  local DP_NAME=
+  dp_name DP_NAME $1
+  if [[ -z $DP_NAME ]]; then return 1; fi
+
+  local POD="$DP_NAME-db-client"
+  local HOST="$DP_NAME-db-public"
+  local DATABASE="$1"
 
   kubectl exec -it $POD -n platform -- cockroach sql --certs-dir=/cockroach/cockroach-certs --host=$HOST --database=$DATABASE
 }
 
+# https://github.com/kubernetes/kubectl/issues/917
+# https://stackoverflow.com/a/58649439/3632318
 kl() {
-  local NAME=
+  local DP_NAME=
+  dp_name DP_NAME $1
+  if [[ -z $DP_NAME ]]; then return 1; fi
 
-  if [[ "$1" == "dpn" ]]; then
-    NAME="dev-platform-namespace"
-  fi
+  kubectl logs -fl "app.kubernetes.io/name=$DP_NAME" -n platform --tail -1 | jq -r '[.timestamp, .level, .message]|@tsv' -C
+}
 
-  if [[ "$1" == "dpc" ]]; then
-    NAME="dev-platform-catalog"
-  fi
+ksh() {
+  local DP_NAME=
+  dp_name DP_NAME $1
+  if [[ -z $DP_NAME ]]; then return 1; fi
 
-  if [[ "$1" == "dpas" ]]; then
-    NAME="dev-platform-access-service"
-  fi
-
-  if [[ "$1" == "dpus" ]]; then
-    NAME="dev-platform-user-service"
-  fi
-
-  if [[ -z $NAME ]]; then
-    echo "Unknown service: '$1'"
-    return 1
-  fi
-
-  # https://github.com/kubernetes/kubectl/issues/917
-  # https://stackoverflow.com/a/58649439/3632318
-  kubectl logs -fl "app.kubernetes.io/name=$NAME" -n platform --tail -1 | jq -r '[.timestamp, .level, .message]|@tsv' -C
+  kubectl exec -it "deployment/$DP_NAME" -n platform -- /bin/bash
 }
 
 kpf() {
