@@ -66,7 +66,7 @@ git_commit() {
   git commit -S -m "$*"
 }
 
-# Current branch is prefixed with '*' in 'git branch' output
+# Current branch is prefixed with '*' in `git branch` output
 git_branch_delete() {
   git branch | grep -v -E '(master|develop|\*)' | xargs git branch -d
 }
@@ -80,7 +80,7 @@ git_log() {
 # kubectl
 #-------------------------------------------------------------------------------
 
-# `dp` stands for dev-platform
+# 'dp' stands for dev-platform
 # https://www.linuxjournal.com/content/return-values-bash-functions
 dp_name() {
   local RESULT=
