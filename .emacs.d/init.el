@@ -392,21 +392,17 @@
   :straight t
   :delight " CIDER"
   :init
-  (defun my/setup-test-report-mode ()
+  (defun my/setup-cider-mode ()
     (setq show-trailing-whitespace nil)
-    (setq truncate-lines 0))
-
-  ;; https://github.com/emacs-evil/evil/issues/511#issuecomment-273754917
-  (defun my/override-evil-keybindings ()
+    ;; (setq truncate-lines nil)
+    ;; https://github.com/emacs-evil/evil/issues/511#issuecomment-273754917
     (define-key evil-normal-state-local-map "q" 'cider-popup-buffer-quit-function))
 
   :hook
-  ((cider-test-report-mode . my/setup-test-report-mode)
-   ;; For *cider-clojuredocs* buffer
-   (cider-popup-buffer-mode . my/hide-trailing-whitespace)
-   (cider-repl-mode . my/override-evil-keybindings)
-   (cider-stacktrace-mode . my/override-evil-keybindings)
-   (cider-test-report-mode . my/override-evil-keybindings))
+  ((cider-popup-buffer-mode . my/setup-cider-mode)
+   (cider-repl-mode . my/setup-cider-mode)
+   (cider-stacktrace-mode . my/setup-cider-mode)
+   (cider-test-report-mode . my/setup-cider-mode))
 
   :custom
   ;; Use xref backend provided by Eglot
