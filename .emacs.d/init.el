@@ -400,6 +400,10 @@
    ;; For *cider-clojuredocs* buffer
    (cider-popup-buffer-mode . my/hide-trailing-whitespace))
 
+  :custom
+  ;; Use xref backend provided by Eglot
+  (cider-use-xref nil)
+
   :bind
   (:map cider-repl-mode-map
         ;; Close *cider-error* window with q
