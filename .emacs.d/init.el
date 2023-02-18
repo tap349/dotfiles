@@ -392,22 +392,25 @@
   :straight t
   :delight " CIDER"
   :init
-  (defun my/hide-trailing-whitespace ()
-    (setq show-trailing-whitespace nil))
+  (defun my/setup-test-report-mode ()
+    (setq show-trailing-whitespace nil)
+    (setq truncate-lines 0))
+
+  ;; https://github.com/emacs-evil/evil/issues/511#issuecomment-273754917
+  (defun my/override-evil-keybindings ()
+    (define-key evil-normal-state-local-map "q" 'cider-popup-buffer-quit-function))
 
   :hook
-  ((cider-test-report-mode . my/hide-trailing-whitespace)
+  ((cider-test-report-mode . my/setup-test-report-mode)
    ;; For *cider-clojuredocs* buffer
-   (cider-popup-buffer-mode . my/hide-trailing-whitespace))
+   (cider-popup-buffer-mode . my/hide-trailing-whitespace)
+   (cider-repl-mode . my/override-evil-keybindings)
+   (cider-stacktrace-mode . my/override-evil-keybindings)
+   (cider-test-report-mode . my/override-evil-keybindings))
 
   :custom
   ;; Use xref backend provided by Eglot
-  (cider-use-xref nil)
-
-  :bind
-  (:map cider-repl-mode-map
-        ;; Close *cider-error* window with q
-        ("q" . cider-popup-buffer-quit-function)))
+  (cider-use-xref nil))
 
 (use-package clojure-mode
   :straight t)
@@ -540,8 +543,10 @@
    ("C-h f" . counsel-describe-function)
    ("C-h v" . counsel-describe-variable)
    ("C-x b" . ivy-switch-buffer)
+
    (:map ivy-minibuffer-map
          ("C-u" . ivy-dispatching-done))
+
    (:map evil-normal-state-map
          ("<leader>n" . counsel-fzf)
          ("<leader>/" . counsel-rg))))
@@ -782,6 +787,7 @@
   :bind
   (:map projectile-mode-map
         ("s-p" . projectile-command-map))
+
   (:map evil-normal-state-map
         ("<leader>," . projectile-toggle-between-implementation-and-test)
         ("<leader>v" . my/toggle-test-vsplit)))
