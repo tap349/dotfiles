@@ -494,13 +494,18 @@
     (counsel-git-grep-action input))
 
   :custom
+  ;; https://oremacs.com/swiper/#completion-styles
+  ;; https://github.com/abo-abo/swiper/issues/1982
+  ;;
+  ;; > To match a literal white space, use an extra space
+  ;; Or else use `regexp-quote' regex builder
   (counsel-rg-base-command '("rg"
-                             "--max-columns" "240"
-                             "--with-filename"
-                             "--no-heading"
-                             "--line-number"
-                             "--color" "never"
+                             "--color=never"
                              "--fixed-strings"
+                             "--line-number"
+                             "--max-columns=240"
+                             "--no-heading"
+                             "--with-filename"
                              "%s"))
 
   (ivy-use-virtual-buffers t)
