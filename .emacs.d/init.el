@@ -501,7 +501,6 @@
   ;; Or else use `regexp-quote' regex builder
   (counsel-rg-base-command '("rg"
                              "--color=never"
-                             "--fixed-strings"
                              "--line-number"
                              "--max-columns=240"
                              "--no-heading"
