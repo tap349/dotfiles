@@ -361,7 +361,7 @@
   (:map evil-visual-state-map
         ;; Bind to keyboard-quit explicitly -
         ;; otherwise binding for normal state is used
-        ("C-g" . keyboard-quit)
+        ("C-g" . evil-exit-visual-state)
         ("C-." . execute-extended-command)
 
         ("C-s" . sort-lines)
