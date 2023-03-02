@@ -4,3 +4,4 @@ kotlin 1.8.0
 java openjdk-17
 dart 2.18.7
 elixir 1.14.3-otp-25
+haskell 9.4.4
