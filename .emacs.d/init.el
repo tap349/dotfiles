@@ -311,7 +311,8 @@
   :bind
   (:map evil-insert-state-map
         ;; https://emacs.stackexchange.com/a/62011
-        ("C-g" . evil-force-normal-state)
+        ;; Using evil-force-normal-state breaks repeat command
+        ("C-g" . evil-normal-state)
         ("RET" . comment-indent-new-line)
         ("TAB" . my/insert-tab-or-complete))
 
@@ -359,8 +360,7 @@
         ("<leader>t" . dired-jump))
 
   (:map evil-visual-state-map
-        ;; Bind to keyboard-quit explicitly -
-        ;; otherwise binding for normal state is used
+        ;; Bind explicitly or else binding for normal state is used
         ("C-g" . evil-exit-visual-state)
         ("C-." . execute-extended-command)
 
@@ -370,7 +370,7 @@
         ("L" . evil-last-non-blank))
 
   (:map evil-replace-state-map
-        ("C-g" . evil-force-normal-state)))
+        ("C-g" . evil-normal-state)))
 
 (use-package avy
   :straight t
