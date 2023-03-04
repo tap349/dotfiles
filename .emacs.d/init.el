@@ -311,7 +311,7 @@
   :bind
   (:map evil-insert-state-map
         ;; https://emacs.stackexchange.com/a/62011
-        ("C-g" . evil-normal-state)
+        ("C-g" . evil-force-normal-state)
         ("RET" . comment-indent-new-line)
         ("TAB" . my/insert-tab-or-complete))
 
@@ -370,7 +370,7 @@
         ("L" . evil-last-non-blank))
 
   (:map evil-replace-state-map
-        ("C-g" . evil-normal-state)))
+        ("C-g" . evil-force-normal-state)))
 
 (use-package avy
   :straight t
