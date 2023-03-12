@@ -42,6 +42,7 @@ brew erlang
 brew 'ffmpeg'
 brew 'git'
 brew 'gpg'
+brew 'haskell-language-server'
 brew 'htop'
 brew 'imagemagick'
 brew 'jq'
