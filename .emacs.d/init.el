@@ -626,10 +626,13 @@
   :hook
   ((clojure-mode . eglot-ensure)
    (kotlin-mode . eglot-ensure)
+   (haskell-mode . eglot-ensure)
    (clojure-mode . my/eglot-clojure-add-save-hooks)
    (eglot-managed-mode . my/show-flymake-eldoc-first))
 
   :custom
+  (eglot-autoshutdown t)
+  (eglot-confirm-server-initiated-edits nil)
   ;; [kotlin-language-server] It might take a lot of time to resolve all
   ;; dependencies when there are no caches in ~/.gradle/caches
   (eglot-connect-timeout 300)
@@ -731,6 +734,9 @@
   :bind
   (("M-]" . flymake-goto-next-error)
    ("M-[" . flymake-goto-prev-error)))
+
+(use-package haskell-mode
+  :straight t)
 
 ;; hs-minor-mode can be enabled not in all major modes
 ;; Use evil-toggle-fold to toggle folding
