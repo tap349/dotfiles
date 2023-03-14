@@ -103,6 +103,7 @@ cask 'firefox'
 cask 'flux'
 # For iTerm2
 cask 'font-inconsolata-lgc'
+cask 'goldendict'
 cask 'google-chrome'
 cask 'gopanda'
 cask 'insomnia'
