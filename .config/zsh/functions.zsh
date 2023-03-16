@@ -129,7 +129,8 @@ kl() {
   dp_name DP_NAME $1
   if [[ -z $DP_NAME ]]; then return 1; fi
 
-  kubectl logs -fl "app.kubernetes.io/name=$DP_NAME" -n platform --tail -1 | jq -r '[.timestamp, .level, .message]|@tsv' -C
+  # https://jamesdefabia.github.io/docs/user-guide/kubectl/kubectl_logs/
+  kubectl logs -fl "app.kubernetes.io/name=$DP_NAME" -n platform --since 1h --tail -1 | jq -r '[.timestamp, .level, .message]|@tsv' -C
 }
 
 ksh() {
