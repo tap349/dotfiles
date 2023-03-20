@@ -380,6 +380,7 @@
         ("<leader>w" . avy-goto-word-1)))
 
 ;; https://docs.cider.mx/cider/repl/keybindings.html
+;;
 ;; - "C-c C-x j j" - cider-jack-in
 ;; - "C-c C-d C-c" - cider-clojuredocs
 ;; - "C-c C-d C-w" - cider-clojuredocs-web
@@ -601,18 +602,29 @@
 ;; Eglot automatically finds LSP server binaries in PATH:
 ;;
 ;; - clojure-mode => clojure-lsp
+;; - go-mode => gopls
+;; - haskell-mode => haskell-language-server-wrapper
 ;; - kotlin-mode => kotlin-language-server
 ;;
-;; - "C-]" - xref-find-definitions
-;; - "M-?" - xref-find-references
+;; - eglot-events-buffer (show Eglot logs)
 (use-package eglot
   ;; Built-in package since Emacs 29
   :straight nil
   :demand t
   :init
-  (defun my/eglot-clojure-add-save-hooks ()
+  (defun my/eglot-organize-imports ()
+    (eglot-code-actions nil nil "source.organizeImports" t))
+
+  (defun my/eglot-clojure-add-before-save-hooks ()
     ;; Calls cljfmt on current buffer
     (add-hook 'before-save-hook 'eglot-format-buffer))
+
+  (defun my/eglot-go-add-before-save-hooks ()
+    ;; https://github.com/joaotavora/eglot/issues/574#issuecomment-1401023985
+    (add-hook 'before-save-hook 'my/eglot-organize-imports nil t)
+    ;; https://github.com/golang/tools/blob/master/gopls/doc/emacs.md#loading-eglot-in-emacs
+    ;; Calls gofmt on current buffer
+    (add-hook 'before-save-hook 'eglot-format-buffer -10 t))
 
   (defun my/show-flymake-eldoc-first ()
     ;; Show flymake diagnostics first
@@ -624,11 +636,13 @@
     (setq eldoc-documentation-strategy 'eldoc-documentation-compose))
 
   :hook
-  ((clojure-mode . eglot-ensure)
-   (kotlin-mode . eglot-ensure)
+  ((eglot-managed-mode . my/show-flymake-eldoc-first)
+   (clojure-mode . eglot-ensure)
+   (clojure-mode . my/eglot-clojure-add-before-save-hooks)
+   (go-mode . eglot-ensure)
+   (go-mode . my/eglot-go-add-before-save-hooks)
    (haskell-mode . eglot-ensure)
-   (clojure-mode . my/eglot-clojure-add-save-hooks)
-   (eglot-managed-mode . my/show-flymake-eldoc-first))
+   (kotlin-mode . eglot-ensure))
 
   :custom
   (eglot-autoshutdown t)
@@ -641,6 +655,11 @@
   (eglot-ignored-server-capabilities '(:documentHighlightProvider))
 
   :config
+  ;; https://github.com/golang/tools/blob/master/gopls/doc/emacs.md#configuring-gopls-via-eglot
+  (setq-default eglot-workspace-configuration
+                '((:gopls . ((staticcheck . t)
+                             (matcher . "CaseSensitive")))))
+
   (add-to-list 'eglot-server-programs
                '(kotlin-mode . ("kotlin-language-server"
                                 :initializationOptions
@@ -729,11 +748,15 @@
   (:map evil-visual-state-map
         ("z*" . my/asterisk-z)))
 
+;; - flymake-show-buffer-diagnostics (show all buffer errors)
 (use-package flymake
   :straight nil
   :bind
   (("M-]" . flymake-goto-next-error)
    ("M-[" . flymake-goto-prev-error)))
+
+(use-package go-mode
+  :straight t)
 
 (use-package haskell-mode
   :straight t)
@@ -835,6 +858,8 @@
    ("s-w" . tab-bar-close-tab)
    ("C-<backspace>" . tab-bar-close-tab)))
 
+;; - "C-]" - xref-find-definitions
+;; - "M-?" - xref-find-references
 (use-package xref
   :straight nil
   :after evil
@@ -843,8 +868,8 @@
   :bind
   (:map xref--xref-buffer-mode-map
         ("l" . xref-show-location-at-point)
-        ("S-<return>" . xref-goto-xref)
-        ("<return>" . xref-quit-and-goto-xref)
+        ("<return>" . xref-goto-xref)
+        ("C-<return>" . xref-quit-and-goto-xref)
         ("q" . xref-quit-and-pop-marker-stack)))
 
 (use-package yaml-mode
