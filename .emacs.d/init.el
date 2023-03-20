@@ -672,10 +672,12 @@
         ("s-l a a" . eglot-code-actions)
         ("s-l g g" . xref-find-definitions)
         ("s-l g r" . xref-find-references)
+        ("s-l g t" . eglot-find-typeDefinition)
         ("s-l r o" . eglot-code-action-organize-imports)
         ("s-l r r" . eglot-rename)
-        ;; Default keybinding in IntelliJ IDEA
-        ("s-b" . xref-find-references)))
+        ;; Default keybindings in IntelliJ IDEA
+        ("s-b" . xref-find-references)
+        ("s-B" . eglot-find-typeDefinition)))
 
 (use-package eldoc
   :straight nil
@@ -768,6 +770,14 @@
   :delight hs-minor-mode
   :hook (prog-mode . hs-minor-mode))
 
+(use-package ivy-xref
+  :straight t
+  :custom
+  (xref-show-definitions-function #'ivy-xref-show-defs)
+  ;; In Emacs 27+ it will affect all xref-based commands
+  ;; other than xref-find-definitions
+  (xref-show-xrefs-function #'ivy-xref-show-xrefs))
+
 (use-package jarchive
   :straight t
   :config
@@ -858,6 +868,8 @@
    ("s-w" . tab-bar-close-tab)
    ("C-<backspace>" . tab-bar-close-tab)))
 
+;; https://emacs.stackexchange.com/a/61387
+;;
 ;; - "C-]" - xref-find-definitions
 ;; - "M-?" - xref-find-references
 (use-package xref
@@ -866,6 +878,7 @@
   :config
   (evil-make-overriding-map xref--xref-buffer-mode-map 'normal)
   :bind
+  ;; These keybindings have no effect in ivy-xref buffer
   (:map xref--xref-buffer-mode-map
         ("l" . xref-show-location-at-point)
         ("<return>" . xref-goto-xref)
@@ -894,6 +907,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(ivy-current-match ((t (:extend t :background "#ead7a7" :foreground "black"))))
  '(ivy-minibuffer-match-face-1 ((t nil)))
  '(ivy-minibuffer-match-face-2 ((t (:inherit 'lazy-highlight))))
  '(ivy-minibuffer-match-face-3 ((t (:inherit 'lazy-highlight))))
