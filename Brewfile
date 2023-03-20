@@ -37,12 +37,10 @@ brew 'bat'
 #brew 'boost'
 # Install manually by downloading dmg file
 #brew 'cgoban'
-brew erlang
 #brew 'exiftool'
 brew 'ffmpeg'
 brew 'git'
 brew 'gpg'
-brew 'haskell-language-server'
 brew 'htop'
 brew 'imagemagick'
 brew 'jq'
@@ -65,8 +63,6 @@ brew 'p7zip'
 # Use docker-compose.yml instead, install libpq for psql and pg_dump
 #brew 'postgresql', restart_service: :changed
 brew 'ripgrep'
-# For command-t
-brew 'ruby'
 brew 'ssh-copy-id'
 # For `brew install font-inconsolata-lgc`
 brew 'svn'
@@ -167,6 +163,13 @@ mas 'Sip', id: 507257563
 mas 'Slack for Desktop', id: 803453959
 mas 'Telegram Desktop', id: 946399090
 #mas 'iA Writer', id: 775737590
+
+#-------------------------------------------------------------------------------
+# Language servers
+#-------------------------------------------------------------------------------
+
+brew 'gopls'
+brew 'haskell-language-server'
 
 #-------------------------------------------------------------------------------
 # inDrive
