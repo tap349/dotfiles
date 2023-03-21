@@ -732,26 +732,46 @@
   (global-evil-surround-mode 1))
 
 (use-package evil-visualstar
-  :straight t
+  :straight (evil-visualstar :type git
+                             :host github
+                             :repo "tap349/evil-visualstar")
   :demand t
   :after evil
   :init
-  (defun my/asterisk-z ()
+  ;; See https://github.com/noctuid/evil-guide#buffer-local-keybindings
+  ;; if you ever need to define this keybinding for specific mode only
+  (defun my/asterisk-normal ()
     (interactive)
-    (if (region-active-p)
-        (evil-visualstar/begin-search (region-beginning) (region-end) t)
-      (evil-ex-search-word-forward))
+    (let ((vim-word-regexp "[-_<>A-Za-z0-9?!]+"))
+      (when (thing-at-point-looking-at vim-word-regexp)
+        (evil-visualstar/begin-search (match-beginning 0) (match-end 0) t))))
+
+  (defun my/asterisk-visual (beg end)
+    (interactive "r")
+    (evil-visualstar/begin-search-forward beg end))
+
+  (defun my/asterisk-z-normal ()
+    (interactive)
+    (my/asterisk-normal)
     (evil-ex-search-previous))
 
-  :config
-  (global-evil-visualstar-mode 1)
+  (defun my/asterisk-z-visual (beg end)
+    (interactive "r")
+    (evil-visualstar/begin-search-forward beg end)
+    (evil-ex-search-previous))
 
+  ;; global-evil-visualstar-mode is not enabled so define all
+  ;; keybindings manually including "*" for visual state which
+  ;; works as expected out of the box if evil-visualstar-mode
+  ;; were enabled
   :bind
   (:map evil-normal-state-map
-        ("z*" . my/asterisk-z))
+        ("*" . my/asterisk-normal)
+        ("z*" . my/asterisk-z-normal))
 
   (:map evil-visual-state-map
-        ("z*" . my/asterisk-z)))
+        ("*" . my/asterisk-visual)
+        ("z*" . my/asterisk-z-visual)))
 
 ;; - flymake-show-buffer-diagnostics (show all buffer errors)
 (use-package flymake
