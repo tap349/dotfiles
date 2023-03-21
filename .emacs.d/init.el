@@ -705,6 +705,9 @@
   (eldoc-box-body ((t (:background "#EFEFF1"))))
   (eldoc-box-border ((t (:background "#EFEFF1"))))
 
+  :config
+  (advice-add 'keyboard-quit :before 'eldoc-box-quit-frame)
+
   :bind
   (:map evil-normal-state-map
         ("C-n" . eldoc-box-eglot-toggle-help-at-point)))
