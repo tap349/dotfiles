@@ -770,12 +770,19 @@
   :delight hs-minor-mode
   :hook (prog-mode . hs-minor-mode))
 
+;; NOTE:
+;;
+;; - xref-find-definitions (ivy-xref-show-defs) jumps to the definition
+;;   right away when only one definition is found
+;; - xref-find-references (ivy-xref-show-xrefs) always shows references
+;;   list even if only one reference is found (true for type definitions
+;;   which are displayed with xref-find-references)
 (use-package ivy-xref
   :straight t
   :custom
   (xref-show-definitions-function #'ivy-xref-show-defs)
   ;; In Emacs 27+ it will affect all xref-based commands
-  ;; other than xref-find-definitions
+  ;; except for xref-find-definitions
   (xref-show-xrefs-function #'ivy-xref-show-xrefs))
 
 (use-package jarchive
@@ -907,7 +914,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(ivy-current-match ((t (:extend t :background "#ead7a7" :foreground "black"))))
+ '(ivy-current-match ((t (:extend t :background "#ead6a2" :foreground "black"))))
  '(ivy-minibuffer-match-face-1 ((t nil)))
  '(ivy-minibuffer-match-face-2 ((t (:inherit 'lazy-highlight))))
  '(ivy-minibuffer-match-face-3 ((t (:inherit 'lazy-highlight))))
