@@ -321,7 +321,7 @@
         ("C-." . execute-extended-command)
 
         ("TAB" . save-buffer)
-        ("C-o" . evil-switch-to-windows-last-buffer)
+        ("s-`" . evil-switch-to-windows-last-buffer)
 
         ("H" . evil-first-non-blank)
         ("L" . evil-last-non-blank)
