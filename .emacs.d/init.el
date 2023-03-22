@@ -115,10 +115,12 @@
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
 ;; (load-theme 'tango-plus t)
 (load-theme 'aircon t)
+ ;; '(ivy-current-match ((t (:extend t :background "#ece8a4" :foreground "black"))))
 
 ;; https://emacs.stackexchange.com/a/69091
 (set-face-attribute 'default nil :font "Input-15")
-(set-face-attribute 'default nil :font "Input-15")
+;; Used for ivy-current-match and swiper-line-face - see custom-set-faces
+(set-face-attribute 'highlight nil :background "#ece8a4" :foreground "black")
 (set-face-foreground 'fill-column-indicator "#DEE4EF")
 (set-face-foreground 'vertical-border "#D8D8DE")
 
@@ -459,42 +461,53 @@
     --exclude /target")
 
   (defun my/counsel-fzf-open-split (filename)
-    (interactive)
-    (let ((default-directory (or (counsel--git-root)
-                                 default-directory)))
-      (my/evil-window-split)
-      (find-file filename)))
+    (with-ivy-window
+      (let ((default-directory (or (counsel--git-root)
+                                   default-directory)))
+        (my/evil-window-split)
+        (find-file filename))))
 
   (defun my/counsel-fzf-open-vsplit (filename)
-    (interactive)
-    (let ((default-directory (or (counsel--git-root)
-                                 default-directory)))
-      (my/evil-window-vsplit)
-      (find-file filename)))
+    (with-ivy-window
+      (let ((default-directory (or (counsel--git-root)
+                                   default-directory)))
+        (my/evil-window-vsplit)
+        (find-file filename))))
 
   (defun my/counsel-fzf-open-tab (filename)
-    (interactive)
-    (let ((default-directory (or (counsel--git-root)
-                                 default-directory)))
-      (tab-bar-new-tab)
-      (find-file filename)))
+    (with-ivy-window
+      (let ((default-directory (or (counsel--git-root)
+                                   default-directory)))
+        (tab-bar-new-tab)
+        (find-file filename))))
 
   (defun my/counsel-rg-open-split (input)
-    (interactive)
-    (my/evil-window-split)
-    (counsel-git-grep-action input))
+    (with-ivy-window
+      (my/evil-window-split)
+      (counsel-git-grep-action input)
+      ;; https://github.com/abo-abo/swiper/blob/master/counsel.el#L1423
+      ;; Remove swiper overlays (highlighting of current line and match)
+      ;;
+      ;; ivy-exit is not set to 'done when opening candidate in a split
+      ;; window which causes swiper overlays to be added - overlays are
+      ;; correctly removed when opening candidate in a new tab
+      (swiper--cleanup)))
 
   (defun my/counsel-rg-open-vsplit (input)
-    (interactive)
-    (my/evil-window-vsplit)
-    (counsel-git-grep-action input))
+    (with-ivy-window
+      (my/evil-window-vsplit)
+      (counsel-git-grep-action input)
+      ;; See comment above in my/counsel-rg-open-split
+      (swiper--cleanup)))
 
   (defun my/counsel-rg-open-tab (input)
-    (interactive)
-    (tab-bar-new-tab)
-    (counsel-git-grep-action input))
+    (with-ivy-window
+      (tab-bar-new-tab)
+      (counsel-git-grep-action input)))
 
   :custom
+  (enable-recursive-minibuffers t)
+
   ;; https://oremacs.com/swiper/#completion-styles
   ;; https://github.com/abo-abo/swiper/issues/1982
   ;;
@@ -508,18 +521,18 @@
                              "--with-filename"
                              "%s"))
 
-  (ivy-use-virtual-buffers t)
-  (enable-recursive-minibuffers t)
-
+  (ivy-count-format "")
   (ivy-display-style 'fancy)
   (ivy-height 15)
-  (ivy-count-format "")
   (ivy-initial-inputs-alist nil)
-  (ivy-on-del-error-function 'ignore)
   (ivy-more-chars-alist '((counsel-grep . 2)
                           (counsel-git-grep . 2)
                           (t . 3)))
+  (ivy-on-del-error-function 'ignore)
+  (ivy-use-virtual-buffers t)
   (ivy-wrap t)
+
+  (swiper-goto-start-of-match t)
 
   :config
   (ivy-mode 1)
@@ -946,11 +959,12 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(ivy-current-match ((t (:extend t :background "#ece8a4" :foreground "black"))))
+ '(ivy-current-match ((t (:inherit 'highlight))))
  '(ivy-minibuffer-match-face-1 ((t nil)))
  '(ivy-minibuffer-match-face-2 ((t (:inherit 'lazy-highlight))))
  '(ivy-minibuffer-match-face-3 ((t (:inherit 'lazy-highlight))))
  '(ivy-minibuffer-match-face-4 ((t (:inherit 'lazy-highlight))))
+ '(swiper-line-face ((t (:inherit 'highlight))))
  '(swiper-match-face-1 ((t nil)))
  '(swiper-match-face-2 ((t (:inherit 'isearch))))
  '(swiper-match-face-3 ((t (:inherit 'isearch))))
