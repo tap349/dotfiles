@@ -617,16 +617,21 @@
 
   (defun my/eglot-clojure-add-before-save-hooks ()
     ;; Calls cljfmt on current buffer
-    (add-hook 'before-save-hook 'eglot-format-buffer))
+    (add-hook 'before-save-hook 'eglot-format-buffer -10 t))
 
+  ;; NOTE: not used so far because ktfmt style is different not only from
+  ;; IntelliJ IDEA coding style but also from kotlin-mode indentation rules
   (defun my/eglot-kotlin-add-before-save-hooks ()
     ;; Calls ktfmt on current buffer
-    (add-hook 'before-save-hook 'eglot-format-buffer))
+    (add-hook 'before-save-hook 'eglot-format-buffer -10 t))
 
   (defun my/eglot-go-add-before-save-hooks ()
     ;; https://github.com/joaotavora/eglot/issues/574#issuecomment-1401023985
     (add-hook 'before-save-hook 'my/eglot-organize-imports nil t)
     ;; https://github.com/golang/tools/blob/master/gopls/doc/emacs.md#loading-eglot-in-emacs
+    ;; > The depth of -10 places this before eglot's willSave notification,
+    ;; > so that that notification reports the actual contents that will be saved.
+    ;;
     ;; Calls gofmt on current buffer
     (add-hook 'before-save-hook 'eglot-format-buffer -10 t))
 
@@ -646,8 +651,7 @@
    (go-mode . eglot-ensure)
    (go-mode . my/eglot-go-add-before-save-hooks)
    (haskell-mode . eglot-ensure)
-   (kotlin-mode . eglot-ensure)
-   (kotlin-mode . my/eglot-kotlin-add-before-save-hooks))
+   (kotlin-mode . eglot-ensure))
 
   :custom
   (eglot-autoshutdown t)
