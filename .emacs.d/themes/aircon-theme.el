@@ -160,7 +160,7 @@
  '(isearch-fail        ((t (:inherit (aircon-blush)))))
  '(lazy-highlight      ((t (:inherit (aircon-vim-isearch)))))
  '(tooltip             ((t (:inherit (aircon-linen)))))
- '(match               ((t (:inherit (aircon-linen)))))
+ '(match               ((t (:inherit (aircon-vim-isearch)))))
  '(show-paren-match    ((t (:inherit (aircon-mango)))))
  '(show-paren-mismatch ((t (:inherit (aircon-blush)))))
  '(show-paren-match-expression ((t (:inherit (aircon-linen)))))
