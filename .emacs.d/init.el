@@ -619,6 +619,10 @@
     ;; Calls cljfmt on current buffer
     (add-hook 'before-save-hook 'eglot-format-buffer))
 
+  (defun my/eglot-kotlin-add-before-save-hooks ()
+    ;; Calls ktfmt on current buffer
+    (add-hook 'before-save-hook 'eglot-format-buffer))
+
   (defun my/eglot-go-add-before-save-hooks ()
     ;; https://github.com/joaotavora/eglot/issues/574#issuecomment-1401023985
     (add-hook 'before-save-hook 'my/eglot-organize-imports nil t)
@@ -642,7 +646,8 @@
    (go-mode . eglot-ensure)
    (go-mode . my/eglot-go-add-before-save-hooks)
    (haskell-mode . eglot-ensure)
-   (kotlin-mode . eglot-ensure))
+   (kotlin-mode . eglot-ensure)
+   (kotlin-mode . my/eglot-kotlin-add-before-save-hooks))
 
   :custom
   (eglot-autoshutdown t)
