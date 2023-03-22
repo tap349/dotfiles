@@ -711,8 +711,8 @@
   (eldoc-box-max-pixel-width 1000)
 
   :custom-face
-  (eldoc-box-body ((t (:background "#EFEFF1"))))
-  (eldoc-box-border ((t (:background "#EFEFF1"))))
+  (eldoc-box-body ((t (:background "#F6F6F8"))))
+  (eldoc-box-border ((t (:background "#EAEAF0"))))
 
   :config
   (advice-add 'keyboard-quit :before 'eldoc-box-quit-frame)
@@ -751,7 +751,7 @@
   ;; if you ever need to define this keybinding for specific mode only
   (defun my/asterisk-normal ()
     (interactive)
-    (let ((vim-word-regexp "[-_<>A-Za-z0-9?!]+"))
+    (let ((vim-word-regexp "[-_<>A-Za-z0-9?!:]+"))
       (when (thing-at-point-looking-at vim-word-regexp)
         (evil-visualstar/begin-search (match-beginning 0) (match-end 0) t))))
 
