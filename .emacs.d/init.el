@@ -115,7 +115,6 @@
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
 ;; (load-theme 'tango-plus t)
 (load-theme 'aircon t)
- ;; '(ivy-current-match ((t (:extend t :background "#ece8a4" :foreground "black"))))
 
 ;; https://emacs.stackexchange.com/a/69091
 (set-face-attribute 'default nil :font "Input-15")
