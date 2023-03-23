@@ -99,17 +99,22 @@
 (global-display-fill-column-indicator-mode 1)
 (setq-default display-fill-column-indicator-column 82)
 
-(setq column-number-mode t)
+(setq column-number-mode 1)
 (setq show-paren-delay 0)
 
 ;; https://emacs.stackexchange.com/a/21865
-(setq-default show-trailing-whitespace t)
+;;
+;; Trailing whitespaces can be shown with:
+;; - show-trailing-whitespace => trailing-whitespace face
+;; - whitespace-mode => whitespace-trailing face
+(setq whitespace-style '(face tabs trailing))
+(global-whitespace-mode 1)
 
 ;; nowrap
 (setq-default truncate-lines 1)
 
 ;;-----------------------------------------------------------------------------
-;; Theme
+;; Theme (faces)
 ;;-----------------------------------------------------------------------------
 
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
@@ -118,9 +123,14 @@
 
 ;; https://emacs.stackexchange.com/a/69091
 (set-face-attribute 'default nil :font "Input-15")
+
 ;; Used for all ivy and swiper buffers to highlight current line
-;; (see custom-set-faces)
-(set-face-attribute 'highlight nil :background "#ece8a4" :foreground "black")
+;; (see custom-set-faces at the end of the file)
+(set-face-attribute 'highlight nil :background "#ECE8A4" :foreground "black")
+
+;; For trailing whitespaces in whitespace-mode
+(set-face-background 'whitespace-trailing "#E3A8A8")
+
 (set-face-foreground 'fill-column-indicator "#DEE4EF")
 (set-face-foreground 'vertical-border "#D8D8DE")
 
@@ -233,8 +243,10 @@
   (defun my/insert-tab-or-complete ()
     (interactive)
     (let ((chr (preceding-char)))
-      ;; if beginning of line or preceding character is whitespace
-      (if (or (bolp) (= chr 32))
+      ;; - beginning of line or
+      ;; - preceding character is whitespace or
+      ;; - preceding character is tab (for go-mode)
+      (if (or (bolp) (= chr 32) (= chr 9))
           ;; insert tab
           (tab-to-tab-stop)
         ;; else complete
