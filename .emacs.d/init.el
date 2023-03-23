@@ -145,6 +145,9 @@
 ;;
 ;;-----------------------------------------------------------------------------
 
+;; For camel-case motions
+(global-subword-mode 1)
+
 ;; https://www.gnu.org/software/emacs/manual/html_node/efaq/Replacing-highlighted-text.html
 ;; Replace selected region with inserted text
 (delete-selection-mode 1)
