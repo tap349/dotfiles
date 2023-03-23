@@ -140,9 +140,6 @@
 ;;
 ;;-----------------------------------------------------------------------------
 
-;; For camel-case motions
-(global-subword-mode 1)
-
 ;; https://www.gnu.org/software/emacs/manual/html_node/efaq/Replacing-highlighted-text.html
 ;; Replace selected region with inserted text
 (delete-selection-mode 1)
@@ -287,7 +284,12 @@
 
   (defun my/keyboard-quit ()
     (interactive)
-    (evil-ex-nohighlight)
+    (cond
+     ;; https://emacs.stackexchange.com/a/62011
+     ;; evil-force-normal-state breaks repeat command
+     ((eq evil-state 'insert) (evil-normal-state))
+     ((eq evil-state 'normal) (evil-ex-nohighlight))
+     ((eq evil-state 'visual) (evil-exit-visual-state)))
     (keyboard-quit))
 
   ;; https://stackoverflow.com/a/9697222/3632318
@@ -322,9 +324,7 @@
 
   :bind
   (:map evil-insert-state-map
-        ;; https://emacs.stackexchange.com/a/62011
-        ;; Using evil-force-normal-state breaks repeat command
-        ("C-g" . evil-normal-state)
+        ("C-g" . my/keyboard-quit)
         ("RET" . comment-indent-new-line)
         ("TAB" . my/insert-tab-or-complete))
 
@@ -372,8 +372,7 @@
         ("<leader>t" . dired-jump))
 
   (:map evil-visual-state-map
-        ;; Bind explicitly or else binding for normal state is used
-        ("C-g" . keyboard-quit)
+        ("C-g" . my/keyboard-quit)
         ("C-." . execute-extended-command)
 
         ("C-s" . sort-lines)
@@ -639,26 +638,31 @@
   :demand t
   :init
   (defun my/eglot-organize-imports ()
+    ;; https://github.com/joaotavora/eglot/issues/574#issuecomment-1401023985
     (eglot-code-actions nil nil "source.organizeImports" t))
 
-  (defun my/eglot-clojure-add-before-save-hooks ()
+  (defun my/eglot-clojure-mode-add-hooks ()
     ;; Calls cljfmt on current buffer
     (add-hook 'before-save-hook 'eglot-format-buffer -10 t))
 
-  ;; NOTE: not used so far because ktfmt style is different not only from
-  ;; IntelliJ IDEA coding style but also from kotlin-mode indentation rules
-  (defun my/eglot-kotlin-add-before-save-hooks ()
-    ;; Calls ktfmt on current buffer
-    (add-hook 'before-save-hook 'eglot-format-buffer -10 t))
-
-  (defun my/eglot-go-add-before-save-hooks ()
-    ;; https://github.com/joaotavora/eglot/issues/574#issuecomment-1401023985
-    (add-hook 'before-save-hook 'my/eglot-organize-imports nil t)
+  ;; NOTE: if any hook returns error, subsequent hooks are not executed
+  ;;
+  ;; For example my/eglot-organize-imports returns error when there is
+  ;; nothing to import => make sure it comes last (using DEPTH parameter)
+  (defun my/eglot-go-mode-add-hooks ()
     ;; https://github.com/golang/tools/blob/master/gopls/doc/emacs.md#loading-eglot-in-emacs
     ;; > The depth of -10 places this before eglot's willSave notification,
     ;; > so that that notification reports the actual contents that will be saved.
     ;;
     ;; Calls gofmt on current buffer
+    (add-hook 'before-save-hook 'eglot-format-buffer -10 t)
+    (add-hook 'before-save-hook 'my/eglot-organize-imports -5 t))
+
+  ;; NOTE: currently not used because ktfmt style is very different from
+  ;; IntelliJ IDEA coding conventions and kotlin-mode indentation rules
+  ;; (the latter is much more important for me)
+  (defun my/eglot-kotlin-mode-add-hooks ()
+    ;; Calls ktfmt on current buffer
     (add-hook 'before-save-hook 'eglot-format-buffer -10 t))
 
   (defun my/show-flymake-eldoc-first ()
@@ -673,9 +677,9 @@
   :hook
   ((eglot-managed-mode . my/show-flymake-eldoc-first)
    (clojure-mode . eglot-ensure)
-   (clojure-mode . my/eglot-clojure-add-before-save-hooks)
+   (clojure-mode . my/eglot-clojure-mode-add-hooks)
    (go-mode . eglot-ensure)
-   (go-mode . my/eglot-go-add-before-save-hooks)
+   (go-mode . my/eglot-go-mode-add-hooks)
    (haskell-mode . eglot-ensure)
    (kotlin-mode . eglot-ensure))
 
@@ -702,7 +706,8 @@
 
   :bind
   (:map eglot-mode-map
-        ;; Keybindings used by lsp-mode by default
+        ;; https://emacs-lsp.github.io/lsp-mode/page/keybindings/
+        ;; Default keybindings in lsp-mode
         ("s-l = =" . eglot-format-buffer)
         ("s-l a a" . eglot-code-actions)
         ("s-l g g" . xref-find-definitions)
@@ -777,7 +782,7 @@
   ;; if you ever need to define this keybinding for specific mode only
   (defun my/asterisk-normal ()
     (interactive)
-    ;; Include colon only at the beginning (when it's atom or keyword)
+    ;; Include leading colon only (that is when it's atom or keyword)
     (let ((vim-word-regexp "[:]*[-_<>A-Za-z0-9?!]+"))
       (when (thing-at-point-looking-at vim-word-regexp)
         (evil-visualstar/begin-search (match-beginning 0) (match-end 0) t))))
@@ -817,7 +822,24 @@
    ("M-[" . flymake-goto-prev-error)))
 
 (use-package go-mode
-  :straight t)
+  :straight t
+  :init
+  ;; https://www.masteringemacs.org/article/executing-shell-commands-emacs
+  ;; This is pretty heavy operation since it runs external shell command
+  ;; => don't add it as before-save-hook and execute manually when needed
+  (defun my/format-buffer-with-golines ()
+    (interactive)
+    ;; https://stackoverflow.com/a/24283996
+    (let ((old-point (point)))
+      (shell-command-on-region
+       (point-min)
+       (point-max)
+       (format "golines --no-reformat-tags -m %s" fill-column)
+       (current-buffer)
+       t
+       "*golines errors*"
+       t)
+      (goto-char old-point))))
 
 (use-package haskell-mode
   :straight t)
@@ -904,6 +926,13 @@
   :straight t
   :hook (prog-mode . rainbow-delimiters-mode))
 
+;; For camel-case motions
+(use-package subword
+  :straight nil
+  :delight
+  :config
+  (global-subword-mode 1))
+
 (use-package tab-bar
   :straight nil
   :demand t
@@ -936,6 +965,7 @@
 
 (use-package whitespace
   :straight nil
+  :delight
   :custom
   ;; https://emacs.stackexchange.com/a/21865
   ;;
