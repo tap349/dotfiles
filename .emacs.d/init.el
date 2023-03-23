@@ -826,7 +826,7 @@
   :init
   ;; https://www.masteringemacs.org/article/executing-shell-commands-emacs
   ;; This is pretty heavy operation since it runs external shell command
-  ;; => don't add it as before-save-hook and execute manually when needed
+  ;; => don't add it as before-save-hook - execute manually when needed
   (defun my/format-buffer-with-golines ()
     (interactive)
     ;; https://stackoverflow.com/a/24283996
