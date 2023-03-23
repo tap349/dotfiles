@@ -427,6 +427,9 @@
   (company-require-match nil)
 
   ;; http://company-mode.github.io/manual/Frontends.html#Frontends
+  (company-frontends
+   '(company-pseudo-tooltip-unless-just-one-frontend
+     company-preview-frontend))
   (company-tooltip-align-annotations t)
   (company-tooltip-minimum 4)
   (company-tooltip-limit 8)
