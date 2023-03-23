@@ -104,10 +104,15 @@
 
 ;; https://emacs.stackexchange.com/a/21865
 ;;
-;; Trailing whitespaces can be shown with:
-;; - show-trailing-whitespace => trailing-whitespace face
-;; - whitespace-mode => whitespace-trailing face
-(setq whitespace-style '(face tabs trailing))
+;; 2 ways to show trailing whitespaces:
+;; - show-trailing-whitespace (trailing-whitespace face) OR
+;; - whitespace-mode (whitespace-trailing face)
+;;
+;; 2 ways to visualize whitespace characters (they can be combined):
+;; - face (with different face) or
+;; - *-mark (with ASCII characters)
+(setq whitespace-style '(face missing-newline-at-eof tab-mark tabs trailing))
+(setq whitespace-display-mappings '((tab-mark 9 [8250 9])))
 (global-whitespace-mode 1)
 
 ;; nowrap
@@ -126,10 +131,18 @@
 
 ;; Used for all ivy and swiper buffers to highlight current line
 ;; (see custom-set-faces at the end of the file)
-(set-face-attribute 'highlight nil :background "#ECE8A4" :foreground "black")
+(set-face-attribute 'highlight nil
+                    :background "#ECE8A4"
+                    :foreground "black")
 
-;; For trailing whitespaces in whitespace-mode
-(set-face-background 'whitespace-trailing "#E3A8A8")
+;; For whitespace-mode
+(set-face-attribute 'whitespace-tab nil
+                    :background "white"
+                    :foreground "#CCCCCC")
+(set-face-attribute 'whitespace-trailing nil
+                    :background "#E3A8A8"
+                    :foreground "black")
+(set-face-background 'whitespace-missing-newline-at-eof "#E3A8A8")
 
 (set-face-foreground 'fill-column-indicator "#DEE4EF")
 (set-face-foreground 'vertical-border "#D8D8DE")
@@ -246,8 +259,8 @@
   (defun my/insert-tab-or-complete ()
     (interactive)
     (let ((chr (preceding-char)))
-      ;; - beginning of line or
-      ;; - preceding character is whitespace or
+      ;; - beginning of line OR
+      ;; - preceding character is whitespace OR
       ;; - preceding character is tab (for go-mode)
       (if (or (bolp) (= chr 32) (= chr 9))
           ;; insert tab
@@ -782,7 +795,8 @@
   ;; if you ever need to define this keybinding for specific mode only
   (defun my/asterisk-normal ()
     (interactive)
-    (let ((vim-word-regexp "[-_<>A-Za-z0-9?!:]+"))
+    ;; Include colon only at the beginning (when it's atom or keyword)
+    (let ((vim-word-regexp "[:]*[-_<>A-Za-z0-9?!]+"))
       (when (thing-at-point-looking-at vim-word-regexp)
         (evil-visualstar/begin-search (match-beginning 0) (match-end 0) t))))
 
