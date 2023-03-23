@@ -96,11 +96,17 @@
 (tool-bar-mode -1)
 (tooltip-mode -1)
 
-(global-display-fill-column-indicator-mode 1)
-(setq-default display-fill-column-indicator-column 82)
-
+;; - used for automatic line-wrapping (when enabled)
+;; - can be used for global-display-fill-column-indicator-mode
+;; - can be used to get max line length in user functions
+(setq-default fill-column 80)
 (setq column-number-mode 1)
 (setq show-paren-delay 0)
+
+(global-display-fill-column-indicator-mode 1)
+;; Use specific value (82) instead of fill-column value to make column
+;; indicator appear exactly at the center of the screen on my laptop
+(setq-default display-fill-column-indicator-column 82)
 
 ;; nowrap
 (setq-default truncate-lines 1)
