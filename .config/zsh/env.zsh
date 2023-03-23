@@ -39,7 +39,6 @@ path=(/usr/local/bin /opt/homebrew/bin $path)
 # >
 # > libpq is keg-only, which means it was not symlinked into /usr/local,
 # > because conflicts with postgres formula.
-#path=(/usr/local/opt/libpq/bin $path)
 path=(/opt/homebrew/opt/libpq/bin $path)
 path=($HOME/soft/google-cloud-sdk/bin $path)
 path=(/Library/Java/JavaVirtualMachines/graalvm-ce-java19-22.3.0/Contents/Home/bin $path)

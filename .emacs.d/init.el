@@ -102,19 +102,6 @@
 (setq column-number-mode 1)
 (setq show-paren-delay 0)
 
-;; https://emacs.stackexchange.com/a/21865
-;;
-;; 2 ways to show trailing whitespaces:
-;; - show-trailing-whitespace (trailing-whitespace face) OR
-;; - whitespace-mode (whitespace-trailing face)
-;;
-;; 2 ways to visualize whitespace characters (they can be combined):
-;; - face (with different face) or
-;; - *-mark (with ASCII characters)
-(setq whitespace-style '(face missing-newline-at-eof tab-mark tabs trailing))
-(setq whitespace-display-mappings '((tab-mark 9 [8250 9])))
-(global-whitespace-mode 1)
-
 ;; nowrap
 (setq-default truncate-lines 1)
 
@@ -131,18 +118,7 @@
 
 ;; Used for all ivy and swiper buffers to highlight current line
 ;; (see custom-set-faces at the end of the file)
-(set-face-attribute 'highlight nil
-                    :background "#ECE8A4"
-                    :foreground "black")
-
-;; For whitespace-mode
-(set-face-attribute 'whitespace-tab nil
-                    :background "white"
-                    :foreground "#CCCCCC")
-(set-face-attribute 'whitespace-trailing nil
-                    :background "#E3A8A8"
-                    :foreground "black")
-(set-face-background 'whitespace-missing-newline-at-eof "#E3A8A8")
+(set-face-attribute 'highlight nil :background "#ECE8A4" :foreground "black")
 
 (set-face-foreground 'fill-column-indicator "#DEE4EF")
 (set-face-foreground 'vertical-border "#D8D8DE")
@@ -951,6 +927,29 @@
    ("s-t" . tab-bar-new-tab)
    ("s-w" . tab-bar-close-tab)
    ("C-<backspace>" . tab-bar-close-tab)))
+
+(use-package whitespace
+  :straight nil
+  :custom
+  ;; https://emacs.stackexchange.com/a/21865
+  ;;
+  ;; 2 ways to show trailing whitespaces:
+  ;; - show-trailing-whitespace (trailing-whitespace face) OR
+  ;; - whitespace-mode (whitespace-trailing face)
+  ;;
+  ;; 2 ways to visualize whitespace characters (they can be combined):
+  ;; - face (with different face) or
+  ;; - *-mark (with ASCII characters)
+  (whitespace-style '(face missing-newline-at-eof tab-mark tabs trailing))
+  (whitespace-display-mappings '((tab-mark 9 [8250 9])))
+
+  :custom-face
+  (whitespace-tab ((t (:background "white" :foreground "#CCCCCC"))))
+  (whitespace-trailing ((t (:background "#E3A8A8" :foreground "black"))))
+  (whitespace-missing-newline-at-eof ((t (:background "#E3A8A8"))))
+
+  :config
+  (global-whitespace-mode 1))
 
 ;; https://emacs.stackexchange.com/a/61387
 ;;
