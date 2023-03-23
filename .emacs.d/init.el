@@ -119,7 +119,8 @@
 
 ;; https://emacs.stackexchange.com/a/69091
 (set-face-attribute 'default nil :font "Input-15")
-;; Used for ivy-current-match and swiper-line-face - see custom-set-faces
+;; Used for all ivy and swiper buffers to highlight current line
+;; (see custom-set-faces)
 (set-face-attribute 'highlight nil :background "#ece8a4" :foreground "black")
 (set-face-foreground 'fill-column-indicator "#DEE4EF")
 (set-face-foreground 'vertical-border "#D8D8DE")
