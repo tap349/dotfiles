@@ -742,8 +742,8 @@
   (eldoc-box-max-pixel-width 1000)
 
   :custom-face
-  (eldoc-box-body ((t (:background "#F6F6F8"))))
-  (eldoc-box-border ((t (:background "#EAEAF0"))))
+  (eldoc-box-body ((t (:background "#F2F2F2"))))
+  (eldoc-box-border ((t (:background "#F2F2F2"))))
 
   :config
   (advice-add 'keyboard-quit :before 'eldoc-box-quit-frame)
