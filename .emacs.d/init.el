@@ -113,6 +113,8 @@
 
 ;;-----------------------------------------------------------------------------
 ;; Theme (faces)
+;;
+;; Use list-faces-display to list all current faces
 ;;-----------------------------------------------------------------------------
 
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
@@ -121,10 +123,6 @@
 
 ;; https://emacs.stackexchange.com/a/69091
 (set-face-attribute 'default nil :font "Input-15")
-
-;; Used for all ivy and swiper buffers to highlight current line
-;; (see custom-set-faces at the end of the file)
-(set-face-attribute 'highlight nil :background "#ECE8A4" :foreground "black")
 
 (set-face-foreground 'fill-column-indicator "#DEE4EF")
 (set-face-foreground 'vertical-border "#D8D8DE")
@@ -300,7 +298,9 @@
      ((eq evil-state 'normal) (evil-ex-nohighlight))
      ((eq evil-state 'visual) (progn
                                 (evil-exit-visual-state)
-                                (keyboard-quit)))))
+                                (keyboard-quit)))
+     ;; Same as for normal state
+     ((eq evil-state 'motion) (evil-ex-nohighlight))))
 
   ;; https://stackoverflow.com/a/9697222/3632318
   (defun my/toggle-comment ()
@@ -386,6 +386,15 @@
         ("C-." . execute-extended-command)
 
         ("C-s" . sort-lines)
+
+        ("H" . evil-first-non-blank)
+        ("L" . evil-last-non-blank))
+
+  ;; https://github.com/noctuid/evil-guide#global-keybindings-and-evil-states
+  ;; > motion state is the default state for help-mode
+  ;; > only keys bound in motion state will work in help-mode
+  (:map evil-motion-state-map
+        ("C-g" . my/keyboard-quit)
 
         ("H" . evil-first-non-blank)
         ("L" . evil-last-non-blank))
@@ -555,6 +564,13 @@
   (ivy-wrap t)
 
   (swiper-goto-start-of-match t)
+
+  :custom-face
+  ;; Don't inherit from highlight face because the latter is used,
+  ;; say, for highlighting some functions in describe-function =>
+  ;; highlighted functions and current line have the same bg color
+  (ivy-current-match ((t (:background "#ECE8A4" :foreground "black"))))
+  (swiper-line-face ((t (:background "#ECE8A4" :foreground "black"))))
 
   :config
   (ivy-mode 1)
@@ -739,11 +755,17 @@
   :straight (eldoc-box :type git :host github :repo "tap349/eldoc-box")
   :after evil
   :init
-  (defun my/hide-trailing-whitespace ()
-    (setq show-trailing-whitespace nil))
+  ;; Lines are truncated by default
+  ;;
+  ;; Call toggle-truncate-lines with "C-x x t" when needed
+  ;; (say, Golang docs)
+  (defun my/setup-eldoc-box-buffer ()
+    (setq show-trailing-whitespace nil)
+    (setq truncate-lines 1)
+    (setq word-wrap 1))
 
   :hook
-  ((eldoc-box-buffer . my/hide-trailing-whitespace))
+  ((eldoc-box-buffer . my/setup-eldoc-box-buffer))
 
   :custom
   ;; https://github.com/sebastiencs/company-box/blob/master/company-box-doc.el#L86
@@ -1035,18 +1057,17 @@
  ;; If there is more than one, they won't work right.
  '(safe-local-variable-values '((cider-clojure-cli-aliases . ":dev"))))
 
-;; Use list-faces-display to find specific face
+;; Putting these settings into custom-face section of use-package config
+;; of counsel doesn't work - leave them here
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(ivy-current-match ((t (:inherit 'highlight))))
  '(ivy-minibuffer-match-face-1 ((t nil)))
  '(ivy-minibuffer-match-face-2 ((t (:inherit 'lazy-highlight))))
  '(ivy-minibuffer-match-face-3 ((t (:inherit 'lazy-highlight))))
  '(ivy-minibuffer-match-face-4 ((t (:inherit 'lazy-highlight))))
- '(swiper-line-face ((t (:inherit 'highlight))))
  '(swiper-match-face-1 ((t nil)))
  '(swiper-match-face-2 ((t (:inherit 'isearch))))
  '(swiper-match-face-3 ((t (:inherit 'isearch))))
