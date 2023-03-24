@@ -448,8 +448,8 @@
   :delight company-mode
   :custom
   ;; http://company-mode.github.io/manual/Customization.html#Customization
-  ;; Disable automatic completion
-  (company-idle-delay nil)
+  ;; Set to nil to disable automatic completion
+  (company-idle-delay 0.1)
   (company-selection-wrap-around t)
   (company-require-match nil)
 
@@ -463,6 +463,12 @@
   (company-tooltip-width-grow-only t)
   (company-tooltip-margin 1)
   (company-format-margin-function 'company-vscode-light-icons-margin)
+
+  :custom-face
+  (company-preview ((t (:background "white" :foreground "#999999"))))
+  (company-preview-common ((t (:background "white" :foreground "#999999"))))
+  (company-tooltip ((t (:background "#FFFAEA"))))
+  (company-tooltip-selection ((t (:background "#CBE6ED"))))
 
   :config
   (global-company-mode)
@@ -774,8 +780,8 @@
   (eldoc-box-max-pixel-width 1000)
 
   :custom-face
-  (eldoc-box-body ((t (:background "#F2F2F2"))))
-  (eldoc-box-border ((t (:background "#F2F2F2"))))
+  (eldoc-box-body ((t (:background "#F4F4F6"))))
+  (eldoc-box-border ((t (:background "#F0F0F2"))))
 
   :config
   (advice-add 'keyboard-quit :before 'eldoc-box-quit-frame)
