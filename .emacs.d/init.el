@@ -977,7 +977,9 @@
   ;; - face (with different face) or
   ;; - *-mark (with ASCII characters)
   (whitespace-style '(face missing-newline-at-eof tab-mark tabs trailing))
-  (whitespace-display-mappings '((tab-mark 9 [8250 9])))
+  ;; 183 - middle dot
+  ;; 8250 - small right angle arrow
+  (whitespace-display-mappings '((tab-mark 9 [183 9])))
 
   :custom-face
   (whitespace-tab ((t (:background "white" :foreground "#CCCCCC"))))
