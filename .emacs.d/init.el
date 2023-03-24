@@ -976,7 +976,9 @@
   ;; 2 ways to visualize whitespace characters (they can be combined):
   ;; - face (with different face) or
   ;; - *-mark (with ASCII characters)
-  (whitespace-style '(face missing-newline-at-eof tab-mark tabs trailing))
+  ;;
+  ;; Add tab-mark to visualize tabs with ASCII characters
+  (whitespace-style '(face missing-newline-at-eof tabs trailing))
   ;; 183 - middle dot
   ;; 8250 - small right angle arrow
   (whitespace-display-mappings '((tab-mark 9 [183 9])))
