@@ -982,8 +982,9 @@
   (whitespace-display-mappings '((tab-mark 9 [183 9])))
 
   :custom-face
-  (whitespace-tab ((t (:background "white" :foreground "#CCCCCC"))))
-  (whitespace-trailing ((t (:background "#E3A8A8" :foreground "black"))))
+  (whitespace-tab ((t (:background "white" :foreground "#DDDDDD"))))
+  ;; foreground is used, say, for tab marks
+  (whitespace-trailing ((t (:background "#E3A8A8" :foreground "#C38888"))))
   (whitespace-missing-newline-at-eof ((t (:background "#E3A8A8"))))
 
   :config
