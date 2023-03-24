@@ -286,11 +286,14 @@
     (interactive)
     (cond
      ;; https://emacs.stackexchange.com/a/62011
-     ;; evil-force-normal-state breaks repeat command
-     ((eq evil-state 'insert) (evil-normal-state))
+     ;; keyboard-quit after evil-normal-state breaks evil-repeat
+     ;; (I guess it kind of cancels last action to repeat)
+     ;;
+     ;; evil-force-normal-state might also break evil-repeat -
+     ;; if this is the case switch to evil-normal-state
+     ((eq evil-state 'insert) (evil-force-normal-state))
      ((eq evil-state 'normal) (evil-ex-nohighlight))
-     ((eq evil-state 'visual) (evil-exit-visual-state)))
-    (keyboard-quit))
+     ((eq evil-state 'visual) (evil-exit-visual-state))))
 
   ;; https://stackoverflow.com/a/9697222/3632318
   (defun my/toggle-comment ()
