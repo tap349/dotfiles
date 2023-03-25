@@ -422,8 +422,7 @@
   :delight " CIDER"
   :init
   (defun my/setup-cider-mode ()
-    (setq show-trailing-whitespace nil)
-    ;; (setq truncate-lines nil)
+    (setq-local show-trailing-whitespace nil)
     ;; https://github.com/emacs-evil/evil/issues/511#issuecomment-273754917
     (define-key evil-normal-state-local-map "q" 'cider-popup-buffer-quit-function))
 
@@ -776,11 +775,11 @@
   ;; Call toggle-truncate-lines with "C-x x t" when needed
   ;; (say, Golang docs)
   (defun my/setup-eldoc-box-buffer ()
-    ;; Hide messages in echo area for subsequent setq statements
-    (setq inhibit-message t)
-    (setq show-trailing-whitespace nil)
-    (setq truncate-lines 1)
-    (setq word-wrap 1))
+    ;; Hide messages in echo area for subsequent setq-local statements
+    (setq-local inhibit-message t
+                show-trailing-whitespace nil
+                truncate-lines 1
+                word-wrap 1))
 
   :hook
   ((eldoc-box-buffer . my/setup-eldoc-box-buffer))
