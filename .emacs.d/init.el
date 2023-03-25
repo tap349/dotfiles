@@ -792,7 +792,7 @@
 
   :custom-face
   (eldoc-box-body ((t (:background "#F4F4F6"))))
-  (eldoc-box-border ((t (:background "#F0F0F2"))))
+  (eldoc-box-border ((t (:background "#D0D0D2"))))
 
   :config
   ;; Don't use keyboard-quit as it might be not called in my/keyboard-quit
