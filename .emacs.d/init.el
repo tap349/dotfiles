@@ -280,25 +280,23 @@
     (balance-windows)
     (other-window 1))
 
+  ;; https://emacs.stackexchange.com/a/62011
+  ;;
+  ;; keyboard-quit after evil-normal-state breaks evil-repeat
+  ;; (I guess it kind of cancels the last action to repeat)
+  ;;
+  ;; You might add keyboard-quit to normal and visual branches only
+  ;; - it might help mitigate problem when C-g doesn't exit visual
+  ;; state from the first time
+  ;;
+  ;; evil-force-normal-state might also break evil-repeat -
+  ;; if this is the case switch to evil-normal-state
   (defun my/keyboard-quit ()
     (interactive)
     (cond
-     ;; https://emacs.stackexchange.com/a/62011
-     ;;
-     ;; keyboard-quit after evil-normal-state breaks evil-repeat
-     ;; (I guess it kind of cancels the last action to repeat)
-     ;;
-     ;; You might add keyboard-quit to normal and visual branches only
-     ;; - it might help mitigate problem when C-g doesn't exit visual
-     ;; state from the first time
-     ;;
-     ;; evil-force-normal-state might also break evil-repeat -
-     ;; if this is the case switch to evil-normal-state
      ((eq evil-state 'insert) (evil-force-normal-state))
      ((eq evil-state 'normal) (evil-ex-nohighlight))
-     ((eq evil-state 'visual) (progn
-                                (evil-exit-visual-state)
-                                (keyboard-quit)))
+     ((eq evil-state 'visual) (evil-exit-visual-state))
      ;; Same as for normal state
      ((eq evil-state 'motion) (evil-ex-nohighlight))))
 
@@ -449,7 +447,13 @@
   :custom
   ;; http://company-mode.github.io/manual/Customization.html#Customization
   ;; Set to nil to disable automatic completion
-  (company-idle-delay 0.1)
+  ;;
+  ;; When automatic completion is enabled, pressing C-g doesn't always
+  ;; switch to normal state even though C-g is bound to my/keyboard-quit
+  ;; (this happens when the word is typed and there are no completions
+  ;; but company-mode is still trying to figure this out - for example,
+  ;; try to type "state" and press C-g quickly)
+  (company-idle-delay nil)
   (company-selection-wrap-around t)
   (company-require-match nil)
 
@@ -475,6 +479,12 @@
 
   :bind
   (:map company-active-map
+        ;; http://company-mode.github.io/manual/Getting-Started.html#Getting-Started
+        ;;
+        ;; By default C-g cancels company-mode activity only - then you should
+        ;; press C-g again to switch to normal state => switch to normal state
+        ;; immediately (company-mode is cancelled automatically)
+        ("C-g" . my/keyboard-quit)
         ;; Use <tab> instead of TAB to override other keybindings
         ("<tab>" . company-complete-common)))
 
@@ -766,6 +776,8 @@
   ;; Call toggle-truncate-lines with "C-x x t" when needed
   ;; (say, Golang docs)
   (defun my/setup-eldoc-box-buffer ()
+    ;; Hide messages in echo area for subsequent setq statements
+    (setq inhibit-message t)
     (setq show-trailing-whitespace nil)
     (setq truncate-lines 1)
     (setq word-wrap 1))
@@ -784,7 +796,9 @@
   (eldoc-box-border ((t (:background "#F0F0F2"))))
 
   :config
-  (advice-add 'keyboard-quit :before 'eldoc-box-quit-frame)
+  ;; Don't use keyboard-quit as it might be not called in my/keyboard-quit
+  ;; (default C-g handler for all states)
+  (advice-add 'my/keyboard-quit :before 'eldoc-box-quit-frame)
 
   :bind
   (:map evil-normal-state-map
