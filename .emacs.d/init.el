@@ -770,10 +770,7 @@
   :straight (eldoc-box :type git :host github :repo "tap349/eldoc-box")
   :after evil
   :init
-  ;; Lines are truncated by default
-  ;;
-  ;; Call toggle-truncate-lines with "C-x x t" when needed
-  ;; (say, Golang docs)
+  ;; - "C-x x t" - toggle-truncate-lines
   (defun my/setup-eldoc-box-buffer ()
     ;; Hide messages in echo area for subsequent setq-local statements
     (setq-local inhibit-message t
@@ -900,7 +897,8 @@
 (use-package hideshow
   :straight nil
   :delight hs-minor-mode
-  :hook (prog-mode . hs-minor-mode))
+  :hook
+  ((prog-mode . hs-minor-mode)))
 
 ;; NOTE:
 ;;
@@ -975,7 +973,8 @@
 
 (use-package rainbow-delimiters
   :straight t
-  :hook (prog-mode . rainbow-delimiters-mode))
+  :hook
+  ((prog-mode . rainbow-delimiters-mode)))
 
 ;; For camel-case motions
 (use-package subword
