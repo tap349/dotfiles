@@ -1071,9 +1071,9 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(ivy-minibuffer-match-face-1 ((t nil)))
- '(ivy-minibuffer-match-face-2 ((t (:inherit 'lazy-highlight))))
- '(ivy-minibuffer-match-face-3 ((t (:inherit 'lazy-highlight))))
- '(ivy-minibuffer-match-face-4 ((t (:inherit 'lazy-highlight))))
+ '(ivy-minibuffer-match-face-2 ((t (:inherit 'isearch))))
+ '(ivy-minibuffer-match-face-3 ((t (:inherit 'isearch))))
+ '(ivy-minibuffer-match-face-4 ((t (:inherit 'isearch))))
  '(swiper-match-face-1 ((t nil)))
  '(swiper-match-face-2 ((t (:inherit 'isearch))))
  '(swiper-match-face-3 ((t (:inherit 'isearch))))
