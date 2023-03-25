@@ -1,4 +1,5 @@
 #*******************************************************************************
+
 #
 # Aliases
 #
@@ -17,7 +18,8 @@ alias dot='cd ~/.dotfiles'
 alias dpas='cd ~/dev/indrive/dev-platform-access-service'
 alias dpc='cd ~/dev/indrive/dev-platform-catalog'
 alias dpi='cd ~/dev/indrive/dev-platform-infrastructure'
-alias dpn='cd ~/dev/indrive/dev-platform-namespace'
+alias dpn='cd ~/dev/indrive/dev-platform-notifier'
+alias dpns='cd ~/dev/indrive/dev-platform-namespace'
 alias dpr='cd ~/dev/indrive/dev-platform-runner'
 alias dpt='cd ~/dev/indrive/dev-platform-trigger'
 alias dpus='cd ~/dev/indrive/dev-platform-user-service'

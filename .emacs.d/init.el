@@ -286,7 +286,7 @@
      ;; https://emacs.stackexchange.com/a/62011
      ;;
      ;; keyboard-quit after evil-normal-state breaks evil-repeat
-     ;; (I guess it kind of cancels last action to repeat)
+     ;; (I guess it kind of cancels the last action to repeat)
      ;;
      ;; You might add keyboard-quit to normal and visual branches only
      ;; - it might help mitigate problem when C-g doesn't exit visual
