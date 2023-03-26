@@ -768,15 +768,25 @@
 
 (use-package eldoc-box
   :straight (eldoc-box :type git :host github :repo "tap349/eldoc-box")
+  :demand t
   :after evil
   :init
   ;; - "C-x x t" - toggle-truncate-lines
   (defun my/setup-eldoc-box-buffer ()
-    ;; Hide messages in echo area for subsequent setq-local statements
-    (setq-local inhibit-message t
-                show-trailing-whitespace nil
-                truncate-lines 1
-                word-wrap 1))
+    (setq-local inhibit-message t)
+    (setq-local show-trailing-whitespace nil)
+
+    (pcase eldoc-box--parent-major-mode
+      ('clojure-mode
+       (setq-local truncate-lines 1))
+      (_
+       (setq-local truncate-lines nil
+                   word-wrap 1))))
+
+  (defun my/eldoc-box-eglot-toggle-help-at-point ()
+    (interactive)
+    (eldoc-box--set-parent-major-mode major-mode)
+    (eldoc-box-eglot-toggle-help-at-point))
 
   :hook
   ((eldoc-box-buffer . my/setup-eldoc-box-buffer))
@@ -798,7 +808,7 @@
 
   :bind
   (:map evil-normal-state-map
-        ("C-n" . eldoc-box-eglot-toggle-help-at-point)))
+        ("C-n" . my/eldoc-box-eglot-toggle-help-at-point)))
 
 (use-package elec-pair
   :straight nil
