@@ -584,8 +584,8 @@
   ;; Don't inherit from highlight face because the latter is used,
   ;; say, for highlighting some functions in describe-function =>
   ;; highlighted functions and current line have the same bg color
-  (ivy-current-match ((t (:background "#ECE8A4" :foreground "black"))))
-  (swiper-line-face ((t (:background "#ECE8A4" :foreground "black"))))
+  (ivy-current-match ((t (:background "#E6E6F0" :foreground "black"))))
+  (swiper-line-face ((t (:background "#E6E6F0" :foreground "black"))))
 
   :config
   (ivy-mode 1)
