@@ -795,7 +795,7 @@
   ;; https://github.com/sebastiencs/company-box/blob/master/company-box-doc.el#L86
   ;; Set height and width to a big number to disable wrapping
   (eldoc-box-max-pixel-height 800)
-  (eldoc-box-max-pixel-width 1000)
+  (eldoc-box-max-pixel-width 800)
 
   :custom-face
   (eldoc-box-body ((t (:background "#F4F4F6"))))
