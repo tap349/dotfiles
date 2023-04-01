@@ -232,6 +232,8 @@
   (setq evil-want-C-u-scroll t)
   ;; Applies to shifting operators >> and <<
   (setq evil-shift-width 2)
+  ;; https://github.com/emacs-evil/evil/issues/576
+  (setq evil-want-Y-yank-to-eol t)
 
   (defun my/insert-tab-or-complete ()
     (interactive)
