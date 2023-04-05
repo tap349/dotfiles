@@ -343,7 +343,7 @@
         ("C-." . execute-extended-command)
 
         ("TAB" . save-buffer)
-        ("s-`" . evil-switch-to-windows-last-buffer)
+        ("C-o" . evil-switch-to-windows-last-buffer)
 
         ("H" . evil-first-non-blank)
         ("L" . evil-last-non-blank)
@@ -1023,6 +1023,7 @@
    ("s-}" . tab-bar-switch-to-next-tab)
    ("s-t" . tab-bar-new-tab)
    ("s-w" . tab-bar-close-tab)
+   ("s-`" . tab-recent)
    ("C-<backspace>" . tab-bar-close-tab)))
 
 (use-package whitespace
