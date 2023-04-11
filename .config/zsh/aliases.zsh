@@ -35,9 +35,9 @@ alias df='df -h'
 alias e='open -a Emacs --args --chdir $PWD "$@"'
 alias ll='ls -alp'
 alias m='mvim'
-# Set DISPLAY variable to any value because video.sh (shipped with mc)
-# checks it - if DISPLAY is not set, it passes `-vo null` option to mpv
-alias mcu='DISPLAY=1 mc -u'
+alias mcu='mc -u'
+# See also https://github.com/occivink/mpv-image-viewer
+alias mvi='mpv --keep-open=yes'
 alias ncdu='ncdu --color off'
 # http://reasoniamhere.com/2014/01/11/outrageously-useful-tips-to-master-your-z-shell/
 #
