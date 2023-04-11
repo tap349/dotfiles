@@ -13,8 +13,7 @@ do_view_action() {
 
     case "${filetype}" in
     *)
-        identify "${MC_EXT_FILENAME}"
-        which exif >/dev/null 2>&1 && exif "${MC_EXT_FILENAME}" 2>/dev/null
+        cat "${MC_EXT_FILENAME}"
         ;;
     esac
 }
@@ -24,8 +23,7 @@ do_open_action() {
 
     case "${filetype}" in
     *)
-        # See mvi alias (zsh aliases are not visible here)
-        (mpv --keep-open=yes "${MC_EXT_FILENAME}" >/dev/null 2>&1 &)
+        mpv "${MC_EXT_FILENAME}"
         ;;
     esac
 }
