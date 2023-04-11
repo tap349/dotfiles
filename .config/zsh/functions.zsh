@@ -101,6 +101,10 @@ dp_name() {
     RESULT="dev-platform-user-service"
   fi
 
+  if [[ "$2" == "dpnt" ]]; then
+    RESULT="dev-platform-notifier"
+  fi
+
   if [[ -z $RESULT ]]; then
     echo "Unknown service: $2"
     return 1
@@ -130,7 +134,12 @@ kl() {
   if [[ -z $DP_NAME ]]; then return 1; fi
 
   # https://jamesdefabia.github.io/docs/user-guide/kubectl/kubectl_logs/
-  kubectl logs -fl "app.kubernetes.io/name=$DP_NAME" -n platform --tail -1 --since 1h | jq -r '[.timestamp, .level, .message]|@tsv' -C
+  # Clojure: timestamp, level, message
+  # Golang: level, ts, msg, status
+  #
+  # Convert level to upper case for correct highlighting by iTerm rules
+  kubectl logs -fl "app.kubernetes.io/name=$DP_NAME" -n platform --tail -1 --since 1h \
+    | jq -r '[.timestamp, .ts, (.level | ascii_upcase), .message, .msg, .status]|@tsv' -C
 }
 
 ksh() {
