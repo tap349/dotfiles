@@ -39,6 +39,7 @@ do_open_action() {
         (inkscape "${MC_EXT_FILENAME}" &)
         ;;
     *)
+        # See mvi alias (zsh aliases are not visible here)
         (mpv --keep-open=yes "${MC_EXT_FILENAME}" >/dev/null 2>&1 &)
         ;;
     esac
