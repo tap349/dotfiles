@@ -16,6 +16,7 @@ alias blog='cd ~/blog'
 alias dot='cd ~/.dotfiles'
 
 alias dpas='cd ~/dev/indrive/dev-platform-access-service'
+alias dpb='cd ~/dev/indrive/dev-platform-backup'
 alias dpc='cd ~/dev/indrive/dev-platform-catalog'
 alias dpi='cd ~/dev/indrive/dev-platform-infrastructure'
 alias dpn='cd ~/dev/indrive/dev-platform-namespace'
