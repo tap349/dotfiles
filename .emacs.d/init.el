@@ -800,10 +800,10 @@
   (eldoc-box-max-pixel-width 800)
 
   :custom-face
-  ;; (eldoc-box-body ((t (:background "#F4F4F6"))))
-  ;; (eldoc-box-border ((t (:background "#C0C0D2"))))
-  (eldoc-box-body ((t (:background "#FAFAF3"))))
-  (eldoc-box-border ((t (:background "#DADAD3"))))
+  ;; (eldoc-box-body ((t (:background "#F5F5F7"))))
+  ;; (eldoc-box-border ((t (:background "#C5C5C7"))))
+  (eldoc-box-body ((t (:background "#F9F9F4"))))
+  (eldoc-box-border ((t (:background "#C9C9C4"))))
 
   :config
   ;; Don't use keyboard-quit as it might be not called in my/keyboard-quit
