@@ -1025,7 +1025,7 @@
    ("s-}" . tab-bar-switch-to-next-tab)
    ("s-t" . tab-bar-new-tab)
    ("s-w" . tab-bar-close-tab)
-   ("s-`" . tab-recent)
+   ("C-<tab>" . tab-recent)
    ("C-<backspace>" . tab-bar-close-tab)))
 
 (use-package whitespace
