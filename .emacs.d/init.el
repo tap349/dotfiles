@@ -765,8 +765,8 @@
   :custom-face
   ;; (eldoc-box-body ((t (:background "#F5F5F7"))))
   ;; (eldoc-box-border ((t (:background "#C5C5C7"))))
-  (eldoc-box-body ((t (:background "#F9F9F4"))))
-  (eldoc-box-border ((t (:background "#C9C9C4"))))
+  (eldoc-box-body ((t (:background "#F9F9F3"))))
+  (eldoc-box-border ((t (:background "#C9C9C3"))))
 
   :config
   (advice-add 'evil-force-normal-state :before 'eldoc-box-quit-frame)
