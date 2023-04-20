@@ -171,11 +171,9 @@
 ;;
 ;;-----------------------------------------------------------------------------
 
-;; https://www.emacswiki.org/emacs/DvorakKeyboard
-;; NOTE: keyboard-translate doesn’t work in daemon mode
-;; UPDATE: Now it's not important when using evil-mode
-;; (keyboard-translate ?\C-u ?\C-x)
-;; (keyboard-translate ?\C-x ?\C-u)
+;; Unlike when using key-translation-map, global-set-key doesn't override
+;; C-g keybinding (to minibuffer-keyboard-quit command) in minibuffer mode
+(global-set-key (kbd "C-g") (kbd "<escape>"))
 
 ;; https://www.emacswiki.org/emacs/DvorakKeyboard
 ;;
@@ -282,26 +280,6 @@
     (balance-windows)
     (other-window 1))
 
-  ;; https://emacs.stackexchange.com/a/62011
-  ;;
-  ;; keyboard-quit after evil-normal-state breaks evil-repeat
-  ;; (I guess it kind of cancels the last action to repeat)
-  ;;
-  ;; You might add keyboard-quit to normal and visual branches only
-  ;; - it might help mitigate problem when C-g doesn't exit visual
-  ;; state from the first time
-  ;;
-  ;; evil-force-normal-state might also break evil-repeat -
-  ;; if this is the case switch to evil-normal-state
-  (defun my/keyboard-quit ()
-    (interactive)
-    (cond
-     ((eq evil-state 'insert) (evil-force-normal-state))
-     ((eq evil-state 'normal) (evil-ex-nohighlight))
-     ((eq evil-state 'visual) (evil-exit-visual-state))
-     ;; Same as for normal state
-     ((eq evil-state 'motion) (evil-ex-nohighlight))))
-
   ;; https://stackoverflow.com/a/9697222/3632318
   (defun my/toggle-comment ()
     (interactive)
@@ -332,14 +310,14 @@
   ;; https://stackoverflow.com/a/23918497
   (evil-set-initial-state 'Buffer-menu-mode 'emacs)
 
+  (advice-add 'evil-force-normal-state :before 'evil-ex-nohighlight)
+
   :bind
   (:map evil-insert-state-map
-        ("C-g" . my/keyboard-quit)
         ("RET" . comment-indent-new-line)
         ("TAB" . my/insert-tab-or-complete))
 
   (:map evil-normal-state-map
-        ("C-g" . my/keyboard-quit)
         ("C-." . execute-extended-command)
 
         ("TAB" . save-buffer)
@@ -382,7 +360,6 @@
         ("<leader>t" . dired-jump))
 
   (:map evil-visual-state-map
-        ("C-g" . my/keyboard-quit)
         ("C-." . execute-extended-command)
 
         ("C-s" . sort-lines)
@@ -394,13 +371,8 @@
   ;; > motion state is the default state for help-mode
   ;; > only keys bound in motion state will work in help-mode
   (:map evil-motion-state-map
-        ("C-g" . my/keyboard-quit)
-
         ("H" . evil-first-non-blank)
-        ("L" . evil-last-non-blank))
-
-  (:map evil-replace-state-map
-        ("C-g" . evil-normal-state)))
+        ("L" . evil-last-non-blank)))
 
 (use-package avy
   :straight t
@@ -448,12 +420,6 @@
   :custom
   ;; http://company-mode.github.io/manual/Customization.html#Customization
   ;; Set to nil to disable automatic completion
-  ;;
-  ;; When automatic completion is enabled, pressing C-g doesn't always
-  ;; switch to normal state even though C-g is bound to my/keyboard-quit
-  ;; (this happens when the word is typed and there are no completions
-  ;; but company-mode is still trying to figure this out - for example,
-  ;; try to type "state" and press C-g quickly)
   (company-idle-delay nil)
   (company-selection-wrap-around t)
   (company-require-match nil)
@@ -480,12 +446,10 @@
 
   :bind
   (:map company-active-map
+        ;; C-g is bound to <escape> - the latter hides completion tooltip
+        ;; but doesn't exit insert state => bind to evil-force-normal-state
+        ("C-g" . evil-force-normal-state)
         ;; http://company-mode.github.io/manual/Getting-Started.html#Getting-Started
-        ;;
-        ;; By default C-g cancels company-mode activity only - then you should
-        ;; press C-g again to switch to normal state => switch to normal state
-        ;; immediately (company-mode is cancelled automatically)
-        ("C-g" . my/keyboard-quit)
         ;; Use <tab> instead of TAB to override other keybindings
         ("<tab>" . company-complete-common)))
 
@@ -806,9 +770,7 @@
   (eldoc-box-border ((t (:background "#C9C9C4"))))
 
   :config
-  ;; Don't use keyboard-quit as it might be not called in my/keyboard-quit
-  ;; (default C-g handler for all states)
-  (advice-add 'my/keyboard-quit :before 'eldoc-box-quit-frame)
+  (advice-add 'evil-force-normal-state :before 'eldoc-box-quit-frame)
 
   :bind
   (:map evil-normal-state-map
@@ -863,10 +825,7 @@
     (evil-visualstar/begin-search-forward beg end)
     (evil-ex-search-previous))
 
-  ;; global-evil-visualstar-mode is not enabled so define all
-  ;; keybindings manually including "*" for visual state which
-  ;; works as expected out of the box if evil-visualstar-mode
-  ;; were enabled
+  ;; global-evil-visualstar-mode is not enabled so define all keybindings
   :bind
   (:map evil-normal-state-map
         ("*" . my/asterisk-normal)
