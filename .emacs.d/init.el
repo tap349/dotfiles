@@ -42,8 +42,7 @@
 
 ;; Lower threshold back to 10 MB (default is 800kB)
 (add-hook 'emacs-startup-hook
-          (lambda ()
-            (setq gc-cons-threshold (* 10 1000 1000))))
+          (lambda () (setq gc-cons-threshold (* 10 1000 1000))))
 
 ;;-----------------------------------------------------------------------------
 ;;
@@ -954,7 +953,14 @@
   :straight nil
   :delight
   :config
-  (global-subword-mode 1))
+  (global-subword-mode 1)
+  :hook
+  ;; https://www.gnu.org/software/emacs/manual/html_node/elisp/Syntax-Class-Table.html
+  ;;
+  ;; It looks like underscore has word syntax class in go-mode - when paired
+  ;; with subword-mode it causes evil-forward-word-begin command to get stuck
+  ;; after words containing underscores => set syntax class to "_" explicitly
+  ((go-mode . (lambda () (modify-syntax-entry ?_ "_")))))
 
 (use-package tab-bar
   :straight nil
