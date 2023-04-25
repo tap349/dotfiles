@@ -547,10 +547,29 @@
 
   :custom-face
   ;; Don't inherit from highlight face because the latter is used,
-  ;; say, for highlighting some functions in describe-function =>
-  ;; highlighted functions and current line have the same bg color
+  ;; say, for highlighting some functions in describe-function
+  ;; => highlighted functions and current line have the same bg color
+  ;;
+  ;; `((t nil))` works in custom-set-faces but not here
+  ;; => unset `background` by setting it to 'unspecified
+  ;;
+  ;; Don't inherit ivy-minibuffer-match-face-* faces from 'isearch:
+  ;; their bg color will be overridden by that of 'ivy-current-match
+  ;; (ivy-minibuffer-match-face-* faces now have both background and
+  ;; inherit properties set and the former takes precedence)
+  ;; => override background explicitly
+  ;;
+  ;; Still it's okay to inherit swiper-match-face-* faces from 'isearch
   (ivy-current-match ((t (:background "#E6E6F0" :foreground "black"))))
+  (ivy-minibuffer-match-face-1 ((t (:background unspecified))))
+  (ivy-minibuffer-match-face-2 ((t (:background ,(face-attribute 'isearch :background nil t)))))
+  (ivy-minibuffer-match-face-3 ((t (:background ,(face-attribute 'isearch :background nil t)))))
+  (ivy-minibuffer-match-face-4 ((t (:background ,(face-attribute 'isearch :background nil t)))))
   (swiper-line-face ((t (:background "#E6E6F0" :foreground "black"))))
+  (swiper-match-face-1 ((t (:background unspecified))))
+  (swiper-match-face-2 ((t (:inherit isearch))))
+  (swiper-match-face-3 ((t (:inherit isearch))))
+  (swiper-match-face-4 ((t (:inherit isearch))))
 
   :config
   (ivy-mode 1)
@@ -1055,22 +1074,6 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(safe-local-variable-values '((cider-clojure-cli-aliases . ":dev"))))
-
-;; Putting these settings into custom-face section of use-package config
-;; of counsel doesn't work - leave them here
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(ivy-minibuffer-match-face-1 ((t nil)))
- '(ivy-minibuffer-match-face-2 ((t (:inherit 'isearch))))
- '(ivy-minibuffer-match-face-3 ((t (:inherit 'isearch))))
- '(ivy-minibuffer-match-face-4 ((t (:inherit 'isearch))))
- '(swiper-match-face-1 ((t nil)))
- '(swiper-match-face-2 ((t (:inherit 'isearch))))
- '(swiper-match-face-3 ((t (:inherit 'isearch))))
- '(swiper-match-face-4 ((t (:inherit 'isearch)))))
 
 (put 'narrow-to-region 'disabled nil)
 (put 'dired-find-alternate-file 'disabled nil)
