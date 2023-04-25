@@ -928,6 +928,7 @@
   :custom
   (projectile-completion-system 'ivy)
   (projectile-create-missing-test-files t)
+  (projectile-switch-project-action 'counsel-fzf)
 
   :config
   (projectile-mode 1)
