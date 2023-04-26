@@ -825,8 +825,14 @@
   (defun my/asterisk-normal ()
     (interactive)
     ;; Include leading colon only (that is when it's atom or keyword)
-    (let ((vim-word-regexp "[:]*[-_<>A-Za-z0-9?!]+"))
+    ;; Equivalent to "[:]*[-_<>A-Za-z0-9?!]+"
+    (let ((vim-word-regexp (rx bow
+                               (zero-or-more ":")
+                               (one-or-more
+                                (any "0-9A-Za-z" "!<>?_-"))
+                               eow)))
       (when (thing-at-point-looking-at vim-word-regexp)
+        ;; Always searches for substring ignoring word boundaries
         (evil-visualstar/begin-search (match-beginning 0) (match-end 0) t))))
 
   (defun my/asterisk-visual (beg end)
@@ -1041,6 +1047,9 @@
 
   :config
   (global-whitespace-mode 1))
+
+(use-package xr
+  :straight t)
 
 ;; https://emacs.stackexchange.com/a/61387
 ;;
