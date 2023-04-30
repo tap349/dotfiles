@@ -748,7 +748,9 @@
   :straight nil
   :delight eldoc-mode
   :custom
-  (eldoc-echo-area-use-multiline-p nil))
+  (eldoc-echo-area-use-multiline-p nil)
+  ;; Show immediately because eldoc-box uses eldoc buffer
+  (eldoc-idle-delay 0))
 
 (use-package eldoc-box
   :straight (eldoc-box :type git :host github :repo "tap349/eldoc-box")
@@ -767,10 +769,10 @@
        (setq-local truncate-lines nil
                    word-wrap 1))))
 
-  (defun my/eldoc-box-eglot-toggle-help-at-point ()
+  (defun my/eldoc-box-toggle-help-at-point ()
     (interactive)
     (eldoc-box--set-parent-major-mode major-mode)
-    (eldoc-box-eglot-toggle-help-at-point))
+    (eldoc-box-toggle-help-at-point))
 
   :hook
   ((eldoc-box-buffer . my/setup-eldoc-box-buffer))
@@ -792,7 +794,7 @@
 
   :bind
   (:map evil-normal-state-map
-        ("C-n" . my/eldoc-box-eglot-toggle-help-at-point)))
+        ("C-n" . my/eldoc-box-toggle-help-at-point)))
 
 (use-package elec-pair
   :straight nil
