@@ -662,6 +662,24 @@
   :straight nil
   :demand t
   :init
+  (defun my/setup-eglot-managed-mode ()
+    ;; Show ElDoc results in echo area in other modes (say, Elisp files)
+    (setq-local eldoc-display-functions
+                (remove 'eldoc-display-in-echo-area eldoc-display-functions))
+
+    ;; Final list should be as follows:
+    ;; - flymake-eldoc-function (show Flymake diagnostics first)
+    ;; - eglot-hover-eldoc-function (docs from LSP server)
+    ;;
+    ;; Don't use eglot-signature-eldoc-function because it duplicates
+    ;; information from eglot-hover-eldoc-function in clojure-mode or
+    ;; returns empty string in other modes (in particular in go-mode)
+    (setq-local eldoc-documentation-functions
+                (cons 'flymake-eldoc-function
+                      (seq-difference eldoc-documentation-functions
+                                      '(eglot-signature-eldoc-function
+                                        flymake-eldoc-function)))))
+
   (defun my/eglot-organize-imports ()
     ;; https://github.com/joaotavora/eglot/issues/574#issuecomment-1401023985
     (eglot-code-actions nil nil "source.organizeImports" t))
@@ -690,17 +708,8 @@
     ;; Calls ktfmt on current buffer
     (add-hook 'before-save-hook 'eglot-format-buffer -10 t))
 
-  (defun my/show-flymake-eldoc-first ()
-    ;; Show flymake diagnostics first
-    (setq eldoc-documentation-functions
-          (cons 'flymake-eldoc-function
-                (remove 'flymake-eldoc-function
-                        eldoc-documentation-functions)))
-    ;; Show all eldoc feedback
-    (setq eldoc-documentation-strategy 'eldoc-documentation-compose))
-
   :hook
-  ((eglot-managed-mode . my/show-flymake-eldoc-first)
+  ((eglot-managed-mode . my/setup-eglot-managed-mode)
    (clojure-mode . eglot-ensure)
    (clojure-mode . my/eglot-clojure-mode-add-hooks)
    (go-mode . eglot-ensure)
@@ -714,8 +723,11 @@
   ;; [kotlin-language-server] It might take a lot of time to resolve all
   ;; dependencies when there are no caches in ~/.gradle/caches
   (eglot-connect-timeout 300)
+  ;; Disable events buffer for performance reasons
+  (eglot-events-buffer-size 0)
   ;; https://github.com/joaotavora/eglot/issues/334
-  ;; Disable highlight at point feature
+  ;; :documentHighlightProvider - highlight variable at point
+  ;; :hoverProvider - fetch docs from LSP server (don't disable)
   (eglot-ignored-server-capabilities '(:documentHighlightProvider))
 
   :config
@@ -748,10 +760,15 @@
   :straight nil
   :delight eldoc-mode
   :custom
+  ;; Show all eldoc feedback
+  (eldoc-documentation-strategy 'eldoc-documentation-compose)
+  ;; Always show single line in echo area
   (eldoc-echo-area-use-multiline-p nil)
-  ;; Show immediately because eldoc-box uses eldoc buffer
-  (eldoc-idle-delay 0))
+  ;; eldoc-box uses eldoc buffer to show docs so content for
+  ;; eldoc-box is ready only after this number of seconds
+  (eldoc-idle-delay 0.1))
 
+  (setq eldoc-echo-area-prefer-doc-buffer t)
 (use-package eldoc-box
   :straight (eldoc-box :type git :host github :repo "tap349/eldoc-box")
   :demand t
@@ -780,14 +797,14 @@
   :custom
   ;; https://github.com/sebastiencs/company-box/blob/master/company-box-doc.el#L86
   ;; Set height and width to a big number to disable wrapping
-  (eldoc-box-max-pixel-height 800)
+  (eldoc-box-max-pixel-height 700)
   (eldoc-box-max-pixel-width 800)
 
   :custom-face
   ;; (eldoc-box-body ((t (:background "#F5F5F7"))))
   ;; (eldoc-box-border ((t (:background "#C5C5C7"))))
-  (eldoc-box-body ((t (:background "#F9F9F3"))))
-  (eldoc-box-border ((t (:background "#C9C9C3"))))
+  (eldoc-box-body ((t (:background "#F9F9F5"))))
+  (eldoc-box-border ((t (:background "#C9C9C5"))))
 
   :config
   (advice-add 'evil-force-normal-state :before 'eldoc-box-quit-frame)
