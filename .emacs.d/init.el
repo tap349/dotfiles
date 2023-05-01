@@ -768,28 +768,14 @@
   ;; eldoc-box is ready only after this number of seconds
   (eldoc-idle-delay 0.1))
 
-  (setq eldoc-echo-area-prefer-doc-buffer t)
 (use-package eldoc-box
   :straight (eldoc-box :type git :host github :repo "tap349/eldoc-box")
   :demand t
   :after evil
   :init
-  ;; - "C-x x t" - toggle-truncate-lines
   (defun my/setup-eldoc-box-buffer ()
     (setq-local inhibit-message t)
-    (setq-local show-trailing-whitespace nil)
-
-    (pcase eldoc-box--parent-major-mode
-      ('clojure-mode
-       (setq-local truncate-lines 1))
-      (_
-       (setq-local truncate-lines nil
-                   word-wrap 1))))
-
-  (defun my/eldoc-box-toggle-help-at-point ()
-    (interactive)
-    (eldoc-box--set-parent-major-mode major-mode)
-    (eldoc-box-toggle-help-at-point))
+    (setq-local show-trailing-whitespace nil))
 
   :hook
   ((eldoc-box-buffer . my/setup-eldoc-box-buffer))
@@ -798,7 +784,7 @@
   ;; https://github.com/sebastiencs/company-box/blob/master/company-box-doc.el#L86
   ;; Set height and width to a big number to disable wrapping
   (eldoc-box-max-pixel-height 700)
-  (eldoc-box-max-pixel-width 800)
+  (eldoc-box-max-pixel-width 700)
 
   :custom-face
   ;; (eldoc-box-body ((t (:background "#F5F5F7"))))
@@ -811,7 +797,7 @@
 
   :bind
   (:map evil-normal-state-map
-        ("C-n" . my/eldoc-box-toggle-help-at-point)))
+        ("C-n" . eldoc-box-toggle-help-at-point)))
 
 (use-package elec-pair
   :straight nil
