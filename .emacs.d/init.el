@@ -985,7 +985,13 @@
         ("<leader>v" . my/toggle-test-vsplit)))
 
 (use-package magit
-  :straight t)
+  :straight t
+  :bind
+  (:map magit-mode-map
+        ;; https://www.gnu.org/software/emacs/manual/html_mono/transient.html
+        ;; C-g is bound to transient-quit-one by default but C-g translates
+        ;; to <escape> so bind <escape> to transient-quit-one as well
+        ("<escape>" . transient-quit-one)))
 
 (use-package rainbow-delimiters
   :straight t
