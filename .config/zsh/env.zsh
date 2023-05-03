@@ -4,7 +4,7 @@
 #
 #*******************************************************************************
 
-export EDITOR=mvim
+export EDITOR=vim
 export PAGER=less
 export TERM='xterm-256color'
 # https://github.com/keybase/keybase-issues/issues/1712#issuecomment-141226705
