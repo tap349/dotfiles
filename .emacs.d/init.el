@@ -172,7 +172,20 @@
 
 ;; Unlike when using key-translation-map, global-set-key doesn't override
 ;; C-g keybinding (to minibuffer-keyboard-quit command) in minibuffer mode
-(global-set-key (kbd "C-g") (kbd "<escape>"))
+;; (global-set-key (kbd "C-g") (kbd "<escape>"))
+
+;; https://superuser.com/a/945245/326775
+;;
+;; It feels like translation C-g to <escape> using key-translation-map
+;; (instead of using global-set-key) makes C-g keybinding more responsive
+;; (since it's direct translation of keys - not macro)
+;;
+;; But minibuffer uses triple <escape> (bound to minibuffer-keyboard-quit)
+;; to close itself - so after translation Emacs complains <escape> is not
+;; bound in minibuffer-mode => it's necessary to override <escape> globally
+;; to call keyboard-escape-quit
+(define-key key-translation-map (kbd "C-g") (kbd "<escape>"))
+(global-set-key (kbd "<escape>") 'keyboard-escape-quit)
 
 ;; https://www.emacswiki.org/emacs/DvorakKeyboard
 ;;
