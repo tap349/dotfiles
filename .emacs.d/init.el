@@ -647,11 +647,11 @@
 
   :custom-face
   (dired-subtree-depth-1-face ((t (:background "#F7F7F7"))))
-  (dired-subtree-depth-2-face ((t (:background "#F4F4F4"))))
-  (dired-subtree-depth-3-face ((t (:background "#E8E8E8"))))
-  (dired-subtree-depth-4-face ((t (:background "#E8E8E8"))))
-  (dired-subtree-depth-5-face ((t (:background "#E8E8E8"))))
-  (dired-subtree-depth-6-face ((t (:background "#E8E8E8"))))
+  (dired-subtree-depth-2-face ((t (:background "#EAEAEA"))))
+  (dired-subtree-depth-3-face ((t (:background "#E0E0E0"))))
+  (dired-subtree-depth-4-face ((t (:background "#E0E0E0"))))
+  (dired-subtree-depth-5-face ((t (:background "#E0E0E0"))))
+  (dired-subtree-depth-6-face ((t (:background "#E0E0E0"))))
 
   :bind
   (:map dired-mode-map
