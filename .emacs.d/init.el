@@ -1084,6 +1084,10 @@
   :after evil
   :config
   (evil-make-overriding-map xref--xref-buffer-mode-map 'normal)
+
+  :custom-face
+  (xref-match ((t (:background ,(face-attribute 'isearch :background nil t)))))
+
   :bind
   ;; These keybindings have no effect in ivy-xref buffer
   (:map xref--xref-buffer-mode-map
