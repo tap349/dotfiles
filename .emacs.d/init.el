@@ -676,22 +676,26 @@
   :demand t
   :init
   (defun my/setup-eglot-managed-mode ()
-    ;; Show ElDoc results in echo area in other modes (say, Elisp files)
-    (setq-local eldoc-display-functions
-                (remove 'eldoc-display-in-echo-area eldoc-display-functions))
+    ;; eldoc-display-in-echo-area is also used to display Flymake errors
+    ;; in echo area
+    ;; (setq-local eldoc-display-functions
+    ;;             (remove 'eldoc-display-in-echo-area eldoc-display-functions))
 
-    ;; Final list should be as follows:
-    ;; - flymake-eldoc-function (show Flymake diagnostics first)
-    ;; - eglot-hover-eldoc-function (docs from LSP server)
-    ;;
-    ;; Don't use eglot-signature-eldoc-function because it duplicates
-    ;; information from eglot-hover-eldoc-function in clojure-mode or
-    ;; returns empty string in other modes (in particular in go-mode)
-    (setq-local eldoc-documentation-functions
-                (cons 'flymake-eldoc-function
-                      (seq-difference eldoc-documentation-functions
-                                      '(eglot-signature-eldoc-function
-                                        flymake-eldoc-function)))))
+    (pcase major-mode
+      ('clojure-mode
+       ;; eglot-signature-eldoc-function in clojure-mode duplicates
+       ;; information from eglot-hover-eldoc-function - documentation
+       ;; in eldoc-box becomes harder to read
+       (setq-local eldoc-documentation-functions
+                   (cons 'flymake-eldoc-function
+                         (seq-difference eldoc-documentation-functions
+                                         '(eglot-signature-eldoc-function
+                                           flymake-eldoc-function)))))
+      (_
+       (setq-local eldoc-documentation-functions
+                   (cons 'flymake-eldoc-function
+                         (seq-difference eldoc-documentation-functions
+                                         '(flymake-eldoc-function)))))))
 
   (defun my/eglot-organize-imports ()
     ;; https://github.com/joaotavora/eglot/issues/574#issuecomment-1401023985
