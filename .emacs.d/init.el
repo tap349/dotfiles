@@ -683,12 +683,13 @@
   (defun my/setup-eglot-managed-mode ()
     ;; https://emacs.stackexchange.com/a/31415/39266
     ;;
-    ;; Disable eldoc-mode in Eglot managed modes - it causes sluggish
-    ;; behaviour when pressing C-g to exit insert or visual states
-    ;; (especially when eldoc-idle-delay is low - e.g. 0.1)
+    ;; eldoc-mode might be the source of sluggish behaviour when pressing
+    ;; C-g to exit visual state (especially when eldoc-idle-delay is low -
+    ;; say, 0.1) => show Flymake errors only in Eglot managed modes
     ;;
-    ;; Use help-at-pt built-in package to show Flymake diagnostics
-    (eldoc-mode -1))
+    ;; Alternatively disable it completely with `(eldoc-mode -1)' and
+    ;; use help-at-pt built-in package to show Flymake errors
+    (setq-local eldoc-documentation-functions '(flymake-eldoc-function)))
 
   (defun my/eglot-organize-imports ()
     ;; https://github.com/joaotavora/eglot/issues/574#issuecomment-1401023985
@@ -900,14 +901,6 @@
        "*golines errors*"
        t)
       (goto-char old-point))))
-
-;; Use this package (not ElDoc) to show Flymake errors
-;; because ElDoc is disabled in Eglot managed modes
-(use-package help-at-pt
-  :straight nil
-  :custom
-  (help-at-pt-display-when-idle '(flymake-diagnostic))
-  (help-at-pt-timer-delay 0.5))
 
 (use-package haskell-mode
   :straight t)
