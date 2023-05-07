@@ -776,7 +776,7 @@
   (eldoc-echo-area-use-multiline-p nil)
   ;; eldoc-box uses eldoc buffer to show docs so content for
   ;; eldoc-box is ready only after this number of seconds
-  (eldoc-idle-delay 0.2))
+  (eldoc-idle-delay 0.5))
 
 (use-package eldoc-box
   :straight (eldoc-box :type git :host github :repo "tap349/eldoc-box")
@@ -807,7 +807,7 @@
 
   :bind
   (:map evil-normal-state-map
-        ("C-n" . eldoc-box-toggle-help-at-point)))
+        ("C-n" . eldoc-box-eglot-toggle-help-at-point)))
 
 (use-package elec-pair
   :straight nil
@@ -907,7 +907,7 @@
   :straight nil
   :custom
   (help-at-pt-display-when-idle '(flymake-diagnostic))
-  (help-at-pt-timer-delay 0.3))
+  (help-at-pt-timer-delay 0.5))
 
 (use-package haskell-mode
   :straight t)
