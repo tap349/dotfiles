@@ -172,6 +172,11 @@
 
 ;; Unlike when using key-translation-map, global-set-key doesn't override
 ;; C-g keybinding (to minibuffer-keyboard-quit command) in minibuffer mode
+;; => it's the simplest and safest way to make C-g act as Escape without
+;; hacking C-g in separate modes (minibuffer-mode, magit-mode)
+;;
+;; Sluggishness of C-g is caused by using ElDoc with low idle delay - not
+;; by using this keybinding
 (global-set-key (kbd "C-g") (kbd "<escape>"))
 
 ;; https://superuser.com/a/945245/326775
@@ -676,26 +681,14 @@
   :demand t
   :init
   (defun my/setup-eglot-managed-mode ()
-    ;; eldoc-display-in-echo-area is also used to display Flymake errors
-    ;; in echo area
-    ;; (setq-local eldoc-display-functions
-    ;;             (remove 'eldoc-display-in-echo-area eldoc-display-functions))
-
-    (pcase major-mode
-      ('clojure-mode
-       ;; eglot-signature-eldoc-function in clojure-mode duplicates
-       ;; information from eglot-hover-eldoc-function - documentation
-       ;; in eldoc-box becomes harder to read
-       (setq-local eldoc-documentation-functions
-                   (cons 'flymake-eldoc-function
-                         (seq-difference eldoc-documentation-functions
-                                         '(eglot-signature-eldoc-function
-                                           flymake-eldoc-function)))))
-      (_
-       (setq-local eldoc-documentation-functions
-                   (cons 'flymake-eldoc-function
-                         (seq-difference eldoc-documentation-functions
-                                         '(flymake-eldoc-function)))))))
+    ;; https://emacs.stackexchange.com/a/31415/39266
+    ;;
+    ;; Disable eldoc-mode in Eglot managed modes - it causes sluggish
+    ;; behaviour when pressing C-g to exit insert or visual states
+    ;; (especially when eldoc-idle-delay is low - e.g. 0.1)
+    ;;
+    ;; Use help-at-pt built-in package to show Flymake diagnostics
+    (eldoc-mode -1))
 
   (defun my/eglot-organize-imports ()
     ;; https://github.com/joaotavora/eglot/issues/574#issuecomment-1401023985
@@ -783,7 +776,7 @@
   (eldoc-echo-area-use-multiline-p nil)
   ;; eldoc-box uses eldoc buffer to show docs so content for
   ;; eldoc-box is ready only after this number of seconds
-  (eldoc-idle-delay 0.1))
+  (eldoc-idle-delay 0.2))
 
 (use-package eldoc-box
   :straight (eldoc-box :type git :host github :repo "tap349/eldoc-box")
@@ -907,6 +900,14 @@
        "*golines errors*"
        t)
       (goto-char old-point))))
+
+;; Use this package (not ElDoc) to show Flymake errors
+;; because ElDoc is disabled in Eglot managed modes
+(use-package help-at-pt
+  :straight nil
+  :custom
+  (help-at-pt-display-when-idle '(flymake-diagnostic))
+  (help-at-pt-timer-delay 0.3))
 
 (use-package haskell-mode
   :straight t)
