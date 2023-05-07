@@ -172,7 +172,7 @@
 
 ;; Unlike when using key-translation-map, global-set-key doesn't override
 ;; C-g keybinding (to minibuffer-keyboard-quit command) in minibuffer mode
-;; (global-set-key (kbd "C-g") (kbd "<escape>"))
+(global-set-key (kbd "C-g") (kbd "<escape>"))
 
 ;; https://superuser.com/a/945245/326775
 ;;
@@ -184,8 +184,8 @@
 ;; to close itself - so after translation Emacs complains <escape> is not
 ;; bound in minibuffer-mode => it's necessary to override <escape> globally
 ;; to call keyboard-escape-quit
-(define-key key-translation-map (kbd "C-g") (kbd "<escape>"))
-(global-set-key (kbd "<escape>") 'keyboard-escape-quit)
+;; (define-key key-translation-map (kbd "C-g") (kbd "<escape>"))
+;; (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
 
 ;; https://www.emacswiki.org/emacs/DvorakKeyboard
 ;;
@@ -459,8 +459,8 @@
   :bind
   (:map company-active-map
         ;; C-g is bound to <escape> - the latter hides completion tooltip
-        ;; but doesn't exit insert state => bind to evil-force-normal-state
-        ("C-g" . evil-force-normal-state)
+        ;; but doesn't exit insert state
+        ("C-g" . evil-normal-state)
         ;; http://company-mode.github.io/manual/Getting-Started.html#Getting-Started
         ;; Use <tab> instead of TAB to override other keybindings
         ("<tab>" . company-complete-common)))
@@ -989,13 +989,7 @@
         ("<leader>v" . my/toggle-test-vsplit)))
 
 (use-package magit
-  :straight t
-  :bind
-  (:map magit-mode-map
-        ;; https://www.gnu.org/software/emacs/manual/html_mono/transient.html
-        ;; C-g is bound to transient-quit-one by default but C-g translates
-        ;; to <escape> so bind <escape> to transient-quit-one as well
-        ("<escape>" . transient-quit-one)))
+  :straight t)
 
 (use-package rainbow-delimiters
   :straight t
