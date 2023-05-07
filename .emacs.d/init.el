@@ -1014,6 +1014,14 @@
      (concat " " (alist-get 'name tab) " ")
      'face (funcall tab-bar-tab-face-function tab)))
 
+  (defun my/tab-bar-move-tab-left ()
+    (interactive)
+    (tab-bar-move-tab -1))
+
+  (defun my/tab-bar-move-tab-right ()
+    (interactive)
+    (tab-bar-move-tab 1))
+
   :custom
   (tab-bar-close-button-show nil)
   (tab-bar-format '(tab-bar-format-tabs tab-bar-separator))
@@ -1030,6 +1038,8 @@
   :bind
   (("s-{" . tab-bar-switch-to-prev-tab)
    ("s-}" . tab-bar-switch-to-next-tab)
+   ("C-s-{" . my/tab-bar-move-tab-left)
+   ("C-s-}" . my/tab-bar-move-tab-right)
    ("s-t" . tab-bar-new-tab)
    ("s-w" . tab-bar-close-tab)
    ("C-<tab>" . tab-recent)
