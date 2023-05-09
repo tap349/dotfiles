@@ -171,13 +171,15 @@
 ;;-----------------------------------------------------------------------------
 
 ;; Unlike when using key-translation-map, global-set-key doesn't override
-;; C-g keybinding (to minibuffer-keyboard-quit command) in minibuffer mode
+;; C-g keybinding in minibuffer mode (to minibuffer-keyboard-quit command)
 ;; => it's the simplest and safest way to make C-g act as Escape without
 ;; hacking C-g in separate modes (minibuffer-mode, magit-mode)
 ;;
-;; Sluggishness of C-g is caused by using ElDoc with low idle delay - not
-;; by using this keybinding
-(global-set-key (kbd "C-g") (kbd "<escape>"))
+;; UPDATE: One source of sluggishness of C-g is using ElDoc with low idle
+;; delay - not this keybinding
+;; UPDATE: Still using key-translation-map to map C-g directly to Escape
+;; feels much faster even though false negatives with C-g still can happen
+;; (global-set-key (kbd "C-g") (kbd "<escape>"))
 
 ;; https://superuser.com/a/945245/326775
 ;;
@@ -189,8 +191,8 @@
 ;; to close itself - so after translation Emacs complains <escape> is not
 ;; bound in minibuffer-mode => it's necessary to override <escape> globally
 ;; to call keyboard-escape-quit
-;; (define-key key-translation-map (kbd "C-g") (kbd "<escape>"))
-;; (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
+(define-key key-translation-map (kbd "C-g") (kbd "<escape>"))
+(global-set-key (kbd "<escape>") 'keyboard-escape-quit)
 
 ;; https://www.emacswiki.org/emacs/DvorakKeyboard
 ;;
@@ -988,7 +990,13 @@
         ("<leader>v" . my/toggle-test-vsplit)))
 
 (use-package magit
-  :straight t)
+  :straight t
+  :bind
+  (:map magit-mode-map
+        ;; https://www.gnu.org/software/emacs/manual/html_mono/transient.html
+        ;; C-g is bound to transient-quit-one by default but C-g translates
+        ;; to <escape> so bind <escape> to transient-quit-one as well
+        ("<escape>" . transient-quit-one)))
 
 (use-package rainbow-delimiters
   :straight t
