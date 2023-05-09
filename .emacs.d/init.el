@@ -306,6 +306,9 @@
         (setq beg (line-beginning-position) end (line-end-position)))
       (comment-or-uncomment-region beg end)))
 
+  :custom
+  (evil-visual-update-x-selection-p nil)
+
   :config
   (evil-mode 1)
 
@@ -465,7 +468,9 @@
   (:map company-active-map
         ;; C-g is bound to <escape> - the latter hides completion tooltip
         ;; but doesn't exit insert state
-        ("C-g" . evil-normal-state)
+        ;; evil-force-normal-state doesn't record current command but we
+        ;; don't need it here
+        ("C-g" . evil-force-normal-state)
         ;; http://company-mode.github.io/manual/Getting-Started.html#Getting-Started
         ;; Use <tab> instead of TAB to override other keybindings
         ("<tab>" . company-complete-common)))
