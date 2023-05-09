@@ -38,6 +38,7 @@
 ;; (add-to-list 'default-frame-alist '(fullscreen . maximized))
 
 ;; Minimize garbage collection during startup
+;; See also https://gitlab.com/koral/gcmh
 (setq gc-cons-threshold most-positive-fixnum)
 
 ;; Lower threshold back to 10 MB (default is 800kB)
