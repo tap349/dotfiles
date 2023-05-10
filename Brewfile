@@ -192,6 +192,7 @@ brew 'k9s'
 brew 'kubectx'
 brew 'ncdu'
 brew 'restic'
+brew 'tarantool'
 brew 'velero'
 
 cask 'drawio'
