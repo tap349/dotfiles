@@ -171,30 +171,6 @@
 ;;
 ;;-----------------------------------------------------------------------------
 
-;; Unlike when using key-translation-map, global-set-key doesn't override
-;; C-g keybinding in minibuffer mode (to minibuffer-keyboard-quit command)
-;; => it's the simplest and safest way to make C-g act as Escape without
-;; hacking C-g in separate modes (minibuffer-mode, magit-mode)
-;;
-;; UPDATE: One source of sluggishness of C-g is using ElDoc with low idle
-;; delay - not this keybinding
-;; UPDATE: Still using key-translation-map to map C-g directly to Escape
-;; feels much faster even though false negatives with C-g still can happen
-;; (global-set-key (kbd "C-g") (kbd "<escape>"))
-
-;; https://superuser.com/a/945245/326775
-;;
-;; It feels like translation C-g to <escape> using key-translation-map
-;; (instead of using global-set-key) makes C-g keybinding more responsive
-;; (since it's direct translation of keys - not macro)
-;;
-;; But minibuffer uses triple <escape> (bound to minibuffer-keyboard-quit)
-;; to close itself - so after translation Emacs complains <escape> is not
-;; bound in minibuffer-mode => it's necessary to override <escape> globally
-;; to call keyboard-escape-quit
-(define-key key-translation-map (kbd "C-g") (kbd "<escape>"))
-(global-set-key (kbd "<escape>") 'keyboard-escape-quit)
-
 ;; https://www.emacswiki.org/emacs/DvorakKeyboard
 ;;
 ;; Define key in evil-normal-state-map as well
@@ -252,6 +228,11 @@
   (setq evil-shift-width 2)
   ;; https://github.com/emacs-evil/evil/issues/576
   (setq evil-want-Y-yank-to-eol t)
+
+  (defun my/keyboard-quit-advice ()
+    (cond
+     ((eq evil-state 'insert) (evil-normal-state))
+     ((eq evil-state 'normal) (evil-ex-nohighlight))))
 
   (defun my/insert-tab-or-complete ()
     (interactive)
@@ -333,7 +314,7 @@
   ;; https://stackoverflow.com/a/23918497
   (evil-set-initial-state 'Buffer-menu-mode 'emacs)
 
-  (advice-add 'evil-force-normal-state :before 'evil-ex-nohighlight)
+  (advice-add 'keyboard-quit :before 'my/keyboard-quit-advice)
 
   :bind
   (:map evil-insert-state-map
@@ -469,8 +450,6 @@
 
   :bind
   (:map company-active-map
-        ;; C-g is bound to <escape> - the latter hides completion tooltip
-        ;; but doesn't exit insert state
         ;; evil-force-normal-state doesn't record current command but we
         ;; don't need it here
         ("C-g" . evil-force-normal-state)
@@ -689,14 +668,6 @@
   :demand t
   :init
   (defun my/setup-eglot-managed-mode ()
-    ;; https://emacs.stackexchange.com/a/31415/39266
-    ;;
-    ;; eldoc-mode might be the source of sluggish behaviour when pressing
-    ;; C-g to exit visual state (especially when eldoc-idle-delay is low -
-    ;; say, 0.1) => show Flymake errors only in Eglot managed modes
-    ;;
-    ;; Alternatively disable it completely with `(eldoc-mode -1)' and
-    ;; use help-at-pt built-in package to show Flymake errors
     (setq-local eldoc-documentation-functions '(flymake-eldoc-function)))
 
   (defun my/eglot-organize-imports ()
@@ -921,20 +892,8 @@
   :hook
   ((prog-mode . hs-minor-mode)))
 
-;; NOTE:
-;;
-;; - xref-find-definitions (ivy-xref-show-defs) jumps to the definition
-;;   right away when only one definition is found
-;; - xref-find-references (ivy-xref-show-xrefs) always shows references
-;;   list even if only one reference is found (true for type definitions
-;;   which are displayed with xref-find-references)
 (use-package ivy-xref
-  :straight t
-  :custom
-  (xref-show-definitions-function #'ivy-xref-show-defs)
-  ;; In Emacs 27+ it will affect all xref-based commands
-  ;; except for xref-find-definitions
-  (xref-show-xrefs-function #'ivy-xref-show-xrefs))
+  :straight t)
 
 (use-package jarchive
   :straight t
@@ -991,13 +950,7 @@
         ("<leader>v" . my/toggle-test-vsplit)))
 
 (use-package magit
-  :straight t
-  :bind
-  (:map magit-mode-map
-        ;; https://www.gnu.org/software/emacs/manual/html_mono/transient.html
-        ;; C-g is bound to transient-quit-one by default but C-g translates
-        ;; to <escape> so bind <escape> to transient-quit-one as well
-        ("<escape>" . transient-quit-one)))
+  :straight t)
 
 (use-package rainbow-delimiters
   :straight t
@@ -1101,11 +1054,22 @@
   :config
   (evil-make-overriding-map xref--xref-buffer-mode-map 'normal)
 
+  :custom
+  ;; - xref-find-definitions jumps to the definition right away
+  ;;   when only one definition is found
+  ;; - xref-find-references always shows references list - even
+  ;;   if only one reference is found (true for type definitions
+  ;;   which are displayed with xref-find-references)
+  (xref-show-definitions-function #'ivy-xref-show-defs)
+  ;; In Emacs 27+ it will affect all xref-based commands
+  ;; except for xref-find-definitions
+  (xref-show-xrefs-function #'ivy-xref-show-xrefs)
+
   :custom-face
   (xref-match ((t (:background ,(face-attribute 'isearch :background nil t)))))
 
   :bind
-  ;; These keybindings have no effect in ivy-xref buffer
+  ;; These keybindings have effect only in default xref buffer
   (:map xref--xref-buffer-mode-map
         ("l" . xref-show-location-at-point)
         ("<return>" . xref-goto-xref)
