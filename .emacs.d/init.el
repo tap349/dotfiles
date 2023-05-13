@@ -1051,9 +1051,6 @@
 (use-package xref
   :straight nil
   :after evil
-  :config
-  (evil-make-overriding-map xref--xref-buffer-mode-map 'normal)
-
   :custom
   ;; - xref-find-definitions jumps to the definition right away
   ;;   when only one definition is found
@@ -1067,6 +1064,9 @@
 
   :custom-face
   (xref-match ((t (:background ,(face-attribute 'isearch :background nil t)))))
+
+  :config
+  (evil-make-overriding-map xref--xref-buffer-mode-map 'normal)
 
   :bind
   ;; These keybindings have effect only in default xref buffer
