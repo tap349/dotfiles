@@ -359,7 +359,7 @@
         ("<leader>t" . dired-jump))
 
   (:map evil-visual-state-map
-        ("C-g" . keyboard-quit)
+        ("C-g" . evil-exit-visual-state)
         ("C-." . execute-extended-command)
 
         ("C-s" . sort-lines)
