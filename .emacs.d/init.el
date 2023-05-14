@@ -311,12 +311,12 @@
 
   :bind
   (:map evil-insert-state-map
-        ("C-c C-c" . evil-normal-state)
+        ("C-g" . evil-normal-state)
         ("RET" . comment-indent-new-line)
         ("TAB" . my/insert-tab-or-complete))
 
   (:map evil-normal-state-map
-        ("C-c C-c" . evil-ex-nohighlight)
+        ("C-g" . evil-ex-nohighlight)
         ("C-." . execute-extended-command)
 
         ("TAB" . save-buffer)
@@ -359,7 +359,7 @@
         ("<leader>t" . dired-jump))
 
   (:map evil-visual-state-map
-        ("C-c C-c" . evil-exit-visual-state)
+        ("C-g" . keyboard-quit)
         ("C-." . execute-extended-command)
 
         ("C-s" . sort-lines)
