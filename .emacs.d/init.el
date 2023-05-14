@@ -479,9 +479,9 @@
     str)
 
   ;; https://stackoverflow.com/a/66210949/3632318
-  (advice-add 'ivy--add-face
-              :override
-              #'my/ivy--add-face)
+  (advice-add 'ivy--add-face :override #'my/ivy--add-face)
+  (advice-add 'counsel-describe-function-transformer :override #'identity)
+  (advice-add 'counsel-describe-variable-transformer :override #'identity)
 
   ;; https://github.com/junegunn/fzf#respecting-gitignore
   ;; For counsel-fzf
@@ -582,7 +582,7 @@
   ;;
   ;; Still it's okay to inherit swiper-match-face-* faces from isearch
   :custom-face
-  ;; Set foreground to nil to keep original foreground of candidates
+  ;; Set foreground to unspecified to keep original foreground of candidates
   (ivy-current-match ((t (:background "#E6E6F0" :foreground unspecified))))
   (ivy-minibuffer-match-face-1 ((t (:background unspecified))))
   (ivy-minibuffer-match-face-2 ((t (:background ,(face-attribute 'isearch :background nil t)))))
@@ -596,18 +596,6 @@
 
   :config
   (ivy-mode 1)
-
-  ;; Don't highlight "special" functions with ivy-highlight-face
-  ;; (it requires using colir-blend-face-background in ivy--add-face)
-  (ivy-configure 'counsel-describe-function
-    :parent 'counsel-describe-symbol
-    :display-transformer-fn #'identity)
-
-  ;; Don't highlight "special" variables with ivy-highlight-face
-  ;; (it requires using colir-blend-face-background in ivy--add-face)
-  (ivy-configure 'counsel-describe-variable
-    :parent 'counsel-describe-symbol
-    :display-transformer-fn #'identity)
 
   (ivy-set-actions
    'counsel-fzf
@@ -813,7 +801,8 @@
   (eldoc-box-border ((t (:background "#C9C9C5"))))
 
   :config
-  (advice-add 'evil-force-normal-state :before 'eldoc-box-quit-frame)
+  ;; C-g is bound to evil-ex-nohighlight in normal state
+  (advice-add 'evil-ex-nohighlight :before 'eldoc-box-quit-frame)
 
   :bind
   (:map evil-normal-state-map
