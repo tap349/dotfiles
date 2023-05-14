@@ -171,8 +171,6 @@
 ;;
 ;;-----------------------------------------------------------------------------
 
-(global-set-key (kbd "C-g") (kbd "<escape>"))
-
 ;; https://www.emacswiki.org/emacs/DvorakKeyboard
 ;;
 ;; Define key in evil-normal-state-map as well
@@ -311,14 +309,14 @@
   ;; https://stackoverflow.com/a/23918497
   (evil-set-initial-state 'Buffer-menu-mode 'emacs)
 
-  (advice-add 'evil-force-normal-state :before 'evil-ex-nohighlight)
-
   :bind
   (:map evil-insert-state-map
+        ("C-g" . evil-normal-state)
         ("RET" . comment-indent-new-line)
         ("TAB" . my/insert-tab-or-complete))
 
   (:map evil-normal-state-map
+        ("C-g" . evil-ex-nohighlight)
         ("C-." . execute-extended-command)
 
         ("TAB" . save-buffer)
@@ -361,6 +359,7 @@
         ("<leader>t" . dired-jump))
 
   (:map evil-visual-state-map
+        ("C-g" . evil-exit-visual-state)
         ("C-." . execute-extended-command)
 
         ("C-s" . sort-lines)
@@ -585,8 +584,6 @@
   :custom-face
   ;; Set foreground to nil to keep original foreground of candidates
   (ivy-current-match ((t (:background "#E6E6F0" :foreground nil))))
-  ;; Face to highlight interactive functions
-  ;; (ivy-highlight-face ((t (:inherit default))))
   (ivy-minibuffer-match-face-1 ((t (:background unspecified))))
   (ivy-minibuffer-match-face-2 ((t (:background ,(face-attribute 'isearch :background nil t)))))
   (ivy-minibuffer-match-face-3 ((t (:background ,(face-attribute 'isearch :background nil t)))))
@@ -601,12 +598,13 @@
   (ivy-mode 1)
 
   ;; Don't highlight "special" functions with ivy-highlight-face
-  ;; (this requires colir-blend-face-background in ivy--add-face)
+  ;; (it requires using colir-blend-face-background in ivy--add-face)
   (ivy-configure 'counsel-describe-function
     :parent 'counsel-describe-symbol
     :display-transformer-fn #'identity)
 
   ;; Don't highlight "special" variables with ivy-highlight-face
+  ;; (it requires using colir-blend-face-background in ivy--add-face)
   (ivy-configure 'counsel-describe-variable
     :parent 'counsel-describe-symbol
     :display-transformer-fn #'identity)
