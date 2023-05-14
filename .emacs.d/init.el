@@ -311,12 +311,12 @@
 
   :bind
   (:map evil-insert-state-map
-        ("C-g" . evil-normal-state)
+        ("C-c C-c" . evil-normal-state)
         ("RET" . comment-indent-new-line)
         ("TAB" . my/insert-tab-or-complete))
 
   (:map evil-normal-state-map
-        ("C-g" . evil-ex-nohighlight)
+        ("C-c C-c" . evil-ex-nohighlight)
         ("C-." . execute-extended-command)
 
         ("TAB" . save-buffer)
@@ -359,7 +359,7 @@
         ("<leader>t" . dired-jump))
 
   (:map evil-visual-state-map
-        ("C-g" . evil-exit-visual-state)
+        ("C-c C-c" . evil-exit-visual-state)
         ("C-." . execute-extended-command)
 
         ("C-s" . sort-lines)
@@ -583,7 +583,7 @@
   ;; Still it's okay to inherit swiper-match-face-* faces from isearch
   :custom-face
   ;; Set foreground to nil to keep original foreground of candidates
-  (ivy-current-match ((t (:background "#E6E6F0" :foreground nil))))
+  (ivy-current-match ((t (:background "#E6E6F0" :foreground unspecified))))
   (ivy-minibuffer-match-face-1 ((t (:background unspecified))))
   (ivy-minibuffer-match-face-2 ((t (:background ,(face-attribute 'isearch :background nil t)))))
   (ivy-minibuffer-match-face-3 ((t (:background ,(face-attribute 'isearch :background nil t)))))
