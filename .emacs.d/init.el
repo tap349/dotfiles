@@ -171,6 +171,8 @@
 ;;
 ;;-----------------------------------------------------------------------------
 
+(global-set-key (kbd "C-g") (kbd "<escape>"))
+
 ;; https://www.emacswiki.org/emacs/DvorakKeyboard
 ;;
 ;; Define key in evil-normal-state-map as well
@@ -228,11 +230,6 @@
   (setq evil-shift-width 2)
   ;; https://github.com/emacs-evil/evil/issues/576
   (setq evil-want-Y-yank-to-eol t)
-
-  (defun my/keyboard-quit-advice ()
-    (cond
-     ((eq evil-state 'insert) (evil-normal-state nil))
-     ((eq evil-state 'normal) (evil-ex-nohighlight))))
 
   (defun my/insert-tab-or-complete ()
     (interactive)
@@ -314,7 +311,7 @@
   ;; https://stackoverflow.com/a/23918497
   (evil-set-initial-state 'Buffer-menu-mode 'emacs)
 
-  (advice-add 'keyboard-quit :before 'my/keyboard-quit-advice)
+  (advice-add 'evil-force-normal-state :before 'evil-ex-nohighlight)
 
   :bind
   (:map evil-insert-state-map
