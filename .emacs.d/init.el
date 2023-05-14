@@ -558,13 +558,13 @@
   ;; `((t nil))` works in custom-set-faces but not here
   ;; => unset `background` by setting it to 'unspecified
   ;;
-  ;; Don't inherit ivy-minibuffer-match-face-* faces from 'isearch:
+  ;; Don't inherit ivy-minibuffer-match-face-* faces from isearch:
   ;; their bg color will be overridden by that of 'ivy-current-match
   ;; (ivy-minibuffer-match-face-* faces now have both background and
   ;; inherit properties set and the former takes precedence)
   ;; => override background explicitly
   ;;
-  ;; Still it's okay to inherit swiper-match-face-* faces from 'isearch
+  ;; Still it's okay to inherit swiper-match-face-* faces from isearch
   (ivy-current-match ((t (:background "#E6E6F0" :foreground "black"))))
   (ivy-minibuffer-match-face-1 ((t (:background unspecified))))
   (ivy-minibuffer-match-face-2 ((t (:background ,(face-attribute 'isearch :background nil t)))))
