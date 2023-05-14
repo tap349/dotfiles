@@ -231,7 +231,7 @@
 
   (defun my/keyboard-quit-advice ()
     (cond
-     ((eq evil-state 'insert) (evil-normal-state))
+     ((eq evil-state 'insert) (evil-normal-state nil))
      ((eq evil-state 'normal) (evil-ex-nohighlight))))
 
   (defun my/insert-tab-or-complete ()
@@ -483,7 +483,9 @@
     str)
 
   ;; https://stackoverflow.com/a/66210949/3632318
-  (advice-add 'ivy--add-face :override #'my/ivy--add-face)
+  (advice-add 'ivy--add-face
+              :override
+              #'my/ivy--add-face)
 
   ;; https://github.com/junegunn/fzf#respecting-gitignore
   ;; For counsel-fzf
@@ -526,7 +528,7 @@
       ;; https://github.com/abo-abo/swiper/blob/master/counsel.el#L1423
       ;; Remove swiper overlays (highlighting of current line and match)
       ;;
-      ;; ivy-exit is not set to 'done when opening candidate in a split
+      ;; ivy-exit is not set to `done` when opening candidate in a split
       ;; window which causes swiper overlays to be added - overlays are
       ;; correctly removed when opening candidate in a new tab
       (swiper--cleanup)))
@@ -586,6 +588,8 @@
   :custom-face
   ;; Set foreground to nil to keep original foreground of candidates
   (ivy-current-match ((t (:background "#E6E6F0" :foreground nil))))
+  ;; Face to highlight interactive functions
+  ;; (ivy-highlight-face ((t (:inherit default))))
   (ivy-minibuffer-match-face-1 ((t (:background unspecified))))
   (ivy-minibuffer-match-face-2 ((t (:background ,(face-attribute 'isearch :background nil t)))))
   (ivy-minibuffer-match-face-3 ((t (:background ,(face-attribute 'isearch :background nil t)))))
@@ -598,6 +602,17 @@
 
   :config
   (ivy-mode 1)
+
+  ;; Don't highlight "special" functions with ivy-highlight-face
+  ;; (this requires colir-blend-face-background in ivy--add-face)
+  (ivy-configure 'counsel-describe-function
+    :parent 'counsel-describe-symbol
+    :display-transformer-fn #'identity)
+
+  ;; Don't highlight "special" variables with ivy-highlight-face
+  (ivy-configure 'counsel-describe-variable
+    :parent 'counsel-describe-symbol
+    :display-transformer-fn #'identity)
 
   (ivy-set-actions
    'counsel-fzf
