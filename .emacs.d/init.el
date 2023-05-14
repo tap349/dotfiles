@@ -463,6 +463,28 @@
   :delight ivy-mode
   :after evil
   :init
+  (defun my/ivy--add-face (str face)
+    "Propertize STR with FACE."
+    (let ((len (length str)))
+      (condition-case nil
+          (progn
+            ;; Use font-lock-append-text-property instead of
+            ;; colir-blend-face-background so that background
+            ;; of xref-match is not overridden by background
+            ;; of ivy-current-match
+            (font-lock-append-text-property 0 len 'face face str)
+            (let ((foreground (face-foreground face)))
+              (when foreground
+                (add-face-text-property
+                 0 len (list :foreground foreground) nil str))))
+        (error
+         (ignore-errors
+           (font-lock-append-text-property 0 len 'face face str)))))
+    str)
+
+  ;; https://stackoverflow.com/a/66210949/3632318
+  (advice-add 'ivy--add-face :override #'my/ivy--add-face)
+
   ;; https://github.com/junegunn/fzf#respecting-gitignore
   ;; For counsel-fzf
   (setenv
@@ -528,7 +550,7 @@
   ;; https://github.com/abo-abo/swiper/issues/1982
   ;;
   ;; > To match a literal white space, use an extra space
-  ;; Or else use `regexp-quote' regex builder
+  ;; Or else use `regexp-quote` regex builder
   (counsel-rg-base-command '("rg"
                              "--color=never"
                              "--line-number"
@@ -550,22 +572,20 @@
 
   (swiper-goto-start-of-match t)
 
-  :custom-face
-  ;; Don't inherit from highlight face because the latter is used,
-  ;; say, for highlighting some functions in describe-function
-  ;; => highlighted functions and current line have the same bg color
+  ;; Don't inherit from highlight face because the latter is used, say,
+  ;; for highlighting some functions in describe-function => highlighted
+  ;; functions and current line would have the same background
   ;;
-  ;; `((t nil))` works in custom-set-faces but not here
-  ;; => unset `background` by setting it to 'unspecified
-  ;;
-  ;; Don't inherit ivy-minibuffer-match-face-* faces from isearch:
-  ;; their bg color will be overridden by that of 'ivy-current-match
-  ;; (ivy-minibuffer-match-face-* faces now have both background and
-  ;; inherit properties set and the former takes precedence)
-  ;; => override background explicitly
+  ;; Set background of ivy-minibuffer-match-face-* faces explicitly
+  ;; (instead of using :inherit) to prevent them from overriding
+  ;; because explicily set colors have higher priority than inherited
+  ;; colors (it's important when ivy--add-face tries to merge text
+  ;; properties)
   ;;
   ;; Still it's okay to inherit swiper-match-face-* faces from isearch
-  (ivy-current-match ((t (:background "#E6E6F0" :foreground "black"))))
+  :custom-face
+  ;; Set foreground to nil to keep original foreground of candidates
+  (ivy-current-match ((t (:background "#E6E6F0" :foreground nil))))
   (ivy-minibuffer-match-face-1 ((t (:background unspecified))))
   (ivy-minibuffer-match-face-2 ((t (:background ,(face-attribute 'isearch :background nil t)))))
   (ivy-minibuffer-match-face-3 ((t (:background ,(face-attribute 'isearch :background nil t)))))
@@ -1033,8 +1053,11 @@
   (whitespace-display-mappings '((tab-mark 9 [183 9])))
 
   :custom-face
-  (whitespace-tab ((t (:background "white" :foreground "#DDDDDD"))))
   ;; foreground is used, say, for tab marks
+  ;;
+  ;; Use `:background nil` instead of `:background "white"` to allow
+  ;; background of ivy-current-match to override it (see my/ivy--add-face)
+  (whitespace-tab ((t (:background nil :foreground "#DDDDDD"))))
   (whitespace-trailing ((t (:background "#E3A8A8" :foreground "#C38888"))))
   (whitespace-missing-newline-at-eof ((t (:background "#E3A8A8"))))
 
