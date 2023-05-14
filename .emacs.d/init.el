@@ -889,11 +889,14 @@
   (defun my/format-buffer-with-golines ()
     (interactive)
     ;; https://stackoverflow.com/a/24283996
-    (let ((old-point (point)))
+    (let ((old-point (point))
+          ;; golines wraps at this line length
+          ;; (or else set to fill-column)
+          (max-len 81))
       (shell-command-on-region
        (point-min)
        (point-max)
-       (format "golines --no-reformat-tags -m %s" fill-column)
+       (format "golines --no-reformat-tags -m %s" max-len)
        (current-buffer)
        t
        "*golines errors*"
