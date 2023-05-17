@@ -239,7 +239,7 @@
           ;; insert tab
           (tab-to-tab-stop)
         ;; else complete
-        (company-complete))))
+        (company-complete-common))))
 
   ;; https://stackoverflow.com/a/14189981
   (defun my/insert-newline-below ()
@@ -366,6 +366,9 @@
 
         ("H" . evil-first-non-blank)
         ("L" . evil-last-non-blank))
+
+  (:map evil-replace-state-map
+        ("C-g" . evil-normal-state))
 
   ;; https://github.com/noctuid/evil-guide#global-keybindings-and-evil-states
   ;; > motion state is the default state for help-mode

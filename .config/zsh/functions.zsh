@@ -142,7 +142,7 @@ kl() {
   # Golang: level, ts, msg, status
   #
   # Convert level to upper case for correct highlighting by iTerm rules
-  kubectl logs -fl "app.kubernetes.io/name=$DP_NAME" -n platform --tail -1 --since 1h \
+  kubectl logs -fl "app.kubernetes.io/name=$DP_NAME" -n platform --tail -1 --since 30m \
     | jq -r '[.timestamp, .ts, (.level | ascii_upcase), .message, .msg, .status]|@tsv' -C
 }
 
