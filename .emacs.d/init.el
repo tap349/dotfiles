@@ -726,7 +726,8 @@
    (go-mode . eglot-ensure)
    (go-mode . my/eglot-go-mode-add-hooks)
    (haskell-mode . eglot-ensure)
-   (kotlin-mode . eglot-ensure))
+   (kotlin-mode . eglot-ensure)
+   (python-mode . eglot-ensure))
 
   :custom
   (eglot-autoshutdown t)
@@ -946,6 +947,9 @@
   (markdown-code-face ((t (:font "Input-15"))))
   (markdown-inline-code-face ((t (:font "Input-15")))))
 
+(use-package magit
+  :straight t)
+
 ;; It allows counsel-fzf to search from project root regardless of current file
 (use-package projectile
   :straight t
@@ -974,8 +978,13 @@
         ("<leader>," . projectile-toggle-between-implementation-and-test)
         ("<leader>v" . my/toggle-test-vsplit)))
 
-(use-package magit
-  :straight t)
+(use-package python
+  :straight nil
+  :custom
+  (python-indent-offset 4)
+
+  :config
+  (setq python-indent-guess-indent-offset-verbose nil))
 
 (use-package rainbow-delimiters
   :straight t
