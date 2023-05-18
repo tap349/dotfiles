@@ -172,6 +172,7 @@ mas 'Telegram Desktop', id: 946399090
 brew 'gopls'
 brew 'haskell-language-server'
 brew 'python-lsp-server'
+brew 'yapf'
 
 #-------------------------------------------------------------------------------
 # inDrive

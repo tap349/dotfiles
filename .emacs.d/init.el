@@ -719,6 +719,11 @@
     ;; Calls ktfmt on current buffer
     (add-hook 'before-save-hook 'eglot-format-buffer -10 t))
 
+  ;; NOTE: currently not used because I need to figure out how to set
+  ;; indentation width to 4 for yapf (it's 8 by default)
+  (defun my/eglot-python-mode-add-hooks ()
+    (add-hook 'before-save-hook 'eglot-format-buffer -10 t))
+
   :hook
   ((eglot-managed-mode . my/setup-eglot-managed-mode)
    (clojure-mode . eglot-ensure)
@@ -744,9 +749,12 @@
 
   :config
   ;; https://github.com/golang/tools/blob/master/gopls/doc/emacs.md#configuring-gopls-via-eglot
+  ;; See all server settings in https://github.com/emacs-lsp/lsp-mode/tree/master/clients
   (setq-default eglot-workspace-configuration
                 '((:gopls . ((staticcheck . t)
-                             (matcher . "CaseSensitive")))))
+                             (matcher . "CaseSensitive")))
+                  ;; https://github.com/python-lsp/python-lsp-server/blob/develop/CONFIGURATION.md
+                  (:pylsp . (:plugins (:yapf (:enabled t))))))
 
   (add-to-list 'eglot-server-programs
                '(kotlin-mode . ("kotlin-language-server"
@@ -984,7 +992,7 @@
   (python-indent-offset 4)
 
   :config
-  (setq python-indent-guess-indent-offset-verbose nil))
+  (setq python-indent-guess-indent-offset nil))
 
 (use-package rainbow-delimiters
   :straight t
