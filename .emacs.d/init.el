@@ -712,11 +712,11 @@
     (add-hook 'before-save-hook 'eglot-format-buffer -10 t)
     (add-hook 'before-save-hook 'my/eglot-organize-imports -5 t))
 
-  ;; NOTE: currently not used because ktfmt style is very different from
-  ;; IntelliJ IDEA coding conventions and kotlin-mode indentation rules
-  ;; (the latter is much more important for me)
+  ;; NOTE: ktfmt style is very different from IntelliJ IDEA coding conventions
+  ;; and kotlin-mode indentation rules (the latter is more important for me)
   (defun my/eglot-kotlin-mode-add-hooks ()
     ;; Calls ktfmt on current buffer
+    ;; See eglot-format function implementation for options
     (add-hook 'before-save-hook 'eglot-format-buffer -10 t))
 
   ;; NOTE: currently not used because I need to figure out how to set
@@ -732,6 +732,7 @@
    (go-mode . my/eglot-go-mode-add-hooks)
    (haskell-mode . eglot-ensure)
    (kotlin-mode . eglot-ensure)
+   (kotlin-mode . my/eglot-kotlin-mode-add-hooks)
    (python-mode . eglot-ensure))
 
   :custom
@@ -939,6 +940,13 @@
 
 (use-package kotlin-mode
   :straight t
+  :init
+  (defun my/setup-kotlin-mode ()
+    (setq-local tab-width 4))
+
+  :hook
+  ((kotlin-mode . my/setup-kotlin-mode))
+
   :bind
   ;; Unset default keybindings - REPL integration provided
   ;; by kotlin-mode is not very useful
