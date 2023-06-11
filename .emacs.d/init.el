@@ -209,6 +209,63 @@
   :straight t
   :delight auto-revert-mode)
 
+(use-package consult
+  :straight t
+  :custom
+  (consult-async-input-debounce 0.02)
+  (consult-async-input-throttle 0.02)
+  (consult-async-min-input 2)
+  (consult-async-refresh-delay 0.05)
+  (consult-preview-key nil)
+
+  :custom-face
+  (consult-file ((t (:foreground "#777777"))))
+
+  :config
+  (consult-customize
+   consult-find :prompt "File: "
+   consult-ripgrep :group nil :prompt "Search: "
+   consult-xref :prompt "Xref: "))
+
+(use-package emacs
+  :straight nil
+  :init
+  ;; https://github.com/minad/vertico#configuration
+  (defun my/setup-minibuffer-mode ()
+    (setq minibuffer-prompt-properties
+          '(cursor-intangible t face minibuffer-prompt read-only t)))
+
+  :hook
+  ((minibuffer-setup . my/setup-minibuffer-mode)))
+
+(use-package embark
+  :straight t
+  :init
+  (defun my/find-file-split (filename)
+    (my/evil-window-split)
+    (find-file filename))
+
+  (defun my/find-file-vsplit (filename)
+    (my/evil-window-vsplit)
+    (find-file filename))
+
+  (defun my/find-file-tab (filename)
+    (tab-bar-new-tab)
+    (find-file filename))
+
+  :custom
+  (embark-indicators '(embark--vertico-indicator
+                       embark-highlight-indicator
+                       embark-isearch-highlight-indicator))
+
+  :bind
+  (("C-u" . embark-act))
+
+  (:map embark-file-map
+        ("C-s" . #'my/find-file-split)
+        ("C-v" . #'my/find-file-vsplit)
+        ("C-t" . #'my/find-file-tab)))
+
 ;; For some reason <return> and RET keys are not the same: keybinding for
 ;; <return> key in evil-normal-state-map (insert newline below) is also
 ;; active in dired-mode but keybinding for RET is not.
@@ -456,178 +513,6 @@
         ;; Use <tab> instead of TAB to override other keybindings
         ("<tab>" . company-complete-common)))
 
-;; ivy / counsel / swiper
-(use-package counsel
-  :straight t
-  :delight ivy-mode
-  :after evil
-  :init
-  (defun my/ivy--add-face (str face)
-    "Propertize STR with FACE."
-    (let ((len (length str)))
-      (condition-case nil
-          (progn
-            ;; Use font-lock-append-text-property instead of
-            ;; colir-blend-face-background so that background
-            ;; of xref-match is not overridden by background
-            ;; of ivy-current-match
-            (font-lock-append-text-property 0 len 'face face str)
-            (let ((foreground (face-foreground face)))
-              (when foreground
-                (add-face-text-property
-                 0 len (list :foreground foreground) nil str))))
-        (error
-         (ignore-errors
-           (font-lock-append-text-property 0 len 'face face str)))))
-    str)
-
-  ;; https://stackoverflow.com/a/66210949/3632318
-  (advice-add 'ivy--add-face :override #'my/ivy--add-face)
-  (advice-add 'counsel-describe-function-transformer :override #'identity)
-  (advice-add 'counsel-describe-variable-transformer :override #'identity)
-
-  ;; https://github.com/junegunn/fzf#respecting-gitignore
-  ;; For counsel-fzf
-  (setenv
-   "FZF_DEFAULT_COMMAND"
-   "fd --type f --strip-cwd-prefix -H -I \
-    --exclude .clj-kondo \
-    --exclude .cpcache \
-    --exclude .git \
-    --exclude .gradle \
-    --exclude .idea \
-    --exclude /build \
-    --exclude /target")
-
-  (defun my/counsel-fzf-open-split (filename)
-    (with-ivy-window
-      (let ((default-directory (or (counsel--git-root)
-                                   default-directory)))
-        (my/evil-window-split)
-        (find-file filename))))
-
-  (defun my/counsel-fzf-open-vsplit (filename)
-    (with-ivy-window
-      (let ((default-directory (or (counsel--git-root)
-                                   default-directory)))
-        (my/evil-window-vsplit)
-        (find-file filename))))
-
-  (defun my/counsel-fzf-open-tab (filename)
-    (with-ivy-window
-      (let ((default-directory (or (counsel--git-root)
-                                   default-directory)))
-        (tab-bar-new-tab)
-        (find-file filename))))
-
-  (defun my/counsel-rg-open-split (input)
-    (with-ivy-window
-      (my/evil-window-split)
-      (counsel-git-grep-action input)
-      ;; https://github.com/abo-abo/swiper/blob/master/counsel.el#L1423
-      ;; Remove swiper overlays (highlighting of current line and match)
-      ;;
-      ;; ivy-exit is not set to `done` when opening candidate in a split
-      ;; window which causes swiper overlays to be added - overlays are
-      ;; correctly removed when opening candidate in a new tab
-      (swiper--cleanup)))
-
-  (defun my/counsel-rg-open-vsplit (input)
-    (with-ivy-window
-      (my/evil-window-vsplit)
-      (counsel-git-grep-action input)
-      ;; See comment above in my/counsel-rg-open-split
-      (swiper--cleanup)))
-
-  (defun my/counsel-rg-open-tab (input)
-    (with-ivy-window
-      (tab-bar-new-tab)
-      (counsel-git-grep-action input)))
-
-  :custom
-  (enable-recursive-minibuffers t)
-
-  ;; https://oremacs.com/swiper/#completion-styles
-  ;; https://github.com/abo-abo/swiper/issues/1982
-  ;;
-  ;; > To match a literal white space, use an extra space
-  ;; Or else use `regexp-quote` regex builder
-  (counsel-rg-base-command '("rg"
-                             "--color=never"
-                             "--line-number"
-                             "--max-columns=240"
-                             "--no-heading"
-                             "--with-filename"
-                             "%s"))
-
-  (ivy-count-format "")
-  (ivy-display-style 'fancy)
-  (ivy-height 15)
-  (ivy-initial-inputs-alist nil)
-  (ivy-more-chars-alist '((counsel-grep . 2)
-                          (counsel-git-grep . 2)
-                          (t . 3)))
-  (ivy-on-del-error-function 'ignore)
-  (ivy-use-virtual-buffers t)
-  (ivy-wrap t)
-
-  (swiper-goto-start-of-match t)
-
-  ;; Don't inherit from highlight face because the latter is used, say,
-  ;; for highlighting some functions in describe-function => highlighted
-  ;; functions and current line would have the same background
-  ;;
-  ;; Set background of ivy-minibuffer-match-face-* faces explicitly
-  ;; (instead of using :inherit) to prevent them from overriding
-  ;; because explicily set colors have higher priority than inherited
-  ;; colors (it's important when ivy--add-face tries to merge text
-  ;; properties)
-  ;;
-  ;; Still it's okay to inherit swiper-match-face-* faces from isearch
-  :custom-face
-  ;; Set foreground to unspecified to keep original foreground of candidates
-  (ivy-current-match ((t (:background "#E6E6F0" :foreground unspecified))))
-  (ivy-minibuffer-match-face-1 ((t (:background unspecified))))
-  (ivy-minibuffer-match-face-2 ((t (:background ,(face-attribute 'isearch :background nil t)))))
-  (ivy-minibuffer-match-face-3 ((t (:background ,(face-attribute 'isearch :background nil t)))))
-  (ivy-minibuffer-match-face-4 ((t (:background ,(face-attribute 'isearch :background nil t)))))
-  (swiper-line-face ((t (:background "#E6E6F0" :foreground "black"))))
-  (swiper-match-face-1 ((t (:background unspecified))))
-  (swiper-match-face-2 ((t (:inherit isearch))))
-  (swiper-match-face-3 ((t (:inherit isearch))))
-  (swiper-match-face-4 ((t (:inherit isearch))))
-
-  :config
-  (ivy-mode 1)
-
-  (ivy-set-actions
-   'counsel-fzf
-   '(("C-s" my/counsel-fzf-open-split "split")
-     ("C-v" my/counsel-fzf-open-vsplit "vsplit")
-     ("C-t" my/counsel-fzf-open-tab "tab")))
-
-  (ivy-set-actions
-   'counsel-rg
-   '(("C-s" my/counsel-rg-open-split "split")
-     ("C-v" my/counsel-rg-open-vsplit "vsplit")
-     ("C-t" my/counsel-rg-open-tab "tab")))
-
-  :bind
-  (("C-s" . swiper-isearch)
-   ("M-x" . counsel-M-x)
-   ("C-x C-f" . counsel-find-file)
-   ("M-y" . counsel-yank-pop)
-   ("C-h f" . counsel-describe-function)
-   ("C-h v" . counsel-describe-variable)
-   ("C-x b" . ivy-switch-buffer)
-
-   (:map ivy-minibuffer-map
-         ("C-u" . ivy-dispatching-done))
-
-   (:map evil-normal-state-map
-         ("<leader>n" . counsel-fzf)
-         ("<leader>/" . counsel-rg))))
-
 ;; - "(" - dired-hide-details-mode
 (use-package dired
   :straight nil
@@ -732,7 +617,7 @@
    (go-mode . my/eglot-go-mode-add-hooks)
    (haskell-mode . eglot-ensure)
    (kotlin-mode . eglot-ensure)
-   (kotlin-mode . my/eglot-kotlin-mode-add-hooks)
+   ;; (kotlin-mode . my/eglot-kotlin-mode-add-hooks)
    (python-mode . eglot-ensure))
 
   :custom
@@ -927,9 +812,6 @@
   :hook
   ((prog-mode . hs-minor-mode)))
 
-(use-package ivy-xref
-  :straight t)
-
 (use-package jarchive
   :straight t
   :config
@@ -966,7 +848,19 @@
 (use-package magit
   :straight t)
 
-;; It allows counsel-fzf to search from project root regardless of current file
+;; Fixes a bug in some consult commands (say, consult-xref)
+;; when you cannot search for substring
+(use-package orderless
+  :straight t
+  :custom
+  (completion-styles '(orderless basic))
+  ;; https://github.com/minad/vertico/issues/237#issuecomment-1134000907
+  ;;
+  ;; completions-first-difference face is used by `basic` completion style
+  ;; but not by orderless: if this variable is nil, orderless is used for
+  ;; all completion categories => completions-first-difference is not used
+  (completion-category-overrides nil))
+
 (use-package projectile
   :straight t
   :demand t
@@ -979,9 +873,9 @@
     (projectile-toggle-between-implementation-and-test))
 
   :custom
-  (projectile-completion-system 'ivy)
+  (projectile-completion-system 'auto)
   (projectile-create-missing-test-files t)
-  (projectile-switch-project-action 'counsel-fzf)
+  (projectile-switch-project-action 'consult-find)
 
   :config
   (projectile-mode 1)
@@ -1062,6 +956,40 @@
    ("C-<tab>" . tab-recent)
    ("C-<backspace>" . tab-bar-close-tab)))
 
+(use-package vertico
+  :straight t
+  :after evil
+  :init
+  (vertico-mode 1)
+
+  :custom
+  (vertico-count 15)
+  (vertico-cycle t)
+  (vertico-resize t)
+  (vertico-scroll-margin 2)
+
+  :custom-face
+  (vertico-current ((t (:background "#E6E6F0"))))
+  (vertico-group-title ((t (:foreground "#888878"))))
+
+  :bind
+  ;; https://www.reddit.com/r/emacs/comments/zznamq/comment/j2g9ci4/
+  ;; https://emacs.stackexchange.com/a/2473/39266
+  (:map vertico-map
+        ("C-s" . (lambda ()
+                   (interactive)
+                   (execute-kbd-macro (kbd "C-u C-s"))))
+        ("C-v" . (lambda ()
+                   (interactive)
+                   (execute-kbd-macro (kbd "C-u C-v"))))
+        ("C-t" . (lambda ()
+                   (interactive)
+                   (execute-kbd-macro (kbd "C-u C-t")))))
+
+  (:map evil-normal-state-map
+        ("<leader>n" . consult-find)
+        ("<leader>/" . consult-ripgrep)))
+
 (use-package whitespace
   :straight nil
   :delight
@@ -1085,9 +1013,9 @@
   :custom-face
   ;; foreground is used, say, for tab marks
   ;;
-  ;; Use `:background nil` instead of `:background "white"` to allow
-  ;; background of ivy-current-match to override it (see my/ivy--add-face)
-  (whitespace-tab ((t (:background nil :foreground "#DDDDDD"))))
+  ;; Use `:background unspecified` instead of `:background "white"`
+  ;; to allow background of vertico-current to override it
+  (whitespace-tab ((t (:background unspecified :foreground "#DDDDDD"))))
   (whitespace-trailing ((t (:background "#E3A8A8" :foreground "#C38888"))))
   (whitespace-missing-newline-at-eof ((t (:background "#E3A8A8"))))
 
@@ -1110,13 +1038,10 @@
   ;; - xref-find-references always shows references list - even
   ;;   if only one reference is found (true for type definitions
   ;;   which are displayed with xref-find-references)
-  (xref-show-definitions-function #'ivy-xref-show-defs)
+  (xref-show-definitions-function #'consult-xref)
   ;; In Emacs 27+ it will affect all xref-based commands
   ;; except for xref-find-definitions
-  (xref-show-xrefs-function #'ivy-xref-show-xrefs)
-
-  :custom-face
-  (xref-match ((t (:background ,(face-attribute 'isearch :background nil t)))))
+  (xref-show-xrefs-function #'consult-xref)
 
   :config
   (evil-make-overriding-map xref--xref-buffer-mode-map 'normal)
