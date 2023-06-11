@@ -212,10 +212,10 @@
 (use-package consult
   :straight t
   :custom
-  (consult-async-input-debounce 0.02)
-  (consult-async-input-throttle 0.02)
+  (consult-async-input-debounce 0.01)
+  (consult-async-input-throttle 0.01)
   (consult-async-min-input 2)
-  (consult-async-refresh-delay 0.05)
+  (consult-async-refresh-delay 0.1)
   (consult-preview-key nil)
 
   :custom-face
@@ -693,10 +693,10 @@
   (eldoc-box-max-pixel-width 700)
 
   :custom-face
-  ;; (eldoc-box-body ((t (:background "#F5F5F7"))))
-  ;; (eldoc-box-border ((t (:background "#C5C5C7"))))
-  (eldoc-box-body ((t (:background "#F9F9F5"))))
-  (eldoc-box-border ((t (:background "#C9C9C5"))))
+  (eldoc-box-body ((t (:background "#F5F5F7"))))
+  (eldoc-box-border ((t (:background "#C5C5C7"))))
+  ;; (eldoc-box-body ((t (:background "#F9F9F5"))))
+  ;; (eldoc-box-border ((t (:background "#C9C9C5"))))
 
   :config
   ;; C-g is bound to evil-ex-nohighlight in normal state
