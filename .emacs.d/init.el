@@ -738,11 +738,11 @@
     (interactive)
     ;; Include leading colon only (that is when it's atom or keyword)
     ;; Equivalent to "[:]*[-_<>A-Za-z0-9?!]+"
-    (let ((vim-word-regexp (rx bow
-                               (zero-or-more ":")
+    ;;
+    ;; NOTE: `?` in character class is ignored when `eow` is used
+    (let ((vim-word-regexp (rx (zero-or-more ":")
                                (one-or-more
-                                (any "0-9A-Za-z" "!<>?_-"))
-                               eow)))
+                                (any "0-9A-Za-z" "!<>?_-")))))
       (when (thing-at-point-looking-at vim-word-regexp)
         ;; Always searches for substring ignoring word boundaries
         (evil-visualstar/begin-search (match-beginning 0) (match-end 0) t))))
