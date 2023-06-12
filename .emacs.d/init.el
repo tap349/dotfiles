@@ -216,6 +216,8 @@
   (consult-async-input-throttle 0.01)
   (consult-async-min-input 2)
   (consult-async-refresh-delay 0.1)
+  ;; Search for files only
+  (consult-find-args "find . -type f -not ( -wholename */.* -prune )")
   (consult-preview-key "C-<return>")
 
   :custom-face
