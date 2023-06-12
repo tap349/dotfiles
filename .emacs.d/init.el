@@ -216,7 +216,7 @@
   (consult-async-input-throttle 0.01)
   (consult-async-min-input 2)
   (consult-async-refresh-delay 0.1)
-  (consult-preview-key nil)
+  (consult-preview-key "C-<return>")
 
   :custom-face
   (consult-file ((t (:foreground "#777777"))))
@@ -517,6 +517,9 @@
 (use-package dired
   :straight nil
   :init
+  (defun my/setup-dired-mode ()
+    (dired-hide-details-mode 1))
+
   (defun my/dired-up-directory ()
     (interactive)
     (find-alternate-file ".."))
@@ -528,6 +531,9 @@
             (when (eq (buffer-local-value 'major-mode buffer) 'dired-mode)
               (kill-buffer buffer)))
           (buffer-list)))
+
+  :hook
+  ((dired-mode . my/setup-dired-mode))
 
   :bind
   (:map dired-mode-map
@@ -544,12 +550,12 @@
   (dired-subtree-use-backgrounds t)
 
   :custom-face
-  (dired-subtree-depth-1-face ((t (:background "#F7F7F7"))))
-  (dired-subtree-depth-2-face ((t (:background "#EAEAEA"))))
-  (dired-subtree-depth-3-face ((t (:background "#E0E0E0"))))
-  (dired-subtree-depth-4-face ((t (:background "#E0E0E0"))))
-  (dired-subtree-depth-5-face ((t (:background "#E0E0E0"))))
-  (dired-subtree-depth-6-face ((t (:background "#E0E0E0"))))
+  (dired-subtree-depth-1-face ((t (:background "#F9F9F9"))))
+  (dired-subtree-depth-2-face ((t (:background "#F3F3F3"))))
+  (dired-subtree-depth-3-face ((t (:background "#F3F3F3"))))
+  (dired-subtree-depth-4-face ((t (:background "#F3F3F3"))))
+  (dired-subtree-depth-5-face ((t (:background "#F3F3F3"))))
+  (dired-subtree-depth-6-face ((t (:background "#F3F3F3"))))
 
   :bind
   (:map dired-mode-map
@@ -965,7 +971,7 @@
   :custom
   (vertico-count 15)
   (vertico-cycle t)
-  (vertico-resize t)
+  (vertico-resize nil)
   (vertico-scroll-margin 2)
 
   :custom-face
@@ -1049,9 +1055,10 @@
   :bind
   ;; These keybindings have effect only in default xref buffer
   (:map xref--xref-buffer-mode-map
-        ("l" . xref-show-location-at-point)
-        ("<return>" . xref-goto-xref)
-        ("C-<return>" . xref-quit-and-goto-xref)
+        ;; Same as consult-preview-key
+        ("C-<return>" . xref-show-location-at-point)
+        ;; ("o" . xref-goto-xref)
+        ("<return>" . xref-quit-and-goto-xref)
         ("q" . xref-quit-and-pop-marker-stack)))
 
 (use-package yaml-mode
