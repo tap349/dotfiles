@@ -227,7 +227,7 @@
   (consult-customize
    consult-find :prompt "File: "
    consult-ripgrep :group nil :prompt "Search: "
-   consult-xref :prompt "Xref: "))
+   consult-xref :prompt "xref: "))
 
 (use-package emacs
   :straight nil
