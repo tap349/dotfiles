@@ -779,6 +779,22 @@
         ("*" . my/asterisk-visual)
         ("z*" . my/asterisk-z-visual)))
 
+(use-package flycheck
+  :straight t
+  :init
+  (global-flycheck-mode 1))
+
+(use-package flycheck-eglot
+  :straight t
+  :after (eglot flycheck)
+  :config
+  (global-flycheck-eglot-mode 1))
+
+(use-package flycheck-golangci-lint
+  :straight t
+  :hook
+  ((go-mode . flycheck-golangci-lint-setup)))
+
 ;; - flymake-show-buffer-diagnostics (show all buffer errors)
 (use-package flymake
   :straight nil
