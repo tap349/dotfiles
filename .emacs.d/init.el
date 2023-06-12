@@ -645,8 +645,9 @@
   ;; https://github.com/golang/tools/blob/master/gopls/doc/emacs.md#configuring-gopls-via-eglot
   ;; See all server settings in https://github.com/emacs-lsp/lsp-mode/tree/master/clients
   (setq-default eglot-workspace-configuration
-                '((:gopls . ((staticcheck . t)
-                             (matcher . "CaseSensitive")))
+                '((:gopls . ((gofumpt . t)
+                             (matcher . "CaseSensitive")
+                             (staticcheck . t)))
                   ;; https://github.com/python-lsp/python-lsp-server/blob/develop/CONFIGURATION.md
                   (:pylsp . (:plugins (:yapf (:enabled t))))))
 
