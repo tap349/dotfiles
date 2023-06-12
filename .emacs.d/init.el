@@ -912,6 +912,7 @@
 ;; For camel-case motions
 (use-package subword
   :straight nil
+  :after go-mode
   :delight
   :config
   (global-subword-mode 1)
@@ -996,6 +997,7 @@
 
   (:map evil-normal-state-map
         ("<leader>n" . consult-find)
+        ("<leader>f" . consult-flymake)
         ("<leader>/" . consult-ripgrep)))
 
 (use-package whitespace
