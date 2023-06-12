@@ -1,5 +1,3 @@
-;;; -*- lexical-binding: t; -*-
-
 ;;-----------------------------------------------------------------------------
 ;;
 ;; Package management
@@ -583,32 +581,7 @@
   :straight nil
   :demand t
   :init
-  (require 'flymake-quickdef)
-
-  ;; https://github.com/smook1980/dotfiles-3/blob/master/emacs/.config/emacs/init.el#L798
-  (flymake-quickdef-backend flymake-golangci
-    :pre-let ((golangci-exec (executable-find "golangci-lint")))
-    :pre-check (unless golangci-exec (error "Cannot find golangci-lint"))
-    :write-type 'file
-    :proc-form (list golangci-exec
-                     "run"
-                     "--print-issued-lines=false"
-                     "--out-format=line-number"
-                     fmqd-temp-file)
-    :search-regexp "^\\([^:]+\\):\\([[:digit:]]+\\):\\([[:digit:]]+\\): \\(.*\\)$"
-    :prep-diagnostic (let* ((lnum (string-to-number (match-string 2)))
-                            (col (string-to-number (match-string 3)))
-                            (text (match-string 4))
-                            (pos (flymake-diag-region fmqd-source lnum col))
-                            (beg (car pos))
-                            (end (cdr pos))
-                            (type :warning)
-                            (msg (format "[golangci-lint] %s" text)))
-                       (list fmqd-source beg end type msg)))
-
   (defun my/setup-eglot-managed-mode ()
-    ;; https://github.com/joaotavora/eglot/issues/268#issuecomment-544890756
-    (add-hook 'flymake-diagnostic-functions 'flymake-golangci nil t)
     (setq-local eldoc-documentation-functions '(flymake-eldoc-function)))
 
   (defun my/eglot-organize-imports ()
@@ -812,9 +785,6 @@
   :bind
   (("M-]" . flymake-goto-next-error)
    ("M-[" . flymake-goto-prev-error)))
-
-(use-package flymake-quickdef
-  :straight t)
 
 (use-package go-mode
   :straight t
