@@ -169,6 +169,7 @@ mas 'Telegram Desktop', id: 946399090
 # LSP
 #-------------------------------------------------------------------------------
 
+brew 'golangci-lint'
 brew 'gopls'
 brew 'haskell-language-server'
 brew 'python-lsp-server'
