@@ -800,7 +800,7 @@
     (let ((old-point (point))
           ;; golines wraps at this line length
           ;; (or else set to fill-column)
-          (max-len 81))
+          (max-len display-fill-column-indicator-column))
       (shell-command-on-region
        (point-min)
        (point-max)
