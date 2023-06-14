@@ -225,9 +225,10 @@
 
   :config
   (consult-customize
-   consult-find :prompt "File: "
-   consult-ripgrep :group nil :prompt "Search: "
-   consult-xref :prompt "xref: "))
+   consult-find :prompt ""
+   consult-ripgrep :group nil :prompt ""
+   ;; mode line disappears when prompt is ""
+   consult-xref :prompt "Filter: "))
 
 (use-package emacs
   :straight nil
