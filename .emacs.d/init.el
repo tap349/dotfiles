@@ -217,7 +217,16 @@
   (consult-async-min-input 2)
   (consult-async-refresh-delay 0.1)
   ;; Search for files only
-  (consult-find-args "find . -type f -not ( -wholename */.* -prune )")
+  (consult-find-args
+   "find . -type f \
+    -not ( -path ./.git/* -prune ) \
+    -not ( -path ./.idea/* -prune ) \
+    -not ( -path ./docker/cockroach-data/* -prune ) \
+    -not ( -path ./.gradle/* -prune ) \
+    -not ( -path ./.clj-kondo/* -prune ) \
+    -not ( -path ./.cpcache/* -prune ) \
+    -not ( -path ./build/* -prune ) \
+    -not ( -path ./target/* -prune )")
   (consult-preview-key "C-<return>")
 
   :custom-face
