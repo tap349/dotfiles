@@ -635,7 +635,7 @@
    (go-mode . my/eglot-go-mode-add-hooks)
    (haskell-mode . eglot-ensure)
    (kotlin-mode . eglot-ensure)
-   ;; (kotlin-mode . my/eglot-kotlin-mode-add-hooks)
+   (kotlin-mode . my/eglot-kotlin-mode-add-hooks)
    (python-mode . eglot-ensure))
 
   :custom
@@ -1009,7 +1009,8 @@
   (:map evil-normal-state-map
         ("<leader>n" . consult-find)
         ("<leader>f" . consult-flymake)
-        ("<leader>/" . consult-ripgrep)))
+        ("<leader>/" . consult-ripgrep)
+        ("C-s" . consult-ripgrep)))
 
 (use-package whitespace
   :straight nil
