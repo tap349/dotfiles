@@ -37,14 +37,6 @@
 (add-hook 'window-setup-hook 'toggle-frame-maximized t)
 ;; (add-to-list 'default-frame-alist '(fullscreen . maximized))
 
-;; Minimize garbage collection during startup
-;; See also https://gitlab.com/koral/gcmh
-(setq gc-cons-threshold most-positive-fixnum)
-
-;; Lower threshold back to 10 MB (default is 800kB)
-(add-hook 'emacs-startup-hook
-          (lambda () (setq gc-cons-threshold (* 10 1000 1000))))
-
 ;;-----------------------------------------------------------------------------
 ;;
 ;; System
@@ -197,6 +189,13 @@
 ;; Packages
 ;;
 ;;-----------------------------------------------------------------------------
+
+;; Enablc gcmh-mode first to decrease Emacs startup time
+(use-package gcmh
+  :straight t
+  :delight gcmh-mode
+  :config
+  (gcmh-mode 1))
 
 ;; Install it first to make :delight option work
 (use-package delight
