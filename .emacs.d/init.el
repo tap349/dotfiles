@@ -1008,7 +1008,7 @@
   (:map evil-normal-state-map
         ("<leader>n" . consult-find)
         ("<leader>f" . consult-flymake)
-        ("<leader>/" . consult-ripgrep)
+        ;; ("<leader>/" . consult-ripgrep)
         ("C-s" . consult-ripgrep)))
 
 (use-package whitespace
