@@ -225,7 +225,7 @@
     -not ( -path ./build/* -prune ) \
     -not ( -path ./docker/cockroach-data/* -prune ) \
     -not ( -path ./target/* -prune )")
-  (consult-preview-key "C-<return>")
+  (consult-preview-key "C-l")
 
   :custom-face
   (consult-file ((t (:foreground "#777777"))))
@@ -233,7 +233,7 @@
   :config
   (consult-customize
    consult-find :prompt ""
-   consult-line :prompt "Filter: "
+   consult-line :preview-key 'any :prompt "Filter: "
    consult-ripgrep :group nil :prompt ""
    ;; mode line disappears when prompt is ""
    consult-xref :prompt "Filter: "))
@@ -1071,7 +1071,7 @@
   ;; These keybindings have effect only in default xref buffer
   (:map xref--xref-buffer-mode-map
         ;; Same as consult-preview-key
-        ("C-<return>" . xref-show-location-at-point)
+        ("C-l" . xref-show-location-at-point)
         ;; ("o" . xref-goto-xref)
         ("<return>" . xref-quit-and-goto-xref)
         ("q" . xref-quit-and-pop-marker-stack)))
