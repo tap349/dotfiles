@@ -190,16 +190,16 @@
 ;;
 ;;-----------------------------------------------------------------------------
 
+;; Install it first to make :delight option work
+(use-package delight
+  :straight t)
+
 ;; Enablc gcmh-mode first to decrease Emacs startup time
 (use-package gcmh
   :straight t
   :delight gcmh-mode
   :config
   (gcmh-mode 1))
-
-;; Install it first to make :delight option work
-(use-package delight
-  :straight t)
 
 (use-package auto-package-update
   :straight t)
@@ -215,16 +215,15 @@
   (consult-async-input-throttle 0.01)
   (consult-async-min-input 2)
   (consult-async-refresh-delay 0.1)
-  ;; Search for files only
   (consult-find-args
    "find . -type f \
-    -not ( -path ./.git/* -prune ) \
-    -not ( -path ./.idea/* -prune ) \
-    -not ( -path ./docker/cockroach-data/* -prune ) \
-    -not ( -path ./.gradle/* -prune ) \
     -not ( -path ./.clj-kondo/* -prune ) \
     -not ( -path ./.cpcache/* -prune ) \
+    -not ( -path ./.git/* -prune ) \
+    -not ( -path ./.gradle/* -prune ) \
+    -not ( -path ./.idea/* -prune ) \
     -not ( -path ./build/* -prune ) \
+    -not ( -path ./docker/cockroach-data/* -prune ) \
     -not ( -path ./target/* -prune )")
   (consult-preview-key "C-<return>")
 
