@@ -233,6 +233,7 @@
   :config
   (consult-customize
    consult-find :prompt ""
+   consult-line :prompt "Filter: "
    consult-ripgrep :group nil :prompt ""
    ;; mode line disappears when prompt is ""
    consult-xref :prompt "Filter: "))
@@ -1007,8 +1008,8 @@
   (:map evil-normal-state-map
         ("<leader>n" . consult-find)
         ("<leader>f" . consult-flymake)
-        ;; ("<leader>/" . consult-ripgrep)
-        ("C-s" . consult-ripgrep)))
+        ("<leader>/" . consult-ripgrep)
+        ("C-s" . consult-line)))
 
 (use-package whitespace
   :straight nil
