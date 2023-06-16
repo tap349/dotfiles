@@ -162,6 +162,7 @@ kpf() {
   kubectl port-forward service/catalog-db-public -n platform 26261:26257 &
   kubectl port-forward service/namespace-db-public -n platform 26262:26257 &
   kubectl port-forward service/user-service-db-public -n platform 26263:26257 &
+  kubectl port-forward service/pipeline-db-public -n platform 26264:26257 &
 
   # Run function in foreground
   wait
