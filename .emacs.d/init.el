@@ -763,7 +763,7 @@
                                 (any "0-9A-Za-z" "!<>?_-")))))
       (when (thing-at-point-looking-at vim-word-regexp)
         ;; Always searches for substring ignoring word boundaries
-        (evil-visualstar/begin-search (match-beginning 0) (match-end 0) t))))
+        (evil-visualstar/begin-search (match-beginning 0) (match-end 0) t t))))
 
   (defun my/asterisk-visual (beg end)
     (interactive "r")
