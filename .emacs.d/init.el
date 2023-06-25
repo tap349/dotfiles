@@ -297,6 +297,14 @@
   ;; https://github.com/emacs-evil/evil/issues/576
   (setq evil-want-Y-yank-to-eol t)
 
+  (defun my/c-g ()
+    (interactive)
+    (cond
+     ((eq evil-state 'insert) (evil-normal-state))
+     ((eq evil-state 'normal) (evil-ex-nohighlight))
+     ((eq evil-state 'visual) (evil-exit-visual-state))
+     ((eq evil-state 'replace) (evil-normal-state))))
+
   (defun my/insert-tab-or-complete ()
     (interactive)
     (let ((chr (preceding-char)))
@@ -379,12 +387,12 @@
 
   :bind
   (:map evil-insert-state-map
-        ("C-g" . evil-normal-state)
+        ("C-g" . my/c-g)
         ("RET" . comment-indent-new-line)
         ("TAB" . my/insert-tab-or-complete))
 
   (:map evil-normal-state-map
-        ("C-g" . evil-ex-nohighlight)
+        ("C-g" . my/c-g)
         ("C-." . execute-extended-command)
 
         ("TAB" . save-buffer)
@@ -427,7 +435,7 @@
         ("<leader>t" . dired-jump))
 
   (:map evil-visual-state-map
-        ("C-g" . evil-exit-visual-state)
+        ("C-g" . my/c-g)
         ("C-." . execute-extended-command)
 
         ("C-s" . sort-lines)
@@ -436,7 +444,7 @@
         ("L" . evil-last-non-blank))
 
   (:map evil-replace-state-map
-        ("C-g" . evil-normal-state))
+        ("C-g" . my/c-g))
 
   ;; https://github.com/noctuid/evil-guide#global-keybindings-and-evil-states
   ;; > motion state is the default state for help-mode
@@ -717,8 +725,7 @@
   ;; (eldoc-box-border ((t (:background "#C9C9C5"))))
 
   :config
-  ;; C-g is bound to evil-ex-nohighlight in normal state
-  (advice-add 'evil-ex-nohighlight :before 'eldoc-box-quit-frame)
+  (advice-add 'my/c-g :after 'eldoc-box-quit-frame)
 
   :bind
   (:map evil-normal-state-map
@@ -750,20 +757,57 @@
   :demand t
   :after evil
   :init
+  (setq my/evil-ex-search-next-offset 0)
+
+  (defun my/evil-ex-search-forward ()
+    (interactive)
+    (setq my/evil-ex-search-next-offset 0)
+    (evil-ex-search-forward))
+
+  (defun my/evil-ex-search-backward ()
+    (interactive)
+    (setq my/evil-ex-search-next-offset 0)
+    (evil-ex-search-backward))
+
+  (defun my/evil-ex-search-next ()
+    (interactive)
+    (evil-ex-search-next)
+    (forward-char my/evil-ex-search-next-offset))
+
+  (defun my/evil-ex-search-previous ()
+    (interactive)
+    (when (> my/evil-ex-search-next-offset 0)
+      (evil-ex-search-previous))
+    (evil-ex-search-previous)
+    (forward-char my/evil-ex-search-next-offset))
+
+  ;; https://stackoverflow.com/a/26650886/3632318
+  ;; https://github.com/noctuid/evil-guide#declaring-a-motion
+  ;;
+  ;; evil-declare-motion:
+  ;; - sets `:repeat motion` => don't count functions as repeatables
+  ;; - sets `:keep-visual t` => make functions work in visual state
+  (evil-declare-motion 'my/evil-ex-search-forward)
+  (evil-declare-motion 'my/evil-ex-search-backward)
+  (evil-declare-motion 'my/evil-ex-search-next)
+  (evil-declare-motion 'my/evil-ex-search-previous)
+
   ;; See https://github.com/noctuid/evil-guide#buffer-local-keybindings
   ;; if you ever need to define this keybinding for specific mode only
   (defun my/asterisk-normal ()
     (interactive)
     ;; Include leading colon only (that is when it's atom or keyword)
-    ;; Equivalent to "[:]*[-_<>A-Za-z0-9?!]+"
+    ;; Equivalent to "[-_<>A-Za-z0-9?!]+"
     ;;
     ;; NOTE: `?` in character class is ignored when `eow` is used
-    (let ((vim-word-regexp (rx (zero-or-more ":")
-                               (one-or-more
+    ;; NOTE: `:` is not a word constituent character so `\<:foo\>`
+    ;; search fails => exclude `:` from vim-word-regexp
+    (let ((vim-word-regexp (rx (one-or-more
                                 (any "0-9A-Za-z" "!<>?_-")))))
       (when (thing-at-point-looking-at vim-word-regexp)
-        ;; Always searches for substring ignoring word boundaries
-        (evil-visualstar/begin-search (match-beginning 0) (match-end 0) t t))))
+        (setq my/evil-ex-search-next-offset (- (point) (match-beginning 0)))
+        (evil-visualstar/begin-search (match-beginning 0) (match-end 0) t t)
+        (forward-char my/evil-ex-search-next-offset))))
 
   (defun my/asterisk-visual (beg end)
     (interactive "r")
@@ -782,10 +826,18 @@
   ;; global-evil-visualstar-mode is not enabled so define all keybindings
   :bind
   (:map evil-normal-state-map
+        ("/" . my/evil-ex-search-forward)
+        ("?" . my/evil-ex-search-backward)
+        ("n" . my/evil-ex-search-next)
+        ("N" . my/evil-ex-search-previous)
         ("*" . my/asterisk-normal)
         ("z*" . my/asterisk-z-normal))
 
   (:map evil-visual-state-map
+        ("/" . my/evil-ex-search-forward)
+        ("?" . my/evil-ex-search-backward)
+        ("n" . my/evil-ex-search-next)
+        ("N" . my/evil-ex-search-previous)
         ("*" . my/asterisk-visual)
         ("z*" . my/asterisk-z-visual)))
 
