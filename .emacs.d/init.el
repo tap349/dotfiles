@@ -299,6 +299,7 @@
 
   (defun my/c-g ()
     (interactive)
+    ;; cond should be faster than pcase because pcase is a macro
     (cond
      ((eq evil-state 'insert) (evil-normal-state))
      ((eq evil-state 'normal) (evil-ex-nohighlight))
