@@ -1,0 +1,26 @@
+# Install Rosetta:
+#
+# ```
+# $ softwareupdate --install-rosetta
+# ```
+#
+# Install Homebrew for x86_64 (it's installed in a different location):
+#
+# ```
+# $ arch -x86_64 bash
+# $ /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+# ```
+#
+# Install packages:
+#
+# ```
+# $ arch -x86_64 brew bundle -v
+# ```
+
+#-------------------------------------------------------------------------------
+# inDrive
+#-------------------------------------------------------------------------------
+
+tap 'ktorio/ktor'
+
+brew 'ktor', args: ["build-from-source"]
