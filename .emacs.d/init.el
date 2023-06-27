@@ -363,6 +363,7 @@
       (comment-or-uncomment-region beg end)))
 
   :custom
+  (evil-ex-search-case 'smart)
   (evil-visual-update-x-selection-p nil)
 
   :config
@@ -979,6 +980,7 @@
   :delight
   :config
   (global-subword-mode 1)
+
   :hook
   ;; https://www.gnu.org/software/emacs/manual/html_node/elisp/Syntax-Class-Table.html
   ;;
