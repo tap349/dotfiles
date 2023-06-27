@@ -805,7 +805,7 @@
     ;; NOTE: `:` is not a word constituent character so `\<:foo\>`
     ;; search fails => exclude `:` from vim-word-regexp
     (let ((vim-word-regexp (rx (one-or-more
-                                (any "0-9A-Za-z" "!<>?_-")))))
+                                (any "0-9A-Za-z" "!-<>?_")))))
       (when (thing-at-point-looking-at vim-word-regexp)
         (setq my/evil-ex-search-next-offset (- (point) (match-beginning 0)))
         (evil-visualstar/begin-search (match-beginning 0) (match-end 0) t t)
