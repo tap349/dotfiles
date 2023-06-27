@@ -277,6 +277,11 @@
         ("C-v" . #'my/find-file-vsplit)
         ("C-t" . #'my/find-file-tab)))
 
+(use-package embark-consult
+  :straight t
+  :hook
+  (embark-collect-mode . consult-preview-at-point-mode))
+
 ;; For some reason <return> and RET keys are not the same: keybinding for
 ;; <return> key in evil-normal-state-map (insert newline below) is also
 ;; active in dired-mode but keybinding for RET is not.
@@ -798,14 +803,15 @@
   ;; if you ever need to define this keybinding for specific mode only
   (defun my/asterisk-normal ()
     (interactive)
-    ;; Include leading colon only (that is when it's atom or keyword)
-    ;; Equivalent to "[-_<>A-Za-z0-9?!]+"
+    ;; Hyphen inside character class indicates range and IDK how to escape
+    ;; it in Rx notation => don't use it inside `any` construct if you need
+    ;; literal value
     ;;
-    ;; NOTE: `?` in character class is ignored when `eow` is used
-    ;; NOTE: `:` is not a word constituent character so `\<:foo\>`
-    ;; search fails => exclude `:` from vim-word-regexp
+    ;; Don't add optional leading colon to vim-word-regexp - it causes a
+    ;; lot of problems when using word search in `begin-search` because
+    ;; colon character has different syntax classes in different modes
     (let ((vim-word-regexp (rx (one-or-more
-                                (any "0-9A-Za-z" "!-<>?_")))))
+                                (or "-" (any "0-9A-Za-z" "!<>?_"))))))
       (when (thing-at-point-looking-at vim-word-regexp)
         (setq my/evil-ex-search-next-offset (- (point) (match-beginning 0)))
         (evil-visualstar/begin-search (match-beginning 0) (match-end 0) t t)
@@ -983,11 +989,11 @@
 
   :hook
   ;; https://www.gnu.org/software/emacs/manual/html_node/elisp/Syntax-Class-Table.html
-  ;;
-  ;; It looks like underscore has word syntax class in go-mode - when paired
-  ;; with subword-mode it causes evil-forward-word-begin command to get stuck
-  ;; after words containing underscores => set syntax class to "_" explicitly
-  ((go-mode . (lambda () (modify-syntax-entry ?_ "_")))))
+  (;; It looks like underscore has word syntax class in go-mode - when paired
+   ;; with subword-mode it causes evil-forward-word-begin command to get stuck
+   ;; after words containing underscores => set syntax class to "_" explicitly
+   (go-mode . (lambda () (modify-syntax-entry ?_ "_")))
+   (kotlin-mode . (lambda () (modify-syntax-entry ?$ "_")))))
 
 (use-package tab-bar
   :straight nil
