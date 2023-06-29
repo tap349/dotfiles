@@ -902,6 +902,7 @@
   :straight t
   :init
   (defun my/setup-kotlin-mode ()
+    ;; For kotlin-language-server
     (setq-local tab-width 4))
 
   :hook
@@ -958,6 +959,14 @@
   :config
   (projectile-mode 1)
 
+  ;; https://github.com/bbatsov/projectile/blob/31b87151b1fe43221736ded957a1123a54e32531/projectile.el#L3390
+  ;; https://stackoverflow.com/a/72046404/3632318
+  ;; By default `Spec` test suffix is used
+  (projectile-register-project-type 'gradlew '("gradlew")
+                                    :project-file "gradlew"
+                                    :compile "./gradlew build"
+                                    :test "./gradlew test"
+                                    :test-suffix "Test")
   :bind
   (:map projectile-mode-map
         ("s-p" . projectile-command-map))
