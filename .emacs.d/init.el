@@ -631,7 +631,7 @@
 
   ;; NOTE: ktfmt style is very different from IntelliJ IDEA coding conventions
   ;; and kotlin-mode indentation rules (the latter is more important for me)
-  (defun my/eglot-kotlin-mode-add-hooks ()
+  (defun my/eglot-kotlin-ts-mode-add-hooks ()
     ;; Calls ktfmt on current buffer
     ;; See eglot-format function implementation for options
     (add-hook 'before-save-hook 'eglot-format-buffer -10 t))
@@ -648,8 +648,8 @@
    (go-mode . eglot-ensure)
    (go-mode . my/eglot-go-mode-add-hooks)
    (haskell-mode . eglot-ensure)
-   (kotlin-mode . eglot-ensure)
-   (kotlin-mode . my/eglot-kotlin-mode-add-hooks)
+   (kotlin-ts-mode . eglot-ensure)
+   (kotlin-ts-mode . my/eglot-kotlin-ts-mode-add-hooks)
    (python-mode . eglot-ensure))
 
   :custom
@@ -676,7 +676,7 @@
                   (:pylsp . (:plugins (:yapf (:enabled t))))))
 
   (add-to-list 'eglot-server-programs
-               '(kotlin-mode . ("kotlin-language-server"
+               '(kotlin-ts-mode . ("kotlin-language-server"
                                 :initializationOptions
                                 (:kotlin (:compiler (:jvm (:target "1.8")))))))
 
@@ -898,24 +898,29 @@
 (use-package json-mode
   :straight t)
 
-(use-package kotlin-mode
-  :straight t
-  :init
-  (defun my/setup-kotlin-mode ()
-    (setq-local tab-width 4))
+;; (use-package kotlin-mode
+;;   :straight t
+;;   :init
+;;   (defun my/setup-kotlin-mode ()
+;;     (setq-local tab-width 4))
 
-  :hook
-  ((kotlin-mode . my/setup-kotlin-mode))
+;;   :hook
+;;   ((kotlin-mode . my/setup-kotlin-mode))
 
-  :bind
-  ;; Unset default keybindings - REPL integration provided
-  ;; by kotlin-mode is not very useful
-  (:map kotlin-mode-map
-        ("C-c C-z" . nil)
-        ("C-c C-n" . nil)
-        ("C-c C-r" . nil)
-        ("C-c C-c" . nil)
-        ("C-c C-b" . nil)))
+;;   :bind
+;;   ;; Unset default keybindings - REPL integration provided
+;;   ;; by kotlin-mode is not very useful
+;;   (:map kotlin-mode-map
+;;         ("C-c C-z" . nil)
+;;         ("C-c C-n" . nil)
+;;         ("C-c C-r" . nil)
+;;         ("C-c C-c" . nil)
+;;         ("C-c C-b" . nil)))
+
+;; https://gitlab.com/bricka/emacs-kotlin-ts-mode
+(use-package kotlin-ts-mode
+  :straight (:host gitlab :repo "bricka/emacs-kotlin-ts-mode")
+  :mode "\\.kt")
 
 (use-package markdown-mode
   :straight t
