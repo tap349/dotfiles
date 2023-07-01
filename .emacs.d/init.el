@@ -810,8 +810,12 @@
     ;; Don't add optional leading colon to vim-word-regexp - it causes a
     ;; lot of problems when using word search in `begin-search` because
     ;; colon character has different syntax classes in different modes
-    (let ((vim-word-regexp (rx (one-or-more
-                                (or "-" (any "0-9A-Za-z" "!<>?_"))))))
+    (let ((vim-word-regexp
+           (pcase major-mode
+             ('clojure-mode
+              (rx (one-or-more (or "-" (any "0-9A-Za-z" "!<>?_")))))
+             (_
+              (rx (one-or-more (or "-" (any "0-9A-Za-z" "!?_"))))))))
       (when (thing-at-point-looking-at vim-word-regexp)
         (setq my/evil-ex-search-next-offset (- (point) (match-beginning 0)))
         (evil-visualstar/begin-search (match-beginning 0) (match-end 0) t t)
