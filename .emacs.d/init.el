@@ -539,6 +539,11 @@
         ;; Use <tab> instead of TAB to override other keybindings
         ("<tab>" . company-complete-common)))
 
+;; https://github.com/company-mode/company-mode/issues/340
+(use-package company-anywhere
+  :straight (company-anywhere :type git :host github :repo "zk-phi/company-anywhere")
+  :after company)
+
 ;; - "(" - dired-hide-details-mode
 (use-package dired
   :straight nil
