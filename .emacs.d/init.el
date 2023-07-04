@@ -828,6 +828,7 @@
 
   (defun my/asterisk-visual (beg end)
     (interactive "r")
+    (setq my/evil-ex-search-next-offset 0)
     (evil-visualstar/begin-search-forward beg end))
 
   (defun my/asterisk-z-normal ()
