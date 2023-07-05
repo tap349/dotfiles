@@ -236,7 +236,7 @@
    consult-line :preview-key 'any :prompt "Filter: "
    consult-ripgrep :group nil :prompt ""
    ;; mode line disappears when prompt is ""
-   consult-xref :prompt "Filter: "))
+   consult-xref :preview-key 'any :prompt "Filter: "))
 
 (use-package emacs
   :straight nil
