@@ -811,14 +811,10 @@
     ;; Hyphen inside character class indicates range and IDK how to escape
     ;; it in Rx notation => don't use it inside `any` construct if you need
     ;; literal value
-    ;;
-    ;; Don't add optional leading colon to vim-word-regexp - it causes a
-    ;; lot of problems when using word search in `begin-search` because
-    ;; colon character has different syntax classes in different modes
     (let ((vim-word-regexp
            (pcase major-mode
              ('clojure-mode
-              (rx (one-or-more (or "-" (any "0-9A-Za-z" "!<>?_")))))
+              (rx (one-or-more (or "-" (any "0-9A-Za-z" ":!<>?_")))))
              (_
               (rx (one-or-more (or "-" (any "0-9A-Za-z" "_"))))))))
       (when (thing-at-point-looking-at vim-word-regexp)
@@ -1008,7 +1004,9 @@
 
   :hook
   ;; https://www.gnu.org/software/emacs/manual/html_node/elisp/Syntax-Class-Table.html
-  ((clojure-mode . (lambda () (modify-syntax-entry ?! "w")))
+  ((clojure-mode . (lambda ()
+                     (modify-syntax-entry ?! "w")
+                     (modify-syntax-entry ?: "w")))
    ;; It looks like underscore has word syntax class in go-mode - when paired
    ;; with subword-mode it causes evil-forward-word-begin command to get stuck
    ;; after words containing underscores => set syntax class to "_" explicitly
