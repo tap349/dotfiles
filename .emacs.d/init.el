@@ -820,7 +820,7 @@
              ('clojure-mode
               (rx (one-or-more (or "-" (any "0-9A-Za-z" "!<>?_")))))
              (_
-              (rx (one-or-more (or "-" (any "0-9A-Za-z" "!?_"))))))))
+              (rx (one-or-more (or "-" (any "0-9A-Za-z" "_"))))))))
       (when (thing-at-point-looking-at vim-word-regexp)
         (setq my/evil-ex-search-next-offset (- (point) (match-beginning 0)))
         (evil-visualstar/begin-search (match-beginning 0) (match-end 0) t t)
@@ -1008,10 +1008,12 @@
 
   :hook
   ;; https://www.gnu.org/software/emacs/manual/html_node/elisp/Syntax-Class-Table.html
-  (;; It looks like underscore has word syntax class in go-mode - when paired
+  ((clojure-mode . (lambda () (modify-syntax-entry ?! "w")))
+   ;; It looks like underscore has word syntax class in go-mode - when paired
    ;; with subword-mode it causes evil-forward-word-begin command to get stuck
    ;; after words containing underscores => set syntax class to "_" explicitly
    (go-mode . (lambda () (modify-syntax-entry ?_ "_")))
+   ;; For build.gradle.kts
    (kotlin-mode . (lambda () (modify-syntax-entry ?$ "_")))))
 
 (use-package tab-bar
