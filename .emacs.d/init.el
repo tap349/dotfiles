@@ -813,9 +813,9 @@
     ;; literal value
     ;;
     ;; Don't add colon for clojure-mode because it requires adding colon
-    ;; to word syntax classes for word search to work which it turn causes
-    ;; evil-forward-word-begin to get stuck - like in case of underscore in
-    ;; go-mode (see description in subword package section)
+    ;; to word syntax classes for word search to work which causes
+    ;; evil-forward-word-begin to get stuck - like in case of underscore
+    ;; in go-mode (see description in subword package section)
     (let ((vim-word-regexp
            (pcase major-mode
              ('clojure-mode
