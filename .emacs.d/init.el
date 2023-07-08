@@ -465,7 +465,7 @@
   :after evil
   :bind
   (:map evil-normal-state-map
-        ("<leader>w" . avy-goto-word-1)))
+        ("<leader>w" . avy-goto-char-2)))
 
 ;; https://docs.cider.mx/cider/repl/keybindings.html
 ;;
@@ -814,8 +814,8 @@
     ;;
     ;; Don't add colon for clojure-mode because it requires adding colon
     ;; to word syntax classes for word search to work which it turn causes
-    ;; evil-forward-word-begin to get stuck - see comment for go-mode in
-    ;; subword package section
+    ;; evil-forward-word-begin to get stuck - like in case of underscore in
+    ;; go-mode (see description in subword package section)
     (let ((vim-word-regexp
            (pcase major-mode
              ('clojure-mode
@@ -841,6 +841,12 @@
     (interactive "r")
     (evil-visualstar/begin-search-forward beg end)
     (evil-ex-search-previous))
+
+  :hook
+  ;; https://www.gnu.org/software/emacs/manual/html_node/elisp/Syntax-Class-Table.html
+  ((clojure-mode . (lambda () (modify-syntax-entry ?! "w")))
+   ;; For build.gradle.kts
+   (kotlin-mode . (lambda () (modify-syntax-entry ?$ "_"))))
 
   ;; global-evil-visualstar-mode is not enabled so define all keybindings
   :bind
@@ -1009,13 +1015,10 @@
 
   :hook
   ;; https://www.gnu.org/software/emacs/manual/html_node/elisp/Syntax-Class-Table.html
-  ((clojure-mode . (lambda () (modify-syntax-entry ?! "w")))
-   ;; It looks like underscore has word syntax class in go-mode - when paired
+  (;; It looks like underscore has word syntax class in go-mode - when paired
    ;; with subword-mode it causes evil-forward-word-begin command to get stuck
    ;; after words containing underscores => set syntax class to "_" explicitly
-   (go-mode . (lambda () (modify-syntax-entry ?_ "_")))
-   ;; For build.gradle.kts
-   (kotlin-mode . (lambda () (modify-syntax-entry ?$ "_")))))
+   (go-mode . (lambda () (modify-syntax-entry ?_ "_")))))
 
 (use-package tab-bar
   :straight nil
