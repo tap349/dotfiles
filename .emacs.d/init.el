@@ -845,6 +845,13 @@
   :hook
   ;; https://www.gnu.org/software/emacs/manual/html_node/elisp/Syntax-Class-Table.html
   ((clojure-mode . (lambda () (modify-syntax-entry ?! "w")))
+   ;; It looks like underscore has some syntax class (not "_" or "w") in go-mode
+   ;; so that when paired with subword-mode it causes evil-forward-word-begin to
+   ;; get stuck after words containing underscores => set syntax class to "w"
+   ;;
+   ;; It's possible to set syntax class to "_" but in this case word search using
+   ;; asterisk doesn't work for words with leading underscore like `_jobsRouter`
+   (go-mode . (lambda () (modify-syntax-entry ?_ "w"))))
    ;; For build.gradle.kts
    (kotlin-mode . (lambda () (modify-syntax-entry ?$ "_"))))
 
@@ -1011,14 +1018,7 @@
   :after go-mode
   :delight
   :config
-  (global-subword-mode 1)
-
-  :hook
-  ;; https://www.gnu.org/software/emacs/manual/html_node/elisp/Syntax-Class-Table.html
-  (;; It looks like underscore has word syntax class in go-mode - when paired
-   ;; with subword-mode it causes evil-forward-word-begin command to get stuck
-   ;; after words containing underscores => set syntax class to "_" explicitly
-   (go-mode . (lambda () (modify-syntax-entry ?_ "_")))))
+  (global-subword-mode 1))
 
 (use-package tab-bar
   :straight nil
