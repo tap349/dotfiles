@@ -851,7 +851,7 @@
    ;;
    ;; It's possible to set syntax class to "_" but in this case word search using
    ;; asterisk doesn't work for words with leading underscore like `_jobsRouter`
-   (go-mode . (lambda () (modify-syntax-entry ?_ "w"))))
+   (go-mode . (lambda () (modify-syntax-entry ?_ "w")))
    ;; For build.gradle.kts
    (kotlin-mode . (lambda () (modify-syntax-entry ?$ "_"))))
 
