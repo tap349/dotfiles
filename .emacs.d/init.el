@@ -503,6 +503,13 @@
   :straight t
   :demand t
   :delight company-mode
+  :after evil
+  :init
+  (defun my/company-abort ()
+    (interactive)
+    (company-abort)
+    (evil-force-normal-state))
+
   :custom
   ;; http://company-mode.github.io/manual/Customization.html#Customization
   ;; Set to nil to disable automatic completion
@@ -534,7 +541,7 @@
   (:map company-active-map
         ;; evil-force-normal-state doesn't record current command but we
         ;; don't need it here
-        ("C-g" . evil-force-normal-state)
+        ("C-g" . my/company-abort)
         ;; http://company-mode.github.io/manual/Getting-Started.html#Getting-Started
         ;; Use <tab> instead of TAB to override other keybindings
         ("<tab>" . company-complete-common)))
