@@ -851,7 +851,9 @@
 
   :hook
   ;; https://www.gnu.org/software/emacs/manual/html_node/elisp/Syntax-Class-Table.html
-  ((clojure-mode . (lambda () (modify-syntax-entry ?! "w")))
+  ((clojure-mode . (lambda ()
+                     (modify-syntax-entry ?! "w")
+                     (modify-syntax-entry ?? "w")))
    ;; It looks like underscore has some syntax class (not "_" or "w") in go-mode
    ;; so that when paired with subword-mode it causes evil-forward-word-begin to
    ;; get stuck after words containing underscores => set syntax class to "w"
