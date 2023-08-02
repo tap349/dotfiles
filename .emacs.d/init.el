@@ -469,6 +469,9 @@
 
 ;; https://docs.cider.mx/cider/repl/keybindings.html
 ;;
+;; Run after making changes in both source and test files:
+;; - "C-c C-k" - cider-load-buffer
+;;
 ;; - "C-c C-x j j" - cider-jack-in
 ;; - "C-c C-d C-c" - cider-clojuredocs
 ;; - "C-c C-d C-w" - cider-clojuredocs-web
