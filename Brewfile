@@ -182,6 +182,7 @@ brew 'yapf'
 tap 'jimeh/emacs-builds'
 
 brew 'argocd'
+brew 'bfg'
 brew 'cilium-cli'
 brew 'cockroachdb/tap/cockroach'
 brew 'emacs-app-good'
