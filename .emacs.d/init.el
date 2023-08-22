@@ -845,12 +845,12 @@
   (defun my/asterisk-z-normal ()
     (interactive)
     (my/asterisk-normal)
-    (evil-ex-search-previous))
+    (my/evil-ex-search-previous))
 
   (defun my/asterisk-z-visual (beg end)
     (interactive "r")
     (evil-visualstar/begin-search-forward beg end)
-    (evil-ex-search-previous))
+    (my/evil-ex-search-previous))
 
   :hook
   ;; https://www.gnu.org/software/emacs/manual/html_node/elisp/Syntax-Class-Table.html
