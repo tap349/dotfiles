@@ -830,6 +830,12 @@
            (pcase major-mode
              ('clojure-mode
               (rx (one-or-more (or "-" (any "0-9A-Za-z" "!<>?_")))))
+             ;; Searching for words with leading underscore doesn't work if
+             ;; syntax class of underscore is set to "_" for go-mode
+             ;; => exclude leading underscore from search pattern
+             ('go-mode
+              (rx (any "0-9A-Za-z")
+                  (one-or-more (or "-" (any "0-9A-Za-z" "!<>?_")))))
              (_
               (rx (one-or-more (or "-" (any "0-9A-Za-z" "_"))))))))
       (when (thing-at-point-looking-at vim-word-regexp)
@@ -855,17 +861,22 @@
   :hook
   ;; https://www.gnu.org/software/emacs/manual/html_node/elisp/Syntax-Class-Table.html
   ((clojure-mode . (lambda ()
-                     (modify-syntax-entry ?! "w")
-                     (modify-syntax-entry ?? "w")))
+                     (modify-syntax-entry ?! "w" clojure-mode-syntax-table)
+                     (modify-syntax-entry ?? "w" clojure-mode-syntax-table)))
    ;; It looks like underscore has some syntax class (not "_" or "w") in go-mode
    ;; so that when paired with subword-mode it causes evil-forward-word-begin to
    ;; get stuck after words containing underscores => set syntax class to "w"
    ;;
    ;; It's possible to set syntax class to "_" but in this case word search using
    ;; asterisk doesn't work for words with leading underscore like `_jobsRouter`
-   (go-mode . (lambda () (modify-syntax-entry ?_ "w")))
+   ;;
+   ;; UPDATE: set syntax class to "_" since otherwise evil-forward-word-begin
+   ;;         gets stuck on words with underscores surrounded by quotes like
+   ;;         "created_at" - it's more important than not being able to search
+   ;;         for `_jobsRouter` using asterisk
+   (go-mode . (lambda () (modify-syntax-entry ?_ "_" go-mode-syntax-table)))
    ;; For build.gradle.kts
-   (kotlin-mode . (lambda () (modify-syntax-entry ?$ "_"))))
+   (kotlin-mode . (lambda () (modify-syntax-entry ?$ "_" kotlin-mode-syntax-table))))
 
   ;; global-evil-visualstar-mode is not enabled so define all keybindings
   :bind
