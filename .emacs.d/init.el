@@ -234,7 +234,7 @@
   (consult-customize
    consult-find :prompt ""
    consult-line :preview-key 'any :prompt "Filter: "
-   consult-ripgrep :group nil :prompt ""
+   consult-ripgrep :group nil :preview-key '(:debounce 0.5 any) :prompt ""
    ;; mode line disappears when prompt is ""
    consult-xref :preview-key 'any :prompt "Filter: "))
 
