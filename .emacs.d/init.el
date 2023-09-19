@@ -822,17 +822,26 @@
     ;; it in Rx notation => don't use it inside `any` construct if you need
     ;; literal value
     ;;
-    ;; Don't add colon for clojure-mode because it requires adding colon
-    ;; to word syntax classes for word search to work which causes
-    ;; evil-forward-word-begin to get stuck - like in case of underscore
-    ;; in go-mode (see description in subword package section)
+    ;; NOTE: some characters are excluded from whole word search because
+    ;; they don't have word syntax class in specific modes. If you still
+    ;; need to search for text containing these characters you can always
+    ;; fallback to regular search with my/asterisk-visual
     (let ((vim-word-regexp
            (pcase major-mode
+             ;; Don't add colon for clojure-mode because it requires adding
+             ;; colon to word syntax classes for word search to work which
+             ;; causes evil-forward-word-begin to get stuck - like in case
+             ;; of underscore in go-mode
+             ;;
+             ;; Searching for words with leading hyphen or angle bracket (->
+             ;; or <-) doesn't work because these characters don't have word
+             ;; syntax class => exclude these characters from search pattern
              ('clojure-mode
-              (rx (one-or-more (or "-" (any "0-9A-Za-z" "!<>?_")))))
+              (rx (any "0-9A-Za-z")
+                  (one-or-more (or "-" (any "0-9A-Za-z" "!<>?_")))))
              ;; Searching for words with leading underscore doesn't work if
-             ;; syntax class of underscore is set to "_" for go-mode
-             ;; => exclude leading underscore from search pattern
+             ;; syntax class of underscore is set to "_" for go-mode =>
+             ;; exclude leading underscore from search pattern
              ('go-mode
               (rx (any "0-9A-Za-z")
                   (one-or-more (or "-" (any "0-9A-Za-z" "!<>?_")))))
