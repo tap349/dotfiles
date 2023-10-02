@@ -975,6 +975,12 @@
         ("C-c C-c" . nil)
         ("C-c C-b" . nil)))
 
+(use-package lua-mode
+  :straight t
+  :custom
+  (lua-indent-level 2)
+  (lua-indent-nested-block-content-align nil))
+
 (use-package markdown-mode
   :straight t
   :custom-face
