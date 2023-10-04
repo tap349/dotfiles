@@ -883,7 +883,7 @@
    ;; UPDATE: set syntax class to "_" since otherwise evil-forward-word-begin
    ;;         gets stuck on words with underscores surrounded by quotes like
    ;;         "created_at" - it's more important than not being able to search
-   ;;         for `_jobsRouter` using asterisk
+   ;;         for with leading underscore (e.g. `_jobsRouter`) using asterisk
    (go-mode . (lambda () (modify-syntax-entry ?_ "_" go-mode-syntax-table)))
    ;; For build.gradle.kts
    (kotlin-mode . (lambda () (modify-syntax-entry ?$ "_" kotlin-mode-syntax-table))))

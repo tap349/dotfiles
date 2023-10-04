@@ -202,7 +202,6 @@ brew 'kubectx'
 brew 'ncdu'
 brew 'rabbitmq'
 brew 'restic'
-brew 'tarantool'
 brew 'velero'
 
 cask 'drawio'
