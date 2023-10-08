@@ -200,7 +200,6 @@ brew 'ipcalc'
 brew 'k9s'
 brew 'kubectx'
 brew 'ncdu'
-brew 'rabbitmq'
 #brew 'restic'
 #brew 'velero'
 

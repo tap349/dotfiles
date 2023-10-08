@@ -556,6 +556,7 @@
   :after company)
 
 ;; - "(" - dired-hide-details-mode
+;; - "C-p" - remove autosuggestion when renaming file
 (use-package dired
   :straight nil
   :init
