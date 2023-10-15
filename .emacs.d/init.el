@@ -1004,40 +1004,22 @@
   ;; all completion categories => completions-first-difference is not used
   (completion-category-overrides nil))
 
-(use-package projectile
-  :straight t
-  :demand t
-  :delight
-  :after evil
-  :init
-  (defun my/toggle-test-vsplit ()
-    (interactive)
-    (my/evil-window-vsplit)
-    (projectile-toggle-between-implementation-and-test))
-
+(use-package project
+  ;; Built-in package since Emacs 26
+  ;; C-x p keymap is available since Emacs 28
+  :straight nil
   :custom
-  (projectile-completion-system 'auto)
-  (projectile-create-missing-test-files t)
-  (projectile-switch-project-action 'consult-find)
+  (project-switch-commands 'consult-find)
 
   :config
-  (projectile-mode 1)
+  ;; https://www.gnu.org/software/emacs/manual/html_node/elisp/Prefix-Keys.html
+  ;; https://www.gnu.org/software/emacs/manual/html_node/elisp/Changing-Key-Bindings.html
+  (keymap-set (current-global-map) "s-p" project-prefix-map))
 
-  ;; https://github.com/bbatsov/projectile/blob/31b87151b1fe43221736ded957a1123a54e32531/projectile.el#L3390
-  ;; https://stackoverflow.com/a/72046404/3632318
-  ;; By default `Spec` test suffix is used
-  (projectile-register-project-type 'gradlew '("gradlew")
-                                    :project-file "gradlew"
-                                    :compile "./gradlew build"
-                                    :test "./gradlew test"
-                                    :test-suffix "Test")
-  :bind
-  (:map projectile-mode-map
-        ("s-p" . projectile-command-map))
-
-  (:map evil-normal-state-map
-        ("<leader>," . projectile-toggle-between-implementation-and-test)
-        ("<leader>v" . my/toggle-test-vsplit)))
+(use-package project-tab-groups
+  :straight t
+  :config
+  (project-tab-groups-mode 1))
 
 (use-package python
   :straight nil
@@ -1064,6 +1046,14 @@
   :straight nil
   :demand t
   :init
+  ;; https://github.com/emacs-mirror/emacs/blob/master/lisp/tab-bar.el
+  (defun my/tab-bar-tab-group-format-function (tab i &optional current-p)
+    (let* ((default-name (funcall tab-bar-tab-group-function tab))
+           (name (string-replace "dev-platform-" "" default-name)))
+      (propertize
+       (concat " " name " ")
+       'face 'tab-bar-tab-group-current)))
+
   ;; https://christiantietze.de/posts/2022/02/emacs-tab-bar-numbered-tabs/
   (defun my/tab-bar-tab-name-format-function (tab i)
     (propertize
@@ -1080,12 +1070,17 @@
 
   :custom
   (tab-bar-close-button-show nil)
-  (tab-bar-format '(tab-bar-format-tabs tab-bar-separator))
+  (tab-bar-format '(tab-bar-format-tabs-groups tab-bar-separator))
   (tab-bar-new-tab-choice t)
   ;; ZWSP is used to prevent last tab from filling all available space
   (tab-bar-separator "​")
 
+  (tab-bar-tab-group-format-function 'my/tab-bar-tab-group-format-function)
   (tab-bar-tab-name-format-function 'my/tab-bar-tab-name-format-function)
+
+  :custom-face
+  (tab-bar-tab-group-current
+   ((t (:background "#F5F5E9" :foreground "#656549" :box "#A5A599" :weight normal))))
 
   :config
   ;; http://www.gonsie.com/blorg/tab-bar.html
@@ -1132,6 +1127,7 @@
                    (execute-kbd-macro (kbd "C-u C-t")))))
 
   (:map evil-normal-state-map
+        ("<leader>b" . consult-buffer)
         ("<leader>n" . consult-find)
         ("<leader>f" . consult-flymake)
         ("<leader>/" . consult-ripgrep)
