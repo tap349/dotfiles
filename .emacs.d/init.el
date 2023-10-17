@@ -1052,7 +1052,9 @@
            (name (string-replace "dev-platform-" "" default-name)))
       (propertize
        (concat " " name " ")
-       'face 'tab-bar-tab-group-current)))
+       'face (if current-p
+                 'my/tab-bar-tab-group-current
+               'my/tab-bar-tab-group-inactive))))
 
   ;; https://christiantietze.de/posts/2022/02/emacs-tab-bar-numbered-tabs/
   (defun my/tab-bar-tab-name-format-function (tab i)
@@ -1079,8 +1081,10 @@
   (tab-bar-tab-name-format-function 'my/tab-bar-tab-name-format-function)
 
   :custom-face
-  (tab-bar-tab-group-current
-   ((t (:background "#F5F5E9" :foreground "#656549" :box "#A5A599" :weight normal))))
+  (my/tab-bar-tab-group-current
+   ((t (:background "#F5F5C5" :foreground "#454525" :box "#858575" :weight normal))))
+  (my/tab-bar-tab-group-inactive
+   ((t (:background "#F5F5E5" :foreground "#757555" :box "#858575" :weight normal))))
 
   :config
   ;; http://www.gonsie.com/blorg/tab-bar.html
