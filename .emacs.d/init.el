@@ -1082,9 +1082,9 @@
 
   :custom-face
   (my/tab-bar-tab-group-current
-   ((t (:background "#F5F5C5" :foreground "#454525" :box "#858575" :weight normal))))
+   ((t (:background "#F4F4FB" :foreground "#151535" :box "#151535" :weight normal))))
   (my/tab-bar-tab-group-inactive
-   ((t (:background "#F5F5E5" :foreground "#757555" :box "#858575" :weight normal))))
+   ((t (:background "#E1E1E9" :foreground "#555575" :box "#555575" :weight normal))))
 
   :config
   ;; http://www.gonsie.com/blorg/tab-bar.html
