@@ -1081,8 +1081,12 @@
   (tab-bar-tab-name-format-function 'my/tab-bar-tab-name-format-function)
 
   :custom-face
+ (tab-bar ((t (:background "#F3F3FA"))))
+ (tab-bar-tab ((t (:background "#DADADA" :box (:line-width 1 :color "#DADADA" :style released-button) :weight bold))))
+ (tab-bar-tab-inactive ((t (:background "#E6E6EA" :box (:line-width 1 :color "#E6E6EA")))))
+
   (my/tab-bar-tab-group-current
-   ((t (:background "#F3F3E3" :foreground "#111131" :box "#111131" :weight normal))))
+   ((t (:background "#F9F9E6" :foreground "#111131" :box "#111131" :weight normal))))
   (my/tab-bar-tab-group-inactive
    ((t (:background "#F6F6FD" :foreground "#353555" :box "#353555" :weight normal))))
 
