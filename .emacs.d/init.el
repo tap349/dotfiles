@@ -223,7 +223,7 @@
     -not ( -path ./.gradle/* -prune ) \
     -not ( -path ./.idea/* -prune ) \
     -not ( -path ./build/* -prune ) \
-    -not ( -path ./docker/cockroach-data/* -prune ) \
+    -not ( -path ./docker/* -prune ) \
     -not ( -path ./target/* -prune ) \
     -not ( -path ./main -prune )")
   (consult-preview-key "C-l")
