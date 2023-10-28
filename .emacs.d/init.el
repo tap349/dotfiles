@@ -466,7 +466,7 @@
   :after evil
   :bind
   (:map evil-normal-state-map
-        ("<leader>w" . avy-goto-char-2)))
+        ("<leader>w" . avy-goto-word-1)))
 
 ;; https://docs.cider.mx/cider/repl/keybindings.html
 ;;
