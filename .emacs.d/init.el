@@ -1090,7 +1090,7 @@
    ((t (:background "#FBFBE9" :foreground "#111131" :box "#A9A996" :weight normal))))
   (my/tab-bar-tab-group-inactive
    ;; ((t (:background "#F6F6FD" :foreground "#353555" :box "#353555" :weight normal))))
-   ((t (:background "#F3F3FA" :foreground "#111131" :box "#A9A996" :weight normal))))
+   ((t (:background "#F7F7FF" :foreground "#111131" :box "#A9A996" :weight normal))))
 
   :config
   ;; http://www.gonsie.com/blorg/tab-bar.html
