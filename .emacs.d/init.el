@@ -1070,6 +1070,9 @@
     (interactive)
     (tab-bar-move-tab 1))
 
+  ;; Set tab group name to current project name on Emacs startup
+  (tab-bar-change-tab-group (project-name (project-current)))
+
   :custom
   (tab-bar-close-button-show nil)
   (tab-bar-format '(tab-bar-format-tabs
