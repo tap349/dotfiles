@@ -1046,21 +1046,21 @@
   :straight nil
   :demand t
   :init
-  ;; https://github.com/emacs-mirror/emacs/blob/master/lisp/tab-bar.el
-  (defun my/tab-bar-tab-group-format-function (tab i &optional current-p)
-    (let* ((default-name (funcall tab-bar-tab-group-function tab))
-           (name (string-replace "dev-platform-" "" default-name)))
-      (propertize
-       (concat " " name " ")
-       'face (if current-p
-                 'my/tab-bar-tab-group-current
-               'my/tab-bar-tab-group-inactive))))
-
   ;; https://christiantietze.de/posts/2022/02/emacs-tab-bar-numbered-tabs/
   (defun my/tab-bar-tab-name-format-function (tab i)
     (propertize
      (concat " " (alist-get 'name tab) " ")
      'face (funcall tab-bar-tab-face-function tab)))
+
+  (defun my/tab-bar-group-name ()
+    (let* ((tabs (funcall tab-bar-tabs-function))
+           (current-tab (tab-bar--current-tab-find tabs))
+           (current-group (funcall tab-bar-tab-group-function current-tab))
+           (current-group (or current-group "--------"))
+           (current-group (string-replace "dev-platform-" "" current-group)))
+      (propertize
+       (concat " " current-group " ")
+       'face 'my/tab-bar-tab-group-current)))
 
   (defun my/tab-bar-move-tab-left ()
     (interactive)
@@ -1072,25 +1072,23 @@
 
   :custom
   (tab-bar-close-button-show nil)
-  (tab-bar-format '(tab-bar-format-tabs-groups tab-bar-separator))
+  (tab-bar-format '(tab-bar-format-tabs
+                    tab-bar-separator
+                    tab-bar-format-align-right
+                    my/tab-bar-group-name))
   (tab-bar-new-tab-choice t)
   ;; ZWSP is used to prevent last tab from filling all available space
   (tab-bar-separator "​")
 
-  (tab-bar-tab-group-format-function 'my/tab-bar-tab-group-format-function)
   (tab-bar-tab-name-format-function 'my/tab-bar-tab-name-format-function)
 
   :custom-face
- (tab-bar ((t (:background "#F3F3FA"))))
- (tab-bar-tab ((t (:background "#DADADA" :box (:line-width 1 :color "#DADADA" :style released-button) :weight bold))))
- ;; (tab-bar-tab ((t (:background "#F6F6FF" :box (:color "#C2C2D8" :line-width 2) :weight bold))))
- (tab-bar-tab-inactive ((t (:background "#E6E6EA" :box (:line-width 1 :color "#E6E6EA")))))
+  (tab-bar ((t (:background "#F7F7FE"))))
+  (tab-bar-tab ((t (:background "#D0D4D8"))))
+  (tab-bar-tab-inactive ((t (:background "#E4E4E8"))))
 
   (my/tab-bar-tab-group-current
-   ((t (:background "#FBFBE9" :foreground "#111131" :box "#A9A996" :weight normal))))
-  (my/tab-bar-tab-group-inactive
-   ;; ((t (:background "#F6F6FD" :foreground "#353555" :box "#353555" :weight normal))))
-   ((t (:background "#F7F7FF" :foreground "#111131" :box "#A9A996" :weight normal))))
+   ((t (:background "#FBFBE9" :box (:color "#DADADA" :style released-button) :weight bold))))
 
   :config
   ;; http://www.gonsie.com/blorg/tab-bar.html
