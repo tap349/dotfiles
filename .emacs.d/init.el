@@ -1091,7 +1091,7 @@
   (tab-bar-tab-inactive ((t (:background "#E4E4E8"))))
 
   (my/tab-bar-tab-group-current
-   ((t (:background "#FBFBE9" :box (:color "#DADADA" :style released-button) :weight bold))))
+   ((t (:background "#FBFBEF" :box (:color "#DADADA" :style nil)))))
 
   :config
   ;; http://www.gonsie.com/blorg/tab-bar.html
