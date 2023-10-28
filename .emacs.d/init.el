@@ -1082,15 +1082,15 @@
 
   :custom-face
  (tab-bar ((t (:background "#F3F3FA"))))
- ;; (tab-bar-tab ((t (:background "#DADADA" :box (:line-width 1 :color "#DADADA" :style released-button) :weight bold))))
- (tab-bar-tab ((t (:background "#F6F6FF" :box (:color "#C2C2D8" :line-width 2) :weight bold))))
+ (tab-bar-tab ((t (:background "#DADADA" :box (:line-width 1 :color "#DADADA" :style released-button) :weight bold))))
+ ;; (tab-bar-tab ((t (:background "#F6F6FF" :box (:color "#C2C2D8" :line-width 2) :weight bold))))
  (tab-bar-tab-inactive ((t (:background "#E6E6EA" :box (:line-width 1 :color "#E6E6EA")))))
 
   (my/tab-bar-tab-group-current
    ((t (:background "#FBFBE9" :foreground "#111131" :box "#A9A996" :weight normal))))
   (my/tab-bar-tab-group-inactive
    ;; ((t (:background "#F6F6FD" :foreground "#353555" :box "#353555" :weight normal))))
-   ((t (:background "#E5E5D1" :foreground "#111131" :box "#A9A996" :weight normal))))
+   ((t (:background "#F3F3FA" :foreground "#111131" :box "#A9A996" :weight normal))))
 
   :config
   ;; http://www.gonsie.com/blorg/tab-bar.html
