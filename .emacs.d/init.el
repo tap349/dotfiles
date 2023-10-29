@@ -280,6 +280,53 @@
 
 (use-package embark-consult
   :straight t
+  :after embark
+  :init
+  ;; See counsel-git-grep-action function in counsel.el
+  (defun my/find-occurence (input)
+    (when (string-match "\\`\\(.*?\\):\\([0-9]+\\):\\(.*\\)\\'" input)
+      ;; Disable messages temporarily because goto-line prints `Mark set`
+      (let* ((inhibit-message t)
+             (filename (match-string-no-properties 1 input))
+             (line-number (match-string-no-properties 2 input))
+             ;; Keep text properties because they will be used by
+             ;; consult--find-highlights to find highlighted regions
+             (line (match-string 3 input))
+             ;; consult--find-highlights returns list of lists with
+             ;; start and end positions of highlighted regions =>
+             ;; use start position of the first highlighted region
+             ;; (hence double car)
+             (col (car (car (consult--find-highlights line 0)))))
+        (find-file filename)
+        (goto-line (string-to-number line-number))
+        (move-to-column col))))
+
+  (defun my/find-occurence-split (input)
+    (my/evil-window-split)
+    (my/find-occurence input))
+
+  (defun my/find-occurence-vsplit (input)
+    (my/evil-window-vsplit)
+    (my/find-occurence input))
+
+  (defun my/find-occurence-tab (input)
+    (tab-bar-new-tab)
+    (my/find-occurence input))
+
+  ;; See how embark-consult-search-map is defined in embark-consult.el
+  (defvar-keymap my/embark-consult-ripgrep-map
+    :doc "Keymap for consult-ripgrep command"
+    :parent nil
+    "C-s" #'my/find-occurence-split
+    "C-v" #'my/find-occurence-vsplit
+    "C-t" #'my/find-occurence-tab)
+
+  ;; See embark--vertico-selected function in embark.el
+  ;;
+  ;; `consult-grep` completion category is set by Vertico for consult-ripgrep
+  ;; command (and friends) and used by Embark to determine the type of target
+  (add-to-list 'embark-keymap-alist '(consult-grep my/embark-consult-ripgrep-map))
+
   :hook
   (embark-collect-mode . consult-preview-at-point-mode))
 
