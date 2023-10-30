@@ -163,6 +163,13 @@
 ;;
 ;;-----------------------------------------------------------------------------
 
+;; Using key-translation-map feels much faster than binding C-g
+;; to custom function like my/c-g
+(define-key key-translation-map (kbd "C-g") (kbd "<escape>"))
+;; Run keyboard-escape-quit on escape in minibuffer - for
+;; some reason this keybinding is active in minibuffer only
+(global-set-key (kbd "<escape>") 'keyboard-escape-quit)
+
 ;; https://www.emacswiki.org/emacs/DvorakKeyboard
 ;;
 ;; Define key in evil-normal-state-map as well
@@ -252,6 +259,7 @@
 
 (use-package embark
   :straight t
+  :after evil
   :init
   (defun my/find-file-split (filename)
     (my/evil-window-split)
@@ -350,15 +358,6 @@
   ;; https://github.com/emacs-evil/evil/issues/576
   (setq evil-want-Y-yank-to-eol t)
 
-  (defun my/c-g ()
-    (interactive)
-    ;; cond should be faster than pcase because pcase is a macro
-    (cond
-     ((eq evil-state 'insert) (evil-normal-state))
-     ((eq evil-state 'normal) (evil-ex-nohighlight))
-     ((eq evil-state 'visual) (evil-exit-visual-state))
-     ((eq evil-state 'replace) (evil-normal-state))))
-
   (defun my/insert-tab-or-complete ()
     (interactive)
     (let ((chr (preceding-char)))
@@ -440,14 +439,15 @@
   ;; https://stackoverflow.com/a/23918497
   (evil-set-initial-state 'Buffer-menu-mode 'emacs)
 
+  ;; evil-force-normal-state is run on escape in normal state by default
+  (advice-add 'evil-force-normal-state :before 'evil-ex-nohighlight)
+
   :bind
   (:map evil-insert-state-map
-        ("C-g" . my/c-g)
         ("RET" . comment-indent-new-line)
         ("TAB" . my/insert-tab-or-complete))
 
   (:map evil-normal-state-map
-        ("C-g" . my/c-g)
         ("C-." . execute-extended-command)
 
         ("TAB" . save-buffer)
@@ -490,16 +490,12 @@
         ("<leader>t" . dired-jump))
 
   (:map evil-visual-state-map
-        ("C-g" . my/c-g)
         ("C-." . execute-extended-command)
 
         ("C-s" . sort-lines)
 
         ("H" . evil-first-non-blank)
         ("L" . evil-last-non-blank))
-
-  (:map evil-replace-state-map
-        ("C-g" . my/c-g))
 
   ;; https://github.com/noctuid/evil-guide#global-keybindings-and-evil-states
   ;; > motion state is the default state for help-mode
@@ -531,6 +527,7 @@
 (use-package cider
   :straight t
   :delight " CIDER"
+  :after evil
   :init
   (defun my/setup-cider-mode ()
     (setq-local show-trailing-whitespace nil)
@@ -559,6 +556,8 @@
   (defun my/company-abort ()
     (interactive)
     (company-abort)
+    ;; evil-force-normal-state doesn't record current command
+    ;; but we don't need it here
     (evil-force-normal-state))
 
   :custom
@@ -590,8 +589,6 @@
 
   :bind
   (:map company-active-map
-        ;; evil-force-normal-state doesn't record current command but we
-        ;; don't need it here
         ("C-g" . my/company-abort)
         ;; http://company-mode.github.io/manual/Getting-Started.html#Getting-Started
         ;; Use <tab> instead of TAB to override other keybindings
@@ -796,7 +793,8 @@
   ;; (eldoc-box-border ((t (:background "#C9C9C5"))))
 
   :config
-  (advice-add 'my/c-g :after 'eldoc-box-quit-frame)
+  ;; evil-force-normal-state is run on escape in normal state by default
+  (advice-add 'evil-force-normal-state :after 'eldoc-box-quit-frame)
 
   :bind
   (:map evil-normal-state-map
