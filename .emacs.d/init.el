@@ -657,7 +657,6 @@
 ;;
 ;; - clojure-mode => clojure-lsp
 ;; - go-mode => gopls
-;; - haskell-mode => haskell-language-server-wrapper
 ;; - kotlin-mode => kotlin-language-server
 ;;
 ;; - eglot-events-buffer (show Eglot logs)
@@ -708,7 +707,6 @@
    (clojure-mode . my/eglot-clojure-mode-add-hooks)
    (go-mode . eglot-ensure)
    (go-mode . my/eglot-go-mode-add-hooks)
-   (haskell-mode . eglot-ensure)
    (kotlin-mode . eglot-ensure)
    (kotlin-mode . my/eglot-kotlin-mode-add-hooks)
    (python-mode . eglot-ensure))
@@ -981,9 +979,6 @@
        "*golines errors*"
        t)
       (goto-char old-point))))
-
-(use-package haskell-mode
-  :straight t)
 
 ;; hs-minor-mode can be enabled not in all major modes
 ;; Use evil-toggle-fold to toggle folding
