@@ -279,7 +279,9 @@
                        embark-isearch-highlight-indicator))
 
   :bind
-  (("C-u" . embark-act))
+  (:map minibuffer-mode-map
+        ("C-u" . #'embark-act)
+        ("C-l" . #'embark-export))
 
   (:map embark-file-map
         ("C-s" . #'my/find-file-split)
@@ -928,9 +930,11 @@
    ;;         gets stuck on words with underscores surrounded by quotes like
    ;;         "created_at" - it's more important than not being able to search
    ;;         for with leading underscore (e.g. `_jobsRouter`) using asterisk
-   (go-mode . (lambda () (modify-syntax-entry ?_ "_" go-mode-syntax-table)))
+   (go-mode . (lambda ()
+                (modify-syntax-entry ?_ "_" go-mode-syntax-table)))
    ;; For build.gradle.kts
-   (kotlin-mode . (lambda () (modify-syntax-entry ?$ "_" kotlin-mode-syntax-table))))
+   (kotlin-mode . (lambda ()
+                    (modify-syntax-entry ?$ "_" kotlin-mode-syntax-table))))
 
   ;; global-evil-visualstar-mode is not enabled so define all keybindings
   :bind
@@ -1181,6 +1185,9 @@
         ("<leader>b" . consult-buffer)
         ("<leader>n" . consult-find)
         ("<leader>f" . consult-flymake)
+        ("<leader>\S-f" . (lambda ()
+                            (interactive)
+                            (consult-flymake t)))
         ("<leader>/" . consult-ripgrep)
         ("C-s" . consult-line)))
 
