@@ -492,6 +492,11 @@
         ("<leader>t" . dired-jump))
 
   (:map evil-visual-state-map
+        ;; Switching to normal state directly feels faster
+        ;; than using evil-exit-visual-state command which
+        ;; makes some additional checks
+        ("<escape>" . evil-normal-state)
+
         ("C-." . execute-extended-command)
 
         ("C-s" . sort-lines)
