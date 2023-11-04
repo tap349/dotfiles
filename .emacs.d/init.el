@@ -103,6 +103,20 @@
 ;; nowrap
 (setq-default truncate-lines 1)
 
+;; See also evil-mode-line-format variable
+(setq-default mode-line-format
+              (list " "
+                    'mode-line-mule-info
+                    'mode-line-modified
+                    "  "
+                    'mode-line-buffer-identification
+                    "  "
+                    'mode-line-position
+                    " "
+                    'mode-line-modes
+                    'mode-line-misc-info
+                    'mode-line-end-spaces))
+
 ;;-----------------------------------------------------------------------------
 ;; Theme (faces)
 ;;
@@ -416,13 +430,15 @@
         (setq beg (line-beginning-position) end (line-end-position)))
       (comment-or-uncomment-region beg end)))
 
-  ;; Bypass different hooks in evil-normal-state and
+  ;; Bypass different checks and hooks in evil-normal-state and
   ;; evil-exit-visual-state commands
   (defun my/evil-change-to-normal-state ()
     (interactive)
     (evil-change-state 'normal))
 
   :custom
+  (evil-mode-line-format '(after . mode-line-modified))
+
   (evil-ex-search-case 'smart)
   (evil-visual-update-x-selection-p nil)
 
@@ -450,12 +466,14 @@
   ;; evil-force-normal-state is run on escape in normal state by default
   (advice-add 'evil-force-normal-state :before 'evil-ex-nohighlight)
 
-  ;; See evil-declare-motion in evil-visualstar package declaration
+  ;; See evil-declare-motion implementation and usage of evil-declare-motion
+  ;; with ordinary functions in evil-visualstar section
   (evil-add-command-properties 'my/evil-change-to-normal-state :keep-visual t)
 
   :bind
   (:map evil-insert-state-map
         ("<escape>" . my/evil-change-to-normal-state)
+
         ("RET" . comment-indent-new-line)
         ("TAB" . my/insert-tab-or-complete))
 
@@ -1010,6 +1028,7 @@
 
 (use-package jarchive
   :straight t
+  :delight jarchive-mode
   :config
   (jarchive-mode 1))
 
