@@ -465,6 +465,10 @@
         ("TAB" . save-buffer)
         ("C-o" . evil-switch-to-windows-last-buffer)
 
+        ;; Should be faster than evil-next-line and evil-previous-line
+        ("j" . next-line)
+        ("k" . previous-line)
+
         ("H" . evil-first-non-blank)
         ("L" . evil-last-non-blank)
 
