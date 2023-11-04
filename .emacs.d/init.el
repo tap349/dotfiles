@@ -416,6 +416,12 @@
         (setq beg (line-beginning-position) end (line-end-position)))
       (comment-or-uncomment-region beg end)))
 
+  ;; Bypass different hooks in evil-normal-state and
+  ;; evil-exit-visual-state commands
+  (defun my/evil-change-to-normal-state ()
+    (interactive)
+    (evil-change-state 'normal))
+
   :custom
   (evil-ex-search-case 'smart)
   (evil-visual-update-x-selection-p nil)
@@ -444,8 +450,12 @@
   ;; evil-force-normal-state is run on escape in normal state by default
   (advice-add 'evil-force-normal-state :before 'evil-ex-nohighlight)
 
+  ;; See evil-declare-motion in evil-visualstar package declaration
+  (evil-add-command-properties 'my/evil-change-to-normal-state :keep-visual t)
+
   :bind
   (:map evil-insert-state-map
+        ("<escape>" . my/evil-change-to-normal-state)
         ("RET" . comment-indent-new-line)
         ("TAB" . my/insert-tab-or-complete))
 
@@ -492,10 +502,7 @@
         ("<leader>t" . dired-jump))
 
   (:map evil-visual-state-map
-        ;; Switching to normal state directly feels faster
-        ;; than using evil-exit-visual-state command which
-        ;; makes some additional checks
-        ("<escape>" . evil-normal-state)
+        ("<escape>" . my/evil-change-to-normal-state)
 
         ("C-." . execute-extended-command)
 
@@ -505,7 +512,7 @@
         ("L" . evil-last-non-blank))
 
   ;; https://github.com/noctuid/evil-guide#global-keybindings-and-evil-states
-  ;; > motion state is the default state for help-mode
+  ;; > motion state is the default the state for help-mode
   ;; > only keys bound in motion state will work in help-mode
   (:map evil-motion-state-map
         ("H" . evil-first-non-blank)
@@ -1000,7 +1007,7 @@
 (use-package jarchive
   :straight t
   :config
-  (jarchive-setup))
+  (jarchive-mode 1))
 
 (use-package json-mode
   :straight t)
