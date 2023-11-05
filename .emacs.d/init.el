@@ -93,7 +93,7 @@
 ;; - can be used to get max line length in user functions
 (setq-default fill-column 80)
 (setq column-number-mode 1)
-(setq show-paren-delay 0)
+(setq show-paren-delay 0.2)
 
 (global-display-fill-column-indicator-mode 1)
 ;; Use specific value (82) instead of fill-column value to make column
