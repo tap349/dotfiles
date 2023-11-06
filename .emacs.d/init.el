@@ -93,7 +93,7 @@
 ;; - can be used to get max line length in user functions
 (setq-default fill-column 80)
 (setq column-number-mode 1)
-(setq show-paren-delay 0.2)
+(setq show-paren-delay 0)
 
 (global-display-fill-column-indicator-mode 1)
 ;; Use specific value (82) instead of fill-column value to make column
@@ -177,11 +177,9 @@
 ;;
 ;;-----------------------------------------------------------------------------
 
-;; Using key-translation-map feels much faster than binding C-g
-;; to custom function like my/c-g
 (define-key key-translation-map (kbd "C-g") (kbd "<escape>"))
-;; Run keyboard-escape-quit on escape in minibuffer - for
-;; some reason this keybinding is active in minibuffer only
+;; Run keyboard-escape-quit on escape in minibuffer - this keybinding
+;; is active in minibuffer only because it's overriden for evil states
 (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
 
 ;; https://www.emacswiki.org/emacs/DvorakKeyboard
