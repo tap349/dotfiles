@@ -177,11 +177,6 @@
 ;;
 ;;-----------------------------------------------------------------------------
 
-(define-key key-translation-map (kbd "C-g") (kbd "<escape>"))
-;; Run keyboard-escape-quit on escape in minibuffer - this keybinding
-;; is active in minibuffer only because it's overriden for evil states
-(global-set-key (kbd "<escape>") 'keyboard-escape-quit)
-
 ;; https://www.emacswiki.org/emacs/DvorakKeyboard
 ;;
 ;; Define key in evil-normal-state-map as well
@@ -461,17 +456,14 @@
   ;; https://stackoverflow.com/a/23918497
   (evil-set-initial-state 'Buffer-menu-mode 'emacs)
 
-  ;; evil-force-normal-state is run on escape in normal state by default
-  (advice-add 'evil-force-normal-state :before 'evil-ex-nohighlight)
+  ;; C-g runs keyboard-quit in normal state by default
+  (advice-add 'keyboard-quit :before 'evil-ex-nohighlight)
 
-  ;; See evil-declare-motion implementation and usage of evil-declare-motion
-  ;; with ordinary functions in evil-visualstar section
   (evil-add-command-properties 'my/evil-change-to-normal-state :keep-visual t)
 
   :bind
   (:map evil-insert-state-map
-        ("<escape>" . my/evil-change-to-normal-state)
-
+        ("C-c" . my/evil-change-to-normal-state)
         ("RET" . comment-indent-new-line)
         ("TAB" . my/insert-tab-or-complete))
 
@@ -522,8 +514,7 @@
         ("<leader>t" . dired-jump))
 
   (:map evil-visual-state-map
-        ("<escape>" . my/evil-change-to-normal-state)
-
+        ("C-c" . my/evil-change-to-normal-state)
         ("C-." . execute-extended-command)
 
         ("C-s" . sort-lines)
@@ -623,7 +614,7 @@
 
   :bind
   (:map company-active-map
-        ("C-g" . my/company-abort)
+        ("C-c" . my/company-abort)
         ;; http://company-mode.github.io/manual/Getting-Started.html#Getting-Started
         ;; Use <tab> instead of TAB to override other keybindings
         ("<tab>" . company-complete-common)))
