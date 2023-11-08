@@ -468,6 +468,7 @@
         ("TAB" . my/insert-tab-or-complete))
 
   (:map evil-normal-state-map
+        ("C-c" . evil-ex-nohighlight)
         ("C-." . execute-extended-command)
 
         ("TAB" . save-buffer)
@@ -816,8 +817,7 @@
   ;; (eldoc-box-border ((t (:background "#C9C9C5"))))
 
   :config
-  ;; evil-force-normal-state is run on escape in normal state by default
-  (advice-add 'evil-force-normal-state :after 'eldoc-box-quit-frame)
+  (advice-add 'keyboard-quit :after 'eldoc-box-quit-frame)
 
   :bind
   (:map evil-normal-state-map
