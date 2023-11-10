@@ -914,7 +914,7 @@
              ;; exclude leading underscore from search pattern
              ('go-mode
               (rx (any "0-9A-Za-z")
-                  (one-or-more (or "-" (any "0-9A-Za-z" "!<>?_")))))
+                  (zero-or-more (or "-" (any "0-9A-Za-z" "!<>?_")))))
              (_
               (rx (one-or-more (or "-" (any "0-9A-Za-z" "_"))))))))
       (when (thing-at-point-looking-at vim-word-regexp)
