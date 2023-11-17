@@ -523,6 +523,9 @@
         ("H" . evil-first-non-blank)
         ("L" . evil-last-non-blank))
 
+  (:map evil-replace-state-map
+        ("C-c" . my/evil-change-to-normal-state))
+
   ;; https://github.com/noctuid/evil-guide#global-keybindings-and-evil-states
   ;; > motion state is the default the state for help-mode
   ;; > only keys bound in motion state will work in help-mode
