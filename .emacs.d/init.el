@@ -820,7 +820,8 @@
   ;; (eldoc-box-border ((t (:background "#C9C9C5"))))
 
   :config
-  (advice-add 'keyboard-quit :after 'eldoc-box-quit-frame)
+  ;; C-c runs evil-ex-nohighlight in normal state
+  (advice-add 'evil-ex-nohighlight :after 'eldoc-box-quit-frame)
 
   :bind
   (:map evil-normal-state-map
