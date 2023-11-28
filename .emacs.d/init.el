@@ -1061,7 +1061,36 @@
   (markdown-inline-code-face ((t (:font "Input-15")))))
 
 (use-package magit
-  :straight t)
+  :straight t
+  :after evil
+  :init
+  (defun my/setup-magit-mode ()
+    (setq-local require-final-newline nil)
+    ;; Whitespaces are also highlighted by magit itself
+    ;; with magit-diff-whitespace-warning face
+    (setq-local show-trailing-whitespace nil))
+
+  :hook
+  ((magit-revision-mode . my/setup-magit-mode))
+
+  :custom
+  (magit-diff-paint-whitespace nil)
+  (magit-diff-paint-whitespace-lines nil)
+
+  ;; Use customize-face to see current colors interactively
+  :custom-face
+  (magit-section-highlight ((t (:background "#D0D5E5"))))
+  (magit-diff-added ((t (:background "#DFFAE1"))))
+  (magit-diff-removed ((t (:background "#F5E5E5"))))
+  (magit-diff-hunk-heading-highlight ((t (:background "#C3C4CD"))))
+  (magit-diff-context-highlight ((t (:background "#F7F9FD"))))
+  (magit-diff-added-highlight ((t (:background "#B7EBBC"))))
+  (magit-diff-removed-highlight ((t (:background "#F3C1BF"))))
+
+  :bind
+  (:map evil-normal-state-map
+        ("<leader>m" . magit)
+        ("<leader>\S-m" . magit-log-buffer-file)))
 
 ;; Fixes a bug in some consult commands (say, consult-xref)
 ;; when you cannot search for substring
