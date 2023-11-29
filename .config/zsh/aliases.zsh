@@ -52,6 +52,7 @@ alias ncdu='ncdu --color off'
 # (#i) - case-insensitive globbing
 # (Om) - sort by modification date (asc)
 alias q='open -Fn (#i)*.(jpeg|jpg|png)(Om)'
+alias tp='telepresence'
 alias ydl='youtube-dl'
 
 #-------------------------------------------------------------------------------

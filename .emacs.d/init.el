@@ -1083,14 +1083,14 @@
   (magit-diff-added ((t (:background "#DFFAE1"))))
   (magit-diff-removed ((t (:background "#F5E5E5"))))
   (magit-diff-hunk-heading-highlight ((t (:background "#C3C4CD"))))
-  (magit-diff-context-highlight ((t (:background "#F7F9FD"))))
+  ;; (magit-diff-context-highlight ((t (:background "#E7E9ED"))))
   (magit-diff-added-highlight ((t (:background "#B7EBBC"))))
   (magit-diff-removed-highlight ((t (:background "#F3C1BF"))))
 
   :bind
   (:map evil-normal-state-map
-        ("<leader>m" . magit)
-        ("<leader>\S-m" . magit-log-buffer-file)))
+        ("<leader>\S-m" . magit)
+        ("<leader>m" . magit-log-buffer-file)))
 
 ;; Fixes a bug in some consult commands (say, consult-xref)
 ;; when you cannot search for substring
