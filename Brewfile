@@ -24,17 +24,11 @@ tap 'gromgit/homebrew-fuse'
 # Homebrew
 #-------------------------------------------------------------------------------
 
-#brew 'ansible'
 # After installation:
 # - `aws configure`
 brew 'awscli'
 # `cat` on steroids
 brew 'bat'
-#brew 'bfg'
-# Standard `mount -t bind` command doesn't work
-# No bottle for Apple Silicon
-#brew 'bindfs'
-#brew 'boost'
 # Install manually by downloading dmg file
 #brew 'cgoban'
 #brew 'exiftool'
@@ -52,8 +46,7 @@ brew 'macvim'
 brew 'mas'
 brew 'mc'
 brew 'minikube'
-# For React Native and coc.nvim
-# (same as nodejs)
+# For React Native and coc.nvim (same as nodejs)
 brew 'node'
 brew 'ntfs-3g-mac'
 brew 'obsidian'
@@ -94,7 +87,6 @@ cask 'anki'
 # Run docker app after installation
 # (otherwise `docker` command might be not available in terminal)
 cask 'docker'
-#cask 'figma'
 cask 'firefox'
 cask 'flux'
 # For iTerm2
@@ -199,10 +191,7 @@ brew 'helm'
 brew 'ipcalc'
 brew 'k9s'
 brew 'kubectx'
-#brew 'kui'
 brew 'ncdu'
-#brew 'restic'
-#brew 'velero'
 
 cask 'drawio'
 cask 'intellij-idea'
