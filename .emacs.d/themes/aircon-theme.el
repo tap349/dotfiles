@@ -142,7 +142,7 @@
  '(compilation-error          ((t (:inherit error))))
 
  `(help-key-binding ((t (:inherit (aircon-header)
-                         :box (:color ,aircon-ghost (1 . -1) :line-width)))))
+                         :box (:color ,aircon-ghost :line-width (1 . -1))))))
 
  '(shadow       ((t (:inherit (aircon-scorpion)))))
  '(error        ((t (:inherit (bold aircon-brick)))))
