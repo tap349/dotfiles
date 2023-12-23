@@ -121,7 +121,7 @@
           (format " %d " (1+ (abs (- (point) (mark)))))))
      " ")
    'face 'bold
-   'display '(min-width (4.0))))
+   'display '(min-width (6.0))))
 
 (with-eval-after-load 'evil
   (setq-default mode-line-format
@@ -134,7 +134,6 @@
                       "  "
                       'mode-line-position
                       '(:eval (my/mode-line-region-info))
-                      "  "
                       'mode-line-modes
                       'mode-line-misc-info
                       'mode-line-end-spaces)))
@@ -452,7 +451,8 @@
     (evil-change-state 'normal))
 
   :custom
-  (evil-mode-line-format '(after . mode-line-modified))
+  ;; (evil-mode-line-format '(after . mode-line-modified))
+  (evil-mode-line-format nil)
 
   (evil-ex-search-case 'smart)
   (evil-visual-update-x-selection-p nil)
