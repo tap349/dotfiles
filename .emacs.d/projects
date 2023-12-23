@@ -1,7 +1,7 @@
 ;;; -*- lisp-data -*-
-(("/Users/tap/dev/indrive/dev-platform-go-common/")
- ("/Users/tap/dev/indrive/dev-platform-installer/")
- ("/Users/tap/.dotfiles/")
+(("/Users/tap/dev/indrive/dev-platform-namespace/")
+ ("/Users/tap/dev/indrive/dev-platform-go-common/")
+ ("/Users/tap/dev/indrive/dev-platform-installer/") ("/Users/tap/.dotfiles/")
  ("/Users/tap/dev/indrive/dev-platform-access-service/")
  ("/Users/tap/dev/indrive/dev-platform-backup/")
  ("/Users/tap/dev/indrive/dev-platform-catalog/")
@@ -10,7 +10,6 @@
  ("/Users/tap/dev/indrive/dev-platform-deployment/")
  ("/Users/tap/dev/indrive/dev-platform-infrastructure/")
  ("/Users/tap/dev/indrive/dev-platform-mysql-runner/")
- ("/Users/tap/dev/indrive/dev-platform-namespace/")
  ("/Users/tap/dev/indrive/dev-platform-notifier/")
  ("/Users/tap/dev/indrive/dev-platform-pipeline/")
  ("/Users/tap/dev/indrive/dev-platform-runner/")

@@ -103,19 +103,41 @@
 ;; nowrap
 (setq-default truncate-lines 1)
 
-;; See also evil-mode-line-format variable
-(setq-default mode-line-format
-              (list " "
-                    'mode-line-mule-info
-                    'mode-line-modified
-                    "  "
-                    'mode-line-buffer-identification
-                    "  "
-                    'mode-line-position
-                    " "
-                    'mode-line-modes
-                    'mode-line-misc-info
-                    'mode-line-end-spaces))
+;;-----------------------------------------------------------------------------
+;; Mode Line
+;;-----------------------------------------------------------------------------
+
+(setq mode-line-percent-position nil)
+
+;; https://www.emacswiki.org/emacs/wcMode
+(defun my/mode-line-region-info ()
+  (propertize
+   (if (evil-visual-state-p)
+       (pcase (evil-visual-type)
+         ('line
+          (format " %dL " (1+ (abs (- (line-number-at-pos (point))
+                                      (line-number-at-pos (mark)))))))
+         (_
+          (format " %d " (1+ (abs (- (point) (mark)))))))
+     " ")
+   'face 'bold
+   'display '(min-width (4.0))))
+
+(with-eval-after-load 'evil
+  (setq-default mode-line-format
+                (list " "
+                      'mode-line-mule-info
+                      'mode-line-modified
+                      ;; evil state is inserted here - see evil-mode-line-format
+                      "  "
+                      'mode-line-buffer-identification
+                      "  "
+                      'mode-line-position
+                      '(:eval (my/mode-line-region-info))
+                      "  "
+                      'mode-line-modes
+                      'mode-line-misc-info
+                      'mode-line-end-spaces)))
 
 ;;-----------------------------------------------------------------------------
 ;; Theme (faces)
