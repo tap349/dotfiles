@@ -196,6 +196,28 @@
 ;;
 ;; Keybindings
 ;;
+;; - TAB - <tab> - [tab]
+;; - RET - <return> - [return]
+;;
+;; ## <tab> vs. TAB
+;;
+;; https://github.com/syl20bnr/spacemacs/issues/4024#issuecomment-161122099
+;;
+;; - <tab> = Tab (GUI only)
+;; - TAB = C-i = Tab (Terminal, or GUI if <tab> is not set)
+;; => in GUI <tab> keybinding overrides TAB one
+;;
+;; ## <tab> vs. [tab]
+;;
+;; [tab] can't be used in keybindings with prefix keys like "C-[tab]":
+;;
+;; - "<tab>" = [tab] (ok)
+;; - "C-<tab>" (ok)
+;; - "C-[tab]" (error)
+;; =>
+;; - use [tab] style in keybindings that use only one key
+;; - use <tab> style in keybindings that use prefix keys
+;;
 ;;-----------------------------------------------------------------------------
 
 ;; https://www.emacswiki.org/emacs/DvorakKeyboard
@@ -281,6 +303,9 @@
   (defun my/setup-minibuffer-mode ()
     (setq minibuffer-prompt-properties
           '(cursor-intangible t face minibuffer-prompt read-only t)))
+
+  ;; First indent current line, then complete
+  (setq tab-always-indent 'complete)
 
   :hook
   ((minibuffer-setup . my/setup-minibuffer-mode)))
@@ -368,12 +393,6 @@
   :hook
   (embark-collect-mode . consult-preview-at-point-mode))
 
-;; For some reason <return> and RET keys are not the same: keybinding for
-;; <return> key in evil-normal-state-map (insert newline below) is also
-;; active in dired-mode but keybinding for RET is not.
-;; Most likely RET key has lower precedence and can be overriden by other
-;; modes while <return> can't be
-;; => use RET and TAB where possible to allow other modes to override them
 (use-package evil
   :straight t
   :demand t
@@ -387,18 +406,6 @@
   (setq evil-shift-width 2)
   ;; https://github.com/emacs-evil/evil/issues/576
   (setq evil-want-Y-yank-to-eol t)
-
-  (defun my/insert-tab-or-complete ()
-    (interactive)
-    (let ((chr (preceding-char)))
-      ;; - beginning of line OR
-      ;; - preceding character is whitespace OR
-      ;; - preceding character is tab (for go-mode)
-      (if (or (bolp) (= chr 32) (= chr 9))
-          ;; insert tab
-          (tab-to-tab-stop)
-        ;; else complete
-        (company-complete-common))))
 
   ;; https://stackoverflow.com/a/14189981
   (defun my/insert-newline-below ()
@@ -486,8 +493,7 @@
   :bind
   (:map evil-insert-state-map
         ("C-c" . my/evil-change-to-normal-state)
-        ("RET" . comment-indent-new-line)
-        ("TAB" . my/insert-tab-or-complete))
+        ("RET" . comment-indent-new-line))
 
   (:map evil-normal-state-map
         ("C-c" . evil-ex-nohighlight)
@@ -598,57 +604,35 @@
 (use-package clojure-mode
   :straight t)
 
-(use-package company
+(use-package corfu
   :straight t
   :demand t
-  :delight company-mode
-  :after evil
   :init
-  (defun my/company-abort ()
+  (defun my/corfu-quit ()
     (interactive)
-    (company-abort)
-    ;; evil-force-normal-state doesn't record current command
-    ;; but we don't need it here
+    (corfu-quit)
     (evil-force-normal-state))
 
   :custom
-  ;; http://company-mode.github.io/manual/Customization.html#Customization
-  ;; Set to nil to disable automatic completion
-  (company-idle-delay nil)
-  (company-selection-wrap-around t)
-  (company-require-match nil)
-
-  ;; http://company-mode.github.io/manual/Frontends.html#Frontends
-  (company-frontends
-   '(company-pseudo-tooltip-unless-just-one-frontend
-     company-preview-frontend))
-  (company-tooltip-align-annotations t)
-  (company-tooltip-minimum 4)
-  (company-tooltip-limit 8)
-  (company-tooltip-width-grow-only t)
-  (company-tooltip-margin 1)
-  (company-format-margin-function 'company-vscode-light-icons-margin)
+  (corfu-count 8)
+  (corfu-cycle t)
+  (corfu-min-width 50)
+  (corfu-preselect 'first)
+  (corfu-preview-current nil)
 
   :custom-face
-  (company-preview ((t (:background "white" :foreground "#999999"))))
-  (company-preview-common ((t (:background "white" :foreground "#999999"))))
-  (company-tooltip ((t (:background "#FFFAEA"))))
-  (company-tooltip-selection ((t (:background "#CBE6ED"))))
+  (corfu-current ((t (:background "#DFEFF2"))))
+  (corfu-default ((t (:background "#FFFFF6"))))
 
   :config
-  (global-company-mode)
+  (global-corfu-mode)
 
   :bind
-  (:map company-active-map
-        ("C-c" . my/company-abort)
-        ;; http://company-mode.github.io/manual/Getting-Started.html#Getting-Started
-        ;; Use <tab> instead of TAB to override other keybindings
-        ("<tab>" . company-complete-common)))
-
-;; https://github.com/company-mode/company-mode/issues/340
-(use-package company-anywhere
-  :straight (company-anywhere :type git :host github :repo "zk-phi/company-anywhere")
-  :after company)
+  (:map corfu-map
+        ("C-g" . my/corfu-quit)
+        ([tab] . corfu-next)
+        ([backtab] . corfu-previous)
+        ([return] . corfu-complete)))
 
 ;; - "(" - dired-hide-details-mode
 ;; - "C-p" - remove autosuggestion when renaming file
@@ -1210,7 +1194,7 @@
   (tab-bar-tab-inactive ((t (:background "#E4E4E8"))))
 
   (my/tab-bar-tab-group-current
-   ((t (:background "#FBFBEF" :box (:color "#DADADA" :style nil)))))
+   ((t (:background "#E8E8EF" :box (:color "#DADADA" :style nil)))))
 
   :config
   ;; http://www.gonsie.com/blorg/tab-bar.html
@@ -1328,7 +1312,7 @@
         ;; Same as consult-preview-key
         ("C-l" . xref-show-location-at-point)
         ;; ("o" . xref-goto-xref)
-        ("<return>" . xref-quit-and-goto-xref)
+        ([return] . xref-quit-and-goto-xref)
         ("q" . xref-quit-and-pop-marker-stack)))
 
 (use-package yaml-mode
