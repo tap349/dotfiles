@@ -133,7 +133,9 @@
                       'mode-line-buffer-identification
                       "  "
                       'mode-line-position
-                      '(:eval (my/mode-line-region-info))
+                      " "
+                      ;; Use M-= on demand instead
+                      ;; '(:eval (my/mode-line-region-info))
                       'mode-line-modes
                       'mode-line-misc-info
                       'mode-line-end-spaces)))
@@ -490,6 +492,14 @@
   (advice-add 'keyboard-quit :before 'evil-ex-nohighlight)
 
   (evil-add-command-properties 'my/evil-change-to-normal-state :keep-visual t)
+
+  ;; Disable echo area messages when changing evil state
+  ;; Customize variables here after package is loaded or else
+  ;; they'll be overriden with default values
+  (setq evil-insert-state-message nil)
+  (setq evil-normal-state-message nil)
+  (setq evil-visual-state-message nil)
+  (setq evil-replace-state-message nil)
 
   :bind
   (:map evil-insert-state-map
