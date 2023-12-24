@@ -488,9 +488,10 @@
 
   (evil-add-command-properties 'my/evil-change-to-normal-state :keep-visual t)
 
-  ;; Disable echo area messages when changing evil state
-  ;; Customize variables here after package is loaded or else
-  ;; they'll be overriden with default values
+  ;; Disable echo area messages on evil state change
+  ;;
+  ;; Customize variables here after evil package is loaded
+  ;; or else they'll be overriden with default values
   (setq evil-insert-state-message nil)
   (setq evil-normal-state-message nil)
   (setq evil-visual-state-message nil)
