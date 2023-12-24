@@ -483,9 +483,6 @@
   ;; https://stackoverflow.com/a/23918497
   (evil-set-initial-state 'Buffer-menu-mode 'emacs)
 
-  ;; C-g runs keyboard-quit in normal state by default
-  (advice-add 'keyboard-quit :before 'evil-ex-nohighlight)
-
   (evil-add-command-properties 'my/evil-change-to-normal-state :keep-visual t)
 
   ;; Disable echo area messages on evil state change
