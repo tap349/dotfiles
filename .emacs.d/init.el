@@ -298,7 +298,7 @@
    consult-xref :preview-key 'any :prompt "Filter: "))
 
 (use-package emacs
-  :straight nil
+  :straight (:type built-in)
   :init
   ;; https://github.com/minad/vertico#configuration
   (defun my/setup-minibuffer-mode ()
@@ -622,7 +622,7 @@
   (corfu-preview-current nil)
 
   :custom-face
-  (corfu-current ((t (:background "#DFEFF2"))))
+  (corfu-current ((t (:background "#D8E8F4"))))
   (corfu-default ((t (:background "#FFFFF6"))))
 
   :config
@@ -638,7 +638,7 @@
 ;; - "(" - dired-hide-details-mode
 ;; - "C-p" - remove autosuggestion when renaming file
 (use-package dired
-  :straight nil
+  :straight (:type built-in)
   :init
   (defun my/setup-dired-mode ()
     (dired-hide-details-mode 1))
@@ -694,7 +694,7 @@
 ;; - eglot-events-buffer (show Eglot logs)
 (use-package eglot
   ;; Built-in package since Emacs 29
-  :straight nil
+  :straight (:type built-in)
   :demand t
   :init
   (defun my/setup-eglot-managed-mode ()
@@ -787,7 +787,7 @@
         ("s-B" . eglot-find-typeDefinition)))
 
 (use-package eldoc
-  :straight nil
+  :straight (:type built-in)
   :delight eldoc-mode
   :custom
   ;; Show all eldoc feedback
@@ -831,7 +831,7 @@
         ("C-n" . eldoc-box-eglot-toggle-help-at-point)))
 
 (use-package elec-pair
-  :straight nil
+  :straight (:type built-in)
   :init
   (defun my/electric-pair-inhibit-predicate (_char)
     (minibufferp))
@@ -986,7 +986,7 @@
 
 ;; - flymake-show-buffer-diagnostics (show all buffer errors)
 (use-package flymake
-  :straight nil
+  :straight (:type built-in)
   :bind
   (("M-]" . flymake-goto-next-error)
    ("M-[" . flymake-goto-prev-error)))
@@ -1017,7 +1017,7 @@
 ;; hs-minor-mode can be enabled not in all major modes
 ;; Use evil-toggle-fold to toggle folding
 (use-package hideshow
-  :straight nil
+  :straight (:type built-in)
   :delight hs-minor-mode
   :hook
   ((prog-mode . hs-minor-mode)))
@@ -1095,8 +1095,8 @@
         ("<leader>\S-m" . magit)
         ("<leader>m" . magit-log-buffer-file)))
 
-;; Fixes a bug in some consult commands (say, consult-xref)
-;; when you cannot search for substring
+;; Fixes a bug in some consult commands (say, consult-xref) when
+;; you cannot search for substring
 (use-package orderless
   :straight t
   :custom
@@ -1111,7 +1111,7 @@
 (use-package project
   ;; Built-in package since Emacs 26
   ;; C-x p keymap is available since Emacs 28
-  :straight nil
+  :straight (:type built-in)
   :custom
   (project-switch-commands 'consult-find)
 
@@ -1126,7 +1126,7 @@
   (project-tab-groups-mode 1))
 
 (use-package python
-  :straight nil
+  :straight (:type built-in)
   :custom
   (python-indent-offset 4)
 
@@ -1140,14 +1140,14 @@
 
 ;; For camel-case motions
 (use-package subword
-  :straight nil
+  :straight (:type built-in)
   :after go-mode
   :delight
   :config
   (global-subword-mode 1))
 
 (use-package tab-bar
-  :straight nil
+  :straight (:type built-in)
   :demand t
   :init
   ;; https://christiantietze.de/posts/2022/02/emacs-tab-bar-numbered-tabs/
@@ -1195,7 +1195,7 @@
   (tab-bar-tab-inactive ((t (:background "#E4E4E8"))))
 
   (my/tab-bar-tab-group-current
-   ((t (:background "#FFFFF6" :box (:color "#DADABA" :style nil)))))
+   ((t (:background "#FAFADF" :box (:color "#D5D5BD" :style nil)))))
 
   :config
   ;; http://www.gonsie.com/blorg/tab-bar.html
@@ -1252,7 +1252,7 @@
         ("C-s" . consult-line)))
 
 (use-package whitespace
-  :straight nil
+  :straight (:type built-in)
   :delight
   :custom
   ;; https://emacs.stackexchange.com/a/21865
@@ -1291,7 +1291,7 @@
 ;; - "C-]" - xref-find-definitions
 ;; - "M-?" - xref-find-references
 (use-package xref
-  :straight nil
+  :straight (:type built-in)
   :after evil
   :custom
   ;; - xref-find-definitions jumps to the definition right away
