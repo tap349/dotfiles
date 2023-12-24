@@ -113,14 +113,11 @@
 (defun my/mode-line-region-info ()
   (propertize
    (if (evil-visual-state-p)
-       (pcase (evil-visual-type)
-         ('line
-          (format " %dL " (1+ (abs (- (line-number-at-pos (point))
-                                      (line-number-at-pos (mark)))))))
-         (_
-          (format " %d " (1+ (abs (- (point) (mark)))))))
+       (format " %d:%d"
+               (1+ (abs (- (line-number-at-pos (point))
+                           (line-number-at-pos (mark)))))
+               (1+ (abs (- (point) (mark)))))
      " ")
-   'face 'bold
    'display '(min-width (6.0))))
 
 (with-eval-after-load 'evil
@@ -128,14 +125,13 @@
                 (list " "
                       'mode-line-mule-info
                       'mode-line-modified
-                      ;; evil state is inserted here - see evil-mode-line-format
                       "  "
                       'mode-line-buffer-identification
                       "  "
                       'mode-line-position
-                      " "
                       ;; Use M-= on demand instead
                       ;; '(:eval (my/mode-line-region-info))
+                      ;; "  "
                       'mode-line-modes
                       'mode-line-misc-info
                       'mode-line-end-spaces)))
@@ -461,7 +457,6 @@
     (evil-change-state 'normal))
 
   :custom
-  ;; (evil-mode-line-format '(after . mode-line-modified))
   (evil-mode-line-format nil)
 
   (evil-ex-search-case 'smart)
