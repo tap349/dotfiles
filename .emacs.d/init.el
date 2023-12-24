@@ -1194,7 +1194,7 @@
   (tab-bar-tab-inactive ((t (:background "#E4E4E8"))))
 
   (my/tab-bar-tab-group-current
-   ((t (:background "#E8E8EF" :box (:color "#DADADA" :style nil)))))
+   ((t (:background "#FFFFF6" :box (:color "#DADABA" :style nil)))))
 
   :config
   ;; http://www.gonsie.com/blorg/tab-bar.html
