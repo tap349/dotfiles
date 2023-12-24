@@ -197,8 +197,8 @@
 ;; Keybindings
 ;;
 ;; - TAB - <tab> - [tab]
-;; - S-TAB - [backtab]
-;; -  RET - <return> - [return]
+;; - S-TAB - S-<tab> - [backtab]
+;; - RET - <return> - [return]
 ;;
 ;; ## <tab> vs. TAB
 ;;
