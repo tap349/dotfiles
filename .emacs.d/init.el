@@ -658,11 +658,10 @@
   (defun my/setup-dired-mode ()
     (dired-hide-details-mode 1))
 
-  (defun my/dired-up-directory ()
-    (interactive)
-    (find-alternate-file ".."))
-
   ;; https://emacs.stackexchange.com/a/204/39266
+  ;; Dired creates a separate buffer for each new directory you visit and
+  ;; pressing `q` kills only one buffer at a time by default => you should
+  ;; press `q` to exit as many times as many directories you have visited
   (defun my/kill-dired-buffers ()
     (interactive)
     (mapc (lambda (buffer)
@@ -675,9 +674,6 @@
 
   :bind
   (:map dired-mode-map
-        ;; http://xahlee.info/emacs/emacs/emacs_dired_tips.html
-        ;; ("RET" . dired-find-alternate-file)
-        ;; ("p" . my/dired-up-directory)
         ("p" . dired-up-directory)
         ("q" . my/kill-dired-buffers)))
 
