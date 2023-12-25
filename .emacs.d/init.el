@@ -125,6 +125,7 @@
                 (list " "
                       'mode-line-mule-info
                       'mode-line-modified
+                      ;; <= evil-mode-line-format
                       "  "
                       'mode-line-buffer-identification
                       "  "
@@ -457,7 +458,8 @@
     (evil-change-state 'normal))
 
   :custom
-  (evil-mode-line-format nil)
+  ;; Can be useful to distinguish between <E> and Vim-like states
+  (evil-mode-line-format '(after . mode-line-modified))
 
   (evil-ex-search-case 'smart)
   (evil-visual-update-x-selection-p nil)
@@ -493,6 +495,11 @@
   (setq evil-normal-state-message nil)
   (setq evil-visual-state-message nil)
   (setq evil-replace-state-message nil)
+
+  ;; Use <V> tag for all types of visual state
+  ;; (characterwise, linewise and blockwise selection)
+  ;; so that text doesn't jump on evil state change
+  (setq evil-visual-state-tag " <V> ")
 
   :bind
   (:map evil-insert-state-map
@@ -1198,7 +1205,7 @@
   (tab-bar-tab-inactive ((t (:background "#E4E4E8"))))
 
   (my/tab-bar-tab-group-current
-   ((t (:background "#FAFADF" :box (:color "#D5D5BD" :style nil)))))
+   ((t (:background "#FAF8DF" :box (:color "#D5D5BD" :style nil)))))
 
   :config
   ;; http://www.gonsie.com/blorg/tab-bar.html
