@@ -462,6 +462,8 @@
   (evil-mode-line-format '(after . mode-line-modified))
 
   (evil-ex-search-case 'smart)
+  (evil-symbol-word-search t)
+
   (evil-visual-update-x-selection-p nil)
 
   :config
@@ -834,7 +836,7 @@
 
   :config
   ;; C-c runs evil-ex-nohighlight in normal state
-  (advice-add 'evil-ex-nohighlight :after 'eldoc-box-quit-frame)
+  (advice-add 'evil-ex-nohighlight :after #'eldoc-box-quit-frame)
 
   :bind
   (:map evil-normal-state-map
@@ -859,139 +861,86 @@
   :config
   (global-evil-surround-mode 1))
 
+;; See also evil-symbol-word-search variable
+;; See https://emacs.stackexchange.com/a/76430 for alternative implementation
 (use-package evil-visualstar
-  :straight (evil-visualstar :type git
-                             :host github
-                             :repo "tap349/evil-visualstar")
+  :straight t
   :demand t
   :after evil
   :init
-  (setq my/evil-ex-search-next-offset 0)
+  (setq my/evil-ex-search-offset 0)
 
-  (defun my/evil-ex-search-forward ()
-    (interactive)
-    (setq my/evil-ex-search-next-offset 0)
-    (evil-ex-search-forward))
+  ;; Signatures of advised functions:
+  ;; - before/around advice: arguments of original function
+  ;; - around advice: orig-fun + arguments of original function
+  ;; - original advised function always has zero arguments
 
-  (defun my/evil-ex-search-backward ()
-    (interactive)
-    (setq my/evil-ex-search-next-offset 0)
-    (evil-ex-search-backward))
+  (defun my/evil-ex-search-set-offset (&rest _)
+    (setq my/evil-ex-search-offset (- (point)
+                                      (beginning-of-thing 'symbol))))
 
-  (defun my/evil-ex-search-next ()
-    (interactive)
-    (evil-ex-search-next)
-    (forward-char my/evil-ex-search-next-offset))
+  (defun my/evil-ex-search-reset-offset (&rest _)
+    (setq my/evil-ex-search-offset 0))
 
-  (defun my/evil-ex-search-previous ()
-    (interactive)
-    (when (> my/evil-ex-search-next-offset 0)
-      (evil-ex-search-previous))
-    (evil-ex-search-previous)
-    (forward-char my/evil-ex-search-next-offset))
-
-  ;; https://stackoverflow.com/a/26650886/3632318
-  ;; https://github.com/noctuid/evil-guide#declaring-a-motion
-  ;;
-  ;; evil-declare-motion:
-  ;; - sets `:repeat motion` => don't count functions as repeatables
-  ;; - sets `:keep-visual t` => make functions work in visual state
-  (evil-declare-motion 'my/evil-ex-search-forward)
-  (evil-declare-motion 'my/evil-ex-search-backward)
-  (evil-declare-motion 'my/evil-ex-search-next)
-  (evil-declare-motion 'my/evil-ex-search-previous)
-
-  ;; See https://github.com/noctuid/evil-guide#buffer-local-keybindings
-  ;; if you ever need to define this keybinding for specific mode only
-  (defun my/asterisk-normal ()
-    (interactive)
-    ;; Hyphen inside character class indicates range and IDK how to escape
-    ;; it in Rx notation => don't use it inside `any` construct if you need
-    ;; literal value
-    ;;
-    ;; NOTE: some characters are excluded from whole word search because
-    ;; they don't have word syntax class in specific modes. If you still
-    ;; need to search for text containing these characters you can always
-    ;; fallback to regular search with my/asterisk-visual
-    (let ((vim-word-regexp
-           (pcase major-mode
-             ;; Don't add colon for clojure-mode because it requires adding
-             ;; colon to word syntax classes for word search to work which
-             ;; causes evil-forward-word-begin to get stuck - like in case
-             ;; of underscore in go-mode
-             ;;
-             ;; Searching for words with leading hyphen or angle bracket (->
-             ;; or <-) doesn't work because these characters don't have word
-             ;; syntax class => exclude these characters from search pattern
-             ('clojure-mode
-              (rx (any "0-9A-Za-z")
-                  (one-or-more (or "-" (any "0-9A-Za-z" "!<>?_")))))
-             ;; Searching for words with leading underscore doesn't work if
-             ;; syntax class of underscore is set to "_" for go-mode =>
-             ;; exclude leading underscore from search pattern
-             ('go-mode
-              (rx (any "0-9A-Za-z")
-                  (zero-or-more (or "-" (any "0-9A-Za-z" "!<>?_")))))
-             (_
-              (rx (one-or-more (or "-" (any "0-9A-Za-z" "_"))))))))
-      (when (thing-at-point-looking-at vim-word-regexp)
-        (setq my/evil-ex-search-next-offset (- (point) (match-beginning 0)))
-        (evil-visualstar/begin-search (match-beginning 0) (match-end 0) t t)
-        (forward-char my/evil-ex-search-next-offset))))
-
-  (defun my/asterisk-visual (beg end)
-    (interactive "r")
-    (setq my/evil-ex-search-next-offset 0)
-    (evil-visualstar/begin-search-forward beg end))
+  (defun my/evil-ex-search-goto-offset (orig-fun &rest args)
+    (when (and (eq evil-ex-search-direction 'backward)
+               (> my/evil-ex-search-offset 0))
+      ;; Or just call (apply orig-fun args)
+      (goto-char (beginning-of-thing 'symbol)))
+    (apply orig-fun args)
+    (forward-char my/evil-ex-search-offset))
 
   (defun my/asterisk-z-normal ()
     (interactive)
-    (my/asterisk-normal)
-    (my/evil-ex-search-previous))
+    (evil-ex-search-word-forward)
+    (evil-ex-search-previous))
 
   (defun my/asterisk-z-visual (beg end)
     (interactive "r")
     (evil-visualstar/begin-search-forward beg end)
-    (my/evil-ex-search-previous))
+    (evil-ex-search-previous))
 
   :hook
-  ;; https://www.gnu.org/software/emacs/manual/html_node/elisp/Syntax-Class-Table.html
+  ;; Use (char-syntax (string-to-char "/")) to find character syntax class
+  ;;
+  ;; Don't set syntax class of ?/ to "." in clojure-mode -
+  ;; it breaks completion with corfu (try to complete `span/`)
+  ;;
+  ;; Don't set syntax class of ?/ to "." in emacs-lisp-mode -
+  ;; it increases default indentation of function bodies
   ((clojure-mode . (lambda ()
-                     (modify-syntax-entry ?! "w" clojure-mode-syntax-table)
-                     (modify-syntax-entry ?? "w" clojure-mode-syntax-table)))
-   ;; It looks like underscore has some syntax class (not "_" or "w") in go-mode
-   ;; so that when paired with subword-mode it causes evil-forward-word-begin to
-   ;; get stuck after words containing underscores => set syntax class to "w"
-   ;;
-   ;; It's possible to set syntax class to "_" but in this case word search using
-   ;; asterisk doesn't work for words with leading underscore like `_jobsRouter`
-   ;;
-   ;; UPDATE: set syntax class to "_" since otherwise evil-forward-word-begin
-   ;;         gets stuck on words with underscores surrounded by quotes like
-   ;;         "created_at" - it's more important than not being able to search
-   ;;         for with leading underscore (e.g. `_jobsRouter`) using asterisk
-   (go-mode . (lambda ()
-                (modify-syntax-entry ?_ "_" go-mode-syntax-table)))
-   ;; For build.gradle.kts
-   (kotlin-mode . (lambda ()
-                    (modify-syntax-entry ?$ "_" kotlin-mode-syntax-table))))
+                     ;; Allows to search for `bar` in `foo.bar` with *
+                     ;; (syntax for "." is set to "_" by clojure-mode)
+                     (modify-syntax-entry ?. "." clojure-mode-syntax-table))))
 
-  ;; global-evil-visualstar-mode is not enabled so define all keybindings
+  :config
+  ;; evil-ex-start-word-search is used internally by
+  ;; - evil-ex-search-word-forward (*)
+  ;; - evil-ex-search-word-backward (#)
+  (advice-add 'evil-ex-start-word-search :before #'my/evil-ex-search-set-offset)
+
+  ;; evil-ex-start-search is used internally by
+  ;; - evil-ex-search-forward (/)
+  ;; - evil-ex-search-backward (?)
+  (advice-add 'evil-ex-start-search :before #'my/evil-ex-search-reset-offset)
+
+  ;; evil-ex-search is used internally by
+  ;; - evil-ex-search-next (n)
+  ;; - evil-ex-search-previous (N)
+  (advice-add 'evil-ex-search :around #'my/evil-ex-search-goto-offset)
+
+  ;; evil-visualstar/begin-search is used internally by
+  ;; - evil-visualstar/begin-search-forward
+  ;; - evil-visualstar/begin-search-backward
+  (advice-add 'evil-visualstar/begin-search :before #'my/evil-ex-search-reset-offset)
+
+  ;; global-evil-visualstar-mode is not enabled, define keybindings manually
   :bind
   (:map evil-normal-state-map
-        ("/" . my/evil-ex-search-forward)
-        ("?" . my/evil-ex-search-backward)
-        ("n" . my/evil-ex-search-next)
-        ("N" . my/evil-ex-search-previous)
-        ("*" . my/asterisk-normal)
         ("z*" . my/asterisk-z-normal))
 
   (:map evil-visual-state-map
-        ("/" . my/evil-ex-search-forward)
-        ("?" . my/evil-ex-search-backward)
-        ("n" . my/evil-ex-search-next)
-        ("N" . my/evil-ex-search-previous)
-        ("*" . my/asterisk-visual)
+        ("*" . evil-visualstar/begin-search-forward)
         ("z*" . my/asterisk-z-visual)))
 
 ;; - flymake-show-buffer-diagnostics (show all buffer errors)
@@ -1205,7 +1154,7 @@
   (tab-bar-tab-inactive ((t (:background "#E4E4E8"))))
 
   (my/tab-bar-tab-group-current
-   ((t (:background "#FAF8DF" :box (:color "#D5D5BD" :style nil)))))
+   ((t (:background "#FCFCDF" :box (:color "#D5D5BD" :style nil)))))
 
   :config
   ;; http://www.gonsie.com/blorg/tab-bar.html
