@@ -159,6 +159,7 @@ mas 'Telegram Desktop', id: 946399090
 # LSP
 #-------------------------------------------------------------------------------
 
+brew 'clojure-lsp'
 # https://golangci-lint.run/usage/install/#macos
 # > brew can use a non-expected version of Go to build the binary
 # => there was error when I upgraded golang from 1.20.3 to 1.21.1
