@@ -187,7 +187,6 @@
 ;;
 ;;-----------------------------------------------------------------------------
 
-;; Register ?e is overwritten by nREPL server (started by cider-jack-in)
 (set-register ?c (cons 'file user-init-file))
 (set-register ?z (cons 'file (substitute-in-file-name "${ZDOTDIR}/.zshenv")))
 
@@ -580,39 +579,6 @@
   :bind
   (:map evil-normal-state-map
         ("<leader>w" . avy-goto-word-1)))
-
-;; https://docs.cider.mx/cider/repl/keybindings.html
-;;
-;; Run after making changes in both source and test files:
-;; - "C-c C-k" - cider-load-buffer
-;;
-;; - "C-c C-x j j" - cider-jack-in
-;; - "C-c C-d C-c" - cider-clojuredocs
-;; - "C-c C-d C-w" - cider-clojuredocs-web
-;;
-;; - "C-c C-t C-t" - cider-test-run-test
-;; - "C-c C-t C-n" - cider-test-run-ns-tests
-;; - "C-c C-t C-p" - cider-test-run-project-tests
-;; - "C-c C-t C-r" - cider-test-rerun-failed-tests
-(use-package cider
-  :straight t
-  :delight " CIDER"
-  :after evil
-  :init
-  (defun my/setup-cider-mode ()
-    (setq-local show-trailing-whitespace nil)
-    ;; https://github.com/emacs-evil/evil/issues/511#issuecomment-273754917
-    (define-key evil-normal-state-local-map "q" 'cider-popup-buffer-quit-function))
-
-  :hook
-  ((cider-popup-buffer-mode . my/setup-cider-mode)
-   (cider-repl-mode . my/setup-cider-mode)
-   (cider-stacktrace-mode . my/setup-cider-mode)
-   (cider-test-report-mode . my/setup-cider-mode))
-
-  :custom
-  ;; Use xref backend provided by Eglot
-  (cider-use-xref nil))
 
 (use-package clojure-mode
   :straight t)
@@ -1283,13 +1249,6 @@
 ;; Managed by customize-group
 ;;
 ;;-----------------------------------------------------------------------------
-
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(safe-local-variable-values '((cider-clojure-cli-aliases . ":dev"))))
 
 (put 'narrow-to-region 'disabled nil)
 (put 'dired-find-alternate-file 'disabled nil)
