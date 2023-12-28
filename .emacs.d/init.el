@@ -132,7 +132,7 @@
                       'mode-line-position
                       ;; Use M-= on demand instead
                       ;; '(:eval (my/mode-line-region-info))
-                      ;; "  "
+                      " "
                       'mode-line-modes
                       'mode-line-misc-info
                       'mode-line-end-spaces)))
@@ -1135,6 +1135,34 @@
    ("s-w" . tab-bar-close-tab)
    ("C-<tab>" . tab-recent)
    ("C-<backspace>" . tab-bar-close-tab)))
+
+(use-package toggle-test
+  :straight (toggle-test :type git :host github :repo "tap349/toggle-test")
+  :after evil
+  :config
+  (add-to-list 'tgt-projects '((:root-dir "~/dev/indrive/dev-platform-catalog")
+                               (:src-dirs "src")
+                               (:test-dirs "test")
+                               (:test-suffixes "_test")))
+  (add-to-list 'tgt-projects '((:root-dir "~/dev/indrive/dev-platform-clojure-common")
+                               (:src-dirs "src")
+                               (:test-dirs "test")
+                               (:test-suffixes "_test")))
+  (add-to-list 'tgt-projects '((:root-dir "~/dev/indrive/dev-platform-namespace")
+                               (:src-dirs "src")
+                               (:test-dirs "test")
+                               (:test-suffixes "_test")))
+
+  :bind
+  (:map evil-normal-state-map
+        ("<leader>," . (lambda ()
+                         (interactive)
+                         (let ((tgt-open-in-new-window nil))
+                           (tgt-toggle))))
+        ("<leader>v" . (lambda ()
+                         (interactive)
+                         (let ((tgt-open-in-new-window t))
+                           (tgt-toggle))))))
 
 (use-package vertico
   :straight t
