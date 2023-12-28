@@ -858,7 +858,14 @@
 
   (defun my/asterisk-z-normal ()
     (interactive)
-    (evil-ex-search-word-forward)
+    ;; count is 1 when you don't pass it or pass nil for all functions
+    ;; using evil-ex-search under the hood (all evil search functions)
+    (evil-ex-search-word-forward nil evil-symbol-word-search)
+    (evil-ex-search-previous))
+
+  (defun my/asterisk-z-unbounded-normal ()
+    (interactive)
+    (evil-ex-search-unbounded-word-forward nil evil-symbol-word-search)
     (evil-ex-search-previous))
 
   (defun my/asterisk-z-visual (beg end)
@@ -883,6 +890,8 @@
   ;; evil-ex-start-word-search is used internally by
   ;; - evil-ex-search-word-forward (*)
   ;; - evil-ex-search-word-backward (#)
+  ;; - evil-ex-search-unbounded-word-forward (g*)
+  ;; - evil-ex-search-unbounded-word-backward (g#)
   (advice-add 'evil-ex-start-word-search :before #'my/evil-ex-search-set-offset)
 
   ;; evil-ex-start-search is used internally by
@@ -903,8 +912,11 @@
   ;; global-evil-visualstar-mode is not enabled, define keybindings manually
   :bind
   (:map evil-normal-state-map
-        ("z*" . my/asterisk-z-normal))
+        ("z*" . my/asterisk-z-normal)
+        ("zg*" . my/asterisk-z-unbounded-normal))
 
+  ;; Search in visual state is always unbounded = word (\<, \>) and
+  ;; symbol (\_<, \_>) boundaries are not added to search pattern
   (:map evil-visual-state-map
         ("*" . evil-visualstar/begin-search-forward)
         ("z*" . my/asterisk-z-visual)))
