@@ -1078,7 +1078,6 @@
 ;; For camel-case motions
 (use-package subword
   :straight (:type built-in)
-  :after go-mode
   :delight
   :config
   (global-subword-mode 1))
@@ -1148,33 +1147,47 @@
    ("C-<tab>" . tab-recent)
    ("C-<backspace>" . tab-bar-close-tab)))
 
-(use-package toggle-test
-  :straight (toggle-test :type git :host github :repo "tap349/toggle-test")
-  :after evil
-  :config
-  (add-to-list 'tgt-projects '((:root-dir "~/dev/indrive/dev-platform-catalog")
-                               (:src-dirs "src")
-                               (:test-dirs "test")
-                               (:test-suffixes "_test")))
-  (add-to-list 'tgt-projects '((:root-dir "~/dev/indrive/dev-platform-clojure-common")
-                               (:src-dirs "src")
-                               (:test-dirs "test")
-                               (:test-suffixes "_test")))
-  (add-to-list 'tgt-projects '((:root-dir "~/dev/indrive/dev-platform-namespace")
-                               (:src-dirs "src")
-                               (:test-dirs "test")
-                               (:test-suffixes "_test")))
+(use-package gotest
+  :straight t
+  :after go-mode
+  :custom-face
+  (go-test--ok-face ((t (:background "#77FF77" :foreground "#000000"))))
+  (go-test--standard-face ((t (:background "#FFF5D0" :foreground "#000000"))))
 
   :bind
-  (:map evil-normal-state-map
-        ("<leader>," . (lambda ()
-                         (interactive)
-                         (let ((tgt-open-in-new-window nil))
-                           (tgt-toggle))))
-        ("<leader>v" . (lambda ()
-                         (interactive)
-                         (let ((tgt-open-in-new-window t))
-                           (tgt-toggle))))))
+  (:map go-mode-map
+        ("C-x t t" . go-test-current-test)
+        ("C-x t f" . go-test-current-file)
+        ("C-x t p" . go-test-current-project)))
+
+;; TODO: add your own implementation of switching to test files
+;; (use-package toggle-test
+;;   :straight (toggle-test :type git :host github :repo "tap349/toggle-test")
+;;   :after evil
+;;   :config
+;;   (add-to-list 'tgt-projects '((:root-dir "~/dev/indrive/dev-platform-catalog")
+;;                                (:src-dirs "src")
+;;                                (:test-dirs "test")
+;;                                (:test-suffixes "_test")))
+;;   (add-to-list 'tgt-projects '((:root-dir "~/dev/indrive/dev-platform-clojure-common")
+;;                                (:src-dirs "src")
+;;                                (:test-dirs "test")
+;;                                (:test-suffixes "_test")))
+;;   (add-to-list 'tgt-projects '((:root-dir "~/dev/indrive/dev-platform-namespace")
+;;                                (:src-dirs "src")
+;;                                (:test-dirs "test")
+;;                                (:test-suffixes "_test")))
+
+;;   :bind
+;;   (:map evil-normal-state-map
+;;         ("<leader>," . (lambda ()
+;;                          (interactive)
+;;                          (let ((tgt-open-in-new-window nil))
+;;                            (tgt-toggle))))
+;;         ("<leader>v" . (lambda ()
+;;                          (interactive)
+;;                          (let ((tgt-open-in-new-window t))
+;;                            (tgt-toggle))))))
 
 (use-package vertico
   :straight t
