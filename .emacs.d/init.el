@@ -1161,33 +1161,6 @@
         ("C-x t p" . go-test-current-project)))
 
 ;; TODO: add your own implementation of switching to test files
-;; (use-package toggle-test
-;;   :straight (toggle-test :type git :host github :repo "tap349/toggle-test")
-;;   :after evil
-;;   :config
-;;   (add-to-list 'tgt-projects '((:root-dir "~/dev/indrive/dev-platform-catalog")
-;;                                (:src-dirs "src")
-;;                                (:test-dirs "test")
-;;                                (:test-suffixes "_test")))
-;;   (add-to-list 'tgt-projects '((:root-dir "~/dev/indrive/dev-platform-clojure-common")
-;;                                (:src-dirs "src")
-;;                                (:test-dirs "test")
-;;                                (:test-suffixes "_test")))
-;;   (add-to-list 'tgt-projects '((:root-dir "~/dev/indrive/dev-platform-namespace")
-;;                                (:src-dirs "src")
-;;                                (:test-dirs "test")
-;;                                (:test-suffixes "_test")))
-
-;;   :bind
-;;   (:map evil-normal-state-map
-;;         ("<leader>," . (lambda ()
-;;                          (interactive)
-;;                          (let ((tgt-open-in-new-window nil))
-;;                            (tgt-toggle))))
-;;         ("<leader>v" . (lambda ()
-;;                          (interactive)
-;;                          (let ((tgt-open-in-new-window t))
-;;                            (tgt-toggle))))))
 
 (use-package vertico
   :straight t
