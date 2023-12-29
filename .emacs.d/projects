@@ -1,8 +1,8 @@
 ;;; -*- lisp-data -*-
-(("/Users/tap/dev/indrive/dev-platform-access-service/")
+(("/Users/tap/dev/indrive/dev-platform-namespace/")
+ ("/Users/tap/dev/indrive/dev-platform-access-service/")
  ("/Users/tap/dev/indrive/dev-platform-go-common/")
  ("/Users/tap/dev/indrive/dev-platform-installer/")
- ("/Users/tap/dev/indrive/dev-platform-namespace/")
  ("/Users/tap/dev/indrive/dev-platform-catalog/")
  ("/Users/tap/dev/indrive/dev-platform-clojure-common/")
  ("/Users/tap/dev/indrive/dev-platform-runner/")

@@ -1152,7 +1152,7 @@
   :after go-mode
   :custom-face
   (go-test--ok-face ((t (:background "#77FF77" :foreground "#000000"))))
-  (go-test--standard-face ((t (:background "#FFF5D0" :foreground "#000000"))))
+  (go-test--standard-face ((t (:background "#FFF5C0" :foreground "#000000"))))
 
   :bind
   (:map go-mode-map
