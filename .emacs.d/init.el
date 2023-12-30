@@ -486,6 +486,9 @@
   ;; https://stackoverflow.com/a/23918497
   (evil-set-initial-state 'Buffer-menu-mode 'emacs)
 
+  ;; Keep cursor at the same point after exiting visual state (this property
+  ;; is already set for evil-exit-visual-state command but I don't use it to
+  ;; exit visual state)
   (evil-add-command-properties 'my/evil-change-to-normal-state :keep-visual t)
 
   ;; Disable echo area messages on evil state change
@@ -1152,7 +1155,7 @@
   :after go-mode
   :custom-face
   (go-test--ok-face ((t (:background "#77FF77" :foreground "#000000"))))
-  (go-test--standard-face ((t (:background "#FFF5C0" :foreground "#000000"))))
+  (go-test--standard-face ((t (:background "#F2F2FA" :foreground "#000000"))))
 
   :bind
   (:map go-mode-map
