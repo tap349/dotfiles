@@ -428,17 +428,14 @@
     (evil-append-line 1)
     (comment-indent-new-line))
 
-  ;; https://emacs.stackexchange.com/a/40823
   (defun my/evil-window-split ()
     (interactive)
     (evil-window-split)
-    (balance-windows)
     (other-window 1))
 
   (defun my/evil-window-vsplit ()
     (interactive)
     (evil-window-vsplit)
-    (balance-windows)
     (other-window 1))
 
   ;; https://stackoverflow.com/a/9697222/3632318
@@ -463,6 +460,7 @@
   (evil-ex-search-case 'smart)
   (evil-symbol-word-search t)
 
+  (evil-auto-balance-windows t)
   (evil-visual-update-x-selection-p nil)
 
   :config
@@ -1163,7 +1161,58 @@
         ("C-x t f" . go-test-current-file)
         ("C-x t p" . go-test-current-project)))
 
-;; TODO: add your own implementation of switching to test files
+(use-package alternate-file
+  :straight nil
+  :after evil
+  :init
+  (defun my/alternate-file-dir (file-path impl-dir test-dir)
+    (let ((file-dir (file-name-directory file-path)))
+      (if (or (string= impl-dir "{}") (string= test-dir "{}"))
+          file-dir
+        (let ((old-base-dir (cond ((string-prefix-p impl-dir file-dir) impl-dir)
+                                  ((string-prefix-p test-dir file-dir) test-dir)
+                                  (t (error "Can't find current base dir"))))
+              (new-base-dir (cond ((string-prefix-p impl-dir file-dir) test-dir)
+                                  ((string-prefix-p test-dir file-dir) impl-dir)
+                                  (t (error "Can't find alternate base dir")))))
+          (replace-regexp-in-string (concat "^" old-base-dir) new-base-dir file-dir)))))
+
+  (defun my/alternate-file-name (file-path test-suffix)
+    (let* ((file-name (file-name-nondirectory file-path))
+           (base-name (file-name-sans-extension file-name))
+           (ext (file-name-extension file-name)))
+      (if (string-suffix-p test-suffix base-name)
+          (concat (string-remove-suffix test-suffix base-name) "." ext)
+        (concat base-name test-suffix "." ext))))
+
+  (defun my/alternate-file-path (impl-dir test-dir test-suffix)
+    (let* ((root-dir (project-root (project-current)))
+           (file-path (file-relative-name buffer-file-name root-dir))
+           (alt-file-dir (my/alternate-file-dir file-path impl-dir test-dir))
+           (alt-file-name (my/alternate-file-name file-path test-suffix))
+           (alt-file-path (concat alt-file-dir alt-file-name)))
+      (expand-file-name alt-file-path root-dir)))
+
+  (defun my/find-alternate-file ()
+    (interactive)
+    (let ((mode-settings (alist-get major-mode alternate-file-settings)))
+      (or mode-settings (error "Major mode %s not supported" major-mode))
+      (find-file (apply #'my/alternate-file-path mode-settings))))
+
+  (defun my/find-alternate-file-vsplit ()
+    (interactive)
+    (my/evil-window-vsplit)
+    (my/find-alternate-file))
+
+  :custom
+  (alternate-file-settings '((clojure-mode . ("src" "test" "_test"))
+                             (go-mode . ("{}" "{}" "_test"))
+                             (kotlin-mode . ("src/main" "src/test" "Test"))))
+
+  :bind
+  (:map evil-normal-state-map
+        ("<leader>," . my/find-alternate-file)
+        ("<leader>v" . my/find-alternate-file-vsplit)))
 
 (use-package vertico
   :straight t
