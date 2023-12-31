@@ -347,7 +347,7 @@
   ;; See counsel-git-grep-action function in counsel.el
   (defun my/find-occurence (input)
     (when (string-match "\\`\\(.*?\\):\\([0-9]+\\):\\(.*\\)\\'" input)
-      ;; Disable messages temporarily because goto-line prints `Mark set`
+      ;; Disable messages temporarily because goto-line prints `Mark set'
       (let* ((inhibit-message t)
              (filename (match-string-no-properties 1 input))
              (line-number (match-string-no-properties 2 input))
@@ -385,7 +385,7 @@
 
   ;; See embark--vertico-selected function in embark.el
   ;;
-  ;; `consult-grep` completion category is set by Vertico for consult-ripgrep
+  ;; `consult-grep' completion category is set by Vertico for consult-ripgrep
   ;; command (and friends) and used by Embark to determine the type of target
   (add-to-list 'embark-keymap-alist '(consult-grep my/embark-consult-ripgrep-map))
 
@@ -624,8 +624,8 @@
 
   ;; https://emacs.stackexchange.com/a/204/39266
   ;; Dired creates a separate buffer for each new directory you visit and
-  ;; pressing `q` kills only one buffer at a time by default => you should
-  ;; press `q` to exit as many times as many directories you have visited
+  ;; pressing `q' kills only one buffer at a time by default => you should
+  ;; press `q' to exit as many times as many directories you have visited
   (defun my/kill-dired-buffers ()
     (interactive)
     (mapc (lambda (buffer)
@@ -878,12 +878,12 @@
   ;; Use (char-syntax (string-to-char "/")) to find character syntax class
   ;;
   ;; Don't set syntax class of ?/ to "." in clojure-mode -
-  ;; it breaks completion with corfu (try to complete `span/`)
+  ;; it breaks completion with corfu (try to complete `span/')
   ;;
   ;; Don't set syntax class of ?/ to "." in emacs-lisp-mode -
   ;; it increases default indentation of function bodies
   ((clojure-mode . (lambda ()
-                     ;; Allows to search for `bar` in `foo.bar` with *
+                     ;; Allows to search for `bar' in `foo.bar' with *
                      ;; (syntax for "." is set to "_" by clojure-mode)
                      (modify-syntax-entry ?. "." clojure-mode-syntax-table))))
 
@@ -1041,7 +1041,7 @@
   (completion-styles '(orderless basic))
   ;; https://github.com/minad/vertico/issues/237#issuecomment-1134000907
   ;;
-  ;; completions-first-difference face is used by `basic` completion style
+  ;; completions-first-difference face is used by `basic' completion style
   ;; but not by orderless: if this variable is nil, orderless is used for
   ;; all completion categories => completions-first-difference is not used
   (completion-category-overrides nil))
@@ -1162,57 +1162,23 @@
         ("C-x t p" . go-test-current-project)))
 
 (use-package alternate-file
-  :straight nil
+  :straight (alternate-file :type git :host github :repo "tap349/alternate-file")
   :after evil
   :init
-  (defun my/alternate-file-dir (file-path impl-dir test-dir)
-    (let ((file-dir (file-name-directory file-path)))
-      (if (or (string= impl-dir "{}") (string= test-dir "{}"))
-          file-dir
-        (let ((old-base-dir (cond ((string-prefix-p impl-dir file-dir) impl-dir)
-                                  ((string-prefix-p test-dir file-dir) test-dir)
-                                  (t (error "Can't find current base dir"))))
-              (new-base-dir (cond ((string-prefix-p impl-dir file-dir) test-dir)
-                                  ((string-prefix-p test-dir file-dir) impl-dir)
-                                  (t (error "Can't find alternate base dir")))))
-          (replace-regexp-in-string (concat "^" old-base-dir) new-base-dir file-dir)))))
-
-  (defun my/alternate-file-name (file-path test-suffix)
-    (let* ((file-name (file-name-nondirectory file-path))
-           (base-name (file-name-sans-extension file-name))
-           (ext (file-name-extension file-name)))
-      (if (string-suffix-p test-suffix base-name)
-          (concat (string-remove-suffix test-suffix base-name) "." ext)
-        (concat base-name test-suffix "." ext))))
-
-  (defun my/alternate-file-path (impl-dir test-dir test-suffix)
-    (let* ((root-dir (project-root (project-current)))
-           (file-path (file-relative-name buffer-file-name root-dir))
-           (alt-file-dir (my/alternate-file-dir file-path impl-dir test-dir))
-           (alt-file-name (my/alternate-file-name file-path test-suffix))
-           (alt-file-path (concat alt-file-dir alt-file-name)))
-      (expand-file-name alt-file-path root-dir)))
-
-  (defun my/find-alternate-file ()
-    (interactive)
-    (let ((mode-settings (alist-get major-mode alternate-file-settings)))
-      (or mode-settings (error "Major mode %s not supported" major-mode))
-      (find-file (apply #'my/alternate-file-path mode-settings))))
-
-  (defun my/find-alternate-file-vsplit ()
+  (defun my/af-find-alternate-file-vsplit ()
     (interactive)
     (my/evil-window-vsplit)
-    (my/find-alternate-file))
+    (af-find-alternate-file))
 
   :custom
-  (alternate-file-settings '((clojure-mode . ("src" "test" "_test"))
-                             (go-mode . ("{}" "{}" "_test"))
-                             (kotlin-mode . ("src/main" "src/test" "Test"))))
+  (af-settings '((clojure-mode . ("src" "test" "_test"))
+                 (go-mode . ("{}" "{}" "_test"))
+                 (kotlin-mode . ("src/main" "src/test" "Test"))))
 
   :bind
   (:map evil-normal-state-map
-        ("<leader>," . my/find-alternate-file)
-        ("<leader>v" . my/find-alternate-file-vsplit)))
+        ("<leader>," . af-find-alternate-file)
+        ("<leader>v" . my/af-find-alternate-file-vsplit)))
 
 (use-package vertico
   :straight t
@@ -1277,7 +1243,7 @@
   :custom-face
   ;; foreground is used, say, for tab marks
   ;;
-  ;; Use `:background unspecified` instead of `:background "white"`
+  ;; Use `:background unspecified' instead of `:background "white"'
   ;; to allow background of vertico-current to override it
   (whitespace-tab ((t (:background unspecified :foreground "#DDDDDD"))))
   (whitespace-trailing ((t (:background "#E3A8A8" :foreground "#C38888"))))
