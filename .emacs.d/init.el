@@ -92,7 +92,11 @@
 ;; - can be used for global-display-fill-column-indicator-mode
 ;; - can be used to get max line length in user functions
 (setq-default fill-column 80)
+
+(column-number-mode 1)
 (setq column-number-mode 1)
+
+(show-paren-mode 1)
 (setq show-paren-delay 0)
 
 (global-display-fill-column-indicator-mode 1)
@@ -816,10 +820,10 @@
     (minibufferp))
 
   :custom
-  (electric-pair-delete-adjacent-pairs t)
   (electric-pair-inhibit-predicate 'my/electric-pair-inhibit-predicate)
 
   :config
+  ;; Type "C-q (" if you don't want closing paren to be inserted
   (electric-pair-mode 1))
 
 (use-package evil-surround
