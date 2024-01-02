@@ -929,8 +929,10 @@
 (use-package files
   :straight (:type built-in)
   :init
-  (defun my/find-sibling-file-vsplit ()
-    (interactive)
+  (defun my/find-sibling-file-vsplit (file)
+    (interactive (list buffer-file-name))
+    (unless (find-sibling-file-search file)
+      (user-error "Couldn't find any sibling files"))
     (my/evil-window-vsplit)
     (call-interactively #'find-sibling-file))
 
