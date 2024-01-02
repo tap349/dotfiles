@@ -13,3 +13,5 @@ Brewfile.lock.json
 
 *~
 #*#
+
+.emacs.d/projects
