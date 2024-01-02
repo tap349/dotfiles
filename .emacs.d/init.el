@@ -926,6 +926,27 @@
         ("*" . evil-visualstar/begin-search-forward)
         ("z*" . my/asterisk-z-visual)))
 
+(use-package files
+  :straight (:type built-in)
+  :init
+  (defun my/find-sibling-file-vsplit ()
+    (interactive)
+    (my/evil-window-vsplit)
+    (call-interactively #'find-sibling-file))
+
+  :custom
+  (find-sibling-rules '(;; clojure-mode
+                        ("src/\\(.+\\)\\.clj\\'" "test/\\1_test\\.clj")
+                        ("test/\\(.+\\)_test\\.clj\\'" "src/\\1\\.clj")
+                        ;; go-mode
+                        ("\\([^/]+\\)_test\\.go\\'" "\\1\\.go")
+                        ("\\([^/]+\\)\\.go\\'" "\\1_test\\.go")))
+
+  :bind
+  (:map evil-normal-state-map
+        ("<leader>," . find-sibling-file)
+        ("<leader>v" . my/find-sibling-file-vsplit)))
+
 ;; - flymake-show-buffer-diagnostics (show all buffer errors)
 (use-package flymake
   :straight (:type built-in)
@@ -1164,25 +1185,6 @@
         ("C-x t t" . go-test-current-test)
         ("C-x t f" . go-test-current-file)
         ("C-x t p" . go-test-current-project)))
-
-(use-package alternate-file
-  :straight (alternate-file :type git :host github :repo "tap349/alternate-file")
-  :after evil
-  :init
-  (defun my/af-find-alternate-file-vsplit ()
-    (interactive)
-    (my/evil-window-vsplit)
-    (af-find-alternate-file))
-
-  :custom
-  (af-settings '((clojure-mode . ("src" "test" "_test"))
-                 (go-mode . ("{}" "{}" "_test"))
-                 (kotlin-mode . ("src/main" "src/test" "Test"))))
-
-  :bind
-  (:map evil-normal-state-map
-        ("<leader>," . af-find-alternate-file)
-        ("<leader>v" . my/af-find-alternate-file-vsplit)))
 
 (use-package vertico
   :straight t
