@@ -925,9 +925,9 @@
 (use-package ffap
   :straight (:type built-in)
   :after evil
-  :bind
-  (:map evil-normal-state-map
-        ("C-x C-f" . ffap)))
+  :config
+  ;; See ffap-bindings variable
+  (global-set-key [remap find-file] #'find-file-at-point))
 
 (use-package files
   :straight (:type built-in)
