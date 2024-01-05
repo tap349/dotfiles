@@ -924,13 +924,13 @@
 
 (use-package ffap
   :straight (:type built-in)
-  :after evil
   :config
   ;; See ffap-bindings variable
   (global-set-key [remap find-file] #'find-file-at-point))
 
 (use-package files
   :straight (:type built-in)
+  :after evil
   :init
   (defun my/find-sibling-file-vsplit (file)
     (interactive (list buffer-file-name))
