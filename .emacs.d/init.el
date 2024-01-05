@@ -502,9 +502,8 @@
   (setq evil-visual-state-message nil)
   (setq evil-replace-state-message nil)
 
-  ;; Use <V> tag for all types of visual state
-  ;; (characterwise, linewise and blockwise selection)
-  ;; so that text doesn't jump on evil state change
+  ;; Use <V> tag for all types of visual state (characterwise, linewise and
+  ;; blockwise selection) so that text doesn't jump on evil state change
   (setq evil-visual-state-tag " <V> ")
 
   :bind
