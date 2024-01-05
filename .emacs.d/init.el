@@ -699,8 +699,7 @@
         (setq beg (line-beginning-position) end (line-end-position)))
       (comment-or-uncomment-region beg end)))
 
-  ;; Bypass different checks and hooks in evil-normal-state and
-  ;; evil-exit-visual-state commands
+  ;; Bypass different checks and hooks in evil-normal-state command
   (defun my/evil-change-to-normal-state ()
     (interactive)
     (evil-change-state 'normal))
@@ -735,11 +734,6 @@
 
   ;; https://stackoverflow.com/a/23918497
   (evil-set-initial-state 'Buffer-menu-mode 'emacs)
-
-  ;; Keep cursor at the same point after exiting visual state (this property
-  ;; is already set for evil-exit-visual-state command but I don't use it to
-  ;; exit visual state)
-  (evil-add-command-properties 'my/evil-change-to-normal-state :keep-visual t)
 
   ;; Disable echo area messages on evil state change
   ;;
@@ -807,7 +801,10 @@
         ("<leader>t" . dired-jump))
 
   (:map evil-visual-state-map
-        ("C-c" . my/evil-change-to-normal-state)
+        ;; Use evil-exit-visual-state instead of my/evil-change-to-normal-state
+        ;; because it changes to previous state which is not always normal state
+        ;; (say, it can be motion state in help windows)
+        ("C-c" . evil-exit-visual-state)
         ("C-." . execute-extended-command)
 
         ("C-s" . sort-lines)
@@ -924,6 +921,13 @@
   (:map evil-visual-state-map
         ("*" . evil-visualstar/begin-search-forward)
         ("z*" . my/asterisk-z-visual)))
+
+(use-package ffap
+  :straight (:type built-in)
+  :after evil
+  :bind
+  (:map evil-normal-state-map
+        ("C-x C-f" . ffap)))
 
 (use-package files
   :straight (:type built-in)
