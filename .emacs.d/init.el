@@ -268,6 +268,13 @@
   :straight t
   :delight auto-revert-mode)
 
+(use-package avy
+  :straight t
+  :after evil
+  :bind
+  (:map evil-normal-state-map
+        ("<leader>w" . avy-goto-word-1)))
+
 (use-package consult
   :straight t
   :custom
@@ -298,291 +305,6 @@
    consult-ripgrep :group nil :preview-key '(:debounce 0.3 any) :prompt ""
    ;; mode line disappears when prompt is ""
    consult-xref :preview-key 'any :prompt "Filter: "))
-
-(use-package emacs
-  :straight (:type built-in)
-  :init
-  ;; https://github.com/minad/vertico#configuration
-  (defun my/setup-minibuffer-mode ()
-    (setq minibuffer-prompt-properties
-          '(cursor-intangible t face minibuffer-prompt read-only t)))
-
-  ;; First indent current line, then complete
-  (setq tab-always-indent 'complete)
-
-  :hook
-  ((minibuffer-setup . my/setup-minibuffer-mode)))
-
-(use-package embark
-  :straight t
-  :after evil
-  :init
-  (defun my/find-file-split (filename)
-    (my/evil-window-split)
-    (find-file filename))
-
-  (defun my/find-file-vsplit (filename)
-    (my/evil-window-vsplit)
-    (find-file filename))
-
-  (defun my/find-file-tab (filename)
-    (tab-bar-new-tab)
-    (find-file filename))
-
-  :custom
-  (embark-indicators '(embark--vertico-indicator
-                       embark-highlight-indicator
-                       embark-isearch-highlight-indicator))
-
-  :bind
-  (:map minibuffer-mode-map
-        ("C-u" . #'embark-act)
-        ("C-l" . #'embark-export))
-
-  (:map embark-file-map
-        ("C-s" . #'my/find-file-split)
-        ("C-v" . #'my/find-file-vsplit)
-        ("C-t" . #'my/find-file-tab)))
-
-(use-package embark-consult
-  :straight t
-  :after embark
-  :init
-  ;; See counsel-git-grep-action function in counsel.el
-  (defun my/find-occurence (input)
-    (when (string-match "\\`\\(.*?\\):\\([0-9]+\\):\\(.*\\)\\'" input)
-      ;; Disable messages temporarily because goto-line prints `Mark set'
-      (let* ((inhibit-message t)
-             (filename (match-string-no-properties 1 input))
-             (line-number (match-string-no-properties 2 input))
-             ;; Keep text properties because they will be used by
-             ;; consult--find-highlights to find highlighted regions
-             (line (match-string 3 input))
-             ;; consult--find-highlights returns list of lists with
-             ;; start and end positions of highlighted regions =>
-             ;; use start position of the first highlighted region
-             ;; (hence double car)
-             (col (car (car (consult--find-highlights line 0)))))
-        (find-file filename)
-        (goto-line (string-to-number line-number))
-        (move-to-column col))))
-
-  (defun my/find-occurence-split (input)
-    (my/evil-window-split)
-    (my/find-occurence input))
-
-  (defun my/find-occurence-vsplit (input)
-    (my/evil-window-vsplit)
-    (my/find-occurence input))
-
-  (defun my/find-occurence-tab (input)
-    (tab-bar-new-tab)
-    (my/find-occurence input))
-
-  ;; See how embark-consult-search-map is defined in embark-consult.el
-  (defvar-keymap my/embark-consult-ripgrep-map
-    :doc "Keymap for consult-ripgrep command"
-    :parent nil
-    "C-s" #'my/find-occurence-split
-    "C-v" #'my/find-occurence-vsplit
-    "C-t" #'my/find-occurence-tab)
-
-  ;; See embark--vertico-selected function in embark.el
-  ;;
-  ;; `consult-grep' completion category is set by Vertico for consult-ripgrep
-  ;; command (and friends) and used by Embark to determine the type of target
-  (add-to-list 'embark-keymap-alist '(consult-grep my/embark-consult-ripgrep-map))
-
-  :hook
-  (embark-collect-mode . consult-preview-at-point-mode))
-
-(use-package evil
-  :straight t
-  :demand t
-  :init
-  ;; https://emacs.stackexchange.com/a/41701
-  ;; Use Emacs keybindings in insert state
-  (setq evil-disable-insert-state-bindings t)
-  ;; https://stackoverflow.com/a/18851955
-  (setq evil-want-C-u-scroll t)
-  ;; Applies to shifting operators >> and <<
-  (setq evil-shift-width 2)
-  ;; https://github.com/emacs-evil/evil/issues/576
-  (setq evil-want-Y-yank-to-eol t)
-
-  ;; https://stackoverflow.com/a/14189981
-  (defun my/insert-newline-below ()
-    (interactive)
-    (end-of-line)
-    (newline))
-
-  (defun my/insert-newline-above ()
-    (interactive)
-    (beginning-of-line)
-    (open-line 1))
-
-  ;; https://emacs.stackexchange.com/a/72123/39266
-  (defun my/insert-whitespace ()
-    (interactive)
-    (insert " "))
-
-  ;; Continues comment on next line unlike evil-open-below
-  (defun my/evil-open-below ()
-    (interactive)
-    (evil-append-line 1)
-    (comment-indent-new-line))
-
-  (defun my/evil-window-split ()
-    (interactive)
-    (evil-window-split)
-    (other-window 1))
-
-  (defun my/evil-window-vsplit ()
-    (interactive)
-    (evil-window-vsplit)
-    (other-window 1))
-
-  ;; https://stackoverflow.com/a/9697222/3632318
-  (defun my/toggle-comment ()
-    (interactive)
-    (let (beg end)
-      (if (region-active-p)
-          (setq beg (region-beginning) end (region-end))
-        (setq beg (line-beginning-position) end (line-end-position)))
-      (comment-or-uncomment-region beg end)))
-
-  ;; Bypass different checks and hooks in evil-normal-state and
-  ;; evil-exit-visual-state commands
-  (defun my/evil-change-to-normal-state ()
-    (interactive)
-    (evil-change-state 'normal))
-
-  :custom
-  ;; Can be useful to distinguish between <E> and Vim-like states
-  (evil-mode-line-format '(after . mode-line-modified))
-
-  (evil-ex-search-case 'smart)
-  (evil-symbol-word-search t)
-
-  (evil-auto-balance-windows t)
-  (evil-visual-update-x-selection-p nil)
-
-  :config
-  (evil-mode 1)
-
-  ;; https://www.reddit.com/r/emacs/comments/n1pibp/comment/gwei7fw
-  (evil-set-undo-system 'undo-redo)
-
-  ;; https://www.reddit.com/r/emacs/comments/345by9
-  ;; https://emacs.stackexchange.com/a/58846/39266
-  ;; https://github.com/emacs-evil/evil/blob/master/evil-search.el#L672
-  ;;
-  ;; evil-search creates overlay to highlight search results with priority 1000
-  ;; which is higher than priority of region overlay (100) => highlighted search
-  ;; results are always on top of region selection
-  (evil-select-search-module 'evil-search-module 'evil-search)
-
-  (evil-set-leader 'normal (kbd ","))
-  (evil-set-leader 'visual (kbd ","))
-
-  ;; https://stackoverflow.com/a/23918497
-  (evil-set-initial-state 'Buffer-menu-mode 'emacs)
-
-  ;; Keep cursor at the same point after exiting visual state (this property
-  ;; is already set for evil-exit-visual-state command but I don't use it to
-  ;; exit visual state)
-  (evil-add-command-properties 'my/evil-change-to-normal-state :keep-visual t)
-
-  ;; Disable echo area messages on evil state change
-  ;;
-  ;; Customize variables here after evil package is loaded
-  ;; or else they'll be overriden with default values
-  (setq evil-insert-state-message nil)
-  (setq evil-normal-state-message nil)
-  (setq evil-visual-state-message nil)
-  (setq evil-replace-state-message nil)
-
-  ;; Use <V> tag for all types of visual state (characterwise, linewise and
-  ;; blockwise selection) so that text doesn't jump on evil state change
-  (setq evil-visual-state-tag " <V> ")
-
-  :bind
-  (:map evil-insert-state-map
-        ("C-c" . my/evil-change-to-normal-state)
-        ("RET" . comment-indent-new-line))
-
-  (:map evil-normal-state-map
-        ("C-c" . evil-ex-nohighlight)
-        ("C-." . execute-extended-command)
-
-        ("TAB" . save-buffer)
-        ("C-o" . evil-switch-to-windows-last-buffer)
-
-        ;; Should be faster than evil-next-line and evil-previous-line
-        ("j" . next-line)
-        ("k" . previous-line)
-
-        ("H" . evil-first-non-blank)
-        ("L" . evil-last-non-blank)
-
-        ("RET" . my/insert-newline-below)
-        ;; S-RET translates to just RET
-        ("S-<return>" . my/insert-newline-above)
-        ("SPC" . my/insert-whitespace)
-        ("o" . my/evil-open-below)
-
-        ("s-[" . evil-jump-backward)
-        ("s-]" . evil-jump-forward)
-
-        ("C-M-f" . evil-jump-item)
-        ("C-M-b" . evil-jump-item)
-
-        ("C-w C-s" . my/evil-window-split)
-        ("C-w s" . my/evil-window-split)
-        ("C-w C-v" . my/evil-window-vsplit)
-        ("C-w v" . my/evil-window-vsplit)
-
-        ("C-w C-l" . evil-window-right)
-        ("C-w C-h" . evil-window-left)
-        ("C-w C-k" . evil-window-up)
-        ("C-w C-j" . evil-window-down)
-        ("C-w x" . window-swap-states)
-
-        ("S-<right>" . evil-window-increase-width)
-        ("S-<left>" . evil-window-decrease-width)
-        ("S-<up>" . evil-window-increase-height)
-        ("S-<down>" . evil-window-decrease-height)
-
-        ("<backspace>" . evil-toggle-fold)
-        ("<leader>SPC" . my/toggle-comment)
-
-        ("<leader>t" . dired-jump))
-
-  (:map evil-visual-state-map
-        ("C-c" . my/evil-change-to-normal-state)
-        ("C-." . execute-extended-command)
-
-        ("C-s" . sort-lines)
-
-        ("H" . evil-first-non-blank)
-        ("L" . evil-last-non-blank))
-
-  (:map evil-replace-state-map
-        ("C-c" . my/evil-change-to-normal-state))
-
-  ;; https://github.com/noctuid/evil-guide#global-keybindings-and-evil-states
-  ;; > motion state is the default the state for help-mode
-  ;; > only keys bound in motion state will work in help-mode
-  (:map evil-motion-state-map
-        ("H" . evil-first-non-blank)
-        ("L" . evil-last-non-blank)))
-
-(use-package avy
-  :straight t
-  :after evil
-  :bind
-  (:map evil-normal-state-map
-        ("<leader>w" . avy-goto-word-1)))
 
 (use-package clojure-mode
   :straight t)
@@ -768,6 +490,103 @@
         ("s-b" . xref-find-references)
         ("s-B" . eglot-find-typeDefinition)))
 
+(use-package emacs
+  :straight (:type built-in)
+  :init
+  ;; https://github.com/minad/vertico#configuration
+  (defun my/setup-minibuffer-mode ()
+    (setq minibuffer-prompt-properties
+          '(cursor-intangible t face minibuffer-prompt read-only t)))
+
+  ;; First indent current line, then complete
+  (setq tab-always-indent 'complete)
+
+  :hook
+  ((minibuffer-setup . my/setup-minibuffer-mode)))
+
+(use-package embark
+  :straight t
+  :after evil
+  :init
+  (defun my/find-file-split (filename)
+    (my/evil-window-split)
+    (find-file filename))
+
+  (defun my/find-file-vsplit (filename)
+    (my/evil-window-vsplit)
+    (find-file filename))
+
+  (defun my/find-file-tab (filename)
+    (tab-bar-new-tab)
+    (find-file filename))
+
+  :custom
+  (embark-indicators '(embark--vertico-indicator
+                       embark-highlight-indicator
+                       embark-isearch-highlight-indicator))
+
+  :bind
+  (:map minibuffer-mode-map
+        ("C-u" . #'embark-act)
+        ("C-l" . #'embark-export))
+
+  (:map embark-file-map
+        ("C-s" . #'my/find-file-split)
+        ("C-v" . #'my/find-file-vsplit)
+        ("C-t" . #'my/find-file-tab)))
+
+(use-package embark-consult
+  :straight t
+  :after embark
+  :init
+  ;; See counsel-git-grep-action function in counsel.el
+  (defun my/find-occurence (input)
+    (when (string-match "\\`\\(.*?\\):\\([0-9]+\\):\\(.*\\)\\'" input)
+      ;; Disable messages temporarily because goto-line prints `Mark set'
+      (let* ((inhibit-message t)
+             (filename (match-string-no-properties 1 input))
+             (line-number (match-string-no-properties 2 input))
+             ;; Keep text properties because they will be used by
+             ;; consult--find-highlights to find highlighted regions
+             (line (match-string 3 input))
+             ;; consult--find-highlights returns list of lists with
+             ;; start and end positions of highlighted regions =>
+             ;; use start position of the first highlighted region
+             ;; (hence double car)
+             (col (car (car (consult--find-highlights line 0)))))
+        (find-file filename)
+        (goto-line (string-to-number line-number))
+        (move-to-column col))))
+
+  (defun my/find-occurence-split (input)
+    (my/evil-window-split)
+    (my/find-occurence input))
+
+  (defun my/find-occurence-vsplit (input)
+    (my/evil-window-vsplit)
+    (my/find-occurence input))
+
+  (defun my/find-occurence-tab (input)
+    (tab-bar-new-tab)
+    (my/find-occurence input))
+
+  ;; See how embark-consult-search-map is defined in embark-consult.el
+  (defvar-keymap my/embark-consult-ripgrep-map
+    :doc "Keymap for consult-ripgrep command"
+    :parent nil
+    "C-s" #'my/find-occurence-split
+    "C-v" #'my/find-occurence-vsplit
+    "C-t" #'my/find-occurence-tab)
+
+  ;; See embark--vertico-selected function in embark.el
+  ;;
+  ;; `consult-grep' completion category is set by Vertico for consult-ripgrep
+  ;; command (and friends) and used by Embark to determine the type of target
+  (add-to-list 'embark-keymap-alist '(consult-grep my/embark-consult-ripgrep-map))
+
+  :hook
+  (embark-collect-mode . consult-preview-at-point-mode))
+
 (use-package eldoc
   :straight (:type built-in)
   :delight eldoc-mode
@@ -824,6 +643,187 @@
   :config
   ;; Type "C-q (" if you don't want closing paren to be inserted
   (electric-pair-mode 1))
+
+(use-package evil
+  :straight t
+  :demand t
+  :init
+  ;; https://emacs.stackexchange.com/a/41701
+  ;; Use Emacs keybindings in insert state
+  (setq evil-disable-insert-state-bindings t)
+  ;; https://stackoverflow.com/a/18851955
+  (setq evil-want-C-u-scroll t)
+  ;; Applies to shifting operators >> and <<
+  (setq evil-shift-width 2)
+  ;; https://github.com/emacs-evil/evil/issues/576
+  (setq evil-want-Y-yank-to-eol t)
+
+  ;; https://stackoverflow.com/a/14189981
+  (defun my/insert-newline-below ()
+    (interactive)
+    (end-of-line)
+    (newline))
+
+  (defun my/insert-newline-above ()
+    (interactive)
+    (beginning-of-line)
+    (open-line 1))
+
+  ;; https://emacs.stackexchange.com/a/72123/39266
+  (defun my/insert-whitespace ()
+    (interactive)
+    (insert " "))
+
+  ;; Continues comment on next line unlike evil-open-below
+  (defun my/evil-open-below ()
+    (interactive)
+    (evil-append-line 1)
+    (comment-indent-new-line))
+
+  (defun my/evil-window-split ()
+    (interactive)
+    (evil-window-split)
+    (other-window 1))
+
+  (defun my/evil-window-vsplit ()
+    (interactive)
+    (evil-window-vsplit)
+    (other-window 1))
+
+  ;; https://stackoverflow.com/a/9697222/3632318
+  (defun my/toggle-comment ()
+    (interactive)
+    (let (beg end)
+      (if (region-active-p)
+          (setq beg (region-beginning) end (region-end))
+        (setq beg (line-beginning-position) end (line-end-position)))
+      (comment-or-uncomment-region beg end)))
+
+  ;; Bypass different checks and hooks in evil-normal-state and
+  ;; evil-exit-visual-state commands
+  (defun my/evil-change-to-normal-state ()
+    (interactive)
+    (evil-change-state 'normal))
+
+  :custom
+  ;; Can be useful to distinguish between <E> and Vim-like states
+  (evil-mode-line-format '(after . mode-line-modified))
+
+  (evil-ex-search-case 'smart)
+  (evil-symbol-word-search t)
+
+  (evil-auto-balance-windows t)
+  (evil-visual-update-x-selection-p nil)
+
+  :config
+  (evil-mode 1)
+
+  ;; https://www.reddit.com/r/emacs/comments/n1pibp/comment/gwei7fw
+  (evil-set-undo-system 'undo-redo)
+
+  ;; https://www.reddit.com/r/emacs/comments/345by9
+  ;; https://emacs.stackexchange.com/a/58846/39266
+  ;; https://github.com/emacs-evil/evil/blob/master/evil-search.el#L672
+  ;;
+  ;; evil-search creates overlay to highlight search results with priority 1000
+  ;; which is higher than priority of region overlay (100) => highlighted search
+  ;; results are always on top of region selection
+  (evil-select-search-module 'evil-search-module 'evil-search)
+
+  (evil-set-leader 'normal (kbd ","))
+  (evil-set-leader 'visual (kbd ","))
+
+  ;; https://stackoverflow.com/a/23918497
+  (evil-set-initial-state 'Buffer-menu-mode 'emacs)
+
+  ;; Keep cursor at the same point after exiting visual state (this property
+  ;; is already set for evil-exit-visual-state command but I don't use it to
+  ;; exit visual state)
+  (evil-add-command-properties 'my/evil-change-to-normal-state :keep-visual t)
+
+  ;; Disable echo area messages on evil state change
+  ;;
+  ;; Customize variables here after evil package is loaded
+  ;; or else they'll be overriden with default values
+  (setq evil-insert-state-message nil)
+  (setq evil-normal-state-message nil)
+  (setq evil-visual-state-message nil)
+  (setq evil-replace-state-message nil)
+
+  ;; Use <V> tag for all types of visual state (characterwise, linewise and
+  ;; blockwise selection) so that text doesn't jump on evil state change
+  (setq evil-visual-state-tag " <V> ")
+
+  :bind
+  (:map evil-insert-state-map
+        ("C-c" . my/evil-change-to-normal-state)
+        ("RET" . comment-indent-new-line))
+
+  (:map evil-normal-state-map
+        ("C-c" . evil-ex-nohighlight)
+        ("C-." . execute-extended-command)
+
+        ("TAB" . save-buffer)
+        ("C-o" . evil-switch-to-windows-last-buffer)
+
+        ;; Should be faster than evil-next-line and evil-previous-line
+        ("j" . next-line)
+        ("k" . previous-line)
+
+        ("H" . evil-first-non-blank)
+        ("L" . evil-last-non-blank)
+
+        ("RET" . my/insert-newline-below)
+        ;; S-RET translates to just RET
+        ("S-<return>" . my/insert-newline-above)
+        ("SPC" . my/insert-whitespace)
+        ("o" . my/evil-open-below)
+
+        ("s-[" . evil-jump-backward)
+        ("s-]" . evil-jump-forward)
+
+        ("C-M-f" . evil-jump-item)
+        ("C-M-b" . evil-jump-item)
+
+        ("C-w C-s" . my/evil-window-split)
+        ("C-w s" . my/evil-window-split)
+        ("C-w C-v" . my/evil-window-vsplit)
+        ("C-w v" . my/evil-window-vsplit)
+
+        ("C-w C-l" . evil-window-right)
+        ("C-w C-h" . evil-window-left)
+        ("C-w C-k" . evil-window-up)
+        ("C-w C-j" . evil-window-down)
+        ("C-w x" . window-swap-states)
+
+        ("S-<right>" . evil-window-increase-width)
+        ("S-<left>" . evil-window-decrease-width)
+        ("S-<up>" . evil-window-increase-height)
+        ("S-<down>" . evil-window-decrease-height)
+
+        ("<backspace>" . evil-toggle-fold)
+        ("<leader>SPC" . my/toggle-comment)
+
+        ("<leader>t" . dired-jump))
+
+  (:map evil-visual-state-map
+        ("C-c" . my/evil-change-to-normal-state)
+        ("C-." . execute-extended-command)
+
+        ("C-s" . sort-lines)
+
+        ("H" . evil-first-non-blank)
+        ("L" . evil-last-non-blank))
+
+  (:map evil-replace-state-map
+        ("C-c" . my/evil-change-to-normal-state))
+
+  ;; https://github.com/noctuid/evil-guide#global-keybindings-and-evil-states
+  ;; > motion state is the default the state for help-mode
+  ;; > only keys bound in motion state will work in help-mode
+  (:map evil-motion-state-map
+        ("H" . evil-first-non-blank)
+        ("L" . evil-last-non-blank)))
 
 (use-package evil-surround
   :straight t
