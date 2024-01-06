@@ -982,7 +982,6 @@
        t)
       (goto-char old-point))))
 
-;; hs-minor-mode can be enabled not in all major modes
 ;; Use evil-toggle-fold to toggle folding
 (use-package hideshow
   :straight (:type built-in)
