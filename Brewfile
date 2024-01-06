@@ -195,4 +195,5 @@ cask 'openlens'
 cask 'postman'
 #cask 'protonvpn'
 
+mas '1Password 7 - Password Manager', id: 1333542190
 mas 'WireGuard', id: 1451685025
