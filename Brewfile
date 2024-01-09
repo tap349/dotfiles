@@ -180,6 +180,8 @@ brew 'fd'
 brew 'fzf'
 brew 'gh'
 brew 'gradle'
+# for pprof
+brew 'graphviz'
 #brew 'hashicorp/tap/terraform'
 brew 'helm'
 #brew 'hubble'
