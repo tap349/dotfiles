@@ -1,0 +1,7 @@
+views:
+  v1/pods:
+    columns:
+      - NAME
+      - STATUS
+      - AGE
+      - RESTARTS
