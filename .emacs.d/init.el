@@ -1141,7 +1141,8 @@
     (tab-bar-move-tab 1))
 
   ;; Set tab group name to current project name on Emacs startup
-  (tab-bar-change-tab-group (project-name (project-current)))
+  (when (project-current)
+    (tab-bar-change-tab-group (project-name (project-current))))
 
   :custom
   (tab-bar-close-button-show nil)
