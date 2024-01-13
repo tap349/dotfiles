@@ -103,6 +103,14 @@ export ERL_AFLAGS='-kernel shell_history enabled'
 export GOPRIVATE=github.com/inDriver
 
 #-------------------------------------------------------------------------------
+# K9s
+#-------------------------------------------------------------------------------
+
+# By default, context configs are stored in ~/.local/share/k9s/clusters
+# (see `k9s info`)
+export K9S_CONFIG_DIR=$HOME/.config/k9s
+
+#-------------------------------------------------------------------------------
 # Source other files
 #-------------------------------------------------------------------------------
 

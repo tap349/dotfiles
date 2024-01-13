@@ -39,10 +39,7 @@ alias ka='cd ~/dev/indrive/k8s-applications'
 #-------------------------------------------------------------------------------
 
 alias df='df -h'
-# https://stackoverflow.com/a/30677813/3632318
-alias e='open -a Emacs --args --chdir $PWD "$@"'
 alias ll='ls -alp'
-alias m='mvim'
 alias mcu='mc -u'
 # See also https://github.com/occivink/mpv-image-viewer
 alias mvi='mpv --keep-open=yes'
@@ -52,22 +49,21 @@ alias ncdu='ncdu --color off'
 # (#i) - case-insensitive globbing
 # (Om) - sort by modification date (asc)
 alias q='open -Fn (#i)*.(jpeg|jpg|png)(Om)'
-alias tp='telepresence'
 alias ydl='youtube-dl'
 
 #-------------------------------------------------------------------------------
 # Dev
 #-------------------------------------------------------------------------------
 
-alias cr='cockroach start-single-node --insecure --http-port=26256 --host=localhost'
+alias cr='cockroach start-single-node --insecure --http-port=26257 --host=localhost'
 alias d='docker'
+# https://stackoverflow.com/a/30677813/3632318
+alias e='open -a Emacs --args --chdir $PWD "$@"'
 alias k='kubectl'
-
-#-------------------------------------------------------------------------------
-# Clojure
-#-------------------------------------------------------------------------------
-
+alias ks='k9s'
+alias m='mvim'
 alias rc='clj -M:defaults:dev:repl'
+alias tp='telepresence'
 
 #-------------------------------------------------------------------------------
 # Git

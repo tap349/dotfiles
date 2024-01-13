@@ -8,10 +8,10 @@ k9s:
   ui:
     enableMouse: false
     headless: false
-    logoless: false
+    logoless: true
     crumbsless: false
     reactive: false
-    noIcons: false
+    noIcons: true
     skin: black-and-wtf
   skipLatestRevCheck: false
   disablePodCounting: false
@@ -31,8 +31,8 @@ k9s:
     buffer: 5000
     sinceSeconds: -1
     fullScreen: false
-    textWrap: false
-    showTime: false
+    textWrap: true
+    showTime: true
   thresholds:
     cpu:
       critical: 90
