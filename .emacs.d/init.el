@@ -1122,7 +1122,7 @@
      (concat " " (alist-get 'name tab) " ")
      'face (funcall tab-bar-tab-face-function tab)))
 
-  (defun my/tab-bar-group-name ()
+  (defun my/tab-bar-current-tab-group ()
     (let* ((tabs (funcall tab-bar-tabs-function))
            (current-tab (tab-bar--current-tab-find tabs))
            (current-group (funcall tab-bar-tab-group-function current-tab))
@@ -1130,7 +1130,7 @@
            (current-group (string-replace "dev-platform-" "" current-group)))
       (propertize
        (concat " " current-group " ")
-       'face 'my/tab-bar-tab-group-current)))
+       'face 'my/tab-bar-current-tab-group)))
 
   (defun my/tab-bar-move-tab-left ()
     (interactive)
@@ -1140,16 +1140,25 @@
     (interactive)
     (tab-bar-move-tab 1))
 
-  ;; Set tab group name to current project name on Emacs startup
-  (when (project-current)
-    (tab-bar-change-tab-group (project-name (project-current))))
+  ;; When switching to another project with `project-switch-project',
+  ;; tab group of current tab is updated by project-tab-groups
+  (defun my/tab-bar-update-tab-group ()
+    (when (project-current)
+      (tab-bar-change-tab-group (project-name (project-current)))))
+
+  (defun my/jump-to-register-advice (register &optional _delete)
+    (when (eq (car (get-register register)) 'file)
+      (my/tab-bar-update-tab-group)))
+
+  ;; Update tab group of current tab on Emacs startup
+  (my/tab-bar-update-tab-group)
 
   :custom
   (tab-bar-close-button-show nil)
   (tab-bar-format '(tab-bar-format-tabs
                     tab-bar-separator
                     tab-bar-format-align-right
-                    my/tab-bar-group-name))
+                    my/tab-bar-current-tab-group))
   (tab-bar-new-tab-choice t)
   ;; ZWSP is used to prevent last tab from filling all available space
   (tab-bar-separator "​")
@@ -1161,12 +1170,14 @@
   (tab-bar-tab ((t (:background "#D0D4D8"))))
   (tab-bar-tab-inactive ((t (:background "#E4E4E8"))))
 
-  (my/tab-bar-tab-group-current
+  (my/tab-bar-current-tab-group
    ((t (:background "#FCFCDF" :box (:color "#D5D5BD" :style nil)))))
 
   :config
   ;; http://www.gonsie.com/blorg/tab-bar.html
   (tab-bar-mode 1)
+
+  (advice-add 'jump-to-register :after #'my/jump-to-register-advice)
 
   :bind
   (("s-{" . tab-bar-switch-to-prev-tab)
