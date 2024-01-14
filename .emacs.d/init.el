@@ -1141,7 +1141,7 @@
     (tab-bar-move-tab 1))
 
   ;; When switching to another project with `project-switch-project',
-  ;; tab group of current tab is updated by project-tab-groups
+  ;; tab group of current tab is updated by `project-tab-groups' package
   (defun my/tab-bar-update-tab-group ()
     (when (project-current)
       (tab-bar-change-tab-group (project-name (project-current)))))
