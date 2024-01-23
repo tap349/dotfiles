@@ -618,14 +618,13 @@
   (eldoc-box-max-pixel-width 700)
 
   :custom-face
-  (eldoc-box-body ((t (:background "#F5F5F7"))))
+  (eldoc-box-body ((t (:background "#F6F6F8"))))
   (eldoc-box-border ((t (:background "#C5C5C7"))))
   ;; (eldoc-box-body ((t (:background "#F9F9F5"))))
   ;; (eldoc-box-border ((t (:background "#C9C9C5"))))
 
   :config
-  ;; C-c runs evil-ex-nohighlight in normal state
-  (advice-add 'evil-ex-nohighlight :after #'eldoc-box-quit-frame)
+  (advice-add 'keyboard-quit :before #'eldoc-box-quit-frame)
 
   :bind
   (:map evil-normal-state-map
