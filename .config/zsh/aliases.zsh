@@ -14,7 +14,6 @@
 alias blog='cd ~/blog'
 alias dot='cd ~/.dotfiles'
 
-alias dpas='cd ~/dev/indrive/dev-platform-access-service'
 alias dpb='cd ~/dev/indrive/dev-platform-backup'
 alias dpc='cd ~/dev/indrive/dev-platform-catalog'
 alias dpcc='cd ~/dev/indrive/dev-platform-clojure-common'
@@ -25,14 +24,8 @@ alias dpis='cd ~/dev/indrive/dev-platform-infrastructure'
 alias dpmr='cd ~/dev/indrive/dev-platform-mysql-runner'
 alias dpn='cd ~/dev/indrive/dev-platform-namespace'
 alias dpnt='cd ~/dev/indrive/dev-platform-notifier'
-alias dpp='cd ~/dev/indrive/dev-platform-pipeline'
 alias dpr='cd ~/dev/indrive/dev-platform-runner'
-alias dpse='cd ~/dev/indrive/dev-platform-secrets'
-alias dpst='cd ~/dev/indrive/dev-platform-status'
-alias dpt='cd ~/dev/indrive/dev-platform-template'
-alias dptr='cd ~/dev/indrive/dev-platform-trigger'
 alias dpus='cd ~/dev/indrive/dev-platform-user-service'
-alias ka='cd ~/dev/indrive/k8s-applications'
 
 #-------------------------------------------------------------------------------
 # System
@@ -60,6 +53,7 @@ alias d='docker'
 # https://stackoverflow.com/a/30677813/3632318
 alias e='open -a Emacs --args --chdir $PWD "$@"'
 alias k='kubectl'
+alias kctx='kubectx'
 alias ks='k9s'
 alias m='mvim'
 alias rc='clj -M:defaults:dev:repl'
