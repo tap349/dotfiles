@@ -139,6 +139,7 @@ mas 'Ghostery Lite', id: 1436953057
 #mas 'Jira Cloud by Atlassian', id: 1475897096
 #mas 'Marked 2', id: 890031187
 #mas 'Microsoft Remote Desktop', id: 715768417
+mas 'Microsoft To Do', id: 1274495053
 # - Preferences:
 #   - General:
 #     - After upload:
