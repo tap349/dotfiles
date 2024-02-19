@@ -89,6 +89,7 @@ editor_state_full_filename=false
 safe_overwrite=false
 
 shadows=true
+shell_directory_timeout=900
 
 [Layout]
 message_visible=false

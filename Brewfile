@@ -11,9 +11,8 @@
 # when corresponding commands (`brew bundle` or `brew services`) are run
 #-------------------------------------------------------------------------------
 
-# Remove formula with its unused dependencies:
-# `brew rmtree mpv`
 tap 'beeftornado/rmtree'
+tap 'clojure-lsp/brew'
 tap 'homebrew/cask'
 tap 'homebrew/cask-fonts'
 tap 'homebrew/cask-versions'
@@ -160,7 +159,7 @@ mas 'Telegram Desktop', id: 946399090
 # LSP
 #-------------------------------------------------------------------------------
 
-brew 'clojure-lsp'
+brew 'clojure-lsp-native'
 # https://golangci-lint.run/usage/install/#macos
 # > brew can use a non-expected version of Go to build the binary
 # => there was error when I upgraded golang from 1.20.3 to 1.21.1
