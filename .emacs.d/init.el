@@ -1074,6 +1074,11 @@
   ;; all completion categories => completions-first-difference is not used
   (completion-category-overrides nil))
 
+(use-package org
+  :straight (:type built-in)
+  :config
+  (evil-set-initial-state 'org-mode 'emacs))
+
 (use-package project
   ;; Built-in package since Emacs 26
   ;; C-x p keymap is available since Emacs 28
