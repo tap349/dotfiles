@@ -7,7 +7,7 @@
 - Make new keys dead keys if they are not yet (dead keys are read in Ukelele).
   It might be necessary to do it one key at a time and then reopen Ukelele
 
-## Remove standard English layout
+## How to remove standard English layout
 
 - https://lupin3000.github.io/macOS/defaults/
 - https://gist.github.com/rizo/7124151
