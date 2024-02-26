@@ -51,6 +51,7 @@ alias ydl='youtube-dl'
 
 alias cr='cockroach start-single-node --insecure --http-port=26257 --host=localhost'
 alias d='docker'
+alias dc='docker-compose'
 # https://stackoverflow.com/a/30677813/3632318
 alias e='open -a Emacs --args --chdir $PWD "$@"'
 alias k='kubectl'
