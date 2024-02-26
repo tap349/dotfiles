@@ -184,7 +184,6 @@ brew 'ncdu'
 brew 'colima'
 brew 'docker'
 brew 'docker-compose'
-brew 'docker-credential-helper'
 
 #cask 'drawio'
 cask 'emacs-app-good'
