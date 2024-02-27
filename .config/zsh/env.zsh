@@ -30,21 +30,13 @@ setopt EXTENDED_GLOB
 
 # removes duplicate entries from PATH
 typeset -U path
-path=($HOME/scripts $path)
 # Homebrew creates symlinks in
 # - /usr/local/bin/ for Intel
 # - /opt/homebrew/bin/ for Apple Silicon
-path=(/usr/local/bin /opt/homebrew/bin $path)
-# > `brew info libpq`
-# >
-# > libpq is keg-only, which means it was not symlinked into /usr/local,
-# > because conflicts with postgres formula.
-path=(/opt/homebrew/opt/libpq/bin $path)
-path=($HOME/soft/google-cloud-sdk/bin $path)
-path=(/Library/Java/JavaVirtualMachines/graalvm-ce-java19-22.3.0/Contents/Home/bin $path)
+path=(/sbin /usr/local/bin /opt/homebrew/bin $path)
 path=($HOME/bin $path)
-path=(/opt/homebrew/bin $path)
-path=(/opt/homebrew/sbin $path)
+path=($HOME/scripts $path)
+path=($HOME/soft/google-cloud-sdk/bin $path)
 
 #-------------------------------------------------------------------------------
 # Prompt
