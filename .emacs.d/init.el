@@ -643,6 +643,7 @@
   ;; Type "C-q (" if you don't want closing paren to be inserted
   (electric-pair-mode 1))
 
+;; Use "\" (evil-execute-in-emacs-state) to access C-c prefix map
 (use-package evil
   :straight t
   :demand t
@@ -749,11 +750,11 @@
 
   :bind
   (:map evil-insert-state-map
-        ("<escape>" . my/evil-change-to-normal-state)
+        ("C-c" . my/evil-change-to-normal-state)
         ("RET" . comment-indent-new-line))
 
   (:map evil-normal-state-map
-        ("<escape>" . evil-ex-nohighlight)
+        ("C-c" . evil-ex-nohighlight)
         ("C-." . execute-extended-command)
 
         ("TAB" . save-buffer)
@@ -800,7 +801,7 @@
         ("<leader>t" . dired-jump))
 
   (:map evil-visual-state-map
-        ("<escape>" . evil-exit-visual-state)
+        ("C-c" . evil-exit-visual-state)
         ("C-." . execute-extended-command)
 
         ("C-s" . sort-lines)
@@ -809,7 +810,7 @@
         ("L" . evil-last-non-blank))
 
   (:map evil-replace-state-map
-        ("<escape>" . my/evil-change-to-normal-state))
+        ("C-c" . my/evil-change-to-normal-state))
 
   ;; https://github.com/noctuid/evil-guide#global-keybindings-and-evil-states
   ;; > motion state is the default the state for help-mode
