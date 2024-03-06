@@ -749,11 +749,11 @@
 
   :bind
   (:map evil-insert-state-map
-        ("C-c" . my/evil-change-to-normal-state)
+        ("<escape>" . my/evil-change-to-normal-state)
         ("RET" . comment-indent-new-line))
 
   (:map evil-normal-state-map
-        ("C-c" . evil-ex-nohighlight)
+        ("<escape>" . evil-ex-nohighlight)
         ("C-." . execute-extended-command)
 
         ("TAB" . save-buffer)
@@ -800,10 +800,7 @@
         ("<leader>t" . dired-jump))
 
   (:map evil-visual-state-map
-        ;; Use evil-exit-visual-state instead of my/evil-change-to-normal-state
-        ;; because it changes to previous state which is not always normal state
-        ;; (say, it can be motion state in help windows)
-        ("C-c" . evil-exit-visual-state)
+        ("<escape>" . evil-exit-visual-state)
         ("C-." . execute-extended-command)
 
         ("C-s" . sort-lines)
@@ -812,7 +809,7 @@
         ("L" . evil-last-non-blank))
 
   (:map evil-replace-state-map
-        ("C-c" . my/evil-change-to-normal-state))
+        ("<escape>" . my/evil-change-to-normal-state))
 
   ;; https://github.com/noctuid/evil-guide#global-keybindings-and-evil-states
   ;; > motion state is the default the state for help-mode
