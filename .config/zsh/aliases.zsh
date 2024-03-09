@@ -54,7 +54,7 @@ alias dc='docker-compose'
 # https://stackoverflow.com/a/30677813/3632318
 alias e='open -a Emacs --args --chdir $PWD "$@"'
 alias k='kubectl'
-alias kctx='kubectx'
+alias kx='kubectx'
 alias ks='k9s'
 alias m='mvim'
 alias rc='clj -M:defaults:dev:repl'
