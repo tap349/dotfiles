@@ -37,6 +37,8 @@ path=(/sbin /usr/local/bin /opt/homebrew/bin $path)
 path=($HOME/bin $path)
 path=($HOME/scripts $path)
 path=($HOME/soft/google-cloud-sdk/bin $path)
+path=(/opt/homebrew/bin $path)
+path=(/opt/homebrew/sbin $path)
 
 #-------------------------------------------------------------------------------
 # Prompt

@@ -60,7 +60,7 @@ brew 'tokei'
 brew 'tree'
 brew 'wget'
 brew 'yarn'
-brew 'youtube-dl'
+brew 'yt-dlp'
 # Make it a login shell: `chsh -s /bin/zsh` (all available shells are listed
 # in /etc/shells, current shell can be printed with `echo $0` command)
 brew 'zsh'
