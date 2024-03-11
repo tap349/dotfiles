@@ -36,9 +36,13 @@ typeset -U path
 path=(/sbin /usr/local/bin /opt/homebrew/bin $path)
 path=($HOME/bin $path)
 path=($HOME/scripts $path)
-path=($HOME/soft/google-cloud-sdk/bin $path)
 path=(/opt/homebrew/bin $path)
 path=(/opt/homebrew/sbin $path)
+
+# brew info google-cloud-sdk
+# Otherwise executables of installed components are not found in PATH
+# (for example gke-gcloud-auth-plugin)
+source "$(brew --prefix)/share/google-cloud-sdk/path.zsh.inc"
 
 #-------------------------------------------------------------------------------
 # Prompt

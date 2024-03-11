@@ -172,6 +172,7 @@ brew 'cockroach-sql'
 brew 'fd'
 brew 'fzf'
 brew 'gh'
+brew 'google-cloud-sdk'
 brew 'gradle'
 # for pprof
 brew 'graphviz'
