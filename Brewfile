@@ -190,7 +190,6 @@ brew 'docker-compose'
 
 #cask 'drawio'
 cask 'emacs-app-good'
-cask 'flutter'
 cask 'intellij-idea'
 cask 'openlens'
 cask 'postman'
