@@ -14,6 +14,7 @@
 alias blog='cd ~/blog'
 alias dot='cd ~/.dotfiles'
 
+alias dpa='cd ~/dev/indrive/dev-platform-access'
 alias dpb='cd ~/dev/indrive/dev-platform-backup'
 alias dpc='cd ~/dev/indrive/dev-platform-catalog'
 alias dpcc='cd ~/dev/indrive/dev-platform-clojure-common'
