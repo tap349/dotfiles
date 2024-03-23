@@ -38,6 +38,8 @@ path=($HOME/bin $path)
 path=($HOME/scripts $path)
 path=(/opt/homebrew/bin $path)
 path=(/opt/homebrew/sbin $path)
+# Dart cache
+path=($HOME/.pub-cache/bin $path)
 
 # brew info google-cloud-sdk
 # Otherwise executables of installed components are not found in PATH
