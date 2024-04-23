@@ -26,6 +26,7 @@ alias dpis='cd ~/dev/indrive/dev-platform-infrastructure'
 alias dpmr='cd ~/dev/indrive/dev-platform-mysql-runner'
 alias dpn='cd ~/dev/indrive/dev-platform-namespace'
 alias dpnt='cd ~/dev/indrive/dev-platform-notifier'
+alias dpqg='cd ~/dev/indrive/dev-platform-quality-gates'
 alias dpr='cd ~/dev/indrive/dev-platform-runner'
 alias dpus='cd ~/dev/indrive/dev-platform-user-service'
 
@@ -51,7 +52,7 @@ alias ydl='youtube-dl'
 #-------------------------------------------------------------------------------
 
 alias d='docker'
-alias dc='docker-compose'
+alias dc='docker compose'
 # https://stackoverflow.com/a/30677813/3632318
 alias e='open -a Emacs --args --chdir $PWD "$@"'
 alias k='kubectl'
