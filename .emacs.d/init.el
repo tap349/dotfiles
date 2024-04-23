@@ -482,13 +482,15 @@
         ("s-l = =" . eglot-format-buffer)
         ("s-l a a" . eglot-code-actions)
         ("s-l g g" . xref-find-definitions)
+        ("s-l g i" . eglot-find-implementation)
         ("s-l g r" . xref-find-references)
         ("s-l g t" . eglot-find-typeDefinition)
         ("s-l r o" . eglot-code-action-organize-imports)
         ("s-l r r" . eglot-rename)
         ;; Default keybindings in IntelliJ IDEA
         ("s-b" . xref-find-references)
-        ("s-B" . eglot-find-typeDefinition)))
+        ("s-B" . eglot-find-typeDefinition)
+        ("s-M-b" . eglot-find-implementation)))
 
 (use-package emacs
   :straight (:type built-in)
