@@ -113,6 +113,10 @@
 
 (setq mode-line-percent-position nil)
 
+(set-face-attribute 'mode-line
+                    nil
+                    :box '(:color "#AEAEAE" :line-width -1 :style flat-button))
+
 ;; https://www.emacswiki.org/emacs/wcMode
 (defun my/mode-line-region-info ()
   (propertize
@@ -1171,11 +1175,11 @@
 
   :custom-face
   (tab-bar ((t (:background "#F7F7FE"))))
-  (tab-bar-tab ((t (:background "#D0D4D8"))))
+  (tab-bar-tab ((t (:background "#D0D4D8" :box (:color "#B0B4B8" :style nil)))))
   (tab-bar-tab-inactive ((t (:background "#E4E4E8"))))
 
   (my/tab-bar-current-tab-group
-   ((t (:background "#FCFCDF" :box (:color "#D5D5BD" :style nil)))))
+   ((t (:background "#FCFCDF" :box (:color "#E5E59D" :style nil)))))
 
   :config
   ;; http://www.gonsie.com/blorg/tab-bar.html
