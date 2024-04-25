@@ -115,8 +115,8 @@
 
 (set-face-attribute 'mode-line
                     nil
-                    :background "#C4C4CB"
-                    :box '(:color "#8E8E8E" :line-width -1 :style flat-button))
+                    :background "#C3C3CA"
+                    :box '(:color "#8F8F92" :line-width -1 :style flat-button))
 
 ;; https://www.emacswiki.org/emacs/wcMode
 (defun my/mode-line-region-info ()
