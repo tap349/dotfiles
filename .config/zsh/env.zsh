@@ -33,7 +33,7 @@ typeset -U path
 # Homebrew creates symlinks in
 # - /usr/local/bin/ for Intel
 # - /opt/homebrew/bin/ for Apple Silicon
-path=(/sbin /usr/local/bin /opt/homebrew/bin $path)
+path=(/sbin /usr/local/bin /usr/sbin /opt/homebrew/bin $path)
 path=($HOME/bin $path)
 path=($HOME/scripts $path)
 path=(/opt/homebrew/bin $path)

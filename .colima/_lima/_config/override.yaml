@@ -1,12 +1,12 @@
 # https://github.com/abiosoft/colima/issues/83#issuecomment-1339269542
 mountType: 9p
 mounts:
-  - location: "/Users/tap"
+  - location: /Users/tap
     writable: true
     9p:
       securityModel: mapped-xattr
       cache: mmap
-  - location: "~"
+  - location: ~
     writable: true
     9p:
       securityModel: mapped-xattr
