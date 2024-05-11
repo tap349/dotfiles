@@ -1081,7 +1081,10 @@
   (completion-category-overrides nil))
 
 (use-package org
-  :straight (:type built-in))
+  :straight (:type built-in)
+  :after verb
+  :config
+  (define-key org-mode-map (kbd "C-c C-r") verb-command-map))
 
 (use-package project
   ;; Built-in package since Emacs 26
@@ -1209,6 +1212,11 @@
         ("C-x t t" . go-test-current-test)
         ("C-x t f" . go-test-current-file)
         ("C-x t p" . go-test-current-project)))
+
+(use-package verb
+  :straight t
+  :custom
+  (verb-auto-kill-response-buffers t))
 
 (use-package vertico
   :straight t
