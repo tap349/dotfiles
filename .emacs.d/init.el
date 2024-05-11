@@ -712,6 +712,8 @@
     (evil-change-state 'normal))
 
   :custom
+  (evil-default-state 'emacs)
+
   ;; Can be useful to distinguish between <E> and Vim-like states
   (evil-mode-line-format '(after . mode-line-modified))
 
@@ -723,6 +725,7 @@
 
   :config
   (evil-mode 1)
+  (evil-set-initial-state 'prog-mode 'normal)
 
   ;; https://www.reddit.com/r/emacs/comments/n1pibp/comment/gwei7fw
   (evil-set-undo-system 'undo-redo)
@@ -738,9 +741,6 @@
 
   (evil-set-leader 'normal (kbd ","))
   (evil-set-leader 'visual (kbd ","))
-
-  ;; https://stackoverflow.com/a/23918497
-  (evil-set-initial-state 'Buffer-menu-mode 'emacs)
 
   ;; Disable echo area messages on evil state change
   ;;
@@ -960,8 +960,9 @@
 (use-package flymake
   :straight (:type built-in)
   :bind
-  (("M-]" . flymake-goto-next-error)
-   ("M-[" . flymake-goto-prev-error)))
+  (:map prog-mode-map
+        ("M-]" . flymake-goto-next-error)
+        ("M-[" . flymake-goto-prev-error)))
 
 (use-package go-mode
   :straight t
@@ -1080,9 +1081,7 @@
   (completion-category-overrides nil))
 
 (use-package org
-  :straight (:type built-in)
-  :config
-  (evil-set-initial-state 'org-mode 'emacs))
+  :straight (:type built-in))
 
 (use-package project
   ;; Built-in package since Emacs 26
@@ -1250,6 +1249,14 @@
                             (consult-flymake t)))
         ("<leader>/" . consult-ripgrep)
         ("C-s" . consult-line)))
+
+(use-package view
+  :straight (:type built-in)
+  :bind
+  ;; https://www.emacswiki.org/emacs/HalfScrolling
+  (:map global-map
+        ("C-v" . #'View-scroll-half-page-forward)
+        ("M-v" . #'View-scroll-half-page-backward)))
 
 (use-package whitespace
   :straight (:type built-in)
