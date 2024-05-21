@@ -712,7 +712,7 @@
     (evil-change-state 'normal))
 
   :custom
-  (evil-default-state 'emacs)
+  (evil-default-state 'normal)
 
   ;; Can be useful to distinguish between <E> and Vim-like states
   (evil-mode-line-format '(after . mode-line-modified))
@@ -725,7 +725,10 @@
 
   :config
   (evil-mode 1)
-  (evil-set-initial-state 'prog-mode 'normal)
+
+  (evil-set-initial-state 'magit-mode 'emacs)
+  (evil-set-initial-state 'org-mode 'emacs)
+  (evil-set-initial-state 'verb-mode 'emacs)
 
   ;; https://www.reddit.com/r/emacs/comments/n1pibp/comment/gwei7fw
   (evil-set-undo-system 'undo-redo)
