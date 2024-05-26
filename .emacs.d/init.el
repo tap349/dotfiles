@@ -727,7 +727,7 @@
   (evil-mode 1)
 
   (evil-set-initial-state 'magit-mode 'emacs)
-  (evil-set-initial-state 'org-mode 'emacs)
+  ;; (evil-set-initial-state 'org-mode 'emacs)
   ;; (evil-set-initial-state 'verb-mode 'emacs)
 
   ;; https://www.reddit.com/r/emacs/comments/n1pibp/comment/gwei7fw
