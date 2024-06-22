@@ -188,7 +188,7 @@ brew 'docker-buildx'
 brew 'docker-compose'
 
 #cask 'drawio'
-cask 'emacs-app-good'
+cask 'emacs-app-monthly'
 cask 'google-cloud-sdk'
 cask 'intellij-idea'
 cask 'microsoft-edge'
