@@ -1269,6 +1269,12 @@
         ("C-v" . #'View-scroll-half-page-forward)
         ("M-v" . #'View-scroll-half-page-backward)))
 
+;; - "C-x v l" - view current file's history
+;;   - "n" or "p" - to move between commits
+;;   - "f" - visit file as of commit at point
+(use-package vc
+  :straight (:type built-in))
+
 (use-package whitespace
   :straight (:type built-in)
   :delight
