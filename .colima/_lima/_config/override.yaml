@@ -6,11 +6,6 @@ mounts:
     9p:
       securityModel: mapped-xattr
       cache: mmap
-  - location: ~
-    writable: true
-    9p:
-      securityModel: mapped-xattr
-      cache: mmap
   - location: /tmp/colima
     writable: true
     9p:
