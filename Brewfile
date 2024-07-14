@@ -86,7 +86,6 @@ cask 'font-inconsolata-lgc'
 cask 'goldendict'
 cask 'google-chrome'
 cask 'gopanda'
-cask 'httpie'
 cask 'iterm2'
 cask 'macfuse'
 cask 'mpv'
@@ -103,6 +102,7 @@ cask 'transmission'
 #cask 'virtualbox-extension-pack'
 # `Download failed` error
 #cask 'whatsapp'
+cask 'yaak'
 cask 'zoom'
 
 #-------------------------------------------------------------------------------
