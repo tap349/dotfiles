@@ -85,10 +85,6 @@ git_log() {
 dp_name() {
   local RESULT=
 
-  if [[ "$2" == "dpas" ]]; then
-    RESULT="dev-platform-access-service"
-  fi
-
   if [[ "$2" == "dpb" ]]; then
     RESULT="dev-platform-backup"
   fi
@@ -158,7 +154,6 @@ kpf() {
   # Kill all kubectl processes on Ctrl-C
   trap "pkill kubectl" SIGINT
 
-  kubectl port-forward service/access-service-db-public -n platform 26260:26257 &
   kubectl port-forward service/catalog-db-public -n platform 26261:26257 &
   kubectl port-forward service/namespace-db-public -n platform 26262:26257 &
   kubectl port-forward service/user-service-db-public -n platform 26263:26257 &
