@@ -1168,7 +1168,7 @@
   (my/tab-bar-update-tab-group)
 
   :custom
-  (tab-bar-auto-width-max '((180) 20))
+  (tab-bar-auto-width-max '((170) 20))
   (tab-bar-close-button-show nil)
   (tab-bar-format '(tab-bar-format-tabs
                     tab-bar-separator
