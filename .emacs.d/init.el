@@ -835,6 +835,8 @@
   :config
   (global-evil-surround-mode 1))
 
+;; TODO: create package for searching with offset.
+;;
 ;; See also evil-symbol-word-search variable
 ;; See https://emacs.stackexchange.com/a/76430 for alternative implementation
 (use-package evil-visualstar
@@ -935,6 +937,7 @@
   ;; See ffap-bindings variable
   (global-set-key [remap find-file] #'find-file-at-point))
 
+;; TODO: add functionality to create missing sibling file.
 (use-package files
   :straight (:type built-in)
   :after evil
