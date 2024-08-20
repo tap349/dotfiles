@@ -298,7 +298,6 @@
     -not ( -path ./docker/* -prune ) \
     -not ( -path ./target/* -prune ) \
     -not ( -path ./main -prune )")
-  (consult-preview-key "C-l")
 
   :custom-face
   (consult-file ((t (:foreground "#777777"))))
@@ -535,7 +534,7 @@
   :bind
   (:map minibuffer-mode-map
         ("C-u" . #'embark-act)
-        ("C-l" . #'embark-export))
+        ("C-e" . #'embark-export))
 
   (:map embark-file-map
         ("C-s" . #'my/find-file-split)
@@ -1337,11 +1336,8 @@
 
   :bind
   ;; These keybindings have effect only in default xref buffer
+  ;; (say, Embark Export buffer)
   (:map xref--xref-buffer-mode-map
-        ;; Same as consult-preview-key
-        ("C-l" . xref-show-location-at-point)
-        ;; ("o" . xref-goto-xref)
-        ([return] . xref-quit-and-goto-xref)
         ("q" . xref-quit-and-pop-marker-stack)))
 
 (use-package yaml-mode
