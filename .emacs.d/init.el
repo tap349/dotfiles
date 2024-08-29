@@ -449,6 +449,7 @@
    (go-mode . my/eglot-go-mode-add-hooks)
    (kotlin-mode . eglot-ensure)
    (kotlin-mode . my/eglot-kotlin-mode-add-hooks)
+   (lua-mode . eglot-ensure)
    (python-mode . eglot-ensure))
 
   :custom
@@ -534,7 +535,7 @@
   :bind
   (:map minibuffer-mode-map
         ("C-u" . #'embark-act)
-        ("C-e" . #'embark-export))
+        ("C-l" . #'embark-export))
 
   (:map embark-file-map
         ("C-s" . #'my/find-file-split)

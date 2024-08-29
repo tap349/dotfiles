@@ -158,6 +158,7 @@ brew 'clojure-lsp-native'
 # => there was error when I upgraded golang from 1.20.3 to 1.21.1
 #brew 'golangci-lint'
 brew 'gopls'
+brew 'lua-language-server'
 
 #-------------------------------------------------------------------------------
 # inDrive
