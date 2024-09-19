@@ -397,7 +397,6 @@
 ;;
 ;; - clojure-mode => clojure-lsp
 ;; - go-mode => gopls
-;; - kotlin-mode => kotlin-language-server
 ;;
 ;; - eglot-events-buffer (show Eglot logs)
 (use-package eglot
@@ -432,13 +431,6 @@
     (add-hook 'before-save-hook 'eglot-format-buffer -10 t)
     (add-hook 'before-save-hook 'my/eglot-organize-imports -5 t))
 
-  ;; NOTE: ktfmt style is very different from IntelliJ IDEA coding conventions
-  ;; and kotlin-mode indentation rules (the latter is more important for me)
-  (defun my/eglot-kotlin-mode-add-hooks ()
-    ;; Calls ktfmt on current buffer
-    ;; See eglot-format function implementation for options
-    (add-hook 'before-save-hook 'eglot-format-buffer -10 t))
-
   ;; NOTE: currently not used because I need to figure out how to set
   ;; indentation width to 4 for yapf (it's 8 by default)
   (defun my/eglot-python-mode-add-hooks ()
@@ -452,17 +444,12 @@
    (elixir-mode . my/eglot-elixir-mode-add-hooks)
    (go-mode . eglot-ensure)
    (go-mode . my/eglot-go-mode-add-hooks)
-   (kotlin-mode . eglot-ensure)
-   (kotlin-mode . my/eglot-kotlin-mode-add-hooks)
    (lua-mode . eglot-ensure)
    (python-mode . eglot-ensure))
 
   :custom
   (eglot-autoshutdown t)
   (eglot-confirm-server-initiated-edits nil)
-  ;; [kotlin-language-server] It might take a lot of time to resolve all
-  ;; dependencies when there are no caches in ~/.gradle/caches
-  (eglot-connect-timeout 300)
   ;; Disable events buffer for performance reasons
   (eglot-events-buffer-size 0)
   ;; https://github.com/joaotavora/eglot/issues/334
@@ -479,11 +466,6 @@
                              (staticcheck . t)))
                   ;; https://github.com/python-lsp/python-lsp-server/blob/develop/CONFIGURATION.md
                   (:pylsp . (:plugins (:yapf (:enabled t))))))
-
-  (add-to-list 'eglot-server-programs
-               '(kotlin-mode . ("kotlin-language-server"
-                                :initializationOptions
-                                (:kotlin (:compiler (:jvm (:target "1.8")))))))
 
   (add-to-list 'eglot-server-programs
                '(elixir-mode "/opt/homebrew/Cellar/elixir-ls/0.23.0/libexec/language_server.sh"))
@@ -1019,26 +1001,6 @@
 
 (use-package json-mode
   :straight t)
-
-(use-package kotlin-mode
-  :straight t
-  :init
-  (defun my/setup-kotlin-mode ()
-    ;; For kotlin-language-server
-    (setq-local tab-width 4))
-
-  :hook
-  ((kotlin-mode . my/setup-kotlin-mode))
-
-  :bind
-  ;; Unset default keybindings - REPL integration provided
-  ;; by kotlin-mode is not very useful
-  (:map kotlin-mode-map
-        ("C-c C-z" . nil)
-        ("C-c C-n" . nil)
-        ("C-c C-r" . nil)
-        ("C-c C-c" . nil)
-        ("C-c C-b" . nil)))
 
 (use-package lua-mode
   :straight t
