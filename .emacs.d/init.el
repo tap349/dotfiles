@@ -293,7 +293,6 @@
     -not ( -path ./.cpcache/* -prune ) \
     -not ( -path ./.elixir_ls/* -prune ) \
     -not ( -path ./.git/* -prune ) \
-    -not ( -path ./.gradle/* -prune ) \
     -not ( -path ./.idea/* -prune ) \
     -not ( -path ./_build/* -prune ) \
     -not ( -path ./build/* -prune ) \
