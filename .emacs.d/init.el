@@ -393,11 +393,6 @@
   :config
   (add-to-list 'auto-mode-alist '("Dockerfile" . dockerfile-mode)))
 
-;; Eglot automatically finds LSP server binaries in PATH:
-;;
-;; - clojure-mode => clojure-lsp
-;; - go-mode => gopls
-;;
 ;; - eglot-events-buffer (show Eglot logs)
 (use-package eglot
   ;; Built-in package since Emacs 29
@@ -407,43 +402,29 @@
   (defun my/setup-eglot-managed-mode ()
     (setq-local eldoc-documentation-functions '(flymake-eldoc-function)))
 
+  ;; https://github.com/joaotavora/eglot/issues/574#issuecomment-1401023985
   (defun my/eglot-organize-imports ()
-    ;; https://github.com/joaotavora/eglot/issues/574#issuecomment-1401023985
     (eglot-code-actions nil nil "source.organizeImports" t))
-
-  (defun my/eglot-clojure-mode-add-hooks ()
-    ;; Calls cljfmt on current buffer
-    (add-hook 'before-save-hook 'eglot-format-buffer -10 t))
-
-  (defun my/eglot-elixir-mode-add-hooks ()
-    (add-hook 'before-save-hook 'eglot-format-buffer -10 t))
 
   ;; NOTE: if any hook returns error, subsequent hooks are not executed
   ;;
   ;; For example my/eglot-organize-imports returns error when there is
   ;; nothing to import => make sure it comes last (using DEPTH parameter)
-  (defun my/eglot-go-mode-add-hooks ()
+  (defun my/eglot-add-hooks ()
     ;; https://github.com/golang/tools/blob/master/gopls/doc/emacs.md#loading-eglot-in-emacs
     ;; > The depth of -10 places this before eglot's willSave notification,
     ;; > so that that notification reports the actual contents that will be saved.
-    ;;
-    ;; Calls gofmt on current buffer
     (add-hook 'before-save-hook 'eglot-format-buffer -10 t)
-    (add-hook 'before-save-hook 'my/eglot-organize-imports -5 t))
-
-  ;; NOTE: currently not used because I need to figure out how to set
-  ;; indentation width to 4 for yapf (it's 8 by default)
-  (defun my/eglot-python-mode-add-hooks ()
-    (add-hook 'before-save-hook 'eglot-format-buffer -10 t))
+    (add-hook 'before-save-hook #'my/eglot-organize-imports -5 t))
 
   :hook
   ((eglot-managed-mode . my/setup-eglot-managed-mode)
    (clojure-mode . eglot-ensure)
-   (clojure-mode . my/eglot-clojure-mode-add-hooks)
+   (clojure-mode . my/eglot-add-hooks)
    (elixir-mode . eglot-ensure)
-   (elixir-mode . my/eglot-elixir-mode-add-hooks)
+   (elixir-mode . my/eglot-add-hooks)
    (go-mode . eglot-ensure)
-   (go-mode . my/eglot-go-mode-add-hooks)
+   (go-mode . my/eglot-add-hooks)
    (lua-mode . eglot-ensure)
    (python-mode . eglot-ensure))
 
@@ -637,7 +618,7 @@
     (minibufferp))
 
   :custom
-  (electric-pair-inhibit-predicate 'my/electric-pair-inhibit-predicate)
+  (electric-pair-inhibit-predicate #'my/electric-pair-inhibit-predicate)
 
   :config
   ;; Type "C-q (" if you don't want closing paren to be inserted
@@ -1120,7 +1101,7 @@
            (current-group (string-replace "dev-platform-" "" current-group)))
       (propertize
        (concat " " current-group " ")
-       'face 'my/tab-bar-current-tab-group)))
+       'face #'my/tab-bar-current-tab-group)))
 
   (defun my/tab-bar-move-tab-left ()
     (interactive)
@@ -1154,7 +1135,7 @@
   ;; ZWSP is used to prevent last tab from filling all available space
   (tab-bar-separator "​")
 
-  (tab-bar-tab-name-format-function 'my/tab-bar-tab-name-format-function)
+  (tab-bar-tab-name-format-function #'my/tab-bar-tab-name-format-function)
 
   :custom-face
   (tab-bar ((t (:background "#F7F7FE"))))
