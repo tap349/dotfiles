@@ -416,6 +416,9 @@
     ;; Calls cljfmt on current buffer
     (add-hook 'before-save-hook 'eglot-format-buffer -10 t))
 
+  (defun my/eglot-elixir-mode-add-hooks ()
+    (add-hook 'before-save-hook 'eglot-format-buffer -10 t))
+
   ;; NOTE: if any hook returns error, subsequent hooks are not executed
   ;;
   ;; For example my/eglot-organize-imports returns error when there is
@@ -445,6 +448,8 @@
   ((eglot-managed-mode . my/setup-eglot-managed-mode)
    (clojure-mode . eglot-ensure)
    (clojure-mode . my/eglot-clojure-mode-add-hooks)
+   (elixir-mode . eglot-ensure)
+   (elixir-mode . my/eglot-elixir-mode-add-hooks)
    (go-mode . eglot-ensure)
    (go-mode . my/eglot-go-mode-add-hooks)
    (kotlin-mode . eglot-ensure)
@@ -480,6 +485,9 @@
                                 :initializationOptions
                                 (:kotlin (:compiler (:jvm (:target "1.8")))))))
 
+  (add-to-list 'eglot-server-programs
+               '(elixir-mode "/opt/homebrew/Cellar/elixir-ls/0.23.0/libexec/language_server.sh"))
+
   :bind
   (:map eglot-mode-map
         ;; https://emacs-lsp.github.io/lsp-mode/page/keybindings/
@@ -496,6 +504,9 @@
         ("s-b" . xref-find-references)
         ("s-B" . eglot-find-typeDefinition)
         ("s-M-b" . eglot-find-implementation)))
+
+(use-package elixir-mode
+  :straight t)
 
 (use-package emacs
   :straight (:type built-in)
