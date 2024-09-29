@@ -80,6 +80,7 @@ cask_args appdir: '/Applications'
 # `Download failed` error
 #cask 'adobe-air'
 cask 'anki'
+cask 'chatgpt'
 cask 'flux'
 # For iTerm2
 cask 'font-inconsolata-lgc'
