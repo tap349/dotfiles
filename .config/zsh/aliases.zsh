@@ -11,24 +11,7 @@
 # cd
 #-------------------------------------------------------------------------------
 
-alias blog='cd ~/blog'
 alias dot='cd ~/.dotfiles'
-
-alias dpa='cd ~/dev/indrive/dev-platform-access'
-alias dpb='cd ~/dev/indrive/dev-platform-backup'
-alias dpc='cd ~/dev/indrive/dev-platform-catalog'
-alias dpcc='cd ~/dev/indrive/dev-platform-clojure-common'
-alias dpd='cd ~/dev/indrive/dev-platform-deployment'
-alias dpg='cd ~/dev/indrive/dev-platform-gateway'
-alias dpgc='cd ~/dev/indrive/dev-platform-go-common'
-alias dpi='cd ~/dev/indrive/dev-platform-installer'
-alias dpis='cd ~/dev/indrive/dev-platform-infrastructure'
-alias dpmr='cd ~/dev/indrive/dev-platform-mysql-runner'
-alias dpn='cd ~/dev/indrive/dev-platform-namespace'
-alias dpnt='cd ~/dev/indrive/dev-platform-notifier'
-alias dpqg='cd ~/dev/indrive/dev-platform-quality-gates'
-alias dpr='cd ~/dev/indrive/dev-platform-runner'
-alias dpus='cd ~/dev/indrive/dev-platform-user-service'
 
 #-------------------------------------------------------------------------------
 # System
@@ -82,3 +65,24 @@ alias gs='git status'
 #-------------------------------------------------------------------------------
 
 alias pali='open -n ~/docs/Pali/ГРАММАТИКА\ ([2-9]|10)\ *'
+
+#-------------------------------------------------------------------------------
+# inDrive
+#-------------------------------------------------------------------------------
+
+alias dpa='cd ~/dev/indrive/dev-platform-access'
+alias dpb='cd ~/dev/indrive/dev-platform-backup'
+alias dpc='cd ~/dev/indrive/dev-platform-catalog'
+alias dpcc='cd ~/dev/indrive/dev-platform-clojure-common'
+alias dpd='cd ~/dev/indrive/dev-platform-deployment'
+alias dpg='cd ~/dev/indrive/dev-platform-gateway'
+alias dpgc='cd ~/dev/indrive/dev-platform-go-common'
+alias dpi='cd ~/dev/indrive/dev-platform-installer'
+alias dpis='cd ~/dev/indrive/dev-platform-infrastructure'
+alias dpmr='cd ~/dev/indrive/dev-platform-mysql-runner'
+alias dpn='cd ~/dev/indrive/dev-platform-namespace'
+alias dpnt='cd ~/dev/indrive/dev-platform-notifier'
+alias dpqg='cd ~/dev/indrive/dev-platform-quality-gates'
+alias dpr='cd ~/dev/indrive/dev-platform-runner'
+
+alias sso='aws sso login --profile devplatform_team-531211996670 && aws sso login --profile inDriveAdministratorAccess-627723547655'
