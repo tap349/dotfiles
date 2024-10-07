@@ -162,6 +162,18 @@
 (set-face-foreground 'fill-column-indicator "#DEE4EF")
 (set-face-foreground 'vertical-border "#D8D8DE")
 
+;; Bright green #3FFF9C also looks good
+(defface vim-isearch
+  '((((class color) (min-colors 89))
+     (:background "#FFFF9C" :foreground "black" :weight bold)))
+  "Face for highlighting search results like in Vim.")
+
+;; These faces already inherit from aircon-vim-isearch face in
+;; aircon theme but I want to make these customizations global
+(set-face-attribute 'isearch nil :inherit 'vim-isearch)
+(set-face-attribute 'lazy-highlight nil :inherit 'vim-isearch)
+(set-face-attribute 'match nil :inherit 'vim-isearch)
+
 ;;-----------------------------------------------------------------------------
 ;;
 ;; Editing
