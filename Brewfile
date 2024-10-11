@@ -181,6 +181,7 @@ brew 'helm'
 brew 'ipcalc'
 brew 'k9s'
 brew 'kubectx'
+brew 'mongosh'
 brew 'ncdu'
 
 brew 'colima'
