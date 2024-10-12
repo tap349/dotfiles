@@ -168,6 +168,7 @@ brew 'lua-language-server'
 #-------------------------------------------------------------------------------
 
 tap 'jimeh/emacs-builds'
+tap 'mongodb/brew'
 
 brew 'bfg'
 brew 'cockroach-sql'
@@ -181,7 +182,7 @@ brew 'helm'
 brew 'ipcalc'
 brew 'k9s'
 brew 'kubectx'
-brew 'mongosh'
+brew 'mongodb-database-tools'
 brew 'ncdu'
 
 brew 'colima'
