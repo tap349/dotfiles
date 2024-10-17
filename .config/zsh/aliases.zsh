@@ -17,6 +17,7 @@ alias dot='cd ~/.dotfiles'
 # System
 #-------------------------------------------------------------------------------
 
+alias colima='colima start -m 10 -d 100'
 alias df='df -h'
 alias ll='ls -alp'
 alias mcu='mc -u'
