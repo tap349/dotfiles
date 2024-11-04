@@ -310,6 +310,7 @@
     -not ( -path ./build/* -prune ) \
     -not ( -path ./docker/* -prune ) \
     -not ( -path ./target/* -prune ) \
+    -not ( -path ./venv/* -prune ) \
     -not ( -path ./main -prune )")
 
   :custom-face
@@ -1243,7 +1244,8 @@
         ("C-v" . #'View-scroll-half-page-forward)
         ("M-v" . #'View-scroll-half-page-backward)))
 
-;; - "C-x v l" - view current file's history
+;; - "C-x v g" - git blame
+;; - "C-x v l" - git log of current file
 ;;   - "n" or "p" - to move between commits
 ;;   - "f" - visit file as of commit at point
 (use-package vc
