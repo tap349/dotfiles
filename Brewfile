@@ -193,7 +193,6 @@ brew 'docker'
 brew 'docker-buildx'
 brew 'docker-compose'
 
-cask 'clickhouse'
 #cask 'drawio'
 cask 'emacs-app-monthly'
 cask 'figma'
