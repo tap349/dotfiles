@@ -1060,8 +1060,22 @@
 (use-package org
   :straight (:type built-in)
   :after verb
+
+  :custom
+  (org-adapt-indentation t)
+  ;; (org-hide-emphasis-markers t)
+
+  :custom-face
+  (org-level-1 ((t (:font "Microsoft Sans Serif" :height 1.5))))
+  (org-level-3 ((t (:weight medium))))
+
   :config
   (define-key org-mode-map (kbd "C-c C-r") verb-command-map))
+
+(use-package org-superstar
+  :straight t
+  :hook
+  ((org-mode . org-superstar-mode)))
 
 (use-package project
   ;; Built-in package since Emacs 26
