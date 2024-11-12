@@ -1066,7 +1066,7 @@
   ;; (org-hide-emphasis-markers t)
 
   :custom-face
-  (org-level-1 ((t (:font "Microsoft Sans Serif" :height 1.5))))
+  (org-level-1 ((t (:font "Microsoft Sans Serif" :height 1.3))))
   (org-level-3 ((t (:weight medium))))
 
   :config
