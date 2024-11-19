@@ -68,7 +68,7 @@ git_commit() {
 
 # Current branch is prefixed with '*' in `git branch` output
 git_branch_delete() {
-  git branch | grep -v -E '(master|develop|\*)' | xargs git branch -d
+  git branch | grep -v -E '(main|master|develop|\*)' | xargs git branch -d
 }
 
 git_log() {
