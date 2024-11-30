@@ -1195,6 +1195,9 @@
 (use-package gotest
   :straight t
   :after go-mode
+  :custom
+  (go-test-args "-v")
+
   :custom-face
   (go-test--ok-face ((t (:background "#77FF77" :foreground "#000000"))))
   (go-test--standard-face ((t (:background "#F2F2FA" :foreground "#000000"))))
