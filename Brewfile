@@ -182,6 +182,7 @@ brew 'helm'
 brew 'ipcalc'
 brew 'k9s'
 brew 'kubectx'
+brew 'maccy'
 brew 'mongodb-database-tools'
 brew 'ncdu'
 
