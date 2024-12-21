@@ -1261,8 +1261,9 @@
         ("C-v" . #'View-scroll-half-page-forward)
         ("M-v" . #'View-scroll-half-page-backward)))
 
-;; - "C-x v g" - git blame
-;; - "C-x v l" - git log of current file
+;; - "C-x v g" - git blame (vc-annotate)
+;; - "C-x v l" - git log of current file (vc-print-log)
+;; - "C-x v h" - git log of current region with diff (vc-region-history)
 ;;   - "n" or "p" - to move between commits
 ;;   - "f" - visit file as of commit at point
 (use-package vc
