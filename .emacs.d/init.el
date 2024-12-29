@@ -357,6 +357,12 @@
         ([backtab] . corfu-previous)
         ([return] . corfu-complete)))
 
+(use-package diff-hl
+  :straight t
+
+  :config
+  (global-diff-hl-mode))
+
 ;; - "(" - dired-hide-details-mode
 ;; - "C-p" - remove autosuggestion when renaming file
 (use-package dired
@@ -1264,6 +1270,9 @@
 ;; - "C-x v g" - git blame (vc-annotate)
 ;; - "C-x v l" - git log of current file (vc-print-log)
 ;; - "C-x v h" - git log of current region with diff (vc-region-history)
+;; - "C-x v =" - git diff for current file (vc-diff)
+;;
+;; Common navigation keybindings:
 ;;   - "n" or "p" - to move between commits
 ;;   - "f" - visit file as of commit at point
 (use-package vc
