@@ -461,6 +461,8 @@
   :config
   ;; https://github.com/emacs-lsp/lsp-mode/tree/master/clients
   ;; https://github.com/shuxiao9058/poly-emacs/blob/main/programming.org
+  ;;
+  ;; As you see below it's possible to combine map and list syntax
   (setq-default eglot-workspace-configuration
                 ;; https://github.com/golang/tools/blob/master/gopls/doc/emacs.md#configuring-gopls-via-eglot
                 '((:gopls . (
