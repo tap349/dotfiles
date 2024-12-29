@@ -459,14 +459,19 @@
   (eglot-ignored-server-capabilities '(:documentHighlightProvider))
 
   :config
-  ;; https://github.com/golang/tools/blob/master/gopls/doc/emacs.md#configuring-gopls-via-eglot
-  ;; See all server settings in https://github.com/emacs-lsp/lsp-mode/tree/master/clients
+  ;; https://github.com/emacs-lsp/lsp-mode/tree/master/clients
+  ;; https://github.com/shuxiao9058/poly-emacs/blob/main/programming.org
   (setq-default eglot-workspace-configuration
-                '((:gopls . ((gofumpt . t)
-                             (matcher . "CaseSensitive")
-                             (staticcheck . t)))
+                ;; https://github.com/golang/tools/blob/master/gopls/doc/emacs.md#configuring-gopls-via-eglot
+                '((:gopls . (
+                             :gofumpt t
+                             :matcher "CaseSensitive"
+                             :staticcheck t
+                             :analyses (:ST1005 :json-false)))
                   ;; https://github.com/python-lsp/python-lsp-server/blob/develop/CONFIGURATION.md
-                  (:pylsp . (:plugins (:yapf (:enabled t))))))
+                  (:pylsp . (
+                             :plugins (:yapf (:enabled t))
+                             ))))
 
   (add-to-list 'eglot-server-programs
                '(elixir-mode "/opt/homebrew/Cellar/elixir-ls/0.23.0/libexec/language_server.sh"))
