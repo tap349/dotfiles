@@ -358,7 +358,9 @@
         ([return] . corfu-complete)))
 
 (use-package diff-hl
-  :straight t)
+  :straight t
+  :config
+  (global-diff-hl-mode))
 
 ;; - "(" - dired-hide-details-mode
 ;; - "C-p" - remove autosuggestion when renaming file
