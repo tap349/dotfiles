@@ -271,7 +271,7 @@
 (use-package delight
   :straight t)
 
-;; Enablc gcmh-mode first to decrease Emacs startup time
+;; Enable gcmh-mode first to decrease Emacs startup time
 (use-package gcmh
   :straight t
   :delight gcmh-mode
