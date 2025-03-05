@@ -155,10 +155,11 @@ mas 'Telegram Desktop', id: 946399090
 #-------------------------------------------------------------------------------
 
 brew 'clojure-lsp-native'
+# dart has built-in language server `dart language-server`
 brew 'elixir-ls'
 # https://golangci-lint.run/usage/install/#macos
 # > brew can use a non-expected version of Go to build the binary
-# => there was error when I upgraded golang from 1.20.3 to 1.21.1
+# => there was an error when I upgraded golang from 1.20.3 to 1.21.1
 #brew 'golangci-lint'
 brew 'gopls'
 brew 'lua-language-server'

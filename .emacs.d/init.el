@@ -357,6 +357,9 @@
         ([backtab] . corfu-previous)
         ([return] . corfu-complete)))
 
+(use-package dart-mode
+  :straight t)
+
 ;; (use-package diff-hl
 ;;   :straight t
 ;;   :config
@@ -440,6 +443,8 @@
   ((eglot-managed-mode . my/setup-eglot-managed-mode)
    (clojure-mode . eglot-ensure)
    (clojure-mode . my/eglot-add-hooks)
+   (dart-mode . eglot-ensure)
+   (dart-mode . my/eglot-add-hooks)
    (elixir-mode . eglot-ensure)
    (elixir-mode . my/eglot-add-hooks)
    (go-mode . eglot-ensure)
