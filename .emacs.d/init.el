@@ -480,7 +480,7 @@
                              ))))
 
   (add-to-list 'eglot-server-programs
-               '(elixir-mode "/opt/homebrew/Cellar/elixir-ls/0.23.0/libexec/language_server.sh"))
+               '(elixir-mode "/opt/homebrew/Cellar/elixir-ls/0.27.1/libexec/language_server.sh"))
 
   :bind
   (:map eglot-mode-map
