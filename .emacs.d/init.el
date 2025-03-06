@@ -460,7 +460,9 @@
   ;; https://github.com/joaotavora/eglot/issues/334
   ;; :documentHighlightProvider - highlight variable at point
   ;; :hoverProvider - fetch docs from LSP server (don't disable)
-  (eglot-ignored-server-capabilities '(:documentHighlightProvider))
+  ;; :inlayHintProvider - show inlay hints about variable types
+  (eglot-ignored-server-capabilities '(:documentHighlightProvider
+                                       :inlayHintProvider))
 
   :config
   ;; https://github.com/emacs-lsp/lsp-mode/tree/master/clients
