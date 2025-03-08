@@ -168,12 +168,14 @@ brew 'lua-language-server'
 # inDrive
 #-------------------------------------------------------------------------------
 
+tap 'aws/tap'
 tap 'jimeh/emacs-builds'
 tap 'mongodb/brew'
 tap 'telepresenceio/telepresence'
 
 brew 'bfg'
 brew 'cockroach-sql'
+brew 'eks-node-viewer'
 brew 'fd'
 brew 'fzf'
 brew 'gh'
