@@ -19,7 +19,7 @@ alias dot='cd ~/.dotfiles'
 
 alias colima='colima start -m 10 -d 100'
 alias df='df -h'
-alias ll='ls -alp'
+alias ll='ls -alph'
 alias mcu='mc -u'
 # See also https://github.com/occivink/mpv-image-viewer
 alias mvi='mpv --keep-open=yes'
