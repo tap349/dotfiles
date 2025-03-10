@@ -167,7 +167,6 @@ brew 'lua-language-server'
 
 tap 'aws/tap'
 tap 'jimeh/emacs-builds'
-tap 'mongodb/brew'
 tap 'telepresenceio/telepresence'
 
 brew 'bfg'
@@ -183,7 +182,6 @@ brew 'helm'
 brew 'ipcalc'
 brew 'k9s'
 brew 'kubectx'
-brew 'mongodb-database-tools'
 brew 'ncdu'
 brew 'telepresence-oss'
 
