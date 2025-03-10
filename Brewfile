@@ -12,7 +12,6 @@
 #-------------------------------------------------------------------------------
 
 tap 'beeftornado/rmtree'
-tap 'clojure-lsp/brew'
 tap 'homebrew/cask'
 tap 'homebrew/cask-fonts'
 tap 'homebrew/cask-versions'
@@ -154,7 +153,6 @@ mas 'Telegram Desktop', id: 946399090
 # LSP
 #-------------------------------------------------------------------------------
 
-brew 'clojure-lsp-native'
 # dart has built-in language server `dart language-server`
 # https://golangci-lint.run/usage/install/#macos
 # > brew can use a non-expected version of Go to build the binary
