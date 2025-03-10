@@ -303,7 +303,6 @@
    "find . -type f \
     -not ( -path ./.clj-kondo/* -prune ) \
     -not ( -path ./.cpcache/* -prune ) \
-    -not ( -path ./.elixir_ls/* -prune ) \
     -not ( -path ./.git/* -prune ) \
     -not ( -path ./.idea/* -prune ) \
     -not ( -path ./_build/* -prune ) \
@@ -445,8 +444,6 @@
    (clojure-mode . my/eglot-add-hooks)
    (dart-mode . eglot-ensure)
    (dart-mode . my/eglot-add-hooks)
-   (elixir-mode . eglot-ensure)
-   (elixir-mode . my/eglot-add-hooks)
    (go-mode . eglot-ensure)
    (go-mode . my/eglot-add-hooks)
    (lua-mode . eglot-ensure)
@@ -481,9 +478,6 @@
                              :plugins (:yapf (:enabled t))
                              ))))
 
-  (add-to-list 'eglot-server-programs
-               '(elixir-mode "/opt/homebrew/Cellar/elixir-ls/0.27.1/libexec/language_server.sh"))
-
   :bind
   (:map eglot-mode-map
         ;; https://emacs-lsp.github.io/lsp-mode/page/keybindings/
@@ -500,9 +494,6 @@
         ("s-b" . xref-find-references)
         ("s-B" . eglot-find-typeDefinition)
         ("s-M-b" . eglot-find-implementation)))
-
-(use-package elixir-mode
-  :straight t)
 
 (use-package emacs
   :straight (:type built-in)
@@ -960,9 +951,6 @@
   (find-sibling-rules '(;; clojure-mode
                         ("src/\\(.+\\)\\.clj\\'" "test/\\1_test\\.clj")
                         ("test/\\(.+\\)_test\\.clj\\'" "src/\\1\\.clj")
-                        ;; elixir-mode
-                        ("lib/\\(.+\\)\\.ex\\'" "test/\\1_test\\.exs")
-                        ("test/\\(.+\\)_test\\.exs\\'" "lib/\\1\\.ex")
                         ;; go-mode
                         ("\\([^/]+\\)_test\\.go\\'" "\\1\\.go")
                         ("\\([^/]+\\)\\.go\\'" "\\1_test\\.go")))
