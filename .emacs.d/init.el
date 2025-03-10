@@ -1053,6 +1053,7 @@
   :hook
   ((org-mode . org-superstar-mode)))
 
+;; - "C-x p r" - replace string in project (project-query-replace-regexp)
 (use-package project
   ;; Built-in package since Emacs 26
   ;; C-x p keymap is available since Emacs 28
