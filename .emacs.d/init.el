@@ -441,8 +441,7 @@
    (dart-mode . my/eglot-add-hooks)
    (go-mode . eglot-ensure)
    (go-mode . my/eglot-add-hooks)
-   (lua-mode . eglot-ensure)
-   (python-mode . eglot-ensure))
+   (lua-mode . eglot-ensure))
 
   :custom
   (eglot-autoshutdown t)
@@ -467,11 +466,7 @@
                              :gofumpt t
                              :matcher "CaseSensitive"
                              :staticcheck t
-                             :analyses (:ST1005 :json-false)))
-                  ;; https://github.com/python-lsp/python-lsp-server/blob/develop/CONFIGURATION.md
-                  (:pylsp . (
-                             :plugins (:yapf (:enabled t))
-                             ))))
+                             :analyses (:ST1005 :json-false)))))
 
   :bind
   (:map eglot-mode-map
@@ -1079,14 +1074,6 @@
   :straight t
   :config
   (project-tab-groups-mode 1))
-
-(use-package python
-  :straight (:type built-in)
-  :custom
-  (python-indent-offset 4)
-
-  :config
-  (setq python-indent-guess-indent-offset nil))
 
 (use-package rainbow-delimiters
   :straight t
