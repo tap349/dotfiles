@@ -323,9 +323,6 @@
    ;; mode line disappears when prompt is ""
    consult-xref :preview-key 'any :prompt "Filter: "))
 
-(use-package clojure-mode
-  :straight t)
-
 (use-package corfu
   :straight t
   :demand t
@@ -440,8 +437,6 @@
 
   :hook
   ((eglot-managed-mode . my/setup-eglot-managed-mode)
-   (clojure-mode . eglot-ensure)
-   (clojure-mode . my/eglot-add-hooks)
    (dart-mode . eglot-ensure)
    (dart-mode . my/eglot-add-hooks)
    (go-mode . eglot-ensure)
@@ -881,19 +876,6 @@
     (evil-visualstar/begin-search-forward beg end)
     (evil-ex-search-previous))
 
-  :hook
-  ;; Use (char-syntax (string-to-char "/")) to find character syntax class
-  ;;
-  ;; Don't set syntax class of ?/ to "." in clojure-mode -
-  ;; it breaks completion with corfu (try to complete `span/')
-  ;;
-  ;; Don't set syntax class of ?/ to "." in emacs-lisp-mode -
-  ;; it increases default indentation of function bodies
-  ((clojure-mode . (lambda ()
-                     ;; Allows to search for `bar' in `foo.bar' with *
-                     ;; (syntax for "." is set to "_" by clojure-mode)
-                     (modify-syntax-entry ?. "." clojure-mode-syntax-table))))
-
   :config
   ;; evil-ex-start-word-search is used internally by
   ;; - evil-ex-search-word-forward (*)
@@ -948,10 +930,7 @@
     (call-interactively #'find-sibling-file))
 
   :custom
-  (find-sibling-rules '(;; clojure-mode
-                        ("src/\\(.+\\)\\.clj\\'" "test/\\1_test\\.clj")
-                        ("test/\\(.+\\)_test\\.clj\\'" "src/\\1\\.clj")
-                        ;; go-mode
+  (find-sibling-rules '(;; go-mode
                         ("\\([^/]+\\)_test\\.go\\'" "\\1\\.go")
                         ("\\([^/]+\\)\\.go\\'" "\\1_test\\.go")))
 
