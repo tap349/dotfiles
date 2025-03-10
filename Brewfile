@@ -117,17 +117,6 @@ mas 'Cloud Mail.Ru', id: 893068358
 mas 'Dashlane – Password Manager', id: 517914548
 #mas 'Dual N-Back - Train of Thought', id: 1104323582
 #mas 'Evernote', id: 406056744
-# - Preferences:
-#   - Window Mover:
-#     - Move: <S-M> + one finger (+ Left Mouse Button for mouse)
-#     - Resize: <S-M> + two fingers (+ Right Mouse Button for mouse)
-#   - Layouts:
-#     - Maximize: <S-M-CR>
-#   - Preferences:
-#     - [x] Autostart on system login
-#     - [ ] Show icon in menu bar
-#     - [ ] Show icon in Dock
-#mas 'Flexiglass', id: 426410278
 #mas 'FTP Server', id: 987045856
 mas 'Ghostery Lite', id: 1436953057
 #mas 'Jira Cloud by Atlassian', id: 1475897096
