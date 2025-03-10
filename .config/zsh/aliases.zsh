@@ -17,13 +17,12 @@ alias dot='cd ~/.dotfiles'
 # System
 #-------------------------------------------------------------------------------
 
-alias colima='colima start -m 10 -d 100'
+alias colima='colima start -m 5 -d 10'
 alias df='df -h'
 alias ll='ls -alph'
 alias mcu='mc -u'
 # See also https://github.com/occivink/mpv-image-viewer
 alias mvi='mpv --keep-open=yes'
-alias ncdu='ncdu --color off'
 # http://reasoniamhere.com/2014/01/11/outrageously-useful-tips-to-master-your-z-shell/
 #
 # (#i) - case-insensitive globbing
@@ -43,7 +42,6 @@ alias k='kubectl'
 alias kctx='kubectx'
 alias ks='k9s'
 alias m='mvim'
-alias rc='clj -M:defaults:dev:repl'
 alias tp='telepresence'
 
 #-------------------------------------------------------------------------------
