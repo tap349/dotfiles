@@ -175,7 +175,6 @@ brew 'eks-node-viewer'
 brew 'fd'
 brew 'fzf'
 brew 'gh'
-brew 'gradle'
 # for pprof
 brew 'graphviz'
 brew 'helm'
