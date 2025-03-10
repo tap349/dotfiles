@@ -716,7 +716,6 @@
 
   (evil-set-initial-state 'magit-mode 'emacs)
   (evil-set-initial-state 'org-mode 'emacs)
-  (evil-set-initial-state 'verb-mode 'emacs)
 
   ;; https://www.reddit.com/r/emacs/comments/n1pibp/comment/gwei7fw
   (evil-set-undo-system 'undo-redo)
@@ -1040,7 +1039,6 @@
 
 (use-package org
   :straight (:type built-in)
-  :after verb
 
   :custom
   (org-adapt-indentation t)
@@ -1048,10 +1046,7 @@
 
   :custom-face
   (org-level-1 ((t (:font "Microsoft Sans Serif" :height 1.3))))
-  (org-level-3 ((t (:weight medium))))
-
-  :config
-  (define-key org-mode-map (kbd "C-c C-r") verb-command-map))
+  (org-level-3 ((t (:weight medium)))))
 
 (use-package org-superstar
   :straight t
@@ -1180,11 +1175,6 @@
         ("C-x t t" . go-test-current-test)
         ("C-x t f" . go-test-current-file)
         ("C-x t p" . go-test-current-project)))
-
-(use-package verb
-  :straight t
-  :custom
-  (verb-auto-kill-response-buffers t))
 
 (use-package vertico
   :straight t
