@@ -99,8 +99,6 @@ cask 'font-ubuntu'
 #cask 'vagrant'
 #cask 'virtualbox'
 #cask 'virtualbox-extension-pack'
-# `Download failed` error
-#cask 'whatsapp'
 cask 'yaak'
 cask 'zoom'
 
