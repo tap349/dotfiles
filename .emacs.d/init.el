@@ -988,6 +988,18 @@
 
 (use-package markdown-mode
   :straight t
+  :init
+  (defun my/setup-markdown-mode ()
+    ;; Hard wrap - insert actual newlines automatically
+    ;; (at a fixed column set by fill-column variable)
+    ;; (auto-fill-mode 1)
+    ;; Soft wrap - wrap visually without insert newlines
+    ;; (dynamically based on the window width)
+    (visual-line-mode 1))
+
+  :hook
+  ((markdown-mode . my/setup-markdown-mode))
+
   :custom-face
   (markdown-code-face ((t (:font "Input-15"))))
   (markdown-inline-code-face ((t (:font "Input-15")))))
