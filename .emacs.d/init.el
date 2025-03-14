@@ -301,6 +301,8 @@
   (consult-async-refresh-delay 0.1)
   (consult-find-args
    "find . -type f \
+    -not ( -path *.freezed.dart -prune ) \
+    -not ( -path *.g.dart -prune ) \
     -not ( -path ./.clj-kondo/* -prune ) \
     -not ( -path ./.cpcache/* -prune ) \
     -not ( -path ./.git/* -prune ) \
