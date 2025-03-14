@@ -184,7 +184,7 @@ cask 'intellij-idea'
 #cask 'maccy'
 cask 'microsoft-edge'
 cask 'openlens'
-cask 'postman'
+#cask 'postman'
 #cask 'protonvpn'
 
 mas '1Password 7 - Password Manager', id: 1333542190
