@@ -104,8 +104,11 @@
 ;; indicator appear exactly at the center of the screen on my laptop
 (setq-default display-fill-column-indicator-column 82)
 
-;; nowrap
+;; Don't wrap lines
 (setq-default truncate-lines 1)
+
+;; Cursor
+(setq-default cursor-type 'bar)
 
 ;;-----------------------------------------------------------------------------
 ;; Mode Line
@@ -357,11 +360,6 @@
 
 (use-package dart-mode
   :straight t)
-
-;; (use-package diff-hl
-;;   :straight t
-;;   :config
-;;   (global-diff-hl-mode))
 
 ;; - "(" - dired-hide-details-mode
 ;; - "C-p" - remove autosuggestion when renaming file
@@ -713,11 +711,10 @@
   (evil-auto-balance-windows t)
   (evil-visual-update-x-selection-p nil)
 
+  ;; Customize evil-STATE-state-X variables in config section after evil
+  ;; package is loaded or else they'll be overidden with default values
   :config
   (evil-mode 1)
-
-  (evil-set-initial-state 'magit-mode 'emacs)
-  (evil-set-initial-state 'org-mode 'emacs)
 
   ;; https://www.reddit.com/r/emacs/comments/n1pibp/comment/gwei7fw
   (evil-set-undo-system 'undo-redo)
@@ -735,17 +732,16 @@
   (evil-set-leader 'visual (kbd ","))
 
   ;; Disable echo area messages on evil state change
-  ;;
-  ;; Customize variables here after evil package is loaded
-  ;; or else they'll be overriden with default values
   (setq evil-insert-state-message nil)
   (setq evil-normal-state-message nil)
   (setq evil-visual-state-message nil)
   (setq evil-replace-state-message nil)
 
-  ;; Use <V> tag for all types of visual state (characterwise, linewise and
-  ;; blockwise selection) so that text doesn't jump on evil state change
+  ;; Use <V> tag for all types of visual state (characterwise, linewise
+  ;; and blockwise selection) so that the text in mode line doesn't jump
   (setq evil-visual-state-tag " <V> ")
+
+  (setq evil-emacs-state-cursor 'bar)
 
   :bind
   (:map evil-insert-state-map
@@ -1010,14 +1006,14 @@
   :straight t
   :after evil
   :init
-  (defun my/setup-magit-mode ()
+  (defun my/setup-magit-revision-mode ()
     (setq-local require-final-newline nil)
     ;; Whitespaces are also highlighted by magit itself
     ;; with magit-diff-whitespace-warning face
     (setq-local show-trailing-whitespace nil))
 
   :hook
-  ((magit-revision-mode . my/setup-magit-mode))
+  ((magit-revision-mode . my/setup-magit-revision-mode))
 
   :custom
   (magit-diff-paint-whitespace nil)
@@ -1032,6 +1028,9 @@
   ;; (magit-diff-context-highlight ((t (:background "#E7E9ED"))))
   (magit-diff-added-highlight ((t (:background "#B7EBBC"))))
   (magit-diff-removed-highlight ((t (:background "#F3C1BF"))))
+
+  :config
+  (evil-set-initial-state 'magit-mode 'emacs)
 
   :bind
   (:map evil-normal-state-map
@@ -1053,19 +1052,18 @@
 
 (use-package org
   :straight (:type built-in)
+  :after evil
 
   :custom
   (org-adapt-indentation t)
   ;; (org-hide-emphasis-markers t)
 
   :custom-face
-  (org-level-1 ((t (:font "Microsoft Sans Serif" :height 1.3))))
-  (org-level-3 ((t (:weight medium)))))
+  (org-level-1 ((t (:weight bold))))
+  (org-level-2 ((t (:weight bold))))
 
-(use-package org-superstar
-  :straight t
-  :hook
-  ((org-mode . org-superstar-mode)))
+  :config
+  (evil-set-initial-state 'org-mode 'emacs))
 
 ;; - "C-x p r" - replace string in project (project-query-replace-regexp)
 (use-package project
@@ -1089,6 +1087,17 @@
   :straight t
   :hook
   ((prog-mode . rainbow-delimiters-mode)))
+
+(use-package restclient
+  :straight t
+  :after evil
+  :mode ("\\.http\\'" . restclient-mode)
+  :config
+  (evil-set-initial-state 'restclient-mode 'emacs)
+
+  :bind
+  (:map restclient-mode-map
+        ("C-c C-f" . json-mode-beautify)))
 
 ;; For camel-case motions
 (use-package subword
@@ -1190,6 +1199,16 @@
         ("C-x t t" . go-test-current-test)
         ("C-x t f" . go-test-current-file)
         ("C-x t p" . go-test-current-project)))
+
+(use-package verb
+  :straight t
+  :after (evil org)
+  :custom
+  (verb-auto-kill-response-buffers t)
+
+  :config
+  (evil-set-initial-state 'verb-mode 'emacs)
+  (define-key org-mode-map (kbd "C-c C-r") verb-command-map))
 
 (use-package vertico
   :straight t
