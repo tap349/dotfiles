@@ -699,6 +699,16 @@
     (interactive)
     (evil-change-state 'normal))
 
+  ;; See evil-scroll-up
+  (defun my/scroll-half-page-backward ()
+    (interactive)
+    (previous-line (evil--get-scroll-count 0)))
+
+  ;; See evil-scroll-down
+  (defun my/scroll-half-page-forward ()
+    (interactive)
+    (next-line (evil--get-scroll-count 0)))
+
   :custom
   (evil-default-state 'normal)
 
@@ -812,7 +822,11 @@
   ;; > only keys bound in motion state will work in help-mode
   (:map evil-motion-state-map
         ("H" . evil-first-non-blank)
-        ("L" . evil-last-non-blank)))
+        ("L" . evil-last-non-blank))
+
+  (:map evil-emacs-state-map
+        ("M-v" . my/scroll-half-page-backward)
+        ("C-v" . my/scroll-half-page-forward)))
 
 (use-package evil-surround
   :straight t
@@ -1111,7 +1125,7 @@
   :init
   ;; :token := (my/read-cached-string "Token: " "token")
   (defun my/read-cached-string (prompt cache-key)
-    (let ((var-name (intern (concat "cached-" cache-key)))
+    (let ((var-name (intern (concat "cached-" cache-key))))
       (unless (local-variable-p var-name)
         (make-local-variable var-name))
       (if (boundp var-name)
@@ -1259,14 +1273,6 @@
                             (consult-flymake t)))
         ("<leader>/" . consult-ripgrep)
         ("C-s" . consult-line)))
-
-(use-package view
-  :straight (:type built-in)
-  :bind
-  ;; https://www.emacswiki.org/emacs/HalfScrolling
-  (:map global-map
-        ("C-v" . #'View-scroll-half-page-forward)
-        ("M-v" . #'View-scroll-half-page-backward)))
 
 ;; - "C-x v g" - git blame (vc-annotate)
 ;; - "C-x v l" - git log of current file (vc-print-log)
