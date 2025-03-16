@@ -638,7 +638,7 @@
   ;; Type "C-q (" if you don't want closing paren to be inserted
   (electric-pair-mode 1))
 
-;; Use "\" (evil-execute-in-emacs-state) to access C-c prefix map
+;; - "\" - switch to emacs state for one command (evil-execute-in-emacs-state)
 (use-package evil
   :straight t
   :demand t
