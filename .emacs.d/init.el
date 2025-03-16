@@ -962,6 +962,22 @@
        t)
       (goto-char old-point))))
 
+(use-package gotest
+  :straight t
+  :after go-mode
+  :custom
+  (go-test-args "-v")
+
+  :custom-face
+  (go-test--ok-face ((t (:background "#77FF77" :foreground "#000000"))))
+  (go-test--standard-face ((t (:background "#F2F2FA" :foreground "#000000"))))
+
+  :bind
+  (:map go-mode-map
+        ("C-x t t" . go-test-current-test)
+        ("C-x t f" . go-test-current-file)
+        ("C-x t p" . go-test-current-project)))
+
 ;; Use evil-toggle-fold to toggle folding
 (use-package hideshow
   :straight (:type built-in)
@@ -1183,22 +1199,6 @@
    ("s-w" . tab-bar-close-tab)
    ("C-<tab>" . tab-recent)
    ("C-<backspace>" . tab-bar-close-tab)))
-
-(use-package gotest
-  :straight t
-  :after go-mode
-  :custom
-  (go-test-args "-v")
-
-  :custom-face
-  (go-test--ok-face ((t (:background "#77FF77" :foreground "#000000"))))
-  (go-test--standard-face ((t (:background "#F2F2FA" :foreground "#000000"))))
-
-  :bind
-  (:map go-mode-map
-        ("C-x t t" . go-test-current-test)
-        ("C-x t f" . go-test-current-file)
-        ("C-x t p" . go-test-current-project)))
 
 (use-package verb
   :straight t
