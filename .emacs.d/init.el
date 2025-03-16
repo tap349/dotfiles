@@ -1132,6 +1132,9 @@
           (symbol-value var-name)
         (set var-name (read-string prompt)))))
 
+  :custom
+  (restclient-response-size-threshold 1000000)
+
   :config
   (evil-set-initial-state 'restclient-mode 'emacs)
 
