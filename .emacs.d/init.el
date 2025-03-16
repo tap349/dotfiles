@@ -1108,6 +1108,16 @@
   :straight t
   :after evil
   :mode ("\\.http\\'" . restclient-mode)
+  :init
+  ;; :token := (my/read-cached-string "Token: " "token")
+  (defun my/read-cached-string (prompt cache-key)
+    (let ((var-name (intern (concat "cached-" cache-key)))
+      (unless (local-variable-p var-name)
+        (make-local-variable var-name))
+      (if (boundp var-name)
+          (symbol-value var-name)
+        (set var-name (read-string prompt)))))
+
   :config
   (evil-set-initial-state 'restclient-mode 'emacs)
 
