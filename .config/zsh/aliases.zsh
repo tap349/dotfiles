@@ -42,7 +42,6 @@ alias k='kubectl'
 alias kctx='kubectx'
 alias ks='k9s'
 alias m='mvim'
-alias tp='telepresence'
 
 #-------------------------------------------------------------------------------
 # Git
@@ -87,3 +86,6 @@ alias dpsh='cd ~/dev/indrive/dev-platform-service-hub'
 alias dpui='cd ~/dev/indrive/dev-platform-ui'
 
 alias sso='aws sso login --profile devplatform_team-531211996670 && aws sso login --profile inDriveAdministratorAccess-627723547655'
+
+alias tp='telepresence'
+alias tpc='tp connect -n platform --mapped-namespaces platform --allow-conflicting-subnets 10.0.0.0/8'
