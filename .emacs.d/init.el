@@ -1135,8 +1135,8 @@
   :custom
   (restclient-response-size-threshold 1000000)
 
-  :config
-  (evil-set-initial-state 'restclient-mode 'emacs)
+  ;; :config
+  ;; (evil-set-initial-state 'restclient-mode 'emacs)
 
   :bind
   (:map restclient-mode-map
