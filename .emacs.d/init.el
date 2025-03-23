@@ -108,7 +108,7 @@
 (setq-default truncate-lines 1)
 
 ;; Cursor
-(setq-default cursor-type 'bar)
+(setq-default cursor-type '(bar . 3))
 
 ;;-----------------------------------------------------------------------------
 ;; Mode Line
@@ -1278,12 +1278,15 @@
         ("C-s" . consult-line)))
 
 ;; - "C-x v g" - git blame (vc-annotate)
+;;   - "l" - view commit message
+;;   - "f" - view file at revision
+;;   - "=" - view diff
 ;; - "C-x v l" - git log of current file (vc-print-log)
 ;; - "C-x v h" - git log of current region with diff (vc-region-history)
 ;; - "C-x v =" - git diff for current file (vc-diff)
 ;;
 ;; Common navigation keybindings:
-;;   - "n" or "p" - to move between commits
+;;   - "n" or "p" - move between commits
 ;;   - "f" - visit file as of commit at point
 (use-package vc
   :straight (:type built-in))
