@@ -361,6 +361,12 @@
 (use-package dart-mode
   :straight t)
 
+(use-package diff-mode
+  :straight (:type built-in)
+  :after evil
+  :config
+  (evil-set-initial-state 'diff-mode 'emacs))
+
 ;; - "(" - dired-hide-details-mode
 ;; - "C-p" - remove autosuggestion when renaming file
 (use-package dired
@@ -1036,14 +1042,16 @@
   :straight t
   :after evil
   :init
+  (defun my/setup-magit-log-mode ()
+    (whitespace-mode -1))
+
   (defun my/setup-magit-revision-mode ()
     (setq-local require-final-newline nil)
-    ;; Whitespaces are also highlighted by magit itself
-    ;; with magit-diff-whitespace-warning face
-    (setq-local show-trailing-whitespace nil))
+    (whitespace-mode -1))
 
   :hook
-  ((magit-revision-mode . my/setup-magit-revision-mode))
+  ((magit-log-mode . my/setup-magit-log-mode)
+   (magit-revision-mode . my/setup-magit-revision-mode))
 
   :custom
   (magit-diff-paint-whitespace nil)
@@ -1277,13 +1285,13 @@
         ("<leader>/" . consult-ripgrep)
         ("C-s" . consult-line)))
 
-;; - "C-x v g" - git blame (vc-annotate)
-;;   - "l" - view commit message
-;;   - "f" - view file at revision
-;;   - "=" - view diff
-;; - "C-x v l" - git log of current file (vc-print-log)
-;; - "C-x v h" - git log of current region with diff (vc-region-history)
 ;; - "C-x v =" - git diff for current file (vc-diff)
+;; - "C-x v g" - git blame (vc-annotate)
+;;   - "=" - view diff
+;;   - "f" - view file at revision
+;;   - "l" - view commit message
+;; - "C-x v h" - git log of current region with diff (vc-region-history)
+;; - "C-x v l" - git log of current file (vc-print-log)
 ;;
 ;; Common navigation keybindings:
 ;;   - "n" or "p" - move between commits
