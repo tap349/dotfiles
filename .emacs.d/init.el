@@ -1126,6 +1126,11 @@
   :hook
   ((prog-mode . rainbow-delimiters-mode)))
 
+(use-package rainbow-mode
+  :straight t
+  :hook
+  ((prog-mode . rainbow-mode)))
+
 (use-package restclient
   :straight t
   :after evil
