@@ -44,6 +44,7 @@ brew 'jq'
 brew 'macvim'
 brew 'mas'
 brew 'mc'
+brew 'mpv'
 brew 'node'
 brew 'ntfs-3g-mac'
 #brew 'overmind'
@@ -89,7 +90,6 @@ cask 'google-chrome'
 cask 'gopanda'
 cask 'iterm2'
 cask 'macfuse'
-cask 'mpv'
 cask 'ngrok'
 cask 'notion'
 cask 'obsidian'
@@ -109,7 +109,7 @@ cask 'zoom'
 # mas search Trello
 #-------------------------------------------------------------------------------
 
-mas 'Bang & Olufsen', id: 1203736217
+#mas 'Bang & Olufsen', id: 1203736217
 mas 'Cloud Mail.Ru', id: 893068358
 mas 'Dashlane – Password Manager', id: 517914548
 #mas 'Dual N-Back - Train of Thought', id: 1104323582
