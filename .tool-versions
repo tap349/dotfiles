@@ -1,10 +1,4 @@
-golang 1.23.5
-clojure 1.11.1.1208
-kotlin 1.8.0
+golang 1.23.7
 java openjdk-17
-dart 3.3.2
-elixir 1.17.3-otp-27
-haskell 9.4.4
-erlang 27.1
-flutter 3.29.0-stable
-zig 0.13.0
+dart 3.7.2
+flutter 3.29.2-stable

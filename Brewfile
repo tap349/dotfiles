@@ -22,6 +22,7 @@ tap 'gromgit/homebrew-fuse'
 # Homebrew
 #-------------------------------------------------------------------------------
 
+brew 'asdf'
 # After installation:
 # - `aws configure`
 brew 'awscli'

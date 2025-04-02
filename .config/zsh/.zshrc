@@ -57,8 +57,6 @@ unset zle_bracketed_paste
 # Source other files
 #-------------------------------------------------------------------------------
 
-source ~/.asdf/asdf.sh
-
 source $ZDOTDIR/bindings.zsh
 # Source plugins.zsh at the end of .zshrc
 source $ZDOTDIR/plugins.zsh
