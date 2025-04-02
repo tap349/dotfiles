@@ -22,7 +22,7 @@ alias df='df -h'
 alias ll='ls -alph'
 alias mcu='mc -u'
 # See also https://github.com/occivink/mpv-image-viewer
-alias mvi='mpv --keep-open=yes'
+alias mvi='mpv --keep-open-pause=yes'
 # http://reasoniamhere.com/2014/01/11/outrageously-useful-tips-to-master-your-z-shell/
 #
 # (#i) - case-insensitive globbing

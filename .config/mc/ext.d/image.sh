@@ -25,7 +25,7 @@ do_open_action() {
     case "${filetype}" in
     *)
         # See mvi alias (zsh aliases are not visible here)
-        (mpv --keep-open=yes "${MC_EXT_FILENAME}" >/dev/null 2>&1 &)
+        (mpv --keep-open-pause=yes "${MC_EXT_FILENAME}" >/dev/null 2>&1 &)
         ;;
     esac
 }
