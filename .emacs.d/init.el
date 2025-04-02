@@ -1128,6 +1128,7 @@
 
 (use-package rainbow-mode
   :straight t
+  :delight
   :hook
   ((prog-mode . rainbow-mode)))
 
