@@ -66,19 +66,19 @@ git_prompt() {
   fi
 }
 
+# Current branch is prefixed with '*' in `git branch` output
+git_branch_delete() {
+  git branch | grep -v -E '(main|master|develop|\*)' | xargs git branch -d
+}
+
 # https://unix.stackexchange.com/questions/274257
 git_commit() {
   if [[ -z $1 ]]; then
-    echo 'error: specify git commit message'
+    echo 'Error: specify git commit message'
     return 1
   fi
 
   git commit -S -m "$*"
-}
-
-# Current branch is prefixed with '*' in `git branch` output
-git_branch_delete() {
-  git branch | grep -v -E '(main|master|develop|\*)' | xargs git branch -d
 }
 
 git_log() {
@@ -90,74 +90,33 @@ git_log() {
 # kubectl
 #-------------------------------------------------------------------------------
 
-# 'dp' stands for dev-platform
-# https://www.linuxjournal.com/content/return-values-bash-functions
-dp_name() {
-  local RESULT=
-
-  if [[ "$2" == "dpb" ]]; then
-    RESULT="dev-platform-backup"
-  fi
-
-  if [[ "$2" == "dpc" ]]; then
-    RESULT="dev-platform-catalog"
-  fi
-
-  if [[ "$2" == "dpn" ]]; then
-    RESULT="dev-platform-namespace"
-  fi
-
-  if [[ "$2" == "dpnt" ]]; then
-    RESULT="dev-platform-notifier"
-  fi
-
-  if [[ "$2" == "dpus" ]]; then
-    RESULT="dev-platform-user-service"
-  fi
-
-  if [[ -z $RESULT ]]; then
-    echo "Unknown service: $2"
-    return 1
-  fi
-
-  eval $1=$RESULT
-}
-
+# $1 - namespace-db
+# $2 - dpn
 kcr() {
-  # Declare local variable - otherwise DP_NAME becomes global
-  local DP_NAME=
-  dp_name DP_NAME $1
-  if [[ -z $DP_NAME ]]; then return 1; fi
+  local POD="$1-client"
+  local HOST="$1-public"
+  local DATABASE="$2"
 
-  local POD="$DP_NAME-db-client"
-  local HOST="$DP_NAME-db-public"
-  local DATABASE="$1"
-
-  kubectl exec -it $POD -n platform -- cockroach sql --certs-dir=/cockroach/cockroach-certs --host=$HOST --database=$DATABASE
+  kubectl exec -it $POD -n platform -- \
+    cockroach sql --certs-dir=/cockroach/cockroach-certs --host=$HOST --database=$DATABASE
 }
 
+# $1 - dev-platform-namespace
+#
 # https://github.com/kubernetes/kubectl/issues/917
 # https://stackoverflow.com/a/58649439/3632318
 kl() {
-  local DP_NAME=
-  dp_name DP_NAME $1
-  if [[ -z $DP_NAME ]]; then return 1; fi
-
   # https://jamesdefabia.github.io/docs/user-guide/kubectl/kubectl_logs/
-  # Clojure: timestamp, level, message
   # Golang: level, ts, msg, status
   #
   # Convert level to upper case for correct highlighting by iTerm rules
-  kubectl logs -fl "app.kubernetes.io/name=$DP_NAME" -n platform --tail -1 --since 30m \
-    | jq -r '[.timestamp, .ts, (.level | ascii_upcase), .message, .msg, .status]|@tsv' -C
+  kubectl logs -fl "app.kubernetes.io/name=$1" -n platform --tail -1 --since 30m \
+    | jq -r '[.ts, (.level | ascii_upcase), .msg, .status]|@tsv' -C
 }
 
+# $1 - dev-platform-namespace
 ksh() {
-  local DP_NAME=
-  dp_name DP_NAME $1
-  if [[ -z $DP_NAME ]]; then return 1; fi
-
-  kubectl exec -it "deployment/$DP_NAME" -n platform -- /bin/bash
+  kubectl exec -it "deployment/$1" -n platform -- /bin/bash
 }
 
 kpf() {
