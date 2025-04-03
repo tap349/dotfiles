@@ -18,7 +18,7 @@ do_open_action() {
 
     case "${filetype}" in
     *)
-        # See mvi alias (zsh aliases are not visible here)
+        # See mvi function (zsh functions are not visible here)
         mpv --force-window=immediate --image-display-duration=inf "${MC_EXT_FILENAME}" >/dev/null 2>&1
         osascript -e 'tell application "iTerm" to activate'
         ;;
