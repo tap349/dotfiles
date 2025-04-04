@@ -85,6 +85,7 @@ cask 'chatgpt'
 cask 'flux'
 # For iTerm2
 cask 'font-inconsolata-lgc'
+cask 'font-ubuntu'
 cask 'goldendict'
 cask 'google-chrome'
 cask 'gopanda'
@@ -94,9 +95,9 @@ cask 'ngrok'
 cask 'notion'
 cask 'obsidian'
 cask 'steam'
+cask 'todoist'
 cask 'tomighty'
 cask 'transmission'
-cask 'font-ubuntu'
 #cask 'vagrant'
 #cask 'virtualbox'
 #cask 'virtualbox-extension-pack'
@@ -138,11 +139,6 @@ mas 'Telegram Desktop', id: 946399090
 # LSP
 #-------------------------------------------------------------------------------
 
-# dart has built-in language server `dart language-server`
-# https://golangci-lint.run/usage/install/#macos
-# > brew can use a non-expected version of Go to build the binary
-# => there was an error when I upgraded golang from 1.20.3 to 1.21.1
-#brew 'golangci-lint'
 brew 'gopls'
 brew 'lua-language-server'
 
@@ -182,7 +178,6 @@ cask 'emacs-app-monthly'
 cask 'figma'
 cask 'google-cloud-sdk'
 cask 'intellij-idea'
-#cask 'maccy'
 cask 'microsoft-edge'
 cask 'miro'
 cask 'openlens'
