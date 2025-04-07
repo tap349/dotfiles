@@ -172,6 +172,8 @@ brew 'docker'
 #   ln -sfn /opt/homebrew/opt/docker-buildx/bin/docker-buildx ~/.docker/cli-plugins/docker-buildx
 brew 'docker-buildx'
 brew 'docker-compose'
+# For colima
+brew 'qemu'
 
 #cask 'drawio'
 cask 'emacs-app-monthly'
