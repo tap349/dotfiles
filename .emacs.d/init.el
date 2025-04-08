@@ -371,6 +371,7 @@
 ;; - "C-p" - remove autosuggestion when renaming file
 (use-package dired
   :straight (:type built-in)
+  :after evil
   :init
   (defun my/setup-dired-mode ()
     (dired-hide-details-mode 1))
@@ -391,6 +392,7 @@
 
   :bind
   (:map dired-mode-map
+        ("n" . evil-ex-search-next)
         ("p" . dired-up-directory)
         ("q" . my/kill-dired-buffers)))
 
