@@ -1327,7 +1327,7 @@
 ;; Use `vterm-copy-mode' to stop scrolling to bottom automatically
 ;; when new output appears - in this mode new output is not displayed
 ;;
-;; - "C-c C-t" - enable copy mode (vterm-copy-mode)
+;; - "C-c C-t" - toggle copy mode (vterm-copy-mode)
 (use-package vterm
   :straight t
   :after evil

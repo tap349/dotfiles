@@ -8,7 +8,7 @@ export EDITOR=vim
 export PAGER=less
 export TERM='xterm-256color'
 # https://github.com/keybase/keybase-issues/issues/1712#issuecomment-141226705
-# for `gpg` to sign commits
+# For `gpg` to sign commits
 export GPG_TTY=$(tty)
 
 #-------------------------------------------------------------------------------
@@ -18,17 +18,17 @@ export GPG_TTY=$(tty)
 #-------------------------------------------------------------------------------
 
 # https://mattprice.me/2015/zsh-path-issues-osx-el-capitan/
-# don't run /etc/zprofile - it might reorder directories in PATH
+# Don't run /etc/zprofile - it might reorder directories in PATH
 setopt NO_GLOBAL_RCS
 # http://zsh.sourceforge.net/Intro/intro_2.html
-# say, to be able to use case-insensitive globbing (#i)
+# Say, to be able to use case-insensitive globbing (#i)
 setopt EXTENDED_GLOB
 
 #-------------------------------------------------------------------------------
 # PATH
 #-------------------------------------------------------------------------------
 
-# removes duplicate entries from PATH
+# Removes duplicate entries from PATH
 typeset -U path
 # Homebrew creates symlinks in
 # - /usr/local/bin/ for Intel
@@ -53,7 +53,7 @@ source "$(brew --prefix)/share/google-cloud-sdk/path.zsh.inc"
 #-------------------------------------------------------------------------------
 
 # http://zsh.sourceforge.net/Doc/Release/Expansion.html#Command-Substitution
-# for command substitution to work in prompt
+# For command substitution to work in prompt
 setopt prompt_subst
 
 # https://wiki.archlinux.org/index.php/Zsh#Colors
@@ -68,9 +68,9 @@ $(git_prompt)\
 # Locale
 #-------------------------------------------------------------------------------
 
-# for iTerm2 to display cyrillic
+# For iTerm2 to display cyrillic
 export LANG=en_US.UTF-8
-# for mc to display cyrillic
+# For mc to display cyrillic
 export LC_ALL=en_US.UTF-8
 
 #-------------------------------------------------------------------------------
@@ -88,7 +88,7 @@ HISTFILE=$ZDATADIR/.zsh_history
 HISTFILESIZE=10000
 HISTSIZE=10000
 # http://zsh.sourceforge.net/Guide/zshguide02.html
-# history is not persisted if SAVEHIST is not set
+# History is not persisted if SAVEHIST is not set
 SAVEHIST=10000
 
 #-------------------------------------------------------------------------------
