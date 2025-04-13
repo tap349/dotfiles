@@ -359,7 +359,21 @@
         ([return] . corfu-complete)))
 
 (use-package dart-mode
-  :straight t)
+  :straight t
+  :after vterm
+  :init
+  (defun flutter-hot-reload ()
+    (interactive)
+    (when (get-buffer "*vterm*")
+      (with-current-buffer "*vterm*"
+        (vterm-send-string "r")
+        (vterm-send-return))))
+
+  (defun my/setup-dart-mode ()
+    (add-hook 'after-save-hook #'flutter-hot-reload 10 t))
+
+  :hook
+  (dart-mode . my/setup-dart-mode))
 
 (use-package diff-mode
   :straight (:type built-in)
@@ -388,7 +402,7 @@
           (buffer-list)))
 
   :hook
-  ((dired-mode . my/setup-dired-mode))
+  (dired-mode . my/setup-dired-mode)
 
   :bind
   (:map dired-mode-map
@@ -505,7 +519,7 @@
   (setq tab-always-indent 'complete)
 
   :hook
-  ((minibuffer-setup . my/setup-minibuffer-mode)))
+  (minibuffer-setup . my/setup-minibuffer-mode))
 
 (use-package embark
   :straight t
@@ -612,7 +626,7 @@
     (setq-local show-trailing-whitespace nil))
 
   :hook
-  ((eldoc-box-buffer . my/setup-eldoc-box-buffer))
+  (eldoc-box-buffer . my/setup-eldoc-box-buffer)
 
   :custom
   ;; https://github.com/sebastiencs/company-box/blob/master/company-box-doc.el#L86
@@ -1005,7 +1019,7 @@
   :straight (:type built-in)
   :delight hs-minor-mode
   :hook
-  ((prog-mode . hs-minor-mode)))
+  (prog-mode . hs-minor-mode))
 
 (use-package jarchive
   :straight t
@@ -1034,7 +1048,7 @@
     (visual-line-mode 1))
 
   :hook
-  ((markdown-mode . my/setup-markdown-mode))
+  (markdown-mode . my/setup-markdown-mode)
 
   :custom-face
   (markdown-code-face ((t (:font "Input-15"))))
@@ -1126,13 +1140,13 @@
 (use-package rainbow-delimiters
   :straight t
   :hook
-  ((prog-mode . rainbow-delimiters-mode)))
+  (prog-mode . rainbow-delimiters-mode))
 
 (use-package rainbow-mode
   :straight t
   :delight
   :hook
-  ((prog-mode . rainbow-mode)))
+  (prog-mode . rainbow-mode))
 
 (use-package restclient
   :straight t
