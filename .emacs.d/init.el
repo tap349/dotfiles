@@ -366,6 +366,8 @@
     (interactive)
     (when (get-buffer "*vterm*")
       (with-current-buffer "*vterm*"
+        ;; NOTE: `r' also runs last executed command in Zsh
+        ;; => it will run `make run' again if it's terminated
         (vterm-send-string "r")
         (vterm-send-return))))
 
@@ -1321,9 +1323,17 @@
 (use-package vc
   :straight (:type built-in))
 
+;; https://github.com/akermu/emacs-libvterm/issues/149
+;; Use `vterm-copy-mode' to stop scrolling to bottom automatically
+;; when new output appears - in this mode new output is not displayed
+;;
+;; - "C-c C-t" - enable copy mode (vterm-copy-mode)
 (use-package vterm
   :straight t
   :after evil
+  :custom
+  (vterm-kill-buffer-on-exit t)
+
   :config
   (evil-set-initial-state 'vterm-mode 'emacs))
 
