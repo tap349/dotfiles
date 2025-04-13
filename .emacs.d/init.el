@@ -1307,6 +1307,12 @@
 (use-package vc
   :straight (:type built-in))
 
+(use-package vterm
+  :straight t
+  :after evil
+  :config
+  (evil-set-initial-state 'vterm-mode 'emacs))
+
 (use-package whitespace
   :straight (:type built-in)
   :delight
