@@ -444,27 +444,16 @@
   (defun my/setup-eglot-managed-mode ()
     (setq-local eldoc-documentation-functions '(flymake-eldoc-function)))
 
-  ;; https://github.com/joaotavora/eglot/issues/574#issuecomment-1401023985
-  (defun my/eglot-organize-imports ()
-    (eglot-code-actions nil nil "source.organizeImports" t))
-
-  ;; NOTE: if any hook returns error, subsequent hooks are not executed
-  ;;
-  ;; For example my/eglot-organize-imports returns error when there is
-  ;; nothing to import => make sure it comes last (using DEPTH parameter)
-  (defun my/eglot-add-hooks ()
-    ;; https://github.com/golang/tools/blob/master/gopls/doc/emacs.md#loading-eglot-in-emacs
-    ;; > The depth of -10 places this before eglot's willSave notification,
-    ;; > so that that notification reports the actual contents that will be saved.
-    (add-hook 'before-save-hook #'eglot-format-buffer -10 t)
-    (add-hook 'before-save-hook #'my/eglot-organize-imports -5 t))
+  (defun my/eglot-before-save ()
+    (when eglot--managed-mode
+      (eglot-format-buffer)
+      (call-interactively 'eglot-code-action-organize-imports)))
 
   :hook
   ((eglot-managed-mode . my/setup-eglot-managed-mode)
+   (before-save . my/eglot-before-save)
    (dart-mode . eglot-ensure)
-   (dart-mode . my/eglot-add-hooks)
    (go-mode . eglot-ensure)
-   (go-mode . my/eglot-add-hooks)
    (lua-mode . eglot-ensure))
 
   :custom
