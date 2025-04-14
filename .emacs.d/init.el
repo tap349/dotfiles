@@ -456,7 +456,7 @@
     ;; https://github.com/golang/tools/blob/master/gopls/doc/emacs.md#loading-eglot-in-emacs
     ;; > The depth of -10 places this before eglot's willSave notification,
     ;; > so that that notification reports the actual contents that will be saved.
-    (add-hook 'before-save-hook 'eglot-format-buffer -10 t)
+    (add-hook 'before-save-hook #'eglot-format-buffer -10 t)
     (add-hook 'before-save-hook #'my/eglot-organize-imports -5 t))
 
   :hook
