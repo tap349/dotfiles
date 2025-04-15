@@ -472,14 +472,13 @@
   ;; https://github.com/emacs-lsp/lsp-mode/tree/master/clients
   ;; https://github.com/shuxiao9058/poly-emacs/blob/main/programming.org
   ;;
-  ;; As you see below it's possible to combine map and list syntax
+  ;; It's possible to use both map and list syntax (and mix them)
   (setq-default eglot-workspace-configuration
-                ;; https://github.com/golang/tools/blob/master/gopls/doc/emacs.md#configuring-gopls-via-eglot
-                '((:gopls . (
-                             :gofumpt t
-                             :matcher "CaseSensitive"
-                             :staticcheck t
-                             :analyses (:ST1005 :json-false)))))
+                ;; https://github.com/golang/tools/blob/master/gopls/doc/emacs.md
+                ;; (analyses . (:ST1005 :json-false))
+                '((:gopls . ((gofumpt . t)
+                             (matcher . "CaseSensitive")
+                             (staticcheck . t)))))
 
   :bind
   (:map eglot-mode-map
