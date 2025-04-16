@@ -1111,7 +1111,7 @@
   ;; C-x p keymap is available since Emacs 28
   :straight (:type built-in)
   :custom
-  (project-switch-commands 'consult-find)
+  (project-switch-commands 'consult-fd)
 
   :config
   ;; https://www.gnu.org/software/emacs/manual/html_node/elisp/Prefix-Keys.html
