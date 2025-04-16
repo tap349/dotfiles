@@ -462,9 +462,11 @@
   (eglot-events-buffer-size 0)
   ;; https://github.com/joaotavora/eglot/issues/334
   ;; :documentHighlightProvider - highlight variable at point
+  ;; :documentOnTypeFormattingProvider - on-type formatting
   ;; :hoverProvider - fetch docs from LSP server (don't disable)
   ;; :inlayHintProvider - show inlay hints about variable types
   (eglot-ignored-server-capabilities '(:documentHighlightProvider
+                                       :documentOnTypeFormattingProvider
                                        :inlayHintProvider))
 
   :config
