@@ -1,6 +1,0 @@
-{
-  "dependencies": {
-    "react-native-git-upgrade": "^0.2.7",
-    "rnpm": "^1.9.0"
-  }
-}
