@@ -156,7 +156,6 @@
 ;;-----------------------------------------------------------------------------
 
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
-;; (load-theme 'tango-plus t)
 (load-theme 'aircon t)
 
 ;; https://emacs.stackexchange.com/a/69091
@@ -302,29 +301,24 @@
   (consult-async-input-throttle 0.01)
   (consult-async-min-input 2)
   (consult-async-refresh-delay 0.1)
-  (consult-find-args
-   "find . -type f \
-    -not ( -path *.freezed.dart -prune ) \
-    -not ( -path *.g.dart -prune ) \
-    -not ( -path ./.dart_tool/* -prune ) \
-    -not ( -path ./.git/* -prune ) \
-    -not ( -path ./.idea/* -prune ) \
-    -not ( -path ./build/* -prune ) \
-    -not ( -path ./docker/* -prune ) \
-    -not ( -path ./images/* -prune ) \
-    -not ( -path ./venv/* -prune ) \
-    -not ( -path ./web/* -prune ) \
-    -not ( -path ./main -prune )")
 
   :custom-face
   (consult-file ((t (:foreground "#777777"))))
 
   :config
+  (setq consult-fd-args
+        (append consult-fd-args
+                (list (concat "--hidden --ignore-file "
+                              (expand-file-name "~/.fdignore")))))
+  (setq consult-ripgrep-args
+        (concat consult-ripgrep-args
+                " --hidden --ignore-file "
+                (expand-file-name "~/.fdignore")))
+
   (consult-customize
-   consult-find :prompt ""
+   consult-fd :prompt "Find: "
    consult-line :preview-key 'any :prompt "Filter: "
-   consult-ripgrep :group nil :preview-key '(:debounce 0.3 any) :prompt ""
-   ;; mode line disappears when prompt is ""
+   consult-ripgrep :group nil :preview-key '(:debounce 0.3 any) :prompt "Search: "
    consult-xref :preview-key 'any :prompt "Filter: "))
 
 (use-package corfu
@@ -1291,11 +1285,11 @@
 
   (:map evil-normal-state-map
         ("<leader>b" . consult-buffer)
-        ("<leader>n" . consult-find)
         ("<leader>f" . consult-flymake)
         ("<leader>\S-f" . (lambda ()
                             (interactive)
                             (consult-flymake t)))
+        ("<leader>n" . consult-fd)
         ("<leader>/" . consult-ripgrep)
         ("C-s" . consult-line)))
 

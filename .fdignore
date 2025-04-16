@@ -1,0 +1,12 @@
+.git
+.idea
+build
+docker
+venv
+
+# Dart/Flutter
+*.freezed.dart
+*.g.dart
+.dart_tool/
+images/
+web/
