@@ -306,15 +306,14 @@
    "find . -type f \
     -not ( -path *.freezed.dart -prune ) \
     -not ( -path *.g.dart -prune ) \
-    -not ( -path ./.clj-kondo/* -prune ) \
-    -not ( -path ./.cpcache/* -prune ) \
+    -not ( -path ./.dart_tool/* -prune ) \
     -not ( -path ./.git/* -prune ) \
     -not ( -path ./.idea/* -prune ) \
-    -not ( -path ./_build/* -prune ) \
     -not ( -path ./build/* -prune ) \
     -not ( -path ./docker/* -prune ) \
-    -not ( -path ./target/* -prune ) \
+    -not ( -path ./images/* -prune ) \
     -not ( -path ./venv/* -prune ) \
+    -not ( -path ./web/* -prune ) \
     -not ( -path ./main -prune )")
 
   :custom-face
