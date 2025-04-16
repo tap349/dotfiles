@@ -9,6 +9,4 @@
 .config/zsh/.zcompcache
 .config/zsh/.zcompdump
 
-.emacs.d/projects
-
 Brewfile.lock.json
