@@ -1,8 +1,9 @@
-.git
-.idea
-build
-docker
-venv
+.git/
+.idea/
+.vscode/
+build/
+docker/
+venv/
 
 # Dart/Flutter
 *.freezed.dart
