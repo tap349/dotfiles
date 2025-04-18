@@ -164,6 +164,7 @@ brew 'k9s'
 brew 'kubectx'
 brew 'ncdu'
 brew 'telepresence-oss'
+brew 'temporal'
 
 brew 'colima'
 brew 'docker'
