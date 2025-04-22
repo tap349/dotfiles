@@ -47,6 +47,7 @@ brew 'mc'
 brew 'mpv'
 brew 'node'
 brew 'ntfs-3g-mac'
+# `foreman` alternative
 #brew 'overmind'
 brew 'p7zip'
 #brew 'pg_top'
@@ -60,7 +61,7 @@ brew 'tmux'
 brew 'tokei'
 brew 'tree'
 brew 'wget'
-brew 'yarn'
+#brew 'yarn'
 brew 'yt-dlp'
 # Make it a login shell: `chsh -s /bin/zsh` (all available shells are listed
 # in /etc/shells, current shell can be printed with `echo $0` command)
@@ -76,7 +77,9 @@ cask_args appdir: '/Applications'
 # https://community.adobe.com/t5/air/adobe-air-framework-is-damaged-and-can-t-be-opened/m-p/10799074#M55885
 #
 # After installation:
-# - `sudo xattr -r -d com.apple.quarantine /Library/Frameworks/Adobe\ AIR.framework`
+# ```
+# sudo xattr -r -d com.apple.quarantine /Library/Frameworks/Adobe\ AIR.framework
+# ```
 #
 # `Download failed` error
 #cask 'adobe-air'
@@ -156,7 +159,7 @@ brew 'eks-node-viewer'
 brew 'fd'
 brew 'fzf'
 brew 'gh'
-# for pprof
+# For pprof
 brew 'graphviz'
 brew 'helm'
 brew 'ipcalc'
@@ -169,8 +172,10 @@ brew 'temporal'
 brew 'colima'
 brew 'docker'
 # docker-buildx is a Docker plugin. For Docker to find this plugin, symlink it:
-#   mkdir -p ~/.docker/cli-plugins
-#   ln -sfn /opt/homebrew/opt/docker-buildx/bin/docker-buildx ~/.docker/cli-plugins/docker-buildx
+# ```
+# mkdir -p ~/.docker/cli-plugins
+# ln -sfn /opt/homebrew/opt/docker-buildx/bin/docker-buildx ~/.docker/cli-plugins/docker-buildx
+# ```
 brew 'docker-buildx'
 brew 'docker-compose'
 # For colima
