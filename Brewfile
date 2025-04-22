@@ -57,7 +57,7 @@ brew 'ripgrep'
 brew 'ssh-copy-id'
 # For `brew install font-inconsolata-lgc`
 brew 'svn'
-brew 'tmux'
+#brew 'tmux'
 brew 'tokei'
 brew 'tree'
 brew 'wget'
