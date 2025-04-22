@@ -28,8 +28,6 @@ brew 'asdf'
 brew 'awscli'
 # `cat` on steroids
 brew 'bat'
-# Install manually by downloading dmg file
-#brew 'cgoban'
 #brew 'exiftool'
 brew 'ffmpeg'
 brew 'git'
@@ -57,11 +55,9 @@ brew 'ripgrep'
 brew 'ssh-copy-id'
 # For `brew install font-inconsolata-lgc`
 brew 'svn'
-#brew 'tmux'
 brew 'tokei'
 brew 'tree'
 brew 'wget'
-#brew 'yarn'
 brew 'yt-dlp'
 # Make it a login shell: `chsh -s /bin/zsh` (all available shells are listed
 # in /etc/shells, current shell can be printed with `echo $0` command)
