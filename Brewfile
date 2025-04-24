@@ -177,7 +177,7 @@ brew 'docker-compose'
 # For colima
 brew 'qemu'
 
-#cask 'drawio'
+cask 'drawio'
 cask 'emacs-app-monthly'
 cask 'figma'
 cask 'google-cloud-sdk'
