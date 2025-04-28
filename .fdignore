@@ -1,9 +1,19 @@
 .git/
-.idea/
-.vscode/
+
+bin/
 build/
 docker/
 venv/
+
+# Temp Files
+*.orig
+*~
+*.tmp
+*.bak
+
+# IDE
+.idea/
+.vscode/
 
 # Dart/Flutter
 *.freezed.dart

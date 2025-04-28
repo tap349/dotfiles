@@ -306,13 +306,14 @@
   (consult-file ((t (:foreground "#777777"))))
 
   :config
+  ;; Use .fdignore but don't use .gitignore (used by default)
   (setq consult-fd-args
         (append consult-fd-args
-                (list (concat "--hidden --ignore-file "
+                (list (concat "--hidden --no-ignore-vcs --ignore-file "
                               (expand-file-name "~/.fdignore")))))
   (setq consult-ripgrep-args
         (concat consult-ripgrep-args
-                " --hidden --ignore-file "
+                " --hidden --no-ignore-vcs --ignore-file "
                 (expand-file-name "~/.fdignore")))
 
   (consult-customize
