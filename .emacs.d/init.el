@@ -309,7 +309,7 @@
   ;; Use .fdignore but don't use .gitignore (used by default)
   (setq consult-fd-args
         (append consult-fd-args
-                (list (concat "--hidden --no-ignore-vcs --ignore-file "
+                (list (concat "-t f --hidden --no-ignore-vcs --ignore-file "
                               (expand-file-name "~/.fdignore")))))
   (setq consult-ripgrep-args
         (concat consult-ripgrep-args
