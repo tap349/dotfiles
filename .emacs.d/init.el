@@ -400,6 +400,9 @@
   :hook
   (dired-mode . my/setup-dired-mode)
 
+  :custom
+  (dired-listing-switches "-alh --group-directories-first")
+
   :bind
   (:map dired-mode-map
         ("n" . evil-ex-search-next)
@@ -1016,6 +1019,12 @@
 
 (use-package json-mode
   :straight t)
+
+(use-package ls-lisp
+  :straight (:type built-in)
+  :custom
+  (ls-lisp-dirs-first t)
+  (ls-lisp-use-insert-directory-program nil))
 
 (use-package lua-mode
   :straight t
