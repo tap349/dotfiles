@@ -80,7 +80,6 @@ cask_args appdir: '/Applications'
 # `Download failed` error
 #cask 'adobe-air'
 cask 'anki'
-cask 'brightintosh'
 cask 'chatgpt'
 cask 'flux'
 # For iTerm2
@@ -110,14 +109,12 @@ cask 'zoom'
 # mas search Trello
 #-------------------------------------------------------------------------------
 
-#mas 'Bang & Olufsen', id: 1203736217
 mas 'Cloud Mail.Ru', id: 893068358
 mas 'Dashlane – Password Manager', id: 517914548
 #mas 'Dual N-Back - Train of Thought', id: 1104323582
 #mas 'Evernote', id: 406056744
 #mas 'FTP Server', id: 987045856
 mas 'Ghostery Lite', id: 1436953057
-#mas 'Jira Cloud by Atlassian', id: 1475897096
 #mas 'Marked 2', id: 890031187
 #mas 'Microsoft Remote Desktop', id: 715768417
 # - Preferences:
@@ -182,11 +179,11 @@ cask 'drawio'
 #cask 'emacs-app-monthly'
 cask 'emacs@nightly'
 cask 'figma'
+#cask 'freelens'
 cask 'google-cloud-sdk'
 cask 'intellij-idea'
 cask 'microsoft-edge'
 cask 'miro'
-#cask 'freelens'
 cask 'openlens'
 #cask 'postman'
 #cask 'protonvpn'
