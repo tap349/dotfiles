@@ -292,7 +292,7 @@
   :after evil
   :bind
   (:map evil-normal-state-map
-        ("<leader>w" . avy-goto-word-1)))
+        ("<leader>w" . avy-goto-subword-1)))
 
 (use-package consult
   :straight t
