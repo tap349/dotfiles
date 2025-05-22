@@ -1,3 +1,5 @@
+;; -*- lexical-binding: t; -*-
+
 (add-to-list 'default-frame-alist '(undecorated . t))
 
 ;; Use straight.el instead of package.el
