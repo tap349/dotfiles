@@ -175,6 +175,7 @@ brew 'docker-compose'
 # For colima
 brew 'qemu'
 
+cask '1password'
 cask 'drawio'
 #cask 'emacs-app-monthly'
 cask 'emacs@nightly'
@@ -188,6 +189,5 @@ cask 'openlens'
 #cask 'postman'
 #cask 'protonvpn'
 
-mas '1Password 7 - Password Manager', id: 1333542190
 #mas 'Google Tasks Client - To-Do', id: 1498581975
 mas 'WireGuard', id: 1451685025
