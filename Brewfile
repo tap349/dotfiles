@@ -191,4 +191,3 @@ cask 'openlens'
 #cask 'protonvpn'
 
 #mas 'Google Tasks Client - To-Do', id: 1498581975
-mas 'WireGuard', id: 1451685025
