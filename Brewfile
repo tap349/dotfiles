@@ -176,6 +176,7 @@ brew 'docker-compose'
 brew 'qemu'
 
 cask '1password'
+cask 'cloudflare-warp'
 cask 'drawio'
 #cask 'emacs-app-monthly'
 cask 'emacs@nightly'
