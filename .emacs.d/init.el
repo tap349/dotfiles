@@ -981,7 +981,7 @@
     (let ((old-point (point))
           ;; golines wraps at this line length
           ;; (or else set to fill-column)
-          (max-len display-fill-column-indicator-column))
+          (max-len (+ display-fill-column-indicator-column 1)))
       (shell-command-on-region
        (point-min)
        (point-max)
