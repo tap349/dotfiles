@@ -189,5 +189,6 @@ cask 'miro'
 cask 'openlens'
 #cask 'postman'
 #cask 'protonvpn'
+cask 'pgadmin4'
 
 #mas 'Google Tasks Client - To-Do', id: 1498581975
