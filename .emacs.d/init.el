@@ -985,7 +985,7 @@
       (shell-command-on-region
        (point-min)
        (point-max)
-       (format "golines --no-reformat-tags -m %s" max-len)
+       (format "golines --reformat-tags -m %s" max-len)
        (current-buffer)
        t
        "*golines errors*"
