@@ -995,8 +995,9 @@
 (use-package gotest
   :straight t
   :after go-mode
-  :custom
-  (go-test-args "-v")
+  :init
+  ;; Don't set in :custom section because it's not defcustom
+  (setq go-test-args "-v")
 
   :custom-face
   (go-test--ok-face ((t (:background "#77FF77" :foreground "#000000"))))
