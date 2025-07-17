@@ -304,20 +304,38 @@
   (consult-async-min-input 2)
   (consult-async-refresh-delay 0.1)
 
+  ;; TODO: --full-path matches against absolute path, not relative one.
+  (consult-fd-args
+   '("fd"
+     "--full-path"
+     "--color=never"
+     ;; ----- custom args
+     "-t" "f"
+     "--hidden"
+     "--no-ignore-vcs"
+     "--ignore-file" (expand-file-name "~/.fdignore")))
+
+  (consult-ripgrep-args
+   '("rg"
+     "--null"
+     "--line-buffered"
+     "--color=never"
+     "--max-columns=1000"
+     "--path-separator" "/"
+     "--smart-case"
+     "--no-heading"
+     "--with-filename"
+     "--line-number"
+     "--search-zip"
+     ;; ----- custom args
+     "--hidden"
+     "--no-ignore-vcs"
+     "--ignore-file" (expand-file-name "~/.fdignore")))
+
   :custom-face
   (consult-file ((t (:foreground "#777777"))))
 
   :config
-  ;; Use .fdignore but don't use .gitignore (used by default)
-  (setq consult-fd-args
-        (append consult-fd-args
-                (list (concat "-t f --hidden --no-ignore-vcs --ignore-file "
-                              (expand-file-name "~/.fdignore")))))
-  (setq consult-ripgrep-args
-        (concat consult-ripgrep-args
-                " --hidden --no-ignore-vcs --ignore-file "
-                (expand-file-name "~/.fdignore")))
-
   (consult-customize
    consult-fd :prompt "Find: "
    consult-line :preview-key 'any :prompt "Filter: "
