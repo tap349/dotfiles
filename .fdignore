@@ -2,6 +2,7 @@
 
 /bin/
 /build/
+/client-certs/
 /docker/
 /venv/
 
