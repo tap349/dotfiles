@@ -1015,7 +1015,7 @@
   :after go-mode
   :init
   ;; Don't set in :custom section because it's not defcustom
-  (setq go-test-args "-v")
+  (setq go-test-args "-v -dbtests")
 
   :custom-face
   (go-test--ok-face ((t (:background "#77FF77" :foreground "#000000"))))

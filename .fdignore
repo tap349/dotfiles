@@ -4,7 +4,6 @@
 /build/
 /client-certs/
 /docker/
-/venv/
 
 # Temp Files
 *.orig
@@ -22,3 +21,9 @@
 /.dart_tool/
 /images/
 /web/
+
+# Go
+coverage.out
+
+# Python
+/venv/
