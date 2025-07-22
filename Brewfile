@@ -100,7 +100,6 @@ cask 'transmission'
 #cask 'vagrant'
 #cask 'virtualbox'
 #cask 'virtualbox-extension-pack'
-cask 'yaak'
 cask 'zoom'
 
 #-------------------------------------------------------------------------------
@@ -187,8 +186,9 @@ cask 'intellij-idea'
 cask 'microsoft-edge'
 cask 'miro'
 cask 'openlens'
-#cask 'postman'
+cask 'postman'
 #cask 'protonvpn'
 cask 'pgadmin4'
+cask 'yaak'
 
 #mas 'Google Tasks Client - To-Do', id: 1498581975
