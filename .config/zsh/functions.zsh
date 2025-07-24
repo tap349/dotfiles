@@ -90,8 +90,8 @@ git_log() {
 # kubectl
 #-------------------------------------------------------------------------------
 
-# $1 - namespace-db
-# $2 - dpn
+# $1 - backup-db
+# $2 - dpb
 kcr() {
   local POD="$1-client"
   local HOST="$1-public"
@@ -101,7 +101,7 @@ kcr() {
     cockroach sql --certs-dir=/cockroach/cockroach-certs --host=$HOST --database=$DATABASE
 }
 
-# $1 - dev-platform-namespace
+# $1 - dev-platform-backup
 #
 # https://github.com/kubernetes/kubectl/issues/917
 # https://stackoverflow.com/a/58649439/3632318
@@ -114,7 +114,7 @@ kl() {
     | jq -r '[.ts, (.level | ascii_upcase), .msg, .status]|@tsv' -C
 }
 
-# $1 - dev-platform-namespace
+# $1 - dev-platform-backup
 ksh() {
   kubectl exec -it "deployment/$1" -n platform -- /bin/bash
 }
@@ -124,7 +124,6 @@ kpf() {
   trap "pkill kubectl" SIGINT
 
   kubectl port-forward service/catalog-db-public -n platform 26261:26257 &
-  kubectl port-forward service/namespace-db-public -n platform 26262:26257 &
   kubectl port-forward service/user-service-db-public -n platform 26263:26257 &
   kubectl port-forward service/pipeline-db-public -n platform 26264:26257 &
   kubectl port-forward service/template-db-public -n platform 26265:26257 &
