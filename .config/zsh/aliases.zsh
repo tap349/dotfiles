@@ -87,4 +87,5 @@ alias dpui='cd ~/dev/indrive/dev-platform-ui'
 alias sso='aws sso login --profile devplatform_team-531211996670 && aws sso login --profile inDriveAdministratorAccess-627723547655'
 
 alias tp='telepresence'
-alias tpc='tp connect -n platform --mapped-namespaces platform --allow-conflicting-subnets 10.0.0.0/8'
+# alias tpc='tp connect -n platform --mapped-namespaces platform --allow-conflicting-subnets 10.0.0.0/8'
+alias tpc='tp connect -n platform --mapped-namespaces platform --vnat all'
