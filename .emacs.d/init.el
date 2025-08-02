@@ -990,6 +990,9 @@
 (use-package go-mode
   :straight t
   :init
+  (defun my/setup-go-mode ()
+    (setq-local compilation-environment '("RUN_DB_TESTS=1")))
+
   ;; https://www.masteringemacs.org/article/executing-shell-commands-emacs
   ;; This is pretty heavy operation since it runs external shell command
   ;; => don't add it as before-save-hook - execute manually when needed
@@ -1008,14 +1011,20 @@
        t
        "*golines errors*"
        t)
-      (goto-char old-point))))
+      (goto-char old-point)))
+
+  :hook
+  (go-mode . my/setup-go-mode))
 
 (use-package gotest
   :straight t
   :after go-mode
   :init
   ;; Don't set in :custom section because it's not defcustom
-  (setq go-test-args "-v -tags dbtests")
+  (setq go-test-args "-v")
+
+  :hook
+  (prog-mode . hs-minor-mode)
 
   :custom-face
   (go-test--ok-face ((t (:background "#77FF77" :foreground "#000000"))))
