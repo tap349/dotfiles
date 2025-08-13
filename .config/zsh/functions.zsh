@@ -123,7 +123,6 @@ kpf() {
   # Kill all kubectl processes on Ctrl-C
   trap "pkill kubectl" SIGINT
 
-  kubectl port-forward service/catalog-db-public -n platform 26261:26257 &
   kubectl port-forward service/user-service-db-public -n platform 26263:26257 &
   kubectl port-forward service/pipeline-db-public -n platform 26264:26257 &
   kubectl port-forward service/template-db-public -n platform 26265:26257 &
