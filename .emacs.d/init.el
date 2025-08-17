@@ -499,7 +499,8 @@
                              (matcher . "CaseSensitive")
                              (staticcheck . t)
                              ;; ST1000: Incorrect or missing package comment
-                             (analyses . ((ST1000 . :json-false)))))))
+                             (analyses . ((ST1000 . :json-false)
+                                          (ST1005 . :json-false)))))))
 
   :bind
   (:map eglot-mode-map
