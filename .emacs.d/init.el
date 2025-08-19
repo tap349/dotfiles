@@ -992,7 +992,8 @@
   :straight t
   :init
   (defun my/setup-go-mode ()
-    (setq-local compilation-environment '("RUN_DB_TESTS=1")))
+    (setq-local compilation-environment '("RUN_DB_TESTS=1"
+                                          "RUN_K8S_TESTS=1")))
 
   ;; https://www.masteringemacs.org/article/executing-shell-commands-emacs
   ;; This is pretty heavy operation since it runs external shell command
