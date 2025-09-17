@@ -101,6 +101,7 @@ cask 'transmission'
 #cask 'vagrant'
 #cask 'virtualbox'
 #cask 'virtualbox-extension-pack'
+cask 'yandex-music'
 cask 'zoom'
 
 #-------------------------------------------------------------------------------
