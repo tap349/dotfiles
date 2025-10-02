@@ -119,14 +119,6 @@ mas 'Ghostery Lite', id: 1436953057
 #mas 'Marked 2', id: 890031187
 #mas 'Microsoft Remote Desktop', id: 715768417
 # - Preferences:
-#   - General:
-#     - After upload:
-#       - [ ] Open in browser
-#     - [x] Launch at login
-#   - Hotkeys:
-#     - Capture area: <M-1> (<M-D-5> is used by default)
-mas 'Monosnap', id: 540348655
-# - Preferences:
 #   - Shortcuts:
 #     - General -> Show Magnifier: <M-2>
 mas 'Sip', id: 507257563
