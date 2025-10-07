@@ -26,6 +26,8 @@
 	<true/>
 	<key>CompactMinimalTabBarHeight</key>
 	<real>42</real>
+	<key>Compress History</key>
+	<false/>
 	<key>Control</key>
 	<integer>1</integer>
 	<key>CopyLastNewline</key>
@@ -32536,6 +32538,8 @@
 	<integer>0</integer>
 	<key>WordCharacters</key>
 	<string>/-+\~_.</string>
+	<key>disableMetalWhenUnplugged</key>
+	<false/>
 	<key>findIgnoreCase_iTerm</key>
 	<true/>
 	<key>findMode_iTerm</key>
@@ -32547,6 +32551,8 @@
 	<key>kCPKSelectionViewShowHSBTextFieldsKey</key>
 	<false/>
 	<key>metalMaximizeThroughput</key>
-	<true/>
+	<false/>
+	<key>preferIntegratedGPU</key>
+	<false/>
 </dict>
 </plist>
