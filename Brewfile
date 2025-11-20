@@ -124,6 +124,7 @@ mas 'Ghostery Lite', id: 1436953057
 mas 'Sip', id: 507257563
 mas 'Slack for Desktop', id: 803453959
 mas 'Telegram Desktop', id: 946399090
+mas 'WhatsApp Messenger', id: 310633997
 
 #-------------------------------------------------------------------------------
 # LSP
