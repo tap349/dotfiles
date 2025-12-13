@@ -304,6 +304,9 @@
   (consult-async-min-input 2)
   (consult-async-refresh-delay 0.1)
 
+  (consult-project-buffer-sources '(consult-source-project-buffer
+                                    consult-source-project-recent-file))
+
   ;; TODO: --full-path matches against absolute path, not relative one.
   (consult-fd-args
    '("fd"
@@ -1179,6 +1182,12 @@
   :hook
   (prog-mode . rainbow-mode))
 
+;; Used by consult-project-buffer to list recent project files
+(use-package recentf
+  :straight (:type built-in)
+  :config
+  (recentf-mode 1))
+
 (use-package restclient
   :straight t
   :after evil
@@ -1329,7 +1338,7 @@
                    (execute-kbd-macro (kbd "C-u C-t")))))
 
   (:map evil-normal-state-map
-        ("<leader>b" . consult-buffer)
+        ("<leader>b" . consult-project-buffer)
         ("<leader>f" . consult-flymake)
         ("<leader>\S-f" . (lambda ()
                             (interactive)
