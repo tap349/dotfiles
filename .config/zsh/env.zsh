@@ -50,7 +50,6 @@ path=(/opt/homebrew/opt/mysql-client/bin $path)
 # (for example gke-gcloud-auth-plugin)
 source "$(brew --prefix)/share/google-cloud-sdk/path.zsh.inc"
 
-
 #-------------------------------------------------------------------------------
 # Prompt
 #-------------------------------------------------------------------------------
