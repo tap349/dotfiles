@@ -1002,7 +1002,8 @@
   :after evil
   :init
   (defun my/setup-go-mode ()
-    ;; Setup compilation-envirnoment in Go buffer where `compile' is run
+    ;; Setup compilation-environment in Go buffer from which
+    ;; `compile' is run (not in compilation buffer itself)
     (setq-local compilation-environment '("RUN_API_TESTS=1"
                                           "RUN_DB_TESTS=1"
                                           "RUN_KUBE_TESTS=1")))
