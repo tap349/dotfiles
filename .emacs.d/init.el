@@ -996,11 +996,12 @@
   :after evil
   :init
   (defun my/setup-go-mode ()
+    ;; Setup compilation-envirnoment in Go buffer where `compile' is run
     (setq-local compilation-environment '("RUN_API_TESTS=1"
                                           "RUN_DB_TESTS=1"
                                           "RUN_KUBE_TESTS=1")))
 
-  (defun my/highlight-go-test ()
+  (defun my/setup-go-test ()
     (font-lock-add-keywords
      nil
      '(("^\s*--- FAIL.*" . 'go-test-fail)
@@ -1041,7 +1042,7 @@
 
   :hook
   (go-mode . my/setup-go-mode)
-  (compilation-mode . my/highlight-go-test)
+  (compilation-mode . my/setup-go-test)
 
   :custom-face
   (go-test-pass ((t (:background "#77FF77" :foreground "#000000"))))
