@@ -1200,30 +1200,6 @@
   :config
   (recentf-mode 1))
 
-(use-package restclient
-  :straight t
-  :after evil
-  :mode ("\\.http\\'" . restclient-mode)
-  :init
-  ;; :token := (my/read-cached-string "Token: " "token")
-  (defun my/read-cached-string (prompt cache-key)
-    (let ((var-name (intern (concat "cached-" cache-key))))
-      (unless (local-variable-p var-name)
-        (make-local-variable var-name))
-      (if (boundp var-name)
-          (symbol-value var-name)
-        (set var-name (read-string prompt)))))
-
-  :custom
-  (restclient-response-size-threshold 1000000)
-
-  ;; :config
-  ;; (evil-set-initial-state 'restclient-mode 'emacs)
-
-  :bind
-  (:map restclient-mode-map
-        ("C-c C-f" . json-mode-beautify)))
-
 ;; For camel-case motions
 (use-package subword
   :straight (:type built-in)
