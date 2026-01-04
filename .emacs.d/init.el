@@ -841,7 +841,7 @@
         ("<backspace>" . evil-toggle-fold)
         ("<leader>SPC" . my/toggle-comment)
 
-        ("<leader>t" . dired-jump))
+        ("<leader>d" . dired-jump))
 
   (:map evil-visual-state-map
         ("C-c" . evil-exit-visual-state)
@@ -993,11 +993,31 @@
 
 (use-package go-mode
   :straight t
+  :after evil
   :init
   (defun my/setup-go-mode ()
     (setq-local compilation-environment '("RUN_API_TESTS=1"
                                           "RUN_DB_TESTS=1"
                                           "RUN_KUBE_TESTS=1")))
+
+  (defun my/highlight-go-test ()
+    (font-lock-add-keywords
+     nil
+     '(("^\s*--- FAIL.*" . 'go-test-fail)
+       ("^\s*--- PASS.*" . 'go-test-pass))))
+
+  (defun my/go-test-current-test ()
+    (interactive)
+    (let ((test-name
+           (save-excursion
+             (when (re-search-backward "^func \\(Test[^( ]+\\)" nil t)
+               (match-string 1)))))
+      (unless test-name (user-error "No Test* function found"))
+      (compile (format "go test -v -run '^%s$'" test-name))))
+
+  (defun my/go-test-current-package ()
+    (interactive)
+    (compile "go test -v ."))
 
   ;; https://www.masteringemacs.org/article/executing-shell-commands-emacs
   ;; This is pretty heavy operation since it runs external shell command
@@ -1020,27 +1040,19 @@
       (goto-char old-point)))
 
   :hook
-  (go-mode . my/setup-go-mode))
-
-(use-package gotest
-  :straight t
-  :after go-mode
-  :init
-  ;; Don't set in :custom section because it's not defcustom
-  (setq go-test-args "-v")
-
-  :hook
-  (prog-mode . hs-minor-mode)
+  (go-mode . my/setup-go-mode)
+  (compilation-mode . my/highlight-go-test)
 
   :custom-face
-  (go-test--ok-face ((t (:background "#77FF77" :foreground "#000000"))))
-  (go-test--standard-face ((t (:background "#F2F2FA" :foreground "#000000"))))
+  (go-test-pass ((t (:background "#77FF77" :foreground "#000000"))))
+  (go-test-fail ((t (:background "#FFBBBB" :foreground "#000000"))))
 
-  :bind
-  (:map go-mode-map
-        ("C-x t t" . go-test-current-test)
-        ("C-x t f" . go-test-current-file)
-        ("C-x t p" . go-test-current-project)))
+  :config
+  ;; :bind keyword allows to define keybinding in either evil-normal-state-map
+  ;; (state map) or go-mode-map (mode map) but not both => use evil-define-key
+  (evil-define-key 'normal go-mode-map
+    (kbd "<leader>t") #'my/go-test-current-test
+    (kbd "<leader>T") #'my/go-test-current-package))
 
 ;; Use evil-toggle-fold to toggle folding
 (use-package hideshow
