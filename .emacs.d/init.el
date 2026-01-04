@@ -296,6 +296,12 @@
   (:map evil-normal-state-map
         ("<leader>w" . avy-goto-word-0)))
 
+(use-package compile
+  :straight (:type built-in)
+  :custom
+  (compilation-scroll-output t)
+  (compilation-auto-jump-to-first-error t))
+
 (use-package consult
   :straight t
   :custom
@@ -1014,11 +1020,13 @@
              (when (re-search-backward "^func \\(Test[^( ]+\\)" nil t)
                (match-string 1)))))
       (unless test-name (user-error "No Test* function found"))
-      (compile (format "go test -v -run '^%s$'" test-name))))
+      (compile (format "go test -v -run '^%s$'" test-name))
+      (switch-to-buffer-other-window "*compilation*")))
 
   (defun my/go-test-current-package ()
     (interactive)
-    (compile "go test -v ."))
+    (compile "go test -v .")
+    (switch-to-buffer-other-window "*compilation*"))
 
   ;; https://www.masteringemacs.org/article/executing-shell-commands-emacs
   ;; This is pretty heavy operation since it runs external shell command
