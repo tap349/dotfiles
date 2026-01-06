@@ -86,7 +86,6 @@ cask 'flux-app'
 # For iTerm2
 cask 'font-inconsolata-lgc'
 cask 'font-ubuntu'
-cask 'goldendict'
 cask 'google-chrome'
 cask 'gopanda'
 cask 'iterm2'
