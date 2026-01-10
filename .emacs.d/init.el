@@ -1016,13 +1016,17 @@
 
   (defun my/go-test-current-test ()
     (interactive)
-    (let ((test-name
-           (save-excursion
-             (when (re-search-backward "^func \\(Test[^( ]+\\)" nil t)
-               (match-string 1)))))
-      (unless test-name (user-error "No Test* function found"))
-      (compile (format "go test -v -run '^%s$'" test-name))
-      (switch-to-buffer-other-window "*compilation*")))
+    (let* ((rx "^func \\(([^)]*) \\)?\\(Test[[:alnum:]_]+\\)")
+           (found (save-excursion (re-search-backward rx nil t))))
+      (unless found (user-error "No Test* function found"))
+
+      (let* ((receiver (match-string 1))
+             (test-name (match-string 2))
+             (cmd (if receiver
+                      (format "go test -v -testify.m '^%s$'" test-name)
+                    (format "go test -v -run '^%s$'" test-name))))
+        (compile cmd)
+        (switch-to-buffer-other-window "*compilation*"))))
 
   (defun my/go-test-current-package ()
     (interactive)
