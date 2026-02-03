@@ -54,16 +54,6 @@ brew 'zsh'
 
 cask_args appdir: '/Applications'
 
-# for mvrviewer-4.6.1213.air
-# https://community.adobe.com/t5/air/adobe-air-framework-is-damaged-and-can-t-be-opened/m-p/10799074#M55885
-#
-# After installation:
-# ```
-# sudo xattr -r -d com.apple.quarantine /Library/Frameworks/Adobe\ AIR.framework
-# ```
-#
-# `Download failed` error
-#cask 'adobe-air'
 cask 'anki'
 cask 'chatgpt'
 cask 'flux-app'
