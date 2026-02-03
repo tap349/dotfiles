@@ -54,7 +54,6 @@ brew 'zsh'
 
 cask_args appdir: '/Applications'
 
-cask 'anki'
 cask 'chatgpt'
 cask 'flux-app'
 # For iTerm2
