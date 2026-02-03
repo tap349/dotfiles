@@ -79,7 +79,6 @@ cask_args appdir: '/Applications'
 #
 # `Download failed` error
 #cask 'adobe-air'
-cask 'amneziavpn'
 cask 'anki'
 cask 'chatgpt'
 cask 'flux-app'
