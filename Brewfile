@@ -95,7 +95,6 @@ cask 'steam'
 cask 'todoist-app'
 cask 'tomighty'
 cask 'transmission'
-cask 'yandex-music'
 cask 'zoom'
 
 #-------------------------------------------------------------------------------
