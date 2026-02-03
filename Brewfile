@@ -102,7 +102,7 @@ cask 'zoom'
 # mas search Trello
 #-------------------------------------------------------------------------------
 
-mas 'Cloud Mail.Ru', id: 893068358
+#mas 'Cloud Mail.Ru', id: 893068358
 mas 'Dashlane – Password Manager', id: 517914548
 #mas 'Dual N-Back - Train of Thought', id: 1104323582
 mas 'Ghostery Lite', id: 1436953057
