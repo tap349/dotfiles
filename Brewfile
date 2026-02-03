@@ -38,8 +38,6 @@ brew 'p7zip'
 #brew 'pg_top'
 brew 'ripgrep'
 brew 'ssh-copy-id'
-# For `brew install font-inconsolata-lgc`
-brew 'svn'
 brew 'tokei'
 brew 'tree'
 brew 'wget'
@@ -56,9 +54,6 @@ cask_args appdir: '/Applications'
 
 cask 'chatgpt'
 cask 'flux-app'
-# For iTerm2
-cask 'font-inconsolata-lgc'
-cask 'font-ubuntu'
 cask 'google-chrome'
 cask 'iterm2'
 cask 'macfuse'
