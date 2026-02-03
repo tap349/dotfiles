@@ -107,11 +107,6 @@ mas 'Dashlane – Password Manager', id: 517914548
 #mas 'Dual N-Back - Train of Thought', id: 1104323582
 mas 'Ghostery Lite', id: 1436953057
 mas 'Happ - Proxy Utility Plus', id: 6746188973
-#mas 'Marked 2', id: 890031187
-#mas 'Microsoft Remote Desktop', id: 715768417
-# - Preferences:
-#   - Shortcuts:
-#     - General -> Show Magnifier: <M-2>
 mas 'Sip', id: 507257563
 mas 'Slack for Desktop', id: 803453959
 mas 'Telegram Desktop', id: 946399090
