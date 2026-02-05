@@ -265,6 +265,8 @@
                   (interactive)
                   (if truncate-lines (scroll-left 1))))
 
+(define-key key-translation-map (kbd "C-q") (kbd "C-x"))
+
 ;;-----------------------------------------------------------------------------
 ;;
 ;; Packages
@@ -1178,6 +1180,14 @@
 
   :config
   (evil-set-initial-state 'org-mode 'emacs))
+
+(use-package org-roam
+  :straight t
+  :after evil
+
+  :config
+  (org-roam-db-autosync-mode)
+  (evil-set-initial-state 'org-roam-mode 'emacs))
 
 ;; - "C-x p r" - replace string in project (project-query-replace-regexp)
 (use-package project

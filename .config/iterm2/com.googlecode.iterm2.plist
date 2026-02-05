@@ -32063,7 +32063,7 @@
 			<key>Non-ASCII Anti Aliased</key>
 			<true/>
 			<key>Normal Font</key>
-			<string>JetBrainsMonoNL-Light 15</string>
+			<string>JetBrainsMonoNL-Regular 15</string>
 			<key>Only The Default BG Color Uses Transparency</key>
 			<true/>
 			<key>Option Key Sends</key>
@@ -32385,7 +32385,7 @@
 			<key>Use Underline Color</key>
 			<false/>
 			<key>Vertical Spacing</key>
-			<real>1.1100000000000001</real>
+			<real>1.1399999999999999</real>
 			<key>Visual Bell</key>
 			<true/>
 			<key>Window Type</key>
