@@ -1185,9 +1185,17 @@
   :straight t
   :after evil
 
+  :custom
+  (org-roam-directory "~/org-roam")
+
   :config
-  (org-roam-db-autosync-mode)
-  (evil-set-initial-state 'org-roam-mode 'emacs))
+  (evil-set-initial-state 'org-roam-mode 'emacs)
+  (org-roam-db-autosync-mode t)
+
+  :bind
+  (("C-c n f" . org-roam-node-find)
+   ("C-c n i" . org-roam-node-insert)
+   ("C-c n d" . org-roam-dailies-capture-today)))
 
 ;; - "C-x p r" - replace string in project (project-query-replace-regexp)
 (use-package project
