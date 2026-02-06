@@ -248,11 +248,11 @@
 ;;
 ;; Define key in evil-normal-state-map as well
 ;; for it to work in insert and emacs states
-(global-set-key [?\C-.] 'execute-extended-command)
+(global-set-key [?\C-.] #'execute-extended-command)
 
-(global-set-key (kbd "s-c") 'clipboard-kill-ring-save)
-(global-set-key (kbd "s-x") 'clipboard-kill-region)
-(global-set-key (kbd "s-v") 'clipboard-yank)
+(global-set-key (kbd "s-c") #'clipboard-kill-ring-save)
+(global-set-key (kbd "s-x") #'clipboard-kill-region)
+(global-set-key (kbd "s-v") #'clipboard-yank)
 
 ;; Use touchpad to scroll horizontally
 ;; (can be useful, say, in eldoc-box popups)
@@ -533,17 +533,15 @@
 
 (use-package emacs
   :straight (:type built-in)
-  :init
-  ;; https://github.com/minad/vertico#configuration
-  (defun my/setup-minibuffer-mode ()
-    (setq minibuffer-prompt-properties
-          '(cursor-intangible t face minibuffer-prompt read-only t)))
-
+  :custom
   ;; First indent current line, then complete
-  (setq tab-always-indent 'complete)
+  (tab-always-indent 'complete)
 
-  :hook
-  (minibuffer-setup . my/setup-minibuffer-mode))
+  ;; https://github.com/minad/vertico#configuration
+  (enable-recursive-minibuffers t)
+  (read-extended-command-predicate #'command-completion-default-include-p)
+  (minibuffer-prompt-properties
+   '(read-only t cursor-intangible t face minibuffer-prompt)))
 
 (use-package embark
   :straight t
@@ -1171,7 +1169,7 @@
   :after evil
 
   :custom
-  (org-adapt-indentation t)
+  (org-adapt-indentation nil)
   ;; (org-hide-emphasis-markers t)
 
   :custom-face
