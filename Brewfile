@@ -2,17 +2,24 @@
 # Homebrew
 #-------------------------------------------------------------------------------
 
+tap 'aws/tap'
 tap 'beeftornado/rmtree'
 # https://github.com/osxfuse/osxfuse/issues/818#issuecomment-985739918
 tap 'gromgit/homebrew-fuse'
+tap 'jimeh/emacs-builds'
 
 brew 'asdf'
 # After installation:
 # - `aws configure`
 brew 'awscli'
 brew 'bat'
+brew 'bfg'
+brew 'fd'
 brew 'ffmpeg'
+brew 'fzf'
+brew 'gh'
 brew 'git'
+brew 'gopls'
 brew 'gpg'
 brew 'htop'
 brew 'imagemagick'
@@ -22,6 +29,7 @@ brew 'mas'
 brew 'mc'
 brew 'mkvtoolnix'
 brew 'mpv'
+brew 'ncdu'
 brew 'node'
 brew 'ntfs-3g-mac'
 brew 'p7zip'
@@ -37,41 +45,28 @@ brew 'zsh'
 cask_args appdir: '/Applications'
 
 cask 'chatgpt'
+cask 'drawio'
+cask 'emacs-app@nightly'
 cask 'flux-app'
 cask 'google-chrome'
 cask 'iterm2'
 cask 'macfuse'
+cask 'microsoft-edge'
 cask 'ngrok'
 cask 'obsidian'
+cask 'postman'
 cask 'sip-app'
 cask 'steam'
 cask 'telegram-desktop'
 cask 'todoist-app'
 cask 'tomighty'
 cask 'transmission'
+cask 'yaak'
 cask 'zoom'
 
 #-------------------------------------------------------------------------------
-# inDrive
+# Docker
 #-------------------------------------------------------------------------------
-
-tap 'aws/tap'
-tap 'jimeh/emacs-builds'
-tap 'telepresenceio/telepresence'
-
-brew 'bfg'
-brew 'eks-node-viewer'
-brew 'fd'
-brew 'fzf'
-brew 'gh'
-brew 'gopls'
-brew 'helm'
-brew 'k9s'
-brew 'kubectx'
-brew 'mysql-client'
-brew 'ncdu'
-brew 'telepresence-oss'
-brew 'temporal'
 
 brew 'colima'
 brew 'docker'
@@ -85,17 +80,26 @@ brew 'docker-compose'
 # For colima
 brew 'qemu'
 
+#-------------------------------------------------------------------------------
+# inDrive
+#-------------------------------------------------------------------------------
+
+tap 'telepresenceio/telepresence'
+
+brew 'eks-node-viewer'
+brew 'helm'
+brew 'k9s'
+brew 'kubectx'
+brew 'mysql-client'
+brew 'telepresence-oss'
+brew 'temporal'
+
 cask '1password'
 cask 'cloudflare-warp'
-cask 'drawio'
-cask 'emacs-app@nightly'
 cask 'figma'
-cask 'microsoft-edge'
 cask 'miro'
 cask 'openlens'
-cask 'postman'
 cask 'slack'
-cask 'yaak'
 
 #-------------------------------------------------------------------------------
 # App Store
