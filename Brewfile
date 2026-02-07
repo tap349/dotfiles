@@ -6,8 +6,6 @@
 #-------------------------------------------------------------------------------
 
 tap 'beeftornado/rmtree'
-tap 'homebrew/cask'
-tap 'homebrew/cask-fonts'
 tap 'homebrew/cask-versions'
 # https://github.com/osxfuse/osxfuse/issues/818#issuecomment-985739918
 tap 'gromgit/homebrew-fuse'
@@ -31,6 +29,7 @@ brew 'jq'
 brew 'macvim'
 brew 'mas'
 brew 'mc'
+brew 'mkvtoolnix'
 brew 'mpv'
 brew 'node'
 brew 'ntfs-3g-mac'
