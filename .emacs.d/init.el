@@ -1167,17 +1167,26 @@
 (use-package org
   :straight (:type built-in)
   :after evil
+  :init
+  (defun my/org-toggle-emphasis-markers ()
+    (interactive)
+    (setq-local org-hide-emphasis-markers (not org-hide-emphasis-markers))
+    (font-lock-flush))
 
   :custom
   (org-adapt-indentation nil)
-  ;; (org-hide-emphasis-markers t)
+  (org-hide-emphasis-markers t)
 
   :custom-face
   (org-level-1 ((t (:weight bold))))
   (org-level-2 ((t (:weight bold))))
 
   :config
-  (evil-set-initial-state 'org-mode 'emacs))
+  (evil-set-initial-state 'org-mode 'emacs)
+
+  :bind
+  (:map org-mode-map
+        ("C-c e" . my/org-toggle-emphasis-markers)))
 
 (use-package org-roam
   :straight t
