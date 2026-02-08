@@ -45,11 +45,6 @@ path=($HOME/.asdf/shims $path)
 # mysql-client
 path=(/opt/homebrew/opt/mysql-client/bin $path)
 
-# brew info google-cloud-sdk
-# Otherwise executables of installed components are not found in PATH
-# (for example gke-gcloud-auth-plugin)
-source "$(brew --prefix)/share/google-cloud-sdk/path.zsh.inc"
-
 #-------------------------------------------------------------------------------
 # Prompt
 #-------------------------------------------------------------------------------
