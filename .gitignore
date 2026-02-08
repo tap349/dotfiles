@@ -6,7 +6,4 @@
 .vim/tags/
 .vim/tmp/
 
-.config/zsh/.zcompcache
-.config/zsh/.zcompdump
-
 Brewfile.lock.json
