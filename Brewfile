@@ -14,6 +14,8 @@ brew 'asdf'
 brew 'awscli'
 brew 'bat'
 brew 'bfg'
+# For vterm package in Emacs
+brew 'cmake'
 brew 'fd'
 brew 'ffmpeg'
 brew 'fzf'
