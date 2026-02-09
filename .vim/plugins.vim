@@ -117,6 +117,11 @@ Plug 'tpope/vim-surround'
 
 call plug#end()
 
+if empty(glob('~/.vim/plugged/*'))
+  echo "Plugins not installed. Run :PlugInstall"
+  finish
+endif
+
 "===============================================================================
 "
 " configuration
