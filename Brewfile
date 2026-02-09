@@ -8,7 +8,6 @@ tap 'beeftornado/rmtree'
 tap 'gromgit/homebrew-fuse'
 tap 'jimeh/emacs-builds'
 
-brew 'asdf'
 # After installation:
 # - `aws configure`
 brew 'awscli'
@@ -29,6 +28,7 @@ brew 'jq'
 brew 'macvim'
 brew 'mas'
 brew 'mc'
+brew 'mise'
 brew 'mkvtoolnix'
 brew 'mpv'
 brew 'ncdu'

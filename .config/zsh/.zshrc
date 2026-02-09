@@ -60,3 +60,9 @@ unset zle_bracketed_paste
 source $ZDOTDIR/bindings.zsh
 # Source plugins.zsh at the end of .zshrc
 source $ZDOTDIR/plugins.zsh
+
+#-------------------------------------------------------------------------------
+# mise
+#-------------------------------------------------------------------------------
+
+eval "$(mise activate zsh)"

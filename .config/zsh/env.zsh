@@ -38,10 +38,6 @@ path=($HOME/bin $path)
 path=($HOME/scripts $path)
 path=(/opt/homebrew/bin $path)
 path=(/opt/homebrew/sbin $path)
-# Dart cache
-path=($HOME/.pub-cache/bin $path)
-# asdf
-path=($HOME/.asdf/shims $path)
 # mysql-client
 path=(/opt/homebrew/opt/mysql-client/bin $path)
 
@@ -89,6 +85,13 @@ HISTSIZE=10000
 SAVEHIST=10000
 
 #-------------------------------------------------------------------------------
+# Dart
+#-------------------------------------------------------------------------------
+
+# Dart cache
+path=($HOME/.pub-cache/bin $path)
+
+#-------------------------------------------------------------------------------
 # Elixir
 #-------------------------------------------------------------------------------
 
@@ -100,6 +103,9 @@ export ERL_AFLAGS='-kernel shell_history enabled'
 #-------------------------------------------------------------------------------
 
 export GOPRIVATE=github.com/inDriver
+
+# go env GOPATH => $HOME/go
+path=($HOME/go/bin $path)
 
 #-------------------------------------------------------------------------------
 # K9s
