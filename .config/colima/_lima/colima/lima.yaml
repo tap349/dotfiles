@@ -1,0 +1,108 @@
+vmType: qemu
+arch: aarch64
+images:
+    - location: /Users/tap/Library/Caches/colima/caches/fc0bfb9256e1f61294f2c41fc95ff4feb6c0daafccfb3b435e2d972e39bc8432.raw
+      arch: aarch64
+cpus: 2
+memory: 5120MiB
+disk: 100GiB
+mounts:
+    - location: "~"
+      writable: true
+mountType: reverse-sshfs
+ssh:
+    loadDotSSHPubKeys: false
+    forwardAgent: false
+containerd:
+    system: false
+    user: false
+dns: []
+firmware:
+    legacyBIOS: false
+hostResolver:
+    enabled: true
+    hosts:
+        host.docker.internal: host.lima.internal
+portForwards:
+    - guestPortRange:
+        - 0
+        - 0
+      guestSocket: /var/run/docker.sock
+      hostPortRange:
+        - 0
+        - 0
+      hostSocket: /Users/tap/.config/colima/default/docker.sock
+      proto: tcp
+    - guestPortRange:
+        - 0
+        - 0
+      guestSocket: /var/run/containerd/containerd.sock
+      hostPortRange:
+        - 0
+        - 0
+      hostSocket: /Users/tap/.config/colima/default/containerd.sock
+      proto: tcp
+    - guestPortRange:
+        - 0
+        - 0
+      guestSocket: /var/run/docker.sock
+      hostPortRange:
+        - 0
+        - 0
+      hostSocket: /Users/tap/.config/colima/docker.sock
+      proto: tcp
+    - guestIPMustBeZero: true
+      guestIP: 0.0.0.0
+      guestPortRange:
+        - 1
+        - 65535
+      hostIP: 0.0.0.0
+      hostPortRange:
+        - 1
+        - 65535
+      proto: tcp
+    - guestIPMustBeZero: true
+      guestIP: 0.0.0.0
+      guestPortRange:
+        - 1
+        - 65535
+      hostIP: 0.0.0.0
+      hostPortRange:
+        - 1
+        - 65535
+      proto: udp
+    - guestIP: 127.0.0.1
+      guestPortRange:
+        - 1
+        - 65535
+      hostIP: 127.0.0.1
+      hostPortRange:
+        - 1
+        - 65535
+      proto: tcp
+    - guestIP: 127.0.0.1
+      guestPortRange:
+        - 1
+        - 65535
+      hostIP: 127.0.0.1
+      hostPortRange:
+        - 1
+        - 65535
+      proto: udp
+networks:
+    - lima: user-v2
+provision:
+    - mode: system
+      script: sysctl -w fs.inotify.max_user_watches=1048576
+    - mode: dependency
+      script: groupadd -f docker && usermod -aG docker {{ .User }}
+    - mode: system
+      script: grep '127.0.0.1 colima' /etc/hosts || echo '127.0.0.1 colima' >> /etc/hosts
+    - mode: system
+      script: hostnamectl set-hostname colima
+    - mode: system
+      script: mount -a
+    - mode: system
+      script: readlink /usr/sbin/fstrim || fstrim -a
+    - mode: system
+      script: resize2fs /dev/disk/by-label/lima-colima || true
