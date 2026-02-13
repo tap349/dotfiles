@@ -86,14 +86,12 @@ brew 'qemu'
 # inDrive
 #-------------------------------------------------------------------------------
 
-tap 'telepresenceio/telepresence'
-
 brew 'eks-node-viewer'
 brew 'helm'
 brew 'k9s'
 brew 'kubectx'
 brew 'mysql-client'
-brew 'telepresence-oss'
+brew 'telepresenceio/telepresence/telepresence-oss'
 brew 'temporal'
 
 cask '1password'
