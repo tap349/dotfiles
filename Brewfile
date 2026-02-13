@@ -62,6 +62,7 @@ cask 'telegram-desktop'
 cask 'todoist-app'
 cask 'tomighty'
 cask 'transmission'
+cask 'whatsapp'
 cask 'yaak'
 cask 'zoom'
 
