@@ -40,8 +40,8 @@ brew 'ssh-copy-id'
 brew 'tokei'
 brew 'tree'
 brew 'wget'
-# Make it a login shell: `chsh -s /bin/zsh` (all available shells are listed
-# in /etc/shells, current shell can be printed with `echo $0` command)
+# Make it a login shell:
+# chsh -s /bin/zsh
 brew 'zsh'
 
 cask_args appdir: '/Applications'
