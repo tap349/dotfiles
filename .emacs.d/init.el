@@ -1324,16 +1324,6 @@
    ("C-<tab>" . tab-recent)
    ("C-<backspace>" . tab-bar-close-tab)))
 
-(use-package verb
-  :straight t
-  :after (evil org)
-  :custom
-  (verb-auto-kill-response-buffers t)
-
-  :config
-  (evil-set-initial-state 'verb-mode 'emacs)
-  (define-key org-mode-map (kbd "C-c C-r") verb-command-map))
-
 (use-package vertico
   :straight t
   :after evil
