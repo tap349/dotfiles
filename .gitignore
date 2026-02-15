@@ -5,5 +5,3 @@
 .vim/plugged/
 .vim/tags/
 .vim/tmp/
-
-Brewfile.lock.json

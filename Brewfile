@@ -86,6 +86,8 @@ brew 'qemu'
 # inDrive
 #-------------------------------------------------------------------------------
 
+tap 'telepresenceio/telepresence'
+
 brew 'eks-node-viewer'
 brew 'helm'
 brew 'k9s'
