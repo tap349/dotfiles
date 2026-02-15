@@ -4,7 +4,6 @@
 #-------------------------------------------------------------------------------
 
 source $ZDOTDIR/aliases.zsh
-source $ZDOTDIR/options.zsh
 source $ZDOTDIR/prompt.zsh
 source $ZDOTDIR/history.zsh
 

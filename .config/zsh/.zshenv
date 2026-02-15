@@ -3,4 +3,6 @@
 # .zshenv is sourced on all invocations of the shell
 #-------------------------------------------------------------------------------
 
+# Source before PATH configuration
+source $ZDOTDIR/options.zsh
 source $ZDOTDIR/env.zsh

@@ -72,12 +72,8 @@ cask 'zoom'
 
 brew 'colima'
 brew 'docker'
-# docker-buildx is a Docker plugin. For Docker to find this plugin, symlink it:
-# - mkdir -p ~/.docker/cli-plugins
-# - ln -sfn /opt/homebrew/opt/docker-buildx/bin/docker-buildx ~/.docker/cli-plugins/docker-buildx
 brew 'docker-buildx'
 brew 'docker-compose'
-# For colima
 brew 'qemu'
 
 #-------------------------------------------------------------------------------
