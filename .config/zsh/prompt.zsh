@@ -4,7 +4,7 @@ setopt prompt_subst
 # for i in {0..255}; do print -P "%F{$i}$i%f "; done
 PS1='\
 %K{#1F2F40}\
-%F{032} %~ %f\
+%F{032} %1d %f\
 $(git_prompt)\
 %k\
 %F{032} %(!.#.») %f'

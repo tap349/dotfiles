@@ -25,7 +25,7 @@ autoload -U colors; colors
 source $ZDATADIR/zsh-kubectl-prompt/kubectl.zsh
 
 function right_prompt() {
-  local color=blue
+  local color=green
 
   if [[ $ZSH_KUBECTL_CONTEXT == dev-platform-eks-prod ]]; then
     color=red
