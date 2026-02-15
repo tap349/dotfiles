@@ -1,32 +1,18 @@
-#*******************************************************************************
-#
-# Aliases
-#
-# Alias definitions are recursive, the order in which they are defined doesn't
-# matter - they can still use each other (so called hoisting in JavaScript)
-#
-#*******************************************************************************
-
-#-------------------------------------------------------------------------------
-# cd
-#-------------------------------------------------------------------------------
-
-alias dot='cd ~/.dotfiles'
-
 #-------------------------------------------------------------------------------
 # System
 #-------------------------------------------------------------------------------
 
-# alias colima='colima start -m 5 -d 100'
+alias dot='cd ~/.dotfiles'
+
 alias df='df -h'
 alias ll='ls -alph'
 alias mcu='mc -u'
+
 # http://reasoniamhere.com/2014/01/11/outrageously-useful-tips-to-master-your-z-shell/
 #
 # (#i) - case-insensitive globbing
 # (Om) - sort by modification date (asc)
 alias q='open -Fn (#i)*.(jpeg|jpg|png)(Om)'
-alias ydl='youtube-dl'
 
 #-------------------------------------------------------------------------------
 # Dev
@@ -38,11 +24,11 @@ alias dc='docker compose'
 alias e='open -a Emacs --args --chdir $PWD "$@"'
 alias k='kubectl'
 alias kctx='kubectx'
-alias ks='k9s'
+alias kk='k9s'
 alias m='mvim'
 
 #-------------------------------------------------------------------------------
-# Git
+# git
 #-------------------------------------------------------------------------------
 
 alias g='git'
@@ -56,11 +42,24 @@ alias gp='git push'
 alias gpt='git push --tags'
 alias gs='git status'
 
-#-------------------------------------------------------------------------------
-# Misc
-#-------------------------------------------------------------------------------
+git_branch_delete() {
+  # Current branch is prefixed with '*' in `git branch` output
+  git branch | grep -v -E '(main|develop|\*)' | xargs git branch -d
+}
 
-alias pali='open ~/docs/Pali/ГРАМ\ (0[2-9]|1[0-9])\ *'
+git_commit() {
+  if [[ -z $1 ]]; then
+    echo 'Error: specify git commit message'
+    return 1
+  fi
+
+  git commit -S -m "$*"
+}
+
+git_log() {
+  local format='%Cred%h%Creset %C(yellow)%d%Creset %s - %C(bold blue)%an%Creset, %Cgreen%cr'
+  git log --graph --pretty=format:${format} --abbrev-commit
+}
 
 #-------------------------------------------------------------------------------
 # inDrive
@@ -76,7 +75,6 @@ alias dpg='cd ~/dev/indrive/dev-platform-gateway'
 alias dpgc='cd ~/dev/indrive/dev-platform-go-common'
 alias dpi='cd ~/dev/indrive/dev-platform-installer'
 alias dpis='cd ~/dev/indrive/dev-platform-infrastructure'
-alias dpmr='cd ~/dev/indrive/dev-platform-mysql-runner'
 alias dpn='cd ~/dev/indrive/dev-platform-namespace'
 alias dpnt='cd ~/dev/indrive/dev-platform-notifier'
 alias dpqg='cd ~/dev/indrive/dev-platform-quality-gates'
@@ -87,5 +85,4 @@ alias dpui='cd ~/dev/indrive/dev-platform-ui'
 alias sso='aws sso login --profile devplatform_team-531211996670 && aws sso login --profile inDriveAdministratorAccess-627723547655'
 
 alias tp='telepresence'
-# alias tpc='tp connect -n platform --mapped-namespaces platform --allow-conflicting-subnets 10.0.0.0/8'
-alias tpc='tp connect -n platform --mapped-namespaces platform --vnat all'
+alias tpc='tp connect -n platform --mapped-namespaces platform'
