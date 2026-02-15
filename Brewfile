@@ -88,7 +88,9 @@ brew 'helm'
 brew 'k9s'
 brew 'kubectx'
 brew 'mysql-client'
-brew 'telepresenceio/telepresence/telepresence-oss'
+# https://github.com/inDriver/dev-platform-docs/blob/main/docs/telepresence-setup.md
+# Install v2.22.3 via curl - formula doesn't support versions
+#brew 'telepresenceio/telepresence/telepresence-oss'
 brew 'temporal'
 
 cask '1password'

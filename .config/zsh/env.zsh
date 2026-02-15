@@ -26,6 +26,9 @@ typeset -U path
 
 path=($HOME/scripts $path)
 
+# For telepresence-oss
+path=(/usr/local/bin $path)
+
 # Homebrew
 path=(/opt/homebrew/bin /opt/homebrew/sbin $path)
 path=(/opt/homebrew/opt/mysql-client/bin $path)
