@@ -7,6 +7,7 @@ setopt INC_APPEND_HISTORY_TIME
 HISTFILE=$ZDATADIR/.zsh_history
 HISTFILESIZE=10000
 HISTSIZE=10000
+
 # http://zsh.sourceforge.net/Guide/zshguide02.html
 # History is not persisted if SAVEHIST is not set
 SAVEHIST=10000
