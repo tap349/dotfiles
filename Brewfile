@@ -89,7 +89,9 @@ brew 'k9s'
 brew 'kubectx'
 brew 'mysql-client'
 # https://github.com/inDriver/dev-platform-docs/blob/main/docs/telepresence-setup.md
-# Install v2.22.3 via curl - formula doesn't support versions
+# Install v2.25.2 via curl - formula doesn't support versions
+# Versions v2.26+ return error during connect:
+# service 'traffic-manager' does not have TCP port number '8081'
 #brew 'telepresenceio/telepresence/telepresence-oss'
 brew 'temporal'
 
