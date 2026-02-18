@@ -481,8 +481,7 @@
   ((eglot-managed-mode . my/setup-eglot-managed-mode)
    (before-save . my/eglot-before-save)
    (dart-mode . eglot-ensure)
-   (go-mode . eglot-ensure)
-   (lua-mode . eglot-ensure))
+   (go-mode . eglot-ensure))
 
   :custom
   (eglot-autoshutdown t)
@@ -1089,12 +1088,6 @@
   :custom
   (ls-lisp-dirs-first t)
   (ls-lisp-use-insert-directory-program nil))
-
-(use-package lua-mode
-  :straight t
-  :custom
-  (lua-indent-level 2)
-  (lua-indent-nested-block-content-align nil))
 
 (use-package markdown-mode
   :straight t
