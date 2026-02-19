@@ -10,5 +10,4 @@ source $ZDOTDIR/history.zsh
 source $ZDOTDIR/completion.zsh
 source $ZDOTDIR/bindings.zsh
 source $ZDOTDIR/plugins.zsh
-
-eval "$(mise activate zsh)"
+source $ZDOTDIR/integrations.zsh
