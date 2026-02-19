@@ -81,11 +81,13 @@ brew 'qemu'
 # inDrive
 #-------------------------------------------------------------------------------
 
+tap 'argoproj/tap'
 tap 'telepresenceio/telepresence'
 
 brew 'eks-node-viewer'
 brew 'helm'
 brew 'k9s'
+brew 'kubectl-argo-rollouts'
 brew 'kubectx'
 brew 'mysql-client'
 # https://github.com/inDriver/dev-platform-docs/blob/main/docs/telepresence-setup.md
