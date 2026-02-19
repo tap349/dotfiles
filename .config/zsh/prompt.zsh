@@ -10,6 +10,10 @@ $(git_prompt)\
 %F{032} %(!.#.») %f'
 
 git_prompt() {
+  if [[ ! -d .git ]]; then
+    return 0
+  fi
+
   local branch=$(git symbolic-ref --short HEAD 2> /dev/null)
 
   if [[ -z $branch ]]; then
