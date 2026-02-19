@@ -2,12 +2,6 @@
 # Homebrew
 #-------------------------------------------------------------------------------
 
-tap 'aws/tap'
-tap 'beeftornado/rmtree'
-# https://github.com/osxfuse/osxfuse/issues/818#issuecomment-985739918
-tap 'gromgit/homebrew-fuse'
-tap 'jimeh/emacs-builds'
-
 # After installation:
 # - aws configure
 brew 'awscli'
@@ -33,7 +27,8 @@ brew 'mkvtoolnix'
 brew 'mpv'
 brew 'ncdu'
 brew 'node'
-brew 'ntfs-3g-mac'
+# https://github.com/osxfuse/osxfuse/issues/818#issuecomment-985739918
+brew 'gromgit/homebrew-fuse/ntfs-3g-mac'
 brew 'p7zip'
 brew 'ripgrep'
 brew 'ssh-copy-id'
@@ -48,7 +43,7 @@ cask_args appdir: '/Applications'
 
 cask 'chatgpt'
 cask 'drawio'
-cask 'emacs-app@nightly'
+cask 'jimeh/emacs-builds/emacs-app-nightly'
 cask 'flux-app'
 cask 'google-chrome'
 cask 'google-drive'
@@ -81,13 +76,10 @@ brew 'qemu'
 # inDrive
 #-------------------------------------------------------------------------------
 
-tap 'argoproj/tap'
-tap 'telepresenceio/telepresence'
-
-brew 'eks-node-viewer'
+brew 'aws/tap/eks-node-viewer'
 brew 'helm'
 brew 'k9s'
-brew 'kubectl-argo-rollouts'
+brew 'argoproj/tap/kubectl-argo-rollouts'
 brew 'kubectx'
 brew 'mysql-client'
 # https://github.com/inDriver/dev-platform-docs/blob/main/docs/telepresence-setup.md
