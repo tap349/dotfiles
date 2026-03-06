@@ -82,6 +82,8 @@ alias dpr='cd ~/dev/indrive/dev-platform-runner'
 alias dpsh='cd ~/dev/indrive/dev-platform-service-hub'
 alias dpui='cd ~/dev/indrive/dev-platform-ui'
 
+# To add prod clusters to kubeconfig:
+# aws sso login --profile devplatform_team-252036190537
 alias sso='aws sso login --profile devplatform_team-531211996670 && aws sso login --profile inDriveAdministratorAccess-627723547655'
 
 alias tp='telepresence'
