@@ -302,7 +302,8 @@
   :straight (:type built-in)
   :custom
   (compilation-scroll-output t)
-  (compilation-auto-jump-to-first-error t))
+  ;; When enabled it can open Finder window instead
+  (compilation-auto-jump-to-first-error nil))
 
 (use-package consult
   :straight t
@@ -1024,13 +1025,14 @@
              (cmd (if receiver
                       (format "go test -v -testify.m '^%s$'" test-name)
                     (format "go test -v -run '^%s$'" test-name))))
-        (compile cmd)
-        (switch-to-buffer-other-window "*compilation*"))))
+        (compilation-start cmd 'compilation-mode (lambda (_) "*go test*"))
+        (pop-to-buffer "*go test*"))))
 
   (defun my/go-test-current-package ()
     (interactive)
-    (compile "go test -v .")
-    (switch-to-buffer-other-window "*compilation*"))
+    (let* ((cmd "go test -v ."))
+      (compilation-start cmd 'compilation-mode (lambda (_) "*go test*"))
+      (pop-to-buffer "*go test*")))
 
   ;; https://www.masteringemacs.org/article/executing-shell-commands-emacs
   ;; This is pretty heavy operation since it runs external shell command
