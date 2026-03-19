@@ -77,6 +77,7 @@ brew 'qemu'
 #-------------------------------------------------------------------------------
 
 brew 'aws/tap/eks-node-viewer'
+brew 'claude-code'
 brew 'helm'
 brew 'k9s'
 brew 'argoproj/tap/kubectl-argo-rollouts'
