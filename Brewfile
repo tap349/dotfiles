@@ -77,7 +77,6 @@ brew 'qemu'
 #-------------------------------------------------------------------------------
 
 brew 'aws/tap/eks-node-viewer'
-brew 'claude-code'
 brew 'helm'
 brew 'k9s'
 brew 'argoproj/tap/kubectl-argo-rollouts'
@@ -91,6 +90,7 @@ brew 'mysql-client'
 brew 'temporal'
 
 cask '1password'
+cask 'claude-code'
 cask 'cloudflare-warp'
 cask 'figma'
 cask 'miro'
