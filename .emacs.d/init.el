@@ -265,7 +265,8 @@
                   (interactive)
                   (if truncate-lines (scroll-left 1))))
 
-(define-key key-translation-map (kbd "C-q") (kbd "C-x"))
+;; (define-key key-translation-map (kbd "C-q") (kbd "C-x"))
+(define-key global-map (kbd "C-q") ctl-x-map)
 
 ;;-----------------------------------------------------------------------------
 ;;
