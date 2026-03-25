@@ -1035,25 +1035,28 @@
       (compilation-start cmd 'compilation-mode (lambda (_) "*go test*"))
       (pop-to-buffer "*go test*")))
 
-  ;; https://www.masteringemacs.org/article/executing-shell-commands-emacs
-  ;; This is pretty heavy operation since it runs external shell command
-  ;; => don't add it as before-save-hook - execute manually when needed
-  (defun my/format-buffer-with-golines ()
+  (defun my/format-with-golangci-lint-fmt ()
     (interactive)
-    ;; https://stackoverflow.com/a/24283996
-    (let ((old-point (point))
-          ;; golines wraps at this line length
-          ;; (or else set to fill-column)
-          (max-len (+ display-fill-column-indicator-column 1)))
-      (shell-command-on-region
-       (point-min)
-       (point-max)
-       (format "golines --reformat-tags -m %s" max-len)
-       (current-buffer)
-       t
-       "*golines errors*"
-       t)
-      (goto-char old-point)))
+    (unless buffer-file-name
+      (user-error "Current buffer is not visiting a file"))
+
+    (let ((inhibit-message t)
+          (old-point (point)))
+      (save-buffer)
+      (let ((exit-code (call-process
+                        "golangci-lint"
+                        nil
+                        "*golangci-lint fmt errors*"
+                        nil
+                        "fmt"
+                        buffer-file-name)))
+
+        (unless (zerop exit-code)
+          (display-buffer "*golangci-lint fmt errors*")
+          (error "golangci-lint fmt failed"))
+
+        (revert-buffer :ignore-auto :noconfirm)
+        (goto-char old-point))))
 
   :hook
   (go-mode . my/setup-go-mode)
