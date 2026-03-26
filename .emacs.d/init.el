@@ -214,6 +214,7 @@
 
 (set-register ?c (cons 'file user-init-file))
 (set-register ?z (cons 'file (substitute-in-file-name "${ZDOTDIR}/.zshenv")))
+(set-register ?w (cons 'file (substitute-in-file-name "${HOME}/notes/work/home.md")))
 
 ;;-----------------------------------------------------------------------------
 ;;
@@ -267,6 +268,7 @@
 
 ;; (define-key key-translation-map (kbd "C-q") (kbd "C-x"))
 (define-key global-map (kbd "C-q") ctl-x-map)
+(define-key global-map (kbd "C-'") #'quoted-insert)
 
 ;;-----------------------------------------------------------------------------
 ;;
