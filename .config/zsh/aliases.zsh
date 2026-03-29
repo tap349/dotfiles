@@ -12,7 +12,7 @@ alias mcu='mc -u'
 #
 # (#i) - case-insensitive globbing
 # (Om) - sort by modification date (asc)
-alias q='open -Fn (#i)*.(jpeg|jpg|png)(Om)'
+alias q='open -Fn (#i)*.(jpeg|jpg|png|webp)(Om)'
 
 #-------------------------------------------------------------------------------
 # Dev
