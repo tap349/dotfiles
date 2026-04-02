@@ -214,7 +214,6 @@
 
 (set-register ?c (cons 'file user-init-file))
 (set-register ?z (cons 'file (substitute-in-file-name "${ZDOTDIR}/.zshenv")))
-(set-register ?w (cons 'file (substitute-in-file-name "${HOME}/notes/work/home.md")))
 
 ;;-----------------------------------------------------------------------------
 ;;
@@ -1165,6 +1164,7 @@
   ;; all completion categories => completions-first-difference is not used
   (completion-category-overrides nil))
 
+;; - "C-c C-x C-f" - surround with emphasis (bold, italic, code)
 (use-package org
   :straight (:type built-in)
   :after evil
@@ -1196,6 +1196,21 @@
   :custom
   (org-roam-directory "~/org-roam")
 
+  (org-roam-capture-templates
+   '(("w" "work" plain "%?"
+      :empty-lines-before 1
+      :target (file+head
+               "work/%<%Y%m%d%H%M%S>-${slug}.org"
+               "#+title: ${title}\n#+filetags: work\n")
+      :unnarrowed t)
+
+     ("n" "notes" plain "%?"
+      :empty-lines-before 1
+      :target (file+head
+               "notes/%<%Y%m%d%H%M%S>-${slug}.org"
+               "#+title: ${title}\n#+filetags: note\n")
+      :unnarrowed t)))
+
   :config
   (evil-set-initial-state 'org-roam-mode 'emacs)
   (org-roam-db-autosync-mode t)
@@ -1203,6 +1218,7 @@
   :bind
   (("C-c n f" . org-roam-node-find)
    ("C-c n i" . org-roam-node-insert)
+   ("C-c n c" . org-roam-capture)
    ("C-c n d" . org-roam-dailies-capture-today)))
 
 ;; - "C-x p r" - replace string in project (project-query-replace-regexp)
