@@ -633,7 +633,7 @@
   :delight eldoc-mode
   :custom
   ;; Show all eldoc feedback
-  (eldoc-documentation-strategy 'eldoc-documentation-compose)
+  (eldoc-documentation-strategy #'eldoc-documentation-compose)
   ;; Always show single line in echo area
   (eldoc-echo-area-use-multiline-p nil)
   ;; eldoc-box uses eldoc buffer to show docs so content for
@@ -1227,7 +1227,7 @@
   ;; C-x p keymap is available since Emacs 28
   :straight (:type built-in)
   :custom
-  (project-switch-commands 'consult-fd)
+  (project-switch-commands #'consult-fd)
 
   :config
   ;; https://www.gnu.org/software/emacs/manual/html_node/elisp/Prefix-Keys.html
