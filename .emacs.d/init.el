@@ -684,7 +684,7 @@
   ;; Type "C-q (" if you don't want closing paren to be inserted
   (electric-pair-mode 1))
 
-;; - "\" - switch to emacs state for one command (evil-execute-in-emacs-state)
+;; - "\" - evil-execute-in-emacs-state (switch to emacs state for one command)
 (use-package evil
   :straight t
   :demand t
@@ -1164,7 +1164,9 @@
   ;; all completion categories => completions-first-difference is not used
   (completion-category-overrides nil))
 
-;; - "C-c C-x C-f" - surround with emphasis (bold, italic, code)
+;; - "C-c C-x C-f" - org-emphasize (surround with emphasis - bold, italic, code)
+;; - "C-c C-," - org-insert-structure-template (insert template, say, src block)
+;; - "C-M-\" - indent-region (indents the whole src block without selection)
 (use-package org
   :straight (:type built-in)
   :after evil
@@ -1221,7 +1223,7 @@
    ("C-c n c" . org-roam-capture)
    ("C-c n d" . org-roam-dailies-capture-today)))
 
-;; - "C-x p r" - replace string in project (project-query-replace-regexp)
+;; - "C-x p r" - project-query-replace-regexp (replace string in project)
 (use-package project
   ;; Built-in package since Emacs 26
   ;; C-x p keymap is available since Emacs 28
@@ -1381,13 +1383,13 @@
         ("<leader>/" . consult-ripgrep)
         ("C-s" . consult-line)))
 
-;; - "C-x v =" - git diff for current file (vc-diff)
-;; - "C-x v g" - git blame (vc-annotate)
+;; - "C-x v =" - vc-diff (git diff for current file)
+;; - "C-x v g" - vc-annotate (git blame)
 ;;   - "=" - view diff
 ;;   - "f" - view file at revision
 ;;   - "l" - view commit message
-;; - "C-x v h" - git log of current region with diff (vc-region-history)
-;; - "C-x v l" - git log of current file (vc-print-log)
+;; - "C-x v h" - vc-region-history (git log of current region with diff)
+;; - "C-x v l" - vc-print-log (git log of current file)
 ;;
 ;; Common navigation keybindings:
 ;;   - "n" or "p" - move between commits
@@ -1399,7 +1401,7 @@
 ;; Use `vterm-copy-mode' to stop scrolling to bottom automatically
 ;; when new output appears - in this mode new output is not displayed
 ;;
-;; - "C-c C-t" - toggle copy mode (vterm-copy-mode)
+;; - "C-c C-t" - vterm-copy-mode (toggle copy mode)
 (use-package vterm
   :straight t
   :after evil
