@@ -72,6 +72,7 @@ brew 'k9s'
 brew 'argoproj/tap/kubectl-argo-rollouts'
 brew 'kubectx'
 brew 'mysql-client'
+brew 'opencode'
 # https://github.com/inDriver/dev-platform-docs/blob/main/docs/telepresence-setup.md
 # Install v2.25.2 via curl - formula doesn't support versions
 # Versions v2.26+ return error during connect:
