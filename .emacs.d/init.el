@@ -1208,14 +1208,14 @@
       :empty-lines-before 1
       :target (file+head
                "work/%<%Y%m%d%H%M%S>-${slug}.org"
-               "#+title: ${title}\n#+filetags: work\n")
+               "#+title: ${title}\n#+filetags: :work:\n")
       :unnarrowed t)
 
      ("n" "notes" plain "%?"
       :empty-lines-before 1
       :target (file+head
                "notes/%<%Y%m%d%H%M%S>-${slug}.org"
-               "#+title: ${title}\n#+filetags: note\n")
+               "#+title: ${title}\n#+filetags: :note:\n")
       :unnarrowed t)))
 
   ;; org-roam-node-find uses display template to find node
