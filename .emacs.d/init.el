@@ -1228,10 +1228,10 @@
   (org-roam-db-autosync-mode t)
 
   :bind
-  (("C-c n f" . org-roam-node-find)
-   ("C-c n i" . org-roam-node-insert)
-   ("C-c n c" . org-roam-capture)
+  (("C-c n c" . org-roam-capture)
    ("C-c n d" . org-roam-dailies-capture-today)
+   ("C-c n f" . org-roam-node-find)
+   ("C-c n i" . org-roam-node-insert)
    ("C-c n /" . my/org-roam-ripgrep)))
 
 ;; - "C-x p r" - project-query-replace-regexp (replace string in project)
