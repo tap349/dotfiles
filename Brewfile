@@ -81,6 +81,7 @@ brew 'opencode'
 brew 'temporal'
 
 cask '1password'
+cask 'claude'
 cask 'claude-code'
 cask 'cloudflare-warp'
 cask 'figma'
