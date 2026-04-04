@@ -1167,6 +1167,7 @@
 ;; - "C-c C-x C-f" - org-emphasize (surround with emphasis - bold, italic, code)
 ;; - "C-c C-," - org-insert-structure-template (insert template, say, src block)
 ;; - "C-M-\" - indent-region (indents the whole src block without selection)
+;; - "C-c C-l" - org-insert-link (insert or edit link)
 (use-package org
   :straight (:type built-in)
   :after evil
@@ -1194,6 +1195,10 @@
 (use-package org-roam
   :straight t
   :after evil
+  :init
+  (defun my/org-roam-ripgrep ()
+    (interactive)
+    (consult-ripgrep org-roam-directory))
 
   :custom
   (org-roam-directory "~/org-roam")
@@ -1213,6 +1218,11 @@
                "#+title: ${title}\n#+filetags: note\n")
       :unnarrowed t)))
 
+  ;; org-roam-node-find uses display template to find node
+  (org-roam-node-display-template
+   (concat "${title:*} "
+           (propertize "${tags:20}" 'face 'org-tag)))
+
   :config
   (evil-set-initial-state 'org-roam-mode 'emacs)
   (org-roam-db-autosync-mode t)
@@ -1221,7 +1231,8 @@
   (("C-c n f" . org-roam-node-find)
    ("C-c n i" . org-roam-node-insert)
    ("C-c n c" . org-roam-capture)
-   ("C-c n d" . org-roam-dailies-capture-today)))
+   ("C-c n d" . org-roam-dailies-capture-today)
+   ("C-c n /" . my/org-roam-ripgrep)))
 
 ;; - "C-x p r" - project-query-replace-regexp (replace string in project)
 (use-package project
