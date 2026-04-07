@@ -3,6 +3,7 @@
 #-------------------------------------------------------------------------------
 
 alias dot='cd ~/.dotfiles'
+alias org='cd ~/org-roam'
 
 alias df='df -h'
 alias ll='ls -alph'
