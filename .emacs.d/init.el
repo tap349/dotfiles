@@ -1179,7 +1179,7 @@
 
   :custom
   (org-adapt-indentation nil)
-  (org-hide-emphasis-markers t)
+  (org-hide-emphasis-markers nil)
 
   :custom-face
   (org-level-1 ((t (:weight bold))))
