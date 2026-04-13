@@ -102,9 +102,9 @@
 (setq show-paren-delay 0)
 
 (global-display-fill-column-indicator-mode 1)
-;; Use specific value (82) instead of fill-column value to make column
+;; Use specific value (80) instead of fill-column value to make column
 ;; indicator appear exactly at the center of the screen on my laptop
-(setq-default display-fill-column-indicator-column 85)
+(setq-default display-fill-column-indicator-column 80)
 
 ;; Don't wrap lines
 (setq-default truncate-lines 1)
