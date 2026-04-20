@@ -1,7 +1,6 @@
 {
   "coc.preferences.formatOnSaveFiletypes": [
     "elixir",
-    "go",
     "javascript",
     "javascriptreact",
     "json",
