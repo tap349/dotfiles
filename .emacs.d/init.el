@@ -568,13 +568,13 @@
 
   :bind
   (:map minibuffer-mode-map
-        ("C-u" . #'embark-act)
-        ("C-l" . #'embark-export))
+        ("C-u" . embark-act)
+        ("C-l" . embark-export))
 
   (:map embark-file-map
-        ("C-s" . #'my/find-file-split)
-        ("C-v" . #'my/find-file-vsplit)
-        ("C-t" . #'my/find-file-tab)))
+        ("C-s" . my/find-file-split)
+        ("C-v" . my/find-file-vsplit)
+        ("C-t" . my/find-file-tab)))
 
 (use-package embark-consult
   :straight t
@@ -611,6 +611,7 @@
     (tab-bar-new-tab)
     (my/find-occurence input))
 
+  :config
   ;; See how embark-consult-search-map is defined in embark-consult.el
   (defvar-keymap my/embark-consult-ripgrep-map
     :doc "Keymap for consult-ripgrep command"
@@ -623,7 +624,8 @@
   ;;
   ;; `consult-grep' completion category is set by Vertico for consult-ripgrep
   ;; command (and friends) and used by Embark to determine the type of target
-  (add-to-list 'embark-keymap-alist '(consult-grep my/embark-consult-ripgrep-map))
+  (add-to-list 'embark-keymap-alist
+               '(consult-grep my/embark-consult-ripgrep-map))
 
   :hook
   (embark-collect-mode . consult-preview-at-point-mode))
