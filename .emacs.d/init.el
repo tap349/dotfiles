@@ -286,9 +286,6 @@
   :config
   (gcmh-mode 1))
 
-(use-package auto-package-update
-  :straight t)
-
 (use-package autorevert
   :straight t
   :delight auto-revert-mode)
@@ -450,12 +447,12 @@
   (dired-subtree-use-backgrounds t)
 
   :custom-face
-  (dired-subtree-depth-1-face ((t (:background "#F9F9F9"))))
-  (dired-subtree-depth-2-face ((t (:background "#F3F3F3"))))
-  (dired-subtree-depth-3-face ((t (:background "#F3F3F3"))))
-  (dired-subtree-depth-4-face ((t (:background "#F3F3F3"))))
-  (dired-subtree-depth-5-face ((t (:background "#F3F3F3"))))
-  (dired-subtree-depth-6-face ((t (:background "#F3F3F3"))))
+  (dired-subtree-depth-1-face ((t (:background "#F6F6F6"))))
+  (dired-subtree-depth-2-face ((t (:background "#EBEBEB"))))
+  (dired-subtree-depth-3-face ((t (:background "#EBEBEB"))))
+  (dired-subtree-depth-4-face ((t (:background "#EBEBEB"))))
+  (dired-subtree-depth-5-face ((t (:background "#EBEBEB"))))
+  (dired-subtree-depth-6-face ((t (:background "#EBEBEB"))))
 
   :bind
   (:map dired-mode-map
