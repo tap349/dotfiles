@@ -41,7 +41,6 @@ brew 'zsh'
 
 cask_args appdir: '/Applications'
 
-cask 'chatgpt'
 cask 'drawio'
 cask 'jimeh/emacs-builds/emacs-app-nightly'
 cask 'flux-app'
@@ -63,6 +62,17 @@ cask 'yaak'
 cask 'zoom'
 
 #-------------------------------------------------------------------------------
+# AI
+#-------------------------------------------------------------------------------
+
+brew 'opencode'
+
+cask 'chatgpt'
+cask 'chatgpt-atlas'
+cask 'claude'
+cask 'claude-code'
+
+#-------------------------------------------------------------------------------
 # inDrive
 #-------------------------------------------------------------------------------
 
@@ -72,7 +82,6 @@ brew 'k9s'
 brew 'argoproj/tap/kubectl-argo-rollouts'
 brew 'kubectx'
 brew 'mysql-client'
-brew 'opencode'
 # https://github.com/inDriver/dev-platform-docs/blob/main/docs/telepresence-setup.md
 # Install v2.25.2 via curl - formula doesn't support versions
 # Versions v2.26+ return error during connect:
@@ -81,8 +90,6 @@ brew 'opencode'
 brew 'temporal'
 
 cask '1password'
-cask 'claude'
-cask 'claude-code'
 cask 'cloudflare-warp'
 cask 'figma'
 cask 'miro'
