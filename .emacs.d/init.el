@@ -161,7 +161,10 @@
 (load-theme 'aircon t)
 
 ;; https://emacs.stackexchange.com/a/69091
-(set-face-attribute 'default nil :font "Input-15")
+(set-face-attribute 'default nil
+                    :font "Input-15"
+                    :weight 'regular
+                    :slant 'normal)
 
 (set-face-foreground 'fill-column-indicator "#DEE4EF")
 (set-face-foreground 'vertical-border "#D8D8DE")
