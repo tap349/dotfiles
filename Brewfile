@@ -82,6 +82,8 @@ brew 'helm'
 brew 'k9s'
 brew 'argoproj/tap/kubectl-argo-rollouts'
 brew 'kubectx'
+# For psql
+brew 'libpq'
 brew 'mysql-client'
 # https://github.com/inDriver/dev-platform-docs/blob/main/docs/telepresence-setup.md
 # Install v2.25.2 via curl - formula doesn't support versions

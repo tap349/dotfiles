@@ -26,15 +26,20 @@ typeset -U path
 
 path=($HOME/scripts $path)
 
-# For telepresence-oss
-path=(/usr/local/bin $path)
-
 # Homebrew
 path=(/opt/homebrew/bin /opt/homebrew/sbin $path)
-path=(/opt/homebrew/opt/mysql-client/bin $path)
 
 # Dart
 path=($HOME/.pub-cache/bin $path)
 
 # go env GOPATH => $HOME/go
 path=($HOME/go/bin $path)
+
+# mysql
+path=(/opt/homebrew/opt/mysql-client/bin $path)
+
+# psql
+path=(/opt/homebrew/opt/libpq/bin $path)
+
+# For telepresence-oss
+path=(/usr/local/bin $path)
