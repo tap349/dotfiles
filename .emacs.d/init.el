@@ -289,9 +289,12 @@
   :config
   (gcmh-mode 1))
 
+;; Update buffers when files are modified on disk
 (use-package autorevert
   :straight t
-  :delight auto-revert-mode)
+  :delight auto-revert-mode
+  :config
+  (global-auto-revert-mode 1))
 
 (use-package avy
   :straight t
