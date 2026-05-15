@@ -72,6 +72,7 @@ cask 'chatgpt'
 cask 'chatgpt-atlas'
 cask 'claude'
 cask 'claude-code'
+cask 'opencode-desktop'
 
 #-------------------------------------------------------------------------------
 # inDrive
