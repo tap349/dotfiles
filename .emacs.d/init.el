@@ -290,6 +290,7 @@
   (gcmh-mode 1))
 
 ;; Update buffers when files are modified on disk
+;; (useful when working with Claude Code or Codex)
 (use-package autorevert
   :straight t
   :delight auto-revert-mode
