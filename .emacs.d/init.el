@@ -1459,9 +1459,6 @@
   :config
   (global-whitespace-mode 1))
 
-(use-package xr
-  :straight t)
-
 ;; https://emacs.stackexchange.com/a/61387
 ;;
 ;; - "C-]" - xref-find-definitions
