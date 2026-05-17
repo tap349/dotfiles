@@ -56,6 +56,7 @@ cask 'postman'
 cask 'steam'
 cask 'telegram-desktop'
 cask 'todoist-app'
+# Disabled
 cask 'tomighty'
 cask 'transmission'
 cask 'whatsapp'
