@@ -1,3 +1,8 @@
 {
+  "plugin": [
+    "oh-my-openagent@latest",
+    "opencode-openai-codex-auth",
+    "opencode-supermemory@latest"
+  ],
   "$schema": "https://opencode.ai/config.json"
 }
