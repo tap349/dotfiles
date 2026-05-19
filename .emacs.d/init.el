@@ -483,6 +483,8 @@
 (use-package eglot
   ;; Built-in package since Emacs 29
   :straight (:type built-in)
+  ;; Load Eglot lazily using `eglot-ensure' so that face/font caches have
+  ;; time to be properly set up - otherwise Emacs might crash on startup
   :init
   (defun my/setup-eglot-managed-mode ()
     (setq-local eldoc-documentation-functions '(flymake-eldoc-function)))
