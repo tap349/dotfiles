@@ -69,6 +69,7 @@ git_log() {
 alias dpa='cd ~/dev/indrive/dev-platform-access'
 alias dpal='cd ~/dev/indrive/dev-platform-activity-log'
 alias dpb='cd ~/dev/indrive/dev-platform-backup'
+alias dpc='cd ~/dev/indrive/dev-platform-catalog'
 alias dpd='cd ~/dev/indrive/dev-platform-deployment'
 alias dpdd='cd ~/dev/indrive/dev-platform-deployer'
 alias dpeg='cd ~/dev/indrive/dev-platform-external-gateway'
