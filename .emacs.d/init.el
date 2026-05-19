@@ -69,12 +69,13 @@
 ;;
 ;; https://www.emacswiki.org/emacs/SmoothScrolling
 ;;
+;; See also pixel-scroll package configuration
+;;
 ;;-----------------------------------------------------------------------------
 
-(setq scroll-step 1)
+;; Smooth scrolling without cursor jumps
+(setq scroll-conservatively 101)
 (setq scroll-margin 2)
-(setq mouse-wheel-progressive-speed nil)
-(setq pixel-scroll-precision-mode 1)
 
 ;;-----------------------------------------------------------------------------
 ;;
@@ -1250,6 +1251,11 @@
    ("C-c n f" . org-roam-node-find)
    ("C-c n i" . org-roam-node-insert)
    ("C-c n /" . my/org-roam-ripgrep)))
+
+(use-package pixel-scroll
+  :straight (:type built-in)
+  :config
+  (pixel-scroll-precision-mode 1))
 
 ;; - "C-x p r" - project-query-replace-regexp (replace string in project)
 (use-package project
