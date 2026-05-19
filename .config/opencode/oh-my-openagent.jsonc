@@ -1,6 +1,9 @@
 {
   "$schema": "https://raw.githubusercontent.com/code-yeongyu/oh-my-openagent/dev/assets/oh-my-opencode.schema.json",
   "disabled_hooks": [
+    // Enable when using Claude and supermemory plugin
+    // "anthropic-context-window-limit-recovery",
+    // Disable system notifications
     "session-notification"
   ],
   "agents": {
@@ -111,4 +114,13 @@
       "variant": "medium"
     }
   }
+  // Run multiple opencode instances (x8 tokens)
+  // "team_mode": {
+  //   "enabled": true,
+  //   "tmux_visualization": true,
+  //   "max_parallel_members": 4,
+  //   "max_members": 8
+  // },
+  // Enable hash-anchored editing system
+  // "hashline_edit": true
 }
