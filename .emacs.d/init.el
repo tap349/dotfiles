@@ -476,8 +476,7 @@
 
 (use-package dockerfile-mode
   :straight t
-  :config
-  (add-to-list 'auto-mode-alist '("Dockerfile" . dockerfile-mode)))
+  :mode "\\`Dockerfile")
 
 ;; - eglot-events-buffer (show Eglot logs)
 (use-package eglot
@@ -1102,7 +1101,11 @@
   (jarchive-mode 1))
 
 (use-package json-mode
-  :straight t)
+  :straight t
+  :mode ("\\.jsonc\\'" . jsonc-mode)
+  :custom
+  ;; Affects both JavaScript and JSON buffers
+  (js-indent-level 2))
 
 (use-package ls-lisp
   :straight (:type built-in)
