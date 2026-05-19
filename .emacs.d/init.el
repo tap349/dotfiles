@@ -362,8 +362,9 @@
 
 (use-package corfu
   :straight t
-  :demand t
   :init
+  (global-corfu-mode)
+
   (defun my/corfu-quit ()
     (interactive)
     (corfu-quit)
@@ -379,9 +380,6 @@
   :custom-face
   (corfu-current ((t (:background "#D8E8F4"))))
   (corfu-default ((t (:background "#FFFFF6"))))
-
-  :config
-  (global-corfu-mode)
 
   :bind
   (:map corfu-map
@@ -449,7 +447,7 @@
 
 (use-package dired-subtree
   :straight t
-  :demand t
+  :after dired
   :custom
   (dired-subtree-use-backgrounds t)
 
@@ -474,7 +472,6 @@
 (use-package eglot
   ;; Built-in package since Emacs 29
   :straight (:type built-in)
-  :demand t
   :init
   (defun my/setup-eglot-managed-mode ()
     (setq-local eldoc-documentation-functions '(flymake-eldoc-function)))
@@ -648,7 +645,6 @@
 
 (use-package eldoc-box
   :straight (eldoc-box :type git :host github :repo "tap349/eldoc-box")
-  :demand t
   :after evil
   :init
   (defun my/setup-eldoc-box-buffer ()
@@ -882,7 +878,7 @@
 
 (use-package evil-surround
   :straight t
-  :demand t
+  :after evil
   :config
   (global-evil-surround-mode 1))
 
@@ -892,7 +888,6 @@
 ;; See https://emacs.stackexchange.com/a/76430 for alternative implementation
 (use-package evil-visualstar
   :straight t
-  :demand t
   :after evil
   :init
   (setq my/evil-ex-search-offset 0)
