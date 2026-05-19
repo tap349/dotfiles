@@ -411,9 +411,9 @@
 (use-package diff-hl
   :straight t
   :after evil
-  :config
-  (add-hook 'magit-pre-refresh-hook 'diff-hl-magit-pre-refresh)
-  (add-hook 'magit-post-refresh-hook 'diff-hl-magit-post-refresh)
+  :hook
+  ((magit-pre-refresh . diff-hl-magit-pre-refresh)
+   (magit-post-refresh . diff-hl-magit-post-refresh))
 
   :bind
   (:map evil-normal-state-map
@@ -1074,8 +1074,8 @@
         (goto-char old-point))))
 
   :hook
-  (go-mode . my/setup-go-mode)
-  (compilation-mode . my/setup-go-test)
+  ((go-mode . my/setup-go-mode)
+   (compilation-mode . my/setup-go-test))
 
   :custom-face
   (go-test-pass ((t (:background "#77FF77" :foreground "#000000"))))
