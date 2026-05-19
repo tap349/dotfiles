@@ -407,6 +407,17 @@
   :hook
   (dart-mode . my/setup-dart-mode))
 
+(use-package diff-hl
+  :straight t
+  :after evil
+  :config
+  (add-hook 'magit-pre-refresh-hook 'diff-hl-magit-pre-refresh)
+  (add-hook 'magit-post-refresh-hook 'diff-hl-magit-post-refresh)
+
+  :bind
+  (:map evil-normal-state-map
+        ("<leader>g" . diff-hl-mode)))
+
 (use-package diff-mode
   :straight (:type built-in)
   :after evil
