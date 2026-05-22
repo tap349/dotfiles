@@ -1095,12 +1095,6 @@
   :hook
   (prog-mode . hs-minor-mode))
 
-(use-package jarchive
-  :straight t
-  :delight jarchive-mode
-  :config
-  (jarchive-mode 1))
-
 (use-package json-mode
   :straight t
   :mode ("\\.jsonc\\'" . jsonc-mode)
