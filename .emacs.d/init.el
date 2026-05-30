@@ -69,7 +69,7 @@
 ;;
 ;; https://www.emacswiki.org/emacs/SmoothScrolling
 ;;
-;; See also pixel-scroll package configuration
+;; See also ultra-scroll package configuration
 ;;
 ;;-----------------------------------------------------------------------------
 
@@ -1265,11 +1265,6 @@
    ("C-c n i" . org-roam-node-insert)
    ("C-c n /" . my/org-roam-ripgrep)))
 
-(use-package pixel-scroll
-  :straight (:type built-in)
-  :config
-  (pixel-scroll-precision-mode 1))
-
 ;; - "C-x p r" - project-query-replace-regexp (replace string in project)
 (use-package project
   ;; Built-in package since Emacs 26
@@ -1389,6 +1384,16 @@
    ("s-w" . tab-bar-close-tab)
    ("C-<tab>" . tab-recent)
    ("C-<backspace>" . tab-bar-close-tab)))
+
+(use-package ultra-scroll
+  :straight t
+  :custom
+  (scroll-conservatively 3)
+  ;; 0 is required for glitch-free scrolling
+  (scroll-margin 0)
+
+  :config
+  (ultra-scroll-mode 1))
 
 (use-package vertico
   :straight t
