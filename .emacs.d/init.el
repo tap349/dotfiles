@@ -1230,18 +1230,22 @@
   (org-roam-directory "~/org-roam")
 
   (org-roam-capture-templates
-   '(("w" "work" plain "%?"
+   `(("w" "work" plain "%?"
       :empty-lines-before 1
       :target (file+head
                "work/%<%Y%m%d%H%M%S>-${slug}.org"
-               "#+title: ${title}\n#+filetags: :work:\n")
+               ,(concat "#+title: ${title}\n"
+                        "#+filetags: :work:\n"
+                        "#+startup: linkpreviews\n"))
       :unnarrowed t)
 
      ("n" "notes" plain "%?"
       :empty-lines-before 1
       :target (file+head
                "notes/%<%Y%m%d%H%M%S>-${slug}.org"
-               "#+title: ${title}\n#+filetags: :note:\n")
+               ,(concat "#+title: ${title}\n"
+                        "#+filetags: :note:\n"
+                        "#+startup: linkpreviews\n"))
       :unnarrowed t)))
 
   ;; org-roam-node-find uses display template to find node
