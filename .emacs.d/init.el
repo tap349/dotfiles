@@ -1189,6 +1189,7 @@
 ;; - "C-c C-," - org-insert-structure-template (insert template, say, src block)
 ;; - "C-M-\" - indent-region (indents the whole src block without selection)
 ;; - "C-c C-l" - org-insert-link (insert or edit link)
+;; - "C-c C-x C-v" - org-link-preview (toggle display of link preview)
 (use-package org
   :straight (:type built-in)
   :after evil
