@@ -1089,12 +1089,18 @@
     (kbd "<leader>t") #'my/go-test-current-test
     (kbd "<leader>T") #'my/go-test-current-package))
 
-;; Use evil-toggle-fold to toggle folding
+;; - evil-toggle-fold (toggle folding)
 (use-package hideshow
   :straight (:type built-in)
   :delight hs-minor-mode
   :hook
   (prog-mode . hs-minor-mode))
+
+(use-package image-mode
+  :straight (:type built-in)
+  :after evil
+  :config
+  (evil-set-initial-state 'image-mode 'emacs))
 
 (use-package json-mode
   :straight t
@@ -1177,6 +1183,8 @@
   ;; all completion categories => completions-first-difference is not used
   (completion-category-overrides nil))
 
+;; - yank-media (insert image from clipboard)
+;;
 ;; - "C-c C-x C-f" - org-emphasize (surround with emphasis - bold, italic, code)
 ;; - "C-c C-," - org-insert-structure-template (insert template, say, src block)
 ;; - "C-M-\" - indent-region (indents the whole src block without selection)
@@ -1193,6 +1201,11 @@
   :custom
   (org-adapt-indentation nil)
   (org-hide-emphasis-markers nil)
+  ;; Allow to set width of inline images
+  (org-image-actual-width nil)
+  ;; Insert newline before a new headline (for M-RET)
+  (org-blank-before-new-entry '((heading . t)
+                                (plain-list-item . auto)))
 
   :custom-face
   (org-level-1 ((t (:weight bold))))
@@ -1234,7 +1247,7 @@
   ;; org-roam-node-find uses display template to find node
   (org-roam-node-display-template
    (concat "${title:*} "
-           (propertize "${tags:20}" 'face 'org-tag)))
+           (propertize "${tags:40}" 'face 'org-tag)))
 
   :config
   (evil-set-initial-state 'org-roam-mode 'emacs)
