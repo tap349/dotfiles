@@ -114,7 +114,7 @@
 (setq-default cursor-type '(bar . 3))
 
 ;;-----------------------------------------------------------------------------
-;; Mode Line
+;; Mode line
 ;;-----------------------------------------------------------------------------
 
 (setq mode-line-percent-position nil)
@@ -1264,11 +1264,25 @@
   (org-roam-db-autosync-mode t)
 
   :bind
-  (("C-c n c" . org-roam-capture)
+  (;; Use for quick capture (closes capture window on save)
+   ("C-c n c" . org-roam-capture)
    ("C-c n d" . org-roam-dailies-capture-today)
    ("C-c n f" . org-roam-node-find)
    ("C-c n i" . org-roam-node-insert)
    ("C-c n /" . my/org-roam-ripgrep)))
+
+;; - org-roam-ui-mode (launch org-roam-ui in browser)
+(use-package org-roam-ui
+  :straight t
+  :after org-roam
+  ;; Remove duplicate `org-roam-ui' mode names from the mode line
+  ;; (one from org-roam-ui-mode, one from org-roam-ui-follow-mode)
+  :delight org-roam-ui-follow-mode
+  :custom
+  (org-roam-ui-follow t)
+  (org-roam-ui-open-on-start t)
+  (org-roam-ui-sync-theme nil)
+  (org-roam-ui-update-on-save t))
 
 ;; - "C-x p r" - project-query-replace-regexp (replace string in project)
 (use-package project
