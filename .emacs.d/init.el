@@ -451,6 +451,9 @@
   :custom
   (dired-listing-switches "-alh --group-directories-first")
 
+  :config
+  (evil-set-initial-state 'dired-mode 'emacs)
+
   :bind
   (:map dired-mode-map
         ("n" . evil-ex-search-next)
