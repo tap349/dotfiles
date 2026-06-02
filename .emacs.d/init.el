@@ -124,33 +124,20 @@
                     :background "#C3C3CA"
                     :box '(:color "#8F8F92" :line-width -1 :style flat-button))
 
-;; https://www.emacswiki.org/emacs/wcMode
-(defun my/mode-line-region-info ()
-  (propertize
-   (if (evil-visual-state-p)
-       (format " %d:%d"
-               (1+ (abs (- (line-number-at-pos (point))
-                           (line-number-at-pos (mark)))))
-               (1+ (abs (- (point) (mark)))))
-     " ")
-   'display '(min-width (6.0))))
-
-(with-eval-after-load 'evil
-  (setq-default mode-line-format
-                (list " "
-                      'mode-line-mule-info
-                      'mode-line-modified
-                      ;; <= evil-mode-line-format
-                      "  "
-                      'mode-line-buffer-identification
-                      "  "
-                      'mode-line-position
-                      ;; Use M-= on demand instead
-                      ;; '(:eval (my/mode-line-region-info))
-                      " "
-                      'mode-line-modes
-                      'mode-line-misc-info
-                      'mode-line-end-spaces)))
+;; - "M-=" - count-words-region (show region stats)
+(setq-default mode-line-format
+              (list " "
+                    'mode-line-mule-info
+                    'mode-line-modified
+                    ;; <= evil-mode-line-format
+                    "  "
+                    'mode-line-buffer-identification
+                    "  "
+                    'mode-line-position
+                    " "
+                    'mode-line-modes
+                    'mode-line-misc-info
+                    'mode-line-end-spaces)))
 
 ;;-----------------------------------------------------------------------------
 ;; Theme (faces)
@@ -363,6 +350,7 @@
 
 (use-package corfu
   :straight t
+  :after evil
   :init
   (global-corfu-mode)
 
@@ -389,6 +377,7 @@
         ([backtab] . corfu-previous)
         ([return] . corfu-complete)))
 
+;; TODO: remove flutter-hot-reload
 (use-package dart-mode
   :straight t
   :after vterm
@@ -419,17 +408,10 @@
   (:map evil-normal-state-map
         ("<leader>g" . diff-hl-mode)))
 
-(use-package diff-mode
-  :straight (:type built-in)
-  :after evil
-  :config
-  (evil-set-initial-state 'diff-mode 'emacs))
-
 ;; - "(" - dired-hide-details-mode
 ;; - "C-p" - remove autosuggestion when renaming file
 (use-package dired
   :straight (:type built-in)
-  :after evil
   :init
   (defun my/setup-dired-mode ()
     (dired-hide-details-mode 1))
@@ -451,12 +433,8 @@
   :custom
   (dired-listing-switches "-alh --group-directories-first")
 
-  :config
-  (evil-set-initial-state 'dired-mode 'emacs)
-
   :bind
   (:map dired-mode-map
-        ("n" . evil-ex-search-next)
         ("p" . dired-up-directory)
         ("q" . my/kill-dired-buffers)))
 
@@ -774,7 +752,7 @@
     (next-line (evil--get-scroll-count 0)))
 
   :custom
-  (evil-default-state 'normal)
+  (evil-default-state 'emacs)
 
   ;; Can be useful to distinguish between <E> and Vim-like states
   (evil-mode-line-format '(after . mode-line-modified))
@@ -789,6 +767,8 @@
   ;; package is loaded or else they'll be overidden with default values
   :config
   (evil-mode 1)
+
+  (evil-set-initial-state 'prog-mode 'normal)
 
   ;; https://www.reddit.com/r/emacs/comments/n1pibp/comment/gwei7fw
   (evil-set-undo-system 'undo-redo)
@@ -1099,12 +1079,6 @@
   :hook
   (prog-mode . hs-minor-mode))
 
-(use-package image-mode
-  :straight (:type built-in)
-  :after evil
-  :config
-  (evil-set-initial-state 'image-mode 'emacs))
-
 (use-package json-mode
   :straight t
   :mode ("\\.jsonc\\'" . jsonc-mode)
@@ -1165,9 +1139,6 @@
   (magit-diff-added-highlight ((t (:background "#B7EBBC"))))
   (magit-diff-removed-highlight ((t (:background "#F3C1BF"))))
 
-  :config
-  (evil-set-initial-state 'magit-mode 'emacs)
-
   :bind
   (:map evil-normal-state-map
         ("<leader>\S-m" . magit)
@@ -1191,7 +1162,6 @@
 ;; - "C-M-\" - indent-region (indents the whole src block without selection)
 (use-package org
   :straight (:type built-in)
-  :after evil
   :init
   (defun my/org-toggle-emphasis-markers ()
     (interactive)
@@ -1211,9 +1181,6 @@
   (org-level-1 ((t (:weight bold))))
   (org-level-2 ((t (:weight bold))))
 
-  :config
-  (evil-set-initial-state 'org-mode 'emacs)
-
   :bind
   (:map org-mode-map
         ("C-c e" . my/org-toggle-emphasis-markers)))
@@ -1229,7 +1196,6 @@
 
 (use-package org-roam
   :straight t
-  :after evil
   :init
   (defun my/org-roam-ripgrep ()
     (interactive)
@@ -1263,7 +1229,6 @@
            (propertize "${tags:40}" 'face 'org-tag)))
 
   :config
-  (evil-set-initial-state 'org-roam-mode 'emacs)
   (org-roam-db-autosync-mode t)
 
   :bind
@@ -1434,6 +1399,12 @@
   (vertico-group-title ((t (:foreground "#888878"))))
 
   :bind
+  (("C-x p b" . consult-project-buffer)
+   ("M-g f" . consult-flymake)
+   ("M-s d" . consult-fd)
+   ("M-s r" . consult-ripgrep)
+   ("M-s l" . consult-line))
+
   ;; https://www.reddit.com/r/emacs/comments/zznamq/comment/j2g9ci4/
   ;; https://emacs.stackexchange.com/a/2473/39266
   (:map vertico-map
@@ -1478,12 +1449,8 @@
 ;; - "C-c C-t" - vterm-copy-mode (toggle copy mode)
 (use-package vterm
   :straight t
-  :after evil
   :custom
-  (vterm-kill-buffer-on-exit t)
-
-  :config
-  (evil-set-initial-state 'vterm-mode 'emacs))
+  (vterm-kill-buffer-on-exit t))
 
 (use-package whitespace
   :straight (:type built-in)
