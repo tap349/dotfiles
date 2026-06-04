@@ -137,7 +137,7 @@
                     " "
                     'mode-line-modes
                     'mode-line-misc-info
-                    'mode-line-end-spaces)))
+                    'mode-line-end-spaces))
 
 ;;-----------------------------------------------------------------------------
 ;; Theme (faces)
@@ -259,6 +259,57 @@
 ;; (define-key key-translation-map (kbd "C-q") (kbd "C-x"))
 (define-key global-map (kbd "C-q") ctl-x-map)
 (define-key global-map (kbd "C-'") #'quoted-insert)
+
+;;-----------------------------------------------------------------------------
+;;
+;; Helpers
+;;
+;;-----------------------------------------------------------------------------
+
+;; https://stackoverflow.com/a/14189981
+(defun my/insert-newline-below ()
+  (interactive)
+  (end-of-line)
+  (newline))
+
+(defun my/insert-newline-above ()
+  (interactive)
+  (beginning-of-line)
+  (open-line 1))
+
+;; https://emacs.stackexchange.com/a/72123/39266
+(defun my/insert-whitespace ()
+  (interactive)
+  (insert " "))
+
+;; https://stackoverflow.com/a/9697222/3632318
+(defun my/toggle-comment ()
+  (interactive)
+  (let (beg end)
+    (if (region-active-p)
+        (setq beg (region-beginning) end (region-end))
+      (setq beg (line-beginning-position) end (line-end-position)))
+    (comment-or-uncomment-region beg end)))
+
+(defun my/window-split ()
+  (interactive)
+  (let ((new-window (split-window-below)))
+    (balance-windows)
+    (select-window new-window)))
+
+(defun my/window-vsplit ()
+  (interactive)
+  (let ((new-window (split-window-right)))
+    (balance-windows)
+    (select-window new-window)))
+
+(defun my/scroll-half-page-backward ()
+  (interactive)
+  (previous-line (/ (window-body-height) 2)))
+
+(defun my/scroll-half-page-forward ()
+  (interactive)
+  (next-line (/ (window-body-height) 2)))
 
 ;;-----------------------------------------------------------------------------
 ;;
@@ -542,15 +593,21 @@
 
 (use-package embark
   :straight t
-  :after evil
   :init
   (defun my/find-file-split (filename)
-    (my/evil-window-split)
+    (my/window-split)
     (find-file filename))
 
+  ;; (defun my/find-file-vsplit (filename)
+  ;;   (my/window-vsplit)
+  ;;   (find-file filename))
+
   (defun my/find-file-vsplit (filename)
-    (my/evil-window-vsplit)
-    (find-file filename))
+    (let ((new-window (split-window-right)))
+      (balance-windows)
+      (select-window new-window)
+      (find-file filename)
+      (run-at-time 0 nil #'select-window new-window)))
 
   (defun my/find-file-tab (filename)
     (tab-bar-new-tab)
@@ -595,11 +652,11 @@
         (move-to-column col))))
 
   (defun my/find-occurence-split (input)
-    (my/evil-window-split)
+    (my/window-split)
     (my/find-occurence input))
 
   (defun my/find-occurence-vsplit (input)
-    (my/evil-window-vsplit)
+    (my/window-vsplit)
     (my/find-occurence input))
 
   (defun my/find-occurence-tab (input)
@@ -642,6 +699,8 @@
   :after evil
   :init
   (defun my/setup-eldoc-box-buffer ()
+    ;; Hide cursor in eldoc-box child-frame (it's never selected)
+    (setq-local cursor-in-non-selected-windows nil)
     (setq-local inhibit-message t)
     (setq-local show-trailing-whitespace nil))
 
@@ -695,61 +754,16 @@
   ;; https://github.com/emacs-evil/evil/issues/576
   (setq evil-want-Y-yank-to-eol t)
 
-  ;; https://stackoverflow.com/a/14189981
-  (defun my/insert-newline-below ()
-    (interactive)
-    (end-of-line)
-    (newline))
-
-  (defun my/insert-newline-above ()
-    (interactive)
-    (beginning-of-line)
-    (open-line 1))
-
-  ;; https://emacs.stackexchange.com/a/72123/39266
-  (defun my/insert-whitespace ()
-    (interactive)
-    (insert " "))
-
-  ;; Continues comment on next line unlike evil-open-below
+  ;; Continue comment on next line unlike evil-open-below
   (defun my/evil-open-below ()
     (interactive)
     (evil-append-line 1)
     (comment-indent-new-line))
 
-  (defun my/evil-window-split ()
-    (interactive)
-    (evil-window-split)
-    (other-window 1))
-
-  (defun my/evil-window-vsplit ()
-    (interactive)
-    (evil-window-vsplit)
-    (other-window 1))
-
-  ;; https://stackoverflow.com/a/9697222/3632318
-  (defun my/toggle-comment ()
-    (interactive)
-    (let (beg end)
-      (if (region-active-p)
-          (setq beg (region-beginning) end (region-end))
-        (setq beg (line-beginning-position) end (line-end-position)))
-      (comment-or-uncomment-region beg end)))
-
   ;; Bypass different checks and hooks in evil-normal-state command
   (defun my/evil-change-to-normal-state ()
     (interactive)
     (evil-change-state 'normal))
-
-  ;; See evil-scroll-up
-  (defun my/scroll-half-page-backward ()
-    (interactive)
-    (previous-line (evil--get-scroll-count 0)))
-
-  ;; See evil-scroll-down
-  (defun my/scroll-half-page-forward ()
-    (interactive)
-    (next-line (evil--get-scroll-count 0)))
 
   :custom
   (evil-default-state 'emacs)
@@ -828,10 +842,10 @@
         ("C-M-f" . evil-jump-item)
         ("C-M-b" . evil-jump-item)
 
-        ("C-w C-s" . my/evil-window-split)
-        ("C-w s" . my/evil-window-split)
-        ("C-w C-v" . my/evil-window-vsplit)
-        ("C-w v" . my/evil-window-vsplit)
+        ("C-w C-s" . my/window-split)
+        ("C-w s" . my/window-split)
+        ("C-w C-v" . my/window-vsplit)
+        ("C-w v" . my/window-vsplit)
 
         ("C-w C-l" . evil-window-right)
         ("C-w C-h" . evil-window-left)
@@ -868,6 +882,11 @@
         ("H" . evil-first-non-blank)
         ("L" . evil-last-non-blank))
 
+  ;; TODO: fix all these splits using keybindings for minibuffer map (see Claude)
+  ;; TODO: C-v from embark window doesn't focus new window
+  ;; TODO: extract from evil package and make it behave like in normal state
+  ;; TODO: add yaml to prog-mode (now it uses emacs)
+  ;; TODO: extract all evil mappings out of separate packages (search Claude context)
   (:map evil-emacs-state-map
         ("M-v" . my/scroll-half-page-backward)
         ("C-v" . my/scroll-half-page-forward)))
@@ -976,7 +995,7 @@
     (interactive (list buffer-file-name))
     (unless (find-sibling-file-search file)
       (user-error "Couldn't find any sibling files"))
-    (my/evil-window-vsplit)
+    (my/window-vsplit)
     (call-interactively #'find-sibling-file))
 
   :custom
