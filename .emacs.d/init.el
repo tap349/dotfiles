@@ -428,7 +428,6 @@
         ([backtab] . corfu-previous)
         ([return] . corfu-complete)))
 
-;; TODO: remove flutter-hot-reload
 (use-package dart-mode
   :straight t
   :after vterm
@@ -885,8 +884,10 @@
   ;; TODO: fix all these splits using keybindings for minibuffer map (see Claude)
   ;; TODO: C-v from embark window doesn't focus new window
   ;; TODO: extract from evil package and make it behave like in normal state
-  ;; TODO: add yaml to prog-mode (now it uses emacs)
+  ;; TODO: add yaml, toml and go mod to prog-mode (now it uses emacs)
   ;; TODO: extract all evil mappings out of separate packages (search Claude context)
+  ;; TODO: try to use vanilla eldoc-box repo (not my fork)
+  ;; TODO: remove flutter-hot-reload from dart-mode configuration
   (:map evil-emacs-state-map
         ("M-v" . my/scroll-half-page-backward)
         ("C-v" . my/scroll-half-page-forward)))
