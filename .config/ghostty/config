@@ -1,5 +1,4 @@
 background = #1C1B28
-macos-window-shadow = false
 minimum-contrast = 1.5
 
 font-family = JetBrains Mono NL Light
@@ -12,5 +11,8 @@ adjust-cell-height = 14%
 tab-inherit-working-directory = false
 window-inherit-working-directory = false
 working-directory = home
+
+macos-window-shadow = false
+window-show-tab-bar = always
 
 quit-after-last-window-closed = true
