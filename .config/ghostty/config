@@ -12,8 +12,9 @@ tab-inherit-working-directory = false
 window-inherit-working-directory = false
 working-directory = home
 
-macos-window-shadow = false
-window-show-tab-bar = always
 confirm-close-surface = false
+macos-window-shadow = false
+window-padding-x = 6
+window-show-tab-bar = always
 
 quit-after-last-window-closed = true
