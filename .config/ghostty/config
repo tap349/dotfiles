@@ -14,5 +14,6 @@ working-directory = home
 
 macos-window-shadow = false
 window-show-tab-bar = always
+confirm-close-surface = false
 
 quit-after-last-window-closed = true
