@@ -15,6 +15,5 @@ working-directory = home
 confirm-close-surface = false
 macos-window-shadow = false
 window-padding-x = 6
-window-show-tab-bar = always
 
 quit-after-last-window-closed = true
