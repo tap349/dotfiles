@@ -15,6 +15,9 @@ export GOPRIVATE=github.com/inDriver
 # (see `k9s info`)
 export K9S_CONFIG_DIR=$HOME/.config/k9s
 
+# Disable trust checks
+export HOMEBREW_NO_REQUIRE_TAP_TRUST=1
+
 source $ZDOTDIR/env.secret.zsh
 
 #-------------------------------------------------------------------------------
