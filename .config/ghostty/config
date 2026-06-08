@@ -5,8 +5,9 @@ font-family = JetBrains Mono NL Light
 font-size = 15
 font-style-bold = light
 
-adjust-cursor-thickness = 2
 adjust-cell-height = 14%
+adjust-cursor-thickness = 2
+cursor-color = green
 
 tab-inherit-working-directory = false
 window-inherit-working-directory = false
