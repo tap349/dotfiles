@@ -5,6 +5,11 @@
 background = #1C1B28
 minimum-contrast = 1.5
 
+search-background = #333300
+search-foreground = yellow
+search-selected-background = #FFFFAF
+search-selected-foreground = black
+
 #------------------------------------------------------------------------------
 # Cursor
 #------------------------------------------------------------------------------
