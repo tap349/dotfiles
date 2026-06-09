@@ -16,6 +16,8 @@ search-selected-foreground = black
 
 adjust-cursor-thickness = 2
 cursor-color = green
+cursor-style = bar
+shell-integration-features = no-cursor
 
 #------------------------------------------------------------------------------
 # Font
