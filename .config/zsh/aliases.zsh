@@ -7,7 +7,10 @@ alias org='cd ~/org-roam'
 
 alias df='df -h'
 alias ll='ls -alph'
-alias mcu='mc -u'
+
+# Midnight Commander doesn't fully recognize xterm-ghostty terminal type
+# => treat Ghostty as a generic xterm-compatible terminal
+alias mcu='TERM=xterm-256color mc -u'
 
 # http://reasoniamhere.com/2014/01/11/outrageously-useful-tips-to-master-your-z-shell/
 #
