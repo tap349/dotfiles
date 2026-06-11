@@ -15,7 +15,8 @@ search-selected-foreground = black
 #------------------------------------------------------------------------------
 
 #cursor-color = #D4E0FF
-cursor-color = #76F59C
+#cursor-color = #76F59C
+cursor-color = lightblue
 cursor-style = block
 
 #cursor-color = green
