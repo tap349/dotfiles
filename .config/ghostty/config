@@ -14,14 +14,12 @@ search-selected-foreground = black
 # Cursor
 #------------------------------------------------------------------------------
 
-#cursor-color = #D4E0FF
-#cursor-color = #76F59C
-cursor-color = lightblue
-cursor-style = block
+#cursor-color = white
+#cursor-style = block
 
-#cursor-color = green
-#cursor-style = bar
-#adjust-cursor-thickness = 2
+cursor-color = green
+cursor-style = bar
+adjust-cursor-thickness = 2
 
 shell-integration-features = no-cursor
 
