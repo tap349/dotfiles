@@ -1,5 +1,8 @@
-# https://stackoverflow.com/a/19454838/3632318
+#-------------------------------------------------------------------------------
 # http://zsh.sourceforge.net/Doc/Release/Options.html
+#-------------------------------------------------------------------------------
+
+# https://stackoverflow.com/a/19454838/3632318
 setopt HIST_IGNORE_DUPS
 setopt HIST_IGNORE_SPACE
 setopt INC_APPEND_HISTORY_TIME
