@@ -698,10 +698,10 @@
   (eldoc-box-max-pixel-width 700)
 
   :custom-face
-  (eldoc-box-body ((t (:background "#F6F6F8"))))
-  (eldoc-box-border ((t (:background "#C5C5C7"))))
-  ;; (eldoc-box-body ((t (:background "#F9F9F5"))))
-  ;; (eldoc-box-border ((t (:background "#C9C9C5"))))
+  ;; (eldoc-box-body ((t (:background "#F6F6F8"))))
+  ;; (eldoc-box-border ((t (:background "#C5C5C7"))))
+  (eldoc-box-body ((t (:background "#F9F9F5"))))
+  (eldoc-box-border ((t (:background "#C9C9C5"))))
 
   :config
   (advice-add 'keyboard-quit :before #'eldoc-box-quit-frame)
@@ -871,7 +871,6 @@
   ;; TODO: extract from evil package and make it behave like in normal state
   ;; TODO: add yaml, toml and go mod to prog-mode (now it uses emacs)
   ;; TODO: extract all evil mappings out of separate packages (search Claude context)
-  ;; TODO: try to use vanilla eldoc-box repo (not my fork)
   (:map evil-emacs-state-map
         ("M-v" . my/scroll-half-page-backward)
         ("C-v" . my/scroll-half-page-forward)))
