@@ -19,7 +19,7 @@ search-selected-foreground = black
 
 cursor-color = green
 cursor-style = bar
-adjust-cursor-thickness = 2
+adjust-cursor-thickness = 3
 
 shell-integration-features = no-cursor
 
