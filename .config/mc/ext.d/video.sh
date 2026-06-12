@@ -9,7 +9,7 @@ do_open_action() {
     case "${filetype}" in
     *)
         mpv "${MC_EXT_FILENAME}" 2>&1
-        osascript -e 'tell application "iTerm" to activate'
+        osascript -e 'tell application "Ghostty" to activate'
         ;;
     esac
 }

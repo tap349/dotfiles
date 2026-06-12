@@ -871,9 +871,8 @@
         ("L" . evil-last-non-blank))
 
   ;; TODO: fix all these splits using keybindings for minibuffer map (see Claude)
-  ;; TODO: C-v from embark window doesn't focus new window
-  ;; TODO: extract C-v/M-v from evil package and make it behave like in normal state
   ;; TODO: extract all evil mappings out of separate packages (search Claude context)
+  ;; TODO: extract C-v/M-v from evil package and make it behave like in normal state
   (:map evil-emacs-state-map
         ("M-v" . my/scroll-half-page-backward)
         ("C-v" . my/scroll-half-page-forward)))
