@@ -767,6 +767,9 @@
   (evil-mode 1)
 
   (evil-set-initial-state 'prog-mode 'normal)
+  (evil-set-initial-state 'go-dot-mod-mode 'normal)
+  (evil-set-initial-state 'yaml-mode 'normal)
+  (evil-set-initial-state 'conf-toml-mode 'normal)
 
   ;; https://www.reddit.com/r/emacs/comments/n1pibp/comment/gwei7fw
   (evil-set-undo-system 'undo-redo)
@@ -869,7 +872,6 @@
   ;; TODO: fix all these splits using keybindings for minibuffer map (see Claude)
   ;; TODO: C-v from embark window doesn't focus new window
   ;; TODO: extract from evil package and make it behave like in normal state
-  ;; TODO: add yaml, toml and go mod to prog-mode (now it uses emacs)
   ;; TODO: extract all evil mappings out of separate packages (search Claude context)
   (:map evil-emacs-state-map
         ("M-v" . my/scroll-half-page-backward)
