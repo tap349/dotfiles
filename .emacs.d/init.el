@@ -430,23 +430,7 @@
         ([return] . corfu-complete)))
 
 (use-package dart-mode
-  :straight t
-  :after vterm
-  :init
-  (defun flutter-hot-reload ()
-    (interactive)
-    (when (get-buffer "*vterm*")
-      (with-current-buffer "*vterm*"
-        ;; NOTE: `r' also runs last executed command in Zsh
-        ;; => it will run `make run' again if it's terminated
-        (vterm-send-string "r")
-        (vterm-send-return))))
-
-  (defun my/setup-dart-mode ()
-    (add-hook 'after-save-hook #'flutter-hot-reload 10 t))
-
-  :hook
-  (dart-mode . my/setup-dart-mode))
+  :straight t)
 
 (use-package diff-hl
   :straight t
@@ -888,7 +872,6 @@
   ;; TODO: add yaml, toml and go mod to prog-mode (now it uses emacs)
   ;; TODO: extract all evil mappings out of separate packages (search Claude context)
   ;; TODO: try to use vanilla eldoc-box repo (not my fork)
-  ;; TODO: remove flutter-hot-reload from dart-mode configuration
   (:map evil-emacs-state-map
         ("M-v" . my/scroll-half-page-backward)
         ("C-v" . my/scroll-half-page-forward)))
@@ -1462,16 +1445,6 @@
 ;;   - "f" - visit file as of commit at point
 (use-package vc
   :straight (:type built-in))
-
-;; https://github.com/akermu/emacs-libvterm/issues/149
-;; Use `vterm-copy-mode' to stop scrolling to bottom automatically
-;; when new output appears - in this mode new output is not displayed
-;;
-;; - "C-c C-t" - vterm-copy-mode (toggle copy mode)
-(use-package vterm
-  :straight t
-  :custom
-  (vterm-kill-buffer-on-exit t))
 
 (use-package whitespace
   :straight (:type built-in)
