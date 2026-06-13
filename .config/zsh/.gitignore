@@ -1,4 +1,8 @@
+# Generated completion cache, depends on local setup
+.zcompcache/
+
 # History file is stored in $ZDATADIR, not $ZDOTDIR
 # Keep it in .gitignore just in case
 .zsh_history
+
 env.secret.zsh

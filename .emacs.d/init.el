@@ -267,6 +267,10 @@
 ;;
 ;;-----------------------------------------------------------------------------
 
+;;-----------------------------------------------------------------------------
+;; Edit helpers
+;;-----------------------------------------------------------------------------
+
 ;; https://stackoverflow.com/a/14189981
 (defun my/insert-newline-below ()
   (interactive)
@@ -292,6 +296,10 @@
       (setq beg (line-beginning-position) end (line-end-position)))
     (comment-or-uncomment-region beg end)))
 
+;;-----------------------------------------------------------------------------
+;; Split helpers
+;;-----------------------------------------------------------------------------
+
 (defun my/window-split ()
   (interactive)
   (let ((new-window (split-window-below)))
@@ -303,6 +311,10 @@
   (let ((new-window (split-window-right)))
     (balance-windows)
     (select-window new-window)))
+
+;;-----------------------------------------------------------------------------
+;; Scroll helpers
+;;-----------------------------------------------------------------------------
 
 (defun my/scroll-half-page-backward ()
   (interactive)
