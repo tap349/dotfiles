@@ -1,5 +1,4 @@
 *~
 #*#
 
-.vim/backup/
-.vim/plugged/
+# Nested directories can have their own .gitignore (say, .vim/ or .config/zsh/)
