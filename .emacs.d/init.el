@@ -86,6 +86,9 @@
 ;; Turn off all alarms (ring-bell and visible-bell)
 (setq ring-bell-function 'ignore)
 
+;; Cursor (can be overidden by evil-STATE-state-cursor)
+(setq-default cursor-type '(bar . 2))
+
 (menu-bar-mode -1)
 (scroll-bar-mode -1)
 (tool-bar-mode -1)
@@ -110,9 +113,6 @@
 
 ;; Don't wrap lines
 (setq-default truncate-lines 1)
-
-;; Cursor
-(setq-default cursor-type '(bar . 3))
 
 ;;-----------------------------------------------------------------------------
 ;; Mode line
@@ -246,6 +246,10 @@
 (global-set-key (kbd "s-x") #'clipboard-kill-region)
 (global-set-key (kbd "s-v") #'clipboard-yank)
 
+;; Original keybindings scroll by a near full screen
+(global-set-key (kbd "M-v") #'my/scroll-half-page-backward)
+(global-set-key (kbd "C-v") #'my/scroll-half-page-forward)
+
 ;; Use touchpad to scroll horizontally
 ;; (can be useful, say, in eldoc-box popups)
 (global-set-key (kbd "<triple-wheel-left>")
@@ -298,13 +302,27 @@
 ;; Scroll page
 ;;-----------------------------------------------------------------------------
 
+(defvar my/scroll-half-page-column nil)
+
 (defun my/scroll-half-page-backward ()
   (interactive)
-  (previous-line (/ (window-body-height) 2)))
+  (my/scroll-half-page #'scroll-down-command))
 
 (defun my/scroll-half-page-forward ()
   (interactive)
-  (next-line (/ (window-body-height) 2)))
+  (my/scroll-half-page #'scroll-up-command))
+
+(defun my/scroll-half-page (scroll-command)
+  (let ((column (if (memq last-command
+                          '(my/scroll-half-page-backward
+                            my/scroll-half-page-forward))
+                    my/scroll-half-page-column
+                  (current-column)))
+        (scroll-error-top-bottom t)
+        (scroll-preserve-screen-position 'always))
+    (setq my/scroll-half-page-column column)
+    (funcall scroll-command (/ (window-body-height) 2))
+    (move-to-column column)))
 
 ;;-----------------------------------------------------------------------------
 ;; Split window
@@ -885,7 +903,8 @@
   ;; and blockwise selection) so that the text in mode line doesn't jump
   (setq evil-visual-state-tag " <V> ")
 
-  (setq evil-emacs-state-cursor 'bar)
+  (setq evil-emacs-state-cursor '(bar . 2))
+  (setq evil-insert-state-cursor '(bar . 2))
 
   :bind
   (:map evil-insert-state-map
@@ -956,13 +975,7 @@
   ;; > only keys bound in motion state will work in help-mode
   (:map evil-motion-state-map
         ("H" . evil-first-non-blank)
-        ("L" . evil-last-non-blank))
-
-  ;; TODO: extract all evil mappings out of separate packages (search Claude context)
-  ;; TODO: extract C-v/M-v from evil package and make it behave like in normal state
-  (:map evil-emacs-state-map
-        ("M-v" . my/scroll-half-page-backward)
-        ("C-v" . my/scroll-half-page-forward)))
+        ("L" . evil-last-non-blank)))
 
 (use-package evil-surround
   :straight t
