@@ -267,26 +267,6 @@
 ;;
 ;;-----------------------------------------------------------------------------
 
-;;-----------------------------------------------------------------------------
-;; Edit helpers
-;;-----------------------------------------------------------------------------
-
-;; https://stackoverflow.com/a/14189981
-(defun my/insert-newline-below ()
-  (interactive)
-  (end-of-line)
-  (newline))
-
-(defun my/insert-newline-above ()
-  (interactive)
-  (beginning-of-line)
-  (open-line 1))
-
-;; https://emacs.stackexchange.com/a/72123/39266
-(defun my/insert-whitespace ()
-  (interactive)
-  (insert " "))
-
 ;; https://stackoverflow.com/a/9697222/3632318
 (defun my/toggle-comment ()
   (interactive)
@@ -297,23 +277,25 @@
     (comment-or-uncomment-region beg end)))
 
 ;;-----------------------------------------------------------------------------
-;; Split helpers
+;; Insert newline / whitespace
 ;;-----------------------------------------------------------------------------
 
-(defun my/window-split ()
+(defun my/insert-newline-below ()
   (interactive)
-  (let ((new-window (split-window-below)))
-    (balance-windows)
-    (select-window new-window)))
+  (end-of-line)
+  (newline))
 
-(defun my/window-vsplit ()
+(defun my/insert-newline-above ()
   (interactive)
-  (let ((new-window (split-window-right)))
-    (balance-windows)
-    (select-window new-window)))
+  (beginning-of-line)
+  (open-line 1))
+
+(defun my/insert-whitespace ()
+  (interactive)
+  (insert " "))
 
 ;;-----------------------------------------------------------------------------
-;; Scroll helpers
+;; Scroll page
 ;;-----------------------------------------------------------------------------
 
 (defun my/scroll-half-page-backward ()
@@ -323,6 +305,56 @@
 (defun my/scroll-half-page-forward ()
   (interactive)
   (next-line (/ (window-body-height) 2)))
+
+;;-----------------------------------------------------------------------------
+;; Split window
+;;-----------------------------------------------------------------------------
+
+(defun my/window-split ()
+  (interactive)
+  (let ((new-window (split-window-below)))
+    (balance-windows)
+    (select-window new-window)
+    (run-at-time 0 nil #'select-window new-window)))
+
+(defun my/window-vsplit ()
+  (interactive)
+  (let ((new-window (split-window-right)))
+    (balance-windows)
+    (select-window new-window)
+    (run-at-time 0 nil #'select-window new-window)))
+
+;;-----------------------------------------------------------------------------
+;; Find file
+;;-----------------------------------------------------------------------------
+
+(defun my/find-file-split (filename)
+  (my/window-split)
+  (find-file filename))
+
+(defun my/find-file-vsplit (filename)
+  (my/window-vsplit)
+  (find-file filename))
+
+(defun my/find-file-tab (filename)
+  (tab-bar-new-tab)
+  (find-file filename))
+
+;;-----------------------------------------------------------------------------
+;; Switch to buffer
+;;-----------------------------------------------------------------------------
+
+(defun my/switch-to-buffer-split (buffer)
+  (my/window-split)
+  (switch-to-buffer buffer))
+
+(defun my/switch-to-buffer-vsplit (buffer)
+  (my/window-vsplit)
+  (switch-to-buffer buffer))
+
+(defun my/switch-to-buffer-tab (buffer)
+  (tab-bar-new-tab)
+  (switch-to-buffer buffer))
 
 ;;-----------------------------------------------------------------------------
 ;;
@@ -590,24 +622,31 @@
 (use-package embark
   :straight t
   :init
-  (defun my/find-file-split (filename)
-    (my/window-split)
-    (find-file filename))
+  ;; embark-prompter is not loaded yet => declare it early enough
+  ;; so that it can be dynamically bound in my/embark-act-with-key
+  (defvar embark-prompter)
 
-  ;; (defun my/find-file-vsplit (filename)
-  ;;   (my/window-vsplit)
-  ;;   (find-file filename))
+  (defun my/embark-act-with-key (key)
+    "Act on the current Embark target with the action bound to KEY."
+    (let ((embark-prompter
+           (lambda (keymap _update)
+             (let ((action (lookup-key keymap (kbd key))))
+               (if (functionp action)
+                   action
+                 (user-error "No Embark action bound to %s" key))))))
+      (embark-act)))
 
-  (defun my/find-file-vsplit (filename)
-    (let ((new-window (split-window-right)))
-      (balance-windows)
-      (select-window new-window)
-      (find-file filename)
-      (run-at-time 0 nil #'select-window new-window)))
+  (defun my/embark-split ()
+    (interactive)
+    (my/embark-act-with-key "C-s"))
 
-  (defun my/find-file-tab (filename)
-    (tab-bar-new-tab)
-    (find-file filename))
+  (defun my/embark-vsplit ()
+    (interactive)
+    (my/embark-act-with-key "C-v"))
+
+  (defun my/embark-tab ()
+    (interactive)
+    (my/embark-act-with-key "C-t"))
 
   :custom
   (embark-indicators '(embark--vertico-indicator
@@ -622,58 +661,93 @@
   (:map embark-file-map
         ("C-s" . my/find-file-split)
         ("C-v" . my/find-file-vsplit)
-        ("C-t" . my/find-file-tab)))
+        ("C-t" . my/find-file-tab))
+
+  (:map embark-buffer-map
+        ("C-s" . my/switch-to-buffer-split)
+        ("C-v" . my/switch-to-buffer-vsplit)
+        ("C-t" . my/switch-to-buffer-tab)))
 
 (use-package embark-consult
   :straight t
-  :after embark
-  :init
-  ;; See counsel-git-grep-action function in counsel.el
-  (defun my/find-occurence (input)
-    (when (string-match "\\`\\(.*?\\):\\([0-9]+\\):\\(.*\\)\\'" input)
-      ;; Disable messages temporarily because goto-line prints `Mark set'
-      (let* ((inhibit-message t)
-             (filename (match-string-no-properties 1 input))
-             (line-number (match-string-no-properties 2 input))
-             ;; Keep text properties because they will be used by
-             ;; consult--find-highlights to find highlighted regions
-             (line (match-string 3 input))
-             ;; consult--find-highlights returns list of lists with
-             ;; start and end positions of highlighted regions =>
-             ;; use start position of the first highlighted region
-             ;; (hence double car)
-             (col (car (car (consult--find-highlights line 0)))))
-        (find-file filename)
-        (goto-line (string-to-number line-number))
-        (move-to-column col))))
-
-  (defun my/find-occurence-split (input)
-    (my/window-split)
-    (my/find-occurence input))
-
-  (defun my/find-occurence-vsplit (input)
-    (my/window-vsplit)
-    (my/find-occurence input))
-
-  (defun my/find-occurence-tab (input)
-    (tab-bar-new-tab)
-    (my/find-occurence input))
-
   :config
-  ;; See how embark-consult-search-map is defined in embark-consult.el
-  (defvar-keymap my/embark-consult-ripgrep-map
-    :doc "Keymap for consult-ripgrep command"
-    :parent nil
-    "C-s" #'my/find-occurence-split
-    "C-v" #'my/find-occurence-vsplit
-    "C-t" #'my/find-occurence-tab)
+  ;;---------------------------------------------------------------------------
+  ;; For consult-line and consult-flymake
+  ;;---------------------------------------------------------------------------
 
-  ;; See embark--vertico-selected function in embark.el
-  ;;
-  ;; `consult-grep' completion category is set by Vertico for consult-ripgrep
-  ;; command (and friends) and used by Embark to determine the type of target
+  (defun my/consult-location-split (target)
+    (my/window-split)
+    (embark-consult-goto-location target))
+
+  (defun my/consult-location-vsplit (target)
+    (my/window-vsplit)
+    (embark-consult-goto-location target))
+
+  (defun my/consult-location-tab (target)
+    (tab-bar-new-tab)
+    (embark-consult-goto-location target))
+
+  (defvar-keymap my/embark-consult-location-map
+    :doc "Keymap for consult-location actions."
+    :parent nil
+    "C-s" #'my/consult-location-split
+    "C-v" #'my/consult-location-vsplit
+    "C-t" #'my/consult-location-tab)
+
   (add-to-list 'embark-keymap-alist
-               '(consult-grep my/embark-consult-ripgrep-map))
+               '(consult-location my/embark-consult-location-map))
+
+  ;;---------------------------------------------------------------------------
+  ;; For consult-ripgrep
+  ;;---------------------------------------------------------------------------
+
+  (defun my/consult-grep-split (location)
+    (my/window-split)
+    (embark-consult-goto-grep location))
+
+  (defun my/consult-grep-vsplit (location)
+    (my/window-vsplit)
+    (embark-consult-goto-grep location))
+
+  (defun my/consult-grep-tab (location)
+    (tab-bar-new-tab)
+    (embark-consult-goto-grep location))
+
+  (defvar-keymap my/embark-consult-grep-map
+    :doc "Keymap for consult-grep actions."
+    :parent nil
+    "C-s" #'my/consult-grep-split
+    "C-v" #'my/consult-grep-vsplit
+    "C-t" #'my/consult-grep-tab)
+
+  (add-to-list 'embark-keymap-alist
+               '(consult-grep my/embark-consult-grep-map))
+
+  ;;---------------------------------------------------------------------------
+  ;; For consult-xref
+  ;;---------------------------------------------------------------------------
+
+  (defun my/consult-xref-split (candidate)
+    (my/window-split)
+    (embark-consult-xref candidate))
+
+  (defun my/consult-xref-vsplit (candidate)
+    (my/window-vsplit)
+    (embark-consult-xref candidate))
+
+  (defun my/consult-xref-tab (candidate)
+    (tab-bar-new-tab)
+    (embark-consult-xref candidate))
+
+  (defvar-keymap my/embark-consult-xref-map
+    :doc "Keymap for consult-xref actions."
+    :parent nil
+    "C-s" #'my/consult-xref-split
+    "C-v" #'my/consult-xref-vsplit
+    "C-t" #'my/consult-xref-tab)
+
+  (add-to-list 'embark-keymap-alist
+               '(consult-xref my/embark-consult-xref-map))
 
   :hook
   (embark-collect-mode . consult-preview-at-point-mode))
@@ -882,7 +956,6 @@
         ("H" . evil-first-non-blank)
         ("L" . evil-last-non-blank))
 
-  ;; TODO: fix all these splits using keybindings for minibuffer map (see Claude)
   ;; TODO: extract all evil mappings out of separate packages (search Claude context)
   ;; TODO: extract C-v/M-v from evil package and make it behave like in normal state
   (:map evil-emacs-state-map
@@ -1313,7 +1386,6 @@
 
 (use-package tab-bar
   :straight (:type built-in)
-  :demand t
   :init
   ;; https://christiantietze.de/posts/2022/02/emacs-tab-bar-numbered-tabs/
   (defun my/tab-bar-tab-name-format-function (tab i)
@@ -1401,7 +1473,7 @@
 
 (use-package vertico
   :straight t
-  :after evil
+  :after (consult evil)
   :init
   (vertico-mode 1)
 
@@ -1422,18 +1494,10 @@
    ("M-s r" . consult-ripgrep)
    ("M-s l" . consult-line))
 
-  ;; https://www.reddit.com/r/emacs/comments/zznamq/comment/j2g9ci4/
-  ;; https://emacs.stackexchange.com/a/2473/39266
   (:map vertico-map
-        ("C-s" . (lambda ()
-                   (interactive)
-                   (execute-kbd-macro (kbd "C-u C-s"))))
-        ("C-v" . (lambda ()
-                   (interactive)
-                   (execute-kbd-macro (kbd "C-u C-v"))))
-        ("C-t" . (lambda ()
-                   (interactive)
-                   (execute-kbd-macro (kbd "C-u C-t")))))
+        ("C-s" . my/embark-split)
+        ("C-v" . my/embark-vsplit)
+        ("C-t" . my/embark-tab))
 
   (:map evil-normal-state-map
         ("<leader>b" . consult-project-buffer)
