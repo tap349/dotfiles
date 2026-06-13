@@ -626,6 +626,8 @@
   ;; so that it can be dynamically bound in my/embark-act-with-key
   (defvar embark-prompter)
 
+  ;; Reuse Embark's target detection and minibuffer quit handling
+  ;; but skip the action prompt by returning the action bound to KEY
   (defun my/embark-act-with-key (key)
     "Act on the current Embark target with the action bound to KEY."
     (let ((embark-prompter
