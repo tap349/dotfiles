@@ -204,6 +204,8 @@
 ;;
 ;; Keybindings
 ;;
+;; `global-set-key' = `define-key global-map'
+;;
 ;; - TAB - <tab> - [tab]
 ;; - S-TAB - S-<tab> - [backtab]
 ;; - RET - <return> - [return]
@@ -253,9 +255,13 @@
                   (interactive)
                   (if truncate-lines (scroll-left 1))))
 
-;; (define-key key-translation-map (kbd "C-q") (kbd "C-x"))
-(define-key global-map (kbd "C-q") ctl-x-map)
-(define-key global-map (kbd "C-'") #'quoted-insert)
+;; Works for keybindings physically present under global `ctl-x-map'
+;; but some packages can add keybindings through minor-mode keymaps.
+;; Say, `diff-hl' package adds keybindings in `diff-hl-command-map'
+;; (C-x v) keymap which has higher precedence than `global-map'
+;; (global-set-key (kbd "C-q") ctl-x-map)
+(define-key key-translation-map (kbd "C-q") (kbd "C-x"))
+(global-set-key (kbd "C-'") #'quoted-insert)
 
 ;;-----------------------------------------------------------------------------
 ;;
@@ -1426,7 +1432,7 @@
     (tab-bar-move-tab 1))
 
   ;; When switching to another project with `project-switch-project',
-  ;; tab group of current tab is updated by `project-tab-groups' package
+  ;; tab group of current tab is updated by project-tab-groups package
   (defun my/tab-bar-update-tab-group ()
     (when (project-current)
       (tab-bar-change-tab-group (project-name (project-current)))))
