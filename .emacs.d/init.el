@@ -400,11 +400,7 @@
   (global-auto-revert-mode 1))
 
 (use-package avy
-  :straight t
-  :after evil
-  :bind
-  (:map evil-normal-state-map
-        ("<leader>w" . avy-goto-word-0)))
+  :straight t)
 
 (use-package compile
   :straight (:type built-in)
@@ -415,6 +411,11 @@
 
 (use-package consult
   :straight t
+  :init
+  (defun my/consult-project-flymake ()
+    (interactive)
+    (consult-flymake t))
+
   :custom
   (consult-async-input-debounce 0.01)
   (consult-async-input-throttle 0.01)
@@ -496,14 +497,9 @@
 
 (use-package diff-hl
   :straight t
-  :after evil
   :hook
   ((magit-pre-refresh . diff-hl-magit-pre-refresh)
-   (magit-post-refresh . diff-hl-magit-post-refresh))
-
-  :bind
-  (:map evil-normal-state-map
-        ("<leader>g" . diff-hl-mode)))
+   (magit-post-refresh . diff-hl-magit-post-refresh)))
 
 ;; - "(" - dired-hide-details-mode
 ;; - "C-p" - remove autosuggestion when renaming file
@@ -786,7 +782,6 @@
 
 (use-package eldoc-box
   :straight (eldoc-box :type git :host github :repo "tap349/eldoc-box")
-  :after evil
   :init
   (defun my/setup-eldoc-box-buffer ()
     ;; Hide cursor in eldoc-box child-frame (it's never selected)
@@ -810,11 +805,7 @@
   (eldoc-box-border ((t (:background "#C9C9C5"))))
 
   :config
-  (advice-add 'keyboard-quit :before #'eldoc-box-quit-frame)
-
-  :bind
-  (:map evil-normal-state-map
-        ("C-n" . eldoc-box-eglot-toggle-help-at-point)))
+  (advice-add 'keyboard-quit :before #'eldoc-box-quit-frame))
 
 (use-package elec-pair
   :straight (:type built-in)
@@ -979,7 +970,6 @@
 
 (use-package evil-surround
   :straight t
-  :after evil
   :config
   (global-evil-surround-mode 1))
 
@@ -1066,6 +1056,46 @@
         ("*" . evil-visualstar/begin-search-forward)
         ("z*" . my/asterisk-z-visual)))
 
+;;-----------------------------------------------------------------------------
+;;
+;; Evil keybindings for other packages
+;;
+;;-----------------------------------------------------------------------------
+
+(with-eval-after-load 'evil
+  ;; avy
+  (define-key evil-normal-state-map (kbd "<leader>w") #'avy-goto-word-0)
+
+  ;; diff-hl
+  (define-key evil-normal-state-map (kbd "<leader>g") #'diff-hl-mode)
+
+  ;; eldoc-box
+  (define-key evil-normal-state-map (kbd "C-n") #'eldoc-box-eglot-toggle-help-at-point)
+
+  ;; files
+  (define-key evil-normal-state-map (kbd "<leader>,") #'find-sibling-file)
+  (define-key evil-normal-state-map (kbd "<leader>v") #'my/find-sibling-file-vsplit)
+
+  ;; magit
+  (define-key evil-normal-state-map (kbd "<leader>M") #'magit)
+  (define-key evil-normal-state-map (kbd "<leader>m") #'magit-log-buffer-file)
+
+  ;; consult
+  (define-key evil-normal-state-map (kbd "<leader>b") #'consult-project-buffer)
+  (define-key evil-normal-state-map (kbd "<leader>f") #'consult-flymake)
+  (define-key evil-normal-state-map (kbd "<leader>F") #'my/consult-project-flymake)
+  (define-key evil-normal-state-map (kbd "<leader>n") #'consult-fd)
+  (define-key evil-normal-state-map (kbd "<leader>/") #'consult-ripgrep)
+  (define-key evil-normal-state-map (kbd "C-s") #'consult-line))
+
+(with-eval-after-load 'go-mode
+  (evil-define-key 'normal go-mode-map
+    (kbd "<leader>t") #'my/go-test-current-test
+    (kbd "<leader>T") #'my/go-test-current-package))
+
+(with-eval-after-load 'xref
+  (evil-make-overriding-map xref--xref-buffer-mode-map 'normal))
+
 (use-package ffap
   :straight (:type built-in)
   :config
@@ -1075,7 +1105,6 @@
 ;; TODO: add functionality to create missing sibling file.
 (use-package files
   :straight (:type built-in)
-  :after evil
   :init
   (defun my/find-sibling-file-vsplit (file)
     (interactive (list buffer-file-name))
@@ -1087,12 +1116,7 @@
   :custom
   (find-sibling-rules '(;; go-mode
                         ("\\([^/]+\\)_test\\.go\\'" "\\1\\.go")
-                        ("\\([^/]+\\)\\.go\\'" "\\1_test\\.go")))
-
-  :bind
-  (:map evil-normal-state-map
-        ("<leader>," . find-sibling-file)
-        ("<leader>v" . my/find-sibling-file-vsplit)))
+                        ("\\([^/]+\\)\\.go\\'" "\\1_test\\.go"))))
 
 ;; - flymake-show-buffer-diagnostics (show all buffer errors)
 (use-package flymake
@@ -1104,7 +1128,6 @@
 
 (use-package go-mode
   :straight t
-  :after evil
   :init
   (defun my/setup-go-mode ()
     ;; Setup compilation-environment in Go buffer from which
@@ -1168,14 +1191,7 @@
 
   :custom-face
   (go-test-pass ((t (:background "#77FF77" :foreground "#000000"))))
-  (go-test-fail ((t (:background "#FFBBBB" :foreground "#000000"))))
-
-  :config
-  ;; :bind keyword allows to define keybinding in either evil-normal-state-map
-  ;; (state map) or go-mode-map (mode map) but not both => use evil-define-key
-  (evil-define-key 'normal go-mode-map
-    (kbd "<leader>t") #'my/go-test-current-test
-    (kbd "<leader>T") #'my/go-test-current-package))
+  (go-test-fail ((t (:background "#FFBBBB" :foreground "#000000")))))
 
 ;; - evil-toggle-fold (toggle folding)
 (use-package hideshow
@@ -1217,7 +1233,6 @@
 
 (use-package magit
   :straight t
-  :after evil
   :init
   (defun my/setup-magit-log-mode ()
     (whitespace-mode -1))
@@ -1242,12 +1257,7 @@
   (magit-diff-hunk-heading-highlight ((t (:background "#C3C4CD"))))
   ;; (magit-diff-context-highlight ((t (:background "#E7E9ED"))))
   (magit-diff-added-highlight ((t (:background "#B7EBBC"))))
-  (magit-diff-removed-highlight ((t (:background "#F3C1BF"))))
-
-  :bind
-  (:map evil-normal-state-map
-        ("<leader>\S-m" . magit)
-        ("<leader>m" . magit-log-buffer-file)))
+  (magit-diff-removed-highlight ((t (:background "#F3C1BF")))))
 
 ;; Fixes a bug in some consult commands (say, consult-xref) when
 ;; you cannot search for substring
@@ -1488,7 +1498,7 @@
 
 (use-package vertico
   :straight t
-  :after (consult evil)
+  :after consult
   :init
   (vertico-mode 1)
 
@@ -1512,17 +1522,7 @@
   (:map vertico-map
         ("C-s" . my/embark-split)
         ("C-v" . my/embark-vsplit)
-        ("C-t" . my/embark-tab))
-
-  (:map evil-normal-state-map
-        ("<leader>b" . consult-project-buffer)
-        ("<leader>f" . consult-flymake)
-        ("<leader>\S-f" . (lambda ()
-                            (interactive)
-                            (consult-flymake t)))
-        ("<leader>n" . consult-fd)
-        ("<leader>/" . consult-ripgrep)
-        ("C-s" . consult-line)))
+        ("C-t" . my/embark-tab)))
 
 ;; - "C-x v =" - vc-diff (git diff for current file)
 ;; - "C-x v g" - vc-annotate (git blame)
@@ -1587,9 +1587,6 @@
   ;; In Emacs 27+ it will affect all xref-based commands
   ;; except for xref-find-definitions
   (xref-show-xrefs-function #'consult-xref)
-
-  :config
-  (evil-make-overriding-map xref--xref-buffer-mode-map 'normal)
 
   :bind
   ;; These keybindings have effect only in default xref buffer
