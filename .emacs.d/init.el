@@ -250,8 +250,7 @@
 (global-set-key (kbd "M-v") #'my/scroll-half-page-backward)
 (global-set-key (kbd "C-v") #'my/scroll-half-page-forward)
 
-;; Use touchpad to scroll horizontally
-;; (can be useful, say, in eldoc-box popups)
+;; Use touchpad to scroll horizontally (can be useful, say, in eldoc-box popups)
 (global-set-key (kbd "<triple-wheel-left>")
                 (lambda ()
                   (interactive)
@@ -782,6 +781,8 @@
 
 (use-package eldoc-box
   :straight (eldoc-box :type git :host github :repo "tap349/eldoc-box")
+  ;; The function is not marked autoloaded in eldoc-box package
+  :commands eldoc-box-eglot-toggle-help-at-point
   :init
   (defun my/setup-eldoc-box-buffer ()
     ;; Hide cursor in eldoc-box child-frame (it's never selected)
