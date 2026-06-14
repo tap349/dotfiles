@@ -238,8 +238,8 @@
 
 ;; https://www.emacswiki.org/emacs/DvorakKeyboard
 ;;
-;; Define key in evil-normal-state-map as well for it to work
-;; in insert and emacs states
+;; Define key in evil-normal-state-map as well for it to work in
+;; insert and emacs states
 (global-set-key [?\C-.] #'execute-extended-command)
 
 (global-set-key (kbd "s-c") #'clipboard-kill-ring-save)
@@ -1255,8 +1255,8 @@
   (magit-diff-added-highlight ((t (:background "#B7EBBC"))))
   (magit-diff-removed-highlight ((t (:background "#F3C1BF")))))
 
-;; Fixes a bug in some consult commands (say, consult-xref) when
-;; you cannot search for substring
+;; Fixes a bug in some consult commands (say, consult-xref) when you
+;; cannot search for substring
 (use-package orderless
   :straight t
   :custom
@@ -1572,7 +1572,6 @@
 ;; - "M-?" - xref-find-references
 (use-package xref
   :straight (:type built-in)
-  :after evil
   :custom
   ;; - xref-find-definitions jumps to the definition right away
   ;;   when only one definition is found
