@@ -493,6 +493,8 @@
 (use-package dart-mode
   :straight t)
 
+;; - "C-x v [" - diff-hl-previous-hunk
+;; - "C-x v ]" - diff-hl-next-hunk
 (use-package diff-hl
   :straight t
   :hook
