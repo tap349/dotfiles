@@ -238,8 +238,8 @@
 
 ;; https://www.emacswiki.org/emacs/DvorakKeyboard
 ;;
-;; Define key in evil-normal-state-map as well
-;; for it to work in insert and emacs states
+;; Define key in evil-normal-state-map as well for it to work
+;; in insert and emacs states
 (global-set-key [?\C-.] #'execute-extended-command)
 
 (global-set-key (kbd "s-c") #'clipboard-kill-ring-save)
@@ -1057,9 +1057,7 @@
         ("z*" . my/asterisk-z-visual)))
 
 ;;-----------------------------------------------------------------------------
-;;
 ;; Evil keybindings for other packages
-;;
 ;;-----------------------------------------------------------------------------
 
 (with-eval-after-load 'evil
@@ -1092,9 +1090,6 @@
   (evil-define-key 'normal go-mode-map
     (kbd "<leader>t") #'my/go-test-current-test
     (kbd "<leader>T") #'my/go-test-current-package))
-
-(with-eval-after-load 'xref
-  (evil-make-overriding-map xref--xref-buffer-mode-map 'normal))
 
 (use-package ffap
   :straight (:type built-in)
@@ -1586,13 +1581,7 @@
   (xref-show-definitions-function #'consult-xref)
   ;; In Emacs 27+ it will affect all xref-based commands
   ;; except for xref-find-definitions
-  (xref-show-xrefs-function #'consult-xref)
-
-  :bind
-  ;; These keybindings have effect only in default xref buffer
-  ;; (say, Embark Export buffer)
-  (:map xref--xref-buffer-mode-map
-        ("q" . xref-quit-and-pop-marker-stack)))
+  (xref-show-xrefs-function #'consult-xref))
 
 (use-package yaml-mode
   :straight t)
