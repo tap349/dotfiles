@@ -1,11 +1,5 @@
 ;; -*- lexical-binding: t; -*-
 
-;;-----------------------------------------------------------------------------
-;;
-;; Package management
-;;
-;;-----------------------------------------------------------------------------
-
 ;; https://github.com/radian-software/straight.el#getting-started
 (defvar bootstrap-version)
 (let ((bootstrap-file (expand-file-name
@@ -62,20 +56,6 @@
 (setq backup-directory-alist `(("." . "~/.emacs.d/saves")))
 
 (defalias 'yes-or-no-p 'y-or-n-p)
-
-;;-----------------------------------------------------------------------------
-;;
-;; Scrolling
-;;
-;; https://www.emacswiki.org/emacs/SmoothScrolling
-;;
-;; See also ultra-scroll package configuration
-;;
-;;-----------------------------------------------------------------------------
-
-;; Smooth scrolling without cursor jumps
-(setq scroll-conservatively 101)
-(setq scroll-margin 2)
 
 ;;-----------------------------------------------------------------------------
 ;;
@@ -192,9 +172,22 @@
 (setq-default tab-width 2)
 (setq sh-basic-offset 2)
 
-;; Style for comment-region command
-;; Used by my/toggle-comment
+;; Style for comment-region command, used by my/toggle-comment
 (setq comment-style 'indent)
+
+;;-----------------------------------------------------------------------------
+;;
+;; Scrolling
+;;
+;; https://www.emacswiki.org/emacs/SmoothScrolling
+;;
+;; See also ultra-scroll package configuration
+;;
+;;-----------------------------------------------------------------------------
+
+;; Smooth scrolling without cursor jumps
+(setq scroll-conservatively 101)
+(setq scroll-margin 2)
 
 ;;-----------------------------------------------------------------------------
 ;;
@@ -238,8 +231,8 @@
 
 ;; https://www.emacswiki.org/emacs/DvorakKeyboard
 ;;
-;; Define key in evil-normal-state-map as well for it to work in
-;; insert and emacs states
+;; Define key in evil-normal-state-map as well for it to work
+;; in insert and emacs states
 (global-set-key [?\C-.] #'execute-extended-command)
 
 (global-set-key (kbd "s-c") #'clipboard-kill-ring-save)
@@ -250,7 +243,7 @@
 (global-set-key (kbd "M-v") #'my/scroll-half-page-backward)
 (global-set-key (kbd "C-v") #'my/scroll-half-page-forward)
 
-;; Use touchpad to scroll horizontally (can be useful, say, in eldoc-box popups)
+;; Use touchpad to scroll horizontally (useful, say, in eldoc-box popups)
 (global-set-key (kbd "<triple-wheel-left>")
                 (lambda ()
                   (interactive)
