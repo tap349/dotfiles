@@ -3,7 +3,7 @@
 #------------------------------------------------------------------------------
 
 background = #1C1B28
-minimum-contrast = 1.5
+minimum-contrast = 1.1
 
 search-background = #333300
 search-foreground = yellow
