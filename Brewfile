@@ -111,4 +111,5 @@ if Socket.gethostname == "Alexeys-MacBook-Pro.local"
   mas 'Cloud Mail.Ru', id: 893068358
   mas 'Dashlane – Password Manager', id: 517914548
   #mas 'Happ - Proxy Utility Plus', id: 6746188973
+  mas 'Microsoft Word', id: 462054704
 end
