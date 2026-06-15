@@ -2,6 +2,7 @@
 # System
 #-------------------------------------------------------------------------------
 
+alias dl='cd ~/Downloads'
 alias dot='cd ~/.dotfiles'
 alias org='cd ~/org-roam'
 
