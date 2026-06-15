@@ -1,0 +1,1 @@
+/Users/tap/.dotfiles/.config/zsh/aliases.zsh

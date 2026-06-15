@@ -10,7 +10,7 @@ alias ll='ls -alph'
 
 # Midnight Commander doesn't fully recognize xterm-ghostty terminal type
 # => treat Ghostty as a generic xterm-compatible terminal
-alias mcu='TERM=xterm-256color mc -u'
+alias mcu='TERM=xterm-256color mc -U'
 
 # http://reasoniamhere.com/2014/01/11/outrageously-useful-tips-to-master-your-z-shell/
 #
