@@ -1062,6 +1062,8 @@
 ;; Evil keybindings for other packages
 ;;-----------------------------------------------------------------------------
 
+;; `with-eval-after-load' is redundant here because evil has been eagerly
+;; loaded with `:demand t' - still keep it to document dependency cleanly
 (with-eval-after-load 'evil
   ;; avy
   (define-key evil-normal-state-map (kbd "<leader>w") #'avy-goto-word-0)
