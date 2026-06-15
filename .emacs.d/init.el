@@ -378,7 +378,7 @@
 ;;
 ;;-----------------------------------------------------------------------------
 
-;; Install it first to make :delight option work
+;; Install it first to make :delight option available for other packages
 (use-package delight
   :straight t)
 
