@@ -389,6 +389,10 @@
   :config
   (gcmh-mode 1))
 
+;; Part of magit project
+(use-package git-modes
+  :straight t)
+
 ;; Update buffers when files are modified on disk
 ;; (useful when working with Claude Code or Codex)
 (use-package autorevert
@@ -868,6 +872,7 @@
   (evil-set-initial-state 'prog-mode 'normal)
 
   (evil-set-initial-state 'conf-toml-mode 'normal)
+  (evil-set-initial-state 'gitignore-mode 'normal)
   (evil-set-initial-state 'go-dot-mod-mode 'normal)
   (evil-set-initial-state 'yaml-mode 'normal)
 
