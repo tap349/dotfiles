@@ -786,23 +786,21 @@
 
 (use-package eldoc-box
   :straight (eldoc-box :type git :host github :repo "tap349/eldoc-box")
-  ;; The function is not marked autoloaded in eldoc-box package
-  :commands eldoc-box-eglot-toggle-help-at-point
+  :commands eldoc-box-toggle-help-at-point
   :init
   (defun my/setup-eldoc-box-buffer ()
-    ;; Hide cursor in eldoc-box child-frame (it's never selected)
     (setq-local cursor-in-non-selected-windows nil)
-    (setq-local inhibit-message t)
     (setq-local show-trailing-whitespace nil))
 
   :hook
   (eldoc-box-buffer . my/setup-eldoc-box-buffer)
 
   :custom
-  ;; https://github.com/sebastiencs/company-box/blob/master/company-box-doc.el#L86
-  ;; Set height and width to a big number to disable wrapping
   (eldoc-box-max-pixel-height 700)
   (eldoc-box-max-pixel-width 700)
+
+  (eldoc-box-bottom-padding 2)
+  (eldoc-box-position-offset '(8 . 4))
 
   :custom-face
   ;; (eldoc-box-body ((t (:background "#F6F6F8"))))
@@ -1077,7 +1075,7 @@
   (define-key evil-normal-state-map (kbd "<leader>g") #'diff-hl-mode)
 
   ;; eldoc-box
-  (define-key evil-normal-state-map (kbd "C-n") #'eldoc-box-eglot-toggle-help-at-point)
+  (define-key evil-normal-state-map (kbd "C-n") #'eldoc-box-toggle-help-at-point)
 
   ;; files
   (define-key evil-normal-state-map (kbd "<leader>,") #'find-sibling-file)
