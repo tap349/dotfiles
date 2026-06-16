@@ -91,7 +91,19 @@
 ;; my personal laptop
 (setq-default display-fill-column-indicator-column 82)
 
-;; Don't wrap lines
+;;-----------------------------------------------------------------------------
+;; Wrapping
+;;
+;; Hard wrap - insert actual newlines automatically
+;; (at a fixed column set by fill-column variable)
+;; => (auto-fill-mode 1)
+;;
+;; Soft wrap - wrap visually without insert newlines
+;; (dynamically based on the window width)
+;; => (visual-line-mode 1)
+;;-----------------------------------------------------------------------------
+
+;; Don't display continuation lines (don't wrap by default)
 (setq-default truncate-lines 1)
 
 ;;-----------------------------------------------------------------------------
@@ -1219,11 +1231,6 @@
   :straight t
   :init
   (defun my/setup-markdown-mode ()
-    ;; Hard wrap - insert actual newlines automatically
-    ;; (at a fixed column set by fill-column variable)
-    ;; (auto-fill-mode 1)
-    ;; Soft wrap - wrap visually without insert newlines
-    ;; (dynamically based on the window width)
     (visual-line-mode 1))
 
   :hook
@@ -1280,10 +1287,16 @@
 (use-package org
   :straight (:type built-in)
   :init
+  (defun my/setup-org-mode ()
+    (visual-line-mode 1))
+
   (defun my/org-toggle-emphasis-markers ()
     (interactive)
     (setq-local org-hide-emphasis-markers (not org-hide-emphasis-markers))
     (font-lock-flush))
+
+  :hook
+  (org-mode . my/setup-org-mode)
 
   :custom
   (org-adapt-indentation nil)
