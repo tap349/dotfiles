@@ -812,7 +812,7 @@
   (eldoc-box-max-pixel-width 700)
 
   (eldoc-box-bottom-padding 2)
-  (eldoc-box-position-offset '(8 . 4))
+  (eldoc-box-position-offset '(9 . 4))
 
   :custom-face
   ;; (eldoc-box-body ((t (:background "#F6F6F8"))))
