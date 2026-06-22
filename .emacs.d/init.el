@@ -418,6 +418,13 @@
 
 (use-package compile
   :straight (:type built-in)
+  :init
+  (defun my/setup-compilation-mode ()
+    (visual-line-mode 1))
+
+  :hook
+  (compilation-mode . my/setup-compilation-mode)
+
   :custom
   (compilation-scroll-output t)
   ;; When enabled it can open Finder window instead
