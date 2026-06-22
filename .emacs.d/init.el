@@ -1081,7 +1081,7 @@
 ;; loaded with `:demand t' - still keep it to document dependency cleanly
 (with-eval-after-load 'evil
   ;; avy
-  (define-key evil-normal-state-map (kbd "<leader>w") #'avy-goto-word-0)
+  (define-key evil-normal-state-map (kbd "<leader>w") #'avy-goto-word-1)
 
   ;; diff-hl
   (define-key evil-normal-state-map (kbd "<leader>g") #'diff-hl-mode)
