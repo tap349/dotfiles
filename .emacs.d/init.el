@@ -893,6 +893,8 @@
   (evil-set-initial-state 'go-dot-mod-mode 'normal)
   (evil-set-initial-state 'yaml-mode 'normal)
 
+  (evil-set-initial-state 'xref--xref-buffer-mode 'motion)
+
   ;; https://www.reddit.com/r/emacs/comments/n1pibp/comment/gwei7fw
   (evil-set-undo-system 'undo-redo)
 
