@@ -44,6 +44,7 @@ macos-option-as-alt = true
 # Tabs
 #------------------------------------------------------------------------------
 
+macos-titlebar-style = tabs
 window-new-tab-position = end
 
 #------------------------------------------------------------------------------
@@ -62,7 +63,7 @@ window-inherit-working-directory = false
 working-directory = home
 
 #------------------------------------------------------------------------------
-# Behaviour
+# System
 #------------------------------------------------------------------------------
 
 confirm-close-surface = false
