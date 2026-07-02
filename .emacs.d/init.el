@@ -891,6 +891,7 @@
   (evil-set-initial-state 'conf-toml-mode 'normal)
   (evil-set-initial-state 'gitignore-mode 'normal)
   (evil-set-initial-state 'go-dot-mod-mode 'normal)
+  (evil-set-initial-state 'markdown-mode 'normal)
   (evil-set-initial-state 'yaml-mode 'normal)
 
   (evil-set-initial-state 'xref--xref-buffer-mode 'motion)
