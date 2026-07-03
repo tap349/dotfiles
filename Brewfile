@@ -7,14 +7,11 @@
 brew 'awscli'
 brew 'bat'
 brew 'bfg'
-# For vterm package in Emacs
-brew 'cmake'
 brew 'fd'
 brew 'ffmpeg'
 brew 'fzf'
 brew 'gh'
 brew 'git'
-brew 'gopls'
 brew 'gpg'
 brew 'htop'
 brew 'imagemagick'
@@ -74,6 +71,13 @@ cask 'claude'
 cask 'claude-code'
 cask 'codex'
 cask 'opencode-desktop'
+
+#-------------------------------------------------------------------------------
+# LSP
+#-------------------------------------------------------------------------------
+
+brew 'gopls'
+brew 'typescript-language-server'
 
 #-------------------------------------------------------------------------------
 # inDrive
