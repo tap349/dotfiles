@@ -595,7 +595,8 @@
   ((eglot-managed-mode . my/setup-eglot-managed-mode)
    (before-save . my/eglot-before-save)
    (dart-mode . eglot-ensure)
-   (go-mode . eglot-ensure))
+   (go-mode . eglot-ensure)
+   (typescript-mode . eglot-ensure))
 
   :custom
   (eglot-autoshutdown t)
@@ -1510,6 +1511,9 @@
    ("s-w" . tab-bar-close-tab)
    ("C-<tab>" . tab-recent)
    ("C-<backspace>" . tab-bar-close-tab)))
+
+(use-package typescript-mode
+  :straight t)
 
 (use-package ultra-scroll
   :straight t
