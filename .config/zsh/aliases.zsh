@@ -89,6 +89,7 @@ alias dpr='cd ~/dev/indrive/dev-platform-runner'
 alias dps='cd ~/dev/indrive/dev-platform-secrets'
 alias dpsh='cd ~/dev/indrive/dev-platform-service-hub'
 alias dpui='cd ~/dev/indrive/dev-platform-ui'
+alias dpw='cd ~/dev/indrive/dev-platform-web-ui'
 
 alias docs='cd ~/dev/indrive/dev-platform-docs'
 alias idocs='cd ~/dev/indrive/dev-platform-internal-docs'
