@@ -316,22 +316,38 @@
 
 (defun my/scroll-half-page-backward ()
   (interactive)
-  (my/scroll-half-page #'scroll-down-command))
+  (my/scroll-half-page -1))
 
 (defun my/scroll-half-page-forward ()
   (interactive)
-  (my/scroll-half-page #'scroll-up-command))
+  (my/scroll-half-page +1))
 
-(defun my/scroll-half-page (scroll-command)
-  (let ((column (if (memq last-command
-                          '(my/scroll-half-page-backward
-                            my/scroll-half-page-forward))
+;; Vim-like C-u/C-d: point always moves by half a window while
+;; the window scrolls by the same amount stopping at buffer edges
+;; (in particular never showing empty space below the last line)
+(defun my/scroll-half-page (dir)
+  (let ((column (if (memq last-command '(my/scroll-half-page-backward
+                                         my/scroll-half-page-forward))
                     my/scroll-half-page-column
                   (current-column)))
-        (scroll-error-top-bottom t)
-        (scroll-preserve-screen-position 'always))
+        (count (* dir (/ (window-body-height) 2)))
+        (opoint (point))
+        ;; Is the buffer edge we are scrolling towards already visible?
+        (at-edge (if (< dir 0)
+                     (<= (window-start) (point-min))
+                   (>= (window-end nil t) (point-max)))))
     (setq my/scroll-half-page-column column)
-    (funcall scroll-command (/ (window-body-height) 2))
+    ;; Scroll window unless it's already at the buffer edge
+    ;; (`scroll-up' with negative count scrolls backward)
+    (unless at-edge
+      (scroll-up count)
+      ;; If the last line came into view, put it at the window bottom
+      (when (and (> dir 0) (>= (window-end nil t) (point-max)))
+        (save-excursion (goto-char (point-max))
+                        (recenter -1))))
+    ;; Move point by the same amount, independently of the scroll
+    (goto-char opoint)
+    (vertical-motion count)
     (move-to-column column)))
 
 ;;-----------------------------------------------------------------------------
@@ -488,7 +504,7 @@
   :straight t
   :after evil
   :init
-  (global-corfu-mode)
+  (global-corfu-mode 1)
 
   (defun my/corfu-quit ()
     (interactive)
