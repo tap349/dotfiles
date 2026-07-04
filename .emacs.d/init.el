@@ -1007,7 +1007,6 @@
 ;; See https://emacs.stackexchange.com/a/76430 for alternative implementation
 (use-package evil-visualstar
   :straight t
-  :demand t
   :after evil
   :init
   (setq my/evil-ex-search-offset 0)
