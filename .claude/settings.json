@@ -1,0 +1,60 @@
+{
+  "model": "claude-fable-5[1m]",
+  "sandbox": {
+    "enabled": true,
+    "autoAllowBashIfSandboxed": true,
+    "network": {
+      "allowedDomains": ["github.com"]
+    }
+  },
+  "permissions": {
+    "defaultMode": "auto",
+    "allow": [
+      "Bash(ls *)",
+      "Bash(cat *)",
+      "Bash(head *)",
+      "Bash(tail *)",
+      "Bash(wc *)",
+      "Bash(grep *)",
+      "Bash(rg *)",
+      "Bash(sort *)",
+      "Bash(uniq *)",
+      "Bash(cut *)",
+      "Bash(diff *)",
+      "Bash(tree *)",
+      "Bash(stat *)",
+      "Bash(file *)",
+      "Bash(du *)",
+      "Bash(df *)",
+      "Bash(pwd)",
+      "Bash(which *)",
+      "Bash(whoami)",
+      "Bash(date)",
+      "Bash(uname *)",
+      "Bash(printenv *)",
+      "Bash(realpath *)",
+      "Bash(basename *)",
+      "Bash(dirname *)",
+      "Bash(jq *)",
+      "Bash(shasum *)",
+      "Bash(git status *)",
+      "Bash(git log *)",
+      "Bash(git diff *)",
+      "Bash(git show *)",
+      "Bash(git blame *)",
+      "Bash(git branch)",
+      "Bash(git remote -v)",
+      "Bash(git stash list)",
+      "Bash(git rev-parse *)",
+      "Bash(git shortlog *)",
+      "Bash(git describe *)"
+    ]
+  },
+  "enabledPlugins": {
+    "gopls-lsp@claude-plugins-official": true
+  },
+  "effortLevel": "high",
+  "tui": "default",
+  "skipWorkflowUsageWarning": true,
+  "theme": "auto"
+}
