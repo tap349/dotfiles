@@ -243,10 +243,19 @@
 ;;
 ;;-----------------------------------------------------------------------------
 
+;; Works for keybindings physically present under global `ctl-x-map'
+;; but some packages can add keybindings through minor-mode keymaps.
+;; Say, `diff-hl' package adds keybindings in `diff-hl-command-map'
+;; (C-x v) keymap which has higher precedence than `global-map'
+;; (global-set-key (kbd "C-q") ctl-x-map)
+(define-key key-translation-map (kbd "C-q") (kbd "C-x"))
+(global-set-key (kbd "C-'") #'quoted-insert)
+
+(global-set-key (kbd "C-c d") #'duplicate-dwim)
+
 ;; https://www.emacswiki.org/emacs/DvorakKeyboard
 ;;
-;; Define key in evil-normal-state-map as well for it to work
-;; in insert and emacs states
+;; Define key in evil-normal-state-map as well
 (global-set-key [?\C-.] #'execute-extended-command)
 
 (global-set-key (kbd "s-c") #'clipboard-kill-ring-save)
@@ -266,14 +275,6 @@
                 (lambda ()
                   (interactive)
                   (if truncate-lines (scroll-left 1))))
-
-;; Works for keybindings physically present under global `ctl-x-map'
-;; but some packages can add keybindings through minor-mode keymaps.
-;; Say, `diff-hl' package adds keybindings in `diff-hl-command-map'
-;; (C-x v) keymap which has higher precedence than `global-map'
-;; (global-set-key (kbd "C-q") ctl-x-map)
-(define-key key-translation-map (kbd "C-q") (kbd "C-x"))
-(global-set-key (kbd "C-'") #'quoted-insert)
 
 ;;-----------------------------------------------------------------------------
 ;;
