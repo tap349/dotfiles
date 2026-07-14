@@ -263,10 +263,10 @@
 (global-set-key (kbd "s-v") #'clipboard-yank)
 
 ;; `project-prefix-map' keymap is available before project package
-;; loads so it's safe to bind it here.
+;; is loaded so it's safe to bind it here.
 ;;
-;; `search-map' and `goto-map' are default keymaps bound to M-s and
-;; M-g, consult keybindings are added to them by convention.
+;; `search-map' and `goto-map' are default keymaps bound to "M-s"
+;; and "M-g", consult keybindings are added to them by convention.
 ;;
 ;; Now we make these keymaps available via Super prefixes because
 ;; Super key is more thumb-friendly than Meta key.
@@ -1552,8 +1552,10 @@
   (vertico-group-title ((t (:foreground "#888878"))))
 
   :bind
-  ;; These keybindings are also available via Super prefixes
-  ;; (C-x p = s-p, M-g = s-g, M-s = s-s)
+  ;; These keybindings are also available via Super prefixes:
+  ;; - "C-x p" = "s-p"
+  ;; - "M-g" = "s-g"
+  ;; - "M-s" = "s-s"
   (("C-x p b" . consult-project-buffer)
    ("M-g f" . consult-flymake)
    ("M-s d" . consult-fd)
