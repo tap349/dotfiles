@@ -983,9 +983,7 @@
         ("S-<down>" . evil-window-decrease-height)
 
         ("<backspace>" . evil-toggle-fold)
-        ("<leader>SPC" . my/toggle-comment)
-
-        ("<leader>d" . dired-jump))
+        ("<leader>SPC" . my/toggle-comment))
 
   (:map evil-visual-state-map
         ("C-c" . evil-exit-visual-state)
