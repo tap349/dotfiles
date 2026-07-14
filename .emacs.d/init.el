@@ -1106,6 +1106,9 @@
   ;; diff-hl
   (define-key evil-normal-state-map (kbd "<leader>g") #'diff-hl-mode)
 
+  ;; dired
+  (define-key evil-normal-state-map (kbd "<leader>d") #'dired-jump)
+
   ;; eldoc-box
   (define-key evil-normal-state-map (kbd "C-n") #'eldoc-box-toggle-help-at-point)
 
