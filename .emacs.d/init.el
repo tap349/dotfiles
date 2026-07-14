@@ -912,8 +912,6 @@
   (evil-set-initial-state 'markdown-mode 'normal)
   (evil-set-initial-state 'yaml-mode 'normal)
 
-  (evil-set-initial-state 'xref--xref-buffer-mode 'motion)
-
   ;; https://www.reddit.com/r/emacs/comments/n1pibp/comment/gwei7fw
   (evil-set-undo-system 'undo-redo)
 
@@ -1024,6 +1022,8 @@
 ;; See https://emacs.stackexchange.com/a/76430 for alternative implementation
 (use-package evil-visualstar
   :straight t
+  ;; Eager load for searching with offset to work
+  :demand t
   :after evil
   :init
   (setq my/evil-ex-search-offset 0)
