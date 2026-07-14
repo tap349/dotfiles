@@ -262,6 +262,18 @@
 (global-set-key (kbd "s-x") #'clipboard-kill-region)
 (global-set-key (kbd "s-v") #'clipboard-yank)
 
+;; `project-prefix-map' keymap is available before project.el package
+;; loads so it's safe to bind it here.
+;;
+;; `search-map' and `goto-map' are default keymaps bound to M-s and
+;; M-g, consult keybindings are added to these keymaps by convention.
+;;
+;; Now they are also available via Super prefixes because Super key
+;; is more thumb-friendly than Meta key.
+(keymap-global-set "s-p" project-prefix-map)
+(keymap-global-set "s-g" goto-map)
+(keymap-global-set "s-s" search-map)
+
 ;; Original keybindings scroll by a near full screen
 (global-set-key (kbd "M-v") #'my/scroll-half-page-backward)
 (global-set-key (kbd "C-v") #'my/scroll-half-page-forward)
@@ -1400,15 +1412,9 @@
 ;; - "C-x p r" - project-query-replace-regexp (replace string in project)
 (use-package project
   ;; Built-in package since Emacs 26
-  ;; C-x p keymap is available since Emacs 28
   :straight (:type built-in)
   :custom
-  (project-switch-commands #'consult-fd)
-
-  :config
-  ;; https://www.gnu.org/software/emacs/manual/html_node/elisp/Prefix-Keys.html
-  ;; https://www.gnu.org/software/emacs/manual/html_node/elisp/Changing-Key-Bindings.html
-  (keymap-set (current-global-map) "s-p" project-prefix-map))
+  (project-switch-commands #'consult-fd))
 
 (use-package project-tab-groups
   :straight t
@@ -1546,6 +1552,8 @@
   (vertico-group-title ((t (:foreground "#888878"))))
 
   :bind
+  ;; These keybindings are also available via Super prefixes
+  ;; (C-x p = s-p, M-g = s-g, M-s = s-s)
   (("C-x p b" . consult-project-buffer)
    ("M-g f" . consult-flymake)
    ("M-s d" . consult-fd)
