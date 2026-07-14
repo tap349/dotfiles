@@ -449,11 +449,6 @@
 
 (use-package consult
   :straight t
-  :init
-  (defun my/consult-project-flymake ()
-    (interactive)
-    (consult-flymake t))
-
   :custom
   (consult-async-input-debounce 0.01)
   (consult-async-input-throttle 0.01)
@@ -1127,7 +1122,6 @@
   ;; consult
   (define-key evil-normal-state-map (kbd "<leader>b") #'consult-project-buffer)
   (define-key evil-normal-state-map (kbd "<leader>f") #'consult-flymake)
-  (define-key evil-normal-state-map (kbd "<leader>F") #'my/consult-project-flymake)
   (define-key evil-normal-state-map (kbd "<leader>n") #'consult-fd)
   (define-key evil-normal-state-map (kbd "<leader>/") #'consult-ripgrep)
   (define-key evil-normal-state-map (kbd "C-s") #'consult-line))
