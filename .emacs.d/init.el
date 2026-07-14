@@ -1117,14 +1117,7 @@
 
   ;; magit
   (define-key evil-normal-state-map (kbd "<leader>M") #'magit)
-  (define-key evil-normal-state-map (kbd "<leader>m") #'magit-log-buffer-file)
-
-  ;; consult
-  (define-key evil-normal-state-map (kbd "<leader>b") #'consult-project-buffer)
-  (define-key evil-normal-state-map (kbd "<leader>f") #'consult-flymake)
-  (define-key evil-normal-state-map (kbd "<leader>n") #'consult-fd)
-  (define-key evil-normal-state-map (kbd "<leader>/") #'consult-ripgrep)
-  (define-key evil-normal-state-map (kbd "C-s") #'consult-line))
+  (define-key evil-normal-state-map (kbd "<leader>m") #'magit-log-buffer-file))
 
 (with-eval-after-load 'go-mode
   (evil-define-key 'normal go-mode-map
