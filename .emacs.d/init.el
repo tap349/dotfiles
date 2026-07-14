@@ -262,14 +262,14 @@
 (global-set-key (kbd "s-x") #'clipboard-kill-region)
 (global-set-key (kbd "s-v") #'clipboard-yank)
 
-;; `project-prefix-map' keymap is available before project.el package
+;; `project-prefix-map' keymap is available before project package
 ;; loads so it's safe to bind it here.
 ;;
 ;; `search-map' and `goto-map' are default keymaps bound to M-s and
-;; M-g, consult keybindings are added to these keymaps by convention.
+;; M-g, consult keybindings are added to them by convention.
 ;;
-;; Now they are also available via Super prefixes because Super key
-;; is more thumb-friendly than Meta key.
+;; Now we make these keymaps available via Super prefixes because
+;; Super key is more thumb-friendly than Meta key.
 (keymap-global-set "s-p" project-prefix-map)
 (keymap-global-set "s-g" goto-map)
 (keymap-global-set "s-s" search-map)
@@ -574,6 +574,9 @@
   (dired-listing-switches "-alh --group-directories-first")
 
   :bind
+  ;; See keybindings in vertico package
+  (("M-g d" . dired-jump))
+
   (:map dired-mode-map
         ("p" . dired-up-directory)
         ("q" . my/kill-dired-buffers)))
@@ -1117,9 +1120,6 @@
 
   ;; diff-hl
   (define-key evil-normal-state-map (kbd "<leader>g") #'diff-hl-mode)
-
-  ;; dired
-  (define-key evil-normal-state-map (kbd "<leader>d") #'dired-jump)
 
   ;; eldoc-box
   (define-key evil-normal-state-map (kbd "C-n") #'eldoc-box-toggle-help-at-point)
