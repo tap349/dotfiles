@@ -574,9 +574,6 @@
   (dired-listing-switches "-alh --group-directories-first")
 
   :bind
-  ;; See keybindings in vertico package
-  (("M-g d" . dired-jump))
-
   (:map dired-mode-map
         ("p" . dired-up-directory)
         ("q" . my/kill-dired-buffers)))
