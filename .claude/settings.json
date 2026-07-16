@@ -1,14 +1,5 @@
 {
-  "model": "claude-fable-5[1m]",
-  "sandbox": {
-    "enabled": true,
-    "autoAllowBashIfSandboxed": true,
-    "network": {
-      "allowedDomains": ["github.com"]
-    }
-  },
   "permissions": {
-    "defaultMode": "auto",
     "allow": [
       "Bash(ls *)",
       "Bash(cat *)",
@@ -48,10 +39,22 @@
       "Bash(git rev-parse *)",
       "Bash(git shortlog *)",
       "Bash(git describe *)"
-    ]
+    ],
+    "defaultMode": "auto"
   },
+  "model": "claude-fable-5[1m]",
   "enabledPlugins": {
-    "gopls-lsp@claude-plugins-official": true
+    "gopls-lsp@claude-plugins-official": true,
+    "typescript-lsp@claude-plugins-official": true
+  },
+  "sandbox": {
+    "enabled": true,
+    "autoAllowBashIfSandboxed": true,
+    "network": {
+      "allowedDomains": [
+        "github.com"
+      ]
+    }
   },
   "effortLevel": "high",
   "tui": "default",
