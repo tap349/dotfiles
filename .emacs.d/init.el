@@ -501,11 +501,12 @@
    consult-xref :preview-key 'any :prompt "Filter: ")
 
   :bind
-  (("C-x p b" . consult-project-buffer)
+  (;; Default keybindings from README
+   ("C-x p b" . consult-project-buffer)
    ("M-g f" . consult-flymake)
    ("M-s l" . consult-line)
-   ;; Don't use search-map for fd/rg for fast access
-   ("s-d" . consult-fd)
+   ;; Use single-chord keys for fast access
+   ("s-n" . consult-fd)
    ("s-r" . consult-ripgrep)))
 
 (use-package corfu
@@ -574,6 +575,8 @@
   (dired-listing-switches "-alh --group-directories-first")
 
   :bind
+  (("s-d" . dired-jump))
+
   (:map dired-mode-map
         ("p" . dired-up-directory)
         ("q" . my/kill-dired-buffers)))
@@ -1123,11 +1126,7 @@
 
   ;; files
   (define-key evil-normal-state-map (kbd "<leader>,") #'find-sibling-file)
-  (define-key evil-normal-state-map (kbd "<leader>v") #'my/find-sibling-file-vsplit)
-
-  ;; magit
-  (define-key evil-normal-state-map (kbd "<leader>M") #'magit)
-  (define-key evil-normal-state-map (kbd "<leader>m") #'magit-log-buffer-file))
+  (define-key evil-normal-state-map (kbd "<leader>v") #'my/find-sibling-file-vsplit))
 
 (with-eval-after-load 'go-mode
   (evil-define-key 'normal go-mode-map
@@ -1290,7 +1289,10 @@
   (magit-diff-hunk-heading-highlight ((t (:background "#C3C4CD"))))
   ;; (magit-diff-context-highlight ((t (:background "#E7E9ED"))))
   (magit-diff-added-highlight ((t (:background "#B7EBBC"))))
-  (magit-diff-removed-highlight ((t (:background "#F3C1BF")))))
+  (magit-diff-removed-highlight ((t (:background "#F3C1BF"))))
+
+  :bind
+  (("s-m" . magit-log-buffer-file)))
 
 ;; Fixes a bug in some consult commands (say, consult-xref) when you
 ;; cannot search for substring
