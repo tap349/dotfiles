@@ -508,9 +508,9 @@
    ("M-s l" . consult-line)
    ("M-s r" . consult-ripgrep)
    ;; Use single-chord keys for fast access
-   ;; ("s-d" is used for dired-jump)
-   ("s-n" . consult-fd)
-   ("s-/" . consult-ripgrep)))
+   ("C-s" . consult-line)
+   ("s-/" . consult-ripgrep)
+   ("s-n" . consult-fd)))
 
 (use-package corfu
   :straight t
