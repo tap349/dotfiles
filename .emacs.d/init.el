@@ -1539,7 +1539,6 @@
 
 (use-package vertico
   :straight t
-  :after embark
   :init
   (vertico-mode 1)
 
