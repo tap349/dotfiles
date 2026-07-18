@@ -510,7 +510,7 @@
    ;; Use single-chord keys for fast access
    ;; ("s-d" is used for dired-jump)
    ("s-n" . consult-fd)
-   ("s-r" . consult-ripgrep)))
+   ("s-/" . consult-ripgrep)))
 
 (use-package corfu
   :straight t
