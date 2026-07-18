@@ -264,15 +264,7 @@
 
 ;; `project-prefix-map' keymap is available before project package
 ;; is loaded so it's safe to bind it here.
-;;
-;; `search-map' and `goto-map' are default keymaps bound to "M-s"
-;; and "M-g", consult keybindings are added to them by convention.
-;;
-;; Now we make these keymaps available via Super prefixes because
-;; Super key is more thumb-friendly than Meta key.
 (keymap-global-set "s-p" project-prefix-map)
-(keymap-global-set "s-g" goto-map)
-(keymap-global-set "s-s" search-map)
 
 ;; Original keybindings scroll by a near full screen
 (global-set-key (kbd "M-v") #'my/scroll-half-page-backward)
@@ -506,7 +498,15 @@
    consult-fd :prompt "Find: "
    consult-line :preview-key 'any :prompt "Filter: "
    consult-ripgrep :group nil :preview-key '(:debounce 0.3 any) :prompt "Search: "
-   consult-xref :preview-key 'any :prompt "Filter: "))
+   consult-xref :preview-key 'any :prompt "Filter: ")
+
+  :bind
+  (("C-x p b" . consult-project-buffer)
+   ("M-g f" . consult-flymake)
+   ("M-s l" . consult-line)
+   ;; Don't use search-map for fd/rg for fast access
+   ("s-d" . consult-fd)
+   ("s-r" . consult-ripgrep)))
 
 (use-package corfu
   :straight t
@@ -574,9 +574,6 @@
   (dired-listing-switches "-alh --group-directories-first")
 
   :bind
-  ;; See keybindings in vertico package
-  (("M-g d" . dired-jump))
-
   (:map dired-mode-map
         ("p" . dired-up-directory)
         ("q" . my/kill-dired-buffers)))
@@ -1537,7 +1534,6 @@
 
 (use-package vertico
   :straight t
-  :after consult
   :init
   (vertico-mode 1)
 
@@ -1552,16 +1548,6 @@
   (vertico-group-title ((t (:foreground "#888878"))))
 
   :bind
-  ;; These keybindings are also available via Super prefixes:
-  ;; - "C-x p" = "s-p"
-  ;; - "M-g" = "s-g"
-  ;; - "M-s" = "s-s"
-  (("C-x p b" . consult-project-buffer)
-   ("M-g f" . consult-flymake)
-   ("M-s d" . consult-fd)
-   ("M-s r" . consult-ripgrep)
-   ("M-s l" . consult-line))
-
   (:map vertico-map
         ("C-s" . my/embark-split)
         ("C-v" . my/embark-vsplit)
