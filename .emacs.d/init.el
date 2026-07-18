@@ -504,8 +504,11 @@
   (;; Default keybindings from README
    ("C-x p b" . consult-project-buffer)
    ("M-g f" . consult-flymake)
+   ("M-s d" . consult-fd)
    ("M-s l" . consult-line)
+   ("M-s r" . consult-ripgrep)
    ;; Use single-chord keys for fast access
+   ;; ("s-d" is used for dired-jump)
    ("s-n" . consult-fd)
    ("s-r" . consult-ripgrep)))
 
