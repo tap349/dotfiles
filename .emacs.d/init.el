@@ -544,13 +544,17 @@
 (use-package dart-mode
   :straight t)
 
+;; - "C-x v *" - diff-hl-show-hunk
 ;; - "C-x v [" - diff-hl-previous-hunk
 ;; - "C-x v ]" - diff-hl-next-hunk
 (use-package diff-hl
   :straight t
   :hook
   ((magit-pre-refresh . diff-hl-magit-pre-refresh)
-   (magit-post-refresh . diff-hl-magit-post-refresh)))
+   (magit-post-refresh . diff-hl-magit-post-refresh))
+
+  :bind
+  (("s-g" . #'diff-hl-mode)))
 
 ;; - "(" - dired-hide-details-mode
 ;; - "C-p" - remove autosuggestion when renaming file
@@ -1120,9 +1124,6 @@
 (with-eval-after-load 'evil
   ;; avy
   (define-key evil-normal-state-map (kbd "<leader>w") #'avy-goto-word-1)
-
-  ;; diff-hl
-  (define-key evil-normal-state-map (kbd "<leader>g") #'diff-hl-mode)
 
   ;; eldoc-box
   (define-key evil-normal-state-map (kbd "C-n") #'eldoc-box-toggle-help-at-point)
