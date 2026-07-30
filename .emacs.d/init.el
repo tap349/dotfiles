@@ -549,6 +549,9 @@
 ;; - "C-x v ]" - diff-hl-next-hunk
 (use-package diff-hl
   :straight t
+  :init
+  (global-diff-hl-mode 1)
+
   :hook
   ((magit-pre-refresh . diff-hl-magit-pre-refresh)
    (magit-post-refresh . diff-hl-magit-post-refresh))
