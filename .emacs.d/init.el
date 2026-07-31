@@ -243,12 +243,29 @@
 ;;
 ;;-----------------------------------------------------------------------------
 
-;; Works for keybindings physically present under global `ctl-x-map'
-;; but some packages can add keybindings through minor-mode keymaps.
-;; Say, `diff-hl' package adds keybindings in `diff-hl-command-map'
-;; (C-x v) keymap which has higher precedence than `global-map'
+;; Make "C-q" act as "C-x" prefix.
+;;
+;; Translation happens before keymap lookup so it also covers literal
+;; "C-x ..." keybindings added by packages through minor-mode keymaps
+;; (say, `diff-hl-command-map' on "C-x v" in `diff-hl-mode-map') which
+;; a plain (global-set-key (kbd "C-q") ctl-x-map) would miss.
+;;
+;; Translate only at the start of a key sequence so that mid-sequence
+;; uses of "C-q" keep working (say, "C-x C-q" for wdired).
+;;
+;; Keep "C-q" literal in isearch for `isearch-quote-char'.
+;;
+;; Alternative solutions:
 ;; (global-set-key (kbd "C-q") ctl-x-map)
-(define-key key-translation-map (kbd "C-q") (kbd "C-x"))
+;; (define-key key-translation-map (kbd "C-q") (kbd "C-x"))
+(define-key key-translation-map (kbd "C-q")
+            (lambda (&optional _prompt)
+              (if (or (> (length (this-single-command-keys)) 1)
+                      isearch-mode)
+                  (kbd "C-q")
+                (kbd "C-x"))))
+
+;; Top-level "C-q" is taken by the translation above
 (global-set-key (kbd "C-'") #'quoted-insert)
 
 (global-set-key (kbd "C-c d") #'duplicate-dwim)
@@ -263,7 +280,7 @@
 (global-set-key (kbd "s-v") #'clipboard-yank)
 
 ;; `project-prefix-map' keymap is available before project package
-;; is loaded so it's safe to bind it here.
+;; is loaded so it's safe to bind it here
 (keymap-global-set "s-p" project-prefix-map)
 
 ;; Original keybindings scroll by a near full screen
@@ -924,13 +941,14 @@
   :config
   (evil-mode 1)
 
-  (evil-set-initial-state 'prog-mode 'normal)
-
   (evil-set-initial-state 'conf-toml-mode 'normal)
   (evil-set-initial-state 'gitignore-mode 'normal)
   (evil-set-initial-state 'go-dot-mod-mode 'normal)
   (evil-set-initial-state 'markdown-mode 'normal)
+  (evil-set-initial-state 'prog-mode 'normal)
   (evil-set-initial-state 'yaml-mode 'normal)
+
+  (evil-set-initial-state 'wdired-mode 'emacs)
 
   ;; https://www.reddit.com/r/emacs/comments/n1pibp/comment/gwei7fw
   (evil-set-undo-system 'undo-redo)
