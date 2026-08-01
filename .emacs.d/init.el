@@ -860,7 +860,6 @@
 
 (use-package eldoc-box
   :straight (eldoc-box :type git :host github :repo "tap349/eldoc-box")
-  :commands eldoc-box-toggle-help-at-point
   :init
   (defun my/setup-eldoc-box-buffer ()
     (setq-local cursor-in-non-selected-windows nil)
@@ -883,7 +882,10 @@
   ;; (eldoc-box-border ((t (:background "#C9C9C5"))))
 
   :config
-  (advice-add 'keyboard-quit :before #'eldoc-box-quit-frame))
+  (advice-add 'keyboard-quit :before #'eldoc-box-quit-frame)
+
+  :bind
+  (("s-h" . eldoc-box-toggle-help-at-point)))
 
 (use-package elec-pair
   :straight (:type built-in)
@@ -1145,9 +1147,6 @@
 (with-eval-after-load 'evil
   ;; avy
   (define-key evil-normal-state-map (kbd "<leader>w") #'avy-goto-word-1)
-
-  ;; eldoc-box
-  (define-key evil-normal-state-map (kbd "C-n") #'eldoc-box-toggle-help-at-point)
 
   ;; files
   (define-key evil-normal-state-map (kbd "<leader>,") #'find-sibling-file)
