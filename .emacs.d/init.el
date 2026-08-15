@@ -243,31 +243,6 @@
 ;;
 ;;-----------------------------------------------------------------------------
 
-;; Make "C-q" act as "C-x" prefix.
-;;
-;; Translation happens before keymap lookup so it also covers literal
-;; "C-x ..." keybindings added by packages through minor-mode keymaps
-;; (say, `diff-hl-command-map' on "C-x v" in `diff-hl-mode-map') which
-;; a plain (global-set-key (kbd "C-q") ctl-x-map) would miss.
-;;
-;; Translate only at the start of a key sequence so that mid-sequence
-;; uses of "C-q" keep working (say, "C-x C-q" for wdired).
-;;
-;; Keep "C-q" literal in isearch for `isearch-quote-char'.
-;;
-;; Alternative solutions:
-;; (global-set-key (kbd "C-q") ctl-x-map)
-;; (define-key key-translation-map (kbd "C-q") (kbd "C-x"))
-(define-key key-translation-map (kbd "C-q")
-            (lambda (&optional _prompt)
-              (if (or (> (length (this-single-command-keys)) 1)
-                      isearch-mode)
-                  (kbd "C-q")
-                (kbd "C-x"))))
-
-;; Top-level "C-q" is taken by the translation above
-(global-set-key (kbd "C-'") #'quoted-insert)
-
 (global-set-key (kbd "C-c d") #'duplicate-dwim)
 
 ;; https://www.emacswiki.org/emacs/DvorakKeyboard
