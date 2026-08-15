@@ -500,7 +500,7 @@
    ("M-s l" . consult-line)
    ("M-s r" . consult-ripgrep)
    ;; Use single-chord keys for fast access
-   ("C-s" . consult-line)
+   ("s-f" . consult-line)
    ("s-n" . consult-fd)
    ("s-r" . consult-ripgrep)))
 
