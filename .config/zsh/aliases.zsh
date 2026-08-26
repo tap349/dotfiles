@@ -70,7 +70,6 @@ git_log() {
 # inDrive
 #-------------------------------------------------------------------------------
 
-alias dpa='cd ~/dev/indrive/dev-platform-access'
 alias dpal='cd ~/dev/indrive/dev-platform-activity-log'
 alias dpb='cd ~/dev/indrive/dev-platform-backup'
 alias dpc='cd ~/dev/indrive/dev-platform-catalog'
@@ -90,6 +89,7 @@ alias dps='cd ~/dev/indrive/dev-platform-secrets'
 alias dpsh='cd ~/dev/indrive/dev-platform-service-hub'
 alias dpui='cd ~/dev/indrive/dev-platform-ui'
 alias dpw='cd ~/dev/indrive/dev-platform-web-ui'
+alias iam='cd ~/dev/indrive/dev-platform-iam'
 
 alias docs='cd ~/dev/indrive/dev-platform-docs'
 alias idocs='cd ~/dev/indrive/dev-platform-internal-docs'
