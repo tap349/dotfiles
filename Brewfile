@@ -66,7 +66,6 @@ brew 'opencode'
 brew 'oven-sh/bun/bun'
 
 cask 'chatgpt'
-cask 'chatgpt-atlas'
 cask 'chatgpt-classic'
 cask 'claude'
 cask 'claude-code'
