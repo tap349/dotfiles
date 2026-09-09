@@ -203,6 +203,14 @@
 
 ;;-----------------------------------------------------------------------------
 ;;
+;; Search
+;;
+;;-----------------------------------------------------------------------------
+
+(setq isearch-wrap-pause 'no-ding)
+
+;;-----------------------------------------------------------------------------
+;;
 ;; Registers (C-x r j)
 ;;
 ;; https://stackoverflow.com/a/12558095/3632318
@@ -500,7 +508,7 @@
    ("M-s l" . consult-line)
    ("M-s r" . consult-ripgrep)
    ;; Use single-chord keys for fast access
-   ("C-s" . consult-line)
+   ("s-s" . consult-line)
    ("s-n" . consult-fd)
    ("s-r" . consult-ripgrep)))
 
