@@ -32,9 +32,6 @@ path=($HOME/scripts $path)
 # Homebrew
 path=(/opt/homebrew/bin /opt/homebrew/sbin $path)
 
-# Dart
-path=($HOME/.pub-cache/bin $path)
-
 # go env GOPATH => $HOME/go
 path=($HOME/go/bin $path)
 

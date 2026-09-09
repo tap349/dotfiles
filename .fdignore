@@ -15,13 +15,6 @@
 /.idea/
 /.vscode/
 
-# Dart/Flutter
-*.freezed.dart
-*.g.dart
-/.dart_tool/
-/images/
-/web/
-
 # Go
 coverage.out
 

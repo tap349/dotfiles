@@ -533,9 +533,6 @@
         ([backtab] . corfu-previous)
         ([return] . corfu-complete)))
 
-(use-package dart-mode
-  :straight t)
-
 ;; - "C-x v *" - diff-hl-show-hunk
 ;; - "C-x v [" - diff-hl-previous-hunk
 ;; - "C-x v ]" - diff-hl-next-hunk
@@ -623,7 +620,6 @@
   :hook
   ((eglot-managed-mode . my/setup-eglot-managed-mode)
    (before-save . my/eglot-before-save)
-   (dart-mode . eglot-ensure)
    (go-mode . eglot-ensure)
    (typescript-mode . eglot-ensure))
 
