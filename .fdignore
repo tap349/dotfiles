@@ -2,7 +2,6 @@
 
 /bin/
 /build/
-/client-certs/
 /docker/
 
 # Temp Files
