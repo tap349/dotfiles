@@ -61,16 +61,11 @@ cask 'zoom'
 # AI
 #-------------------------------------------------------------------------------
 
-brew 'opencode'
-# For OpenCode
-brew 'oven-sh/bun/bun'
-
 cask 'chatgpt'
 cask 'chatgpt-classic'
 cask 'claude'
 cask 'claude-code'
 cask 'codex'
-cask 'opencode-desktop'
 
 #-------------------------------------------------------------------------------
 # LSP
