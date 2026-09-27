@@ -12,3 +12,8 @@
    (with-selected-frame frame
      (when (display-graphic-p)
        (define-key input-decode-map (kbd "C-m") [BLAH-m])))))
+
+;; Set correct deployment target for native compilation
+(when (eq system-type 'darwin)
+  (setenv "MACOSX_DEPLOYMENT_TARGET"
+          (string-trim (shell-command-to-string "sw_vers -productVersion"))))
