@@ -83,10 +83,11 @@ brew 'typescript-language-server'
 # inDrive
 #-------------------------------------------------------------------------------
 
+brew 'argoproj/tap/kubectl-argo-rollouts'
 brew 'aws/tap/eks-node-viewer'
+brew 'crane'
 brew 'helm'
 brew 'k9s'
-brew 'argoproj/tap/kubectl-argo-rollouts'
 brew 'kubectx'
 # For psql
 brew 'libpq'
