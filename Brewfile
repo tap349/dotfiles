@@ -85,13 +85,13 @@ brew 'typescript-language-server'
 
 brew 'argoproj/tap/kubectl-argo-rollouts'
 brew 'aws/tap/eks-node-viewer'
-brew 'crane'
 brew 'helm'
 brew 'k9s'
 brew 'kubectx'
 # For psql
 brew 'libpq'
 brew 'mysql-client'
+brew 'oras'
 # https://github.com/inDriver/dev-platform-docs/blob/main/docs/telepresence-setup.md
 # Install v2.25.2 via curl - formula doesn't support versions
 # Versions v2.26+ return error during connect:
