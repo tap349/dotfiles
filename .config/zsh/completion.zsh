@@ -2,6 +2,11 @@
 # compinit
 #-------------------------------------------------------------------------------
 
+# Homebrew installs completions (_kubectl, _mise, etc.) here,
+# but Apple's zsh doesn't search this dir by default. No need
+# to source app-specific completions manually
+fpath=(/opt/homebrew/share/zsh/site-functions $fpath)
+
 autoload -Uz compinit
 
 # https://github.com/sorin-ionescu/prezto/blob/master/modules/completion/init.zsh#L59
@@ -23,14 +28,10 @@ if [[ -n $ZDATADIR/.zcompdump(#qN.mh-20) ]]; then
   compinit -i -C -d $ZDATADIR/.zcompdump
 else
   compinit -i -d $ZDATADIR/.zcompdump
+  # compinit leaves the dump untouched when it's already up to date,
+  # so bump mtime ourselves or the fast path above is never taken
+  touch $ZDATADIR/.zcompdump
 fi
 
 # Menu-style autocompletion
 zstyle ':completion:*' menu select
-
-#-------------------------------------------------------------------------------
-# kubectl autocompletion
-# https://kubernetes.io/docs/reference/kubectl/cheatsheet/
-#-------------------------------------------------------------------------------
-
-[[ $commands[kubectl] ]] && source <(kubectl completion zsh)

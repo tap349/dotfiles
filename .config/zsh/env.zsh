@@ -6,7 +6,7 @@ export LC_ALL=en_US.UTF-8
 
 # https://github.com/keybase/keybase-issues/issues/1712#issuecomment-141226705
 # For gpg to sign commits
-export GPG_TTY=$(tty)
+export GPG_TTY=$TTY
 
 # Don't use proxy or checksum database for private modules
 export GOPRIVATE=github.com/inDriver

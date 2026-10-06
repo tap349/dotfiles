@@ -15,23 +15,3 @@ source $ZDATADIR/zsh-autosuggestions/zsh-autosuggestions.zsh
 #-------------------------------------------------------------------------------
 
 source $ZDATADIR/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
-#-------------------------------------------------------------------------------
-# zsh-kubectl-prompt
-# git clone https://github.com/superbrothers/zsh-kubectl-prompt $ZDATADIR/zsh-kubectl-prompt
-#-------------------------------------------------------------------------------
-
-autoload -U colors; colors
-source $ZDATADIR/zsh-kubectl-prompt/kubectl.zsh
-
-function right_prompt() {
-  local color=green
-
-  if [[ $ZSH_KUBECTL_CONTEXT == dev-platform-eks-prod ]]; then
-    color=red
-  fi
-
-  echo "%{$fg[$color]%}$ZSH_KUBECTL_CONTEXT%{$reset_color%}"
-}
-
-RPROMPT='$(right_prompt)'
