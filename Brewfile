@@ -39,9 +39,7 @@ brew 'ssh-copy-id'
 brew 'tokei'
 brew 'tree'
 brew 'wget'
-# Make it a login shell:
-# - chsh -s /bin/zsh
-brew 'zsh'
+# zsh is the default login shell since Catalina
 
 cask_args appdir: '/Applications'
 
