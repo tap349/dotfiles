@@ -2,9 +2,9 @@
 # compinit
 #-------------------------------------------------------------------------------
 
-# Homebrew installs completions (_kubectl, _mise, etc.) here,
-# but Apple's zsh doesn't search this dir by default. No need
-# to source app-specific completions manually
+# Homebrew installs completions (_kubectl, _mise, etc.) here, but Apple's
+# zsh doesn't search this dir by default. No need to source app-specific
+# completions manually - they all live inside this dir
 fpath=(/opt/homebrew/share/zsh/site-functions $fpath)
 
 autoload -Uz compinit
