@@ -40,6 +40,9 @@ adjust-cell-height = 14%
 # For Emacs keybindings to work
 macos-option-as-alt = true
 
+# Copy as plain text
+keybind = super+c=copy_to_clipboard:plain
+
 #------------------------------------------------------------------------------
 # Tabs
 #------------------------------------------------------------------------------
