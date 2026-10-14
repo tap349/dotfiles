@@ -1203,6 +1203,7 @@
       (pop-to-buffer "*go test*")))
 
   (defun my/golangci-lint (args target)
+    ;; Sanity check to fail fast if no file is open
     (unless buffer-file-name
       (user-error "Current buffer is not visiting a file"))
 
