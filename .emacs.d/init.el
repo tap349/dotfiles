@@ -1202,28 +1202,43 @@
       (compilation-start cmd 'compilation-mode (lambda (_) "*go test*"))
       (pop-to-buffer "*go test*")))
 
-  (defun my/format-with-golangci-lint-fmt ()
-    (interactive)
+  (defun my/golangci-lint (args target)
     (unless buffer-file-name
       (user-error "Current buffer is not visiting a file"))
 
-    (let ((inhibit-message t)
-          (old-point (point)))
+    (let* ((inhibit-message t)
+           (old-point (point))
+           (command (string-join args " "))
+           (output-buffer (format "*golangci-lint %s errors*" command)))
       (save-buffer)
-      (let ((exit-code (call-process
-                        "golangci-lint"
-                        nil
-                        "*golangci-lint fmt errors*"
-                        nil
-                        "fmt"
-                        buffer-file-name)))
+
+      ;; Clear output buffer
+      (with-current-buffer (get-buffer-create output-buffer)
+        (erase-buffer))
+
+      (let ((exit-code (apply #'call-process
+                              "golangci-lint"
+                              nil
+                              output-buffer
+                              nil
+                              (append args (list target)))))
+        ;; Re-read current buffer from disk
+        (revert-buffer :ignore-auto :noconfirm)
+        (goto-char old-point)
 
         (unless (zerop exit-code)
-          (display-buffer "*golangci-lint fmt errors*")
-          (error "golangci-lint fmt failed"))
+          (display-buffer output-buffer)
+          (error "golangci-lint %s failed" command)))))
 
-        (revert-buffer :ignore-auto :noconfirm)
-        (goto-char old-point))))
+  (defun my/golangci-lint-fmt ()
+    (interactive)
+    (my/golangci-lint '("fmt") buffer-file-name))
+
+  (defun my/golangci-lint-run-fix ()
+    (interactive)
+    ;; `run' typechecks before linting => pass directory instead of one file
+    ;; to load the whole package
+    (my/golangci-lint '("run" "--fix") (file-name-directory buffer-file-name)))
 
   :hook
   ((go-mode . my/setup-go-mode)
