@@ -70,6 +70,7 @@ git_log() {
 # inDrive
 #-------------------------------------------------------------------------------
 
+alias dpag='cd ~/dev/indrive/dev-platform-agents'
 alias dpal='cd ~/dev/indrive/dev-platform-activity-log'
 alias dpb='cd ~/dev/indrive/dev-platform-backup'
 alias dpdd='cd ~/dev/indrive/dev-platform-deployer'
