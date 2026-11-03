@@ -45,7 +45,8 @@
   "model": "claude-fable-5-1",
   "enabledPlugins": {
     "gopls-lsp@claude-plugins-official": true,
-    "typescript-lsp@claude-plugins-official": true
+    "typescript-lsp@claude-plugins-official": true,
+    "postman@claude-plugins-official": true
   },
   "sandbox": {
     "enabled": true,
