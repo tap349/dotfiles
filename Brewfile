@@ -57,7 +57,6 @@ cask 'postman'
 cask 'steam'
 cask 'telegram-desktop'
 cask 'todoist-app'
-cask 'transmission'
 cask 'whatsapp'
 cask 'yaak'
 cask 'zoom'
@@ -113,6 +112,8 @@ cask 'slack'
 
 # Work laptop has no access to App Store
 if Socket.gethostname == "Alexeys-MacBook-Pro.local"
+  cask 'transmission'
+
   mas 'Cloud Mail.Ru', id: 893068358
   mas 'Dashlane – Password Manager', id: 517914548
   mas 'Microsoft Word', id: 462054704
