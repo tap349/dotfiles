@@ -65,36 +65,3 @@ git_log() {
   local format='%Cred%h%Creset %C(yellow)%d%Creset %s - %C(bold blue)%an%Creset, %Cgreen%cr'
   git log --graph --pretty=format:${format} --abbrev-commit
 }
-
-#-------------------------------------------------------------------------------
-# inDrive
-#-------------------------------------------------------------------------------
-
-alias dpag='cd ~/dev/indrive/dev-platform-agents'
-alias dpal='cd ~/dev/indrive/dev-platform-activity-log'
-alias dpb='cd ~/dev/indrive/dev-platform-backup'
-alias dpdd='cd ~/dev/indrive/dev-platform-deployer'
-alias dpeg='cd ~/dev/indrive/dev-platform-external-gateway'
-alias dpg='cd ~/dev/indrive/dev-platform-gateway'
-alias dpgc='cd ~/dev/indrive/dev-platform-go-common'
-alias dpi='cd ~/dev/indrive/dev-platform-installer'
-alias dpia='cd ~/dev/indrive/dev-platform-iam-automation'
-alias dpis='cd ~/dev/indrive/dev-platform-infrastructure'
-alias dpn='cd ~/dev/indrive/dev-platform-namespace'
-alias dpnt='cd ~/dev/indrive/dev-platform-notifier'
-alias dpqg='cd ~/dev/indrive/dev-platform-quality-gates'
-alias dpr='cd ~/dev/indrive/dev-platform-runner'
-alias dps='cd ~/dev/indrive/dev-platform-secrets'
-alias dpsh='cd ~/dev/indrive/dev-platform-service-hub'
-alias dpw='cd ~/dev/indrive/dev-platform-web-ui'
-alias iam='cd ~/dev/indrive/dev-platform-iam'
-
-alias docs='cd ~/dev/indrive/dev-platform-docs'
-alias idocs='cd ~/dev/indrive/dev-platform-internal-docs'
-
-# To add prod clusters to kubeconfig:
-# aws sso login --profile devplatform_team-252036190537
-alias sso='aws sso login --profile devplatform_team-531211996670 && aws sso login --profile inDriveAdministratorAccess-627723547655'
-
-alias tp='telepresence'
-alias tpc='telepresence connect -n platform --mapped-namespaces platform --allow-conflicting-subnets 10.8.0.0/14,10.28.0.0/14'

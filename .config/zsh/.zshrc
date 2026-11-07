@@ -11,3 +11,5 @@ source $ZDOTDIR/completion.zsh
 source $ZDOTDIR/bindings.zsh
 source $ZDOTDIR/plugins.zsh
 source $ZDOTDIR/integrations.zsh
+
+source $ZDOTDIR/indrive.zsh
