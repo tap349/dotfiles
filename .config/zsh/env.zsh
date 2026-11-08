@@ -32,11 +32,14 @@ path=(/opt/homebrew/bin /opt/homebrew/sbin $path)
 # go env GOPATH => $HOME/go
 path=($HOME/go/bin $path)
 
+# mise
+path=($HOME/.local/bin $path)
+
 # mysql
 path=(/opt/homebrew/opt/mysql-client/bin $path)
 
 # psql
 path=(/opt/homebrew/opt/libpq/bin $path)
 
-# For telepresence-oss
+# telepresence-oss
 path=(/usr/local/bin $path)

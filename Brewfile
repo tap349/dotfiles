@@ -26,7 +26,9 @@ brew 'jq'
 brew 'macvim'
 brew 'mas'
 brew 'mc'
-brew 'mise'
+# Install via curl - Homebrew's binary can be slower and larger:
+# curl https://mise.run | sh
+#brew 'mise'
 brew 'mkvtoolnix'
 brew 'mpv'
 brew 'ncdu'
