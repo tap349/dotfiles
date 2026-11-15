@@ -67,7 +67,6 @@ cask 'zoom'
 #-------------------------------------------------------------------------------
 
 cask 'chatgpt'
-cask 'chatgpt-classic'
 cask 'claude'
 cask 'claude-code'
 cask 'codex'
