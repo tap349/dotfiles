@@ -42,7 +42,7 @@
     ],
     "defaultMode": "auto"
   },
-  "model": "claude-fable-5-1",
+  "model": "opus",
   "enabledPlugins": {
     "gopls-lsp@claude-plugins-official": true,
     "typescript-lsp@claude-plugins-official": true,
