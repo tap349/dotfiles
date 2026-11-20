@@ -551,10 +551,7 @@
 
   :hook
   ((magit-pre-refresh . diff-hl-magit-pre-refresh)
-   (magit-post-refresh . diff-hl-magit-post-refresh))
-
-  :bind
-  (("s-g" . #'diff-hl-mode)))
+   (magit-post-refresh . diff-hl-magit-post-refresh)))
 
 ;; - "(" - dired-hide-details-mode
 ;; - "C-p" - remove autosuggestion when renaming file
@@ -1126,6 +1123,10 @@
 (with-eval-after-load 'evil
   ;; avy
   (define-key evil-normal-state-map (kbd "<leader>w") #'avy-goto-word-1)
+
+  ;; diff-hl
+  ;; Replaces evil-paste-pop-next
+  (define-key evil-normal-state-map (kbd "s-g") #'diff-hl-show-hunk)
 
   ;; files
   (define-key evil-normal-state-map (kbd "<leader>,") #'find-sibling-file)
