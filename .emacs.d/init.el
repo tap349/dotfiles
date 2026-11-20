@@ -897,16 +897,12 @@
     (evil-append-line 1)
     (comment-indent-new-line))
 
-  ;; Bypass different checks and hooks in evil-normal-state command
-  (defun my/evil-change-to-normal-state ()
-    (interactive)
-    (evil-change-state 'normal))
-
   (defun my/evil-escape ()
     (interactive)
     (pcase evil-state
       ('visual (evil-exit-visual-state))
-      ((or 'insert 'replace) (my/evil-change-to-normal-state))
+      ;; Bypass different checks and hooks in evil-normal-state command
+      ((or 'insert 'replace) (evil-change-state 'normal))
       ('normal (evil-ex-nohighlight))))
 
   ;; C-g is handled in 2 ways:
