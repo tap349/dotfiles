@@ -902,6 +902,23 @@
     (interactive)
     (evil-change-state 'normal))
 
+  (defun my/evil-escape ()
+    (interactive)
+    (pcase evil-state
+      ('visual (evil-exit-visual-state))
+      ((or 'insert 'replace) (my/evil-change-to-normal-state))
+      ('normal (evil-ex-nohighlight))))
+
+  ;; C-g is handled in 2 ways:
+  ;; - Emacs is idle: direct keybinding is used to run my/evil-escape
+  ;; - Emacs is busy (say, timer): this hook is used to run my/evil-escape
+  ;;   as a safety net to avoid skipped presses (C-g is turned into `quit'
+  ;;   signal that is handled by command-error-function)
+  (defun my/command-error-function (data context caller)
+    (when (memq 'quit (get (car data) 'error-conditions))
+      (my/evil-escape))
+    (command-error-default-function data context caller))
+
   :custom
   (evil-default-state 'emacs)
 
@@ -943,6 +960,8 @@
   (evil-set-leader 'normal (kbd ","))
   (evil-set-leader 'visual (kbd ","))
 
+  (setq command-error-function #'my/command-error-function)
+
   ;; Disable echo area messages on evil state change
   (setq evil-insert-state-message nil)
   (setq evil-normal-state-message nil)
@@ -958,11 +977,10 @@
 
   :bind
   (:map evil-insert-state-map
-        ("C-c" . my/evil-change-to-normal-state)
+        ("C-g" . my/evil-escape)
         ("RET" . comment-indent-new-line))
 
   (:map evil-normal-state-map
-        ("C-c" . evil-ex-nohighlight)
         ("C-." . execute-extended-command)
 
         ("TAB" . save-buffer)
@@ -1007,7 +1025,7 @@
         ("<leader>SPC" . my/toggle-comment))
 
   (:map evil-visual-state-map
-        ("C-c" . evil-exit-visual-state)
+        ("C-g" . my/evil-escape)
         ("C-." . execute-extended-command)
 
         ("C-s" . sort-lines)
@@ -1016,7 +1034,7 @@
         ("L" . evil-last-non-blank))
 
   (:map evil-replace-state-map
-        ("C-c" . my/evil-change-to-normal-state))
+        ("C-g" . my/evil-escape))
 
   ;; https://github.com/noctuid/evil-guide#global-keybindings-and-evil-states
   ;; > motion state is the default the state for help-mode
