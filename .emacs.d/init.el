@@ -537,6 +537,7 @@
   :bind
   (:map corfu-map
         ("C-g" . my/corfu-quit)
+        ("C-t" . my/corfu-quit)
         ([tab] . corfu-next)
         ([backtab] . corfu-previous)
         ([return] . corfu-complete)))
@@ -905,6 +906,11 @@
       ((or 'insert 'replace) (evil-change-state 'normal))
       ('normal (evil-ex-nohighlight))))
 
+  ;; C-g pressed in a fast key sequence (say, "Vjj C-g") can be lost: Emacs
+  ;; turns it into a quit flag when reading events from macOS and the flag is
+  ;; cleared when the next queued key is read. C-t is a regular key so it is
+  ;; never lost - use it as a reliable alternative (return to caller with s-[)
+  ;;
   ;; C-g is handled in 2 ways:
   ;; - Emacs is idle: direct keybinding is used to run my/evil-escape
   ;; - Emacs is busy (say, timer): this hook is used to run my/evil-escape
@@ -974,9 +980,11 @@
   :bind
   (:map evil-insert-state-map
         ("C-g" . my/evil-escape)
+        ("C-t" . my/evil-escape)
         ("RET" . comment-indent-new-line))
 
   (:map evil-normal-state-map
+        ("C-t" . my/evil-escape)
         ("C-." . execute-extended-command)
 
         ("TAB" . save-buffer)
@@ -1022,6 +1030,7 @@
 
   (:map evil-visual-state-map
         ("C-g" . my/evil-escape)
+        ("C-t" . my/evil-escape)
         ("C-." . execute-extended-command)
 
         ("C-s" . sort-lines)
@@ -1030,7 +1039,8 @@
         ("L" . evil-last-non-blank))
 
   (:map evil-replace-state-map
-        ("C-g" . my/evil-escape))
+        ("C-g" . my/evil-escape)
+        ("C-t" . my/evil-escape))
 
   ;; https://github.com/noctuid/evil-guide#global-keybindings-and-evil-states
   ;; > motion state is the default the state for help-mode
