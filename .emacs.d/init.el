@@ -240,7 +240,7 @@
 ;;
 ;; ## <tab> vs. [tab]
 ;;
-;; [tab] can't be used in keybindings with prefix keys like "C-[tab]":
+;; [tab] can't be used in keybindings with prefix keys like C-[tab]:
 ;;
 ;; - "<tab>" = [tab] (ok)
 ;; - "C-<tab>" (ok)
@@ -536,7 +536,10 @@
 
   :bind
   (:map corfu-map
+<<<<<<< HEAD
         ("C-g" . my/corfu-quit)
+=======
+>>>>>>> d553cf2 (Use C-t everywhere to get back to normal state)
         ("C-t" . my/corfu-quit)
         ([tab] . corfu-next)
         ([backtab] . corfu-previous)
@@ -898,8 +901,10 @@
     (evil-append-line 1)
     (comment-indent-new-line))
 
-  (defun my/evil-escape ()
+  ;; Bypass different checks and hooks in evil-normal-state command
+  (defun my/evil-normal-state ()
     (interactive)
+<<<<<<< HEAD
     (pcase evil-state
       ('visual (evil-exit-visual-state))
       ;; Bypass different checks and hooks in evil-normal-state command
@@ -920,6 +925,9 @@
     (when (memq 'quit (get (car data) 'error-conditions))
       (my/evil-escape))
     (command-error-default-function data context caller))
+=======
+    (evil-change-state 'normal))
+>>>>>>> d553cf2 (Use C-t everywhere to get back to normal state)
 
   :custom
   (evil-default-state 'emacs)
@@ -962,8 +970,6 @@
   (evil-set-leader 'normal (kbd ","))
   (evil-set-leader 'visual (kbd ","))
 
-  (setq command-error-function #'my/command-error-function)
-
   ;; Disable echo area messages on evil state change
   (setq evil-insert-state-message nil)
   (setq evil-normal-state-message nil)
@@ -977,13 +983,22 @@
   (setq evil-emacs-state-cursor '(bar . 2))
   (setq evil-insert-state-cursor '(bar . 2))
 
+  ;; C-g pressed in a fast key sequence (say, "Vjj C-g") can be lost: Emacs
+  ;; turns it into a quit flag when reading events from macOS and the flag is
+  ;; cleared when the next queued key is read. C-t is a regular key so it is
+  ;; never lost - use it to return to normal state (return to caller with s-[)
   :bind
   (:map evil-insert-state-map
+<<<<<<< HEAD
         ("C-g" . my/evil-escape)
         ("C-t" . my/evil-escape)
+=======
+        ("C-t" . my/evil-normal-state)
+>>>>>>> d553cf2 (Use C-t everywhere to get back to normal state)
         ("RET" . comment-indent-new-line))
 
   (:map evil-normal-state-map
+        ("C-t" . evil-ex-nohighlight)
         ("C-." . execute-extended-command)
 
         ("TAB" . save-buffer)
@@ -1028,7 +1043,7 @@
         ("<leader>SPC" . my/toggle-comment))
 
   (:map evil-visual-state-map
-        ("C-g" . my/evil-escape)
+        ("C-t" . evil-exit-visual-state)
         ("C-." . execute-extended-command)
 
         ("C-s" . sort-lines)
@@ -1037,8 +1052,12 @@
         ("L" . evil-last-non-blank))
 
   (:map evil-replace-state-map
+<<<<<<< HEAD
         ("C-g" . my/evil-escape)
         ("C-t" . my/evil-escape))
+=======
+        ("C-t" . my/evil-normal-state))
+>>>>>>> d553cf2 (Use C-t everywhere to get back to normal state)
 
   ;; https://github.com/noctuid/evil-guide#global-keybindings-and-evil-states
   ;; > motion state is the default the state for help-mode
