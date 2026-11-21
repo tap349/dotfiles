@@ -909,7 +909,7 @@
   ;; C-g pressed in a fast key sequence (say, "Vjj C-g") can be lost: Emacs
   ;; turns it into a quit flag when reading events from macOS and the flag is
   ;; cleared when the next queued key is read. C-t is a regular key so it is
-  ;; never lost - use it as a reliable alternative (return to caller with s-[)
+  ;; never lost - use it to return to normal state (return to caller with s-[)
   ;;
   ;; C-g is handled in 2 ways:
   ;; - Emacs is idle: direct keybinding is used to run my/evil-escape
@@ -984,7 +984,6 @@
         ("RET" . comment-indent-new-line))
 
   (:map evil-normal-state-map
-        ("C-t" . my/evil-escape)
         ("C-." . execute-extended-command)
 
         ("TAB" . save-buffer)
@@ -1030,7 +1029,6 @@
 
   (:map evil-visual-state-map
         ("C-g" . my/evil-escape)
-        ("C-t" . my/evil-escape)
         ("C-." . execute-extended-command)
 
         ("C-s" . sort-lines)
