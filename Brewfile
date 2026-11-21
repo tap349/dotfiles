@@ -82,6 +82,7 @@ brew 'typescript-language-server'
 # inDrive
 #-------------------------------------------------------------------------------
 
+brew 'argocd'
 brew 'argoproj/tap/kubectl-argo-rollouts'
 brew 'aws/tap/eks-node-viewer'
 brew 'helm'
