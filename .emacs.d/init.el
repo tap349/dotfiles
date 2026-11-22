@@ -536,7 +536,7 @@
 
   :bind
   (:map corfu-map
-        ("C-t" . my/corfu-quit)
+        ("C-g" . my/corfu-quit)
         ([tab] . corfu-next)
         ([backtab] . corfu-previous)
         ([return] . corfu-complete)))
@@ -943,6 +943,9 @@
   (evil-set-leader 'normal (kbd ","))
   (evil-set-leader 'visual (kbd ","))
 
+  ;; C-g runs keyboard-quit in normal and visual state by default
+  (advice-add 'keyboard-quit :before #'evil-ex-nohighlight)
+
   ;; Disable echo area messages on evil state change
   (setq evil-insert-state-message nil)
   (setq evil-normal-state-message nil)
@@ -956,17 +959,12 @@
   (setq evil-emacs-state-cursor '(bar . 2))
   (setq evil-insert-state-cursor '(bar . 2))
 
-  ;; C-g pressed in a fast key sequence (say, "Vjj C-g") can be lost: Emacs
-  ;; turns it into a quit flag when reading events from macOS and the flag is
-  ;; cleared when the next queued key is read. C-t is a regular key so it is
-  ;; never lost - use it to return to normal state (return to caller with s-[)
   :bind
   (:map evil-insert-state-map
         ("C-t" . my/evil-normal-state)
         ("RET" . comment-indent-new-line))
 
   (:map evil-normal-state-map
-        ("C-t" . evil-ex-nohighlight)
         ("C-." . execute-extended-command)
 
         ("TAB" . save-buffer)
@@ -1011,7 +1009,6 @@
         ("<leader>SPC" . my/toggle-comment))
 
   (:map evil-visual-state-map
-        ("C-t" . evil-exit-visual-state)
         ("C-." . execute-extended-command)
 
         ("C-s" . sort-lines)
