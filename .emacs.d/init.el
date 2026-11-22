@@ -536,10 +536,6 @@
 
   :bind
   (:map corfu-map
-<<<<<<< HEAD
-        ("C-g" . my/corfu-quit)
-=======
->>>>>>> d553cf2 (Use C-t everywhere to get back to normal state)
         ("C-t" . my/corfu-quit)
         ([tab] . corfu-next)
         ([backtab] . corfu-previous)
@@ -904,30 +900,7 @@
   ;; Bypass different checks and hooks in evil-normal-state command
   (defun my/evil-normal-state ()
     (interactive)
-<<<<<<< HEAD
-    (pcase evil-state
-      ('visual (evil-exit-visual-state))
-      ;; Bypass different checks and hooks in evil-normal-state command
-      ((or 'insert 'replace) (evil-change-state 'normal))
-      ('normal (evil-ex-nohighlight))))
-
-  ;; C-g pressed in a fast key sequence (say, "Vjj C-g") can be lost: Emacs
-  ;; turns it into a quit flag when reading events from macOS and the flag is
-  ;; cleared when the next queued key is read. C-t is a regular key so it is
-  ;; never lost - use it to return to normal state (return to caller with s-[)
-  ;;
-  ;; C-g is handled in 2 ways:
-  ;; - Emacs is idle: direct keybinding is used to run my/evil-escape
-  ;; - Emacs is busy (say, timer): this hook is used to run my/evil-escape
-  ;;   as a safety net to avoid skipped presses (C-g is turned into `quit'
-  ;;   signal that is handled by command-error-function)
-  (defun my/command-error-function (data context caller)
-    (when (memq 'quit (get (car data) 'error-conditions))
-      (my/evil-escape))
-    (command-error-default-function data context caller))
-=======
     (evil-change-state 'normal))
->>>>>>> d553cf2 (Use C-t everywhere to get back to normal state)
 
   :custom
   (evil-default-state 'emacs)
@@ -989,12 +962,7 @@
   ;; never lost - use it to return to normal state (return to caller with s-[)
   :bind
   (:map evil-insert-state-map
-<<<<<<< HEAD
-        ("C-g" . my/evil-escape)
-        ("C-t" . my/evil-escape)
-=======
         ("C-t" . my/evil-normal-state)
->>>>>>> d553cf2 (Use C-t everywhere to get back to normal state)
         ("RET" . comment-indent-new-line))
 
   (:map evil-normal-state-map
@@ -1052,12 +1020,7 @@
         ("L" . evil-last-non-blank))
 
   (:map evil-replace-state-map
-<<<<<<< HEAD
-        ("C-g" . my/evil-escape)
-        ("C-t" . my/evil-escape))
-=======
         ("C-t" . my/evil-normal-state))
->>>>>>> d553cf2 (Use C-t everywhere to get back to normal state)
 
   ;; https://github.com/noctuid/evil-guide#global-keybindings-and-evil-states
   ;; > motion state is the default the state for help-mode
