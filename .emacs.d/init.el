@@ -251,7 +251,8 @@
 ;;
 ;;-----------------------------------------------------------------------------
 
-(global-set-key (kbd "C-c d") #'duplicate-dwim)
+;; yyp for emacs state
+(global-set-key (kbd "C-c C-c") #'duplicate-dwim)
 
 ;; https://www.emacswiki.org/emacs/DvorakKeyboard
 ;;
@@ -551,7 +552,16 @@
 
   :hook
   ((magit-pre-refresh . diff-hl-magit-pre-refresh)
-   (magit-post-refresh . diff-hl-magit-post-refresh)))
+   (magit-post-refresh . diff-hl-magit-post-refresh))
+
+  :bind
+  (:map diff-hl-mode-map
+        ("C-c d n" . diff-hl-next-hunk)
+        ("C-c d p" . diff-hl-previous-hunk)
+        ("C-c d s" . diff-hl-show-hunk)
+        ;; Add shortcuts for speed
+        ("M-]" . diff-hl-next-hunk)
+        ("M-[" . diff-hl-previous-hunk)))
 
 ;; - "(" - dired-hide-details-mode
 ;; - "C-p" - remove autosuggestion when renaming file
@@ -1126,10 +1136,6 @@
   ;; avy
   (define-key evil-normal-state-map (kbd "<leader>w") #'avy-goto-word-1)
 
-  ;; diff-hl
-  ;; Replaces evil-paste-pop-next
-  (define-key evil-normal-state-map (kbd "s-g") #'diff-hl-show-hunk)
-
   ;; files
   (define-key evil-normal-state-map (kbd "<leader>,") #'find-sibling-file)
   (define-key evil-normal-state-map (kbd "<leader>v") #'my/find-sibling-file-vsplit))
@@ -1165,9 +1171,9 @@
 (use-package flymake
   :straight (:type built-in)
   :bind
-  (:map prog-mode-map
-        ("M-]" . flymake-goto-next-error)
-        ("M-[" . flymake-goto-prev-error)))
+  (:map flymake-mode-map
+        ("C-c f n" . flymake-goto-next-error)
+        ("C-c f p" . flymake-goto-prev-error)))
 
 (use-package go-mode
   :straight t
