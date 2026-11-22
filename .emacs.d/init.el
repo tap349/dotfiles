@@ -1009,6 +1009,7 @@
         ("<leader>SPC" . my/toggle-comment))
 
   (:map evil-visual-state-map
+        ("C-t" . evil-exit-visual-state)
         ("C-." . execute-extended-command)
 
         ("C-s" . sort-lines)
