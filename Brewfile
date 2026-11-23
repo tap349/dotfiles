@@ -77,7 +77,8 @@ cask 'codex'
 #-------------------------------------------------------------------------------
 
 brew 'gopls'
-brew 'typescript-language-server'
+# Has built-in LSP server (tsc --lsp --stdio)
+brew 'typescript'
 
 #-------------------------------------------------------------------------------
 # inDrive
