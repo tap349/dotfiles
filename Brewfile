@@ -41,6 +41,7 @@ brew 'ssh-copy-id'
 brew 'tokei'
 brew 'tree'
 brew 'wget'
+brew 'yq'
 # zsh is the default login shell since Catalina
 
 cask_args appdir: '/Applications'
