@@ -251,9 +251,6 @@
 ;;
 ;;-----------------------------------------------------------------------------
 
-;; yyp for emacs state
-(global-set-key (kbd "C-c C-c") #'duplicate-dwim)
-
 ;; https://www.emacswiki.org/emacs/DvorakKeyboard
 ;;
 ;; Define key in evil-normal-state-map as well
