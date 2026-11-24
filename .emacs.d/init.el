@@ -633,7 +633,7 @@
   ((eglot-managed-mode . my/setup-eglot-managed-mode)
    (before-save . my/eglot-before-save)
    (go-mode . eglot-ensure)
-   (typescript-mode . eglot-ensure))
+   ((js-ts-mode typescript-ts-mode tsx-ts-mode) . eglot-ensure))
 
   :custom
   (eglot-autoshutdown t)
@@ -663,6 +663,9 @@
                              ;; ST1000: Incorrect or missing package comment
                              (analyses . ((ST1000 . :json-false)
                                           (ST1005 . :json-false)))))))
+
+  (add-to-list 'eglot-server-programs
+               '((js-ts-mode typescript-ts-mode tsx-ts-mode) . ("tsc" "--lsp" "--stdio")))
 
   :bind
   (:map eglot-mode-map
@@ -1546,8 +1549,15 @@
    ("C-<tab>" . tab-recent)
    ("C-<backspace>" . tab-bar-close-tab)))
 
-(use-package typescript-mode
-  :straight t)
+(use-package treesit
+  ;; Built-in package since Emacs 29
+  :straight (:type built-in)
+  :custom
+  (treesit-auto-install-grammar 'always)
+  ;; js-ts-mode - .js/.jsx files
+  ;; typescript-ts-mode - .ts files
+  ;; tsx-ts-mode - .tsx files
+  (treesit-enabled-modes '(js-ts-mode typescript-ts-mode tsx-ts-mode)))
 
 (use-package ultra-scroll
   :straight t
