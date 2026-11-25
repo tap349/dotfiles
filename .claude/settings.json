@@ -60,5 +60,6 @@
   "effortLevel": "high",
   "tui": "default",
   "skipWorkflowUsageWarning": true,
-  "theme": "auto"
+  "theme": "auto",
+  "cleanupPeriodDays": 90
 }
